@@ -39,5 +39,4 @@ feilmeldinger og beskrivelser. Tabeller fra analysemiljøet er underlagt microda
 ## Metadata og manual
 
 `skills/microdata-no/metadata/` oppdateres hver uke av en GitHub Action, som åpner en pull request
-når noe er endret. Ikke rediger
-filene der for hånd. Feil i hentescriptene rettes i `skills/microdata-no/verktoy/`.
+når noe er endret. Ikke rediger filene der for hånd. Feil i hentescriptene rettes i `skills/microdata-no/verktoy/`.
