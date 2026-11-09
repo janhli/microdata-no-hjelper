@@ -41,6 +41,30 @@ For å gruppere kommuner i regioner (helseregion, politidistrikt, økonomisk reg
 (`--liste` viser inndelingene). Tabellene gjelder kommunenummer i 2024-inndelingen, så omkod gamle
 kommunenumre først. Oppdater tabellene med `python verktoy/hent_regioninndelinger.py`.
 
+## Klass: slå opp i stedet for å skrive reglene for hånd
+
+SSBs klassifikasjoner (https://www.ssb.no/klass) gir grupperinger og koblinger mellom koder. Bruk
+`verktoy/klass.py` til å lage `recode`-linjer, i stedet for å gjette eller skrive hundrevis av regler selv.
+Verktøyet krever nettilgang. Er den ikke der, si fra til brukeren og bruk det som ligger i `metadata/`.
+
+| Behov | Klass-ID | Kommando |
+|---|---|---|
+| Yrke (STYRK-08), `*_YRKE_STYRK08` | 7 | `grupper 7 --nivaa 1 --variabel REGSYS_ARB_YRKE_STYRK08 --navn yrke` |
+| Utdanning (NUS), `NUDB_BU`, `NUDB_KURS_NUS` | 36 | `grupper 36 --nivaa 1 --variabel NUDB_BU --navn nus` |
+| Landkode til verdensdel, `BEFOLKNING_LANDBAK3GEN`, `*_FODELAND` | 545 (verdensinndeling) | `grupper 545 --nivaa 2 --variabel BEFOLKNING_LANDBAK3GEN --navn landbak` |
+| Land til EU/EFTA, Norden osv. | 546 (gruppering av land) | `grupper 546 --nivaa 2 --variabel ...` |
+| Næring (SN2007), `REGSYS_NARING_SN2007` | 6 | `grupper 6 --nivaa 1 --dato 2024-01-01 --variabel REGSYS_NARING_SN2007 --navn naring` |
+| Koblingstabeller (NUS til ISCED osv.) | 36, 6, 91 | `kobling 36` lister tabellene, `kobling 36 --tabell "ISCED 2011 Attainment" --navn nus` lager recode |
+| Finne en annen klassifikasjon | | `sok yrke` |
+
+Nivåene i hierarkiene: STYRK 1–4 er ett til fire siffer. NUS 1 er utdanningsnivå (0–9), 2 er nivå og
+fagfelt, 5 er 6-sifret kode. SN 1 er seksjon (A–U), 2 er divisjon (`01`), 5 er femsifret kode (`01.110`).
+Verdensinndeling 1 er verdensdel, 2 er region (f.eks. Norden, Subsaharisk Afrika), 3 er gruppe (`V111`),
+4 er landkoden. `koder <id> --nivaa N` viser kodene på et nivå, så du kan velge riktig nivå først.
+
+Fallgruver står i «Klass» i `referanser/fallgruver.md`. Les dem før du leverer skriptet. Resultatene er
+ikke kjørt i microdata.no før brukeren har kjørt dem.
+
 ## Arbeidsflyt
 
 1. Avklar tema, populasjon, år og geografi med brukeren.

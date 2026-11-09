@@ -100,6 +100,25 @@ med pull request (se CONTRIBUTING.md). Tagg dem med datalagerversjon/dato hvis d
   - Bo- og arbeidsmarkedsregioner (TØI) finnes ikke i Klass og er lastet inn manuelt.
     Se `metadata/regioner/manuelt/README.md`.
 
+## Klass
+
+- **Velg riktig versjon med `--dato`.** `klass.py` bruker kodene som gjelder på datoen (standard i dag). SN2007-variabler
+  må ha en dato før 2025-01-01, ellers får du SN2025 (Klass 6 har fire versjoner: SN 1994, SN 2002, SN 2007 og SN 2025).
+  For NUS, STYRK og landkoder er det samme prinsipp: bruk en dato fra perioden dataene dekker.
+- **Variablene har koder som ikke finnes i Klass.** Med `--variabel` listes slike koder i en kommentar og står uendret:
+  - Landkoder: utgåtte land (Sovjetunionen 135, DDR 151), «uspesifisert»/«Resten av …» (194, 394, 594 osv.) og 989
+    (uoppgitt utenlandsk statsborgerskap). Omkod dem for hånd, f.eks. til «Uoppgitt».
+  - STYRK: `XXXX` (uoppgitt/ukjent).
+  - SN2007: sammenfattede koder som `01.000` og `00.000`, og koder som ikke finnes i SN2007 i Klass på datoen (f.eks. `10.100`, `55.100`). Sjekk dem mot kodelisten før du omkoder dem.
+- **Resultatet er en kopi av kodene i Klass akkurat nå.** Klassifikasjoner endres. Oppgi hentedato i skriptet (verktøyet
+  skriver den i en kommentar).
+- **Koblingstabeller kan være mange-til-mange.** `kobling` utelater koder som går til flere mål og lister dem i en kommentar.
+- **`recode` på strenger.** Koder som `'01.110'` og `'0110'` må skrives som strenger. Landkodene i `BEFOLKNING_LANDBAK3GEN` er
+  strenger. Snutten `landbakgrunn_region.txt` bruker `destring` og tallintervaller. Det går også, men verktøyets
+  utskrift er strenger og skal ikke kombineres med `destring`.
+- **Landkodene i microdata er SSB-3 (Klass 91).** Verdensinndeling (545) bruker samme landkoder som blader. Gruppering
+  av land (546) skiller EU/EFTA fram til 2004 fra nye EU-land etter 2004. Det er ikke dagens EU/EØS-medlemskap.
+
 ## Alder
 
 - For å treffe Statistikkbanken beregnes alder ved utgangen av året før:
