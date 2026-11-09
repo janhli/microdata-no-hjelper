@@ -1,0 +1,51 @@
+// =====================================================================
+// Lavinntekt (EU-60), med egen medianberegning per år
+// Status:    testet i større skript (no.ssb.fdb:57, 2026-11)
+// Variabler: INNTEKT_HUSH_IES_EU (akkumulert, til 2024-12-31)
+//            https://microdata.no/discovery/variable/no.ssb.fdb/58/INNTEKT_HUSH_IES_EU
+//            INNTEKT_KODE_PRIVATHUSH2
+//            https://microdata.no/discovery/variable/no.ssb.fdb/58/INNTEKT_KODE_PRIVATHUSH2
+// Lager:     iesÅÅÅÅ (inntekt per forbruksenhet) og lavÅÅÅÅ (1 = under 60 % av medianen) på
+//            datasettet 'personer', ett par per år
+// Fallgruver:
+//   - Medianen beregnes for alle i privathusholdninger i hele landet (ikke bare populasjonen din),
+//     ellers blir grensen feil.
+//   - aggregate legger medianen på hver rad. Uten en konstant by-variabel (alle = 1) får du ikke
+//     en landsmedian.
+//   - Hjelpedatasettet slettes i løkken, så navnet kan brukes på nytt neste år.
+// =====================================================================
+
+require no.ssb.fdb:57 as fdb
+
+create-dataset personer
+import fdb/BEFOLKNING_KOMMNR_FORMELL 2025-01-01 as kommune
+
+for aar in 2022 : 2024
+  let dato = $aar ++ "-12-31"
+  let ivar = ies ++ $aar
+  let lvar = lav ++ $aar
+  create-dataset hushinnt
+  import fdb/INNTEKT_HUSH_IES_EU $dato as $ivar
+  import fdb/INNTEKT_KODE_PRIVATHUSH2 $dato as privhush
+  keep if privhush == '1'
+  drop if sysmiss($ivar)
+  generate alle = 1
+  aggregate (median) $ivar -> median_ies, by(alle)
+  generate $lvar = 0
+  replace $lvar = 1 if $ivar < 0.6 * median_ies
+  merge $ivar $lvar into personer
+  delete-dataset hushinnt
+end
+
+use personer
+generate lavinnt = '9'
+replace lavinnt = '0' if lav2024 == 0
+replace lavinnt = '1' if lav2024 == 1
+define-labels lavinnttxt '0' 'Ikke lavinntekt' '1' 'Lavinntekt (EU-60)' '9' 'Ukjent / ikke i privathusholdning'
+assign-labels lavinnt lavinnttxt
+
+textblock
+## Bosatte 1.1.2025 etter lavinntekt (EU-60) i 2024
+Husholdningsinntekt etter skatt per forbruksenhet under 60 % av medianen for alle i privathusholdninger.
+endblock
+tabulate lavinnt, missing

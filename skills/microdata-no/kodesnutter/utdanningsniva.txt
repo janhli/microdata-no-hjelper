@@ -1,0 +1,34 @@
+// =====================================================================
+// Høyeste fullførte utdanning (seks nivåer)
+// Status:    testet i større skript (no.ssb.fdb:57, 2026-11)
+// Variabler: NUDB_BU (forløp, NUS2000; siste dato 2024-08-01)
+//            https://microdata.no/discovery/variable/no.ssb.fdb/58/NUDB_BU
+// Lager:     utdniv – '1' uoppgitt/ingen, '2' grunnskole, '3' videregående, '4' fagskole,
+//            '5' UH kort (til og med 4 år), '6' UH lang og forsker
+// Fallgruver:
+//   - NUDB_BU er en forløpsvariabel, men kan importeres på en dato med vanlig import.
+//   - Datoen må ligge innenfor dekningen (siste 2024-08-01). Bruk 1.7. hvert år.
+//   - Første siffer i NUS-koden er nivået. Mange innvandrere har ingen registrert utdanning i Norge.
+// =====================================================================
+
+require no.ssb.fdb:57 as fdb
+
+create-dataset personer
+import fdb/BEFOLKNING_KOMMNR_FORMELL 2024-01-01 as kommune
+import fdb/NUDB_BU 2024-07-01 as utd
+
+generate utd1 = substr(utd, 1, 1)
+generate utdniv = '1'
+replace utdniv = '2' if utd1 == '1' | utd1 == '2'
+replace utdniv = '3' if utd1 == '3' | utd1 == '4'
+replace utdniv = '4' if utd1 == '5'
+replace utdniv = '5' if utd1 == '6'
+replace utdniv = '6' if utd1 == '7' | utd1 == '8'
+define-labels utdnivtxt '1' 'Uoppgitt / ingen' '2' 'Grunnskole' '3' 'Videregående' '4' 'Fagskole' '5' 'UH kort (til og med 4 år)' '6' 'UH lang (over 4 år) og forsker'
+assign-labels utdniv utdnivtxt
+
+textblock
+## Bosatte etter høyeste fullførte utdanning, 1.7.2024
+«Uoppgitt / ingen» omfatter barn og innvandrere uten registrert utdanning.
+endblock
+tabulate utdniv, missing

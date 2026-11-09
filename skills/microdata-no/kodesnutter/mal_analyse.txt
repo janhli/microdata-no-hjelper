@@ -1,0 +1,58 @@
+// =====================================================================
+// MAL: analyseskript
+// Status:    testet i større skript (no.ssb.fdb:57, 2026-11)
+// Bruk:      Kopier og fyll inn. Strukturen er:
+//              1) toppseksjon med populasjon, år, geografi og variabler
+//              2) datasett og import
+//              3) avledede variabler med etiketter (alltid en 'ukjent'-kategori)
+//              4) tabeller, hver med en textblock foran
+// Fallgruver:
+//   - Ikke legg tabeller med tittel i for-løkker. Skriv dem ut for hvert år.
+//   - Datasett og variabler kan ikke ha samme navn.
+//   - Hver replace/recode må endre minst 10 enheter.
+// =====================================================================
+
+// ---------------------------------------------------------------------
+// Tittel: <hva analysen viser>
+// Populasjon: <hvem, hvor, når>
+// Variabler: https://microdata.no/discovery/variable/no.ssb.fdb/58/<NAVN>
+// ---------------------------------------------------------------------
+
+// Spør om versjonen som er tilgjengelig i analysemiljøet (kan ligge en bak metadatasidene)
+require no.ssb.fdb:57 as fdb
+
+// --- 1. Populasjon ---
+create-dataset personer
+// Første import bestemmer populasjonen. values() filtrerer allerede ved import.
+import fdb/BEFOLKNING_KOMMNR_FORMELL 2025-01-01 as kommune
+generate fylke = substr(kommune, 1, 2)
+
+// --- 2. Kjennetegn ---
+import fdb/BEFOLKNING_KJOENN as kjonn
+import fdb/BEFOLKNING_FOEDSELS_AAR_MND as faarmnd
+
+// --- 3. Avledede variabler ---
+generate alder = 2025 - 1 - int(faarmnd/100)
+generate aldgr = '1'
+replace aldgr = '2' if alder >= 20
+replace aldgr = '3' if alder >= 67
+replace aldgr = '9' if sysmiss(alder)
+define-labels aldgrtxt '1' '0–19 år' '2' '20–66 år' '3' '67 år og over' '9' 'Ukjent'
+assign-labels aldgr aldgrtxt
+
+// --- 4. Tabeller ---
+textblock
+# <Tittel på analysen>
+
+<Populasjon og tidspunkt i én–to setninger.> Tallene er støylagt av microdata.no, så små celler kan
+avvike og prosenter summere til litt mer eller mindre enn 100.
+
+## 1. Bosatte etter aldersgruppe og kjønn, 1.1.2025
+Antall personer.
+endblock
+tabulate aldgr kjonn, missing
+
+textblock
+## 2. Aldersfordeling etter fylke, 1.1.2025 (radprosent)
+endblock
+tabulate fylke aldgr, missing rowpct

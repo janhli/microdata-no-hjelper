@@ -1,0 +1,50 @@
+// =====================================================================
+// Verdi av en variabel ved (eller året før) en hendelse
+// Status:    testet i større skript (no.ssb.fdb:57, 2026-11)
+// Variabler: BEFOLKNING_FOEDSELS_AAR_MND, BEFOLKNING_MOR_FNR, NUDB_BU
+//            https://microdata.no/discovery/variable/no.ssb.fdb/58/BEFOLKNING_MOR_FNR
+// Lager:     På hendelsesdatasettet (her: barn født 2021–2024) får hver rad mors utdanning
+//            1.7. året før fødselsåret.
+// Mønster:
+//   1) importer variabelen for hvert år i en løkke på personnivå (utd2020, utd2021 ...)
+//   2) koble alle årene til hendelsesdatasettet med merge ... on <nøkkel>
+//   3) velg riktig år med replace x = $var if aar == $aar
+// Fallgruver:
+//   - fnr_mor er pseudonymisert og kan bare brukes i merge ... on, by() og values_from().
+//   - Startverdien ('0') må ha samme type som variabelen (tekst her).
+// =====================================================================
+
+require no.ssb.fdb:57 as fdb
+
+// --- Hendelser: barn født 2021–2024 ---
+create-dataset barn
+import fdb/BEFOLKNING_FOEDSELS_AAR_MND as faarmnd
+keep if faarmnd >= 202101 & faarmnd <= 202412
+import fdb/BEFOLKNING_MOR_FNR as fnr_mor
+generate fodeaar = int(faarmnd/100)
+
+// --- Personer (mødre) med verdien for hvert år ---
+create-dataset mor
+import fdb/BEFOLKNING_KJOENN as kjonn, values("2")
+for aar in 2020 : 2023
+  let dato = $aar ++ "-07-01"
+  let var = utd ++ $aar
+  import fdb/NUDB_BU $dato as $var
+end
+
+// --- Koble og velg riktig år ---
+merge utd2020 utd2021 utd2022 utd2023 into barn on fnr_mor
+use barn
+generate utd = '0'
+for aar in 2021 : 2024
+  let fjor = $aar - 1
+  let uvar = utd ++ $fjor
+  replace utd = $uvar if fodeaar == $aar
+end
+generate utdniv1 = substr(utd, 1, 1)
+
+textblock
+## Fødsler etter første siffer i mors NUS-kode (1.7. året før fødselsåret), per år
+Kolonneprosent. Se utdanningsniva.txt for en gruppering med navn.
+endblock
+tabulate utdniv1 fodeaar, missing colpct

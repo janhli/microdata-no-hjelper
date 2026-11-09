@@ -1,0 +1,36 @@
+// =====================================================================
+// Forløp til personnivå: første start og siste stopp
+// Status:    testet i større skript (no.ssb.fdb:57, 2026-11)
+// Variabler: INTROSTFDT_MOTTAK (hendelse, månedlig; 2005-01-01 til 2024-12-01)
+//            https://microdata.no/discovery/variable/no.ssb.fdb/58/INTROSTFDT_MOTTAK
+// Lager:     intro_start, intro_stopp (datoer) på datasettet 'personer'
+// Fallgruver:
+//   - import-event gir én rad per periode. Gjør det i et eget datasett og collapse til PERSONID_1
+//     før du kobler til persondatasettet.
+//   - Sluttdatoen må ligge innenfor dekningen. Månedlige FDT-variabler slutter den første i
+//     måneden (2024-12-01, ikke 2024-12-31).
+//   - Datasettet kan ikke hete det samme som en variabel (derfor 'introdata', ikke 'intro').
+//   - Manglende intro_stopp kan bety at personen fortsatt er i programmet.
+// =====================================================================
+
+require no.ssb.fdb:57 as fdb
+
+create-dataset personer
+import fdb/BEFOLKNING_KOMMNR_FORMELL 2025-01-01 as kommune
+
+create-dataset introdata
+import-event fdb/INTROSTFDT_MOTTAK 2005-01-01 to 2024-12-01 as intro
+collapse (min) START@intro -> intro_start (max) STOP@intro -> intro_stopp, by(PERSONID_1)
+merge intro_start intro_stopp into personer
+delete-dataset introdata
+
+use personer
+generate intro = '0'
+replace intro = '1' if intro_start > 0
+define-labels introtxt '0' 'Ikke mottatt' '1' 'Har mottatt introduksjonsstønad 2005–2024'
+assign-labels intro introtxt
+
+textblock
+## Bosatte 1.1.2025 som har mottatt introduksjonsstønad i 2005–2024
+endblock
+tabulate intro, missing

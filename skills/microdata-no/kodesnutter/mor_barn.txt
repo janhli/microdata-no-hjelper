@@ -1,0 +1,64 @@
+// =====================================================================
+// Mor–barn-kobling: telle barn per mor og hente kjennetegn ved den andre forelderen
+// Status:    testet i større skript (no.ssb.fdb:57, 2026-11)
+// Variabler: BEFOLKNING_MOR_FNR, BEFOLKNING_FAR_FNR (pseudonymisert, fast)
+//            https://microdata.no/discovery/variable/no.ssb.fdb/58/BEFOLKNING_MOR_FNR
+//            BEFOLKNING_PARITET
+//            https://microdata.no/discovery/variable/no.ssb.fdb/58/BEFOLKNING_PARITET
+// Lager:     mor.ant_barn       – antall barn født i perioden per kvinne
+//            barn.forelder2     – far, medmor eller ingen registrert
+// Fallgruver:
+//   - Pseudonym-ID-er kan ikke testes med if/sysmiss. Hent i stedet en egenskap via merge ... on
+//     (her: kjønnet til forelder 2) og test den.
+//   - collapse ødelegger datasettet. Klon det først (clone-dataset) og slett klonen etterpå.
+//   - BEFOLKNING_PARITET mangler for det siste fødselskullet (2025 per nov. 2026).
+//   - For barn av en avgrenset mødrepopulasjon: import ... BEFOLKNING_MOR_FNR, values_from(mor).
+// =====================================================================
+
+require no.ssb.fdb:57 as fdb
+
+// --- Barn født 2021–2024 ---
+create-dataset barn
+import fdb/BEFOLKNING_FOEDSELS_AAR_MND as faarmnd
+keep if faarmnd >= 202101 & faarmnd <= 202412
+import fdb/BEFOLKNING_MOR_FNR as fnr_mor
+import fdb/BEFOLKNING_FAR_FNR as fnr_far
+
+// --- Antall barn per mor ---
+create-dataset mor
+import fdb/BEFOLKNING_KJOENN as kjonn, values("2")
+
+clone-dataset barn barn_tmp
+use barn_tmp
+collapse (count) faarmnd -> ant_barn, by(fnr_mor)
+merge ant_barn into mor
+delete-dataset barn_tmp
+
+use mor
+drop if sysmiss(ant_barn)
+
+// --- Kjønnet til barnets andre forelder (medmor = kvinne) ---
+create-dataset personer_kjonn
+import fdb/BEFOLKNING_KJOENN as kjonn_forelder2
+merge kjonn_forelder2 into barn on fnr_far
+delete-dataset personer_kjonn
+
+use barn
+generate forelder2 = '9'
+replace forelder2 = '1' if kjonn_forelder2 == '1'
+replace forelder2 = '2' if kjonn_forelder2 == '2'
+define-labels forelder2txt '1' 'Far' '2' 'Medmor' '9' 'Ingen registrert forelder 2'
+assign-labels forelder2 forelder2txt
+
+use mor
+textblock
+## Kvinner etter antall barn født 2021–2024
+Tvillinger telles som to barn.
+endblock
+tabulate ant_barn, missing
+
+use barn
+textblock
+## Barn født 2021–2024 etter barnets andre forelder
+endblock
+tabulate forelder2, missing

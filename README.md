@@ -8,7 +8,7 @@ Den inneholder:
 - **Lokal variabelkatalog og kodelister** (alle variabler i `no.ssb.fdb`), oppdatert automatisk hver uke
 - **Hele brukermanualen** som Markdown, så assistenten kan slå opp eksakt syntaks
 - **Fallgruver**: en felles samling feil og overraskelser fra faktiske kjøringer. [Bidra gjerne!](CONTRIBUTING.md)
-- **Mønstre**: oppskrifter for vanlige oppgaver (mor–barn-kobling, lavinntekt, forløp osv.)
+- **Kodesnutter**: frittstående, kommenterte biter med teststatus (alder, innvandringskategori, utdanning, lavinntekt, mor–barn-kobling osv.)
 
 Skillen kjører ingenting i microdata.no. Assistenten skriver skriptet, du kjører det og limer inn
 resultatet eller feilmeldingen.

@@ -1,0 +1,33 @@
+// =====================================================================
+// Samlivsstatus (parstatus i familien)
+// Status:    testet i større skript (no.ssb.fdb:57, 2026-11)
+// Variabler: BEFOLKNING_PARSTATUS (status 1.1.; 2005-01-01 til 2025-01-01)
+//            https://microdata.no/discovery/variable/no.ssb.fdb/58/BEFOLKNING_PARSTATUS
+// Lager:     samliv – '1' gift/registrert partner, '2' samboer, '3' ikke i par,
+//            '4' bor som barn hos foreldre, '9' ukjent/ikke bosatt
+// Fallgruver:
+//   - Kode '2' er gift/partner i likekjønnet par. Likekjønnede samboere finnes ikke i variabelen.
+//   - Samboere uten felles barn kan mangle. Mange par registreres først når et barn blir født.
+//   - Kode '0' omfatter også barn som bor med én forelder. For voksne betyr den enslig.
+//   - 'u' og 'p' er imputerte par (unge enslige, og flere husholdninger på samme adresse).
+//     De er regnet som samboere her.
+// =====================================================================
+
+require no.ssb.fdb:57 as fdb
+
+create-dataset personer
+import fdb/BEFOLKNING_KOMMNR_FORMELL 2025-01-01 as kommune
+import fdb/BEFOLKNING_PARSTATUS 2025-01-01 as parst
+
+generate samliv = '9'
+replace samliv = '1' if parst == '1' | parst == '2'
+replace samliv = '2' if parst == '3' | parst == '5' | parst == '6' | parst == '7' | parst == 'u' | parst == 'p'
+replace samliv = '3' if parst == '0'
+replace samliv = '4' if parst == '8'
+define-labels samlivtxt '1' 'Gift / registrert partner' '2' 'Samboer' '3' 'Ikke i par (enslig)' '4' 'Bor som barn hos foreldre' '9' 'Ukjent / ikke bosatt 1.1.'
+assign-labels samliv samlivtxt
+
+textblock
+## Bosatte etter samlivsstatus, 1.1.2025
+endblock
+tabulate samliv, missing

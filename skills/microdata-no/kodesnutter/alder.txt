@@ -1,0 +1,46 @@
+// =====================================================================
+// Alder og aldersgrupper
+// Status:    testet i større skript (no.ssb.fdb:57, 2026-11)
+// Variabler: BEFOLKNING_FOEDSELS_AAR_MND (fast, ÅÅÅÅMM)
+//            https://microdata.no/discovery/variable/no.ssb.fdb/58/BEFOLKNING_FOEDSELS_AAR_MND
+// Lager:     alder  – alder ved utgangen av året før (som i Statistikkbanken for 1.1.)
+//            aldgr  – grupper med 'ukjent'
+// Fallgruver:
+//   - Statistikkbanken oppgir alder 1.1. som alder ved utgangen av året før: år - 1 - fødselsår.
+//   - Alder ved en hendelse samme år: hendelsesår - fødselsår (uten -1).
+// =====================================================================
+
+require no.ssb.fdb:57 as fdb
+
+create-dataset personer
+import fdb/BEFOLKNING_KOMMNR_FORMELL 2025-01-01 as kommune
+import fdb/BEFOLKNING_FOEDSELS_AAR_MND as faarmnd
+
+// Alder 1.1.2025 slik Statistikkbanken regner den
+generate alder = 2025 - 1 - int(faarmnd/100)
+
+// Femårsgrupper til 80+
+generate aldgr = '80+'
+replace aldgr = '00-04' if alder < 5
+replace aldgr = '05-09' if alder >= 5 & alder < 10
+replace aldgr = '10-14' if alder >= 10 & alder < 15
+replace aldgr = '15-19' if alder >= 15 & alder < 20
+replace aldgr = '20-24' if alder >= 20 & alder < 25
+replace aldgr = '25-29' if alder >= 25 & alder < 30
+replace aldgr = '30-34' if alder >= 30 & alder < 35
+replace aldgr = '35-39' if alder >= 35 & alder < 40
+replace aldgr = '40-44' if alder >= 40 & alder < 45
+replace aldgr = '45-49' if alder >= 45 & alder < 50
+replace aldgr = '50-54' if alder >= 50 & alder < 55
+replace aldgr = '55-59' if alder >= 55 & alder < 60
+replace aldgr = '60-64' if alder >= 60 & alder < 65
+replace aldgr = '65-69' if alder >= 65 & alder < 70
+replace aldgr = '70-74' if alder >= 70 & alder < 75
+replace aldgr = '75-79' if alder >= 75 & alder < 80
+replace aldgr = 'ukjent' if sysmiss(alder)
+
+textblock
+## Bosatte etter aldersgruppe, 1.1.2025
+Alder ved utgangen av 2024.
+endblock
+tabulate aldgr, missing

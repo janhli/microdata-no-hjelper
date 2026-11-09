@@ -21,7 +21,7 @@ Alle stier er relative til denne skill-mappen. Søk med Grep, og ikke les hele f
 | `metadata/datalager.json` | Versjonshistorikk for `no.ssb.fdb`, med hvilke variabler som er endret i hver versjon |
 | `metadata/manual/**/*.md` | Hele manualen som Markdown. Kommandoreferansen ligger i `kommandoer_og_funksjoner/kommandoer.md` og funksjonene i `.../funksjoner.md`. |
 | `referanser/fallgruver.md` | Feil som ikke står (tydelig) i manualen, med feilmelding og løsning. **Les den før du leverer et skript.** |
-| `referanser/monstre.md` | Gjenbrukbare oppskrifter (verdi ved hendelsesdato, lavinntekt, forløp til personnivå, mor–barn-kobling) |
+| `kodesnutter/` | Frittstående og kommenterte snutter med teststatus: analysemal, alder, innvandringskategori, landbakgrunn, utdanning, arbeidsstyrkestatus, samliv, lavinntekt, verdi ved hendelse, mor–barn og forløp. Oversikt i `kodesnutter/README.md`. **Ta utgangspunkt i disse før du skriver noe selv.** |
 
 Dato for siste nedlasting står i `metadata/HENTET`. Oppdater med `python verktoy/hent_variabler.py`
 (`--alle` henter alt på nytt, ca. 6 min) og `python verktoy/hent_manual.py`.
@@ -68,9 +68,9 @@ gamle versjoner, og da må du sjekke at variabelnavnene fortsatt finnes i `varia
 `https://microdata.no/discovery/` rendres med JavaScript og kommer tom tilbake.
 `https://microdata.no/variable/...` (uten `/discovery/`) gir 404.
 
-Kodeeksempler fra Trøndelag fylkeskommune: https://github.com/JOSliper/Microdata-skript
-(`Kodesnutter/` har snutter for alder, fylker, innvandringskategori, utdanningsnivå med mer). Skriptene
-bruker eldre datalagerversjoner, og snuttene er ikke feilfrie. Sjekk dem før du bruker dem.
+Flere eksempler (eldre og ikke kvalitetssikret): https://github.com/JOSliper/Microdata-skript.
+Bruk dem bare som idékilde når `kodesnutter/` ikke dekker behovet. De bruker gamle
+datalagerversjoner og har kjente feil.
 
 ## Konfidensialitet
 
