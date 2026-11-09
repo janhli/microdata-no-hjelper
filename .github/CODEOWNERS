@@ -2,9 +2,9 @@
 # Legg til flere vedlikeholdere på samme linje, adskilt med mellomrom, etter hvert som de kommer til.
 # Senere linjer overstyrer tidligere for filer som matcher begge.
 
-*                                   @jahili
+*                                   @janhli
 
 # Innholdet som havner i alle brukeres Claude-sesjon – her er gjennomgang viktigst
-/skills/microdata-no/SKILL.md       @jahili
-/skills/microdata-no/referanser/    @jahili
-/skills/microdata-no/kodesnutter/   @jahili
+/skills/microdata-no/SKILL.md       @janhli
+/skills/microdata-no/referanser/    @janhli
+/skills/microdata-no/kodesnutter/   @janhli

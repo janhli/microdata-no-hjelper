@@ -18,7 +18,7 @@ resultatet eller feilmeldingen.
 **Claude Code:**
 
 ```
-/plugin marketplace add <github-bruker>/microdata-no-hjelper
+/plugin marketplace add janhli/microdata-no-hjelper
 /plugin install microdata-no@microdata-no-hjelper
 ```
 
