@@ -1,0 +1,262 @@
+{
+ "name": "ARBLONN_PERS_BOSETT_STATUS",
+ "temporality": "STATUS",
+ "languageCode": "no",
+ "sensitivityLevel": "PERSON_GENERAL",
+ "populationDescription": "Variabelen omfatter alle arbeidsforhold meldt inn gjennom A-ordningen som SSB anser å være aktive i referanseperioden, uavhengig av alder og bosatt-status i Folkeregisteret. \n \n Arbeidsforhold innhentes også fra andre kilder (SKDs arbeidsforholds- og oppdragsregister (tidligere SFU) og vernepliktige). A-ordningen er hovedkilden til informasjon om arbeidsforhold.\n \n Observasjoner med verdiene 0 og uoppgitt (missing) er utelatt.",
+ "subjectFields": [
+  "A-ordningen",
+  "Arbeid og lønn",
+  "Arbeidsmarked",
+  "Lønn",
+  "Sysselsetting"
+ ],
+ "temporalCoverage": {
+  "start": 16466,
+  "stop": 20665
+ },
+ "measureVariable": {
+  "name": "ARBLONN_PERS_BOSETT_STATUS",
+  "label": "Bosettingsstatus",
+  "notPseudonym": true,
+  "dataType": "String",
+  "variableRole": "Measure",
+  "representedVariables": [
+   {
+    "description": "Variabelen viser hvem som regnes som bosatt i Norge i Det sentrale folkeregisteret siste dag i statistikkmåneden. Hvem som regnes som bosatt og hvor i Norge en person skal regnes som bosatt, er fastlagt i lov om folkeregistrering av 9. desember 2016. \n \n A-ordningen er en samordnet digital innsamling av opplysninger om arbeidsforhold, inntekt og skattetrekk til Skatteetaten, NAV og SSB. Ordningen innebærer at SSB får opplysninger om lønn og ansatte direkte fra a-meldingen, som er den elektroniske meldingen som inneholder alle opplysningene som samles inn. Data foreligger per måned og alle måneder inneholder en fullstendig situasjonsbeskrivelse om arbeid og lønn samlet. SSB innhenter data fra A-ordningen for å fremstille statistikk om sysselsetting, lønn, ledighet og arbeidsmarkedstiltak. \n \n Mer informasjon om A-ordningen og bruk av data i statistikk og for forskning og analyse: \n- [Om a-ordningen hos Skatteetaten](https://www.skatteetaten.no/bedrift-og-organisasjon/arbeidsgiver/a-meldingen/om-a-ordningen/om-a-ordningen/) \n - [Variabelområdet a-ordningen hos SSB](https://www.ssb.no/data-til-forskning/utlan-av-data-til-forskere/variabellister/a-ordningen) \n - [Registerbasert lønns- og sysselsettingsstatistikk basert på a-ordningen hos SSB](https://www.ssb.no/arbeid-og-lonn/sysselsetting/artikler/registerbasert-lonns-og-sysselsettingsstatistikk-basert-pa-a-ordningen)",
+    "validPeriod": {
+     "start": 16436
+    },
+    "valueDomain": {
+     "codeList": [
+      {
+       "category": "Ikke bosatt",
+       "code": "0"
+      },
+      {
+       "category": "Bosatt",
+       "code": "1"
+      }
+     ],
+     "missingValues": []
+    }
+   }
+  ]
+ },
+ "identifierVariables": [
+  {
+   "name": "PERSONID_1",
+   "label": "Personidentifikator",
+   "notPseudonym": false,
+   "dataType": "Long",
+   "format": "RandomUInt48",
+   "variableRole": "Identifier",
+   "keyType": {
+    "name": "PERSON",
+    "label": "Person",
+    "description": "Person er et enkeltmenneske, individ."
+   },
+   "representedVariables": [
+    {
+     "description": "Identifikator for person i microdata",
+     "validPeriod": {
+      "start": 16466,
+      "stop": 20665
+     },
+     "valueDomain": {
+      "description": "Pseudonymisert personnummer",
+      "unitOfMeasure": "N/A"
+     }
+    }
+   ]
+  }
+ ],
+ "attributeVariables": [
+  {
+   "name": "START",
+   "label": "Startdato",
+   "notPseudonym": true,
+   "dataType": "Instant",
+   "variableRole": "Start",
+   "representedVariables": [
+    {
+     "description": "Startdato/måletidspunktet for hendelsen",
+     "validPeriod": {
+      "start": 16466,
+      "stop": 20665
+     },
+     "valueDomain": {
+      "description": "Dato oppgitt i dager siden 1970-01-01",
+      "unitOfMeasure": "N/A"
+     }
+    }
+   ]
+  },
+  {
+   "name": "STOP",
+   "label": "Stoppdato",
+   "notPseudonym": true,
+   "dataType": "Instant",
+   "variableRole": "Stop",
+   "representedVariables": [
+    {
+     "description": "Stoppdato/måletidspunktet for hendelsen",
+     "validPeriod": {
+      "start": 16466,
+      "stop": 20665
+     },
+     "valueDomain": {
+      "description": "Dato oppgitt i dager siden 1970-01-01",
+      "unitOfMeasure": "N/A"
+     }
+    }
+   ]
+  }
+ ],
+ "temporalStatusDates": [
+  16466,
+  16494,
+  16525,
+  16555,
+  16586,
+  16616,
+  16647,
+  16678,
+  16708,
+  16739,
+  16769,
+  16800,
+  16831,
+  16860,
+  16891,
+  16921,
+  16952,
+  16982,
+  17013,
+  17044,
+  17074,
+  17105,
+  17135,
+  17166,
+  17197,
+  17225,
+  17256,
+  17286,
+  17317,
+  17347,
+  17378,
+  17409,
+  17439,
+  17470,
+  17500,
+  17531,
+  17562,
+  17590,
+  17621,
+  17651,
+  17682,
+  17712,
+  17743,
+  17774,
+  17804,
+  17835,
+  17865,
+  17896,
+  17927,
+  17955,
+  17986,
+  18016,
+  18047,
+  18077,
+  18108,
+  18139,
+  18169,
+  18200,
+  18230,
+  18261,
+  18292,
+  18321,
+  18352,
+  18382,
+  18413,
+  18443,
+  18474,
+  18505,
+  18535,
+  18566,
+  18596,
+  18627,
+  18658,
+  18686,
+  18717,
+  18747,
+  18778,
+  18808,
+  18839,
+  18870,
+  18900,
+  18931,
+  18961,
+  18992,
+  19023,
+  19051,
+  19082,
+  19112,
+  19143,
+  19173,
+  19204,
+  19235,
+  19265,
+  19296,
+  19326,
+  19357,
+  19388,
+  19416,
+  19447,
+  19477,
+  19508,
+  19538,
+  19569,
+  19600,
+  19630,
+  19661,
+  19691,
+  19722,
+  19753,
+  19782,
+  19813,
+  19843,
+  19874,
+  19904,
+  19935,
+  19966,
+  19996,
+  20027,
+  20057,
+  20088,
+  20119,
+  20147,
+  20178,
+  20208,
+  20239,
+  20269,
+  20300,
+  20331,
+  20361,
+  20392,
+  20422,
+  20453,
+  20484,
+  20512,
+  20543,
+  20573,
+  20604,
+  20634,
+  20665
+ ],
+ "globalTemporalCoverage": {
+  "start": -1096,
+  "stop": 20759
+ },
+ "updatedAt": 1790854458
+}

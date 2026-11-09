@@ -1,0 +1,930 @@
+{
+ "name": "REGSYS_YRKE_PUBL",
+ "temporality": "STATUS",
+ "languageCode": "no",
+ "sensitivityLevel": "PERSON_GENERAL",
+ "populationDescription": "Variabelen omfatter bosatte personer 15-74 år som er sysselsatt, hovedarbeidsforhold i november. Observasjoner med verdiene 0 og uoppgitt (missing) er utelatt.",
+ "subjectFields": [
+  "Arbeid og lønn",
+  "Sysselsetting"
+ ],
+ "temporalCoverage": {
+  "start": 14549,
+  "stop": 16769
+ },
+ "measureVariable": {
+  "name": "REGSYS_YRKE_PUBL",
+  "label": "Yrke. Publiseringskategorier basert på STYRK2008.",
+  "notPseudonym": true,
+  "dataType": "String",
+  "variableRole": "Measure",
+  "representedVariables": [
+   {
+    "description": "Variabelen angir yrke for personens hovedarbeidsforhold (det er i hovedsak arbeidsforholdet med høyest avtalt arbeidstid). Arbeidsoppgaver som er karakterisert ved bestemte likhetstrekk danner et yrke. Yrke grupperes sammen etter standard for yrkesklassifisering. Yrke dannes vanligvis uten hensyn til yrkesutøverens utdanning, yrkesstatus eller næring. \n \n Yrke fremgår av en ny variabel REGSYS_ARB_YRKE_STYRK08 fra og med 2015.\n \n Kilde for variabelen er registerbaserte sysselsettingsdata. Les dokumentasjonen om datagrunnlag, prosessering og definisjoner her:\n - [Sysselsetting, registerbasert](https://www.ssb.no/arbeid-og-lonn/sysselsetting/statistikk/sysselsetting-registerbasert) \n - [Om datagrunnlaget for registerbasert sysselsettingsstatistikk](https://www.ssb.no/data-til-forskning/utlan-av-data-til-forskere/variabellister/a-ordningen/om-datagrunnlaget-for-registerbasert-sysselsettingsstatistikk) \n - [Registerbasert lønns- og sysselsettingsstatistikk basert på a-ordningen](https://www.ssb.no/arbeid-og-lonn/sysselsetting/artikler/registerbasert-lonns-og-sysselsettingsstatistikk-basert-pa-a-ordningen)",
+    "validPeriod": {
+     "start": 14245,
+     "stop": 16800
+    },
+    "valueDomain": {
+     "codeList": [
+      {
+       "category": "1111 Politikere",
+       "code": "P1111"
+      },
+      {
+       "category": "1112 Toppledere i offentlig administrasjon",
+       "code": "P1112"
+      },
+      {
+       "category": "1114 Toppledere i interesseorganisasjoner",
+       "code": "P1114"
+      },
+      {
+       "category": "1120 Administrerende direktører",
+       "code": "P1120"
+      },
+      {
+       "category": "1211-1223 Ledere av administrative enheter, salg og forskning",
+       "code": "P12XX"
+      },
+      {
+       "category": "1311-1439 Ledere for vareproduksjon og tjenesteyting",
+       "code": "P13XX"
+      },
+      {
+       "category": "2111 Fysikere og astronomer",
+       "code": "P2111"
+      },
+      {
+       "category": "2112 Meteorologer",
+       "code": "P2112"
+      },
+      {
+       "category": "2113 Kjemikere",
+       "code": "P2113"
+      },
+      {
+       "category": "2114 Geologer og geofysikere",
+       "code": "P2114"
+      },
+      {
+       "category": "2120 Matematikere, statistikere mv.",
+       "code": "P2120"
+      },
+      {
+       "category": "2131 Biologer, botanikere, zoologer mv.",
+       "code": "P2131"
+      },
+      {
+       "category": "2132 Sivilagronomer mv.",
+       "code": "P2132"
+      },
+      {
+       "category": "2133-2153 Sivilingeniører mv.",
+       "code": "P213X"
+      },
+      {
+       "category": "2161-2166 Arkitekter mv.",
+       "code": "P216X"
+      },
+      {
+       "category": "2211-2212 Leger",
+       "code": "P221X"
+      },
+      {
+       "category": "2221-2224 Sykepleiere mv.",
+       "code": "P222X"
+      },
+      {
+       "category": "2250 Veterinærer",
+       "code": "P2250"
+      },
+      {
+       "category": "2261 Tannleger",
+       "code": "P2261"
+      },
+      {
+       "category": "2262 Farmasøyter",
+       "code": "P2262"
+      },
+      {
+       "category": "2266 Audiografer og logopeder",
+       "code": "P2266"
+      },
+      {
+       "category": "2265 Ernæringsfysiologer",
+       "code": "P226X"
+      },
+      {
+       "category": "2264,2267,2269 Fysioterapeuter mv.",
+       "code": "P226Y"
+      },
+      {
+       "category": "2310 Universitets-og høyskolelektorer/-lærere",
+       "code": "P2310"
+      },
+      {
+       "category": "2320 Yrkesfaglærere",
+       "code": "P2320"
+      },
+      {
+       "category": "2330 Lektorer mv. (videregående skole)",
+       "code": "P2330"
+      },
+      {
+       "category": "2341 Grunnskolelærere",
+       "code": "P2341"
+      },
+      {
+       "category": "2342 Førskolelærere",
+       "code": "P2342"
+      },
+      {
+       "category": "2352 Spesiallærere / spesialpedagoger",
+       "code": "P2352"
+      },
+      {
+       "category": "2351,2353-59 Øvrige pedagogiske yrker",
+       "code": "P235X"
+      },
+      {
+       "category": "2411 Revisorer, regnskapsrådgivere",
+       "code": "P2411"
+      },
+      {
+       "category": "2412-2413 Øvrige finansrådgivere",
+       "code": "P241X"
+      },
+      {
+       "category": "2422 Høyere saksbehandlere i offentlig og privat virksomhet",
+       "code": "P2422"
+      },
+      {
+       "category": "2421,2423-24,2431-32 Øvrige administrasjonsrådgivere",
+       "code": "P242X"
+      },
+      {
+       "category": "2611-2619 Advokater og dommere mv.",
+       "code": "P261X"
+      },
+      {
+       "category": "2621-2622 Bibliotekarer, arkivarer mv.",
+       "code": "P262X"
+      },
+      {
+       "category": "2634 Psykologer",
+       "code": "P2634"
+      },
+      {
+       "category": "2636 Geistlige yrker",
+       "code": "P2636"
+      },
+      {
+       "category": "2361-2633,2635 Samfunnsvitere",
+       "code": "P263X"
+      },
+      {
+       "category": "2643 Oversettere, tolker mv.",
+       "code": "P2643"
+      },
+      {
+       "category": "2641-42,2656 Forfattere, journalister mv.",
+       "code": "P264X"
+      },
+      {
+       "category": "2651,2659 Designere, tegnere, malere mv.",
+       "code": "P265X"
+      },
+      {
+       "category": "2652-2653 Musikere, sangere, dansere mv.",
+       "code": "P265Y"
+      },
+      {
+       "category": "2654-2655 Skuespillere, regissører",
+       "code": "P265Z"
+      },
+      {
+       "category": "3118 Tekniske tegnere",
+       "code": "P3118"
+      },
+      {
+       "category": "3112-17,3119-39 Ingeniører mv.",
+       "code": "P311X"
+      },
+      {
+       "category": "3142 Agroteknikere",
+       "code": "P3142"
+      },
+      {
+       "category": "3143 Skogteknikere",
+       "code": "P3143"
+      },
+      {
+       "category": "3151 Skipsmaskinister",
+       "code": "P3151"
+      },
+      {
+       "category": "3152 Dekksoffiserer og loser",
+       "code": "P3152"
+      },
+      {
+       "category": "3153 Flygere",
+       "code": "P3153"
+      },
+      {
+       "category": "3154-3155 Flygeledere mv.",
+       "code": "P315X"
+      },
+      {
+       "category": "3211 Radiografer mv.",
+       "code": "P3211"
+      },
+      {
+       "category": "3213 Reseptarer",
+       "code": "P3213"
+      },
+      {
+       "category": "3214 Protese-og tannteknikere",
+       "code": "P3214"
+      },
+      {
+       "category": "3141,3212 Bioingeniører mv.",
+       "code": "P321X"
+      },
+      {
+       "category": "3230 Yrker innen alternativ medisin",
+       "code": "P3230"
+      },
+      {
+       "category": "3240 Dyrepleiere",
+       "code": "P3240"
+      },
+      {
+       "category": "3251 Tannpleiere",
+       "code": "P3251"
+      },
+      {
+       "category": "3254 Optikere",
+       "code": "P3254"
+      },
+      {
+       "category": "3256 Helsesekretærer",
+       "code": "P3256"
+      },
+      {
+       "category": "3257,2263 Helse- og miljøarbeidere",
+       "code": "P325X"
+      },
+      {
+       "category": "3258-3259 Ambulansepersonell og andre",
+       "code": "P325Y"
+      },
+      {
+       "category": "3311 Finansmeglere",
+       "code": "P3311"
+      },
+      {
+       "category": "3312 Kundebehandlere lån og kreditt",
+       "code": "P3312"
+      },
+      {
+       "category": "3313 Regnskapsførere",
+       "code": "P3313"
+      },
+      {
+       "category": "3315 Takstmenn",
+       "code": "P3315"
+      },
+      {
+       "category": "3321 Forsikringsagenter",
+       "code": "P3321"
+      },
+      {
+       "category": "3323 Innkjøpere",
+       "code": "P3323"
+      },
+      {
+       "category": "3324 Handels-og skipsmeglere",
+       "code": "P3324"
+      },
+      {
+       "category": "2433-34,3322 Salgskonsulenter",
+       "code": "P332X"
+      },
+      {
+       "category": "3331 Speditører og befraktere",
+       "code": "P3331"
+      },
+      {
+       "category": "3332 Konferanse-og arrangementsplanleggere mv.",
+       "code": "P3332"
+      },
+      {
+       "category": "3333 Arbeidsformidlere",
+       "code": "P3333"
+      },
+      {
+       "category": "3334 Eiendomsmeglere og -forvaltere",
+       "code": "P3334"
+      },
+      {
+       "category": "3339 Andre yrker innen forretningstjenester",
+       "code": "P3339"
+      },
+      {
+       "category": "3341-3343 Sekretærer mv",
+       "code": "P334X"
+      },
+      {
+       "category": "3351 Tollere",
+       "code": "P3351"
+      },
+      {
+       "category": "3355 Politibetjenter mv.",
+       "code": "P3355"
+      },
+      {
+       "category": "335 Yrker innen offentlig forvaltning",
+       "code": "P335X"
+      },
+      {
+       "category": "3412 Miljøarbeidere innen sosiale fagfelt",
+       "code": "P3412"
+      },
+      {
+       "category": "3413 Religiøse yrker",
+       "code": "P3413"
+      },
+      {
+       "category": "3421-3423 Idrettsyrker",
+       "code": "P342X"
+      },
+      {
+       "category": "3431 Fotografer og filmfotografer",
+       "code": "P3431"
+      },
+      {
+       "category": "3432-3439 Yrker innen estetiske fag",
+       "code": "P343X"
+      },
+      {
+       "category": "2511-29,3511-14 IKT-yrker",
+       "code": "P351X"
+      },
+      {
+       "category": "3521-3522 Operatører lyd/bilde mv.",
+       "code": "P352X"
+      },
+      {
+       "category": "4110,413,4312 Kontormedarbeidere mv.",
+       "code": "P411X"
+      },
+      {
+       "category": "4211 Kundebehandlere, bank og postkontor",
+       "code": "P4211"
+      },
+      {
+       "category": "4212 Bingoverter, bookmakere mv.",
+       "code": "P4212"
+      },
+      {
+       "category": "4213-4214 Inkassomedarbeidere mv.",
+       "code": "P421X"
+      },
+      {
+       "category": "4221 Reisebyråmedarbeidere mv.",
+       "code": "P4221"
+      },
+      {
+       "category": "4223 Sentralbordoperatører",
+       "code": "P4223"
+      },
+      {
+       "category": "4227 Intervjuere",
+       "code": "P4227"
+      },
+      {
+       "category": "4222,4224-26,4229 Øvrige kundeservicemedarbeidere mv.",
+       "code": "P422X"
+      },
+      {
+       "category": "4311,4313 Regnskapsmedarbeidere mv.",
+       "code": "P431X"
+      },
+      {
+       "category": "4321 Lagermedarbeidere og material-forvaltere",
+       "code": "P4321"
+      },
+      {
+       "category": "4322 Logistikkmedarbeidere",
+       "code": "P4322"
+      },
+      {
+       "category": "4323 Transportfunksjonærer",
+       "code": "P4323"
+      },
+      {
+       "category": "4411 Bibliotekassistenter",
+       "code": "P4411"
+      },
+      {
+       "category": "4412 Postbud og postsorterere",
+       "code": "P4412"
+      },
+      {
+       "category": "4413-4416 Andre arkiv- og personalassistenter",
+       "code": "P441X"
+      },
+      {
+       "category": "5113 Reiseledere og guider",
+       "code": "P5113"
+      },
+      {
+       "category": "5111-5112 Kabinpersonale, konduktører mv.",
+       "code": "P511X"
+      },
+      {
+       "category": "5120 Kokker",
+       "code": "P5120"
+      },
+      {
+       "category": "5131-5132 Servitører mv.",
+       "code": "P513X"
+      },
+      {
+       "category": "5141-5142 Frisører mv.",
+       "code": "P514X"
+      },
+      {
+       "category": "5153 Vaktmestre",
+       "code": "P5153"
+      },
+      {
+       "category": "5151-5152 Renholdsledere",
+       "code": "P515X"
+      },
+      {
+       "category": "5163 Begravelsesbyrå-og krematoriearbeidere",
+       "code": "P5163"
+      },
+      {
+       "category": "5164 Dyrepassere og -trenere mv.",
+       "code": "P5164"
+      },
+      {
+       "category": "5165 Kjøreskolelærere",
+       "code": "P5165"
+      },
+      {
+       "category": "3411,5161,5169 Øvrige personlige tjenesteytere",
+       "code": "P516X"
+      },
+      {
+       "category": "5211 Torghandlere",
+       "code": "P5211"
+      },
+      {
+       "category": "5221-23,5245 Butikkmedarbeidere mv.",
+       "code": "P522X"
+      },
+      {
+       "category": "5230 Billettselgere",
+       "code": "P5230"
+      },
+      {
+       "category": "5246 Gatekjøkken- og kafémedarbeidere mv.",
+       "code": "P5246"
+      },
+      {
+       "category": "5241-44,5249 Øvrige salgsmedarbeidere",
+       "code": "P524X"
+      },
+      {
+       "category": "5311-5312 Barnehage- og skolefritidsassistenter mv.",
+       "code": "P531X"
+      },
+      {
+       "category": "5321-5329 Helsefagarbeidere mv.",
+       "code": "P532X"
+      },
+      {
+       "category": "5411 Brannkonstabler",
+       "code": "P5411"
+      },
+      {
+       "category": "5413 Fengselsbetjenter",
+       "code": "P5413"
+      },
+      {
+       "category": "5414 Vektere",
+       "code": "P5414"
+      },
+      {
+       "category": "5419 Andre sikkerhetsarbeidere",
+       "code": "P5419"
+      },
+      {
+       "category": "6111-30,7513-15 Bønder, avløsere, mv.",
+       "code": "P611X"
+      },
+      {
+       "category": "6210 Skogbrukere",
+       "code": "P6210"
+      },
+      {
+       "category": "6221 Havbruksarbeidere",
+       "code": "P6221"
+      },
+      {
+       "category": "6222-6224 Fiskere og fangsfolk",
+       "code": "P622X"
+      },
+      {
+       "category": "7112 Murere",
+       "code": "P7112"
+      },
+      {
+       "category": "7113 Steinhoggere mv.",
+       "code": "P7113"
+      },
+      {
+       "category": "7115 Tømrere og snekkere",
+       "code": "P7115"
+      },
+      {
+       "category": "7114,7119 Øvrige bygningsarbeidere",
+       "code": "P711X"
+      },
+      {
+       "category": "7121 Taktekkere",
+       "code": "P7121"
+      },
+      {
+       "category": "7124 Isolatører mv.",
+       "code": "P7124"
+      },
+      {
+       "category": "7125 Glassarbeidere",
+       "code": "P7125"
+      },
+      {
+       "category": "7122-7123 Gulv- og flisleggere mv.",
+       "code": "P712X"
+      },
+      {
+       "category": "7126-7127 Rørleggere og VVS-montører mv",
+       "code": "P712Y"
+      },
+      {
+       "category": "7133 Feiere, fasaderenholdere mv.",
+       "code": "P7133"
+      },
+      {
+       "category": "7131-7132 Malere og byggtapetserere mv.",
+       "code": "P713X"
+      },
+      {
+       "category": "7211 Støpere",
+       "code": "P7211"
+      },
+      {
+       "category": "7212 Sveisere",
+       "code": "P7212"
+      },
+      {
+       "category": "7213 Kopper-og blikkenslagere",
+       "code": "P7213"
+      },
+      {
+       "category": "7214 Platearbeidere",
+       "code": "P7214"
+      },
+      {
+       "category": "7215 Riggere og spleisere",
+       "code": "P7215"
+      },
+      {
+       "category": "7221 Smeder",
+       "code": "P7221"
+      },
+      {
+       "category": "7222-7224 Verktøymakere mv.",
+       "code": "P722X"
+      },
+      {
+       "category": "7231 Bilmekanikere",
+       "code": "P7231"
+      },
+      {
+       "category": "7232 Mekanikere innen flytekniske fag",
+       "code": "P7232"
+      },
+      {
+       "category": "7233-7334 Anleggsmaskin- og industrimekanikere mv.",
+       "code": "P723X"
+      },
+      {
+       "category": "7311 Presisjonsinstrumentmakere og -reparatører",
+       "code": "P7311"
+      },
+      {
+       "category": "7312 Musikkinstrumentmakere og -stemmere",
+       "code": "P7312"
+      },
+      {
+       "category": "7313 Gull-og sølvsmeder, gravører mv.",
+       "code": "P7313"
+      },
+      {
+       "category": "7314-7319 Øvrige kunsthåndverkere",
+       "code": "P731X"
+      },
+      {
+       "category": "7321-7323 Grafiske arbeidere",
+       "code": "P732X"
+      },
+      {
+       "category": "7411 Elektrikere",
+       "code": "P7411"
+      },
+      {
+       "category": "7412 Automatikere",
+       "code": "P7412"
+      },
+      {
+       "category": "7413 Energimontører",
+       "code": "P7413"
+      },
+      {
+       "category": "7421 Serviceelektronikere",
+       "code": "P7421"
+      },
+      {
+       "category": "7422 Tele-og IKT-installatører",
+       "code": "P7422"
+      },
+      {
+       "category": "7511 Slaktere, fiskehandlere mv.",
+       "code": "P7511"
+      },
+      {
+       "category": "7512 Bakere, konditorer mv.",
+       "code": "P7512"
+      },
+      {
+       "category": "7522 Møbelsnekkere",
+       "code": "P7522"
+      },
+      {
+       "category": "7534 Møbeltapetserere mv.",
+       "code": "P7534"
+      },
+      {
+       "category": "7531-32,7535-36 Skreddere mv.",
+       "code": "P753X"
+      },
+      {
+       "category": "7541 Yrkesdykkere",
+       "code": "P7541"
+      },
+      {
+       "category": "7542 Skytebaser og sprengningsarbeidere",
+       "code": "P7542"
+      },
+      {
+       "category": "7543-7549 Øvrige håndverkere",
+       "code": "P754X"
+      },
+      {
+       "category": "8113 Operatører innen boring mv.",
+       "code": "P8113"
+      },
+      {
+       "category": "8114 Operatører innen produksjon av betong mv.",
+       "code": "P8114"
+      },
+      {
+       "category": "8111-8112 Bergfagarbeidere mv.",
+       "code": "P811X"
+      },
+      {
+       "category": "8121-8122 Operatører metallproduksjon",
+       "code": "P812X"
+      },
+      {
+       "category": "8131 Operatører innen kjemisk industri",
+       "code": "P8131"
+      },
+      {
+       "category": "8132-8143 Operatører innen plastprodukter mv.",
+       "code": "P813X"
+      },
+      {
+       "category": "8157 Renseri-og vaskerimaskinoperatører",
+       "code": "P8157"
+      },
+      {
+       "category": "8151-56,8158-59 Industrisyere mv.",
+       "code": "P815X"
+      },
+      {
+       "category": "8160 Operatører innen næringsmiddelproduksjon",
+       "code": "P8160"
+      },
+      {
+       "category": "8171 Operatører innen treforedling",
+       "code": "P8171"
+      },
+      {
+       "category": "8172 Operatører innen trelastproduksjon",
+       "code": "P8172"
+      },
+      {
+       "category": "8181 Operatører innen glass-og keramisk produksjon",
+       "code": "P8181"
+      },
+      {
+       "category": "8183 Pakke-, tappe-og etikettmaskinoperatører",
+       "code": "P8183"
+      },
+      {
+       "category": "8182,8189 Øvrige stasjonære maskinoperatører",
+       "code": "P818X"
+      },
+      {
+       "category": "8211-8219 Montører",
+       "code": "P821X"
+      },
+      {
+       "category": "8311 Lokomotiv og T-baneførere",
+       "code": "P8311"
+      },
+      {
+       "category": "8312 Skiftekonduktører mv",
+       "code": "P8312"
+      },
+      {
+       "category": "8322 Bil-, drosje-og varebilførere",
+       "code": "P8322"
+      },
+      {
+       "category": "8331 Bussjåfører og trikkeførere",
+       "code": "P8331"
+      },
+      {
+       "category": "8332 Lastebil-og trailersjåfører",
+       "code": "P8332"
+      },
+      {
+       "category": "8343 Kran-og heisførere mv.",
+       "code": "P8343"
+      },
+      {
+       "category": "8344 Truckførere",
+       "code": "P8344"
+      },
+      {
+       "category": "8341-8342 Anleggsmaskinførere mv.",
+       "code": "P834X"
+      },
+      {
+       "category": "8350 Dekks-og maskinmannskap (skip)",
+       "code": "P8350"
+      },
+      {
+       "category": "9111-9112 Renholdere",
+       "code": "P911X"
+      },
+      {
+       "category": "9122-9129 Vinduspussere,bilvaskere mv.",
+       "code": "P911Y"
+      },
+      {
+       "category": "92 Hjelpearbeidere i jordbruk, skogbruk og fiske",
+       "code": "P92XX"
+      },
+      {
+       "category": "931 Hjelpearbeidere i bergverk, bygg og anlegg",
+       "code": "P931X"
+      },
+      {
+       "category": "932 Hjelpearbeidere i industri",
+       "code": "P932X"
+      },
+      {
+       "category": "933 Hjelpearbeidere innen transport og lager",
+       "code": "P933X"
+      },
+      {
+       "category": "9412 Kjøkkenassistenter",
+       "code": "P9412"
+      },
+      {
+       "category": "9621-29,9510 Øvrige hjelpearbeidere",
+       "code": "P951X"
+      },
+      {
+       "category": "961 Renovasjons-og gjenvinningsarbeidere",
+       "code": "P961X"
+      },
+      {
+       "category": "0110-0310 Militære yrker",
+       "code": "POXXX"
+      }
+     ],
+     "missingValues": []
+    }
+   }
+  ]
+ },
+ "identifierVariables": [
+  {
+   "name": "PERSONID_1",
+   "label": "Personidentifikator",
+   "notPseudonym": false,
+   "dataType": "Long",
+   "format": "RandomUInt48",
+   "variableRole": "Identifier",
+   "keyType": {
+    "name": "PERSON",
+    "label": "Person",
+    "description": "Statistisk enhet er person (individ, enkeltmenenske)"
+   },
+   "representedVariables": [
+    {
+     "description": "Identifikator for person i RAIRD",
+     "validPeriod": {
+      "start": 14549,
+      "stop": 16769
+     },
+     "valueDomain": {
+      "description": "N/A",
+      "unitOfMeasure": "N/A"
+     }
+    }
+   ]
+  }
+ ],
+ "attributeVariables": [
+  {
+   "name": "STOP",
+   "label": "Stoppdato",
+   "notPseudonym": true,
+   "dataType": "Instant",
+   "variableRole": "Stop",
+   "representedVariables": [
+    {
+     "description": "Stoppdato/sluttdato for hendelsen",
+     "validPeriod": {
+      "start": 14549,
+      "stop": 16769
+     },
+     "valueDomain": {
+      "description": "N/A",
+      "unitOfMeasure": "N/A"
+     }
+    }
+   ]
+  },
+  {
+   "name": "START",
+   "label": "Startdato",
+   "notPseudonym": true,
+   "dataType": "Instant",
+   "variableRole": "Start",
+   "representedVariables": [
+    {
+     "description": "Startdato/måletidspunktet for hendelsen",
+     "validPeriod": {
+      "start": 14549,
+      "stop": 16769
+     },
+     "valueDomain": {
+      "description": "N/A",
+      "unitOfMeasure": "N/A"
+     }
+    }
+   ]
+  }
+ ],
+ "temporalStatusDates": [
+  16740,
+  14549,
+  15279,
+  16010,
+  16375,
+  14914,
+  15645
+ ],
+ "temporalEnd": {
+  "description": "Variabelen oppdateres ikke.",
+  "successors": [
+   "REGSYS_ARB_YRKE_STYRK08"
+  ]
+ },
+ "globalTemporalCoverage": {
+  "start": -1096,
+  "stop": 20759
+ },
+ "updatedAt": 1592485055
+}

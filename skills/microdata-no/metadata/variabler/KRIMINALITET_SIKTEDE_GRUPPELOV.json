@@ -1,0 +1,172 @@
+{
+ "name": "KRIMINALITET_SIKTEDE_GRUPPELOV",
+ "temporality": "STATUS",
+ "languageCode": "no",
+ "sensitivityLevel": "PERSON_GENERAL",
+ "populationDescription": "Variabelen omfatter alle personer med minst en endelig personavgjørelse (jf. Type avgjørelse, hovedlovbrudd) i årgangen som tilsier at personen er antatt skyldig av påtalemyndigheten, uavhengig om personen har FNR, DNR eller ugyldig ID-nummer.",
+ "subjectFields": [
+  "Kriminalitet",
+  "Kriminalitet og rettsvesen",
+  "Sosiale forhold og kriminalitet"
+ ],
+ "temporalCoverage": {
+  "start": 12052,
+  "stop": 20088
+ },
+ "measureVariable": {
+  "name": "KRIMINALITET_SIKTEDE_GRUPPELOV",
+  "label": "Lovbruddsgruppe, hovedlovbrudd",
+  "notPseudonym": true,
+  "dataType": "String",
+  "variableRole": "Measure",
+  "representedVariables": [
+   {
+    "description": "Variabelen viser kode for \"lovbruddsgruppe\", dvs. første siffer i SSBs standard 2015 for \"type lovbrudd\" (hierarkisk kategorisering av politiets lovbruddskoder). Hovedlovbrudd til siktet person i løpet av året. \n \n Standarden klassifiserer alle straffbare handlinger, også omtalt som lovbrudd eller kriminalitet, som er beskrevet i de norske straffelovene og spesiallovene. \n \n Se [SSBs standard 2015 for \"type lovbrudd\"](https://www.ssb.no/klass/klassifikasjoner/146/versjon/575/koderFor) mer informasjon, og for detaljert informasjon om hvilke lovbrudd som tilhører innunder hver enkelt kode.  \n \n For mer informasjon om statistikkenheten \"siktet person\" se [Om statistikken](https://www.ssb.no/lovbrudde#om-statistikken) for Etterforskede lovbrudd.",
+    "validPeriod": {
+     "start": 11688
+    },
+    "valueDomain": {
+     "codeList": [
+      {
+       "category": "Eiendomstyveri",
+       "code": "1"
+      },
+      {
+       "category": "Annet vinningslovbrudd",
+       "code": "2"
+      },
+      {
+       "category": "Eiendomsskade",
+       "code": "3"
+      },
+      {
+       "category": "Vold og mishandling",
+       "code": "4"
+      },
+      {
+       "category": "Seksuallovbrudd",
+       "code": "5"
+      },
+      {
+       "category": "Rusmiddellovbrudd",
+       "code": "6"
+      },
+      {
+       "category": "Ordens- og integritetskrenkelse",
+       "code": "7"
+      },
+      {
+       "category": "Trafikkovertredelse",
+       "code": "8"
+      },
+      {
+       "category": "Annet lovbrudd",
+       "code": "9"
+      }
+     ],
+     "missingValues": []
+    }
+   }
+  ]
+ },
+ "identifierVariables": [
+  {
+   "name": "PERSONID_1",
+   "label": "Personidentifikator",
+   "notPseudonym": false,
+   "dataType": "Long",
+   "format": "RandomUInt48",
+   "variableRole": "Identifier",
+   "keyType": {
+    "name": "PERSON",
+    "label": "Person",
+    "description": "Person er et enkeltmenneske, individ."
+   },
+   "representedVariables": [
+    {
+     "description": "Identifikator for person i microdata",
+     "validPeriod": {
+      "start": 12052,
+      "stop": 20088
+     },
+     "valueDomain": {
+      "description": "Pseudonymisert personnummer",
+      "unitOfMeasure": "N/A"
+     }
+    }
+   ]
+  }
+ ],
+ "attributeVariables": [
+  {
+   "name": "START",
+   "label": "Startdato",
+   "notPseudonym": true,
+   "dataType": "Instant",
+   "variableRole": "Start",
+   "representedVariables": [
+    {
+     "description": "Startdato/måletidspunktet for hendelsen",
+     "validPeriod": {
+      "start": 12052,
+      "stop": 20088
+     },
+     "valueDomain": {
+      "description": "Dato oppgitt i dager siden 1970-01-01",
+      "unitOfMeasure": "N/A"
+     }
+    }
+   ]
+  },
+  {
+   "name": "STOP",
+   "label": "Stoppdato",
+   "notPseudonym": true,
+   "dataType": "Instant",
+   "variableRole": "Stop",
+   "representedVariables": [
+    {
+     "description": "Stoppdato/måletidspunktet for hendelsen",
+     "validPeriod": {
+      "start": 12052,
+      "stop": 20088
+     },
+     "valueDomain": {
+      "description": "Dato oppgitt i dager siden 1970-01-01",
+      "unitOfMeasure": "N/A"
+     }
+    }
+   ]
+  }
+ ],
+ "temporalStatusDates": [
+  12052,
+  12417,
+  12783,
+  13148,
+  13513,
+  13878,
+  14244,
+  14609,
+  14974,
+  15339,
+  15705,
+  16070,
+  16435,
+  16800,
+  17166,
+  17531,
+  17896,
+  18261,
+  18627,
+  18992,
+  19357,
+  19722,
+  20088
+ ],
+ "globalTemporalCoverage": {
+  "start": -1096,
+  "stop": 20759
+ },
+ "updatedAt": 1763646904
+}

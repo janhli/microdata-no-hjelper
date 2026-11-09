@@ -1,0 +1,110 @@
+{
+ "name": "INNTEKT_SEK_MARK",
+ "temporality": "ACCUMULATED",
+ "languageCode": "no",
+ "sensitivityLevel": "PERSON_GENERAL",
+ "populationDescription": "Variabelen omfatter bosatte per 31.12.ÅÅÅÅ. Observasjoner med verdiene 0 og uoppgitt (missing) er utelatt.",
+ "subjectFields": [
+  "Inntekt",
+  "Inntekt og forbruk"
+ ],
+ "temporalCoverage": {
+  "start": 14610,
+  "stop": 20088
+ },
+ "measureVariable": {
+  "name": "INNTEKT_SEK_MARK",
+  "label": "Beregnet markedsverdi av sekundærbolig",
+  "notPseudonym": true,
+  "dataType": "Double",
+  "variableRole": "Measure",
+  "representedVariables": [
+   {
+    "description": "Omfatter beregnet markedsverdi av sekundærboliger. Dette gjelder blant annet pendlerbolig, utleiebolig og helårsbolig brukt som fritidsbolig. \n Ligningsverdien av sekundærboliger har endret seg noe over tid, i 2010-2012 var den 40 prosent av markedsverdien, i 2013 var den 50 prosent og i 2014 var den 60 prosent. Faktoren vi multipliserer ligningsverdien med for å få markedsverdi har da vært hhv. 100/40, 100/50 og 100/60 disse årene. Fritidseiendommer regnes ikke som sekundærboliger. Som fritidseiendom regnes typiske hytter, sommerhus og leilighetskompleks bygget utelukkende for fritidsformål.",
+    "validPeriod": {
+     "start": 14610,
+     "stop": 20088
+    },
+    "valueDomain": {
+     "description": "Beløp.",
+     "unitOfMeasure": "NOK"
+    }
+   }
+  ]
+ },
+ "identifierVariables": [
+  {
+   "name": "PERSONID_1",
+   "label": "Personidentifikator",
+   "notPseudonym": false,
+   "dataType": "Long",
+   "format": "RandomUInt48",
+   "variableRole": "Identifier",
+   "keyType": {
+    "name": "PERSON",
+    "label": "Person",
+    "description": "Person er et enkeltmenneske, individ."
+   },
+   "representedVariables": [
+    {
+     "description": "Identifikator for person i microdata",
+     "validPeriod": {
+      "start": 14610,
+      "stop": 20088
+     },
+     "valueDomain": {
+      "description": "Pseudonymisert personnummer",
+      "unitOfMeasure": "N/A"
+     }
+    }
+   ]
+  }
+ ],
+ "attributeVariables": [
+  {
+   "name": "START",
+   "label": "Startdato",
+   "notPseudonym": true,
+   "dataType": "Instant",
+   "variableRole": "Start",
+   "representedVariables": [
+    {
+     "description": "Startdato/måletidspunktet for hendelsen",
+     "validPeriod": {
+      "start": 14610,
+      "stop": 20088
+     },
+     "valueDomain": {
+      "description": "Dato oppgitt i dager siden 1970-01-01",
+      "unitOfMeasure": "N/A"
+     }
+    }
+   ]
+  },
+  {
+   "name": "STOP",
+   "label": "Stoppdato",
+   "notPseudonym": true,
+   "dataType": "Instant",
+   "variableRole": "Stop",
+   "representedVariables": [
+    {
+     "description": "Stoppdato/måletidspunktet for hendelsen",
+     "validPeriod": {
+      "start": 14610,
+      "stop": 20088
+     },
+     "valueDomain": {
+      "description": "Dato oppgitt i dager siden 1970-01-01",
+      "unitOfMeasure": "N/A"
+     }
+    }
+   ]
+  }
+ ],
+ "globalTemporalCoverage": {
+  "start": -1096,
+  "stop": 20759
+ },
+ "updatedAt": 1771925041
+}

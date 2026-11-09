@@ -1,0 +1,138 @@
+{
+ "name": "ARBSTATUS_AKT_LOHELTID",
+ "temporality": "STATUS",
+ "languageCode": "no",
+ "sensitivityLevel": "PERSON_GENERAL",
+ "populationDescription": "Variabelen omfatter alle bosatte personer 15 år eller eldre og samsvarer med populasjonen i statistikken [Tilknytning til arbeid, utdanning og velferdsordninger](https://www.ssb.no/arbeid-og-lonn/sysselsetting/statistikk/tilknytning-til-arbeid-utdanning-og-velferdsordninger) (arbstatus). Se [Om statistikken](https://www.ssb.no/arbeid-og-lonn/sysselsetting/statistikk/tilknytning-til-arbeid-utdanning-og-velferdsordninger#om-statistikken) for mer informasjon. \n \n Det er noen færre personer med i populasjonen i microdata.no sammenlignet med i [statistikkbanken](https://www.ssb.no/statbank/list/arbstatus). Det skyldes manglende eller ugyldige fødselsnummer i datagrunnlaget som dermed ikke kan brukes til kobling mot andre variabler i microdata.no, og er derfor utelatt. For de fleste årgangene er det i underkant av 200 færre i microdata.no, mens det for 2022-årgangen er i overkant av 1 000 færre personer. \n \n System for persondata (SFP) er kilde for både variabelen og statistikken. Denne grunnlagsfilen inkluderer i tillegg til bosatte personer 15 år og eldre, også noen grupper ikke-bosatte. Les mer i [dokumentasjonen](https://www.ssb.no/arbeid-og-lonn/artikler-og-publikasjoner/_attachment/430138?_ts=17433b4b920) om datagrunnlag, prosessering og definisjoner. \n \n ## Brudd i tidsserien fra 2014 til 2015 \n Denne variabelen er ikke direkte sammenlignbar før og etter 2015. Det skyldes overgangen til ny datakilde for lønnstakere (a-ordningen) og ny metode for beregning av selvstendig næringsdrivende i sysselsettingsstatistikken. Endringer må derfor tolkes med forsiktighet. \n \n Bruddet fra 2014 til 2015 er nærmere beskrevet i artiklene [Endring i datagrunnlaget for registerbasert sysselsettingsstatistikk](https://www.ssb.no/arbeid-og-lonn/artikler-og-publikasjoner/endring-i-datagrunnlaget-for-registerbasert-sysselsettingsstatistikk) og [Om datagrunnlaget for registerbasert sysselsettingsstatistikk](https://www.ssb.no/data-til-forskning/utlan-av-data-til-forskere/variabellister/a-ordningen/om-datagrunnlaget-for-registerbasert-sysselsettingsstatistikk). Kvaliteten i a-ordningen regnes som bedre enn tidligere kilder (se delkapitlene «3.1.4 A-meldingen – kvalitet» og «3.1.5 Noen sentrale endringer med a-ordningen») i [Registerbasert lønns- og sysselsettingsstatistikk basert på a-ordningen](https://doc.ameld.ssb.no/Datakilder.html#a-meldingen-kvalitet).",
+ "subjectFields": [
+  "Arbeid og lønn",
+  "Sysselsetting",
+  "Tilknytning til arbeid, utdanning og velferdsordninger"
+ ],
+ "temporalCoverage": {
+  "start": 14199,
+  "stop": 20043
+ },
+ "measureVariable": {
+  "name": "ARBSTATUS_AKT_LOHELTID",
+  "label": "Lønnstaker heltid",
+  "notPseudonym": true,
+  "dataType": "String",
+  "variableRole": "Measure",
+  "representedVariables": [
+   {
+    "description": "Fulltellingsvariabel (ARBSTATUS_AKT_LOHELTID= '1') for å være lønnstaker på heltid i den tredje uken i november (fra og med 2015 ytterligere definert som uken med den 16. november).\n \n ARBSTATUS_AKT_LOHELTID er utledet fra variabelen for arbeidsmarkedsstatus og informasjon om arbeidstid tilhørende statistikken om tilknytning til arbeid, utdanning og velferdsordninger (arbstatus), og gjelder hovedarbeidsforholdet (det er i hovedsak arbeidsforholdet med høyest avtalt arbeidstid).\n \n Hovedarbeidsforholdet i arbstatus kan være et annet arbeidsforhold enn det som regnes som hovedarbeidsforholdet i andre statistikker, slik som den registerbaserte sysselsettingsstatistikken (regsys) og statistikken om antall arbeidsforhold og lønn (arblonn). Dermed kan det være ulik verdi på variablene REGSYS_YRKSTAT/REGSYS_ARB_ARBMARK_STATUS og ARBLONN_ARB_ARBMARK_STATUS (i kombinasjon med ARBLONN_ARB_HOVEDARBEID) sammenlignet med variabler utledet fra arbeidsmarkedsstatusen tilhørende arbstatus.\n \n Forskjellen er at i den registerbaserte sysselsettingsstatistikken (regsys) brukes informasjon om selvstendig næringsdrivende fra året før statistikkåret, mens i de endelige tallene for statistikken om tilknytning til arbeid, utdanning og velferdsordninger (arbstatus) er det informasjon fra statistikkåret som brukes. Det gir i noen tilfeller ulik prioritering i hva som er hovedarbeidsforholdet.\n \n Populasjonen til statistikken om antall arbeidsforhold og lønn (arblonn) tar derimot bare hensyn til lønnstakerforhold, og ikke forhold som selvstendig næringsdrivende, slik som i regsys og arbstatus. \n \n De ulike datagrunnlagene kan altså gi en annen prioritering av både hovedarbeidsforholdet og arbeidsmarkedsstatusen, og dermed status som lønnstaker på heltid.\n \n Se beskrivelsen av arbeidsmarkedsstatus i dokumentasjonen av [Registerbasert lønns- og sysselsettingsstatistikk basert på a-ordningen - Vedlegg A: Variabel- og kodeoversikt](https://doc.ameld.ssb.no/VedleggA.html).\n \n Variabelen ARBSTATUS_AKT_LOHELTID inngår i prioriteringen av status i variabelen ARBSTATUS_PERS_STATUS8.\n \n ## Ekstra stort brudd i avtalt arbeidstid fra 2014 til 2015 \n Det er et brudd i tidsserien for sysselsatte fra 2014 til 2015 grunnet overgangen til ny datakilde for lønnstakere (a-ordningen) og ny metode for beregning av selvstendig næringsdrivende. Se egen omtale av bruddet for populasjonen lengre ned på siden. \n \n Utover dette er det et ekstra stort brudd i avtalt arbeidstid og variabelen ARBSTATUS_AKT_LOHELTID fra 2014 til 2015. Tallene er ikke sammenlignbare, og endringer må tolkes med stor forsiktighet. \n \n Før 2015 ble avtalt arbeidstid per uke for lønnstakere direkte rapportert til Nav sitt Aa-register, som var hovedkilden til og med 2014. Heltid i variabelen ARBSTATUS_AKT_LOHELTID ble da definert som avtalt arbeidstid på 37,5 timer eller mer i uken. \n \n Avtalt arbeidstid per uke er ikke direkte rapportert gjennom a-ordningen, så fra og med 2015 er dette utledet ved å kombinere informasjon om avtalt stillingsprosent og antall timer i full stilling per uke for hvert arbeidsforhold (jobb) og hver lønnstaker (person). Fra og med 2015 er heltid i variabelen ARBSTATUS_AKT_LOHELTID definert som avtalt stillingsprosent lik 100 eller mer. \n \n Bruk av avtalt stillingsprosent gir en mer presis definisjon av heltid/deltid siden timeantallet som svarer til heltid kan variere mellom arbeidsforhold. A-ordningen gir også informasjon om arbeidstid for små og kortvarige arbeidsforhold som ikke var med i registrene før 2015. \n \n Samtidig er det noen utfordringer med kvalitet også i a-ordningen, se fra delkapittel «21.2 Korreksjoner av arbeidstidsopplysninger i a-meldingen» i [Registerbasert lønns- og sysselsettingsstatistikk basert på a-ordningen](https://doc.ameld.ssb.no/H%C3%A5ndtering-l%C3%B8nn-avtaltarbtid.html#korreksjoner-av-arbeidstidsopplysninger-i-a-meldingen). Det inkluderer et ekstra brudd i arbeidstidsvariablene fra 2015 til 2016 på grunn av en forbedring i rapporteringen for timelønnede lønnstakere («21.8 Kvalitet avtalt arbeidstid»). \n \n For mer informasjon om bruddet i avtalt arbeidstid fra 2014 til 2015, se egen del om arbeidstid på siden [Om datagrunnlaget for registerbasert sysselsettingsstatistikk](https://www.ssb.no/data-til-forskning/utlan-av-data-til-forskere/variabellister/a-ordningen/om-datagrunnlaget-for-registerbasert-sysselsettingsstatistikk).",
+    "validPeriod": {
+     "start": 13879
+    },
+    "valueDomain": {
+     "codeList": [
+      {
+       "category": "Ikke lønnstaker på heltid",
+       "code": "0"
+      },
+      {
+       "category": "Lønnstaker på heltid",
+       "code": "1"
+      }
+     ],
+     "missingValues": []
+    }
+   }
+  ]
+ },
+ "identifierVariables": [
+  {
+   "name": "PERSONID_1",
+   "label": "Personidentifikator",
+   "notPseudonym": false,
+   "dataType": "Long",
+   "format": "RandomUInt48",
+   "variableRole": "Identifier",
+   "keyType": {
+    "name": "PERSON",
+    "label": "Person",
+    "description": "Person er et enkeltmenneske, individ."
+   },
+   "representedVariables": [
+    {
+     "description": "Identifikator for person i microdata",
+     "validPeriod": {
+      "start": 14199,
+      "stop": 20043
+     },
+     "valueDomain": {
+      "description": "Pseudonymisert personnummer",
+      "unitOfMeasure": "N/A"
+     }
+    }
+   ]
+  }
+ ],
+ "attributeVariables": [
+  {
+   "name": "START",
+   "label": "Startdato",
+   "notPseudonym": true,
+   "dataType": "Instant",
+   "variableRole": "Start",
+   "representedVariables": [
+    {
+     "description": "Startdato/måletidspunktet for hendelsen",
+     "validPeriod": {
+      "start": 14199,
+      "stop": 20043
+     },
+     "valueDomain": {
+      "description": "Dato oppgitt i dager siden 1970-01-01",
+      "unitOfMeasure": "N/A"
+     }
+    }
+   ]
+  },
+  {
+   "name": "STOP",
+   "label": "Stoppdato",
+   "notPseudonym": true,
+   "dataType": "Instant",
+   "variableRole": "Stop",
+   "representedVariables": [
+    {
+     "description": "Stoppdato/måletidspunktet for hendelsen",
+     "validPeriod": {
+      "start": 14199,
+      "stop": 20043
+     },
+     "valueDomain": {
+      "description": "Dato oppgitt i dager siden 1970-01-01",
+      "unitOfMeasure": "N/A"
+     }
+    }
+   ]
+  }
+ ],
+ "temporalStatusDates": [
+  14199,
+  14564,
+  14929,
+  15294,
+  15660,
+  16025,
+  16390,
+  16755,
+  17121,
+  17486,
+  17851,
+  18216,
+  18582,
+  18947,
+  19312,
+  19677,
+  20043
+ ],
+ "globalTemporalCoverage": {
+  "start": -1096,
+  "stop": 20759
+ },
+ "updatedAt": 1772621947
+}

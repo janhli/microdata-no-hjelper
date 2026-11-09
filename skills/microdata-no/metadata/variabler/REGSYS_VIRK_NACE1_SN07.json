@@ -1,0 +1,3438 @@
+{
+ "name": "REGSYS_VIRK_NACE1_SN07",
+ "temporality": "STATUS",
+ "languageCode": "no",
+ "sensitivityLevel": "PERSON_GENERAL",
+ "populationDescription": "Variabelen omfatter bosatte personer 15-74 år som er sysselsatt, hovedarbeidsforhold i november. Observasjoner med verdiene 0 og uoppgitt (missing) er utelatt.",
+ "subjectFields": [
+  "Arbeid og lønn",
+  "Sysselsetting",
+  "Virksomheter og foretak",
+  "Virksomheter, foretak og regnskap"
+ ],
+ "temporalCoverage": {
+  "start": 16755,
+  "stop": 18216
+ },
+ "measureVariable": {
+  "name": "REGSYS_VIRK_NACE1_SN07",
+  "label": "Virksomhetens hovednæring",
+  "notPseudonym": true,
+  "dataType": "String",
+  "variableRole": "Measure",
+  "representedVariables": [
+   {
+    "description": "Vi oppdaterer ikke lenger variabelen, fordi den i visse tilfeller kan benyttes slik at det er risiko for å avsløre konfidensiell informasjon om foretak. Vi vil revurdere dette når vi begynner å tilby analyser på næringsdata i tjenesten. \n \n Variabelen angir næring for virksomheten der personen har sitt hovedarbeidsforhold (det er i hovedsak arbeidsforholdet med høyest avtalt arbeidstid). \n \n Næring er en beskrivelse av en enhets aktivitet og tildeles på grunnlag av den virksomhet/art/bransje enheten i hovedsak tilhører. Næring fastsettes etter gjeldende Standard for næringsgruppering versjon brukt fra 2009 \n \n Denne variabelen benyttes på både virksomheter og foretak. Fra og med 01.01.2008 er gjeldende standard SN2007. Fra 2003 til og med 2007 var gjeldende stadard SN2002. Fra 1994 til 2002 het standarden SN94. Disse standardene bygger på EU's næringsstandard NACE Rev. 1. Frem til 1994 var gjeldende standard FN's internasjonale grupperingsstandard - International Standard Industrial Classification of all Economic Activities (ISIC). \n \n Denne variabelen erstatter REGSYS_NARING_SN2007 fra og med 2015.\n \n Kilde for variabelen er registerbaserte sysselsettingsdata. Les dokumentasjonen om datagrunnlag, prosessering og definisjoner her:\n - [Sysselsetting, registerbasert](https://www.ssb.no/arbeid-og-lonn/sysselsetting/statistikk/sysselsetting-registerbasert) \n - [Om datagrunnlaget for registerbasert sysselsettingsstatistikk](https://www.ssb.no/data-til-forskning/utlan-av-data-til-forskere/variabellister/a-ordningen/om-datagrunnlaget-for-registerbasert-sysselsettingsstatistikk) \n - [Registerbasert lønns- og sysselsettingsstatistikk basert på a-ordningen](https://www.ssb.no/arbeid-og-lonn/sysselsetting/artikler/registerbasert-lonns-og-sysselsettingsstatistikk-basert-pa-a-ordningen)",
+    "validPeriod": {
+     "start": 14199
+    },
+    "valueDomain": {
+     "codeList": [
+      {
+       "category": "Ugyldig verdi",
+       "code": "-1"
+      },
+      {
+       "category": "Manglende verdi",
+       "code": "-2"
+      },
+      {
+       "category": "Uoppgitt",
+       "code": "00.000"
+      },
+      {
+       "category": "Jordbruk og tjenester tilknyttet jordbruk, jakt og viltstell, ufordelt",
+       "code": "01.000"
+      },
+      {
+       "category": "Dyrking av korn (unntatt ris), belgvekster og oljeholdige vekster",
+       "code": "01.110"
+      },
+      {
+       "category": "Dyrking av ris",
+       "code": "01.120"
+      },
+      {
+       "category": "Dyrking av grønnsaker, meloner, rot- og knollvekster",
+       "code": "01.130"
+      },
+      {
+       "category": "Dyrking av sukkerrør",
+       "code": "01.140"
+      },
+      {
+       "category": "Dyrking av tobakk",
+       "code": "01.150"
+      },
+      {
+       "category": "Dyrking av fibervekster",
+       "code": "01.160"
+      },
+      {
+       "category": "Dyrking av ettårige vekster ellers",
+       "code": "01.190"
+      },
+      {
+       "category": "Dyrking av druer",
+       "code": "01.210"
+      },
+      {
+       "category": "Dyrking av tropiske og subtropiske frukter",
+       "code": "01.220"
+      },
+      {
+       "category": "Dyrking av sitrusfrukter",
+       "code": "01.230"
+      },
+      {
+       "category": "Dyrking av kjernefrukter og steinfrukter",
+       "code": "01.240"
+      },
+      {
+       "category": "Dyrking av annen frukt som vokser på trær eller busker samt nøtter",
+       "code": "01.250"
+      },
+      {
+       "category": "Dyrking av oljeholdige frukter",
+       "code": "01.260"
+      },
+      {
+       "category": "Dyrking av vekster for produksjon av drikkevarer",
+       "code": "01.270"
+      },
+      {
+       "category": "Dyrking av krydder og aromatiske, medisinske og farmasøytiske vekster",
+       "code": "01.280"
+      },
+      {
+       "category": "Dyrking av flerårige vekster ellers",
+       "code": "01.290"
+      },
+      {
+       "category": "Planteformering",
+       "code": "01.300"
+      },
+      {
+       "category": "Melkeproduksjon på storfe",
+       "code": "01.410"
+      },
+      {
+       "category": "Oppdrett av annet storfe",
+       "code": "01.420"
+      },
+      {
+       "category": "Oppdrett av hester og andre dyr av hestefamilien",
+       "code": "01.430"
+      },
+      {
+       "category": "Oppdrett av kameler og andre kameldyr",
+       "code": "01.440"
+      },
+      {
+       "category": "Sauehold",
+       "code": "01.451"
+      },
+      {
+       "category": "Geitehold",
+       "code": "01.452"
+      },
+      {
+       "category": "Svinehold",
+       "code": "01.460"
+      },
+      {
+       "category": "Hold av verpehøner for konsumeggproduksjon",
+       "code": "01.471"
+      },
+      {
+       "category": "Annet fjørfehold",
+       "code": "01.479"
+      },
+      {
+       "category": "Husdyrhold ellers",
+       "code": "01.490"
+      },
+      {
+       "category": "Kombinert husdyrhold og planteproduksjon",
+       "code": "01.500"
+      },
+      {
+       "category": "Tjenester tilknyttet planteproduksjon",
+       "code": "01.610"
+      },
+      {
+       "category": "Tjenester tilknyttet husdyrhold",
+       "code": "01.620"
+      },
+      {
+       "category": "Etterbehandling av vekster etter innhøsting",
+       "code": "01.630"
+      },
+      {
+       "category": "Behandling av såfrø",
+       "code": "01.640"
+      },
+      {
+       "category": "Jakt, viltstell og tjenester tilknyttet jakt og viltstell",
+       "code": "01.700"
+      },
+      {
+       "category": "Skogbruk og tjenester tilknyttet skogbruk, ufordelt",
+       "code": "02.000"
+      },
+      {
+       "category": "Skogskjøtsel og andre skogbruksaktiviteter",
+       "code": "02.100"
+      },
+      {
+       "category": "Avvirkning",
+       "code": "02.200"
+      },
+      {
+       "category": "Innsamling av viltvoksende produkter av annet enn tre",
+       "code": "02.300"
+      },
+      {
+       "category": "Tjenester tilknyttet skogbruk",
+       "code": "02.400"
+      },
+      {
+       "category": "Fiske, fangst og akvakultur, ufordelt",
+       "code": "03.000"
+      },
+      {
+       "category": "Hav- og kystfiske",
+       "code": "03.111"
+      },
+      {
+       "category": "Hvalfangst",
+       "code": "03.112"
+      },
+      {
+       "category": "Ferskvannsfiske",
+       "code": "03.120"
+      },
+      {
+       "category": "Produksjon av matfisk, bløtdyr, krepsdyr og pigghuder i hav- og kystbasert akvakultur",
+       "code": "03.211"
+      },
+      {
+       "category": "Produksjon av yngel og settefisk i hav- og kystbasert akvakultur",
+       "code": "03.212"
+      },
+      {
+       "category": "Tjenester tilknyttet hav- og kystbasert akvakultur",
+       "code": "03.213"
+      },
+      {
+       "category": "Produksjon av matfisk, bløtdyr og krepsdyr i ferskvannsbasert akvakultur",
+       "code": "03.221"
+      },
+      {
+       "category": "Produksjon av yngel og settefisk i ferskvannsbasert akvakultur",
+       "code": "03.222"
+      },
+      {
+       "category": "Tjenester tilknyttet ferskvannsbasert akvakultur",
+       "code": "03.223"
+      },
+      {
+       "category": "Bryting av steinkull",
+       "code": "05.100"
+      },
+      {
+       "category": "Bryting av brunkull",
+       "code": "05.200"
+      },
+      {
+       "category": "Utvinning av råolje",
+       "code": "06.100"
+      },
+      {
+       "category": "Utvinning av naturgass",
+       "code": "06.200"
+      },
+      {
+       "category": "Bryting av jernmalm",
+       "code": "07.100"
+      },
+      {
+       "category": "Bryting av uran- og thoriummalm",
+       "code": "07.210"
+      },
+      {
+       "category": "Bryting av ikke-jernholdig malm ellers",
+       "code": "07.290"
+      },
+      {
+       "category": "Bryting av stein til bygge- og anleggsvirksomhet",
+       "code": "08.111"
+      },
+      {
+       "category": "Bryting av kalkstein, gips og kritt",
+       "code": "08.112"
+      },
+      {
+       "category": "Bryting av skifer",
+       "code": "08.113"
+      },
+      {
+       "category": "Utvinning fra grus- og sandtak, og utvinning av leire og kaolin",
+       "code": "08.120"
+      },
+      {
+       "category": "Bryting og utvinning av kjemiske mineraler og gjødselsmineraler",
+       "code": "08.910"
+      },
+      {
+       "category": "Stikking av torv",
+       "code": "08.920"
+      },
+      {
+       "category": "Utvinning av salt",
+       "code": "08.930"
+      },
+      {
+       "category": "Annen bryting og utvinning ikke nevnt annet sted",
+       "code": "08.990"
+      },
+      {
+       "category": "Boretjenester tilknyttet utvinning av råolje og naturgass",
+       "code": "09.101"
+      },
+      {
+       "category": "Andre tjenester tilknyttet utvinning av råolje og naturgass",
+       "code": "09.109"
+      },
+      {
+       "category": "Tjenester tilknyttet annen bergverksdrift",
+       "code": "09.900"
+      },
+      {
+       "category": "Bearbeiding og konservering av kjøtt",
+       "code": "10.110"
+      },
+      {
+       "category": "Bearbeiding og konservering av fjørfekjøtt",
+       "code": "10.120"
+      },
+      {
+       "category": "Produksjon av kjøtt- og fjørfevarer",
+       "code": "10.130"
+      },
+      {
+       "category": "Produksjon av saltfisk, tørrfisk og klippfisk",
+       "code": "10.201"
+      },
+      {
+       "category": "Frysing av fisk, fiskefileter, skalldyr og bløtdyr",
+       "code": "10.202"
+      },
+      {
+       "category": "Produksjon av fiskehermetikk",
+       "code": "10.203"
+      },
+      {
+       "category": "Slakting, bearbeiding og konservering av fisk og fiskevarer ellers",
+       "code": "10.209"
+      },
+      {
+       "category": "Bearbeiding og konservering av poteter",
+       "code": "10.310"
+      },
+      {
+       "category": "Produksjon av juice av frukt og grønnsaker",
+       "code": "10.320"
+      },
+      {
+       "category": "Bearbeiding og konservering av frukt og grønnsaker ellers",
+       "code": "10.390"
+      },
+      {
+       "category": "Produksjon av rå fiskeoljer og fett",
+       "code": "10.411"
+      },
+      {
+       "category": "Produksjon av andre uraffinerte oljer og fett",
+       "code": "10.412"
+      },
+      {
+       "category": "Produksjon av raffinerte oljer og fett",
+       "code": "10.413"
+      },
+      {
+       "category": "Produksjon av margarin og lignende spiselige fettstoffer",
+       "code": "10.420"
+      },
+      {
+       "category": "Produksjon av meierivarer",
+       "code": "10.510"
+      },
+      {
+       "category": "Produksjon av iskrem",
+       "code": "10.520"
+      },
+      {
+       "category": "Produksjon av kornvarer",
+       "code": "10.610"
+      },
+      {
+       "category": "Produksjon av stivelse og stivelsesprodukter",
+       "code": "10.620"
+      },
+      {
+       "category": "Produksjon av brød og ferske konditorvarer",
+       "code": "10.710"
+      },
+      {
+       "category": "Produksjon av kavringer, kjeks og konserverte konditorvarer",
+       "code": "10.720"
+      },
+      {
+       "category": "Produksjon av makaroni, nudler, couscous og lignende pastavarer",
+       "code": "10.730"
+      },
+      {
+       "category": "Produksjon av sukker",
+       "code": "10.810"
+      },
+      {
+       "category": "Produksjon av kakao, sjokolade og sukkervarer",
+       "code": "10.820"
+      },
+      {
+       "category": "Bearbeiding av te og kaffe",
+       "code": "10.830"
+      },
+      {
+       "category": "Produksjon av smakstilsettingsstoffer og krydderier",
+       "code": "10.840"
+      },
+      {
+       "category": "Produksjon av ferdigmat",
+       "code": "10.850"
+      },
+      {
+       "category": "Produksjon av homogeniserte matprodukter og diettmat",
+       "code": "10.860"
+      },
+      {
+       "category": "Produksjon av næringsmidler ikke nevnt annet sted",
+       "code": "10.890"
+      },
+      {
+       "category": "Produksjon av fôrvarer til husdyrhold",
+       "code": "10.910"
+      },
+      {
+       "category": "Produksjon av fôrvarer til kjæledyr",
+       "code": "10.920"
+      },
+      {
+       "category": "Destillering, rektifisering og blanding av sprit",
+       "code": "11.010"
+      },
+      {
+       "category": "Produksjon av vin",
+       "code": "11.020"
+      },
+      {
+       "category": "Produksjon av sider og annen fruktvin",
+       "code": "11.030"
+      },
+      {
+       "category": "Produksjon av andre ikke-destillerte gjærede drikkevarer",
+       "code": "11.040"
+      },
+      {
+       "category": "Produksjon av øl",
+       "code": "11.050"
+      },
+      {
+       "category": "Produksjon av malt",
+       "code": "11.060"
+      },
+      {
+       "category": "Produksjon av mineralvann, leskedrikker og annet vann på flaske",
+       "code": "11.070"
+      },
+      {
+       "category": "Produksjon av tobakksvarer",
+       "code": "12.000"
+      },
+      {
+       "category": "Bearbeiding og spinning av tekstilfibrer",
+       "code": "13.100"
+      },
+      {
+       "category": "Veving av tekstiler",
+       "code": "13.200"
+      },
+      {
+       "category": "Etterbehandling av tekstiler",
+       "code": "13.300"
+      },
+      {
+       "category": "Produksjon av stoffer av trikotasje",
+       "code": "13.910"
+      },
+      {
+       "category": "Produksjon av utstyrsvarer",
+       "code": "13.921"
+      },
+      {
+       "category": "Produksjon av andre tekstilvarer, unntatt klær",
+       "code": "13.929"
+      },
+      {
+       "category": "Produksjon av gulvtepper, -matter og -ryer",
+       "code": "13.930"
+      },
+      {
+       "category": "Produksjon av tauverk og nett",
+       "code": "13.940"
+      },
+      {
+       "category": "Produksjon av ikke-vevde tekstiler og tekstilvarer, unntatt klær",
+       "code": "13.950"
+      },
+      {
+       "category": "Produksjon av tekstiler til teknisk og industriell bruk",
+       "code": "13.960"
+      },
+      {
+       "category": "Produksjon av tekstiler ikke nevnt annet sted",
+       "code": "13.990"
+      },
+      {
+       "category": "Produksjon av klær av lær",
+       "code": "14.110"
+      },
+      {
+       "category": "Produksjon av arbeidstøy",
+       "code": "14.120"
+      },
+      {
+       "category": "Produksjon av annet yttertøy",
+       "code": "14.130"
+      },
+      {
+       "category": "Produksjon av undertøy og innertøy",
+       "code": "14.140"
+      },
+      {
+       "category": "Produksjon av klær og tilbehør ellers",
+       "code": "14.190"
+      },
+      {
+       "category": "Produksjon av pelsvarer",
+       "code": "14.200"
+      },
+      {
+       "category": "Produksjon av strømpevarer",
+       "code": "14.310"
+      },
+      {
+       "category": "Produksjon av andre klær av trikotasje",
+       "code": "14.390"
+      },
+      {
+       "category": "Beredning av lær, og beredning og farging av pelsskinn",
+       "code": "15.110"
+      },
+      {
+       "category": "Produksjon av reiseeffekter og salmakerartikler",
+       "code": "15.120"
+      },
+      {
+       "category": "Produksjon av skotøy",
+       "code": "15.200"
+      },
+      {
+       "category": "Saging, høvling og impregnering av tre",
+       "code": "16.100"
+      },
+      {
+       "category": "Produksjon av finerplater og andre bygnings- og møbelplater av tre",
+       "code": "16.210"
+      },
+      {
+       "category": "Produksjon av sammensatte parkettstaver",
+       "code": "16.220"
+      },
+      {
+       "category": "Produksjon av monteringsferdige hus",
+       "code": "16.231"
+      },
+      {
+       "category": "Produksjon av bygningsartikler",
+       "code": "16.232"
+      },
+      {
+       "category": "Produksjon av treemballasje",
+       "code": "16.240"
+      },
+      {
+       "category": "Produksjon av andre trevarer og varer av kork, strå og flettematerialer",
+       "code": "16.290"
+      },
+      {
+       "category": "Produksjon av papirmasse",
+       "code": "17.110"
+      },
+      {
+       "category": "Produksjon av papir og papp",
+       "code": "17.120"
+      },
+      {
+       "category": "Produksjon av bølgepapp og emballasje av papir og papp",
+       "code": "17.210"
+      },
+      {
+       "category": "Produksjon av husholdnings-, sanitær- og toalettartikler av papir",
+       "code": "17.220"
+      },
+      {
+       "category": "Produksjon av kontorartikler av papir",
+       "code": "17.230"
+      },
+      {
+       "category": "Produksjon av tapeter",
+       "code": "17.240"
+      },
+      {
+       "category": "Produksjon av varer av papir og papp ellers",
+       "code": "17.290"
+      },
+      {
+       "category": "Trykking av aviser",
+       "code": "18.110"
+      },
+      {
+       "category": "Trykking ellers",
+       "code": "18.120"
+      },
+      {
+       "category": "Ferdiggjøring før trykking og publisering",
+       "code": "18.130"
+      },
+      {
+       "category": "Bokbinding og tilknyttede tjenester",
+       "code": "18.140"
+      },
+      {
+       "category": "Reproduksjon av innspilte opptak",
+       "code": "18.200"
+      },
+      {
+       "category": "Produksjon av kullprodukter",
+       "code": "19.100"
+      },
+      {
+       "category": "Produksjon av raffinerte petroleumsprodukter",
+       "code": "19.200"
+      },
+      {
+       "category": "Produksjon av industrigasser",
+       "code": "20.110"
+      },
+      {
+       "category": "Produksjon av fargestoffer og pigmenter",
+       "code": "20.120"
+      },
+      {
+       "category": "Produksjon av andre uorganiske kjemikalier",
+       "code": "20.130"
+      },
+      {
+       "category": "Produksjon av andre organiske kjemiske råvarer",
+       "code": "20.140"
+      },
+      {
+       "category": "Produksjon av gjødsel, nitrogenforbindelser og vekstjord",
+       "code": "20.150"
+      },
+      {
+       "category": "Produksjon av basisplast",
+       "code": "20.160"
+      },
+      {
+       "category": "Produksjon av syntetisk gummi",
+       "code": "20.170"
+      },
+      {
+       "category": "Produksjon av plantevern- og skadedyrmidler og andre landbrukskjemiske produkter",
+       "code": "20.200"
+      },
+      {
+       "category": "Produksjon av maling og lakk, trykkfarger og tetningsmidler",
+       "code": "20.300"
+      },
+      {
+       "category": "Produksjon av såpe og vaskemidler, rense- og polermidler",
+       "code": "20.410"
+      },
+      {
+       "category": "Produksjon av parfyme og toalettartikler",
+       "code": "20.420"
+      },
+      {
+       "category": "Produksjon av eksplosiver",
+       "code": "20.510"
+      },
+      {
+       "category": "Produksjon av lim",
+       "code": "20.520"
+      },
+      {
+       "category": "Produksjon av eteriske oljer",
+       "code": "20.530"
+      },
+      {
+       "category": "Produksjon av kjemiske produkter ikke nevnt annet sted",
+       "code": "20.590"
+      },
+      {
+       "category": "Produksjon av kunstfibrer",
+       "code": "20.600"
+      },
+      {
+       "category": "Produksjon av farmasøytiske råvarer",
+       "code": "21.100"
+      },
+      {
+       "category": "Produksjon av farmasøytiske preparater",
+       "code": "21.200"
+      },
+      {
+       "category": "Produksjon av gummidekk og slanger til gummidekk, og regummiering og vulkanisering av gummidekk",
+       "code": "22.110"
+      },
+      {
+       "category": "Produksjon av gummiprodukter ellers",
+       "code": "22.190"
+      },
+      {
+       "category": "Produksjon av halvfabrikater av plast",
+       "code": "22.210"
+      },
+      {
+       "category": "Produksjon av plastemballasje",
+       "code": "22.220"
+      },
+      {
+       "category": "Produksjon av byggevarer av plast",
+       "code": "22.230"
+      },
+      {
+       "category": "Produksjon av plastprodukter ellers",
+       "code": "22.290"
+      },
+      {
+       "category": "Produksjon av planglass",
+       "code": "23.110"
+      },
+      {
+       "category": "Bearbeiding av planglass",
+       "code": "23.120"
+      },
+      {
+       "category": "Produksjon av emballasje og husholdningsartikler av glass og krystall",
+       "code": "23.130"
+      },
+      {
+       "category": "Produksjon av glassfibrer",
+       "code": "23.140"
+      },
+      {
+       "category": "Produksjon av teknisk glass og andre glassvarer",
+       "code": "23.190"
+      },
+      {
+       "category": "Produksjon av ildfaste produkter",
+       "code": "23.200"
+      },
+      {
+       "category": "Produksjon av keramiske vegg- og gulvfliser",
+       "code": "23.310"
+      },
+      {
+       "category": "Produksjon av murstein, teglstein og andre byggevarer av brent leire",
+       "code": "23.320"
+      },
+      {
+       "category": "Produksjon av keramiske husholdningsartikler og dekorasjonsgjenstander",
+       "code": "23.410"
+      },
+      {
+       "category": "Produksjon av sanitærutstyr av keramisk materiale",
+       "code": "23.420"
+      },
+      {
+       "category": "Produksjon av isolatorer og isoleringsdeler av keramisk materiale",
+       "code": "23.430"
+      },
+      {
+       "category": "Produksjon av andre keramiske produkter for teknisk bruk",
+       "code": "23.440"
+      },
+      {
+       "category": "Produksjon av andre keramiske produkter",
+       "code": "23.490"
+      },
+      {
+       "category": "Produksjon av sement",
+       "code": "23.510"
+      },
+      {
+       "category": "Produksjon av kalk og gips",
+       "code": "23.520"
+      },
+      {
+       "category": "Produksjon av betongprodukter for bygge- og anleggsvirksomhet",
+       "code": "23.610"
+      },
+      {
+       "category": "Produksjon av gipsprodukter for bygge- og anleggsvirksomhet",
+       "code": "23.620"
+      },
+      {
+       "category": "Produksjon av ferdigblandet betong",
+       "code": "23.630"
+      },
+      {
+       "category": "Produksjon av mørtel",
+       "code": "23.640"
+      },
+      {
+       "category": "Produksjon av fibersement",
+       "code": "23.650"
+      },
+      {
+       "category": "Produksjon av betong-, sement- og gipsprodukter ellers",
+       "code": "23.690"
+      },
+      {
+       "category": "Hogging og bearbeiding av monument- og bygningsstein",
+       "code": "23.700"
+      },
+      {
+       "category": "Produksjon av slipestoffer",
+       "code": "23.910"
+      },
+      {
+       "category": "Produksjon av ikke-metallholdige mineralprodukter ikke nevnt annet sted",
+       "code": "23.990"
+      },
+      {
+       "category": "Produksjon av jern og stål",
+       "code": "24.101"
+      },
+      {
+       "category": "Produksjon av ferrolegeringer",
+       "code": "24.102"
+      },
+      {
+       "category": "Produksjon av andre rør og rørdeler av stål",
+       "code": "24.200"
+      },
+      {
+       "category": "Kaldtrekking av stenger og profiler",
+       "code": "24.310"
+      },
+      {
+       "category": "Kaldvalsing av bånd",
+       "code": "24.320"
+      },
+      {
+       "category": "Kaldvalsing og pressing av profilerte plater og profiler",
+       "code": "24.330"
+      },
+      {
+       "category": "Kaldtrekking av tråd",
+       "code": "24.340"
+      },
+      {
+       "category": "Produksjon av edelmetaller",
+       "code": "24.410"
+      },
+      {
+       "category": "Produksjon av primæraluminium",
+       "code": "24.421"
+      },
+      {
+       "category": "Produksjon av halvfabrikater av aluminium",
+       "code": "24.422"
+      },
+      {
+       "category": "Produksjon av bly, sink og tinn",
+       "code": "24.430"
+      },
+      {
+       "category": "Produksjon av kobber",
+       "code": "24.440"
+      },
+      {
+       "category": "Produksjon av ikke-jernholdige metaller ellers",
+       "code": "24.450"
+      },
+      {
+       "category": "Produksjon av kjernebrensel",
+       "code": "24.460"
+      },
+      {
+       "category": "Støping av jern",
+       "code": "24.510"
+      },
+      {
+       "category": "Støping av stål",
+       "code": "24.520"
+      },
+      {
+       "category": "Støping av lettmetaller",
+       "code": "24.530"
+      },
+      {
+       "category": "Støping av andre ikke-jernholdige metaller",
+       "code": "24.540"
+      },
+      {
+       "category": "Produksjon av metallkonstruksjoner og deler",
+       "code": "25.110"
+      },
+      {
+       "category": "Produksjon av dører og vinduer av metall",
+       "code": "25.120"
+      },
+      {
+       "category": "Produksjon av radiatorer og kjeler til sentralvarmeanlegg",
+       "code": "25.210"
+      },
+      {
+       "category": "Produksjon av andre tanker, cisterner og beholdere av metall",
+       "code": "25.290"
+      },
+      {
+       "category": "Produksjon av dampkjeler, unntatt kjeler til sentralvarmeanlegg",
+       "code": "25.300"
+      },
+      {
+       "category": "Produksjon av våpen og ammunisjon",
+       "code": "25.400"
+      },
+      {
+       "category": "Smiing, stansing og valsing av metall, og pulvermetallurgi",
+       "code": "25.500"
+      },
+      {
+       "category": "Overflatebehandling av metaller",
+       "code": "25.610"
+      },
+      {
+       "category": "Bearbeiding av metaller",
+       "code": "25.620"
+      },
+      {
+       "category": "Produksjon av kjøkkenredskaper og skjære- og klipperedskaper",
+       "code": "25.710"
+      },
+      {
+       "category": "Produksjon av låser og beslag",
+       "code": "25.720"
+      },
+      {
+       "category": "Produksjon av håndverktøy",
+       "code": "25.730"
+      },
+      {
+       "category": "Produksjon av stålfat og lignende beholdere av jern og stål",
+       "code": "25.910"
+      },
+      {
+       "category": "Produksjon av emballasje av lettmetall",
+       "code": "25.920"
+      },
+      {
+       "category": "Produksjon av varer av metalltråd, kjetting og fjærer",
+       "code": "25.930"
+      },
+      {
+       "category": "Produksjon av bolter og skruer",
+       "code": "25.940"
+      },
+      {
+       "category": "Produksjon av metallvarer ikke nevnt annet sted",
+       "code": "25.990"
+      },
+      {
+       "category": "Produksjon av elektroniske komponenter",
+       "code": "26.110"
+      },
+      {
+       "category": "Produksjon av kretskort",
+       "code": "26.120"
+      },
+      {
+       "category": "Produksjon av datamaskiner og tilleggsutstyr",
+       "code": "26.200"
+      },
+      {
+       "category": "Produksjon av kommunikasjonsutstyr",
+       "code": "26.300"
+      },
+      {
+       "category": "Produksjon av elektronikk til husholdningsbruk",
+       "code": "26.400"
+      },
+      {
+       "category": "Produksjon av måle-, kontroll- og navigasjonsinstrumenter",
+       "code": "26.510"
+      },
+      {
+       "category": "Produksjon av klokker og ur",
+       "code": "26.520"
+      },
+      {
+       "category": "Produksjon av strålingsutstyr, elektromedisinsk og elektroterapeutisk utstyr",
+       "code": "26.600"
+      },
+      {
+       "category": "Produksjon av optiske instrumenter og fotografisk utstyr",
+       "code": "26.700"
+      },
+      {
+       "category": "Produksjon av magnetiske og optiske media",
+       "code": "26.800"
+      },
+      {
+       "category": "Produksjon av elektromotorer, generatorer og transformatorer",
+       "code": "27.110"
+      },
+      {
+       "category": "Produksjon av elektriske fordelings- og kontrolltavler og paneler",
+       "code": "27.120"
+      },
+      {
+       "category": "Produksjon av batterier og akkumulatorer",
+       "code": "27.200"
+      },
+      {
+       "category": "Produksjon av optiske fiberkabler",
+       "code": "27.310"
+      },
+      {
+       "category": "Produksjon av andre elektroniske og elektriske ledninger og kabler",
+       "code": "27.320"
+      },
+      {
+       "category": "Produksjon av ledningsmateriell",
+       "code": "27.330"
+      },
+      {
+       "category": "Produksjon av belysningsutstyr",
+       "code": "27.400"
+      },
+      {
+       "category": "Produksjon av elektriske husholdningsmaskiner og apparater",
+       "code": "27.510"
+      },
+      {
+       "category": "Produksjon av ikke-elektriske husholdningsmaskiner og apparater",
+       "code": "27.520"
+      },
+      {
+       "category": "Produksjon av annet elektrisk utstyr",
+       "code": "27.900"
+      },
+      {
+       "category": "Produksjon av motorer og turbiner, unntatt motorer til luftfartøyer og motorvogner",
+       "code": "28.110"
+      },
+      {
+       "category": "Produksjon av komponenter til hydraulisk og pneumatisk utstyr",
+       "code": "28.120"
+      },
+      {
+       "category": "Produksjon av pumper og kompressorer ellers",
+       "code": "28.130"
+      },
+      {
+       "category": "Produksjon av kraner og ventiler ellers",
+       "code": "28.140"
+      },
+      {
+       "category": "Produksjon av lagre, gir, tannhjulsutvekslinger og andre innretninger for kraftoverføring",
+       "code": "28.150"
+      },
+      {
+       "category": "Produksjon av industri- og laboratorieovner samt brennere",
+       "code": "28.210"
+      },
+      {
+       "category": "Produksjon av løfte- og håndteringsutstyr til skip og båter",
+       "code": "28.221"
+      },
+      {
+       "category": "Produksjon av løfte- og håndteringsutstyr ellers",
+       "code": "28.229"
+      },
+      {
+       "category": "Produksjon av kontormaskiner og utstyr (unntatt datamaskiner og tilleggsutstyr)",
+       "code": "28.230"
+      },
+      {
+       "category": "Produksjon av motordrevet håndverktøy",
+       "code": "28.240"
+      },
+      {
+       "category": "Produksjon av kjøle- og ventilasjonsanlegg, unntatt til husholdningsbruk",
+       "code": "28.250"
+      },
+      {
+       "category": "Produksjon av maskiner og utstyr til generell bruk, ikke nevnt annet sted",
+       "code": "28.290"
+      },
+      {
+       "category": "Produksjon av jordbruks- og skogbruksmaskiner",
+       "code": "28.300"
+      },
+      {
+       "category": "Produksjon av maskinverktøy til metallbearbeiding",
+       "code": "28.410"
+      },
+      {
+       "category": "Produksjon av maskinverktøy ikke nevnt annet sted",
+       "code": "28.490"
+      },
+      {
+       "category": "Produksjon av maskiner og utstyr til metallurgisk industri",
+       "code": "28.910"
+      },
+      {
+       "category": "Produksjon av maskiner og utstyr til bergverksdrift og bygge- og anleggsvirksomhet",
+       "code": "28.920"
+      },
+      {
+       "category": "Produksjon av maskiner og utstyr til nærings- og nytelsesmiddelindustri",
+       "code": "28.930"
+      },
+      {
+       "category": "Produksjon av maskiner og utstyr til tekstil-, konfeksjons- og lærvareindustri",
+       "code": "28.940"
+      },
+      {
+       "category": "Produksjon av maskiner og utstyr til papir- og pappvareindustri",
+       "code": "28.950"
+      },
+      {
+       "category": "Produksjon av maskiner og utstyr til plast- og gummiindustri",
+       "code": "28.960"
+      },
+      {
+       "category": "Produksjon av spesialmaskiner ikke nevnt annet sted",
+       "code": "28.990"
+      },
+      {
+       "category": "Produksjon av motorvogner",
+       "code": "29.100"
+      },
+      {
+       "category": "Produksjon av karosserier og tilhengere",
+       "code": "29.200"
+      },
+      {
+       "category": "Produksjon av elektrisk og elektronisk utstyr til motorvogner",
+       "code": "29.310"
+      },
+      {
+       "category": "Produksjon av andre deler og annet utstyr til motorvogner",
+       "code": "29.320"
+      },
+      {
+       "category": "Bygging av skip og skrog over 100 br.tonn",
+       "code": "30.111"
+      },
+      {
+       "category": "Bygging av skip under 100 br.tonn",
+       "code": "30.112"
+      },
+      {
+       "category": "Bygging av oljeplattformer og moduler",
+       "code": "30.113"
+      },
+      {
+       "category": "Produksjon av annet flytende materiell",
+       "code": "30.114"
+      },
+      {
+       "category": "Innrednings- og installasjonsarbeid utført på skip over 100 br.tonn",
+       "code": "30.115"
+      },
+      {
+       "category": "Innrednings- og installasjonsarbeid utført på oljeplattformer og moduler",
+       "code": "30.116"
+      },
+      {
+       "category": "Bygging av fritidsbåter",
+       "code": "30.120"
+      },
+      {
+       "category": "Produksjon av lokomotiver og annet rullende materiell til jernbane og sporvei",
+       "code": "30.200"
+      },
+      {
+       "category": "Produksjon av luftfartøyer og romfartøyer og lignende utstyr",
+       "code": "30.300"
+      },
+      {
+       "category": "Produksjon av militære stridskjøretøyer",
+       "code": "30.400"
+      },
+      {
+       "category": "Produksjon av motorsykler",
+       "code": "30.910"
+      },
+      {
+       "category": "Produksjon av sykler og invalidevogner",
+       "code": "30.920"
+      },
+      {
+       "category": "Produksjon av andre transportmidler ikke nevnt annet sted",
+       "code": "30.990"
+      },
+      {
+       "category": "Produksjon av kontor- og butikkmøbler",
+       "code": "31.010"
+      },
+      {
+       "category": "Produksjon av kjøkkenmøbler",
+       "code": "31.020"
+      },
+      {
+       "category": "Produksjon av madrasser",
+       "code": "31.030"
+      },
+      {
+       "category": "Produksjon av møbler ellers",
+       "code": "31.090"
+      },
+      {
+       "category": "Preging av mynter og medaljer",
+       "code": "32.110"
+      },
+      {
+       "category": "Produksjon av gull- og sølvvarer og lignende artikler",
+       "code": "32.120"
+      },
+      {
+       "category": "Produksjon av bijouteri og lignende artikler",
+       "code": "32.130"
+      },
+      {
+       "category": "Produksjon av musikkinstrumenter",
+       "code": "32.200"
+      },
+      {
+       "category": "Produksjon av sportsartikler",
+       "code": "32.300"
+      },
+      {
+       "category": "Produksjon av spill og leker",
+       "code": "32.400"
+      },
+      {
+       "category": "Produksjon av medisinske og tanntekniske instrumenter og utstyr",
+       "code": "32.500"
+      },
+      {
+       "category": "Produksjon av koster og børster",
+       "code": "32.910"
+      },
+      {
+       "category": "Annen industriproduksjon ikke nevnt annet sted",
+       "code": "32.990"
+      },
+      {
+       "category": "Reparasjon av bearbeidede metallprodukter",
+       "code": "33.110"
+      },
+      {
+       "category": "Reparasjon av maskiner",
+       "code": "33.120"
+      },
+      {
+       "category": "Reparasjon av elektronisk og optisk utstyr",
+       "code": "33.130"
+      },
+      {
+       "category": "Reparasjon av elektrisk utstyr",
+       "code": "33.140"
+      },
+      {
+       "category": "Reparasjon og vedlikehold av skip og båter",
+       "code": "33.150"
+      },
+      {
+       "category": "Reparasjon og vedlikehold av luftfartøyer og romfartøyer",
+       "code": "33.160"
+      },
+      {
+       "category": "Reparasjon og vedlikehold av andre transportmidler",
+       "code": "33.170"
+      },
+      {
+       "category": "Reparasjon av annet utstyr",
+       "code": "33.190"
+      },
+      {
+       "category": "Installasjon av industrimaskiner og -utstyr",
+       "code": "33.200"
+      },
+      {
+       "category": "Produksjon av elektrisitet fra vannkraft",
+       "code": "35.111"
+      },
+      {
+       "category": "Produksjon av elektrisitet fra vindkraft",
+       "code": "35.112"
+      },
+      {
+       "category": "Produksjon av elektrisitet fra biobrensel",
+       "code": "35.113"
+      },
+      {
+       "category": "Produksjon av elektrisitet fra naturgass",
+       "code": "35.114"
+      },
+      {
+       "category": "Produksjon av elektrisitet ellers",
+       "code": "35.119"
+      },
+      {
+       "category": "Overføring av elektrisitet",
+       "code": "35.120"
+      },
+      {
+       "category": "Distribusjon av elektrisitet",
+       "code": "35.130"
+      },
+      {
+       "category": "Handel med elektrisitet",
+       "code": "35.140"
+      },
+      {
+       "category": "Produksjon av gass",
+       "code": "35.210"
+      },
+      {
+       "category": "Distribusjon av gass gjennom ledningsnett",
+       "code": "35.220"
+      },
+      {
+       "category": "Handel med gass gjennom ledningsnett",
+       "code": "35.230"
+      },
+      {
+       "category": "Damp- og varmtvannsforsyning",
+       "code": "35.300"
+      },
+      {
+       "category": "Uttak fra kilde, rensing og distribusjon av vann",
+       "code": "36.000"
+      },
+      {
+       "category": "Oppsamling og behandling av avløpsvann",
+       "code": "37.000"
+      },
+      {
+       "category": "Innsamling av ikke-farlig avfall",
+       "code": "38.110"
+      },
+      {
+       "category": "Innsamling av farlig avfall",
+       "code": "38.120"
+      },
+      {
+       "category": "Behandling og disponering av ikke-farlig avfall",
+       "code": "38.210"
+      },
+      {
+       "category": "Behandling og disponering av farlig avfall",
+       "code": "38.220"
+      },
+      {
+       "category": "Demontering av vrakede gjenstander",
+       "code": "38.310"
+      },
+      {
+       "category": "Sortering og bearbeiding av avfall for materialgjenvinning",
+       "code": "38.320"
+      },
+      {
+       "category": "Miljørydding, miljørensing og lignende virksomhet",
+       "code": "39.000"
+      },
+      {
+       "category": "Boligbyggelag",
+       "code": "41.101"
+      },
+      {
+       "category": "Utvikling og salg av egen fast eiendom ellers",
+       "code": "41.109"
+      },
+      {
+       "category": "Oppføring av bygninger",
+       "code": "41.200"
+      },
+      {
+       "category": "Bygging av veier og motorveier",
+       "code": "42.110"
+      },
+      {
+       "category": "Bygging av jernbaner og undergrunnsbaner",
+       "code": "42.120"
+      },
+      {
+       "category": "Bygging av bruer og tunneler",
+       "code": "42.130"
+      },
+      {
+       "category": "Bygging av vann- og kloakkanlegg",
+       "code": "42.210"
+      },
+      {
+       "category": "Bygging av anlegg for elektrisitet og telekommunikasjon",
+       "code": "42.220"
+      },
+      {
+       "category": "Bygging av havne- og damanlegg",
+       "code": "42.910"
+      },
+      {
+       "category": "Bygging av andre anlegg ikke nevnt annet sted",
+       "code": "42.990"
+      },
+      {
+       "category": "Riving av bygninger og andre konstruksjoner",
+       "code": "43.110"
+      },
+      {
+       "category": "Grunnarbeid",
+       "code": "43.120"
+      },
+      {
+       "category": "Prøveboring",
+       "code": "43.130"
+      },
+      {
+       "category": "Elektrisk installasjonsarbeid",
+       "code": "43.210"
+      },
+      {
+       "category": "VVS-arbeid, utgått kode fra 1.1.2013, ufordelt innen 43.22",
+       "code": "43.220"
+      },
+      {
+       "category": "Rørleggerarbeid",
+       "code": "43.221"
+      },
+      {
+       "category": "Kuldeanlegg- og varmepumpearbeid",
+       "code": "43.222"
+      },
+      {
+       "category": "Ventilasjonsarbeid",
+       "code": "43.223"
+      },
+      {
+       "category": "Annet installasjonsarbeid",
+       "code": "43.290"
+      },
+      {
+       "category": "Stukkatørarbeid og pussing",
+       "code": "43.310"
+      },
+      {
+       "category": "Snekkerarbeid",
+       "code": "43.320"
+      },
+      {
+       "category": "Gulvlegging og tapetsering",
+       "code": "43.330"
+      },
+      {
+       "category": "Malerarbeid",
+       "code": "43.341"
+      },
+      {
+       "category": "Glassarbeid",
+       "code": "43.342"
+      },
+      {
+       "category": "Annen ferdiggjøring av bygninger",
+       "code": "43.390"
+      },
+      {
+       "category": "Blikkenslagerarbeid",
+       "code": "43.911"
+      },
+      {
+       "category": "Takarbeid ellers",
+       "code": "43.919"
+      },
+      {
+       "category": "Annen spesialisert bygge- og anleggsvirksomhet",
+       "code": "43.990"
+      },
+      {
+       "category": "Agentur- og engroshandel med biler og lette motorvogner, unntatt motorsykler",
+       "code": "45.111"
+      },
+      {
+       "category": "Detaljhandel med biler og lette motorvogner, unntatt motorsykler",
+       "code": "45.112"
+      },
+      {
+       "category": "Agentur- og engroshandel med andre motorvogner, unntatt motorsykler",
+       "code": "45.191"
+      },
+      {
+       "category": "Detaljhandel med andre motorvogner, unntatt motorsykler",
+       "code": "45.192"
+      },
+      {
+       "category": "Vedlikehold og reparasjon av motorvogner, unntatt motorsykler",
+       "code": "45.200"
+      },
+      {
+       "category": "Agentur- og engroshandel med deler og utstyr til motorvogner, unntatt motorsykler",
+       "code": "45.310"
+      },
+      {
+       "category": "Detaljhandel med deler og utstyr til motorvogner, unntatt motorsykler",
+       "code": "45.320"
+      },
+      {
+       "category": "Agentur- og engroshandel med motorsykler, deler og utstyr",
+       "code": "45.401"
+      },
+      {
+       "category": "Detaljhandel med motorsykler, deler og utstyr",
+       "code": "45.402"
+      },
+      {
+       "category": "Vedlikehold og reparasjon av motorsykler",
+       "code": "45.403"
+      },
+      {
+       "category": "Agenturhandel med jordbruksråvarer, levende dyr, tekstilråvarer og innsatsvarer",
+       "code": "46.110"
+      },
+      {
+       "category": "Agenturhandel med brensel, drivstoff, malm, metaller og industrikjemikalier",
+       "code": "46.120"
+      },
+      {
+       "category": "Agenturhandel med tømmer, trelast og byggevarer",
+       "code": "46.130"
+      },
+      {
+       "category": "Agenturhandel med maskiner, produksjonsutstyr, båter og luftfartøyer",
+       "code": "46.140"
+      },
+      {
+       "category": "Agenturhandel med møbler, husholdningsvarer og jernvarer",
+       "code": "46.150"
+      },
+      {
+       "category": "Agenturhandel med tekstiler, klær, pelsskinn, skotøy og lærvarer",
+       "code": "46.160"
+      },
+      {
+       "category": "Agenturhandel med nærings- og nytelsesmidler",
+       "code": "46.170"
+      },
+      {
+       "category": "Agenturhandel med spesialisert vareutvalg ellers",
+       "code": "46.180"
+      },
+      {
+       "category": "Agenturhandel med bredt vareutvalg",
+       "code": "46.190"
+      },
+      {
+       "category": "Engroshandel med korn, råtobakk, såvarer og fôrvarer",
+       "code": "46.210"
+      },
+      {
+       "category": "Engroshandel med blomster og planter",
+       "code": "46.220"
+      },
+      {
+       "category": "Engroshandel med levende dyr",
+       "code": "46.230"
+      },
+      {
+       "category": "Engroshandel med huder, skinn og lær",
+       "code": "46.240"
+      },
+      {
+       "category": "Engroshandel med frukt og grønnsaker",
+       "code": "46.310"
+      },
+      {
+       "category": "Engroshandel med kjøtt og kjøttvarer",
+       "code": "46.320"
+      },
+      {
+       "category": "Engroshandel med meierivarer, egg, matolje og -fett",
+       "code": "46.330"
+      },
+      {
+       "category": "Engroshandel med vin og brennevin",
+       "code": "46.341"
+      },
+      {
+       "category": "Engroshandel med drikkevarer ellers",
+       "code": "46.349"
+      },
+      {
+       "category": "Engroshandel med tobakksvarer",
+       "code": "46.350"
+      },
+      {
+       "category": "Engroshandel med sukker, sjokolade og sukkervarer",
+       "code": "46.360"
+      },
+      {
+       "category": "Engroshandel med kaffe, te, kakao og krydder",
+       "code": "46.370"
+      },
+      {
+       "category": "Engroshandel med fisk, skalldyr og bløtdyr",
+       "code": "46.381"
+      },
+      {
+       "category": "Engroshandel med spesialisert utvalg av nærings- og nytelsesmidler ikke nevnt annet sted",
+       "code": "46.389"
+      },
+      {
+       "category": "Engroshandel med bredt utvalg av nærings- og nytelsesmidler",
+       "code": "46.390"
+      },
+      {
+       "category": "Engroshandel med tekstiler og utstyrsvarer",
+       "code": "46.410"
+      },
+      {
+       "category": "Engroshandel med klær",
+       "code": "46.421"
+      },
+      {
+       "category": "Engroshandel med skotøy",
+       "code": "46.422"
+      },
+      {
+       "category": "Engroshandel med elektriske husholdningsapparater og -maskiner",
+       "code": "46.431"
+      },
+      {
+       "category": "Engroshandel med radio og fjernsyn",
+       "code": "46.432"
+      },
+      {
+       "category": "Engroshandel med plater, musikk- og videokassetter og CD- og DVD-plater",
+       "code": "46.433"
+      },
+      {
+       "category": "Engroshandel med fotoutstyr",
+       "code": "46.434"
+      },
+      {
+       "category": "Engroshandel med optiske artikler",
+       "code": "46.435"
+      },
+      {
+       "category": "Engroshandel med kjøkkenutstyr, glass og steintøy",
+       "code": "46.441"
+      },
+      {
+       "category": "Engroshandel med rengjøringsmidler",
+       "code": "46.442"
+      },
+      {
+       "category": "Engroshandel med parfyme og kosmetikk",
+       "code": "46.450"
+      },
+      {
+       "category": "Engroshandel med sykepleie- og apotekvarer",
+       "code": "46.460"
+      },
+      {
+       "category": "Engroshandel med møbler",
+       "code": "46.471"
+      },
+      {
+       "category": "Engroshandel med gulvtepper",
+       "code": "46.472"
+      },
+      {
+       "category": "Engroshandel med belysningsutstyr",
+       "code": "46.473"
+      },
+      {
+       "category": "Engroshandel med klokker og ur",
+       "code": "46.481"
+      },
+      {
+       "category": "Engroshandel med gull- og sølvvarer",
+       "code": "46.482"
+      },
+      {
+       "category": "Engroshandel med bøker, aviser og blader",
+       "code": "46.491"
+      },
+      {
+       "category": "Engroshandel med reiseeffekter og lærvarer",
+       "code": "46.492"
+      },
+      {
+       "category": "Engroshandel med fritidsbåter og -utstyr",
+       "code": "46.493"
+      },
+      {
+       "category": "Engroshandel med sportsutstyr",
+       "code": "46.494"
+      },
+      {
+       "category": "Engroshandel med spill og leker",
+       "code": "46.495"
+      },
+      {
+       "category": "Engroshandel med husholdningsvarer og varer til personlig bruk ikke nevnt annet sted",
+       "code": "46.499"
+      },
+      {
+       "category": "Engroshandel med datamaskiner, tilleggsutstyr til datamaskiner samt programvare",
+       "code": "46.510"
+      },
+      {
+       "category": "Engroshandel med elektronikkutstyr og telekommunikasjonsutstyr samt deler",
+       "code": "46.520"
+      },
+      {
+       "category": "Engroshandel med maskiner og utstyr til jordbruk og skogbruk",
+       "code": "46.610"
+      },
+      {
+       "category": "Engroshandel med maskinverktøy",
+       "code": "46.620"
+      },
+      {
+       "category": "Engroshandel med maskiner og utstyr til bergverksdrift, olje- og gassutvinning og bygge- og anleggsvirksomhet",
+       "code": "46.630"
+      },
+      {
+       "category": "Engroshandel med maskiner og utstyr til tekstilproduksjon",
+       "code": "46.640"
+      },
+      {
+       "category": "Engroshandel med kontormøbler",
+       "code": "46.650"
+      },
+      {
+       "category": "Engroshandel med maskiner og utstyr til kontor ellers",
+       "code": "46.660"
+      },
+      {
+       "category": "Engroshandel med maskiner og utstyr til kraftproduksjon og installasjon",
+       "code": "46.691"
+      },
+      {
+       "category": "Engroshandel med skipsutstyr og fiskeredskap",
+       "code": "46.692"
+      },
+      {
+       "category": "Engroshandel med maskiner og utstyr til industri ellers",
+       "code": "46.693"
+      },
+      {
+       "category": "Engroshandel med maskiner og utstyr til handel, transport og tjenesteyting ellers",
+       "code": "46.694"
+      },
+      {
+       "category": "Engroshandel med drivstoff og brensel",
+       "code": "46.710"
+      },
+      {
+       "category": "Engroshandel med metaller og metallholdig malm",
+       "code": "46.720"
+      },
+      {
+       "category": "Engroshandel med tømmer",
+       "code": "46.731"
+      },
+      {
+       "category": "Engroshandel med trelast",
+       "code": "46.732"
+      },
+      {
+       "category": "Engroshandel med fargevarer",
+       "code": "46.733"
+      },
+      {
+       "category": "Engroshandel med byggevarer ikke nevnt annet sted",
+       "code": "46.739"
+      },
+      {
+       "category": "Engroshandel med jernvarer, rørleggerartikler og oppvarmingsutstyr",
+       "code": "46.740"
+      },
+      {
+       "category": "Engroshandel med kjemiske produkter",
+       "code": "46.750"
+      },
+      {
+       "category": "Engroshandel med papir og papp",
+       "code": "46.761"
+      },
+      {
+       "category": "Engroshandel med innsatsvarer ikke nevnt annet sted",
+       "code": "46.769"
+      },
+      {
+       "category": "Engroshandel med avfall og skrap",
+       "code": "46.770"
+      },
+      {
+       "category": "Uspesifisert engroshandel",
+       "code": "46.900"
+      },
+      {
+       "category": "Butikkhandel med bredt vareutvalg med hovedvekt på nærings- og nytelsesmidler",
+       "code": "47.111"
+      },
+      {
+       "category": "Kioskhandel med bredt vareutvalg med hovedvekt på nærings- og nytelsesmidler",
+       "code": "47.112"
+      },
+      {
+       "category": "Butikkhandel med bredt vareutvalg ellers",
+       "code": "47.190"
+      },
+      {
+       "category": "Butikkhandel med frukt og grønnsaker",
+       "code": "47.210"
+      },
+      {
+       "category": "Butikkhandel med kjøtt og kjøttvarer",
+       "code": "47.220"
+      },
+      {
+       "category": "Butikkhandel med fisk, skalldyr og bløtdyr",
+       "code": "47.230"
+      },
+      {
+       "category": "Butikkhandel med bakervarer og konditorvarer",
+       "code": "47.241"
+      },
+      {
+       "category": "Butikkhandel med sukkervarer",
+       "code": "47.242"
+      },
+      {
+       "category": "Butikkhandel med vin og brennevin",
+       "code": "47.251"
+      },
+      {
+       "category": "Butikkhandel med drikkevarer ellers",
+       "code": "47.259"
+      },
+      {
+       "category": "Butikkhandel med tobakksvarer",
+       "code": "47.260"
+      },
+      {
+       "category": "Butikkhandel med helsekost",
+       "code": "47.291"
+      },
+      {
+       "category": "Butikkhandel med kaffe og te",
+       "code": "47.292"
+      },
+      {
+       "category": "Butikkhandel med nærings- og nytelsesmidler ikke nevnt annet sted",
+       "code": "47.299"
+      },
+      {
+       "category": "Detaljhandel med drivstoff til motorvogner",
+       "code": "47.300"
+      },
+      {
+       "category": "Butikkhandel med datamaskiner og utstyr til datamaskiner",
+       "code": "47.410"
+      },
+      {
+       "category": "Butikkhandel med telekommunikasjonsutstyr",
+       "code": "47.420"
+      },
+      {
+       "category": "Butikkhandel med audio- og videoutstyr",
+       "code": "47.430"
+      },
+      {
+       "category": "Butikkhandel med tekstiler og utstyrsvarer",
+       "code": "47.510"
+      },
+      {
+       "category": "Butikkhandel med bredt utvalg av jernvarer, fargevarer og andre byggevarer",
+       "code": "47.521"
+      },
+      {
+       "category": "Butikkhandel med jernvarer",
+       "code": "47.522"
+      },
+      {
+       "category": "Butikkhandel med fargevarer",
+       "code": "47.523"
+      },
+      {
+       "category": "Butikkhandel med trelast",
+       "code": "47.524"
+      },
+      {
+       "category": "Butikkhandel med byggevarer ikke nevnt annet sted",
+       "code": "47.529"
+      },
+      {
+       "category": "Butikkhandel med tapeter og gulvbelegg",
+       "code": "47.531"
+      },
+      {
+       "category": "Butikkhandel med tepper",
+       "code": "47.532"
+      },
+      {
+       "category": "Butikkhandel med gardiner",
+       "code": "47.533"
+      },
+      {
+       "category": "Butikkhandel med elektriske husholdningsapparater",
+       "code": "47.540"
+      },
+      {
+       "category": "Butikkhandel med møbler",
+       "code": "47.591"
+      },
+      {
+       "category": "Butikkhandel med belysningsutstyr",
+       "code": "47.592"
+      },
+      {
+       "category": "Butikkhandel med kjøkkenutstyr, glass og steintøy",
+       "code": "47.593"
+      },
+      {
+       "category": "Butikkhandel med musikkinstrumenter og noter",
+       "code": "47.594"
+      },
+      {
+       "category": "Butikkhandel med innredningsartikler ikke nevnt annet sted",
+       "code": "47.599"
+      },
+      {
+       "category": "Butikkhandel med bøker",
+       "code": "47.610"
+      },
+      {
+       "category": "Butikkhandel med aviser og papirvarer",
+       "code": "47.620"
+      },
+      {
+       "category": "Butikkhandel med innspillinger av musikk og video",
+       "code": "47.630"
+      },
+      {
+       "category": "Butikkhandel med sportsutstyr",
+       "code": "47.641"
+      },
+      {
+       "category": "Butikkhandel med fritidsbåter og -utstyr",
+       "code": "47.642"
+      },
+      {
+       "category": "Butikkhandel med spill og leker",
+       "code": "47.650"
+      },
+      {
+       "category": "Butikkhandel med klær",
+       "code": "47.710"
+      },
+      {
+       "category": "Butikkhandel med skotøy",
+       "code": "47.721"
+      },
+      {
+       "category": "Butikkhandel med reiseeffekter av lær og lærimitasjoner og varer av lær",
+       "code": "47.722"
+      },
+      {
+       "category": "Butikkhandel med apotekvarer",
+       "code": "47.730"
+      },
+      {
+       "category": "Butikkhandel med medisinske og ortopediske artikler",
+       "code": "47.740"
+      },
+      {
+       "category": "Butikkhandel med kosmetikk og toalettartikler",
+       "code": "47.750"
+      },
+      {
+       "category": "Butikkhandel med blomster og planter",
+       "code": "47.761"
+      },
+      {
+       "category": "Butikkhandel med kjæledyr og fôrvarer til kjæledyr",
+       "code": "47.762"
+      },
+      {
+       "category": "Butikkhandel med ur og klokker",
+       "code": "47.771"
+      },
+      {
+       "category": "Butikkhandel med gull- og sølvvarer",
+       "code": "47.772"
+      },
+      {
+       "category": "Butikkhandel med fotoutstyr",
+       "code": "47.781"
+      },
+      {
+       "category": "Butikkhandel med optiske artikler",
+       "code": "47.782"
+      },
+      {
+       "category": "Butikkhandel ikke nevnt annet sted",
+       "code": "47.789"
+      },
+      {
+       "category": "Butikkhandel med antikviteter",
+       "code": "47.791"
+      },
+      {
+       "category": "Butikkhandel med brukte klær",
+       "code": "47.792"
+      },
+      {
+       "category": "Butikkhandel med brukte varer ellers",
+       "code": "47.799"
+      },
+      {
+       "category": "Torghandel med næringsmidler, drikkevarer og tobakksvarer",
+       "code": "47.810"
+      },
+      {
+       "category": "Torghandel med tekstiler, klær, skotøy og utstyrsvarer",
+       "code": "47.820"
+      },
+      {
+       "category": "Torghandel med andre varer",
+       "code": "47.890"
+      },
+      {
+       "category": "Postordre-/Internetthandel med bredt vareutvalg",
+       "code": "47.911"
+      },
+      {
+       "category": "Postordre-/Internetthandel med tekstiler, utstyrsvarer, klær, skotøy, reiseeffekter og lærvarer",
+       "code": "47.912"
+      },
+      {
+       "category": "Postordre-/Internetthandel med belysningsutstyr, kjøkkenutstyr, møbler og innredningsartikler",
+       "code": "47.913"
+      },
+      {
+       "category": "Postordre-/Internetthandel med elektriske husholdningsapparater, radio, fjernsyn, plater, kassetter og musikkinstrumenter",
+       "code": "47.914"
+      },
+      {
+       "category": "Postordre-/internetthandel med bøker, papir, aviser og blader",
+       "code": "47.915"
+      },
+      {
+       "category": "Postordre-/Internetthandel med IKT-utstyr",
+       "code": "47.916"
+      },
+      {
+       "category": "Postordre-/Internetthandel med helsekost",
+       "code": "47.917"
+      },
+      {
+       "category": "Postordre-/Internetthandel med annet spesialisert vareutvalg",
+       "code": "47.919"
+      },
+      {
+       "category": "Detaljhandel utenom utsalgssted ellers",
+       "code": "47.990"
+      },
+      {
+       "category": "Passasjertransport med jernbane",
+       "code": "49.100"
+      },
+      {
+       "category": "Godstransport med jernbane",
+       "code": "49.200"
+      },
+      {
+       "category": "Rutebiltransport i by- og forstadsområde",
+       "code": "49.311"
+      },
+      {
+       "category": "Transport med sporveis- og forstadsbane",
+       "code": "49.312"
+      },
+      {
+       "category": "Drosjebiltransport",
+       "code": "49.320"
+      },
+      {
+       "category": "Rutebiltransport utenfor by- og forstadsområde",
+       "code": "49.391"
+      },
+      {
+       "category": "Turbiltransport",
+       "code": "49.392"
+      },
+      {
+       "category": "Transport med taubaner, kabelbaner og skiheiser",
+       "code": "49.393"
+      },
+      {
+       "category": "Godstransport på vei",
+       "code": "49.410"
+      },
+      {
+       "category": "Flyttetransport",
+       "code": "49.420"
+      },
+      {
+       "category": "Rørtransport",
+       "code": "49.500"
+      },
+      {
+       "category": "Utenriks sjøfart med passasjerer",
+       "code": "50.101"
+      },
+      {
+       "category": "Innenlandske kystruter med passasjerer",
+       "code": "50.102"
+      },
+      {
+       "category": "Kysttrafikk ellers med passasjerer",
+       "code": "50.109"
+      },
+      {
+       "category": "Utenriks sjøfart med gods",
+       "code": "50.201"
+      },
+      {
+       "category": "Innenriks sjøfart med gods",
+       "code": "50.202"
+      },
+      {
+       "category": "Slepebåter",
+       "code": "50.203"
+      },
+      {
+       "category": "Forsyning og andre sjøtransporttjenester for offshore",
+       "code": "50.204"
+      },
+      {
+       "category": "Passasjertransport på elver og innsjøer",
+       "code": "50.300"
+      },
+      {
+       "category": "Godstransport på elver og innsjøer",
+       "code": "50.400"
+      },
+      {
+       "category": "Lufttransport med passasjerer",
+       "code": "51.100"
+      },
+      {
+       "category": "Lufttransport med gods",
+       "code": "51.210"
+      },
+      {
+       "category": "Romfart",
+       "code": "51.220"
+      },
+      {
+       "category": "Lagring",
+       "code": "52.100"
+      },
+      {
+       "category": "Drift av gods- og transportsentraler",
+       "code": "52.211"
+      },
+      {
+       "category": "Drift av parkeringsplasser og parkeringshus",
+       "code": "52.212"
+      },
+      {
+       "category": "Drift av bomstasjoner",
+       "code": "52.213"
+      },
+      {
+       "category": "Drift av taxisentraler og annen formidling av persontransport",
+       "code": "52.214"
+      },
+      {
+       "category": "Kondensering av gass med henblikk på transport",
+       "code": "52.216"
+      },
+      {
+       "category": "Tjenester tilknyttet landtransport ellers",
+       "code": "52.219"
+      },
+      {
+       "category": "Drift av havne- og kaianlegg",
+       "code": "52.221"
+      },
+      {
+       "category": "Redningstjeneste",
+       "code": "52.222"
+      },
+      {
+       "category": "Forsyningsbaser",
+       "code": "52.223"
+      },
+      {
+       "category": "Tjenester tilknyttet sjøtransport ellers",
+       "code": "52.229"
+      },
+      {
+       "category": "Andre tjenester tilknyttet lufttransport",
+       "code": "52.230"
+      },
+      {
+       "category": "Lasting og lossing",
+       "code": "52.240"
+      },
+      {
+       "category": "Spedisjon",
+       "code": "52.291"
+      },
+      {
+       "category": "Skipsmegling",
+       "code": "52.292"
+      },
+      {
+       "category": "Flymegling",
+       "code": "52.293"
+      },
+      {
+       "category": "Transportformidling ellers",
+       "code": "52.299"
+      },
+      {
+       "category": "Landsdekkende posttjenester",
+       "code": "53.100"
+      },
+      {
+       "category": "Andre post- og budtjenester",
+       "code": "53.200"
+      },
+      {
+       "category": "Drift av hoteller, pensjonater og moteller med restaurant",
+       "code": "55.101"
+      },
+      {
+       "category": "Drift av hoteller, pensjonater og moteller uten restaurant",
+       "code": "55.102"
+      },
+      {
+       "category": "Drift av vandrerhjem",
+       "code": "55.201"
+      },
+      {
+       "category": "Drift av ferieleiligheter",
+       "code": "55.202"
+      },
+      {
+       "category": "Drift av campingplasser",
+       "code": "55.300"
+      },
+      {
+       "category": "Drift av campingplasser, utgått kode",
+       "code": "55.301"
+      },
+      {
+       "category": "Annen overnatting",
+       "code": "55.900"
+      },
+      {
+       "category": "Drift av restauranter og kafeer",
+       "code": "56.101"
+      },
+      {
+       "category": "Drift av gatekjøkken",
+       "code": "56.102"
+      },
+      {
+       "category": "Cateringvirksomhet",
+       "code": "56.210"
+      },
+      {
+       "category": "Kantiner drevet som selvstendig virksomhet",
+       "code": "56.290"
+      },
+      {
+       "category": "Drift av puber",
+       "code": "56.301"
+      },
+      {
+       "category": "Drift av barer ellers",
+       "code": "56.309"
+      },
+      {
+       "category": "Utgivelse av bøker",
+       "code": "58.110"
+      },
+      {
+       "category": "Utgivelse av kataloger og adresselister",
+       "code": "58.120"
+      },
+      {
+       "category": "Utgivelse av aviser",
+       "code": "58.130"
+      },
+      {
+       "category": "Utgivelse av blader og tidsskrifter",
+       "code": "58.140"
+      },
+      {
+       "category": "Forlagsvirksomhet ellers",
+       "code": "58.190"
+      },
+      {
+       "category": "Utgivelse av programvare for dataspill",
+       "code": "58.210"
+      },
+      {
+       "category": "Utgivelse av annen programvare",
+       "code": "58.290"
+      },
+      {
+       "category": "Produksjon av film, video og fjernsynsprogrammer",
+       "code": "59.110"
+      },
+      {
+       "category": "Etterarbeid knyttet til produksjon av film, video og fjernsynsprogrammer",
+       "code": "59.120"
+      },
+      {
+       "category": "Distribusjon av film, video og fjernsynsprogrammer",
+       "code": "59.130"
+      },
+      {
+       "category": "Filmframvisning",
+       "code": "59.140"
+      },
+      {
+       "category": "Produksjon og utgivelse av musikk- og lydopptak",
+       "code": "59.200"
+      },
+      {
+       "category": "Radiokringkasting",
+       "code": "60.100"
+      },
+      {
+       "category": "Fjernsynskringkasting",
+       "code": "60.200"
+      },
+      {
+       "category": "Kabelbasert telekommunikasjon",
+       "code": "61.100"
+      },
+      {
+       "category": "Trådløs telekommunikasjon",
+       "code": "61.200"
+      },
+      {
+       "category": "Satellittbasert telekommunikasjon",
+       "code": "61.300"
+      },
+      {
+       "category": "Telekommunikasjon ellers",
+       "code": "61.900"
+      },
+      {
+       "category": "Programmeringstjenester",
+       "code": "62.010"
+      },
+      {
+       "category": "Konsulentvirksomhet tilknyttet informasjonsteknologi",
+       "code": "62.020"
+      },
+      {
+       "category": "Forvaltning og drift av IT-systemer",
+       "code": "62.030"
+      },
+      {
+       "category": "Andre tjenester tilknyttet informasjonsteknologi",
+       "code": "62.090"
+      },
+      {
+       "category": "Databehandling, datalagring og tilknyttede tjenester",
+       "code": "63.110"
+      },
+      {
+       "category": "Drift av web-portaler",
+       "code": "63.120"
+      },
+      {
+       "category": "Nyhetsbyråer",
+       "code": "63.910"
+      },
+      {
+       "category": "Andre informasjonstjenester ikke nevnt annet sted",
+       "code": "63.990"
+      },
+      {
+       "category": "Sentralbankvirksomhet",
+       "code": "64.110"
+      },
+      {
+       "category": "Bankvirksomhet ellers",
+       "code": "64.190"
+      },
+      {
+       "category": "Finansielle holdingselskaper",
+       "code": "64.201"
+      },
+      {
+       "category": "Spesielle holdingselskaper",
+       "code": "64.202"
+      },
+      {
+       "category": "Verdipapirfond",
+       "code": "64.301"
+      },
+      {
+       "category": "Investeringsselskaper/-fond åpne for allmennheten",
+       "code": "64.302"
+      },
+      {
+       "category": "Porteføljeinvesteringsselskaper, utgått kode",
+       "code": "64.303"
+      },
+      {
+       "category": "Forvaltningsstiftelser for fond og legater opprettet for veldedige og allmennyttige formål, men som selv ikke fordeler støtte",
+       "code": "64.305"
+      },
+      {
+       "category": "Aktive eierfond",
+       "code": "64.306"
+      },
+      {
+       "category": "Investeringsselskaper o.l. lukket for allmennheten",
+       "code": "64.308"
+      },
+      {
+       "category": "Finansiell leasing",
+       "code": "64.910"
+      },
+      {
+       "category": "Annen kredittgivning",
+       "code": "64.920"
+      },
+      {
+       "category": "Annen finansieringsvirksomhet ikke nevnt annet sted",
+       "code": "64.990"
+      },
+      {
+       "category": "Livsforsikring",
+       "code": "65.110"
+      },
+      {
+       "category": "Skadeforsikring",
+       "code": "65.120"
+      },
+      {
+       "category": "Gjenforsikring",
+       "code": "65.200"
+      },
+      {
+       "category": "Pensjonskasser",
+       "code": "65.300"
+      },
+      {
+       "category": "Administrasjon av finansmarkeder",
+       "code": "66.110"
+      },
+      {
+       "category": "Verdipapirmegling",
+       "code": "66.120"
+      },
+      {
+       "category": "Andre tjenester tilknyttet finansieringsvirksomhet",
+       "code": "66.190"
+      },
+      {
+       "category": "Risiko- og skadevurdering",
+       "code": "66.210"
+      },
+      {
+       "category": "Forsikringsformidling",
+       "code": "66.220"
+      },
+      {
+       "category": "Andre tjenester tilknyttet forsikringsvirksomhet og pensjonskasser",
+       "code": "66.290"
+      },
+      {
+       "category": "Fondsforvaltningsvirksomhet",
+       "code": "66.300"
+      },
+      {
+       "category": "Kjøp og salg av egen fast eiendom",
+       "code": "68.100"
+      },
+      {
+       "category": "Borettslag",
+       "code": "68.201"
+      },
+      {
+       "category": "Utleie av egen eller leid fast eiendom ellers",
+       "code": "68.209"
+      },
+      {
+       "category": "Eiendomsmegling",
+       "code": "68.310"
+      },
+      {
+       "category": "Eiendomsforvaltning",
+       "code": "68.320"
+      },
+      {
+       "category": "Juridisk tjenesteyting",
+       "code": "69.100"
+      },
+      {
+       "category": "Regnskap og bokføring",
+       "code": "69.201"
+      },
+      {
+       "category": "Revisjon",
+       "code": "69.202"
+      },
+      {
+       "category": "Skatterådgivning",
+       "code": "69.203"
+      },
+      {
+       "category": "Hovedkontortjenester",
+       "code": "70.100"
+      },
+      {
+       "category": "PR og kommunikasjonstjenester",
+       "code": "70.210"
+      },
+      {
+       "category": "Bedriftsrådgivning og annen administrativ rådgivning",
+       "code": "70.220"
+      },
+      {
+       "category": "Plan- og reguleringsarbeid",
+       "code": "71.111"
+      },
+      {
+       "category": "Arkitekttjenester vedrørende byggverk",
+       "code": "71.112"
+      },
+      {
+       "category": "Landskapsarkitekttjenester",
+       "code": "71.113"
+      },
+      {
+       "category": "Byggeteknisk konsulentvirksomhet",
+       "code": "71.121"
+      },
+      {
+       "category": "Geologiske undersøkelser",
+       "code": "71.122"
+      },
+      {
+       "category": "Kart og oppmåling",
+       "code": "71.123"
+      },
+      {
+       "category": "Annen teknisk konsulentvirksomhet",
+       "code": "71.129"
+      },
+      {
+       "category": "Teknisk prøving og analyse",
+       "code": "71.200"
+      },
+      {
+       "category": "Forskning og utviklingsarbeid innen bioteknologi",
+       "code": "72.110"
+      },
+      {
+       "category": "Annen forskning og annet utviklingsarbeid innen naturvitenskap og teknikk",
+       "code": "72.190"
+      },
+      {
+       "category": "Forskning og utviklingsarbeid innen samfunnsvitenskap og humanistiske fag",
+       "code": "72.200"
+      },
+      {
+       "category": "Reklamebyråer",
+       "code": "73.110"
+      },
+      {
+       "category": "Medieformidlingstjenester",
+       "code": "73.120"
+      },
+      {
+       "category": "Markeds- og opinionsundersøkelser",
+       "code": "73.200"
+      },
+      {
+       "category": "Industridesign, produktdesign og annen teknisk designvirksomhet",
+       "code": "74.101"
+      },
+      {
+       "category": "Grafisk og visuell kommunikasjonsdesign",
+       "code": "74.102"
+      },
+      {
+       "category": "Interiørarkitekt-, interiørdesign- og interiørkonsulentvirksomhet",
+       "code": "74.103"
+      },
+      {
+       "category": "Fotografvirksomhet",
+       "code": "74.200"
+      },
+      {
+       "category": "Oversettelses- og tolkevirksomhet",
+       "code": "74.300"
+      },
+      {
+       "category": "Takseringsvirksomhet",
+       "code": "74.901"
+      },
+      {
+       "category": "Modellbyråvirksomhet",
+       "code": "74.902"
+      },
+      {
+       "category": "Impresariovirksomhet",
+       "code": "74.903"
+      },
+      {
+       "category": "Annen faglig, vitenskapelig og teknisk virksomhet ikke nevnt annet sted",
+       "code": "74.909"
+      },
+      {
+       "category": "Veterinærtjenester",
+       "code": "75.000"
+      },
+      {
+       "category": "Utleie og leasing av biler og andre lette motorvogner",
+       "code": "77.110"
+      },
+      {
+       "category": "Utleie og leasing av lastebiler",
+       "code": "77.120"
+      },
+      {
+       "category": "Utleie og leasing av sports- og fritidsutstyr",
+       "code": "77.210"
+      },
+      {
+       "category": "Utleie av videofilm, DVD og lignende",
+       "code": "77.220"
+      },
+      {
+       "category": "Utleie og leasing av andre husholdningsvarer og varer til personlig bruk",
+       "code": "77.290"
+      },
+      {
+       "category": "Utleie og leasing av landbruksmaskiner og -utstyr",
+       "code": "77.310"
+      },
+      {
+       "category": "Utleie og leasing av bygge- og anleggsmaskiner og -utstyr",
+       "code": "77.320"
+      },
+      {
+       "category": "Utleie og leasing av kontor- og datamaskiner",
+       "code": "77.330"
+      },
+      {
+       "category": "Utleie og leasing av sjøtransportmateriell",
+       "code": "77.340"
+      },
+      {
+       "category": "Utleie og leasing av lufttransportmateriell",
+       "code": "77.350"
+      },
+      {
+       "category": "Utleie og leasing av andre maskiner og annet utstyr og materiell ikke nevnt annet sted",
+       "code": "77.390"
+      },
+      {
+       "category": "Leasing av immateriell eiendom og lignende produkter, unntatt opphavsrettsbeskyttede verker",
+       "code": "77.400"
+      },
+      {
+       "category": "Rekruttering og formidling av arbeidskraft",
+       "code": "78.100"
+      },
+      {
+       "category": "Utleie av arbeidskraft",
+       "code": "78.200"
+      },
+      {
+       "category": "Andre personaladministrative tjenester",
+       "code": "78.300"
+      },
+      {
+       "category": "Reisebyråvirksomhet",
+       "code": "79.110"
+      },
+      {
+       "category": "Reisearrangørvirksomhet",
+       "code": "79.120"
+      },
+      {
+       "category": "Turistkontorvirksomhet og destinasjonsselskaper",
+       "code": "79.901"
+      },
+      {
+       "category": "Guider og reiseledere",
+       "code": "79.902"
+      },
+      {
+       "category": "Opplevelses-, arrangements- og aktivitetsarrangørvirksomhet",
+       "code": "79.903"
+      },
+      {
+       "category": "Turistrelaterte tjenester ikke nevnt annet sted",
+       "code": "79.909"
+      },
+      {
+       "category": "Private vakttjenester",
+       "code": "80.100"
+      },
+      {
+       "category": "Tjenester tilknyttet vakttjenester",
+       "code": "80.200"
+      },
+      {
+       "category": "Etterforsking",
+       "code": "80.300"
+      },
+      {
+       "category": "Vaktmestertjenester",
+       "code": "81.101"
+      },
+      {
+       "category": "Andre kombinerte tjenester tilknyttet eiendomsdrift",
+       "code": "81.109"
+      },
+      {
+       "category": "Rengjøring av bygninger",
+       "code": "81.210"
+      },
+      {
+       "category": "Utvendig rengjøring av bygninger og industriell rengjøring",
+       "code": "81.220"
+      },
+      {
+       "category": "Skadedyrkontroll",
+       "code": "81.291"
+      },
+      {
+       "category": "Annen rengjøringsvirksomhet ikke nevnt annet sted",
+       "code": "81.299"
+      },
+      {
+       "category": "Beplantning av hager og parkanlegg",
+       "code": "81.300"
+      },
+      {
+       "category": "Kombinerte kontortjenester",
+       "code": "82.110"
+      },
+      {
+       "category": "Fotokopiering, forberedelse av dokumenter og andre spesialiserte kontortjenester",
+       "code": "82.190"
+      },
+      {
+       "category": "Telefonvakttjenester",
+       "code": "82.201"
+      },
+      {
+       "category": "Telefonsalg",
+       "code": "82.202"
+      },
+      {
+       "category": "Kongress-, messe- og utstillingsvirksomhet",
+       "code": "82.300"
+      },
+      {
+       "category": "Inkasso- og kredittopplysningsvirksomhet",
+       "code": "82.910"
+      },
+      {
+       "category": "Pakkevirksomhet",
+       "code": "82.920"
+      },
+      {
+       "category": "Annen forretningsmessig tjenesteyting ikke nevnt annet sted",
+       "code": "82.990"
+      },
+      {
+       "category": "Generell offentlig administrasjon",
+       "code": "84.110"
+      },
+      {
+       "category": "Offentlig administrasjon tilknyttet helsestell, sosial virksomhet, undervisning, kirke, kultur og miljøvern",
+       "code": "84.120"
+      },
+      {
+       "category": "Offentlig administrasjon tilknyttet næringsvirksomhet og arbeidsmarked",
+       "code": "84.130"
+      },
+      {
+       "category": "Utenrikssaker",
+       "code": "84.210"
+      },
+      {
+       "category": "Forsvar",
+       "code": "84.220"
+      },
+      {
+       "category": "Retts- og fengselsvesen",
+       "code": "84.230"
+      },
+      {
+       "category": "Politi- og påtalemyndighet",
+       "code": "84.240"
+      },
+      {
+       "category": "Brannvern",
+       "code": "84.250"
+      },
+      {
+       "category": "Trygdeordninger underlagt offentlig forvaltning",
+       "code": "84.300"
+      },
+      {
+       "category": "Førskoleundervisning",
+       "code": "85.100"
+      },
+      {
+       "category": "Ordinær grunnskoleundervisning",
+       "code": "85.201"
+      },
+      {
+       "category": "Spesialskoleundervisning for funksjonshemmede",
+       "code": "85.202"
+      },
+      {
+       "category": "Kompetansesentra og annen spesialundervisning",
+       "code": "85.203"
+      },
+      {
+       "category": "Videregående opplæring innen allmennfaglige studieretninger",
+       "code": "85.310"
+      },
+      {
+       "category": "Videregående opplæring innen tekniske og andre yrkesfaglige studieretninger",
+       "code": "85.320"
+      },
+      {
+       "category": "Undervisning ved fagskoler",
+       "code": "85.410"
+      },
+      {
+       "category": "Undervisning ved universiteter",
+       "code": "85.421"
+      },
+      {
+       "category": "Undervisning ved vitenskapelige høgskoler",
+       "code": "85.422"
+      },
+      {
+       "category": "Undervisning ved statlige høgskoler",
+       "code": "85.423"
+      },
+      {
+       "category": "Undervisning ved militære høgskoler",
+       "code": "85.424"
+      },
+      {
+       "category": "Undervisning ved andre høgskoler",
+       "code": "85.429"
+      },
+      {
+       "category": "Undervisning innen idrett og rekreasjon",
+       "code": "85.510"
+      },
+      {
+       "category": "Kommunal kulturskoleundervisning",
+       "code": "85.521"
+      },
+      {
+       "category": "Undervisning i kunstfag",
+       "code": "85.522"
+      },
+      {
+       "category": "Annen undervisning innen kultur",
+       "code": "85.529"
+      },
+      {
+       "category": "Trafikkskoleundervisning",
+       "code": "85.530"
+      },
+      {
+       "category": "Folkehøgskoleundervisning",
+       "code": "85.591"
+      },
+      {
+       "category": "Arbeidsmarkedskurs",
+       "code": "85.592"
+      },
+      {
+       "category": "Studieforbunds- og frivillige organisasjoners kurs",
+       "code": "85.593"
+      },
+      {
+       "category": "Voksenopplæringssentre",
+       "code": "85.594"
+      },
+      {
+       "category": "Timelærervirksomhet",
+       "code": "85.595"
+      },
+      {
+       "category": "Undervisning innen religion",
+       "code": "85.596"
+      },
+      {
+       "category": "Annen undervisning ikke nevnt annet sted",
+       "code": "85.599"
+      },
+      {
+       "category": "Pedagogisk-psykologisk rådgivningstjeneste",
+       "code": "85.601"
+      },
+      {
+       "category": "Andre tjenester tilknyttet undervisning",
+       "code": "85.609"
+      },
+      {
+       "category": "Alminnelige somatiske sykehus",
+       "code": "86.101"
+      },
+      {
+       "category": "Somatiske spesialsykehus",
+       "code": "86.102"
+      },
+      {
+       "category": "Andre somatiske spesialinstitusjoner",
+       "code": "86.103"
+      },
+      {
+       "category": "Institusjoner i psykisk helsevern for voksne",
+       "code": "86.104"
+      },
+      {
+       "category": "Institusjoner i psykisk helsevern for barn og unge",
+       "code": "86.105"
+      },
+      {
+       "category": "Rusmiddelinstitusjoner",
+       "code": "86.106"
+      },
+      {
+       "category": "Rehabiliterings- og opptreningsinstitusjoner",
+       "code": "86.107"
+      },
+      {
+       "category": "Allmenn legetjeneste",
+       "code": "86.211"
+      },
+      {
+       "category": "Somatiske poliklinikker",
+       "code": "86.212"
+      },
+      {
+       "category": "Spesialisert legetjeneste, unntatt psykiatrisk legetjeneste",
+       "code": "86.221"
+      },
+      {
+       "category": "Legetjenester innen psykisk helsevern",
+       "code": "86.222"
+      },
+      {
+       "category": "Poliklinikker i psykisk helsevern for voksne",
+       "code": "86.223"
+      },
+      {
+       "category": "Poliklinikker i psykisk helsevern for barn og unge",
+       "code": "86.224"
+      },
+      {
+       "category": "Rusmiddelpoliklinikker",
+       "code": "86.225"
+      },
+      {
+       "category": "Tannhelsetjenester",
+       "code": "86.230"
+      },
+      {
+       "category": "Hjemmesykepleie",
+       "code": "86.901"
+      },
+      {
+       "category": "Fysioterapitjeneste",
+       "code": "86.902"
+      },
+      {
+       "category": "Helsestasjons- og skolehelsetjeneste",
+       "code": "86.903"
+      },
+      {
+       "category": "Annen forebyggende helsetjeneste",
+       "code": "86.904"
+      },
+      {
+       "category": "Klinisk psykologtjeneste",
+       "code": "86.905"
+      },
+      {
+       "category": "Medisinske laboratorietjenester",
+       "code": "86.906"
+      },
+      {
+       "category": "Ambulansetjenester",
+       "code": "86.907"
+      },
+      {
+       "category": "Andre helsetjenester",
+       "code": "86.909"
+      },
+      {
+       "category": "Somatiske spesialsykehjem",
+       "code": "87.101"
+      },
+      {
+       "category": "Somatiske sykehjem",
+       "code": "87.102"
+      },
+      {
+       "category": "Psykiatriske sykehjem",
+       "code": "87.201"
+      },
+      {
+       "category": "Omsorgsinstitusjoner for rusmiddelmisbrukere",
+       "code": "87.202"
+      },
+      {
+       "category": "Bofellesskap for psykisk utviklingshemmede",
+       "code": "87.203"
+      },
+      {
+       "category": "Aldershjem",
+       "code": "87.301"
+      },
+      {
+       "category": "Bofellesskap for eldre og funksjonshemmede med fast tilknyttet personell hele døgnet",
+       "code": "87.302"
+      },
+      {
+       "category": "Bofellesskap for eldre og funksjonshemmede med fast tilknyttet personell deler av døgnet",
+       "code": "87.303"
+      },
+      {
+       "category": "Avlastningsboliger/-institusjoner",
+       "code": "87.304"
+      },
+      {
+       "category": "Barneboliger",
+       "code": "87.305"
+      },
+      {
+       "category": "Institusjoner innen barne- og ungdomsvern",
+       "code": "87.901"
+      },
+      {
+       "category": "Omsorgsinstitusjoner ellers",
+       "code": "87.909"
+      },
+      {
+       "category": "Hjemmehjelp",
+       "code": "88.101"
+      },
+      {
+       "category": "Dagsentra/aktivitetssentra for eldre og funksjonshemmede",
+       "code": "88.102"
+      },
+      {
+       "category": "Eldresentre",
+       "code": "88.103"
+      },
+      {
+       "category": "Barnehager",
+       "code": "88.911"
+      },
+      {
+       "category": "Barneparker og dagmammaer",
+       "code": "88.912"
+      },
+      {
+       "category": "Skolefritidsordninger",
+       "code": "88.913"
+      },
+      {
+       "category": "Fritidsklubber for barn og ungdom",
+       "code": "88.914"
+      },
+      {
+       "category": "Barneverntjenester",
+       "code": "88.991"
+      },
+      {
+       "category": "Familieverntjenester",
+       "code": "88.992"
+      },
+      {
+       "category": "Arbeidstrening for ordinært arbeidsmarked",
+       "code": "88.993"
+      },
+      {
+       "category": "Varig tilrettelagt arbeid",
+       "code": "88.994"
+      },
+      {
+       "category": "Sosiale velferdsorganisasjoner",
+       "code": "88.995"
+      },
+      {
+       "category": "Asylmottak",
+       "code": "88.996"
+      },
+      {
+       "category": "Sosialtjenester for rusmiddelmisbrukere uten botilbud",
+       "code": "88.997"
+      },
+      {
+       "category": "Kommunale sosialkontortjenester",
+       "code": "88.998"
+      },
+      {
+       "category": "Andre sosialtjenester uten botilbud",
+       "code": "88.999"
+      },
+      {
+       "category": "Utøvende kunstnere og underholdningsvirksomhet innen musikk",
+       "code": "90.011"
+      },
+      {
+       "category": "Utøvende kunstnere og underholdningsvirksomhet innen scenekunst",
+       "code": "90.012"
+      },
+      {
+       "category": "Utøvende kunstnere og underholdningsvirksomhet ikke nevnt annet sted",
+       "code": "90.019"
+      },
+      {
+       "category": "Tjenester tilknyttet underholdningsvirksomhet",
+       "code": "90.020"
+      },
+      {
+       "category": "Selvstendig kunstnerisk virksomhet innen visuell kunst",
+       "code": "90.031"
+      },
+      {
+       "category": "Selvstendig kunstnerisk virksomhet innen musikk",
+       "code": "90.032"
+      },
+      {
+       "category": "Selvstendig kunstnerisk virksomhet innen scenekunst",
+       "code": "90.033"
+      },
+      {
+       "category": "Selvstendig kunstnerisk virksomhet innen litteratur",
+       "code": "90.034"
+      },
+      {
+       "category": "Selvstendig kunstnerisk virksomhet innen blogging",
+       "code": "90.035"
+      },
+      {
+       "category": "Selvstendig kunstnerisk virksomhet ikke nevnt annet sted",
+       "code": "90.039"
+      },
+      {
+       "category": "Drift av lokaler tilknyttet kunstnerisk virksomhet",
+       "code": "90.040"
+      },
+      {
+       "category": "Drift av folkebiblioteker",
+       "code": "91.011"
+      },
+      {
+       "category": "Drift av fag- og forskningsbiblioteker",
+       "code": "91.012"
+      },
+      {
+       "category": "Drift av arkiver",
+       "code": "91.013"
+      },
+      {
+       "category": "Drift av kunst- og kunstindustrimuseer",
+       "code": "91.021"
+      },
+      {
+       "category": "Drift av kulturhistoriske museer",
+       "code": "91.022"
+      },
+      {
+       "category": "Drift av naturhistoriske museer",
+       "code": "91.023"
+      },
+      {
+       "category": "Drift av museer ikke nevnt annet sted",
+       "code": "91.029"
+      },
+      {
+       "category": "Drift av historiske steder og bygninger og lignende severdigheter",
+       "code": "91.030"
+      },
+      {
+       "category": "Drift av botaniske og zoologiske hager og naturreservater",
+       "code": "91.040"
+      },
+      {
+       "category": "Lotteri og totalisatorspill",
+       "code": "92.000"
+      },
+      {
+       "category": "Drift av idrettsanlegg",
+       "code": "93.110"
+      },
+      {
+       "category": "Idrettslag og -klubber",
+       "code": "93.120"
+      },
+      {
+       "category": "Treningssentre",
+       "code": "93.130"
+      },
+      {
+       "category": "Andre sportsaktiviteter",
+       "code": "93.190"
+      },
+      {
+       "category": "Drift av fornøyelses- og temaparker",
+       "code": "93.210"
+      },
+      {
+       "category": "Opplevelsesaktiviteter",
+       "code": "93.291"
+      },
+      {
+       "category": "Fritidsetablissement",
+       "code": "93.292"
+      },
+      {
+       "category": "Fritidsvirksomhet ellers",
+       "code": "93.299"
+      },
+      {
+       "category": "Næringslivs- og arbeidsgiverorganisasjoner",
+       "code": "94.110"
+      },
+      {
+       "category": "Yrkessammenslutninger",
+       "code": "94.120"
+      },
+      {
+       "category": "Arbeidstakerorganisasjoner",
+       "code": "94.200"
+      },
+      {
+       "category": "Religiøse organisasjoner",
+       "code": "94.910"
+      },
+      {
+       "category": "Partipolitiske organisasjoner",
+       "code": "94.920"
+      },
+      {
+       "category": "Aktiviteter i andre interesseorganisasjoner ikke nevnt annet sted",
+       "code": "94.991"
+      },
+      {
+       "category": "Fond/legat som støtter veldedige og allmennyttige formål",
+       "code": "94.992"
+      },
+      {
+       "category": "Reparasjon av datamaskiner og tilleggsutstyr",
+       "code": "95.110"
+      },
+      {
+       "category": "Reparasjon av kommunikasjonsutstyr",
+       "code": "95.120"
+      },
+      {
+       "category": "Reparasjon av elektronikk til husholdningsbruk",
+       "code": "95.210"
+      },
+      {
+       "category": "Reparasjon av husholdningsvarer og hageredskaper",
+       "code": "95.220"
+      },
+      {
+       "category": "Reparasjon av skotøy og lærvarer",
+       "code": "95.230"
+      },
+      {
+       "category": "Reparasjon av møbler og boliginnredning",
+       "code": "95.240"
+      },
+      {
+       "category": "Reparasjon av ur, gull- og sølvvarer",
+       "code": "95.250"
+      },
+      {
+       "category": "Reparasjon av andre husholdningsvarer og varer til personlig bruk",
+       "code": "95.290"
+      },
+      {
+       "category": "Vaskeri- og renserivirksomhet",
+       "code": "96.010"
+      },
+      {
+       "category": "Frisering og annen skjønnhetspleie",
+       "code": "96.020"
+      },
+      {
+       "category": "Begravelsesbyråvirksomhet og drift av kirkegårder og krematorier",
+       "code": "96.030"
+      },
+      {
+       "category": "Virksomhet knyttet til kroppspleie og fysisk velvære",
+       "code": "96.040"
+      },
+      {
+       "category": "Personlig tjenesteyting ikke nevnt annet sted",
+       "code": "96.090"
+      },
+      {
+       "category": "Lønnet arbeid i private husholdninger",
+       "code": "97.000"
+      },
+      {
+       "category": "Internasjonale organisasjoner og organer",
+       "code": "99.000"
+      }
+     ],
+     "missingValues": []
+    }
+   }
+  ]
+ },
+ "identifierVariables": [
+  {
+   "name": "PERSONID_1",
+   "label": "Personidentifikator",
+   "notPseudonym": false,
+   "dataType": "Long",
+   "format": "RandomUInt48",
+   "variableRole": "Identifier",
+   "keyType": {
+    "name": "PERSON",
+    "label": "Person",
+    "description": "Statistisk enhet er person (individ, enkeltmenenske)"
+   },
+   "representedVariables": [
+    {
+     "description": "Identifikator for person i RAIRD",
+     "validPeriod": {
+      "start": 16755,
+      "stop": 18216
+     },
+     "valueDomain": {
+      "description": "N/A",
+      "unitOfMeasure": "N/A"
+     }
+    }
+   ]
+  }
+ ],
+ "attributeVariables": [
+  {
+   "name": "STOP",
+   "label": "Stoppdato",
+   "notPseudonym": true,
+   "dataType": "Instant",
+   "variableRole": "Stop",
+   "representedVariables": [
+    {
+     "description": "Stoppdato/sluttdato for hendelsen",
+     "validPeriod": {
+      "start": 16755,
+      "stop": 18216
+     },
+     "valueDomain": {
+      "description": "N/A",
+      "unitOfMeasure": "N/A"
+     }
+    }
+   ]
+  },
+  {
+   "name": "START",
+   "label": "Startdato",
+   "notPseudonym": true,
+   "dataType": "Instant",
+   "variableRole": "Start",
+   "representedVariables": [
+    {
+     "description": "Startdato/måletidspunktet for hendelsen",
+     "validPeriod": {
+      "start": 16755,
+      "stop": 18216
+     },
+     "valueDomain": {
+      "description": "N/A",
+      "unitOfMeasure": "N/A"
+     }
+    }
+   ]
+  }
+ ],
+ "temporalStatusDates": [
+  17851,
+  16755,
+  18216,
+  17486,
+  17121
+ ],
+ "temporalEnd": {
+  "description": "Variabelen oppdateres ikke."
+ },
+ "globalTemporalCoverage": {
+  "start": -1096,
+  "stop": 20759
+ },
+ "updatedAt": 1603982268
+}

@@ -1,0 +1,136 @@
+{
+ "name": "PENSJ1967FDT_FRADFAK",
+ "temporality": "STATUS",
+ "languageCode": "no",
+ "sensitivityLevel": "PERSON_GENERAL",
+ "populationDescription": "Hovedsakelig bosatte i Norge (fnr), men noen ikke-bosatte kan inngå (dnr)",
+ "subjectFields": [
+  "Sosiale forhold og kriminalitet",
+  "Trygd og stønad"
+ ],
+ "temporalCoverage": {
+  "start": -732,
+  "stop": 7669
+ },
+ "measureVariable": {
+  "name": "PENSJ1967FDT_FRADFAK",
+  "label": "Pensjon, fradrag for arbeidsinntekt",
+  "notPseudonym": true,
+  "dataType": "Long",
+  "variableRole": "Measure",
+  "representedVariables": [
+   {
+    "description": "Viser et tall for det pensjonen reduseres på grunnlag av arbeidsinntekt som den gjenlevende har eller kan forventes å få, beregnet på årsbasis som andel av aktuelt grunnbeløp. Angis med 5 desimaler",
+    "validPeriod": {
+     "start": -732,
+     "stop": 7669
+    },
+    "valueDomain": {
+     "description": "Faktor",
+     "unitOfMeasure": "N/A"
+    }
+   }
+  ]
+ },
+ "identifierVariables": [
+  {
+   "name": "PERSONID_1",
+   "label": "Personidentifikator",
+   "notPseudonym": false,
+   "dataType": "Long",
+   "format": "RandomUInt48",
+   "variableRole": "Identifier",
+   "keyType": {
+    "name": "PERSON",
+    "label": "Person",
+    "description": "Statistisk enhet er person (individ, enkeltmenenske)"
+   },
+   "representedVariables": [
+    {
+     "description": "Identifikator for person i RAIRD",
+     "validPeriod": {
+      "start": -732,
+      "stop": 7669
+     },
+     "valueDomain": {
+      "description": "N/A",
+      "unitOfMeasure": "N/A"
+     }
+    }
+   ]
+  }
+ ],
+ "attributeVariables": [
+  {
+   "name": "STOP",
+   "label": "Stoppdato",
+   "notPseudonym": true,
+   "dataType": "Instant",
+   "variableRole": "Stop",
+   "representedVariables": [
+    {
+     "description": "Stoppdato/sluttdato for hendelsen",
+     "validPeriod": {
+      "start": -732,
+      "stop": 7669
+     },
+     "valueDomain": {
+      "description": "N/A",
+      "unitOfMeasure": "N/A"
+     }
+    }
+   ]
+  },
+  {
+   "name": "START",
+   "label": "Startdato",
+   "notPseudonym": true,
+   "dataType": "Instant",
+   "variableRole": "Start",
+   "representedVariables": [
+    {
+     "description": "Startdato/måletidspunktet for hendelsen",
+     "validPeriod": {
+      "start": -732,
+      "stop": 7669
+     },
+     "valueDomain": {
+      "description": "N/A",
+      "unitOfMeasure": "N/A"
+     }
+    }
+   ]
+  }
+ ],
+ "temporalStatusDates": [
+  5478,
+  -732,
+  -366,
+  1825,
+  6573,
+  2921,
+  5843,
+  2190,
+  7669,
+  6208,
+  -1,
+  6939,
+  2556,
+  729,
+  3651,
+  4017,
+  7304,
+  1095,
+  4747,
+  3286,
+  1460,
+  5112,
+  4382,
+  364
+ ],
+ "globalTemporalCoverage": {
+  "start": -1096,
+  "stop": 20759
+ },
+ "updatedAt": 1592485055
+}

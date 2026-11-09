@@ -1,0 +1,309 @@
+{
+ "name": "REGSYS_FRTK_ORG_FORM",
+ "temporality": "STATUS",
+ "languageCode": "no",
+ "sensitivityLevel": "PERSON_GENERAL",
+ "populationDescription": "Variabelen omfatter bosatte personer 15-74 år som er sysselsatt, hovedarbeidsforhold i november. Observasjoner med verdiene 0 og uoppgitt (missing) er utelatt.",
+ "subjectFields": [
+  "Arbeid og lønn",
+  "Sysselsetting",
+  "Virksomheter og foretak",
+  "Virksomheter, foretak og regnskap"
+ ],
+ "temporalCoverage": {
+  "start": 16755,
+  "stop": 19312
+ },
+ "measureVariable": {
+  "name": "REGSYS_FRTK_ORG_FORM",
+  "label": "Foretakets organisasjonsform",
+  "notPseudonym": true,
+  "dataType": "String",
+  "variableRole": "Measure",
+  "representedVariables": [
+   {
+    "description": "Vi oppdaterer ikke lenger variabelen, fordi den i visse tilfeller kan benyttes slik at det er risiko for å avsløre konfidensiell informasjon om foretak. Vi vil revurdere dette når vi begynner å tilby analyser på næringsdata i tjenesten.\n \n Variabelen angir organisasjonsform for foretaket der personen har sitt hovedarbeidsforhold (det er i hovedsak arbeidsforholdet med høyest avtalt arbeidstid). \n \n Organisasjonsform er den offisielle betegnelsen på hvordan virksomheten er organisert og hvilke bestemmelser overfor ansvar, risiko, skatt, rettigheter og plikter som er gjeldende. Organisasjonsform fastsettes ved registrering av ny enhet, og angir organisasjonsform for juridiske enheter. En enhet kan som hovedregel ikke endre organisasjonsform uten å gå veien om sletting og ny stiftelse.\n \n Denne variabelen erstatter REGSYS_FORG_FRM fra og med 2015.\n \n Kilde for variabelen er registerbaserte sysselsettingsdata. Les dokumentasjonen om datagrunnlag, prosessering og definisjoner her:\n - [Sysselsetting, registerbasert](https://www.ssb.no/arbeid-og-lonn/sysselsetting/statistikk/sysselsetting-registerbasert) \n - [Om datagrunnlaget for registerbasert sysselsettingsstatistikk](https://www.ssb.no/data-til-forskning/utlan-av-data-til-forskere/variabellister/a-ordningen/om-datagrunnlaget-for-registerbasert-sysselsettingsstatistikk) \n - [Registerbasert lønns- og sysselsettingsstatistikk basert på a-ordningen](https://www.ssb.no/arbeid-og-lonn/sysselsetting/artikler/registerbasert-lonns-og-sysselsettingsstatistikk-basert-pa-a-ordningen)",
+    "validPeriod": {
+     "start": 16436
+    },
+    "valueDomain": {
+     "codeList": [
+      {
+       "category": "Underenhet til ikke-næringsdrivende",
+       "code": "AAFY"
+      },
+      {
+       "category": "Administrativ enhet -offentlig sektor",
+       "code": "ADOS"
+      },
+      {
+       "category": "Annen juridisk person",
+       "code": "ANNA"
+      },
+      {
+       "category": "Ansvarlig selskap",
+       "code": "ANS"
+      },
+      {
+       "category": "Aksjeselskap",
+       "code": "AS"
+      },
+      {
+       "category": "Allment aksjeselskap",
+       "code": "ASA"
+      },
+      {
+       "category": "Selskap med begrenset ansvar",
+       "code": "BA"
+      },
+      {
+       "category": "Boligbyggelag",
+       "code": "BBL"
+      },
+      {
+       "category": "Underenhet til næringsdrivende og offentlig forvaltning",
+       "code": "BEDR"
+      },
+      {
+       "category": "Andre bo",
+       "code": "BO"
+      },
+      {
+       "category": "Borettslag",
+       "code": "BRL"
+      },
+      {
+       "category": "Ansvarlig selskap med delt deltakeransvar",
+       "code": "DA"
+      },
+      {
+       "category": "Enkeltpersonforetak",
+       "code": "ENK"
+      },
+      {
+       "category": "Europeisk økonomisk foretaksgruppe",
+       "code": "EOFG"
+      },
+      {
+       "category": "Eierseksjonssameie",
+       "code": "ESEK"
+      },
+      {
+       "category": "Fylkeskommunalt foretak",
+       "code": "FKF"
+      },
+      {
+       "category": "Forening/lag/innretning",
+       "code": "FLI"
+      },
+      {
+       "category": "Fylkeskommune",
+       "code": "FYLK"
+      },
+      {
+       "category": "Gjensidig forsikringsselskap",
+       "code": "GFS"
+      },
+      {
+       "category": "Andre ikke-juridiske personer",
+       "code": "IKJP"
+      },
+      {
+       "category": "Interkommunalt selskap",
+       "code": "IKS"
+      },
+      {
+       "category": "Konkursbo",
+       "code": "KBO"
+      },
+      {
+       "category": "Kommunalt foretak",
+       "code": "KF"
+      },
+      {
+       "category": "Den norske kirke",
+       "code": "KIRK"
+      },
+      {
+       "category": "Kommune",
+       "code": "KOMM"
+      },
+      {
+       "category": "Kommandittselskap",
+       "code": "KS"
+      },
+      {
+       "category": "Kontorfellesskap",
+       "code": "KTRF"
+      },
+      {
+       "category": "Norskregistrert utenlandsk foretak",
+       "code": "NUF"
+      },
+      {
+       "category": "Særskilt oppdelt enhet",
+       "code": "OPMV"
+      },
+      {
+       "category": "Organisasjonsledd",
+       "code": "ORGL"
+      },
+      {
+       "category": "Andre enkeltpersoner registrert i tilknyttet register",
+       "code": "PERS"
+      },
+      {
+       "category": "Pensjonskasse",
+       "code": "PK"
+      },
+      {
+       "category": "Partrederi",
+       "code": "PRE"
+      },
+      {
+       "category": "Enkeltpersoner som registreres i Revisorregisteret",
+       "code": "REV"
+      },
+      {
+       "category": "Samvirkeforetak",
+       "code": "SA"
+      },
+      {
+       "category": "Tingsrettslig sameie",
+       "code": "SAM"
+      },
+      {
+       "category": "Europeisk selskap",
+       "code": "SE"
+      },
+      {
+       "category": "Statsforetak",
+       "code": "SF"
+      },
+      {
+       "category": "Sparebank",
+       "code": "SPA"
+      },
+      {
+       "category": "Staten",
+       "code": "STAT"
+      },
+      {
+       "category": "Stiftelse",
+       "code": "STI"
+      },
+      {
+       "category": "Annet foretak iflg. særskilt lov",
+       "code": "SÆR"
+      },
+      {
+       "category": "Tvangsregistrert for MVA",
+       "code": "TVAM"
+      },
+      {
+       "category": "Udefinert",
+       "code": "UDEF"
+      },
+      {
+       "category": "Utenlandsk enhet",
+       "code": "UTLA"
+      },
+      {
+       "category": "Verdipapirfond",
+       "code": "VPFO"
+      }
+     ],
+     "missingValues": []
+    }
+   }
+  ]
+ },
+ "identifierVariables": [
+  {
+   "name": "PERSONID_1",
+   "label": "Personidentifikator",
+   "notPseudonym": false,
+   "dataType": "Long",
+   "format": "RandomUInt48",
+   "variableRole": "Identifier",
+   "keyType": {
+    "name": "PERSON",
+    "label": "Person",
+    "description": "Person er et enkeltmenneske, individ."
+   },
+   "representedVariables": [
+    {
+     "description": "Identifikator for person i microdata",
+     "validPeriod": {
+      "start": 16755,
+      "stop": 19312
+     },
+     "valueDomain": {
+      "description": "Pseudonymisert personnummer",
+      "unitOfMeasure": "N/A"
+     }
+    }
+   ]
+  }
+ ],
+ "attributeVariables": [
+  {
+   "name": "START",
+   "label": "Startdato",
+   "notPseudonym": true,
+   "dataType": "Instant",
+   "variableRole": "Start",
+   "representedVariables": [
+    {
+     "description": "Startdato/måletidspunktet for hendelsen",
+     "validPeriod": {
+      "start": 16755,
+      "stop": 19312
+     },
+     "valueDomain": {
+      "description": "Dato oppgitt i dager siden 1970-01-01",
+      "unitOfMeasure": "N/A"
+     }
+    }
+   ]
+  },
+  {
+   "name": "STOP",
+   "label": "Stoppdato",
+   "notPseudonym": true,
+   "dataType": "Instant",
+   "variableRole": "Stop",
+   "representedVariables": [
+    {
+     "description": "Stoppdato/måletidspunktet for hendelsen",
+     "validPeriod": {
+      "start": 16755,
+      "stop": 19312
+     },
+     "valueDomain": {
+      "description": "Dato oppgitt i dager siden 1970-01-01",
+      "unitOfMeasure": "N/A"
+     }
+    }
+   ]
+  }
+ ],
+ "temporalStatusDates": [
+  16755,
+  17121,
+  17486,
+  17851,
+  18216,
+  18582,
+  18947,
+  19312
+ ],
+ "temporalEnd": {
+  "description": "Variabelen oppdateres ikke."
+ },
+ "globalTemporalCoverage": {
+  "start": -1096,
+  "stop": 20759
+ },
+ "updatedAt": 1686563894
+}

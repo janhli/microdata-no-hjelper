@@ -1,0 +1,130 @@
+{
+ "name": "NUDB_SOSBAK",
+ "temporality": "FIXED",
+ "languageCode": "no",
+ "sensitivityLevel": "PERSON_GENERAL",
+ "populationDescription": "Variabelen omfatter alle personer der foreldrenes høyeste utdanning er registrert. Gjelder forelderen som har oppnådd høyest utdanning.",
+ "subjectFields": [
+  "Utdanning",
+  "Utdanningsnivå"
+ ],
+ "temporalCoverage": {
+  "start": -25567,
+  "stop": 19996
+ },
+ "measureVariable": {
+  "name": "NUDB_SOSBAK",
+  "label": "Sosial bakgrunn - utdanning",
+  "notPseudonym": true,
+  "dataType": "String",
+  "variableRole": "Measure",
+  "representedVariables": [
+   {
+    "description": "Sosial bakgrunn målt basert på foreldrenes høyeste utdanningsnivå på det tidspunkt da personen var 16 år, jf variabelene NUDB_NUS2000_FAR_16 og NUDB_NUS2000_MOR_16. \n \n Personer som er under 16 år har foreldres utdanning per dags dato.",
+    "validPeriod": {
+     "start": 273
+    },
+    "valueDomain": {
+     "codeList": [
+      {
+       "category": "Lang høyere. Mor eller far eller begge har utdanning på nivå 7 el. 8",
+       "code": "1"
+      },
+      {
+       "category": "Kort høyere. Mor eller far eller begge har utdanning på nivå 6",
+       "code": "2"
+      },
+      {
+       "category": "Videregående. Mor eller far eller begge har utdanning på nivå 3, 4 eller 5",
+       "code": "3"
+      },
+      {
+       "category": "Grunnskole. Mor eller far eller begge har utdanning på nivå 0, 1 eller 2",
+       "code": "4"
+      },
+      {
+       "category": "Uoppgitt. Begge foreldrene har uoppgitt utdanning.",
+       "code": "9"
+      }
+     ],
+     "missingValues": []
+    }
+   }
+  ]
+ },
+ "identifierVariables": [
+  {
+   "name": "PERSONID_1",
+   "label": "Personidentifikator",
+   "notPseudonym": false,
+   "dataType": "Long",
+   "format": "RandomUInt48",
+   "variableRole": "Identifier",
+   "keyType": {
+    "name": "PERSON",
+    "label": "Person",
+    "description": "Person er et enkeltmenneske, individ."
+   },
+   "representedVariables": [
+    {
+     "description": "Identifikator for person i microdata",
+     "validPeriod": {
+      "start": -25567,
+      "stop": 19996
+     },
+     "valueDomain": {
+      "description": "Pseudonymisert personnummer",
+      "unitOfMeasure": "N/A"
+     }
+    }
+   ]
+  }
+ ],
+ "attributeVariables": [
+  {
+   "name": "START",
+   "label": "Startdato",
+   "notPseudonym": true,
+   "dataType": "Instant",
+   "variableRole": "Start",
+   "representedVariables": [
+    {
+     "description": "Startdato/måletidspunktet for hendelsen",
+     "validPeriod": {
+      "start": -25567,
+      "stop": 19996
+     },
+     "valueDomain": {
+      "description": "Dato oppgitt i dager siden 1970-01-01",
+      "unitOfMeasure": "N/A"
+     }
+    }
+   ]
+  },
+  {
+   "name": "STOP",
+   "label": "Stoppdato",
+   "notPseudonym": true,
+   "dataType": "Instant",
+   "variableRole": "Stop",
+   "representedVariables": [
+    {
+     "description": "Stoppdato/måletidspunktet for hendelsen",
+     "validPeriod": {
+      "start": -25567,
+      "stop": 19996
+     },
+     "valueDomain": {
+      "description": "Dato oppgitt i dager siden 1970-01-01",
+      "unitOfMeasure": "N/A"
+     }
+    }
+   ]
+  }
+ ],
+ "globalTemporalCoverage": {
+  "start": -1096,
+  "stop": 20759
+ },
+ "updatedAt": 1758716644
+}

@@ -1,0 +1,183 @@
+{
+ "name": "SIVSTANDFDT_SIVSTAND",
+ "temporality": "EVENT",
+ "languageCode": "no",
+ "sensitivityLevel": "PERSON_GENERAL",
+ "populationDescription": "Hovedsakelig bosatte i Norge (fnr), men noen ikke-bosatte kan inngå (dnr)",
+ "subjectFields": [
+  "Befolkning"
+ ],
+ "temporalCoverage": {
+  "start": 8034,
+  "stop": 20088
+ },
+ "measureVariable": {
+  "name": "SIVSTANDFDT_SIVSTAND",
+  "label": "Sivilstand",
+  "notPseudonym": true,
+  "dataType": "String",
+  "variableRole": "Measure",
+  "representedVariables": [
+   {
+    "description": "Status i forhold til ekteskapslovgivningen",
+    "validPeriod": {
+     "start": -25567,
+     "stop": 8034
+    },
+    "valueDomain": {
+     "codeList": [
+      {
+       "category": "Ukjent",
+       "code": "0"
+      }
+     ],
+     "missingValues": []
+    }
+   },
+   {
+    "description": "Status i forhold til ekteskapslovgivningen",
+    "validPeriod": {
+     "start": 8035,
+     "stop": 8612
+    },
+    "valueDomain": {
+     "missingValues": [],
+     "delta": {
+      "remove": [],
+      "reorder": [],
+      "replace": {},
+      "insert": {
+       "1": {
+        "category": "Ugift",
+        "code": "1"
+       },
+       "2": {
+        "category": "Gift",
+        "code": "2"
+       },
+       "3": {
+        "category": "Enke/enkemann",
+        "code": "3"
+       },
+       "4": {
+        "category": "Skilt",
+        "code": "4"
+       },
+       "5": {
+        "category": "Separert",
+        "code": "5"
+       }
+      }
+     }
+    }
+   },
+   {
+    "description": "Status i forhold til ekteskapslovgivningen",
+    "validPeriod": {
+     "start": 8613
+    },
+    "valueDomain": {
+     "missingValues": [],
+     "delta": {
+      "remove": [],
+      "reorder": [],
+      "replace": {},
+      "insert": {
+       "6": {
+        "category": "Registrert partner",
+        "code": "6"
+       },
+       "7": {
+        "category": "Separert partner",
+        "code": "7"
+       },
+       "8": {
+        "category": "Skilt partner",
+        "code": "8"
+       },
+       "9": {
+        "category": "Gjenlevende partner",
+        "code": "9"
+       }
+      }
+     }
+    }
+   }
+  ]
+ },
+ "identifierVariables": [
+  {
+   "name": "PERSONID_1",
+   "label": "Personidentifikator",
+   "notPseudonym": false,
+   "dataType": "Long",
+   "format": "RandomUInt48",
+   "variableRole": "Identifier",
+   "keyType": {
+    "name": "PERSON",
+    "label": "Person",
+    "description": "Person er et enkeltmenneske, individ."
+   },
+   "representedVariables": [
+    {
+     "description": "Identifikator for person i microdata",
+     "validPeriod": {
+      "start": 8034,
+      "stop": 20088
+     },
+     "valueDomain": {
+      "description": "Pseudonymisert personnummer",
+      "unitOfMeasure": "N/A"
+     }
+    }
+   ]
+  }
+ ],
+ "attributeVariables": [
+  {
+   "name": "START",
+   "label": "Startdato",
+   "notPseudonym": true,
+   "dataType": "Instant",
+   "variableRole": "Start",
+   "representedVariables": [
+    {
+     "description": "Startdato/måletidspunktet for hendelsen",
+     "validPeriod": {
+      "start": 8034,
+      "stop": 20088
+     },
+     "valueDomain": {
+      "description": "Dato oppgitt i dager siden 1970-01-01",
+      "unitOfMeasure": "N/A"
+     }
+    }
+   ]
+  },
+  {
+   "name": "STOP",
+   "label": "Stoppdato",
+   "notPseudonym": true,
+   "dataType": "Instant",
+   "variableRole": "Stop",
+   "representedVariables": [
+    {
+     "description": "Stoppdato/måletidspunktet for hendelsen",
+     "validPeriod": {
+      "start": 8034,
+      "stop": 20088
+     },
+     "valueDomain": {
+      "description": "Dato oppgitt i dager siden 1970-01-01",
+      "unitOfMeasure": "N/A"
+     }
+    }
+   ]
+  }
+ ],
+ "globalTemporalCoverage": {
+  "start": -1096,
+  "stop": 20759
+ },
+ "updatedAt": 1769522030
+}

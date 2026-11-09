@@ -1,0 +1,370 @@
+{
+ "name": "KJORETOY_KJT_GRUP",
+ "temporality": "STATUS",
+ "languageCode": "no",
+ "sensitivityLevel": "PERSON_GENERAL",
+ "populationDescription": "Variabelen omfatter registrerte kjøretøy per 31.12 for hvert år i variabelens gyldighetsperiode. Observasjoner med verdiene 0 og uoppgitt (missing) er utelatt.\n \n Variabler med enhetstype KJØRETØY er gitt ved kjøretøyets eierforhold. Enhetstypen er en kombinasjon av bilens registreringsnummer og eierens fødselsnunmmer.",
+ "subjectFields": [
+  "Kjøretøy",
+  "Landtransport",
+  "Motorvogn",
+  "Transport og reiseliv"
+ ],
+ "temporalCoverage": {
+  "start": 10591,
+  "stop": 20453
+ },
+ "measureVariable": {
+  "name": "KJORETOY_KJT_GRUP",
+  "label": "Kjøretøygruppe kode",
+  "notPseudonym": true,
+  "dataType": "String",
+  "variableRole": "Measure",
+  "representedVariables": [
+   {
+    "description": "Variabelen viser inndeling av bilparken i kjøretøygrupper i samsvar med kjøretøyforskriften av 4. oktober 1994 § 2-2 samt forskrift om engangsavgift på motorvogner av 19. mars 2001. Kodene benyttes i Kjøretøyregisteret som driftes av Statens vegvesen.",
+    "validPeriod": {
+     "start": 10227
+    },
+    "valueDomain": {
+     "codeList": [
+      {
+       "category": "Personbil unntatt ambulanse",
+       "code": "101"
+      },
+      {
+       "category": "Personbil (Ambulanse)",
+       "code": "106"
+      },
+      {
+       "category": "Personbil (Leilighetsambulanse)",
+       "code": "107"
+      },
+      {
+       "category": "Buss,- registrert første gang her i landet før 1.1.1983",
+       "code": "201"
+      },
+      {
+       "category": "Buss,- registret for mindre enn 17 passasjerer",
+       "code": "210"
+      },
+      {
+       "category": "Buss (Klasse 1)",
+       "code": "211"
+      },
+      {
+       "category": "Buss (Klasse 2)",
+       "code": "212"
+      },
+      {
+       "category": "Buss (Klasse 3)",
+       "code": "213"
+      },
+      {
+       "category": "Buss (Klasse 2 og 3)",
+       "code": "214"
+      },
+      {
+       "category": "Buss (minst 10 seter i fartsretning)",
+       "code": "215"
+      },
+      {
+       "category": "Kombinert bil",
+       "code": "301"
+      },
+      {
+       "category": "Varebil,- reg. f.g. før 1.1.1981, varebil (kl 2) reg. f. her i landet 1.1. 1981 eller senere",
+       "code": "310"
+      },
+      {
+       "category": "Varebil (Klasse2),- registrert første gang her i landet 1.1.1981 eller senere",
+       "code": "311"
+      },
+      {
+       "category": "Varebil (Likbil)",
+       "code": "312"
+      },
+      {
+       "category": "Varebil (Campingbil)",
+       "code": "313"
+      },
+      {
+       "category": "Varebil (klasse 1) fortollet etter 31.3.2001",
+       "code": "314"
+      },
+      {
+       "category": "Varebil (klasse 2) fortollet etter 31.3.2001",
+       "code": "315"
+      },
+      {
+       "category": "Campingbil",
+       "code": "316"
+      },
+      {
+       "category": "Lastebil (med plan),- åpent plan med og uten kapell, herunder dumperkasse",
+       "code": "320"
+      },
+      {
+       "category": "Lastebil (med lukket godsrom),- herunder flyttebil, thermovogn, bankbuss mv.",
+       "code": "321"
+      },
+      {
+       "category": "Lastebil (bergingsbil)",
+       "code": "323"
+      },
+      {
+       "category": "Lastebil,- betongblandebil, renovajonsbil, tømmertransportbil, containerbil og andre lastebiler",
+       "code": "325"
+      },
+      {
+       "category": "Lastebil (tankbil),- for bensin og olje",
+       "code": "330"
+      },
+      {
+       "category": "Lastebil (tankbil),- for andre varer enn bensin/olje",
+       "code": "335"
+      },
+      {
+       "category": "Lastebil (campingbil)",
+       "code": "336"
+      },
+      {
+       "category": "Trekkbil",
+       "code": "340"
+      },
+      {
+       "category": "Beltebil",
+       "code": "350"
+      },
+      {
+       "category": "Lastebil(med plan),-åpent plan m el. u kapell reg. etter 01.01 2005",
+       "code": "360"
+      },
+      {
+       "category": "Lastebil(med lukket godsrom),- reg. etter 01.01 2005",
+       "code": "361"
+      },
+      {
+       "category": "Lastebil(bergningsbil)l reg. etter 01.01 2005",
+       "code": "363"
+      },
+      {
+       "category": "Lastebil,-betongbl.bil, renov., tømmertransp. mv. reg etter 1. januar 2005",
+       "code": "365"
+      },
+      {
+       "category": "Lastebil (tankbil)for bensin og olje reg. etter 1.1.2005",
+       "code": "370"
+      },
+      {
+       "category": "Lastebil (tankbil)for andre varer enn bensin og olje. Registrert 1. januar 2005 eller senere",
+       "code": "375"
+      },
+      {
+       "category": "Lastebil (med plan) og totalvekt mindre enn 7501 kg, åpent plan med og uten kapell, herunder dumperkasse. Oppfyller krav til avgiftsgruppe b (rammekravet)",
+       "code": "380"
+      },
+      {
+       "category": "Lastebil (med lukket godsrom) og totalvekt mindre enn 7501 kg, herunder flyttebil, termovogn, bankbuss mv. Oppfyller krav til avgiftsgruppe b (rammekravet)",
+       "code": "381"
+      },
+      {
+       "category": "Traktor",
+       "code": "401"
+      },
+      {
+       "category": "Motorredskap (motorkran)",
+       "code": "501"
+      },
+      {
+       "category": "Motorredskap (motorsprøyte)",
+       "code": "502"
+      },
+      {
+       "category": "Motorredskap (motorstige)",
+       "code": "503"
+      },
+      {
+       "category": "Motorredskap,- annen motorredskap",
+       "code": "509"
+      },
+      {
+       "category": "Moped",
+       "code": "601"
+      },
+      {
+       "category": "Lett motorsykkel",
+       "code": "610"
+      },
+      {
+       "category": "Tung motorsykkel, herunder mellomtung motorsykkel",
+       "code": "620"
+      },
+      {
+       "category": "Tung motorsykkel (chopper-ombygd)",
+       "code": "621"
+      },
+      {
+       "category": "Snøscooter",
+       "code": "630"
+      },
+      {
+       "category": "Påhengsvogn (med tank),- ikke til traktor",
+       "code": "701"
+      },
+      {
+       "category": "Påhengsvogn (til traktor)",
+       "code": "702"
+      },
+      {
+       "category": "Påhengsvogn(campingtilhenger)",
+       "code": "703"
+      },
+      {
+       "category": "Påhengsvogn,- annen påhengsvogn",
+       "code": "709"
+      },
+      {
+       "category": "Slepvogn (med tank),- ikke til traktor",
+       "code": "711"
+      },
+      {
+       "category": "Slepvogn (til traktor)",
+       "code": "712"
+      },
+      {
+       "category": "Slepvogn (campingtilhenger)",
+       "code": "713"
+      },
+      {
+       "category": "Slepvogn,- annen slepvogn",
+       "code": "719"
+      },
+      {
+       "category": "Semitrailer (med tank),- ikke til traktor",
+       "code": "721"
+      },
+      {
+       "category": "Semitrailer (til traktor)",
+       "code": "722"
+      },
+      {
+       "category": "Semitrailer (campingtilhenger)",
+       "code": "723"
+      },
+      {
+       "category": "Semitrailer,- annen semitrailer",
+       "code": "729"
+      }
+     ],
+     "missingValues": []
+    }
+   }
+  ]
+ },
+ "identifierVariables": [
+  {
+   "name": "KJORETOY_ID",
+   "label": "Kjøretøysidentifikator",
+   "notPseudonym": false,
+   "dataType": "Long",
+   "format": "RandomUInt48",
+   "variableRole": "Identifier",
+   "keyType": {
+    "name": "KJORETOY",
+    "label": "Kjøretøy",
+    "description": "Kjøretøy er en innretning som er bestemt til å kjøre på bakken."
+   },
+   "representedVariables": [
+    {
+     "description": "Identifikator for kjøretøy i microdata",
+     "validPeriod": {
+      "start": 10591,
+      "stop": 20453
+     },
+     "valueDomain": {
+      "description": "Pseudonymisert kombinasjon av personnummer og registreringsnummer for kjøretøy",
+      "unitOfMeasure": "N/A"
+     }
+    }
+   ]
+  }
+ ],
+ "attributeVariables": [
+  {
+   "name": "START",
+   "label": "Startdato",
+   "notPseudonym": true,
+   "dataType": "Instant",
+   "variableRole": "Start",
+   "representedVariables": [
+    {
+     "description": "Startdato/måletidspunktet for hendelsen",
+     "validPeriod": {
+      "start": 10591,
+      "stop": 20453
+     },
+     "valueDomain": {
+      "description": "Dato oppgitt i dager siden 1970-01-01",
+      "unitOfMeasure": "N/A"
+     }
+    }
+   ]
+  },
+  {
+   "name": "STOP",
+   "label": "Stoppdato",
+   "notPseudonym": true,
+   "dataType": "Instant",
+   "variableRole": "Stop",
+   "representedVariables": [
+    {
+     "description": "Stoppdato/måletidspunktet for hendelsen",
+     "validPeriod": {
+      "start": 10591,
+      "stop": 20453
+     },
+     "valueDomain": {
+      "description": "Dato oppgitt i dager siden 1970-01-01",
+      "unitOfMeasure": "N/A"
+     }
+    }
+   ]
+  }
+ ],
+ "temporalStatusDates": [
+  10591,
+  10956,
+  11322,
+  11687,
+  12052,
+  12417,
+  12783,
+  13148,
+  13513,
+  13878,
+  14244,
+  14609,
+  14974,
+  15339,
+  15705,
+  16070,
+  16435,
+  16800,
+  17166,
+  17531,
+  17896,
+  18261,
+  18627,
+  18992,
+  19357,
+  19722,
+  20088,
+  20453
+ ],
+ "globalTemporalCoverage": {
+  "start": -1096,
+  "stop": 20759
+ },
+ "updatedAt": 1780040280
+}

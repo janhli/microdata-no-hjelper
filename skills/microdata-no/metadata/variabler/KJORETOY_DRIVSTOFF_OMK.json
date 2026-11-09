@@ -1,0 +1,247 @@
+{
+ "name": "KJORETOY_DRIVSTOFF_OMK",
+ "temporality": "STATUS",
+ "languageCode": "no",
+ "sensitivityLevel": "PERSON_GENERAL",
+ "populationDescription": "Variabelen omfatter registrerte kjøretøy per 31.12 for hvert år i variabelens gyldighetsperiode. Observasjoner med verdiene 0 og uoppgitt (missing) er utelatt.\n \n Variabler med enhetstype KJØRETØY er gitt ved kjøretøyets eierforhold. Enhetstypen er en kombinasjon av bilens registreringsnummer og eierens fødselsnunmmer.",
+ "subjectFields": [
+  "Kjøretøy",
+  "Landtransport",
+  "Motorvogn",
+  "Transport og reiseliv"
+ ],
+ "temporalCoverage": {
+  "start": 10591,
+  "stop": 20453
+ },
+ "measureVariable": {
+  "name": "KJORETOY_DRIVSTOFF_OMK",
+  "label": "Drivstofftype",
+  "notPseudonym": true,
+  "dataType": "String",
+  "variableRole": "Measure",
+  "representedVariables": [
+   {
+    "description": "Variabelen viser kjøretøyets drivstofftype.",
+    "validPeriod": {
+     "start": 10227,
+     "stop": 18261
+    },
+    "valueDomain": {
+     "codeList": [
+      {
+       "category": "Bensin",
+       "code": "01"
+      },
+      {
+       "category": "Diesel",
+       "code": "02"
+      },
+      {
+       "category": "Parafin",
+       "code": "03"
+      },
+      {
+       "category": "Gass",
+       "code": "04"
+      },
+      {
+       "category": "Elektrisk",
+       "code": "05"
+      },
+      {
+       "category": "Hydrogen",
+       "code": "06"
+      },
+      {
+       "category": "Bensin hybrid",
+       "code": "07"
+      },
+      {
+       "category": "Diesel hybrid",
+       "code": "08"
+      },
+      {
+       "category": "Annet drivstoff",
+       "code": "09"
+      }
+     ],
+     "missingValues": []
+    }
+   },
+   {
+    "description": "Variabelen viser kjøretøyets drivstofftype.",
+    "validPeriod": {
+     "start": 18262
+    },
+    "valueDomain": {
+     "missingValues": [],
+     "delta": {
+      "remove": [],
+      "reorder": [],
+      "replace": {},
+      "insert": {
+       "9": {
+        "category": "Biodiesel",
+        "code": "10"
+       },
+       "10": {
+        "category": "Biobensin",
+        "code": "11"
+       },
+       "11": {
+        "category": "LPG-gass",
+        "code": "12"
+       },
+       "12": {
+        "category": "CNG-gass",
+        "code": "13"
+       },
+       "13": {
+        "category": "Metanol",
+        "code": "14"
+       },
+       "14": {
+        "category": "Etanol",
+        "code": "15"
+       },
+       "15": {
+        "category": "LPG A",
+        "code": "16"
+       },
+       "16": {
+        "category": "LPG B",
+        "code": "17"
+       },
+       "17": {
+        "category": "CNG 20",
+        "code": "18"
+       },
+       "18": {
+        "category": "CNG 25",
+        "code": "19"
+       },
+       "19": {
+        "category": "Komprimert luft",
+        "code": "20"
+       },
+       "20": {
+        "category": "LNG",
+        "code": "21"
+       },
+       "21": {
+        "category": "CNG og LNG",
+        "code": "22"
+       }
+      }
+     }
+    }
+   }
+  ]
+ },
+ "identifierVariables": [
+  {
+   "name": "KJORETOY_ID",
+   "label": "Kjøretøysidentifikator",
+   "notPseudonym": false,
+   "dataType": "Long",
+   "format": "RandomUInt48",
+   "variableRole": "Identifier",
+   "keyType": {
+    "name": "KJORETOY",
+    "label": "Kjøretøy",
+    "description": "Kjøretøy er en innretning som er bestemt til å kjøre på bakken."
+   },
+   "representedVariables": [
+    {
+     "description": "Identifikator for kjøretøy i microdata",
+     "validPeriod": {
+      "start": 10591,
+      "stop": 20453
+     },
+     "valueDomain": {
+      "description": "Pseudonymisert kombinasjon av personnummer og registreringsnummer for kjøretøy",
+      "unitOfMeasure": "N/A"
+     }
+    }
+   ]
+  }
+ ],
+ "attributeVariables": [
+  {
+   "name": "START",
+   "label": "Startdato",
+   "notPseudonym": true,
+   "dataType": "Instant",
+   "variableRole": "Start",
+   "representedVariables": [
+    {
+     "description": "Startdato/måletidspunktet for hendelsen",
+     "validPeriod": {
+      "start": 10591,
+      "stop": 20453
+     },
+     "valueDomain": {
+      "description": "Dato oppgitt i dager siden 1970-01-01",
+      "unitOfMeasure": "N/A"
+     }
+    }
+   ]
+  },
+  {
+   "name": "STOP",
+   "label": "Stoppdato",
+   "notPseudonym": true,
+   "dataType": "Instant",
+   "variableRole": "Stop",
+   "representedVariables": [
+    {
+     "description": "Stoppdato/måletidspunktet for hendelsen",
+     "validPeriod": {
+      "start": 10591,
+      "stop": 20453
+     },
+     "valueDomain": {
+      "description": "Dato oppgitt i dager siden 1970-01-01",
+      "unitOfMeasure": "N/A"
+     }
+    }
+   ]
+  }
+ ],
+ "temporalStatusDates": [
+  10591,
+  10956,
+  11322,
+  11687,
+  12052,
+  12417,
+  12783,
+  13148,
+  13513,
+  13878,
+  14244,
+  14609,
+  14974,
+  15339,
+  15705,
+  16070,
+  16435,
+  16800,
+  17166,
+  17531,
+  17896,
+  18261,
+  18627,
+  18992,
+  19357,
+  19722,
+  20088,
+  20453
+ ],
+ "globalTemporalCoverage": {
+  "start": -1096,
+  "stop": 20759
+ },
+ "updatedAt": 1780040280
+}

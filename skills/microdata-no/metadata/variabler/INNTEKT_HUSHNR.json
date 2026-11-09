@@ -1,0 +1,139 @@
+{
+ "name": "INNTEKT_HUSHNR",
+ "temporality": "STATUS",
+ "languageCode": "no",
+ "sensitivityLevel": "PERSON_GENERAL",
+ "populationDescription": "Variabelen omfatter bosatte per 31.12.ÅÅÅÅ. Observasjoner med verdiene 0 og uoppgitt (missing) er utelatt.",
+ "subjectFields": [
+  "Befolkning",
+  "Inntekt"
+ ],
+ "temporalCoverage": {
+  "start": 12783,
+  "stop": 20088
+ },
+ "measureVariable": {
+  "name": "INNTEKT_HUSHNR",
+  "label": "Husholdningsnummer",
+  "notPseudonym": false,
+  "dataType": "Long",
+  "format": "RandomUInt48",
+  "variableRole": "Measure",
+  "keyType": {
+   "name": "HUSHOLDNING",
+   "label": "Husholdning",
+   "description": "En husholdning består av personer som er fast bosatt i samme bolig (boenhet) eller institusjon. En privathusholdning består av personer som er fast bosatt i samme bolig, der denne boligen ikke er en institusjon. Privathusholdninger deles inn i bo- og kosthusholdninger. Bohusholdninger består av personer som er fast bosatt i samme bolig, mens kosthusholdning består av personer som er fast bosatt i samme bolig og har felles kost. En felleshusholdning består av personer som er fast bosatt, og får dekket sine behov for kost, pleie og omsorg, på en institusjon."
+  },
+  "representedVariables": [
+   {
+    "description": "Husholdningsnummer er fødselsnummeret til kontaktpersonen i husholdningen. Personer med samme husholdningsnummer tilhører samme husholdning.\n \n Husholdningsnummer i inntektsstatistikken brukes for å vise de økonomiske levekårene til privathusholdningene, og man har tilnærmet seg en definisjon av husholdning som ligger opp til det som ofte benevnes som «kosthusholdning». Med det menes at husholdningens medlemmer har felles økonomi, felles tilgang på matvarer og andre livsnødvendigheter. Eksempelvis flyttes studenter ut av foreldrehusholdningen dersom det er en viss geografisk avstand mellom folkeregistrert bopel og studiested. Unge som ikke har meldt flytting, men som vi ser har arbeidsinntekt på et sted unna foreldrehjemmet som ikke tilsier pendling, flyttes også ut av foreldrehusholdningen. Beboere på alders- og sykehjem registreres som ikke tilhørende en privathusholdning. Felles for disse er at det forsøkes komme frem til de personer som daglig deler felles bopel og økonomi. \n \n Husholdningsnummer felles husholdningsøkonomi er relatert til variabler om inntekt for husholdninger som anses å ha felles husholdningsøkonomi. I tillegg foreligger en variabel BEFOLKNING_HUSHNR som angir husholdningsnummer for personer som tilhører samme bohusholdning.",
+    "validPeriod": {
+     "start": 12783,
+     "stop": 20088
+    },
+    "valueDomain": {
+     "description": "Pseudonymisert personnummer",
+     "unitOfMeasure": "N/A"
+    }
+   }
+  ]
+ },
+ "identifierVariables": [
+  {
+   "name": "PERSONID_1",
+   "label": "Personidentifikator",
+   "notPseudonym": false,
+   "dataType": "Long",
+   "format": "RandomUInt48",
+   "variableRole": "Identifier",
+   "keyType": {
+    "name": "PERSON",
+    "label": "Person",
+    "description": "Person er et enkeltmenneske, individ."
+   },
+   "representedVariables": [
+    {
+     "description": "Identifikator for person i microdata",
+     "validPeriod": {
+      "start": 12783,
+      "stop": 20088
+     },
+     "valueDomain": {
+      "description": "Pseudonymisert personnummer",
+      "unitOfMeasure": "N/A"
+     }
+    }
+   ]
+  }
+ ],
+ "attributeVariables": [
+  {
+   "name": "START",
+   "label": "Startdato",
+   "notPseudonym": true,
+   "dataType": "Instant",
+   "variableRole": "Start",
+   "representedVariables": [
+    {
+     "description": "Startdato/måletidspunktet for hendelsen",
+     "validPeriod": {
+      "start": 12783,
+      "stop": 20088
+     },
+     "valueDomain": {
+      "description": "Dato oppgitt i dager siden 1970-01-01",
+      "unitOfMeasure": "N/A"
+     }
+    }
+   ]
+  },
+  {
+   "name": "STOP",
+   "label": "Stoppdato",
+   "notPseudonym": true,
+   "dataType": "Instant",
+   "variableRole": "Stop",
+   "representedVariables": [
+    {
+     "description": "Stoppdato/måletidspunktet for hendelsen",
+     "validPeriod": {
+      "start": 12783,
+      "stop": 20088
+     },
+     "valueDomain": {
+      "description": "Dato oppgitt i dager siden 1970-01-01",
+      "unitOfMeasure": "N/A"
+     }
+    }
+   ]
+  }
+ ],
+ "temporalStatusDates": [
+  12783,
+  13148,
+  13513,
+  13878,
+  14244,
+  14609,
+  14974,
+  15339,
+  15705,
+  16070,
+  16435,
+  16800,
+  17166,
+  17531,
+  17896,
+  18261,
+  18627,
+  18992,
+  19357,
+  19722,
+  20088
+ ],
+ "globalTemporalCoverage": {
+  "start": -1096,
+  "stop": 20759
+ },
+ "updatedAt": 1771925041
+}

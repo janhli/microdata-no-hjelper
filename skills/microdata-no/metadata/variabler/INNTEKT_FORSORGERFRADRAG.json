@@ -1,0 +1,110 @@
+{
+ "name": "INNTEKT_FORSORGERFRADRAG",
+ "temporality": "ACCUMULATED",
+ "languageCode": "no",
+ "sensitivityLevel": "PERSON_GENERAL",
+ "populationDescription": "Variabelen omfatter bosatte per 31.12.ÅÅÅÅ. Observasjoner med verdiene 0 og uoppgitt (missing) er utelatt.",
+ "subjectFields": [
+  "Inntekt",
+  "Inntekt og forbruk"
+ ],
+ "temporalCoverage": {
+  "start": 8401,
+  "stop": 11322
+ },
+ "measureVariable": {
+  "name": "INNTEKT_FORSORGERFRADRAG",
+  "label": "Forsørgerfradrag",
+  "notPseudonym": true,
+  "dataType": "Long",
+  "variableRole": "Measure",
+  "representedVariables": [
+   {
+    "description": "Forsørgerfradrag er et fradrag i skatt som automatisk gis til personlige skattytere i forbindelse med forsørgelse av barn fra og med det året barnet er født til og med det inntektsåret barnet fyller 18 år. Hvis forsørgerfradraget er større enn sum utlignet skatt og avgifter, utbetales differansen ved skatteoppgjøret.\n \n Variabelen omfatter forsørgerfradrag i løpet av kalenderåret. Forsørgerfradrag (opphørt fra og med inntektsåret 2001) trekkes direkte fra i skatten, eller utbetales som en overføring dersom vedkommende ikke er ilignet skatt. I inntektsregnskapet blir forsørgerfradraget betraktet som en overføring. Dette betyr at forsørgerfradraget her ikke blir regnet med under fradrag i skatt.",
+    "validPeriod": {
+     "start": 8401,
+     "stop": 11322
+    },
+    "valueDomain": {
+     "description": "Beløp.",
+     "unitOfMeasure": "NOK"
+    }
+   }
+  ]
+ },
+ "identifierVariables": [
+  {
+   "name": "PERSONID_1",
+   "label": "Personidentifikator",
+   "notPseudonym": false,
+   "dataType": "Long",
+   "format": "RandomUInt48",
+   "variableRole": "Identifier",
+   "keyType": {
+    "name": "PERSON",
+    "label": "Person",
+    "description": "Statistisk enhet er person (individ, enkeltmenenske)"
+   },
+   "representedVariables": [
+    {
+     "description": "Identifikator for person i RAIRD",
+     "validPeriod": {
+      "start": 8401,
+      "stop": 11322
+     },
+     "valueDomain": {
+      "description": "N/A",
+      "unitOfMeasure": "N/A"
+     }
+    }
+   ]
+  }
+ ],
+ "attributeVariables": [
+  {
+   "name": "STOP",
+   "label": "Stoppdato",
+   "notPseudonym": true,
+   "dataType": "Instant",
+   "variableRole": "Stop",
+   "representedVariables": [
+    {
+     "description": "Stoppdato/sluttdato for hendelsen",
+     "validPeriod": {
+      "start": 8401,
+      "stop": 11322
+     },
+     "valueDomain": {
+      "description": "N/A",
+      "unitOfMeasure": "N/A"
+     }
+    }
+   ]
+  },
+  {
+   "name": "START",
+   "label": "Startdato",
+   "notPseudonym": true,
+   "dataType": "Instant",
+   "variableRole": "Start",
+   "representedVariables": [
+    {
+     "description": "Startdato/måletidspunktet for hendelsen",
+     "validPeriod": {
+      "start": 8401,
+      "stop": 11322
+     },
+     "valueDomain": {
+      "description": "N/A",
+      "unitOfMeasure": "N/A"
+     }
+    }
+   ]
+  }
+ ],
+ "globalTemporalCoverage": {
+  "start": -1096,
+  "stop": 20759
+ },
+ "updatedAt": 1613034718
+}

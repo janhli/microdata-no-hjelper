@@ -1,0 +1,416 @@
+{
+ "name": "REGSYS_SEKTOR_2014",
+ "temporality": "STATUS",
+ "languageCode": "no",
+ "sensitivityLevel": "PERSON_GENERAL",
+ "populationDescription": "Variabelen omfatter bosatte personer 15-74 år som er sysselsatt, hovedarbeidsforhold i november. Observasjoner med verdiene 0 og uoppgitt (missing) er utelatt. ",
+ "subjectFields": [
+  "Arbeid og lønn",
+  "Sysselsetting",
+  "Virksomheter og foretak",
+  "Virksomheter, foretak og regnskap"
+ ],
+ "temporalCoverage": {
+  "start": 15294,
+  "stop": 16390
+ },
+ "measureVariable": {
+  "name": "REGSYS_SEKTOR_2014",
+  "label": "Institusjonell sektor 2012",
+  "notPseudonym": true,
+  "dataType": "String",
+  "variableRole": "Measure",
+  "representedVariables": [
+   {
+    "description": "Variabelen angir institusjonell sektor for foretaket der personen har sitt hovedarbeidsforhold (det er i hovedsak arbeidsforholdet med høyest avtalt arbeidstid). Institusjonell sektorgruppering er en statistisk klassifikasjon. Økonomien deles inn i sektorer på basis av en gruppering av ensartede institusjonelle enheter. Institusjonelle enheter er definert som økonomiske beslutningssentra som enten kan være en juridisk enhet eller en husholdning. Denne sektorgrupperingen er basert på systemer utviklet av FN (System of National Accounts-SNA93) og EU (European System of National Accounts-ESA95). Ny standard fra 2012. \n \n Denne variabelen erstattes med REGSYS_FRTK_SEKTOR_2014 fra og med 2015.\n \n Kilde for variabelen er registerbaserte sysselsettingsdata. Les dokumentasjonen om datagrunnlag, prosessering og definisjoner her:\n - [Sysselsetting, registerbasert](https://www.ssb.no/arbeid-og-lonn/sysselsetting/statistikk/sysselsetting-registerbasert) \n - [Om datagrunnlaget for registerbasert sysselsettingsstatistikk](https://www.ssb.no/data-til-forskning/utlan-av-data-til-forskere/variabellister/a-ordningen/om-datagrunnlaget-for-registerbasert-sysselsettingsstatistikk) \n - [Registerbasert lønns- og sysselsettingsstatistikk basert på a-ordningen](https://www.ssb.no/arbeid-og-lonn/sysselsetting/artikler/registerbasert-lonns-og-sysselsettingsstatistikk-basert-pa-a-ordningen)",
+    "validPeriod": {
+     "start": 14975,
+     "stop": 15339
+    },
+    "valueDomain": {
+     "codeList": [
+      {
+       "category": "Stats- og trygdeforvaltningen",
+       "code": "110"
+      },
+      {
+       "category": "Statens forretningsdrift",
+       "code": "1110"
+      },
+      {
+       "category": "Statlig eide aksjeselskaper mv.",
+       "code": "1120"
+      },
+      {
+       "category": "Norges Bank",
+       "code": "150"
+      },
+      {
+       "category": "Kommunale foretak med ubegrenset ansvar",
+       "code": "1510"
+      },
+      {
+       "category": "Kommunalt eide aksjeselskaper mv.",
+       "code": "1520"
+      },
+      {
+       "category": "Statlige låneinstitutter",
+       "code": "190"
+      },
+      {
+       "category": "Forretningsbanker inkl. Postbanken",
+       "code": "210"
+      },
+      {
+       "category": "Private aksjeselskaper mv.",
+       "code": "2100"
+      },
+      {
+       "category": "Forretningsbanker, utenlandskeid",
+       "code": "217"
+      },
+      {
+       "category": "Personlige foretak",
+       "code": "2300"
+      },
+      {
+       "category": "Sparebanker",
+       "code": "250"
+      },
+      {
+       "category": "Private produsentorienterte organisasjoner uten profittformål",
+       "code": "2500"
+      },
+      {
+       "category": "Kredittforetak",
+       "code": "310"
+      },
+      {
+       "category": "Norges Bank",
+       "code": "3100"
+      },
+      {
+       "category": "Kredittforetak, utenlandskeid",
+       "code": "317"
+      },
+      {
+       "category": "Banker",
+       "code": "3200"
+      },
+      {
+       "category": "Kredittforetak",
+       "code": "3500"
+      },
+      {
+       "category": "Finansieringsselskaper",
+       "code": "3600"
+      },
+      {
+       "category": "Finansieringsselskaper",
+       "code": "370"
+      },
+      {
+       "category": "Finansieringsselskaper, utenlandskeid",
+       "code": "377"
+      },
+      {
+       "category": "Verdipapirfond",
+       "code": "380"
+      },
+      {
+       "category": "Andre  finansielle foretak eksl. hjelpeforetak",
+       "code": "390"
+      },
+      {
+       "category": "Statlige låneinstitutter mv.",
+       "code": "3900"
+      },
+      {
+       "category": "Andre  finansielle foretak eksl. hjelpeforetak, utenlandskeid",
+       "code": "397"
+      },
+      {
+       "category": "Livsforsikringsselskaper mv.",
+       "code": "410"
+      },
+      {
+       "category": "Finansielle holdingselskaper",
+       "code": "4100"
+      },
+      {
+       "category": "Livsforsikringsselskaper mv., utenlandskeid",
+       "code": "417"
+      },
+      {
+       "category": "Verdipapirfond",
+       "code": "4300"
+      },
+      {
+       "category": "Investeringsselskaper og aktive eierfond",
+       "code": "4500"
+      },
+      {
+       "category": "Skadeforsikringsselskaper",
+       "code": "470"
+      },
+      {
+       "category": "Skadeforsikringsselskaper, utenlandsk eid",
+       "code": "477"
+      },
+      {
+       "category": "Finansielle hjelpeforetak",
+       "code": "490"
+      },
+      {
+       "category": "Øvrige finansielle foretak unntatt forsikring",
+       "code": "4900"
+      },
+      {
+       "category": "Finansielle hjelpeforetak, utenlandskeid",
+       "code": "497"
+      },
+      {
+       "category": "Fylkeskommuner",
+       "code": "510"
+      },
+      {
+       "category": "Kommuner",
+       "code": "550"
+      },
+      {
+       "category": "Livsforsikringsselskaper og pensjonskasser",
+       "code": "5500"
+      },
+      {
+       "category": "Skadeforsikringsselskaper",
+       "code": "5700"
+      },
+      {
+       "category": "Statens forretningsdrift",
+       "code": "610"
+      },
+      {
+       "category": "Statsforvaltningen",
+       "code": "6100"
+      },
+      {
+       "category": "Statlig eide foretak",
+       "code": "630"
+      },
+      {
+       "category": "Statsforetak (SF)",
+       "code": "635"
+      },
+      {
+       "category": "Kommuneforvaltningen",
+       "code": "6500"
+      },
+      {
+       "category": "Kommunal forretningsdrift",
+       "code": "660"
+      },
+      {
+       "category": "Selvstendige kommuneforetak",
+       "code": "680"
+      },
+      {
+       "category": "Ideelle organisasjoner",
+       "code": "7000"
+      },
+      {
+       "category": "Private selskaper med begrenset ansvar (aksjeselskaper mv.)",
+       "code": "710"
+      },
+      {
+       "category": "Private selskaper med begrenset ansvar (aksjeselskaper mv.), utenlandskeid",
+       "code": "717"
+      },
+      {
+       "category": "Private produsentorienterte organisasjoner uten profittformål",
+       "code": "740"
+      },
+      {
+       "category": "Personlige foretak mv.",
+       "code": "760"
+      },
+      {
+       "category": "Private konsumentorienterte organisasjoner uten profittformål",
+       "code": "770"
+      },
+      {
+       "category": "Personlig næringsdrivende",
+       "code": "790"
+      },
+      {
+       "category": "Lønnstakere, pensjonister og trygdede, studenter o.a.",
+       "code": "810"
+      },
+      {
+       "category": "Personlig næringsdrivende",
+       "code": "8200"
+      },
+      {
+       "category": "Borettslag o.l.",
+       "code": "8300"
+      },
+      {
+       "category": "Lønnstakere, pensjonister, trygdede, studenter o.a.",
+       "code": "8500"
+      },
+      {
+       "category": "Ufordelt sektor",
+       "code": "890"
+      },
+      {
+       "category": "Utenlandske sektorer i alt",
+       "code": "900"
+      },
+      {
+       "category": "Utlandet",
+       "code": "9000"
+      }
+     ],
+     "missingValues": []
+    }
+   },
+   {
+    "description": "Variabelen angir institusjonell sektor for foretaket der personen har sitt hovedarbeidsforhold (det er i hovedsak arbeidsforholdet med høyest avtalt arbeidstid). Institusjonell sektorgruppering er en statistisk klassifikasjon. Økonomien deles inn i sektorer på basis av en gruppering av ensartede institusjonelle enheter. Institusjonelle enheter er definert som økonomiske beslutningssentra som enten kan være en juridisk enhet eller en husholdning. Denne sektorgrupperingen er basert på systemer utviklet av FN (System of National Accounts-SNA93) og EU (European System of National Accounts-ESA95). Ny standard fra 2012. \n \n Denne variabelen erstattes med REGSYS_FRTK_SEKTOR_2014 fra og med 2015.\n \n Kilde for variabelen er registerbaserte sysselsettingsdata. Les dokumentasjonen om datagrunnlag, prosessering og definisjoner her:\n - [Sysselsetting, registerbasert](https://www.ssb.no/arbeid-og-lonn/sysselsetting/statistikk/sysselsetting-registerbasert) \n - [Om datagrunnlaget for registerbasert sysselsettingsstatistikk](https://www.ssb.no/data-til-forskning/utlan-av-data-til-forskere/variabellister/a-ordningen/om-datagrunnlaget-for-registerbasert-sysselsettingsstatistikk) \n - [Registerbasert lønns- og sysselsettingsstatistikk basert på a-ordningen](https://www.ssb.no/arbeid-og-lonn/sysselsetting/artikler/registerbasert-lonns-og-sysselsettingsstatistikk-basert-pa-a-ordningen)",
+    "validPeriod": {
+     "start": 15340
+    },
+    "valueDomain": {
+     "missingValues": [],
+     "delta": {
+      "remove": [
+       0,
+       3,
+       6,
+       7,
+       9,
+       11,
+       13,
+       15,
+       19,
+       20,
+       21,
+       22,
+       24,
+       25,
+       27,
+       30,
+       31,
+       32,
+       34,
+       35,
+       36,
+       39,
+       41,
+       42,
+       44,
+       45,
+       47,
+       48,
+       49,
+       50,
+       51,
+       52,
+       53,
+       57,
+       58
+      ],
+      "reorder": [],
+      "replace": {},
+      "insert": {}
+     }
+    }
+   }
+  ]
+ },
+ "identifierVariables": [
+  {
+   "name": "PERSONID_1",
+   "label": "Personidentifikator",
+   "notPseudonym": false,
+   "dataType": "Long",
+   "format": "RandomUInt48",
+   "variableRole": "Identifier",
+   "keyType": {
+    "name": "PERSON",
+    "label": "Person",
+    "description": "Statistisk enhet er person (individ, enkeltmenenske)"
+   },
+   "representedVariables": [
+    {
+     "description": "Identifikator for person i RAIRD",
+     "validPeriod": {
+      "start": 15294,
+      "stop": 16390
+     },
+     "valueDomain": {
+      "description": "N/A",
+      "unitOfMeasure": "N/A"
+     }
+    }
+   ]
+  }
+ ],
+ "attributeVariables": [
+  {
+   "name": "STOP",
+   "label": "Stoppdato",
+   "notPseudonym": true,
+   "dataType": "Instant",
+   "variableRole": "Stop",
+   "representedVariables": [
+    {
+     "description": "Stoppdato/sluttdato for hendelsen",
+     "validPeriod": {
+      "start": 15294,
+      "stop": 16390
+     },
+     "valueDomain": {
+      "description": "N/A",
+      "unitOfMeasure": "N/A"
+     }
+    }
+   ]
+  },
+  {
+   "name": "START",
+   "label": "Startdato",
+   "notPseudonym": true,
+   "dataType": "Instant",
+   "variableRole": "Start",
+   "representedVariables": [
+    {
+     "description": "Startdato/måletidspunktet for hendelsen",
+     "validPeriod": {
+      "start": 15294,
+      "stop": 16390
+     },
+     "valueDomain": {
+      "description": "N/A",
+      "unitOfMeasure": "N/A"
+     }
+    }
+   ]
+  }
+ ],
+ "temporalStatusDates": [
+  15660,
+  16390,
+  15294,
+  16025
+ ],
+ "temporalEnd": {
+  "description": "Variabelen oppdateres ikke.",
+  "successors": [
+   "REGSYS_FRTK_SEKTOR_2014"
+  ]
+ },
+ "globalTemporalCoverage": {
+  "start": -1096,
+  "stop": 20759
+ },
+ "updatedAt": 1603982268
+}

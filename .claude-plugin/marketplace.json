@@ -1,0 +1,11 @@
+{
+  "name": "microdata-no-hjelper",
+  "owner": { "name": "Jan Hiroshi Lintvedt" },
+  "plugins": [
+    {
+      "name": "microdata-no",
+      "source": "./",
+      "description": "Hjelp til skript for microdata.no: lokal variabelkatalog, kodelister, manual og en felles samling fallgruver."
+    }
+  ]
+}

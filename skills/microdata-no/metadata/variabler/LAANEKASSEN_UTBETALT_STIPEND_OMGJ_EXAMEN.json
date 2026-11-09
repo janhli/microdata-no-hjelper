@@ -1,0 +1,109 @@
+{
+ "name": "LAANEKASSEN_UTBETALT_STIPEND_OMGJ_EXAMEN",
+ "temporality": "ACCUMULATED",
+ "languageCode": "no",
+ "sensitivityLevel": "PERSON_GENERAL",
+ "populationDescription": "Variabelen omfatter bosatte per 31.12.ÅÅÅÅ. Observasjoner med verdiene 0 og uoppgitt (missing) er utelatt.",
+ "subjectFields": [
+  "Lånekassen"
+ ],
+ "temporalCoverage": {
+  "start": 17897,
+  "stop": 19722
+ },
+ "measureVariable": {
+  "name": "LAANEKASSEN_UTBETALT_STIPEND_OMGJ_EXAMEN",
+  "label": "Utbetalt stipend - Omgjøring eksamen",
+  "notPseudonym": true,
+  "dataType": "Long",
+  "variableRole": "Measure",
+  "representedVariables": [
+   {
+    "description": "Variabelen viser stipend etter omgjøring fra lån til stipend for fullført eksamen fra Lånekassen.\n \n For studenter som er omfattet av ordningen med gradsomgjøring, kan inntil 25 prosent av basisstøtten kan gjøres om fra lån til stipend etter fullført og bestått eksamen, avhengig av borteboerstatus, inntekt/formue og studieprosent. For studenter som ikke er omfattet av gradsomgjøringsordningen kan inntil 40 prosent av basisstøtte gjøres om fra lån til stipend. \n Stipendet blir utbetalt som lån, og gjort om til stipend etter rapportert beståtte eksamener til Lånekassen og behovsprøving av inntekt og formue. Variabelen viser summen som har blitt gjort om til stipend per januar to kalenderår etter utbetalt kalenderår.",
+    "validPeriod": {
+     "start": 17897,
+     "stop": 19722
+    },
+    "valueDomain": {
+     "description": "Beløp.",
+     "unitOfMeasure": "NOK"
+    }
+   }
+  ]
+ },
+ "identifierVariables": [
+  {
+   "name": "PERSONID_1",
+   "label": "Personidentifikator",
+   "notPseudonym": false,
+   "dataType": "Long",
+   "format": "RandomUInt48",
+   "variableRole": "Identifier",
+   "keyType": {
+    "name": "PERSON",
+    "label": "Person",
+    "description": "Person er et enkeltmenneske, individ."
+   },
+   "representedVariables": [
+    {
+     "description": "Identifikator for person i microdata",
+     "validPeriod": {
+      "start": 17897,
+      "stop": 19722
+     },
+     "valueDomain": {
+      "description": "Pseudonymisert personnummer",
+      "unitOfMeasure": "N/A"
+     }
+    }
+   ]
+  }
+ ],
+ "attributeVariables": [
+  {
+   "name": "START",
+   "label": "Startdato",
+   "notPseudonym": true,
+   "dataType": "Instant",
+   "variableRole": "Start",
+   "representedVariables": [
+    {
+     "description": "Startdato/måletidspunktet for hendelsen",
+     "validPeriod": {
+      "start": 17897,
+      "stop": 19722
+     },
+     "valueDomain": {
+      "description": "Dato oppgitt i dager siden 1970-01-01",
+      "unitOfMeasure": "N/A"
+     }
+    }
+   ]
+  },
+  {
+   "name": "STOP",
+   "label": "Stoppdato",
+   "notPseudonym": true,
+   "dataType": "Instant",
+   "variableRole": "Stop",
+   "representedVariables": [
+    {
+     "description": "Stoppdato/måletidspunktet for hendelsen",
+     "validPeriod": {
+      "start": 17897,
+      "stop": 19722
+     },
+     "valueDomain": {
+      "description": "Dato oppgitt i dager siden 1970-01-01",
+      "unitOfMeasure": "N/A"
+     }
+    }
+   ]
+  }
+ ],
+ "globalTemporalCoverage": {
+  "start": -1096,
+  "stop": 20759
+ },
+ "updatedAt": 1763646904
+}

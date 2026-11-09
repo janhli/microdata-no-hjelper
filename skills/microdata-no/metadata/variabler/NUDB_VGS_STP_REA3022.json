@@ -1,0 +1,154 @@
+{
+ "name": "NUDB_VGS_STP_REA3022",
+ "temporality": "FIXED",
+ "languageCode": "no",
+ "sensitivityLevel": "PERSON_GENERAL",
+ "populationDescription": "Variabelen omfatter personer som har fått en vurdering i dette faget i videregående opplæring. Observasjoner med verdiene missing eller verdier utenfor kodelisten er utelatt.",
+ "subjectFields": [
+  "Utdanning",
+  "Videregående utdanning"
+ ],
+ "temporalCoverage": {
+  "start": -25567,
+  "stop": 19173
+ },
+ "measureVariable": {
+  "name": "NUDB_VGS_STP_REA3022",
+  "label": "Matematikk R1",
+  "notPseudonym": true,
+  "dataType": "String",
+  "variableRole": "Measure",
+  "representedVariables": [
+   {
+    "description": "Standpunktkarakter i videregående skole for Matematikk R1. \n \n For mer informasjon om faget: https://www.udir.no/lk20/fagkoder/REA3022.\nFørst undervist: Høst 07\nSist undervist: Vår 21",
+    "validPeriod": {
+     "start": 11170
+    },
+    "valueDomain": {
+     "codeList": [
+      {
+       "category": "Uttrykker at eleven har svært lav kompetanse i faget",
+       "code": "1"
+      },
+      {
+       "category": "Uttrykker at eleven har lav kompetanse i faget",
+       "code": "2"
+      },
+      {
+       "category": "Uttrykker at eleven har nokså god kompetanse i faget",
+       "code": "3"
+      },
+      {
+       "category": "Uttrykker at eleven har god kompetanse i faget",
+       "code": "4"
+      },
+      {
+       "category": "Uttrykker at eleven har meget god kompetanse i faget",
+       "code": "5"
+      },
+      {
+       "category": "Uttrykker at eleven har fremragende kompetanse i faget",
+       "code": "6"
+      },
+      {
+       "category": "Mangler vurdering",
+       "code": "9"
+      },
+      {
+       "category": "Deltatt",
+       "code": "D"
+      },
+      {
+       "category": "Fritatt fra standpunkt",
+       "code": "F"
+      },
+      {
+       "category": "Godkjent",
+       "code": "GK"
+      },
+      {
+       "category": "Ikke vurderingsgrunnlag",
+       "code": "IV"
+      }
+     ],
+     "missingValues": []
+    }
+   }
+  ]
+ },
+ "identifierVariables": [
+  {
+   "name": "PERSONID_1",
+   "label": "Personidentifikator",
+   "notPseudonym": false,
+   "dataType": "Long",
+   "format": "RandomUInt48",
+   "variableRole": "Identifier",
+   "keyType": {
+    "name": "PERSON",
+    "label": "Person",
+    "description": "Person er et enkeltmenneske, individ."
+   },
+   "representedVariables": [
+    {
+     "description": "Identifikator for person i microdata",
+     "validPeriod": {
+      "start": -25567,
+      "stop": 19173
+     },
+     "valueDomain": {
+      "description": "Pseudonymisert personnummer",
+      "unitOfMeasure": "N/A"
+     }
+    }
+   ]
+  }
+ ],
+ "attributeVariables": [
+  {
+   "name": "START",
+   "label": "Startdato",
+   "notPseudonym": true,
+   "dataType": "Instant",
+   "variableRole": "Start",
+   "representedVariables": [
+    {
+     "description": "Startdato/måletidspunktet for hendelsen",
+     "validPeriod": {
+      "start": -25567,
+      "stop": 19173
+     },
+     "valueDomain": {
+      "description": "Dato oppgitt i dager siden 1970-01-01",
+      "unitOfMeasure": "N/A"
+     }
+    }
+   ]
+  },
+  {
+   "name": "STOP",
+   "label": "Stoppdato",
+   "notPseudonym": true,
+   "dataType": "Instant",
+   "variableRole": "Stop",
+   "representedVariables": [
+    {
+     "description": "Stoppdato/måletidspunktet for hendelsen",
+     "validPeriod": {
+      "start": -25567,
+      "stop": 19173
+     },
+     "valueDomain": {
+      "description": "Dato oppgitt i dager siden 1970-01-01",
+      "unitOfMeasure": "N/A"
+     }
+    }
+   ]
+  }
+ ],
+ "globalTemporalCoverage": {
+  "start": -1096,
+  "stop": 20759
+ },
+ "updatedAt": 1714656061
+}

@@ -1,0 +1,131 @@
+{
+ "name": "PENSJPOENGFDT_OPT",
+ "temporality": "STATUS",
+ "languageCode": "no",
+ "sensitivityLevel": "PERSON_GENERAL",
+ "populationDescription": "Hovedsakelig bosatte i Norge (fnr), men noen ikke-bosatte kan inngå (dnr)",
+ "subjectFields": [
+  "Sosiale forhold og kriminalitet",
+  "Trygd og stønad"
+ ],
+ "temporalCoverage": {
+  "start": 8400,
+  "stop": 14974
+ },
+ "measureVariable": {
+  "name": "PENSJPOENGFDT_OPT",
+  "label": "Pensjonspoeng, overkompensasjon",
+  "notPseudonym": true,
+  "dataType": "Long",
+  "variableRole": "Measure",
+  "representedVariables": [
+   {
+    "description": "For de som er født så tidlig (før 1937) at de ikke kan rekke 40 års opptjening før de når pensjonsalderen overkompenseres med full opptjeningstid for inntil 4.0 pensjonspoeng.",
+    "validPeriod": {
+     "start": 8400,
+     "stop": 14974
+    },
+    "valueDomain": {
+     "description": "Antall",
+     "unitOfMeasure": "Antall"
+    }
+   }
+  ]
+ },
+ "identifierVariables": [
+  {
+   "name": "PERSONID_1",
+   "label": "Personidentifikator",
+   "notPseudonym": false,
+   "dataType": "Long",
+   "format": "RandomUInt48",
+   "variableRole": "Identifier",
+   "keyType": {
+    "name": "PERSON",
+    "label": "Person",
+    "description": "Statistisk enhet er person (individ, enkeltmenenske)"
+   },
+   "representedVariables": [
+    {
+     "description": "Identifikator for person i RAIRD",
+     "validPeriod": {
+      "start": 8400,
+      "stop": 14974
+     },
+     "valueDomain": {
+      "description": "N/A",
+      "unitOfMeasure": "N/A"
+     }
+    }
+   ]
+  }
+ ],
+ "attributeVariables": [
+  {
+   "name": "STOP",
+   "label": "Stoppdato",
+   "notPseudonym": true,
+   "dataType": "Instant",
+   "variableRole": "Stop",
+   "representedVariables": [
+    {
+     "description": "Stoppdato/sluttdato for hendelsen",
+     "validPeriod": {
+      "start": 8400,
+      "stop": 14974
+     },
+     "valueDomain": {
+      "description": "N/A",
+      "unitOfMeasure": "N/A"
+     }
+    }
+   ]
+  },
+  {
+   "name": "START",
+   "label": "Startdato",
+   "notPseudonym": true,
+   "dataType": "Instant",
+   "variableRole": "Start",
+   "representedVariables": [
+    {
+     "description": "Startdato/måletidspunktet for hendelsen",
+     "validPeriod": {
+      "start": 8400,
+      "stop": 14974
+     },
+     "valueDomain": {
+      "description": "N/A",
+      "unitOfMeasure": "N/A"
+     }
+    }
+   ]
+  }
+ ],
+ "temporalStatusDates": [
+  12783,
+  9130,
+  12417,
+  8765,
+  10591,
+  14609,
+  10226,
+  11322,
+  9861,
+  9495,
+  10956,
+  14974,
+  14244,
+  13148,
+  11687,
+  13513,
+  8400,
+  13878,
+  12052
+ ],
+ "globalTemporalCoverage": {
+  "start": -1096,
+  "stop": 20759
+ },
+ "updatedAt": 1592485055
+}

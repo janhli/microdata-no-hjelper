@@ -1,0 +1,158 @@
+{
+ "name": "BEFOLKNING_SAMB_FNR",
+ "temporality": "STATUS",
+ "languageCode": "no",
+ "sensitivityLevel": "PERSON_GENERAL",
+ "populationDescription": "Variabelen omfatter samboere til bosatte.",
+ "subjectFields": [
+  "Barn, Familie og husholdninger",
+  "Befolkning",
+  "Samboere"
+ ],
+ "temporalCoverage": {
+  "start": 6209,
+  "stop": 20089
+ },
+ "measureVariable": {
+  "name": "BEFOLKNING_SAMB_FNR",
+  "label": "Fødselsnummer samboer",
+  "notPseudonym": false,
+  "dataType": "Long",
+  "format": "RandomUInt48",
+  "variableRole": "Measure",
+  "keyType": {
+   "name": "PERSON",
+   "label": "Person",
+   "description": "Person er et enkeltmenneske, individ."
+  },
+  "representedVariables": [
+   {
+    "description": "Variabelen viser samboer per 1.1.åååå fødselsnummer. Ment for bruk som koblingsnøkkel. \n \n For mer informasjon om grunnlaget for samboer relasjoner se [Data om familie, samboere og ektefeller](https://www.ssb.no/data-til-forskning/utlan-av-data-til-forskere/variabellister/befolkning/data-om-familie-samboere-og-ektefeller)",
+    "validPeriod": {
+     "start": 6209,
+     "stop": 20089
+    },
+    "valueDomain": {
+     "description": "Pseudonymisert personnummer",
+     "unitOfMeasure": "N/A"
+    }
+   }
+  ]
+ },
+ "identifierVariables": [
+  {
+   "name": "PERSONID_1",
+   "label": "Personidentifikator",
+   "notPseudonym": false,
+   "dataType": "Long",
+   "format": "RandomUInt48",
+   "variableRole": "Identifier",
+   "keyType": {
+    "name": "PERSON",
+    "label": "Person",
+    "description": "Person er et enkeltmenneske, individ."
+   },
+   "representedVariables": [
+    {
+     "description": "Identifikator for person i microdata",
+     "validPeriod": {
+      "start": 6209,
+      "stop": 20089
+     },
+     "valueDomain": {
+      "description": "Pseudonymisert personnummer",
+      "unitOfMeasure": "N/A"
+     }
+    }
+   ]
+  }
+ ],
+ "attributeVariables": [
+  {
+   "name": "START",
+   "label": "Startdato",
+   "notPseudonym": true,
+   "dataType": "Instant",
+   "variableRole": "Start",
+   "representedVariables": [
+    {
+     "description": "Startdato/måletidspunktet for hendelsen",
+     "validPeriod": {
+      "start": 6209,
+      "stop": 20089
+     },
+     "valueDomain": {
+      "description": "Dato oppgitt i dager siden 1970-01-01",
+      "unitOfMeasure": "N/A"
+     }
+    }
+   ]
+  },
+  {
+   "name": "STOP",
+   "label": "Stoppdato",
+   "notPseudonym": true,
+   "dataType": "Instant",
+   "variableRole": "Stop",
+   "representedVariables": [
+    {
+     "description": "Stoppdato/måletidspunktet for hendelsen",
+     "validPeriod": {
+      "start": 6209,
+      "stop": 20089
+     },
+     "valueDomain": {
+      "description": "Dato oppgitt i dager siden 1970-01-01",
+      "unitOfMeasure": "N/A"
+     }
+    }
+   ]
+  }
+ ],
+ "temporalStatusDates": [
+  6209,
+  6574,
+  6940,
+  7305,
+  7670,
+  8035,
+  8401,
+  8766,
+  9131,
+  9496,
+  9862,
+  10227,
+  10592,
+  10957,
+  11323,
+  11688,
+  12053,
+  12418,
+  12784,
+  13149,
+  13514,
+  13879,
+  14245,
+  14610,
+  14975,
+  15340,
+  15706,
+  16071,
+  16436,
+  16801,
+  17167,
+  17532,
+  17897,
+  18262,
+  18628,
+  18993,
+  19358,
+  19723,
+  20089
+ ],
+ "globalTemporalCoverage": {
+  "start": -1096,
+  "stop": 20759
+ },
+ "updatedAt": 1774604284
+}

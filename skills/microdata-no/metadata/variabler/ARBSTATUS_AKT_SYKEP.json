@@ -1,0 +1,138 @@
+{
+ "name": "ARBSTATUS_AKT_SYKEP",
+ "temporality": "STATUS",
+ "languageCode": "no",
+ "sensitivityLevel": "PERSON_GENERAL",
+ "populationDescription": "Variabelen omfatter alle bosatte personer 15 år eller eldre og samsvarer med populasjonen i statistikken [Tilknytning til arbeid, utdanning og velferdsordninger](https://www.ssb.no/arbeid-og-lonn/sysselsetting/statistikk/tilknytning-til-arbeid-utdanning-og-velferdsordninger) (arbstatus). Se [Om statistikken](https://www.ssb.no/arbeid-og-lonn/sysselsetting/statistikk/tilknytning-til-arbeid-utdanning-og-velferdsordninger#om-statistikken) for mer informasjon. \n \n Det er noen færre personer med i populasjonen i microdata.no sammenlignet med i [statistikkbanken](https://www.ssb.no/statbank/list/arbstatus). Det skyldes manglende eller ugyldige fødselsnummer i datagrunnlaget som dermed ikke kan brukes til kobling mot andre variabler i microdata.no, og er derfor utelatt. For de fleste årgangene er det i underkant av 200 færre i microdata.no, mens det for 2022-årgangen er i overkant av 1 000 færre personer. \n \n System for persondata (SFP) er kilde for både variabelen og statistikken. Denne grunnlagsfilen inkluderer i tillegg til bosatte personer 15 år og eldre, også noen grupper ikke-bosatte. Les mer i [dokumentasjonen](https://www.ssb.no/arbeid-og-lonn/artikler-og-publikasjoner/_attachment/430138?_ts=17433b4b920) om datagrunnlag, prosessering og definisjoner.",
+ "subjectFields": [
+  "Arbeid og lønn",
+  "Sysselsetting",
+  "Tilknytning til arbeid, utdanning og velferdsordninger"
+ ],
+ "temporalCoverage": {
+  "start": 14199,
+  "stop": 20043
+ },
+ "measureVariable": {
+  "name": "ARBSTATUS_AKT_SYKEP",
+  "label": "Sykepenger fra folketrygden",
+  "notPseudonym": true,
+  "dataType": "String",
+  "variableRole": "Measure",
+  "representedVariables": [
+   {
+    "description": "Fulltellingsvariabel (ARBSTATUS_AKT_SYKEP= '1') for mottak av sykepenger i den tredje uken i november (fra og med 2015 ytterligere definert som uken med den 16. november). \n \n Dette skiller seg fra variabelen INNTEKT_SYKEPENGER fra inntektsstatistikken som omfatter summen av sykepenger fra folketrygden mottatt i løpet av kalenderåret. \n \n Verdi for sykepenger på variabelen ARBEIDSSOKER_AS_YTELSE fra arbeidssøkerregisteret hos Nav angir rett på ytelsen, og er i prinsippet ikke en opplysning om utbetalinger/mottakere. Den gjelder også bare for arbeidssøkere, og er ikke en fulltelling av sykepengemottakere.\n \n Variabelen ARBSTATUS_AKT_SYKEP inngår i prioriteringen av status i variabelen ARBSTATUS_PERS_STATUS8.\n \n ## Brudd i tidsserien fra 2019 til 2020 og fra 2021 til 2022 \n Både overgang til ny datakilde fra og med 2020-årgangen og inkludering av flere månedsfiler fra og med 2022-årgangen gjør at tallene ikke er direkte sammenlignbare i hele tidsserien.\n \n Data om mottakere i referanseuken hentes fra Nav. Fra og med 1. kvartal 2020, da den nye vedtaksløsningen for utbetaling av sykepenger ble tatt i bruk, bygger Nav sine sykepengedata på en kombinasjon av det gamle systemet Infotrygd og den nye vedtaksløsning for sykepenger. \n \n Til og med statistikkåret 2021 mottok SSB data om referanseuken i februar året etter. Det gjorde at det manglet en del etterregistreringer av krav fremsatt fra arbeidsgivere inntil tre måneder etter fraværet. \n \n Fra og med statistikkåret 2022 begynte SSB å motta data om sykepengemottakere månedlig istedenfor årlig. Det gjør at tallene for 2022 og senere bruker filer for november–desember i statistikkåret som tidligere, men nå også for januar–mai i året etterpå for å få med etterregistreringer av sykepengemottakere i referanseuken i november. \n \n Endringen medførte en økning på rundt 37 000 mottakere av sykepenger for 2022-årgangen. Nesten alle har sysselsetting som sin første prioriterte arbeidsstyrkestatus i ARBSTATUS_PERS_STATUS8. Dermed påvirker endringen i hovedsak kategorien for «Sysselsatte ellers» i statistikkbanken hvor vi ser en økning på over 25 000 fra 2021 til 2022. \n \n Se «Sammenlignbarhet over tid og sted» under «Produksjon» i [Om statistikken](https://www.ssb.no/arbeid-og-lonn/sysselsetting/statistikk/tilknytning-til-arbeid-utdanning-og-velferdsordninger#om-statistikken) for mer informasjon.",
+    "validPeriod": {
+     "start": 13879
+    },
+    "valueDomain": {
+     "codeList": [
+      {
+       "category": "Mottok ikke stønad/ytelse",
+       "code": "0"
+      },
+      {
+       "category": "Mottok stønad/ytelse",
+       "code": "1"
+      }
+     ],
+     "missingValues": []
+    }
+   }
+  ]
+ },
+ "identifierVariables": [
+  {
+   "name": "PERSONID_1",
+   "label": "Personidentifikator",
+   "notPseudonym": false,
+   "dataType": "Long",
+   "format": "RandomUInt48",
+   "variableRole": "Identifier",
+   "keyType": {
+    "name": "PERSON",
+    "label": "Person",
+    "description": "Person er et enkeltmenneske, individ."
+   },
+   "representedVariables": [
+    {
+     "description": "Identifikator for person i microdata",
+     "validPeriod": {
+      "start": 14199,
+      "stop": 20043
+     },
+     "valueDomain": {
+      "description": "Pseudonymisert personnummer",
+      "unitOfMeasure": "N/A"
+     }
+    }
+   ]
+  }
+ ],
+ "attributeVariables": [
+  {
+   "name": "START",
+   "label": "Startdato",
+   "notPseudonym": true,
+   "dataType": "Instant",
+   "variableRole": "Start",
+   "representedVariables": [
+    {
+     "description": "Startdato/måletidspunktet for hendelsen",
+     "validPeriod": {
+      "start": 14199,
+      "stop": 20043
+     },
+     "valueDomain": {
+      "description": "Dato oppgitt i dager siden 1970-01-01",
+      "unitOfMeasure": "N/A"
+     }
+    }
+   ]
+  },
+  {
+   "name": "STOP",
+   "label": "Stoppdato",
+   "notPseudonym": true,
+   "dataType": "Instant",
+   "variableRole": "Stop",
+   "representedVariables": [
+    {
+     "description": "Stoppdato/måletidspunktet for hendelsen",
+     "validPeriod": {
+      "start": 14199,
+      "stop": 20043
+     },
+     "valueDomain": {
+      "description": "Dato oppgitt i dager siden 1970-01-01",
+      "unitOfMeasure": "N/A"
+     }
+    }
+   ]
+  }
+ ],
+ "temporalStatusDates": [
+  14199,
+  14564,
+  14929,
+  15294,
+  15660,
+  16025,
+  16390,
+  16755,
+  17121,
+  17486,
+  17851,
+  18216,
+  18582,
+  18947,
+  19312,
+  19677,
+  20043
+ ],
+ "globalTemporalCoverage": {
+  "start": -1096,
+  "stop": 20759
+ },
+ "updatedAt": 1772621947
+}

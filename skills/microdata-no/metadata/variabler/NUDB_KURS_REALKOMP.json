@@ -1,0 +1,126 @@
+{
+ "name": "NUDB_KURS_REALKOMP",
+ "temporality": "EVENT",
+ "languageCode": "no",
+ "sensitivityLevel": "PERSON_GENERAL",
+ "populationDescription": "Variabelen er utfylt for personer som tar igangværende utdanning innen høgskole og universitet. Verdier for generell studiekompetanse, realkompetanse og annet/Uoppgitt utfylt fra 2000 og 2001. Verdier for yrkesfaglig utdanning og relevant fag-/svennebrev utfylt fra 2008.",
+ "subjectFields": [
+  "Utdanning",
+  "Utdanningsnivå"
+ ],
+ "temporalCoverage": {
+  "start": 11231,
+  "stop": 19967
+ },
+ "measureVariable": {
+  "name": "NUDB_KURS_REALKOMP",
+  "label": "Opptakskompetanse for studenter",
+  "notPseudonym": true,
+  "dataType": "String",
+  "variableRole": "Measure",
+  "representedVariables": [
+   {
+    "description": "Variabelen angir om studenten har generell studiekompetanse, realkompetanse eller annen kompetanse.\n \n Registreres kun ved kurstilgang fra igangværende universitets- og høgskoleutdanning.",
+    "validPeriod": {
+     "start": 0
+    },
+    "valueDomain": {
+     "codeList": [
+      {
+       "category": "Generell studiekompetanse",
+       "code": "0"
+      },
+      {
+       "category": "Realkompetanse",
+       "code": "1"
+      },
+      {
+       "category": "Annet, uoppgitt",
+       "code": "2"
+      },
+      {
+       "category": "Yrkesfaglig utdanning og relevant fag-/svennebrev",
+       "code": "3"
+      }
+     ],
+     "missingValues": []
+    }
+   }
+  ]
+ },
+ "identifierVariables": [
+  {
+   "name": "KURSID_1",
+   "label": "Kursidentifikator",
+   "notPseudonym": false,
+   "dataType": "Long",
+   "format": "RandomUInt48",
+   "variableRole": "Identifier",
+   "keyType": {
+    "name": "KURS",
+    "label": "Kurs",
+    "description": "Kurs er en utdanningsaktivitet."
+   },
+   "representedVariables": [
+    {
+     "description": "Identifikator for kurs i microdata",
+     "validPeriod": {
+      "start": 11231,
+      "stop": 19967
+     },
+     "valueDomain": {
+      "description": "Pseudonymisert kombinasjon av personnummer og NUDB kursnummer",
+      "unitOfMeasure": "N/A"
+     }
+    }
+   ]
+  }
+ ],
+ "attributeVariables": [
+  {
+   "name": "START",
+   "label": "Startdato",
+   "notPseudonym": true,
+   "dataType": "Instant",
+   "variableRole": "Start",
+   "representedVariables": [
+    {
+     "description": "Startdato/måletidspunktet for hendelsen",
+     "validPeriod": {
+      "start": 11231,
+      "stop": 19967
+     },
+     "valueDomain": {
+      "description": "Dato oppgitt i dager siden 1970-01-01",
+      "unitOfMeasure": "N/A"
+     }
+    }
+   ]
+  },
+  {
+   "name": "STOP",
+   "label": "Stoppdato",
+   "notPseudonym": true,
+   "dataType": "Instant",
+   "variableRole": "Stop",
+   "representedVariables": [
+    {
+     "description": "Stoppdato/måletidspunktet for hendelsen",
+     "validPeriod": {
+      "start": 11231,
+      "stop": 19967
+     },
+     "valueDomain": {
+      "description": "Dato oppgitt i dager siden 1970-01-01",
+      "unitOfMeasure": "N/A"
+     }
+    }
+   ]
+  }
+ ],
+ "globalTemporalCoverage": {
+  "start": -1096,
+  "stop": 20759
+ },
+ "updatedAt": 1760683763
+}

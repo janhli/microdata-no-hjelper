@@ -1,0 +1,141 @@
+{
+ "name": "REGSYS_ORGBED",
+ "temporality": "STATUS",
+ "languageCode": "no",
+ "sensitivityLevel": "PERSON_GENERAL",
+ "populationDescription": "Variabelen omfatter bosatte personer 15-74 år som er sysselsatt, hovedarbeidsforhold i november. Observasjoner med verdiene 0 og uoppgitt (missing) er utelatt.",
+ "subjectFields": [
+  "Arbeid og lønn",
+  "Sysselsetting",
+  "Virksomheter og foretak",
+  "Virksomheter, foretak og regnskap"
+ ],
+ "temporalCoverage": {
+  "start": 11277,
+  "stop": 16390
+ },
+ "measureVariable": {
+  "name": "REGSYS_ORGBED",
+  "label": "Personens hovedarbeidsforhold - virksomhet",
+  "notPseudonym": false,
+  "dataType": "Long",
+  "format": "RandomUInt48",
+  "variableRole": "Measure",
+  "keyType": {
+   "name": "VIRKSOMHET",
+   "label": "Virksomhet",
+   "description": "Virksomhet er definert som en lokalt avgrenset funksjonell enhet som hovedsakelig driver aktivitet innenfor en bestemt næringsgruppe (Standard for næringsgruppering). SSB brukte tidligere termen \"bedrift\" om denne."
+  },
+  "representedVariables": [
+   {
+    "description": "Variabelen identifiserer virksomheten der personen har sitt hovedarbeidsforhold (det er i hovedsak arbeidsforholdet med høyest avtalt arbeidstid). Identifikator er i de fleste tilfeller virksomhetens avidentifiserte organisasjonsnummer. Det forekommer også andre nummer, som fødselsnummer for enkeltmannsforetak og arbeidsgivernummer. \n \n For mer informasjon [Om datagrunnlaget for registerbasert sysselsettingsstatistikk](https://www.ssb.no/omssb/tjenester-og-verktoy/data-til-forskning/arbeid/regsys). \n \n Denne variabelen erstattes med REGSYS_VIRK_ID_SSB fra og med 2015.\n \n Kilde for variabelen er registerbaserte sysselsettingsdata. Les dokumentasjonen om datagrunnlag, prosessering og definisjoner her:\n - [Sysselsetting, registerbasert](https://www.ssb.no/arbeid-og-lonn/sysselsetting/statistikk/sysselsetting-registerbasert) \n - [Om datagrunnlaget for registerbasert sysselsettingsstatistikk](https://www.ssb.no/data-til-forskning/utlan-av-data-til-forskere/variabellister/a-ordningen/om-datagrunnlaget-for-registerbasert-sysselsettingsstatistikk) \n - [Registerbasert lønns- og sysselsettingsstatistikk basert på a-ordningen](https://www.ssb.no/arbeid-og-lonn/sysselsetting/artikler/registerbasert-lonns-og-sysselsettingsstatistikk-basert-pa-a-ordningen)",
+    "validPeriod": {
+     "start": 11277,
+     "stop": 16390
+    },
+    "valueDomain": {
+     "description": "N/A",
+     "unitOfMeasure": "N/A"
+    }
+   }
+  ]
+ },
+ "identifierVariables": [
+  {
+   "name": "PERSONID_1",
+   "label": "Personidentifikator",
+   "notPseudonym": false,
+   "dataType": "Long",
+   "format": "RandomUInt48",
+   "variableRole": "Identifier",
+   "keyType": {
+    "name": "PERSON",
+    "label": "Person",
+    "description": "Statistisk enhet er person (individ, enkeltmenenske)"
+   },
+   "representedVariables": [
+    {
+     "description": "Identifikator for person i RAIRD",
+     "validPeriod": {
+      "start": 11277,
+      "stop": 16390
+     },
+     "valueDomain": {
+      "description": "N/A",
+      "unitOfMeasure": "N/A"
+     }
+    }
+   ]
+  }
+ ],
+ "attributeVariables": [
+  {
+   "name": "STOP",
+   "label": "Stoppdato",
+   "notPseudonym": true,
+   "dataType": "Instant",
+   "variableRole": "Stop",
+   "representedVariables": [
+    {
+     "description": "Stoppdato/sluttdato for hendelsen",
+     "validPeriod": {
+      "start": 11277,
+      "stop": 16390
+     },
+     "valueDomain": {
+      "description": "N/A",
+      "unitOfMeasure": "N/A"
+     }
+    }
+   ]
+  },
+  {
+   "name": "START",
+   "label": "Startdato",
+   "notPseudonym": true,
+   "dataType": "Instant",
+   "variableRole": "Start",
+   "representedVariables": [
+    {
+     "description": "Startdato/måletidspunktet for hendelsen",
+     "validPeriod": {
+      "start": 11277,
+      "stop": 16390
+     },
+     "valueDomain": {
+      "description": "N/A",
+      "unitOfMeasure": "N/A"
+     }
+    }
+   ]
+  }
+ ],
+ "temporalStatusDates": [
+  14199,
+  15660,
+  12738,
+  11642,
+  16390,
+  13833,
+  13468,
+  15294,
+  12372,
+  13103,
+  12007,
+  14929,
+  16025,
+  14564,
+  11277
+ ],
+ "temporalEnd": {
+  "description": "Variabelen oppdateres ikke.",
+  "successors": [
+   "REGSYS_VIRK_ID_SSB"
+  ]
+ },
+ "globalTemporalCoverage": {
+  "start": -1096,
+  "stop": 20759
+ },
+ "updatedAt": 1603982268
+}

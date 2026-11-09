@@ -1,0 +1,142 @@
+{
+ "name": "ARBSTATUS_PERS_AFP_GRUPPERING",
+ "temporality": "STATUS",
+ "languageCode": "no",
+ "sensitivityLevel": "PERSON_GENERAL",
+ "populationDescription": "Variabelen omfatter kun de med mottak av AFP som verdi på fulltellingsvariabelen ARBSTATUS_AKT_AFP. Det inkluderer alle AFP-mottakere, også de som kombinerer AFP med jobb eller andre aktiviteter eller ytelser. Dette skiller seg fra den prioriterte statusen i ARBSTATUS_PERS_STATUS8 som brukes for å identifisere mottakere av AFP i statistikken [Tilknytning til arbeid, utdanning og velferdsordninger](https://www.ssb.no/arbeid-og-lonn/sysselsetting/statistikk/tilknytning-til-arbeid-utdanning-og-velferdsordninger) (arbstatus). Se [Om statistikken](https://www.ssb.no/arbeid-og-lonn/sysselsetting/statistikk/tilknytning-til-arbeid-utdanning-og-velferdsordninger#om-statistikken) for mer informasjon. \n \n System for persondata (SFP) er kilde for både variabelen og statistikken. Denne grunnlagsfilen inkluderer i tillegg til bosatte personer 15 år og eldre, også noen grupper ikke-bosatte. Les mer i [dokumentasjonen](https://www.ssb.no/arbeid-og-lonn/artikler-og-publikasjoner/_attachment/430138?_ts=17433b4b920) om datagrunnlag, prosessering og definisjoner.",
+ "subjectFields": [
+  "Arbeid og lønn",
+  "Sysselsetting",
+  "Tilknytning til arbeid, utdanning og velferdsordninger"
+ ],
+ "temporalCoverage": {
+  "start": 15308,
+  "stop": 20057
+ },
+ "measureVariable": {
+  "name": "ARBSTATUS_PERS_AFP_GRUPPERING",
+  "label": "AFP-gruppering",
+  "notPseudonym": true,
+  "dataType": "String",
+  "variableRole": "Measure",
+  "representedVariables": [
+   {
+    "description": "Mottak av avtalefestet pensjon (AFP) i november, fordelt etter type AFP-ordning. \n \n Til og med årgang 2018 var data om mottakere i november hentet fra Nav. Det er mangelfull informasjon om to grupper av nye AFP-mottakere f.o.m. 2009, nemlig nye statlige AFP-mottakere i alderen 65–67 år og nye kommunale AFP-mottakere. Fra og med årgang 2019 hentes data om mottakere fra a-ordningen, siden a-ordningen gir bedre dekningsgrad av AFP-mottakere i offentlig sektor.\n \n ARBSTATUS_PERS_AFP_GRUPPERING skiller seg fra variablene INNTEKT_AFP_SUM, INNTEKT_AFP_OFF og INNTEKT_AFP_PRIV fra inntektsstatistikken og SKATT_BA_AFP_OFFENTLIG og SKATT_BA_AFP_PRIVAT fra skattestatistikken. Disse omfatter summen av AFP (privat og/eller offentlig) mottatt i løpet av kalenderåret. \n \n For å undersøke forløp når det kommer til AFP, kan variablene AFPO1992FDT_MOTTAK og AFPO2011FDT_MOTTAK/AFPO2011FDT_GRAD brukes for offentlig AFP og AFPP1992FDT_MOTTAK og AFPP2011FDT_MOTTAK/AFPP2011FDT_GRAD for privat AFP. Se følgende dokumentasjon for mer informasjon: [Variabelområdet FD-Trygd](https://www.ssb.no/data-til-forskning/utlan-av-data-til-forskere/variabellister/fd-trygd).",
+    "validPeriod": {
+     "start": 14975
+    },
+    "valueDomain": {
+     "codeList": [
+      {
+       "category": "Privat AFP, gammel",
+       "code": "1"
+      },
+      {
+       "category": "Privat AFP, ny",
+       "code": "2"
+      },
+      {
+       "category": "Offentlig AFP",
+       "code": "3"
+      },
+      {
+       "category": "Spekter-AFP",
+       "code": "4"
+      }
+     ],
+     "missingValues": []
+    }
+   }
+  ]
+ },
+ "identifierVariables": [
+  {
+   "name": "PERSONID_1",
+   "label": "Personidentifikator",
+   "notPseudonym": false,
+   "dataType": "Long",
+   "format": "RandomUInt48",
+   "variableRole": "Identifier",
+   "keyType": {
+    "name": "PERSON",
+    "label": "Person",
+    "description": "Person er et enkeltmenneske, individ."
+   },
+   "representedVariables": [
+    {
+     "description": "Identifikator for person i microdata",
+     "validPeriod": {
+      "start": 15308,
+      "stop": 20057
+     },
+     "valueDomain": {
+      "description": "Pseudonymisert personnummer",
+      "unitOfMeasure": "N/A"
+     }
+    }
+   ]
+  }
+ ],
+ "attributeVariables": [
+  {
+   "name": "START",
+   "label": "Startdato",
+   "notPseudonym": true,
+   "dataType": "Instant",
+   "variableRole": "Start",
+   "representedVariables": [
+    {
+     "description": "Startdato/måletidspunktet for hendelsen",
+     "validPeriod": {
+      "start": 15308,
+      "stop": 20057
+     },
+     "valueDomain": {
+      "description": "Dato oppgitt i dager siden 1970-01-01",
+      "unitOfMeasure": "N/A"
+     }
+    }
+   ]
+  },
+  {
+   "name": "STOP",
+   "label": "Stoppdato",
+   "notPseudonym": true,
+   "dataType": "Instant",
+   "variableRole": "Stop",
+   "representedVariables": [
+    {
+     "description": "Stoppdato/måletidspunktet for hendelsen",
+     "validPeriod": {
+      "start": 15308,
+      "stop": 20057
+     },
+     "valueDomain": {
+      "description": "Dato oppgitt i dager siden 1970-01-01",
+      "unitOfMeasure": "N/A"
+     }
+    }
+   ]
+  }
+ ],
+ "temporalStatusDates": [
+  15308,
+  15674,
+  16039,
+  16404,
+  16769,
+  17135,
+  17500,
+  18230,
+  18596,
+  18961,
+  19326,
+  19691,
+  20057
+ ],
+ "globalTemporalCoverage": {
+  "start": -1096,
+  "stop": 20759
+ },
+ "updatedAt": 1772621947
+}

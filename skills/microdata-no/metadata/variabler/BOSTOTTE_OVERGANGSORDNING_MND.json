@@ -1,0 +1,263 @@
+{
+ "name": "BOSTOTTE_OVERGANGSORDNING_MND",
+ "temporality": "STATUS",
+ "languageCode": "no",
+ "sensitivityLevel": "PERSON_GENERAL",
+ "populationDescription": "Variabelen omfatter alle personer i bostøtteregisteret som har søkt om bostøtte ved utgangen av året. Observasjoner med verdiene 0 og uoppgitt (missing) er utelatt.",
+ "subjectFields": [
+  "Bostøtte"
+ ],
+ "temporalCoverage": {
+  "start": 16101,
+  "stop": 20453
+ },
+ "measureVariable": {
+  "name": "BOSTOTTE_OVERGANGSORDNING_MND",
+  "label": "Overgangsordning",
+  "notPseudonym": true,
+  "dataType": "String",
+  "variableRole": "Measure",
+  "representedVariables": [
+   {
+    "description": "Variabelen indikerer om husstanden er omfattet av en overgangsordning i statistikkmåneden.",
+    "validPeriod": {
+     "start": 16071
+    },
+    "valueDomain": {
+     "codeList": [
+      {
+       "category": "Omfattet av overgangsordningen fra 2009",
+       "code": "1"
+      },
+      {
+       "category": "Omfattet av overgangsordningen fra 2015",
+       "code": "2"
+      }
+     ],
+     "missingValues": []
+    }
+   }
+  ]
+ },
+ "identifierVariables": [
+  {
+   "name": "PERSONID_1",
+   "label": "Personidentifikator",
+   "notPseudonym": false,
+   "dataType": "Long",
+   "format": "RandomUInt48",
+   "variableRole": "Identifier",
+   "keyType": {
+    "name": "PERSON",
+    "label": "Person",
+    "description": "Person er et enkeltmenneske, individ."
+   },
+   "representedVariables": [
+    {
+     "description": "Identifikator for person i microdata",
+     "validPeriod": {
+      "start": 16101,
+      "stop": 20453
+     },
+     "valueDomain": {
+      "description": "Pseudonymisert personnummer",
+      "unitOfMeasure": "N/A"
+     }
+    }
+   ]
+  }
+ ],
+ "attributeVariables": [
+  {
+   "name": "START",
+   "label": "Startdato",
+   "notPseudonym": true,
+   "dataType": "Instant",
+   "variableRole": "Start",
+   "representedVariables": [
+    {
+     "description": "Startdato/måletidspunktet for hendelsen",
+     "validPeriod": {
+      "start": 16101,
+      "stop": 20453
+     },
+     "valueDomain": {
+      "description": "Dato oppgitt i dager siden 1970-01-01",
+      "unitOfMeasure": "N/A"
+     }
+    }
+   ]
+  },
+  {
+   "name": "STOP",
+   "label": "Stoppdato",
+   "notPseudonym": true,
+   "dataType": "Instant",
+   "variableRole": "Stop",
+   "representedVariables": [
+    {
+     "description": "Stoppdato/måletidspunktet for hendelsen",
+     "validPeriod": {
+      "start": 16101,
+      "stop": 20453
+     },
+     "valueDomain": {
+      "description": "Dato oppgitt i dager siden 1970-01-01",
+      "unitOfMeasure": "N/A"
+     }
+    }
+   ]
+  }
+ ],
+ "temporalStatusDates": [
+  16101,
+  16129,
+  16160,
+  16190,
+  16221,
+  16251,
+  16282,
+  16313,
+  16343,
+  16374,
+  16404,
+  16435,
+  16466,
+  16494,
+  16525,
+  16555,
+  16586,
+  16616,
+  16647,
+  16678,
+  16708,
+  16739,
+  16769,
+  16800,
+  16831,
+  16860,
+  16891,
+  16921,
+  16952,
+  16982,
+  17013,
+  17044,
+  17074,
+  17105,
+  17135,
+  17166,
+  17197,
+  17225,
+  17256,
+  17286,
+  17317,
+  17347,
+  17378,
+  17409,
+  17439,
+  17470,
+  17500,
+  17531,
+  17562,
+  17590,
+  17621,
+  17651,
+  17682,
+  17712,
+  17743,
+  17774,
+  17804,
+  17835,
+  17865,
+  17896,
+  17927,
+  17955,
+  17986,
+  18016,
+  18047,
+  18077,
+  18108,
+  18139,
+  18169,
+  18200,
+  18230,
+  18261,
+  18292,
+  18321,
+  18352,
+  18382,
+  18413,
+  18443,
+  18474,
+  18505,
+  18535,
+  18566,
+  18596,
+  18627,
+  18658,
+  18686,
+  18717,
+  18747,
+  18778,
+  18808,
+  18839,
+  18870,
+  18900,
+  18931,
+  18961,
+  18992,
+  19023,
+  19051,
+  19082,
+  19112,
+  19143,
+  19173,
+  19204,
+  19235,
+  19265,
+  19296,
+  19326,
+  19357,
+  19388,
+  19416,
+  19447,
+  19477,
+  19508,
+  19538,
+  19569,
+  19600,
+  19630,
+  19661,
+  19691,
+  19722,
+  19753,
+  19782,
+  19813,
+  19843,
+  19874,
+  19904,
+  19935,
+  19966,
+  19996,
+  20027,
+  20057,
+  20088,
+  20119,
+  20147,
+  20178,
+  20208,
+  20239,
+  20269,
+  20300,
+  20331,
+  20361,
+  20392,
+  20422,
+  20453
+ ],
+ "globalTemporalCoverage": {
+  "start": -1096,
+  "stop": 20759
+ },
+ "updatedAt": 1780040280
+}

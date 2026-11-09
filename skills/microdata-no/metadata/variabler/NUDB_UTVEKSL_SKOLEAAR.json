@@ -1,0 +1,111 @@
+{
+ "name": "NUDB_UTVEKSL_SKOLEAAR",
+ "temporality": "EVENT",
+ "languageCode": "no",
+ "sensitivityLevel": "PERSON_GENERAL",
+ "populationDescription": "Variabelen gjelder for utvekslingsstudenter, dvs. innreisende og utreisende studenter på grunnlag av utvekslingsavtaler ved universiteter og høgskoler.",
+ "subjectFields": [
+  "Høyere utdanning",
+  "Utdanning"
+ ],
+ "temporalCoverage": {
+  "start": 12432,
+  "stop": 19904
+ },
+ "measureVariable": {
+  "name": "NUDB_UTVEKSL_SKOLEAAR",
+  "label": "Skoleåret opplysningene er meldt",
+  "notPseudonym": true,
+  "dataType": "Long",
+  "format": "YYYY",
+  "variableRole": "Measure",
+  "representedVariables": [
+   {
+    "description": "Variabelen angir hvilket skoleår de rapporterte data gjelder for. For et skoleår vil angivelse av årgang, f.eks. 2015, referere til siste kalenderår i skoleåret, dvs. 2014/2015.",
+    "validPeriod": {
+     "start": 12432,
+     "stop": 19904
+    },
+    "valueDomain": {
+     "description": "År",
+     "unitOfMeasure": "År"
+    }
+   }
+  ]
+ },
+ "identifierVariables": [
+  {
+   "name": "PERSONID_1",
+   "label": "Personidentifikator",
+   "notPseudonym": false,
+   "dataType": "Long",
+   "format": "RandomUInt48",
+   "variableRole": "Identifier",
+   "keyType": {
+    "name": "PERSON",
+    "label": "Person",
+    "description": "Person er et enkeltmenneske, individ."
+   },
+   "representedVariables": [
+    {
+     "description": "Identifikator for person i microdata",
+     "validPeriod": {
+      "start": 12432,
+      "stop": 19904
+     },
+     "valueDomain": {
+      "description": "Pseudonymisert personnummer",
+      "unitOfMeasure": "N/A"
+     }
+    }
+   ]
+  }
+ ],
+ "attributeVariables": [
+  {
+   "name": "START",
+   "label": "Startdato",
+   "notPseudonym": true,
+   "dataType": "Instant",
+   "variableRole": "Start",
+   "representedVariables": [
+    {
+     "description": "Startdato/måletidspunktet for hendelsen",
+     "validPeriod": {
+      "start": 12432,
+      "stop": 19904
+     },
+     "valueDomain": {
+      "description": "Dato oppgitt i dager siden 1970-01-01",
+      "unitOfMeasure": "N/A"
+     }
+    }
+   ]
+  },
+  {
+   "name": "STOP",
+   "label": "Stoppdato",
+   "notPseudonym": true,
+   "dataType": "Instant",
+   "variableRole": "Stop",
+   "representedVariables": [
+    {
+     "description": "Stoppdato/måletidspunktet for hendelsen",
+     "validPeriod": {
+      "start": 12432,
+      "stop": 19904
+     },
+     "valueDomain": {
+      "description": "Dato oppgitt i dager siden 1970-01-01",
+      "unitOfMeasure": "N/A"
+     }
+    }
+   ]
+  }
+ ],
+ "globalTemporalCoverage": {
+  "start": -1096,
+  "stop": 20759
+ },
+ "updatedAt": 1749816031
+}

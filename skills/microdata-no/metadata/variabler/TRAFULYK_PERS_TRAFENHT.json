@@ -1,0 +1,215 @@
+{
+ "name": "TRAFULYK_PERS_TRAFENHT",
+ "temporality": "FIXED",
+ "languageCode": "no",
+ "sensitivityLevel": "PERSON_GENERAL",
+ "populationDescription": "Variabelen omfatter dødsulykker og andre ulykker med personskade som er meldt til politiet. Trafikkulykkene som inngår i statistikken har skjedd på offentlig eller privat vei, gate eller plass som er åpen for alminnelig trafikk.",
+ "subjectFields": [
+  "Landtransport",
+  "Trafikkulykke",
+  "Transport og reiseliv"
+ ],
+ "temporalCoverage": {
+  "start": -25567,
+  "stop": 19723
+ },
+ "measureVariable": {
+  "name": "TRAFULYK_PERS_TRAFENHT",
+  "label": "Trafikkenhet",
+  "notPseudonym": true,
+  "dataType": "String",
+  "variableRole": "Measure",
+  "representedVariables": [
+   {
+    "description": "Variabelen viser personens tilhørighet til en trafikkenhet i ulykken",
+    "validPeriod": {
+     "start": 13514
+    },
+    "valueDomain": {
+     "codeList": [
+      {
+       "category": "A",
+       "code": "A"
+      },
+      {
+       "category": "B",
+       "code": "B"
+      },
+      {
+       "category": "C",
+       "code": "C"
+      },
+      {
+       "category": "D",
+       "code": "D"
+      },
+      {
+       "category": "E",
+       "code": "E"
+      },
+      {
+       "category": "F",
+       "code": "F"
+      },
+      {
+       "category": "G",
+       "code": "G"
+      },
+      {
+       "category": "H",
+       "code": "H"
+      },
+      {
+       "category": "I",
+       "code": "I"
+      },
+      {
+       "category": "J",
+       "code": "J"
+      },
+      {
+       "category": "K",
+       "code": "K"
+      },
+      {
+       "category": "L",
+       "code": "L"
+      },
+      {
+       "category": "M",
+       "code": "M"
+      },
+      {
+       "category": "N",
+       "code": "N"
+      },
+      {
+       "category": "O",
+       "code": "O"
+      },
+      {
+       "category": "P",
+       "code": "P"
+      },
+      {
+       "category": "Q",
+       "code": "Q"
+      },
+      {
+       "category": "R",
+       "code": "R"
+      },
+      {
+       "category": "S",
+       "code": "S"
+      },
+      {
+       "category": "T",
+       "code": "T"
+      },
+      {
+       "category": "U",
+       "code": "U"
+      },
+      {
+       "category": "V",
+       "code": "V"
+      },
+      {
+       "category": "W",
+       "code": "W"
+      },
+      {
+       "category": "X",
+       "code": "X"
+      },
+      {
+       "category": "Y",
+       "code": "Y"
+      },
+      {
+       "category": "Z",
+       "code": "Z"
+      }
+     ],
+     "missingValues": []
+    }
+   }
+  ]
+ },
+ "identifierVariables": [
+  {
+   "name": "PERSON_TRAFIKKULYKKE_ID",
+   "label": "Person i trafikkulykkeidentifikator",
+   "notPseudonym": false,
+   "dataType": "Long",
+   "format": "RandomUInt48",
+   "variableRole": "Identifier",
+   "keyType": {
+    "name": "TRAFIKKULYKKE_PERSON",
+    "label": "Person i trafikkulykke",
+    "description": "Variablene omfatter dødsulykker og andre ulykker med personskade som er meldt til politiet. Trafikkulykkene som inngår i statistikken har skjedd på offentlig eller privat vei, gate eller plass som er åpen for alminnelig trafikk"
+   },
+   "representedVariables": [
+    {
+     "description": "Identifikator for personer involvert i trafikkulykker i microdata",
+     "validPeriod": {
+      "start": -25567,
+      "stop": 19723
+     },
+     "valueDomain": {
+      "description": "Pseudonymisert kombinasjon av internnr, saksnummer og fødselsnummer for trafikkulykker",
+      "unitOfMeasure": "N/A"
+     }
+    }
+   ]
+  }
+ ],
+ "attributeVariables": [
+  {
+   "name": "START",
+   "label": "Startdato",
+   "notPseudonym": true,
+   "dataType": "Instant",
+   "variableRole": "Start",
+   "representedVariables": [
+    {
+     "description": "Startdato/måletidspunktet for hendelsen",
+     "validPeriod": {
+      "start": -25567,
+      "stop": 19723
+     },
+     "valueDomain": {
+      "description": "Dato oppgitt i dager siden 1970-01-01",
+      "unitOfMeasure": "N/A"
+     }
+    }
+   ]
+  },
+  {
+   "name": "STOP",
+   "label": "Stoppdato",
+   "notPseudonym": true,
+   "dataType": "Instant",
+   "variableRole": "Stop",
+   "representedVariables": [
+    {
+     "description": "Stoppdato/måletidspunktet for hendelsen",
+     "validPeriod": {
+      "start": -25567,
+      "stop": 19723
+     },
+     "valueDomain": {
+      "description": "Dato oppgitt i dager siden 1970-01-01",
+      "unitOfMeasure": "N/A"
+     }
+    }
+   ]
+  }
+ ],
+ "globalTemporalCoverage": {
+  "start": -1096,
+  "stop": 20759
+ },
+ "updatedAt": 1730375672
+}

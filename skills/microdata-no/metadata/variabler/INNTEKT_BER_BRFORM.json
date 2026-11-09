@@ -1,0 +1,110 @@
+{
+ "name": "INNTEKT_BER_BRFORM",
+ "temporality": "ACCUMULATED",
+ "languageCode": "no",
+ "sensitivityLevel": "PERSON_GENERAL",
+ "populationDescription": "Variabelen omfatter bosatte per 31.12.ÅÅÅÅ. Observasjoner med verdiene 0 og uoppgitt (missing) er utelatt.",
+ "subjectFields": [
+  "Inntekt",
+  "Inntekt og forbruk"
+ ],
+ "temporalCoverage": {
+  "start": 14610,
+  "stop": 20088
+ },
+ "measureVariable": {
+  "name": "INNTEKT_BER_BRFORM",
+  "label": "Beregnet bruttoformue",
+  "notPseudonym": true,
+  "dataType": "Double",
+  "variableRole": "Measure",
+  "representedVariables": [
+   {
+    "description": "Omfatter summen av beregnet realkapital og beregnet bruttofinanskapital. \n Det er beregnede markedsverdier av primærboligen, sekundærboliger, næringseiendommer og skog- og gårdsbruk som utgjør forskjellen mellom den beregnede realkapitalen og den skattepliktige realkapitalen. For primærboligen utgjør skatteverdien 25 prosent av markedsverdien i hele perioden. Det innebærer at vi fra og med inntektsåret 2010 har multiplisert skatteverdien med 4 for å få markedsverdien. Skatteverdien av sekundærboliger har endret seg over tid, og vi henviser til Skatteetaten for reglene i enkeltår. Fra og med 2013 har vi også beregnet markedsverdi av næringseiendommer, og fra og med 2017 markedsverdi av skog- og gårdsbruk. Som primærbolig regnes i utgangspunktet den bolig hvor eier har folkeregistrert adresse ved årets utgang. Som sekundærbolig ved formuesligningen regnes annen boligeiendom enn primærbolig. Dette gjelder blant annet pendlerbolig, utleiebolig og helårsbolig brukt som fritidsbolig. Fritidseiendom er ikke sekundærbolig. Som fritidseiendom regnes typiske hytter, sommerhus og leilighetskompleks bygget utelukkende for fritidsformål. Beregnet bruttofinanskapital omfatter bankinnskudd, andeler i aksjefond, obligasjons- og pengemarkedsfond, aksjer, obligasjoner og andre verdipapirer, justert til antatt omsetningsverdi eller markedsverdi. For inntektsårene før 2017 var dette det samme som skattepliktig bruttofinanskapital.",
+    "validPeriod": {
+     "start": 14610,
+     "stop": 20088
+    },
+    "valueDomain": {
+     "description": "Beløp.",
+     "unitOfMeasure": "NOK"
+    }
+   }
+  ]
+ },
+ "identifierVariables": [
+  {
+   "name": "PERSONID_1",
+   "label": "Personidentifikator",
+   "notPseudonym": false,
+   "dataType": "Long",
+   "format": "RandomUInt48",
+   "variableRole": "Identifier",
+   "keyType": {
+    "name": "PERSON",
+    "label": "Person",
+    "description": "Person er et enkeltmenneske, individ."
+   },
+   "representedVariables": [
+    {
+     "description": "Identifikator for person i microdata",
+     "validPeriod": {
+      "start": 14610,
+      "stop": 20088
+     },
+     "valueDomain": {
+      "description": "Pseudonymisert personnummer",
+      "unitOfMeasure": "N/A"
+     }
+    }
+   ]
+  }
+ ],
+ "attributeVariables": [
+  {
+   "name": "START",
+   "label": "Startdato",
+   "notPseudonym": true,
+   "dataType": "Instant",
+   "variableRole": "Start",
+   "representedVariables": [
+    {
+     "description": "Startdato/måletidspunktet for hendelsen",
+     "validPeriod": {
+      "start": 14610,
+      "stop": 20088
+     },
+     "valueDomain": {
+      "description": "Dato oppgitt i dager siden 1970-01-01",
+      "unitOfMeasure": "N/A"
+     }
+    }
+   ]
+  },
+  {
+   "name": "STOP",
+   "label": "Stoppdato",
+   "notPseudonym": true,
+   "dataType": "Instant",
+   "variableRole": "Stop",
+   "representedVariables": [
+    {
+     "description": "Stoppdato/måletidspunktet for hendelsen",
+     "validPeriod": {
+      "start": 14610,
+      "stop": 20088
+     },
+     "valueDomain": {
+      "description": "Dato oppgitt i dager siden 1970-01-01",
+      "unitOfMeasure": "N/A"
+     }
+    }
+   ]
+  }
+ ],
+ "globalTemporalCoverage": {
+  "start": -1096,
+  "stop": 20759
+ },
+ "updatedAt": 1771925041
+}

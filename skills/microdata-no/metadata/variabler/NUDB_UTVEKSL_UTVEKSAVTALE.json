@@ -1,0 +1,412 @@
+{
+ "name": "NUDB_UTVEKSL_UTVEKSAVTALE",
+ "temporality": "EVENT",
+ "languageCode": "no",
+ "sensitivityLevel": "PERSON_GENERAL",
+ "populationDescription": "Variabelen gjelder for utvekslingsstudenter, dvs. innreisende og utreisende studenter på grunnlag av utvekslingsavtaler ved universiteter og høgskoler.",
+ "subjectFields": [
+  "Høyere utdanning",
+  "Utdanning"
+ ],
+ "temporalCoverage": {
+  "start": 12432,
+  "stop": 19904
+ },
+ "measureVariable": {
+  "name": "NUDB_UTVEKSL_UTVEKSAVTALE",
+  "label": "Utvekslingsavtale",
+  "notPseudonym": true,
+  "dataType": "String",
+  "variableRole": "Measure",
+  "representedVariables": [
+   {
+    "description": "Variabelen viser koder for ulike utvekslingsavtaler.",
+    "validPeriod": {
+     "start": 14092,
+     "stop": 14470
+    },
+    "valueDomain": {
+     "codeList": [
+      {
+       "category": "Kvoteprogram",
+       "code": "KVOTEPROG"
+      }
+     ],
+     "missingValues": []
+    }
+   },
+   {
+    "description": "Variabelen viser koder for ulike utvekslingsavtaler.",
+    "validPeriod": {
+     "start": 14471,
+     "stop": 15200
+    },
+    "valueDomain": {
+     "missingValues": [],
+     "delta": {
+      "remove": [],
+      "reorder": [],
+      "replace": {},
+      "insert": {
+       "1": {
+        "category": "NUFU",
+        "code": "NUFU"
+       }
+      }
+     }
+    }
+   },
+   {
+    "description": "Variabelen viser koder for ulike utvekslingsavtaler.",
+    "validPeriod": {
+     "start": 15201,
+     "stop": 15339
+    },
+    "valueDomain": {
+     "missingValues": [],
+     "delta": {
+      "remove": [],
+      "reorder": [],
+      "replace": {},
+      "insert": {
+       "1": {
+        "category": "Norad",
+        "code": "NORAD"
+       },
+       "2": {
+        "category": "Eurasiaprogrammet",
+        "code": "EURASIA"
+       }
+      }
+     }
+    }
+   },
+   {
+    "description": "Variabelen viser koder for ulike utvekslingsavtaler.",
+    "validPeriod": {
+     "start": 15340,
+     "stop": 15931
+    },
+    "valueDomain": {
+     "missingValues": [],
+     "delta": {
+      "remove": [],
+      "reorder": [],
+      "replace": {},
+      "insert": {
+       "0": {
+        "category": "Erasmus",
+        "code": "ERASMUS"
+       },
+       "1": {
+        "category": "LLP-Erasmus",
+        "code": "LLP-ERASMUS"
+       },
+       "2": {
+        "category": "Erasmus Mundus",
+        "code": "ERASMUSMUNDUS"
+       },
+       "3": {
+        "category": "Bilaterale avtaler",
+        "code": "BILATERAL"
+       },
+       "4": {
+        "category": "Individbaserte avtaler",
+        "code": "INDIVID"
+       },
+       "6": {
+        "category": "Andre programmer",
+        "code": "ANDRE"
+       },
+       "7": {
+        "category": "Praksisprogrammer",
+        "code": "PRAKSIS"
+       },
+       "8": {
+        "category": "North2North",
+        "code": "NORTH"
+       },
+       "9": {
+        "category": "Andre NORAD-finansierte program",
+        "code": "NORAD-ANDRE"
+       },
+       "11": {
+        "category": "LLP-øvrig",
+        "code": "LLP-OEVRIG"
+       },
+       "12": {
+        "category": "Fulbright",
+        "code": "FULBRIGHT"
+       },
+       "13": {
+        "category": "Nordområdestipend-programmet",
+        "code": "NORDOMRAADE"
+       },
+       "14": {
+        "category": "The Nordic Forestry, Veterinary and Agricultural University Network",
+        "code": "NOVA"
+       },
+       "15": {
+        "category": "International Student Exchange Programs",
+        "code": "ISEP"
+       },
+       "16": {
+        "category": "Barentsplus",
+        "code": "BARENTSPLUS"
+       },
+       "18": {
+        "category": "Science without Borders",
+        "code": "SWB"
+       },
+       "19": {
+        "category": "Østeuropa-programmene",
+        "code": "OESTEUROPA"
+       },
+       "20": {
+        "category": "Erasmus Link",
+        "code": "ERASMUSLINK"
+       },
+       "21": {
+        "category": "Leonardo da Vinci",
+        "code": "LEONARDO"
+       },
+       "23": {
+        "category": "EEA Grants/Norway Grants",
+        "code": "EEA-NORW"
+       },
+       "24": {
+        "category": "Erasmus+",
+        "code": "ERASMUS+"
+       },
+       "25": {
+        "category": "Norwegian Programme for Capacity Building in Higher Education and Research for Development",
+        "code": "NORHED"
+       },
+       "26": {
+        "category": "Nordplus",
+        "code": "NORDPLUS"
+       },
+       "27": {
+        "category": "Norwegian Partnership Programme for Global Academic Cooperation",
+        "code": "NORPART"
+       },
+       "28": {
+        "category": "Partnerskapsprogram for Nord-Amerika",
+        "code": "PANOAM"
+       }
+      }
+     }
+    }
+   },
+   {
+    "description": "Variabelen viser koder for ulike utvekslingsavtaler.",
+    "validPeriod": {
+     "start": 15932,
+     "stop": 16661
+    },
+    "valueDomain": {
+     "missingValues": [],
+     "delta": {
+      "remove": [
+       19,
+       20,
+       21,
+       22
+      ],
+      "reorder": [],
+      "replace": {},
+      "insert": {}
+     }
+    }
+   },
+   {
+    "description": "Variabelen viser koder for ulike utvekslingsavtaler.",
+    "validPeriod": {
+     "start": 16662,
+     "stop": 17166
+    },
+    "valueDomain": {
+     "missingValues": [],
+     "delta": {
+      "remove": [
+       0,
+       1,
+       11
+      ],
+      "reorder": [],
+      "replace": {},
+      "insert": {}
+     }
+    }
+   },
+   {
+    "description": "Variabelen viser koder for ulike utvekslingsavtaler.",
+    "validPeriod": {
+     "start": 17167,
+     "stop": 17392
+    },
+    "valueDomain": {
+     "missingValues": [],
+     "delta": {
+      "remove": [],
+      "reorder": [],
+      "replace": {},
+      "insert": {
+       "13": {
+        "category": "Kulturavtaleprogrammer",
+        "code": "KULTUR"
+       },
+       "23": {
+        "category": "Internasjonale partnerskap for fremragende utdanning og forskning",
+        "code": "INTPART"
+       }
+      }
+     }
+    }
+   },
+   {
+    "description": "Variabelen viser koder for ulike utvekslingsavtaler.",
+    "validPeriod": {
+     "start": 17393,
+     "stop": 18488
+    },
+    "valueDomain": {
+     "missingValues": [],
+     "delta": {
+      "remove": [
+       0
+      ],
+      "reorder": [],
+      "replace": {},
+      "insert": {}
+     }
+    }
+   },
+   {
+    "description": "Variabelen viser koder for ulike utvekslingsavtaler.",
+    "validPeriod": {
+     "start": 18489,
+     "stop": 18992
+    },
+    "valueDomain": {
+     "missingValues": [],
+     "delta": {
+      "remove": [
+       2
+      ],
+      "reorder": [],
+      "replace": {},
+      "insert": {}
+     }
+    }
+   },
+   {
+    "description": "Variabelen viser koder for ulike utvekslingsavtaler.",
+    "validPeriod": {
+     "start": 18993
+    },
+    "valueDomain": {
+     "missingValues": [],
+     "delta": {
+      "remove": [],
+      "reorder": [],
+      "replace": {},
+      "insert": {
+       "21": {
+        "category": "UTFORSK",
+        "code": "UTFORSK"
+       },
+       "22": {
+        "category": "Russian-Norwegian Scholarship Scheme",
+        "code": "RUSSUT"
+       },
+       "23": {
+        "category": "Erasmus+ Global Mobility",
+        "code": "ERASMUS+GM"
+       },
+       "25": {
+        "category": "Norwegian Partnership Programme for International Teacher Education",
+        "code": "NOTED"
+       }
+      }
+     }
+    }
+   }
+  ]
+ },
+ "identifierVariables": [
+  {
+   "name": "PERSONID_1",
+   "label": "Personidentifikator",
+   "notPseudonym": false,
+   "dataType": "Long",
+   "format": "RandomUInt48",
+   "variableRole": "Identifier",
+   "keyType": {
+    "name": "PERSON",
+    "label": "Person",
+    "description": "Person er et enkeltmenneske, individ."
+   },
+   "representedVariables": [
+    {
+     "description": "Identifikator for person i microdata",
+     "validPeriod": {
+      "start": 12432,
+      "stop": 19904
+     },
+     "valueDomain": {
+      "description": "Pseudonymisert personnummer",
+      "unitOfMeasure": "N/A"
+     }
+    }
+   ]
+  }
+ ],
+ "attributeVariables": [
+  {
+   "name": "START",
+   "label": "Startdato",
+   "notPseudonym": true,
+   "dataType": "Instant",
+   "variableRole": "Start",
+   "representedVariables": [
+    {
+     "description": "Startdato/måletidspunktet for hendelsen",
+     "validPeriod": {
+      "start": 12432,
+      "stop": 19904
+     },
+     "valueDomain": {
+      "description": "Dato oppgitt i dager siden 1970-01-01",
+      "unitOfMeasure": "N/A"
+     }
+    }
+   ]
+  },
+  {
+   "name": "STOP",
+   "label": "Stoppdato",
+   "notPseudonym": true,
+   "dataType": "Instant",
+   "variableRole": "Stop",
+   "representedVariables": [
+    {
+     "description": "Stoppdato/måletidspunktet for hendelsen",
+     "validPeriod": {
+      "start": 12432,
+      "stop": 19904
+     },
+     "valueDomain": {
+      "description": "Dato oppgitt i dager siden 1970-01-01",
+      "unitOfMeasure": "N/A"
+     }
+    }
+   ]
+  }
+ ],
+ "globalTemporalCoverage": {
+  "start": -1096,
+  "stop": 20759
+ },
+ "updatedAt": 1749816031
+}

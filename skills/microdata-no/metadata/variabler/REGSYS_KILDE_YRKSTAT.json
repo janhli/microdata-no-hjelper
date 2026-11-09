@@ -1,0 +1,205 @@
+{
+ "name": "REGSYS_KILDE_YRKSTAT",
+ "temporality": "STATUS",
+ "languageCode": "no",
+ "sensitivityLevel": "PERSON_GENERAL",
+ "populationDescription": "Gjelder hovedarbeidsforholdet (det er i hovedsak arbeidsforholdet med høyest avtalt arbeidstid) og bosatte personer 15-74 år. Observasjoner med verdiene 0 og uoppgitt (missing) er utelatt.",
+ "subjectFields": [
+  "Arbeid og lønn",
+  "Sysselsetting"
+ ],
+ "temporalCoverage": {
+  "start": 11277,
+  "stop": 16390
+ },
+ "measureVariable": {
+  "name": "REGSYS_KILDE_YRKSTAT",
+  "label": "Kilde for arbeidsmarkedsstatus, hovedarbeidsforhold",
+  "notPseudonym": true,
+  "dataType": "String",
+  "variableRole": "Measure",
+  "representedVariables": [
+   {
+    "description": "Variabelen viser kilde for hovedarbeidsforholdet. Denne variabelen viser hvilke(n) datakilder som ligger til grunn for statusen på arbeidsmarkedet, f.eks. om hovedarbeidsforholdet (lønnstakerforholdet) er registrert i NAV Arbeidstakerregister (Aa-registeret) og påkoblet lønn fra Skatteetatens Lønns- og trekkoppgaveregister (LTO-registeret), om arbeidsforholdet (lønnstakerforholdet) kun er registrert i Aa-registeret, om arbeidsforholdet (lønnstakerforholdet) kun er registrert i LTO-registeret, om man er registrert i vernepliktregisteret/siviltjenesteregisteret, osv. (se hele kodelisten nedenfor).\n \n Denne variabelen erstattes med REGSYS_ARB_KILDE fra og med januar 2015.\n \n  Kilde for variabelen er registerbaserte sysselsettingsdata. Les dokumentasjonen om datagrunnlag, prosessering og definisjoner her: \n - [Sysselsetting, registerbasert](https://www.ssb.no/arbeid-og-lonn/sysselsetting/statistikk/sysselsetting-registerbasert) \n - [Om datagrunnlaget for registerbasert sysselsettingsstatistikk](https://www.ssb.no/data-til-forskning/utlan-av-data-til-forskere/variabellister/a-ordningen/om-datagrunnlaget-for-registerbasert-sysselsettingsstatistikk) \n - [Registerbasert lønns- og sysselsettingsstatistikk basert på a-ordningen](https://www.ssb.no/arbeid-og-lonn/sysselsetting/artikler/registerbasert-lonns-og-sysselsettingsstatistikk-basert-pa-a-ordningen)",
+    "validPeriod": {
+     "start": 10957
+    },
+    "valueDomain": {
+     "codeList": [
+      {
+       "category": "Ikke registrert i kilderegistrene",
+       "code": "0"
+      },
+      {
+       "category": "Koblet lønnstakerforhold, AA-registeret koblet med LTO",
+       "code": "1"
+      },
+      {
+       "category": "Ukoblet arbeidstakerforhold, kun registrert i AA-registeret",
+       "code": "2"
+      },
+      {
+       "category": "Helt ledig (annen definisjon enn i statistikken over arbeidsledige, se dokumentasjonen)",
+       "code": "3"
+      },
+      {
+       "category": "Ukoblet lønnsforhold med tilleggsinformasjon fra PAI",
+       "code": "3A"
+      },
+      {
+       "category": "Ukoblet lønnsforhold med tilleggsinformasjon fra SST",
+       "code": "3B"
+      },
+      {
+       "category": "Ukoblet lønnsforhold med tilleggsinformasjon fra STS",
+       "code": "3C"
+      },
+      {
+       "category": "Ukoblet lønnsforhold med tilleggsinformasjon fra Lønnsstatistikken for privat sektor",
+       "code": "3D"
+      },
+      {
+       "category": "Ukoblet lønnsforhold med tilleggsinformasjon fra Sykefraværsregisteret",
+       "code": "3E"
+      },
+      {
+       "category": "Ukoblet lønnsforhold med tilleggsinformasjon fra Helseforetak",
+       "code": "3F"
+      },
+      {
+       "category": "Selvangivelsesregisteret med næringsinntekt i primærnæringene",
+       "code": "4"
+      },
+      {
+       "category": "Selvangivelsesregisteret med næringsinntekt fra andre næringer",
+       "code": "5"
+      },
+      {
+       "category": "Vernepliktsregisteret / Siviltjenesteregisteret",
+       "code": "6"
+      },
+      {
+       "category": "Vernepliktsregisteret",
+       "code": "6A"
+      },
+      {
+       "category": "Siviltjenesteregisteret",
+       "code": "6B"
+      },
+      {
+       "category": "SOFA-søker-registeret",
+       "code": "7"
+      },
+      {
+       "category": "Ikkebosatte",
+       "code": "8"
+      },
+      {
+       "category": "Selvstendig fra fastlegeregisteret",
+       "code": "9"
+      }
+     ],
+     "missingValues": []
+    }
+   }
+  ]
+ },
+ "identifierVariables": [
+  {
+   "name": "PERSONID_1",
+   "label": "Personidentifikator",
+   "notPseudonym": false,
+   "dataType": "Long",
+   "format": "RandomUInt48",
+   "variableRole": "Identifier",
+   "keyType": {
+    "name": "PERSON",
+    "label": "Person",
+    "description": "Statistisk enhet er person (individ, enkeltmenenske)"
+   },
+   "representedVariables": [
+    {
+     "description": "Identifikator for person i RAIRD",
+     "validPeriod": {
+      "start": 11277,
+      "stop": 16390
+     },
+     "valueDomain": {
+      "description": "N/A",
+      "unitOfMeasure": "N/A"
+     }
+    }
+   ]
+  }
+ ],
+ "attributeVariables": [
+  {
+   "name": "STOP",
+   "label": "Stoppdato",
+   "notPseudonym": true,
+   "dataType": "Instant",
+   "variableRole": "Stop",
+   "representedVariables": [
+    {
+     "description": "Stoppdato/sluttdato for hendelsen",
+     "validPeriod": {
+      "start": 11277,
+      "stop": 16390
+     },
+     "valueDomain": {
+      "description": "N/A",
+      "unitOfMeasure": "N/A"
+     }
+    }
+   ]
+  },
+  {
+   "name": "START",
+   "label": "Startdato",
+   "notPseudonym": true,
+   "dataType": "Instant",
+   "variableRole": "Start",
+   "representedVariables": [
+    {
+     "description": "Startdato/måletidspunktet for hendelsen",
+     "validPeriod": {
+      "start": 11277,
+      "stop": 16390
+     },
+     "valueDomain": {
+      "description": "N/A",
+      "unitOfMeasure": "N/A"
+     }
+    }
+   ]
+  }
+ ],
+ "temporalStatusDates": [
+  14199,
+  15660,
+  12738,
+  11642,
+  16390,
+  13833,
+  13468,
+  15294,
+  12372,
+  13103,
+  12007,
+  14929,
+  16025,
+  14564,
+  11277
+ ],
+ "temporalEnd": {
+  "description": "Variabelen oppdateres ikke.",
+  "successors": [
+   "REGSYS_ARB_KILDE"
+  ]
+ },
+ "globalTemporalCoverage": {
+  "start": -1096,
+  "stop": 20759
+ },
+ "updatedAt": 1662114277
+}

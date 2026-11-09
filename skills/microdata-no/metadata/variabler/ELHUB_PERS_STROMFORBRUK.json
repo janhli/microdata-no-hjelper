@@ -1,0 +1,110 @@
+{
+ "name": "ELHUB_PERS_STROMFORBRUK",
+ "temporality": "ACCUMULATED",
+ "languageCode": "no",
+ "sensitivityLevel": "PERSON_GENERAL",
+ "populationDescription": "Variabelen omfatter alle målepunkt registrert på personer i Norge. Uoppgitte (missing) observasjoner er utelatt.",
+ "subjectFields": [
+  "Elhub",
+  "Energi og industri"
+ ],
+ "temporalCoverage": {
+  "start": 18262,
+  "stop": 20696
+ },
+ "measureVariable": {
+  "name": "ELHUB_PERS_STROMFORBRUK",
+  "label": "Strømforbruk",
+  "notPseudonym": true,
+  "dataType": "Double",
+  "variableRole": "Measure",
+  "representedVariables": [
+   {
+    "description": "Variabelen viser forbruk i kWh registrert på målepunktet. Verdien er akummulert per måned.",
+    "validPeriod": {
+     "start": 18262,
+     "stop": 20696
+    },
+    "valueDomain": {
+     "description": "Kilowattime.",
+     "unitOfMeasure": "kWh"
+    }
+   }
+  ]
+ },
+ "identifierVariables": [
+  {
+   "name": "MALEPUNKT_ID",
+   "label": "Målepunktsidentifikator",
+   "notPseudonym": false,
+   "dataType": "Long",
+   "format": "RandomUInt48",
+   "variableRole": "Identifier",
+   "keyType": {
+    "name": "MALEPUNKT",
+    "label": "Målepunkt",
+    "description": "Målepunkt er en innretning for måling av strømforbruk."
+   },
+   "representedVariables": [
+    {
+     "description": "Identifikator for målepunkt i microdata",
+     "validPeriod": {
+      "start": 18262,
+      "stop": 20696
+     },
+     "valueDomain": {
+      "description": "Pseudonymisert kombinasjon av personnummer og målepunktsid nummer",
+      "unitOfMeasure": "N/A"
+     }
+    }
+   ]
+  }
+ ],
+ "attributeVariables": [
+  {
+   "name": "START",
+   "label": "Startdato",
+   "notPseudonym": true,
+   "dataType": "Instant",
+   "variableRole": "Start",
+   "representedVariables": [
+    {
+     "description": "Startdato/måletidspunktet for hendelsen",
+     "validPeriod": {
+      "start": 18262,
+      "stop": 20696
+     },
+     "valueDomain": {
+      "description": "Dato oppgitt i dager siden 1970-01-01",
+      "unitOfMeasure": "N/A"
+     }
+    }
+   ]
+  },
+  {
+   "name": "STOP",
+   "label": "Stoppdato",
+   "notPseudonym": true,
+   "dataType": "Instant",
+   "variableRole": "Stop",
+   "representedVariables": [
+    {
+     "description": "Stoppdato/måletidspunktet for hendelsen",
+     "validPeriod": {
+      "start": 18262,
+      "stop": 20696
+     },
+     "valueDomain": {
+      "description": "Dato oppgitt i dager siden 1970-01-01",
+      "unitOfMeasure": "N/A"
+     }
+    }
+   ]
+  }
+ ],
+ "globalTemporalCoverage": {
+  "start": -1096,
+  "stop": 20759
+ },
+ "updatedAt": 1790854458
+}

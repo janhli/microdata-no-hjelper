@@ -1,0 +1,138 @@
+{
+ "name": "ARBSTATUS_AKT_ANNENP",
+ "temporality": "STATUS",
+ "languageCode": "no",
+ "sensitivityLevel": "PERSON_GENERAL",
+ "populationDescription": "Variabelen omfatter alle bosatte personer 15 år eller eldre og samsvarer med populasjonen i statistikken [Tilknytning til arbeid, utdanning og velferdsordninger](https://www.ssb.no/arbeid-og-lonn/sysselsetting/statistikk/tilknytning-til-arbeid-utdanning-og-velferdsordninger) (arbstatus). Se [Om statistikken](https://www.ssb.no/arbeid-og-lonn/sysselsetting/statistikk/tilknytning-til-arbeid-utdanning-og-velferdsordninger#om-statistikken) for mer informasjon. \n \n Det er noen færre personer med i populasjonen i microdata.no sammenlignet med i [statistikkbanken](https://www.ssb.no/statbank/list/arbstatus). Det skyldes manglende eller ugyldige fødselsnummer i datagrunnlaget som dermed ikke kan brukes til kobling mot andre variabler i microdata.no, og er derfor utelatt. For de fleste årgangene er det i underkant av 200 færre i microdata.no, mens det for 2022-årgangen er i overkant av 1 000 færre personer. \n \n System for persondata (SFP) er kilde for både variabelen og statistikken. Denne grunnlagsfilen inkluderer i tillegg til bosatte personer 15 år og eldre, også noen grupper ikke-bosatte. Les mer i [dokumentasjonen](https://www.ssb.no/arbeid-og-lonn/artikler-og-publikasjoner/_attachment/430138?_ts=17433b4b920) om datagrunnlag, prosessering og definisjoner.",
+ "subjectFields": [
+  "Arbeid og lønn",
+  "Sysselsetting",
+  "Tilknytning til arbeid, utdanning og velferdsordninger"
+ ],
+ "temporalCoverage": {
+  "start": 14244,
+  "stop": 20088
+ },
+ "measureVariable": {
+  "name": "ARBSTATUS_AKT_ANNENP",
+  "label": "Pensjoner fra andre enn Nav/Folketrygden",
+  "notPseudonym": true,
+  "dataType": "String",
+  "variableRole": "Measure",
+  "representedVariables": [
+   {
+    "description": "Fulltellingsvariabel (ARBSTATUS_AKT_ANNENP= '1') for mottak av pensjoner fra andre enn Nav/Folketrygden i løpet av statistikkåret. \n \n Dette er en samlekategori av utvalgte poster i Skatteetatens lønns- og trekkoppgaveregister (LTO-registeret) til og med 2014. Fra og med statistikkåret 2015 hentes tilsvarende opplysninger fra utkast til skattemelding hos Skatteetaten. Opplysningene er forhåndsutfylte etter rapportering fra arbeidsgivere, pensjonsutbetalere o.l. gjennom a-ordningen: \n - [pensjon i og utenfor arbeidsforhold og livrenter i arbeidsforhold (skatteetaten.no)](https://www.skatteetaten.no/bedrift-og-organisasjon/arbeidsgiver/a-meldingen/veiledning/lonn-og-ytelser/oversikt-over-lonn-og-andre-ytelser/pensjon-i-og-utenfor-arbeidsforhold-og-livrenter-i-arbeidsforhold/) \n - pensjon og livrenter i arbeidsforhold m.v. Medfører arbeidsgiveravgift.\n - [skattepliktig etterlønn og etterpensjon etter dødsfall (skatteetaten.no)](https://www.skatteetaten.no/bedrift-og-organisasjon/arbeidsgiver/a-meldingen/veiledning/lonn-og-ytelser/oversikt-over-lonn-og-andre-ytelser/etterlonn-og-etterpensjon-etter-dodsfall/) \n - [føderåd (skatteetaten.no)](https://www.skatteetaten.no/bedrift-og-organisasjon/arbeidsgiver/a-meldingen/veiledning/lonn-og-ytelser/oversikt-over-lonn-og-andre-ytelser/foderad-kar-naturalytelser/) \n - [nye livrenter i arbeidsforhold (kollektive livrenter) (skatteetaten.no)](https://www.skatteetaten.no/bedrift-og-organisasjon/arbeidsgiver/a-meldingen/veiledning/lonn-og-ytelser/oversikt-over-lonn-og-andre-ytelser/nye-livrenter-i-arbeidsforhold-kollektive-livrenter-og-livrenter-tegnet-som-fortsettelsesforsikringer/) (inngår ikke fra og med 2022) \n - [uførepensjon fra andre enn folketrygden (skatteetaten.no)](https://www.skatteetaten.no/bedrift-og-organisasjon/arbeidsgiver/a-meldingen/veiledning/lonn-og-ytelser/oversikt-over-lonn-og-andre-ytelser/uforepensjon-uforeytelser-fra-andre-enn-folketrygden/) \n \n Variabelen ARBSTATUS_AKT_ANNENP inngår i prioriteringen av status i variabelen ARBSTATUS_PERS_STATUS8.",
+    "validPeriod": {
+     "start": 13879
+    },
+    "valueDomain": {
+     "codeList": [
+      {
+       "category": "Mottok ikke stønad/ytelse",
+       "code": "0"
+      },
+      {
+       "category": "Mottok stønad/ytelse",
+       "code": "1"
+      }
+     ],
+     "missingValues": []
+    }
+   }
+  ]
+ },
+ "identifierVariables": [
+  {
+   "name": "PERSONID_1",
+   "label": "Personidentifikator",
+   "notPseudonym": false,
+   "dataType": "Long",
+   "format": "RandomUInt48",
+   "variableRole": "Identifier",
+   "keyType": {
+    "name": "PERSON",
+    "label": "Person",
+    "description": "Person er et enkeltmenneske, individ."
+   },
+   "representedVariables": [
+    {
+     "description": "Identifikator for person i microdata",
+     "validPeriod": {
+      "start": 14244,
+      "stop": 20088
+     },
+     "valueDomain": {
+      "description": "Pseudonymisert personnummer",
+      "unitOfMeasure": "N/A"
+     }
+    }
+   ]
+  }
+ ],
+ "attributeVariables": [
+  {
+   "name": "START",
+   "label": "Startdato",
+   "notPseudonym": true,
+   "dataType": "Instant",
+   "variableRole": "Start",
+   "representedVariables": [
+    {
+     "description": "Startdato/måletidspunktet for hendelsen",
+     "validPeriod": {
+      "start": 14244,
+      "stop": 20088
+     },
+     "valueDomain": {
+      "description": "Dato oppgitt i dager siden 1970-01-01",
+      "unitOfMeasure": "N/A"
+     }
+    }
+   ]
+  },
+  {
+   "name": "STOP",
+   "label": "Stoppdato",
+   "notPseudonym": true,
+   "dataType": "Instant",
+   "variableRole": "Stop",
+   "representedVariables": [
+    {
+     "description": "Stoppdato/måletidspunktet for hendelsen",
+     "validPeriod": {
+      "start": 14244,
+      "stop": 20088
+     },
+     "valueDomain": {
+      "description": "Dato oppgitt i dager siden 1970-01-01",
+      "unitOfMeasure": "N/A"
+     }
+    }
+   ]
+  }
+ ],
+ "temporalStatusDates": [
+  14244,
+  14609,
+  14974,
+  15339,
+  15705,
+  16070,
+  16435,
+  16800,
+  17166,
+  17531,
+  17896,
+  18261,
+  18627,
+  18992,
+  19357,
+  19722,
+  20088
+ ],
+ "globalTemporalCoverage": {
+  "start": -1096,
+  "stop": 20759
+ },
+ "updatedAt": 1772621947
+}

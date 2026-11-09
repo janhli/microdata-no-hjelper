@@ -1,0 +1,397 @@
+{
+ "name": "ARBLONN_ARB_STILLINGSPST_KILDE",
+ "temporality": "STATUS",
+ "languageCode": "no",
+ "sensitivityLevel": "PERSON_GENERAL",
+ "populationDescription": "Variabelen omfatter alle arbeidsforhold meldt inn gjennom A-ordningen som SSB anser å være aktive i referanseperioden, uavhengig av alder og bosatt-status i Folkeregisteret. \n \n Arbeidsforhold innhentes også fra andre kilder (SKDs arbeidsforholds- og oppdragsregister (tidligere SFU) og vernepliktige). A-ordningen er hovedkilden til informasjon om arbeidsforhold.\n \n Observasjoner med verdiene 0 og uoppgitt (missing) er utelatt.",
+ "subjectFields": [
+  "A-ordningen",
+  "Arbeid og lønn",
+  "Arbeidsmarked",
+  "Lønn",
+  "Sysselsetting"
+ ],
+ "temporalCoverage": {
+  "start": 16482,
+  "stop": 20650
+ },
+ "measureVariable": {
+  "name": "ARBLONN_ARB_STILLINGSPST_KILDE",
+  "label": "Kilde for avtalt stillingsprosent",
+  "notPseudonym": true,
+  "dataType": "String",
+  "variableRole": "Measure",
+  "representedVariables": [
+   {
+    "description": "Variabelen viser hva som er kilden til den avtalte stillingsprosenten (ARBLONN_ARB_STILLINGSPST). \n \n For januar 2015 har vi kun informasjon om den innrapporterte stillingsprosenten. Fra oppstarten av a-ordningen i 2015 har innrapporteringen stadig blitt bedre. Dette reflekteres i at andelen med uoppgitt stillingsprosent har gått ned, og at det  relativt sett gradvis har blitt færre arbeidsforhold som får beregnet en stillingsprosent. SSB har ikke brukt informasjon om arbeidstid i publisering før november 2015. \n Mer informasjon om arbeidstid i artikkelen [Metode for bedring av informasjon om arbeidstid i a-ordningen](https://www.ssb.no/arbeid-og-lonn/artikler-og-publikasjoner/ny-metode-gir-bedre-informasjon-om-arbeidstid). \n \n A-ordningen er en samordnet digital innsamling av opplysninger om arbeidsforhold, inntekt og skattetrekk til Skatteetaten, NAV og SSB. Ordningen innebærer at SSB får opplysninger om lønn og ansatte direkte fra a-meldingen, som er den elektroniske meldingen som inneholder alle opplysningene som samles inn. Data foreligger per måned og alle måneder inneholder en fullstendig situasjonsbeskrivelse om arbeid og lønn samlet. SSB innhenter data fra A-ordningen for å fremstille statistikk om sysselsetting, lønn, ledighet og arbeidsmarkedstiltak. \n \n Mer informasjon om A-ordningen og bruk av data i statistikk og for forskning og analyse: \n- [Om a-ordningen hos Skatteetaten](https://www.skatteetaten.no/bedrift-og-organisasjon/arbeidsgiver/a-meldingen/om-a-ordningen/om-a-ordningen/) \n - [Variabelområdet a-ordningen hos SSB](https://www.ssb.no/data-til-forskning/utlan-av-data-til-forskere/variabellister/a-ordningen) \n - [Registerbasert lønns- og sysselsettingsstatistikk basert på a-ordningen hos SSB](https://www.ssb.no/arbeid-og-lonn/sysselsetting/artikler/registerbasert-lonns-og-sysselsettingsstatistikk-basert-pa-a-ordningen)",
+    "validPeriod": {
+     "start": 16436
+    },
+    "valueDomain": {
+     "codeList": [
+      {
+       "category": "Innrapportert verdi for nåværende periode",
+       "code": "01"
+      },
+      {
+       "category": "Innrapportert verdi for nåværende periode, nedjustert til 120",
+       "code": "02"
+      },
+      {
+       "category": "Innrapportert verdi for nåværende periode, nedjustert fordi samlet stillingprosent overstiger 160",
+       "code": "03"
+      },
+      {
+       "category": "Innrapportert verdi for neste periode",
+       "code": "04"
+      },
+      {
+       "category": "Innrapportert verdi for neste periode, nedjustert til 120",
+       "code": "05"
+      },
+      {
+       "category": "Innrapportert verdi for neste periode, nedjustert fordi samlet stillingprosent overstiger 160",
+       "code": "06"
+      },
+      {
+       "category": "Verdi satt til 100 fordi innrapportert verdi for nåværende periode er lik 100 × n (n = antall arbeidsforhold i samme virksomhet)",
+       "code": "07"
+      },
+      {
+       "category": "Verdi satt til 100 fordi innrapportert verdi for nåværende periode er lik 100 × n (n = antall arbeidsforhold i samme virksomhet), nedjustert fordi samlet stillingsprosent overstiger 160",
+       "code": "08"
+      },
+      {
+       "category": "Verdi satt til 100 fordi innrapportert verdi for neste periode er lik 100 × n (n = antall arbeidsforhold i samme virksomhet)",
+       "code": "09"
+      },
+      {
+       "category": "Verdi satt til 100 fordi innrapportert verdi for neste periode er lik 100 × n (n = antall arbeidsforhold i samme virksomhet), nedjustert fordi samlet stillingsprosent overstiger 160",
+       "code": "10"
+      },
+      {
+       "category": "Verdi satt til 100 fordi innrapportert verdi for nåværende periode mangler (kun for fastlønnete og andre arbeidsforhold ? ikke timelønnete arbeidsforhold)",
+       "code": "11"
+      },
+      {
+       "category": "Verdi satt til 100 fordi innrapportert verdi for nåværende periode mangler (kun for fastlønnete og andre arbeidsforhold ? ikke timelønnete arbeidsforhold), nedjustert fordi samlet stillingsprosent overstiger 160",
+       "code": "12"
+      },
+      {
+       "category": "Verdi satt til 100 fordi innrapportert verdi for neste periode mangler (kun for fastlønnete og andre arbeidsforhold ? ikke timelønnete arbeidsforhold",
+       "code": "13"
+      },
+      {
+       "category": "Verdi satt til 100 fordi innrapportert verdi for neste periode mangler (kun for fastlønnete og andre arbeidsforhold ? ikke timelønnete arbeidsforhold), nedjustert fordi samlet stillingsprosent overstiger 160",
+       "code": "14"
+      },
+      {
+       "category": "Verdi utledet fra betalte timer for nåværende periode (kun timelønnete arbeidsforhold)",
+       "code": "15"
+      },
+      {
+       "category": "Verdi utledet fra betalte timer for nåværende periode (kun timelønnete arbeidsforhold), nedjustert til 100",
+       "code": "16"
+      },
+      {
+       "category": "Verdi utledet fra betalte timer for nåværende periode (kun timelønnete arbeidsforhold), nedjustert fordi samlet stillingsprosent overstiger 160",
+       "code": "17"
+      },
+      {
+       "category": "Verdi utledet fra betalte timer for neste periode (kun timelønnete arbeidsforhold)",
+       "code": "18"
+      },
+      {
+       "category": "Verdi utledet fra betalte timer for neste periode (kun timelønnete arbeidsforhold), nedjustert til 100",
+       "code": "19"
+      },
+      {
+       "category": "Verdi utledet fra betalte timer for neste periode (kun timelønnete arbeidsforhold), nedjustert fordi samlet stillingsprosent overstiger 160",
+       "code": "20"
+      },
+      {
+       "category": "Predikert verdi fra XGBoost-modell",
+       "code": "21"
+      },
+      {
+       "category": "Predikert verdi fra XGBoost-modell, nedjustert til 100",
+       "code": "22"
+      },
+      {
+       "category": "Predikert verdi fra XGBoost-modell, nedjustert fordi samlet stillingsprosent overstiger 160",
+       "code": "23"
+      },
+      {
+       "category": "Imputert verdi fra nærmeste-nabo-metode",
+       "code": "24"
+      },
+      {
+       "category": "Imputert verdi fra nærmeste-nabo-metode, nedjustert til 120",
+       "code": "25"
+      },
+      {
+       "category": "Imputert verdi fra nærmeste-nabo-metode, nedjustert fordi samlet stillingsprosent overstiger 160",
+       "code": "26"
+      },
+      {
+       "category": "Verdi satt til 100 (vernepliktig)",
+       "code": "30"
+      },
+      {
+       "category": "Ekskludert pga. manglende positiv LONN_FAST og LONN_TIME (beholder innrapportert verdi)",
+       "code": "31"
+      },
+      {
+       "category": "Ekskludert pga. manglende positiv LONN_FAST og LONN_TIME (verdi satt til 100, innrapp er lik 100 × n i samme virksomhet)",
+       "code": "32"
+      },
+      {
+       "category": "Ekskludert pga. manglende positiv LONN_FAST og LONN_TIME, nedjustert til 120",
+       "code": "33"
+      },
+      {
+       "category": "Ekskludert pga. høy lønn (beholder innrapportert verdi)",
+       "code": "34"
+      },
+      {
+       "category": "Ekskludert pga. høy lønn (stillingsprosent satt til 100)",
+       "code": "35"
+      },
+      {
+       "category": "Ekskludert pga. manglende positiv LONN_FAST og LONN_TIME, nedjustert fordi samlet stillingsprosent overstiger 160",
+       "code": "36"
+      },
+      {
+       "category": "Ekskludert pga. høy lønn, nedjustert fordi samlet stillingsprosent overstiger 160",
+       "code": "37"
+      },
+      {
+       "category": "Verdi satt til 100 (kilde: SFU UTEN LONN)",
+       "code": "38"
+      },
+      {
+       "category": "Verdi satt til 100 (kilde: SFU UTEN LONN), nedjustert fordi samlet stillingsprosent overstiger 160",
+       "code": "39"
+      }
+     ],
+     "missingValues": []
+    }
+   }
+  ]
+ },
+ "identifierVariables": [
+  {
+   "name": "JOBBID_1",
+   "label": "Jobbidentifikator",
+   "notPseudonym": false,
+   "dataType": "Long",
+   "format": "RandomUInt48",
+   "variableRole": "Identifier",
+   "keyType": {
+    "name": "JOBB",
+    "label": "Jobb",
+    "description": "En jobb er en persons arbeidsforhold i en virksomhet. En person kan ha flere arbeidsforhold, også innenfor en periode."
+   },
+   "representedVariables": [
+    {
+     "description": "Identifikator for jobb i microdata",
+     "validPeriod": {
+      "start": 16482,
+      "stop": 20650
+     },
+     "valueDomain": {
+      "description": "Pseudonymisert kombinasjon av personnummer og organisasjonsnummer",
+      "unitOfMeasure": "N/A"
+     }
+    }
+   ]
+  }
+ ],
+ "attributeVariables": [
+  {
+   "name": "START",
+   "label": "Startdato",
+   "notPseudonym": true,
+   "dataType": "Instant",
+   "variableRole": "Start",
+   "representedVariables": [
+    {
+     "description": "Startdato/måletidspunktet for hendelsen",
+     "validPeriod": {
+      "start": 16482,
+      "stop": 20650
+     },
+     "valueDomain": {
+      "description": "Dato oppgitt i dager siden 1970-01-01",
+      "unitOfMeasure": "N/A"
+     }
+    }
+   ]
+  },
+  {
+   "name": "STOP",
+   "label": "Stoppdato",
+   "notPseudonym": true,
+   "dataType": "Instant",
+   "variableRole": "Stop",
+   "representedVariables": [
+    {
+     "description": "Stoppdato/måletidspunktet for hendelsen",
+     "validPeriod": {
+      "start": 16482,
+      "stop": 20650
+     },
+     "valueDomain": {
+      "description": "Dato oppgitt i dager siden 1970-01-01",
+      "unitOfMeasure": "N/A"
+     }
+    }
+   ]
+  }
+ ],
+ "temporalStatusDates": [
+  16482,
+  16510,
+  16541,
+  16571,
+  16602,
+  16632,
+  16663,
+  16694,
+  16724,
+  16755,
+  16785,
+  16816,
+  16847,
+  16876,
+  16907,
+  16937,
+  16968,
+  16998,
+  17029,
+  17060,
+  17090,
+  17121,
+  17151,
+  17182,
+  17213,
+  17241,
+  17272,
+  17302,
+  17333,
+  17363,
+  17394,
+  17425,
+  17455,
+  17486,
+  17516,
+  17547,
+  17578,
+  17606,
+  17637,
+  17667,
+  17698,
+  17728,
+  17759,
+  17790,
+  17820,
+  17851,
+  17881,
+  17912,
+  17943,
+  17971,
+  18002,
+  18032,
+  18063,
+  18093,
+  18124,
+  18155,
+  18185,
+  18216,
+  18246,
+  18277,
+  18308,
+  18337,
+  18368,
+  18398,
+  18429,
+  18459,
+  18490,
+  18521,
+  18551,
+  18582,
+  18612,
+  18643,
+  18674,
+  18702,
+  18733,
+  18763,
+  18794,
+  18824,
+  18855,
+  18886,
+  18916,
+  18947,
+  18977,
+  19008,
+  19039,
+  19067,
+  19098,
+  19128,
+  19159,
+  19189,
+  19220,
+  19251,
+  19281,
+  19312,
+  19342,
+  19373,
+  19404,
+  19432,
+  19463,
+  19493,
+  19524,
+  19554,
+  19585,
+  19616,
+  19646,
+  19677,
+  19707,
+  19738,
+  19769,
+  19798,
+  19829,
+  19859,
+  19890,
+  19920,
+  19951,
+  19982,
+  20012,
+  20043,
+  20073,
+  20104,
+  20135,
+  20163,
+  20194,
+  20224,
+  20255,
+  20285,
+  20316,
+  20347,
+  20377,
+  20408,
+  20438,
+  20469,
+  20500,
+  20528,
+  20559,
+  20589,
+  20620,
+  20650
+ ],
+ "globalTemporalCoverage": {
+  "start": -1096,
+  "stop": 20759
+ },
+ "updatedAt": 1790854458
+}

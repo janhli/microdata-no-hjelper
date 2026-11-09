@@ -1,0 +1,157 @@
+{
+ "name": "BEFOLKNING_TS_KODE",
+ "temporality": "STATUS",
+ "languageCode": "no",
+ "sensitivityLevel": "PERSON_GENERAL",
+ "populationDescription": "Variabelen omfatter bosatte per 1.1.ÅÅÅÅ.",
+ "subjectFields": [
+  "Befolkning"
+ ],
+ "temporalCoverage": {
+  "start": 7305,
+  "stop": 19723
+ },
+ "measureVariable": {
+  "name": "BEFOLKNING_TS_KODE",
+  "label": "Tett/spredtkode",
+  "notPseudonym": true,
+  "dataType": "String",
+  "variableRole": "Measure",
+  "representedVariables": [
+   {
+    "description": "Det er SSBs definisjon av tettsted som ligger til grunn for denne inndelingen. Kommunene er ansvarlig for å tildele tett-/spredtkode til nye adresser som registreres mellom de årlige oppdateringene. \n Se også [Statistikk om Tettsteders befolkning og areal](http://www.ssb.no/emner/02/01/10/beftett/om.html).",
+    "validPeriod": {
+     "start": 7305
+    },
+    "valueDomain": {
+     "codeList": [
+      {
+       "category": "Person ikke bosatt i tettsted",
+       "code": "s"
+      },
+      {
+       "category": "Person bosatt i tettsted",
+       "code": "t"
+      },
+      {
+       "category": "Person uplassert på tett/spredt, pga manglende koordinat",
+       "code": "u"
+      }
+     ],
+     "missingValues": []
+    }
+   }
+  ]
+ },
+ "identifierVariables": [
+  {
+   "name": "PERSONID_1",
+   "label": "Personidentifikator",
+   "notPseudonym": false,
+   "dataType": "Long",
+   "format": "RandomUInt48",
+   "variableRole": "Identifier",
+   "keyType": {
+    "name": "PERSON",
+    "label": "Person",
+    "description": "Person er et enkeltmenneske, individ."
+   },
+   "representedVariables": [
+    {
+     "description": "Identifikator for person i microdata",
+     "validPeriod": {
+      "start": 7305,
+      "stop": 19723
+     },
+     "valueDomain": {
+      "description": "Pseudonymisert personnummer",
+      "unitOfMeasure": "N/A"
+     }
+    }
+   ]
+  }
+ ],
+ "attributeVariables": [
+  {
+   "name": "START",
+   "label": "Startdato",
+   "notPseudonym": true,
+   "dataType": "Instant",
+   "variableRole": "Start",
+   "representedVariables": [
+    {
+     "description": "Startdato/måletidspunktet for hendelsen",
+     "validPeriod": {
+      "start": 7305,
+      "stop": 19723
+     },
+     "valueDomain": {
+      "description": "Dato oppgitt i dager siden 1970-01-01",
+      "unitOfMeasure": "N/A"
+     }
+    }
+   ]
+  },
+  {
+   "name": "STOP",
+   "label": "Stoppdato",
+   "notPseudonym": true,
+   "dataType": "Instant",
+   "variableRole": "Stop",
+   "representedVariables": [
+    {
+     "description": "Stoppdato/måletidspunktet for hendelsen",
+     "validPeriod": {
+      "start": 7305,
+      "stop": 19723
+     },
+     "valueDomain": {
+      "description": "Dato oppgitt i dager siden 1970-01-01",
+      "unitOfMeasure": "N/A"
+     }
+    }
+   ]
+  }
+ ],
+ "temporalStatusDates": [
+  7305,
+  7670,
+  8035,
+  8401,
+  8766,
+  9131,
+  9496,
+  9862,
+  10227,
+  10592,
+  10957,
+  11323,
+  11688,
+  12053,
+  12418,
+  12784,
+  13149,
+  13514,
+  13879,
+  14245,
+  14975,
+  15340,
+  15706,
+  16071,
+  16436,
+  16801,
+  17167,
+  17532,
+  17897,
+  18262,
+  18628,
+  18993,
+  19358,
+  19723
+ ],
+ "globalTemporalCoverage": {
+  "start": -1096,
+  "stop": 20759
+ },
+ "updatedAt": 1760683763
+}

@@ -1,0 +1,203 @@
+{
+ "name": "TRAFULYK_PKJHINDR",
+ "temporality": "FIXED",
+ "languageCode": "no",
+ "sensitivityLevel": "PERSON_GENERAL",
+ "populationDescription": "Variabelen omfatter dødsulykker og andre ulykker med personskade som er meldt til politiet. Trafikkulykkene som inngår i statistikken har skjedd på offentlig eller privat vei, gate eller plass som er åpen for alminnelig trafikk. ",
+ "subjectFields": [
+  "Landtransport",
+  "Trafikkulykke",
+  "Transport og reiseliv"
+ ],
+ "temporalCoverage": {
+  "start": -25567,
+  "stop": 19723
+ },
+ "measureVariable": {
+  "name": "TRAFULYK_PKJHINDR",
+  "label": "Påkjørt hinder",
+  "notPseudonym": true,
+  "dataType": "String",
+  "variableRole": "Measure",
+  "representedVariables": [
+   {
+    "description": "Variabelen viser type påkjørt hinder.",
+    "validPeriod": {
+     "start": 13514
+    },
+    "valueDomain": {
+     "codeList": [
+      {
+       "category": "Ingen hindre påkjørt",
+       "code": "00"
+      },
+      {
+       "category": "Skiltstolpe",
+       "code": "01"
+      },
+      {
+       "category": "Signalstolpe",
+       "code": "02"
+      },
+      {
+       "category": "Lysmast av tre",
+       "code": "03"
+      },
+      {
+       "category": "Lysmast av stål",
+       "code": "04"
+      },
+      {
+       "category": "Annen mast/stolpe",
+       "code": "05"
+      },
+      {
+       "category": "Tre",
+       "code": "06"
+      },
+      {
+       "category": "Gjerde",
+       "code": "07"
+      },
+      {
+       "category": "Mur, bygning",
+       "code": "08"
+      },
+      {
+       "category": "Stein, fjellvegg",
+       "code": "09"
+      },
+      {
+       "category": "Kantstein",
+       "code": "10"
+      },
+      {
+       "category": "Parkert kjøretøy",
+       "code": "11"
+      },
+      {
+       "category": "Annen gjenstand i kjørebanen",
+       "code": "12"
+      },
+      {
+       "category": "Større tamdyr (ku, m.m.)",
+       "code": "13"
+      },
+      {
+       "category": "Mindre tamdyr (katt m.m)",
+       "code": "14"
+      },
+      {
+       "category": "Elg",
+       "code": "15"
+      },
+      {
+       "category": "Rein",
+       "code": "16"
+      },
+      {
+       "category": "Rådyr, hjort",
+       "code": "17"
+      },
+      {
+       "category": "Annet vilt",
+       "code": "18"
+      },
+      {
+       "category": "Ukjent dyr",
+       "code": "19"
+      },
+      {
+       "category": "Annet (grøft, vann etc)",
+       "code": "88"
+      },
+      {
+       "category": "Ukjent",
+       "code": "99"
+      },
+      {
+       "category": "Uoppgitt",
+       "code": "-2"
+      }
+     ],
+     "missingValues": []
+    }
+   }
+  ]
+ },
+ "identifierVariables": [
+  {
+   "name": "TRAFIKKULYKKE_ID",
+   "label": "Trafikkulykkeidentifikator",
+   "notPseudonym": false,
+   "dataType": "Long",
+   "format": "RandomUInt48",
+   "variableRole": "Identifier",
+   "keyType": {
+    "name": "TRAFIKKULYKKE",
+    "label": "Trafikkulykke",
+    "description": "Variablene omfatter dødsulykker og andre ulykker med personskade som er meldt til politiet. Trafikkulykkene som inngår i statistikken har skjedd på offentlig eller privat vei, gate eller plass som er åpen for alminnelig trafikk"
+   },
+   "representedVariables": [
+    {
+     "description": "Identifikator for trafikkulykker i microdata",
+     "validPeriod": {
+      "start": -25567,
+      "stop": 19723
+     },
+     "valueDomain": {
+      "description": "Pseudonymisert kombinasjon av internnr og saksnummer for trafikkulykker",
+      "unitOfMeasure": "N/A"
+     }
+    }
+   ]
+  }
+ ],
+ "attributeVariables": [
+  {
+   "name": "START",
+   "label": "Startdato",
+   "notPseudonym": true,
+   "dataType": "Instant",
+   "variableRole": "Start",
+   "representedVariables": [
+    {
+     "description": "Startdato/måletidspunktet for hendelsen",
+     "validPeriod": {
+      "start": -25567,
+      "stop": 19723
+     },
+     "valueDomain": {
+      "description": "Dato oppgitt i dager siden 1970-01-01",
+      "unitOfMeasure": "N/A"
+     }
+    }
+   ]
+  },
+  {
+   "name": "STOP",
+   "label": "Stoppdato",
+   "notPseudonym": true,
+   "dataType": "Instant",
+   "variableRole": "Stop",
+   "representedVariables": [
+    {
+     "description": "Stoppdato/måletidspunktet for hendelsen",
+     "validPeriod": {
+      "start": -25567,
+      "stop": 19723
+     },
+     "valueDomain": {
+      "description": "Dato oppgitt i dager siden 1970-01-01",
+      "unitOfMeasure": "N/A"
+     }
+    }
+   ]
+  }
+ ],
+ "globalTemporalCoverage": {
+  "start": -1096,
+  "stop": 20759
+ },
+ "updatedAt": 1730375672
+}

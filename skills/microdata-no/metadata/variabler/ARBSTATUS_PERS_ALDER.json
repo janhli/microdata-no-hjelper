@@ -1,0 +1,130 @@
+{
+ "name": "ARBSTATUS_PERS_ALDER",
+ "temporality": "STATUS",
+ "languageCode": "no",
+ "sensitivityLevel": "PERSON_GENERAL",
+ "populationDescription": "Variabelen omfatter alle bosatte personer 15 år eller eldre og samsvarer med populasjonen i statistikken [Tilknytning til arbeid, utdanning og velferdsordninger](https://www.ssb.no/arbeid-og-lonn/sysselsetting/statistikk/tilknytning-til-arbeid-utdanning-og-velferdsordninger) (arbstatus). Se [Om statistikken](https://www.ssb.no/arbeid-og-lonn/sysselsetting/statistikk/tilknytning-til-arbeid-utdanning-og-velferdsordninger#om-statistikken) for mer informasjon. \n \n Det er noen færre personer med i populasjonen i microdata.no sammenlignet med i [statistikkbanken](https://www.ssb.no/statbank/list/arbstatus). Det skyldes manglende eller ugyldige fødselsnummer i datagrunnlaget som dermed ikke kan brukes til kobling mot andre variabler i microdata.no, og er derfor utelatt. For de fleste årgangene er det i underkant av 200 færre i microdata.no, mens det for 2022-årgangen er i overkant av 1 000 færre personer.\n \n System for persondata (SFP) er kilde for både variabelen og statistikken. Denne grunnlagsfilen inkluderer i tillegg til bosatte personer 15 år og eldre, også noen grupper ikke-bosatte. Les mer i [dokumentasjonen](https://www.ssb.no/arbeid-og-lonn/artikler-og-publikasjoner/_attachment/430138?_ts=17433b4b920) om datagrunnlag, prosessering og definisjoner.",
+ "subjectFields": [
+  "Arbeid og lønn",
+  "Sysselsetting",
+  "Tilknytning til arbeid, utdanning og velferdsordninger"
+ ],
+ "temporalCoverage": {
+  "start": 14199,
+  "stop": 20043
+ },
+ "measureVariable": {
+  "name": "ARBSTATUS_PERS_ALDER",
+  "label": "Alder",
+  "notPseudonym": true,
+  "dataType": "Long",
+  "variableRole": "Measure",
+  "representedVariables": [
+   {
+    "description": "Variabelen for alder er utledet basert på informasjon fra folkeregisteret.\n \n Fra og med 2008 er alder målt ved utgangen av referanseuken (den tredje uken i november). Fra og med 2015 er alder beregnet per 16. november.",
+    "validPeriod": {
+     "start": 14199,
+     "stop": 20043
+    },
+    "valueDomain": {
+     "description": "Alder.",
+     "unitOfMeasure": "ÅR"
+    }
+   }
+  ]
+ },
+ "identifierVariables": [
+  {
+   "name": "PERSONID_1",
+   "label": "Personidentifikator",
+   "notPseudonym": false,
+   "dataType": "Long",
+   "format": "RandomUInt48",
+   "variableRole": "Identifier",
+   "keyType": {
+    "name": "PERSON",
+    "label": "Person",
+    "description": "Person er et enkeltmenneske, individ."
+   },
+   "representedVariables": [
+    {
+     "description": "Identifikator for person i microdata",
+     "validPeriod": {
+      "start": 14199,
+      "stop": 20043
+     },
+     "valueDomain": {
+      "description": "Pseudonymisert personnummer",
+      "unitOfMeasure": "N/A"
+     }
+    }
+   ]
+  }
+ ],
+ "attributeVariables": [
+  {
+   "name": "START",
+   "label": "Startdato",
+   "notPseudonym": true,
+   "dataType": "Instant",
+   "variableRole": "Start",
+   "representedVariables": [
+    {
+     "description": "Startdato/måletidspunktet for hendelsen",
+     "validPeriod": {
+      "start": 14199,
+      "stop": 20043
+     },
+     "valueDomain": {
+      "description": "Dato oppgitt i dager siden 1970-01-01",
+      "unitOfMeasure": "N/A"
+     }
+    }
+   ]
+  },
+  {
+   "name": "STOP",
+   "label": "Stoppdato",
+   "notPseudonym": true,
+   "dataType": "Instant",
+   "variableRole": "Stop",
+   "representedVariables": [
+    {
+     "description": "Stoppdato/måletidspunktet for hendelsen",
+     "validPeriod": {
+      "start": 14199,
+      "stop": 20043
+     },
+     "valueDomain": {
+      "description": "Dato oppgitt i dager siden 1970-01-01",
+      "unitOfMeasure": "N/A"
+     }
+    }
+   ]
+  }
+ ],
+ "temporalStatusDates": [
+  14199,
+  14564,
+  14929,
+  15294,
+  15660,
+  16025,
+  16390,
+  16755,
+  17121,
+  17486,
+  17851,
+  18216,
+  18582,
+  18947,
+  19312,
+  19677,
+  20043
+ ],
+ "globalTemporalCoverage": {
+  "start": -1096,
+  "stop": 20759
+ },
+ "updatedAt": 1772621947
+}

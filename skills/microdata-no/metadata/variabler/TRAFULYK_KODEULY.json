@@ -1,0 +1,159 @@
+{
+ "name": "TRAFULYK_KODEULY",
+ "temporality": "FIXED",
+ "languageCode": "no",
+ "sensitivityLevel": "PERSON_GENERAL",
+ "populationDescription": "Variabelen omfatter dødsulykker og andre ulykker med personskade som er meldt til politiet. Trafikkulykkene som inngår i statistikken har skjedd på offentlig eller privat vei, gate eller plass som er åpen for alminnelig trafikk.",
+ "subjectFields": [
+  "Landtransport",
+  "Trafikkulykke",
+  "Transport og reiseliv"
+ ],
+ "temporalCoverage": {
+  "start": -25567,
+  "stop": 19723
+ },
+ "measureVariable": {
+  "name": "TRAFULYK_KODEULY",
+  "label": "Ulykkesgruppe",
+  "notPseudonym": true,
+  "dataType": "String",
+  "variableRole": "Measure",
+  "representedVariables": [
+   {
+    "description": "Variabelen viser inndeling av ulykkesgrupper.",
+    "validPeriod": {
+     "start": 13514
+    },
+    "valueDomain": {
+     "codeList": [
+      {
+       "category": "A. Påkjøring bakfra",
+       "code": "02"
+      },
+      {
+       "category": "B. Andre ulykker med samme kjøreretning",
+       "code": "03"
+      },
+      {
+       "category": "C. Møting ved forbikjøring",
+       "code": "04"
+      },
+      {
+       "category": "D. Andre møteulykker",
+       "code": "05"
+      },
+      {
+       "category": "E. Samme og motsatt kjøreretning med avsvingning",
+       "code": "06"
+      },
+      {
+       "category": "F. Kryssende kjøreretning ",
+       "code": "07"
+      },
+      {
+       "category": "G. Fotgjenger krysset kjørebanen",
+       "code": "08"
+      },
+      {
+       "category": "I. Akende o.l.",
+       "code": "09"
+      },
+      {
+       "category": "J. Enslig kjøretøy utfor veien ",
+       "code": "10"
+      },
+      {
+       "category": "K. Enslig kjt.veltet i kjøreb.Påkj.av dyr, parkerte biler mv. ",
+       "code": "11"
+      },
+      {
+       "category": "L. Andre ulykker",
+       "code": "12"
+      },
+      {
+       "category": "H.Fotgjenger gikk langs eller oppholdt seg i kjørebanen",
+       "code": "13"
+      }
+     ],
+     "missingValues": []
+    }
+   }
+  ]
+ },
+ "identifierVariables": [
+  {
+   "name": "TRAFIKKULYKKE_ID",
+   "label": "Trafikkulykkeidentifikator",
+   "notPseudonym": false,
+   "dataType": "Long",
+   "format": "RandomUInt48",
+   "variableRole": "Identifier",
+   "keyType": {
+    "name": "TRAFIKKULYKKE",
+    "label": "Trafikkulykke",
+    "description": "Variablene omfatter dødsulykker og andre ulykker med personskade som er meldt til politiet. Trafikkulykkene som inngår i statistikken har skjedd på offentlig eller privat vei, gate eller plass som er åpen for alminnelig trafikk"
+   },
+   "representedVariables": [
+    {
+     "description": "Identifikator for trafikkulykker i microdata",
+     "validPeriod": {
+      "start": -25567,
+      "stop": 19723
+     },
+     "valueDomain": {
+      "description": "Pseudonymisert kombinasjon av internnr og saksnummer for trafikkulykker",
+      "unitOfMeasure": "N/A"
+     }
+    }
+   ]
+  }
+ ],
+ "attributeVariables": [
+  {
+   "name": "START",
+   "label": "Startdato",
+   "notPseudonym": true,
+   "dataType": "Instant",
+   "variableRole": "Start",
+   "representedVariables": [
+    {
+     "description": "Startdato/måletidspunktet for hendelsen",
+     "validPeriod": {
+      "start": -25567,
+      "stop": 19723
+     },
+     "valueDomain": {
+      "description": "Dato oppgitt i dager siden 1970-01-01",
+      "unitOfMeasure": "N/A"
+     }
+    }
+   ]
+  },
+  {
+   "name": "STOP",
+   "label": "Stoppdato",
+   "notPseudonym": true,
+   "dataType": "Instant",
+   "variableRole": "Stop",
+   "representedVariables": [
+    {
+     "description": "Stoppdato/måletidspunktet for hendelsen",
+     "validPeriod": {
+      "start": -25567,
+      "stop": 19723
+     },
+     "valueDomain": {
+      "description": "Dato oppgitt i dager siden 1970-01-01",
+      "unitOfMeasure": "N/A"
+     }
+    }
+   ]
+  }
+ ],
+ "globalTemporalCoverage": {
+  "start": -1096,
+  "stop": 20759
+ },
+ "updatedAt": 1730375672
+}

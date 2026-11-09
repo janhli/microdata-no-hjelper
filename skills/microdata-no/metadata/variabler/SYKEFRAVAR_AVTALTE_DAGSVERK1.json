@@ -1,0 +1,110 @@
+{
+ "name": "SYKEFRAVAR_AVTALTE_DAGSVERK1",
+ "temporality": "ACCUMULATED",
+ "languageCode": "no",
+ "sensitivityLevel": "PERSON_GENERAL",
+ "populationDescription": "Aktive arbeidsforhold i referanseuka i midtmåneden av kvartalet som inneholder den 16.",
+ "subjectFields": [
+  "Arbeid og lønn",
+  "Sykefravær"
+ ],
+ "temporalCoverage": {
+  "start": 11048,
+  "stop": 20543
+ },
+ "measureVariable": {
+  "name": "SYKEFRAVAR_AVTALTE_DAGSVERK1",
+  "label": "Avtalte dagsverk",
+  "notPseudonym": true,
+  "dataType": "Double",
+  "variableRole": "Measure",
+  "representedVariables": [
+   {
+    "description": "Variabelen viser antall arbeidsdager som lønnstaker har avtalt med arbeidsgiver å jobbe i perioden, justert for stillingsprosent.\n \n Tallet er summert over alle arbeidsforhold. For lønnstakere med flere arbeidsforhold, telles avtalte dagsverk i alle arbeidsforhold. \n \n Arbeidsdager er definert som kalenderdager minus helgedager og offisielle fridager. Denne antakelsen om når folk jobber og når de har fri vil for mange enkeltpersoner gi feil i antall avtalte arbeidsdager. På aggregert nivå, og når vi ser over en gitt periode, mener vi allikevel at denne tilnærmingen treffer rimelig bra.\n \n SSBs sykefraværsstatistikk bruker en statistikkpopulasjon der man betinger på alder mellom 16-69, kun normale og maritime arbeidsforhold og kun bosatte personer. \n \n Denne variabelen erstatter SYKEFRAVAR_AVTALTE_DAGSVERK.",
+    "validPeriod": {
+     "start": 11048,
+     "stop": 20543
+    },
+    "valueDomain": {
+     "description": "Antall.",
+     "unitOfMeasure": "Antall"
+    }
+   }
+  ]
+ },
+ "identifierVariables": [
+  {
+   "name": "JOBBID_1",
+   "label": "Jobbidentifikator",
+   "notPseudonym": false,
+   "dataType": "Long",
+   "format": "RandomUInt48",
+   "variableRole": "Identifier",
+   "keyType": {
+    "name": "JOBB",
+    "label": "Jobb",
+    "description": "En jobb er en persons arbeidsforhold i en virksomhet. En person kan ha flere arbeidsforhold, også innenfor en periode."
+   },
+   "representedVariables": [
+    {
+     "description": "Identifikator for jobb i microdata",
+     "validPeriod": {
+      "start": 11048,
+      "stop": 20543
+     },
+     "valueDomain": {
+      "description": "Pseudonymisert kombinasjon av personnummer og organisasjonsnummer",
+      "unitOfMeasure": "N/A"
+     }
+    }
+   ]
+  }
+ ],
+ "attributeVariables": [
+  {
+   "name": "START",
+   "label": "Startdato",
+   "notPseudonym": true,
+   "dataType": "Instant",
+   "variableRole": "Start",
+   "representedVariables": [
+    {
+     "description": "Startdato/måletidspunktet for hendelsen",
+     "validPeriod": {
+      "start": 11048,
+      "stop": 20543
+     },
+     "valueDomain": {
+      "description": "Dato oppgitt i dager siden 1970-01-01",
+      "unitOfMeasure": "N/A"
+     }
+    }
+   ]
+  },
+  {
+   "name": "STOP",
+   "label": "Stoppdato",
+   "notPseudonym": true,
+   "dataType": "Instant",
+   "variableRole": "Stop",
+   "representedVariables": [
+    {
+     "description": "Stoppdato/måletidspunktet for hendelsen",
+     "validPeriod": {
+      "start": 11048,
+      "stop": 20543
+     },
+     "valueDomain": {
+      "description": "Dato oppgitt i dager siden 1970-01-01",
+      "unitOfMeasure": "N/A"
+     }
+    }
+   ]
+  }
+ ],
+ "globalTemporalCoverage": {
+  "start": -1096,
+  "stop": 20759
+ },
+ "updatedAt": 1783077002
+}

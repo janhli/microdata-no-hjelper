@@ -1,0 +1,125 @@
+{
+ "name": "BOFORHOLD_BYGGEAAR",
+ "temporality": "STATUS",
+ "languageCode": "no",
+ "sensitivityLevel": "PERSON_GENERAL",
+ "populationDescription": "Variabelen omfatter bosatte per 01.01.ÅÅÅÅ, avgrenset til privathusholdninger og husholdning koblet til bolig. Observasjoner med verdiene 0 og uoppgitt (missing) er utelatt.",
+ "subjectFields": [
+  "Boforhold",
+  "Husholdning",
+  "Levekår",
+  "Sosiale forhold og kriminalitet"
+ ],
+ "temporalCoverage": {
+  "start": 16436,
+  "stop": 19723
+ },
+ "measureVariable": {
+  "name": "BOFORHOLD_BYGGEAAR",
+  "label": "Byggeår",
+  "notPseudonym": true,
+  "dataType": "Long",
+  "format": "YYYY",
+  "variableRole": "Measure",
+  "representedVariables": [
+   {
+    "description": "Byggeår er det året da bygningen var klar til innflytting. I bygninger med flere boliger hvor innflyttingen skjedde gradvis, regnes som byggeår det året da minst halvparten av boligene i bygningen var klar til innflytting. For hus som er ombygd, er det oppgitt opprinnelig byggeår.",
+    "validPeriod": {
+     "start": 16436,
+     "stop": 19723
+    },
+    "valueDomain": {
+     "description": "År.",
+     "unitOfMeasure": "År"
+    }
+   }
+  ]
+ },
+ "identifierVariables": [
+  {
+   "name": "PERSONID_1",
+   "label": "Personidentifikator",
+   "notPseudonym": false,
+   "dataType": "Long",
+   "format": "RandomUInt48",
+   "variableRole": "Identifier",
+   "keyType": {
+    "name": "PERSON",
+    "label": "Person",
+    "description": "Person er et enkeltmenneske, individ."
+   },
+   "representedVariables": [
+    {
+     "description": "Identifikator for person i microdata",
+     "validPeriod": {
+      "start": 16436,
+      "stop": 19723
+     },
+     "valueDomain": {
+      "description": "Pseudonymisert personnummer",
+      "unitOfMeasure": "N/A"
+     }
+    }
+   ]
+  }
+ ],
+ "attributeVariables": [
+  {
+   "name": "START",
+   "label": "Startdato",
+   "notPseudonym": true,
+   "dataType": "Instant",
+   "variableRole": "Start",
+   "representedVariables": [
+    {
+     "description": "Startdato/måletidspunktet for hendelsen",
+     "validPeriod": {
+      "start": 16436,
+      "stop": 19723
+     },
+     "valueDomain": {
+      "description": "Dato oppgitt i dager siden 1970-01-01",
+      "unitOfMeasure": "N/A"
+     }
+    }
+   ]
+  },
+  {
+   "name": "STOP",
+   "label": "Stoppdato",
+   "notPseudonym": true,
+   "dataType": "Instant",
+   "variableRole": "Stop",
+   "representedVariables": [
+    {
+     "description": "Stoppdato/måletidspunktet for hendelsen",
+     "validPeriod": {
+      "start": 16436,
+      "stop": 19723
+     },
+     "valueDomain": {
+      "description": "Dato oppgitt i dager siden 1970-01-01",
+      "unitOfMeasure": "N/A"
+     }
+    }
+   ]
+  }
+ ],
+ "temporalStatusDates": [
+  16436,
+  16801,
+  17167,
+  17532,
+  17897,
+  18262,
+  18628,
+  18993,
+  19358,
+  19723
+ ],
+ "globalTemporalCoverage": {
+  "start": -1096,
+  "stop": 20759
+ },
+ "updatedAt": 1742560855
+}

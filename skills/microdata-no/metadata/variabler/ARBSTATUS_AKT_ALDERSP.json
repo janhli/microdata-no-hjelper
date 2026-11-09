@@ -1,0 +1,138 @@
+{
+ "name": "ARBSTATUS_AKT_ALDERSP",
+ "temporality": "STATUS",
+ "languageCode": "no",
+ "sensitivityLevel": "PERSON_GENERAL",
+ "populationDescription": "Variabelen omfatter alle bosatte personer 15 år eller eldre og samsvarer med populasjonen i statistikken [Tilknytning til arbeid, utdanning og velferdsordninger](https://www.ssb.no/arbeid-og-lonn/sysselsetting/statistikk/tilknytning-til-arbeid-utdanning-og-velferdsordninger) (arbstatus). Se [Om statistikken](https://www.ssb.no/arbeid-og-lonn/sysselsetting/statistikk/tilknytning-til-arbeid-utdanning-og-velferdsordninger#om-statistikken) for mer informasjon. \n \n Det er noen færre personer med i populasjonen i microdata.no sammenlignet med i [statistikkbanken](https://www.ssb.no/statbank/list/arbstatus). Det skyldes manglende eller ugyldige fødselsnummer i datagrunnlaget som dermed ikke kan brukes til kobling mot andre variabler i microdata.no, og er derfor utelatt. For de fleste årgangene er det i underkant av 200 færre i microdata.no, mens det for 2022-årgangen er i overkant av 1 000 færre personer.\n \n System for persondata (SFP) er kilde for både variabelen og statistikken. Denne grunnlagsfilen inkluderer i tillegg til bosatte personer 15 år og eldre, også noen grupper ikke-bosatte. Les mer i [dokumentasjonen](https://www.ssb.no/arbeid-og-lonn/artikler-og-publikasjoner/_attachment/430138?_ts=17433b4b920) om datagrunnlag, prosessering og definisjoner.",
+ "subjectFields": [
+  "Arbeid og lønn",
+  "Sysselsetting",
+  "Tilknytning til arbeid, utdanning og velferdsordninger"
+ ],
+ "temporalCoverage": {
+  "start": 14213,
+  "stop": 20057
+ },
+ "measureVariable": {
+  "name": "ARBSTATUS_AKT_ALDERSP",
+  "label": "Alderspensjon",
+  "notPseudonym": true,
+  "dataType": "String",
+  "variableRole": "Measure",
+  "representedVariables": [
+   {
+    "description": "Fulltellingsvariabel (ARBSTATUS_AKT_ALDERSP= '1') for mottak av alderspensjon i november. \n \n Til og med årgang 2018 var data om mottakere i november hentet fra Nav. Fra og med årgang 2019 hentes data om mottakere fra a-ordningen. Tallene i a-ordningen er basert på rapportering fra Nav.\n \n ARBSTATUS_AKT_ALDERSP skiller seg fra variablene INNTEKT_ALDERSP_FOLKETR fra inntektsstatistikken og SKATT_BA_ALDERSPENSJ_FOLKETR fra skattestatistikken. Disse omfatter summen av alderspensjon fra folketrygden mottatt i løpet av kalenderåret. \n \n For å undersøke forløp når det kommer til alderspensjon, kan variablene ALDPENSJ1992FDT_MOTTAK og ALDPENSJ2011FDT_MOTTAK/ALDPENSJ2011FDT_GRAD brukes. Se følgende dokumentasjon for mer informasjon: [Variabelområdet FD-Trygd](https://www.ssb.no/data-til-forskning/utlan-av-data-til-forskere/variabellister/fd-trygd). \n \n Variabelen ARBSTATUS_AKT_ALDERSP inngår i prioriteringen av status i variabelen ARBSTATUS_PERS_STATUS8.",
+    "validPeriod": {
+     "start": 13879
+    },
+    "valueDomain": {
+     "codeList": [
+      {
+       "category": "Mottok ikke stønad/ytelse",
+       "code": "0"
+      },
+      {
+       "category": "Mottok stønad/ytelse",
+       "code": "1"
+      }
+     ],
+     "missingValues": []
+    }
+   }
+  ]
+ },
+ "identifierVariables": [
+  {
+   "name": "PERSONID_1",
+   "label": "Personidentifikator",
+   "notPseudonym": false,
+   "dataType": "Long",
+   "format": "RandomUInt48",
+   "variableRole": "Identifier",
+   "keyType": {
+    "name": "PERSON",
+    "label": "Person",
+    "description": "Person er et enkeltmenneske, individ."
+   },
+   "representedVariables": [
+    {
+     "description": "Identifikator for person i microdata",
+     "validPeriod": {
+      "start": 14213,
+      "stop": 20057
+     },
+     "valueDomain": {
+      "description": "Pseudonymisert personnummer",
+      "unitOfMeasure": "N/A"
+     }
+    }
+   ]
+  }
+ ],
+ "attributeVariables": [
+  {
+   "name": "START",
+   "label": "Startdato",
+   "notPseudonym": true,
+   "dataType": "Instant",
+   "variableRole": "Start",
+   "representedVariables": [
+    {
+     "description": "Startdato/måletidspunktet for hendelsen",
+     "validPeriod": {
+      "start": 14213,
+      "stop": 20057
+     },
+     "valueDomain": {
+      "description": "Dato oppgitt i dager siden 1970-01-01",
+      "unitOfMeasure": "N/A"
+     }
+    }
+   ]
+  },
+  {
+   "name": "STOP",
+   "label": "Stoppdato",
+   "notPseudonym": true,
+   "dataType": "Instant",
+   "variableRole": "Stop",
+   "representedVariables": [
+    {
+     "description": "Stoppdato/måletidspunktet for hendelsen",
+     "validPeriod": {
+      "start": 14213,
+      "stop": 20057
+     },
+     "valueDomain": {
+      "description": "Dato oppgitt i dager siden 1970-01-01",
+      "unitOfMeasure": "N/A"
+     }
+    }
+   ]
+  }
+ ],
+ "temporalStatusDates": [
+  14213,
+  14578,
+  14943,
+  15308,
+  15674,
+  16039,
+  16404,
+  16769,
+  17135,
+  17500,
+  17865,
+  18230,
+  18596,
+  18961,
+  19326,
+  19691,
+  20057
+ ],
+ "globalTemporalCoverage": {
+  "start": -1096,
+  "stop": 20759
+ },
+ "updatedAt": 1772621947
+}

@@ -1,0 +1,136 @@
+{
+ "name": "PENSJ1967FDT_BTFAK",
+ "temporality": "STATUS",
+ "languageCode": "no",
+ "sensitivityLevel": "PERSON_GENERAL",
+ "populationDescription": "Hovedsakelig bosatte i Norge (fnr), men noen ikke-bosatte kan inngå (dnr)",
+ "subjectFields": [
+  "Sosiale forhold og kriminalitet",
+  "Trygd og stønad"
+ ],
+ "temporalCoverage": {
+  "start": -732,
+  "stop": 7669
+ },
+ "measureVariable": {
+  "name": "PENSJ1967FDT_BTFAK",
+  "label": "Pensjon, barnetillegsfaktor",
+  "notPseudonym": true,
+  "dataType": "Long",
+  "variableRole": "Measure",
+  "representedVariables": [
+   {
+    "description": "Viser et fast tall for forsørgingstillegget for barn som stønadsmottakeren har krav på, beregnet på årsbasis som andel av aktuelt grunnbeløp. Dette er hele beløpet som stønadsmottakeren får utbetalt for barn (inkludert garantitillegg og særkullsbarn). Angitt med 5 desimaler. Erstattet med beløp f.o.m. 2009. Kan bestilles fra miniregister",
+    "validPeriod": {
+     "start": -732,
+     "stop": 7669
+    },
+    "valueDomain": {
+     "description": "Faktor",
+     "unitOfMeasure": "N/A"
+    }
+   }
+  ]
+ },
+ "identifierVariables": [
+  {
+   "name": "PERSONID_1",
+   "label": "Personidentifikator",
+   "notPseudonym": false,
+   "dataType": "Long",
+   "format": "RandomUInt48",
+   "variableRole": "Identifier",
+   "keyType": {
+    "name": "PERSON",
+    "label": "Person",
+    "description": "Statistisk enhet er person (individ, enkeltmenenske)"
+   },
+   "representedVariables": [
+    {
+     "description": "Identifikator for person i RAIRD",
+     "validPeriod": {
+      "start": -732,
+      "stop": 7669
+     },
+     "valueDomain": {
+      "description": "N/A",
+      "unitOfMeasure": "N/A"
+     }
+    }
+   ]
+  }
+ ],
+ "attributeVariables": [
+  {
+   "name": "STOP",
+   "label": "Stoppdato",
+   "notPseudonym": true,
+   "dataType": "Instant",
+   "variableRole": "Stop",
+   "representedVariables": [
+    {
+     "description": "Stoppdato/sluttdato for hendelsen",
+     "validPeriod": {
+      "start": -732,
+      "stop": 7669
+     },
+     "valueDomain": {
+      "description": "N/A",
+      "unitOfMeasure": "N/A"
+     }
+    }
+   ]
+  },
+  {
+   "name": "START",
+   "label": "Startdato",
+   "notPseudonym": true,
+   "dataType": "Instant",
+   "variableRole": "Start",
+   "representedVariables": [
+    {
+     "description": "Startdato/måletidspunktet for hendelsen",
+     "validPeriod": {
+      "start": -732,
+      "stop": 7669
+     },
+     "valueDomain": {
+      "description": "N/A",
+      "unitOfMeasure": "N/A"
+     }
+    }
+   ]
+  }
+ ],
+ "temporalStatusDates": [
+  5478,
+  -732,
+  -366,
+  1825,
+  6573,
+  2921,
+  5843,
+  2190,
+  7669,
+  6208,
+  -1,
+  6939,
+  2556,
+  729,
+  3651,
+  4017,
+  7304,
+  1095,
+  4747,
+  3286,
+  1460,
+  5112,
+  4382,
+  364
+ ],
+ "globalTemporalCoverage": {
+  "start": -1096,
+  "stop": 20759
+ },
+ "updatedAt": 1592485055
+}

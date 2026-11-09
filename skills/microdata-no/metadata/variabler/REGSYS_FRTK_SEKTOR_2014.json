@@ -1,0 +1,230 @@
+{
+ "name": "REGSYS_FRTK_SEKTOR_2014",
+ "temporality": "STATUS",
+ "languageCode": "no",
+ "sensitivityLevel": "PERSON_GENERAL",
+ "populationDescription": "Variabelen omfatter bosatte personer 15-74 år som er sysselsatt, hovedarbeidsforhold i november. Observasjoner med verdiene 0 og uoppgitt (missing) er utelatt.",
+ "subjectFields": [
+  "Arbeid og lønn",
+  "Sysselsetting",
+  "Virksomheter og foretak",
+  "Virksomheter, foretak og regnskap"
+ ],
+ "temporalCoverage": {
+  "start": 16755,
+  "stop": 18216
+ },
+ "measureVariable": {
+  "name": "REGSYS_FRTK_SEKTOR_2014",
+  "label": "Foretakets sektorkode",
+  "notPseudonym": true,
+  "dataType": "String",
+  "variableRole": "Measure",
+  "representedVariables": [
+   {
+    "description": "Vi oppdaterer ikke lenger variabelen, fordi den i visse tilfeller kan benyttes slik at det er risiko for å avsløre konfidensiell informasjon om foretak. Vi vil revurdere dette når vi begynner å tilby analyser på næringsdata i tjenesten.\n \n Variabelen angir institusjonell sektor for foretaket der personen har sitt hovedarbeidsforhold (det er i hovedsak arbeidsforholdet med høyest avtalt arbeidstid). Institusjonell sektorgruppering er en statistisk klassifikasjon. Økonomien deles inn i sektorer på basis av en gruppering av ensartede institusjonelle enheter. Institusjonelle enheter er definert som økonomiske beslutningssentra som enten kan være en juridisk enhet eller en husholdning. Denne sektorgrupperingen er basert på systemer utviklet av FN (System of National Accounts-SNA93) og EU (European System of National Accounts-ESA95). \n \n Denne variabelen erstatter REGSYS_SEKTOR_2014 fra og med 2015.\n \n Kilde for variabelen er registerbaserte sysselsettingsdata. Les dokumentasjonen om datagrunnlag, prosessering og definisjoner her:\n - [Sysselsetting, registerbasert](https://www.ssb.no/arbeid-og-lonn/sysselsetting/statistikk/sysselsetting-registerbasert) \n - [Om datagrunnlaget for registerbasert sysselsettingsstatistikk](https://www.ssb.no/data-til-forskning/utlan-av-data-til-forskere/variabellister/a-ordningen/om-datagrunnlaget-for-registerbasert-sysselsettingsstatistikk) \n - [Registerbasert lønns- og sysselsettingsstatistikk basert på a-ordningen](https://www.ssb.no/arbeid-og-lonn/sysselsetting/artikler/registerbasert-lonns-og-sysselsettingsstatistikk-basert-pa-a-ordningen)",
+    "validPeriod": {
+     "start": 16436
+    },
+    "valueDomain": {
+     "codeList": [
+      {
+       "category": "Ugyldig verdi",
+       "code": "-1"
+      },
+      {
+       "category": "Manglende verdi",
+       "code": "-2"
+      },
+      {
+       "category": "Statens forretningsdrift",
+       "code": "1110"
+      },
+      {
+       "category": "Statlig eide aksjeselskaper mv.",
+       "code": "1120"
+      },
+      {
+       "category": "Kommunale foretak med ubegrenset ansvar",
+       "code": "1510"
+      },
+      {
+       "category": "Kommunalt eide aksjeselskaper mv.",
+       "code": "1520"
+      },
+      {
+       "category": "Private aksjeselskaper mv.",
+       "code": "2100"
+      },
+      {
+       "category": "Personlige foretak",
+       "code": "2300"
+      },
+      {
+       "category": "Private produsentorienterte organisasjoner uten profittformål",
+       "code": "2500"
+      },
+      {
+       "category": "Norges Bank",
+       "code": "3100"
+      },
+      {
+       "category": "Banker",
+       "code": "3200"
+      },
+      {
+       "category": "Kredittforetak",
+       "code": "3500"
+      },
+      {
+       "category": "Finansieringsselskaper",
+       "code": "3600"
+      },
+      {
+       "category": "Statlige låneinstitutter mv.",
+       "code": "3900"
+      },
+      {
+       "category": "Finansielle holdingselskaper",
+       "code": "4100"
+      },
+      {
+       "category": "Verdipapirfond",
+       "code": "4300"
+      },
+      {
+       "category": "Investeringsselskaper og aktive eierfond",
+       "code": "4500"
+      },
+      {
+       "category": "Øvrige finansielle foretak unntatt forsikring",
+       "code": "4900"
+      },
+      {
+       "category": "Livsforsikringsselskaper og pensjonskasser",
+       "code": "5500"
+      },
+      {
+       "category": "Skadeforsikringsselskaper",
+       "code": "5700"
+      },
+      {
+       "category": "Statsforvaltningen",
+       "code": "6100"
+      },
+      {
+       "category": "Kommuneforvaltningen",
+       "code": "6500"
+      },
+      {
+       "category": "Ideelle organisasjoner",
+       "code": "7000"
+      },
+      {
+       "category": "Personlig næringsdrivende",
+       "code": "8200"
+      },
+      {
+       "category": "Borettslag o.l.",
+       "code": "8300"
+      },
+      {
+       "category": "Lønnstakere, pensjonister, trygdede, studenter o.a.",
+       "code": "8500"
+      },
+      {
+       "category": "Utlandet",
+       "code": "9000"
+      }
+     ],
+     "missingValues": []
+    }
+   }
+  ]
+ },
+ "identifierVariables": [
+  {
+   "name": "PERSONID_1",
+   "label": "Personidentifikator",
+   "notPseudonym": false,
+   "dataType": "Long",
+   "format": "RandomUInt48",
+   "variableRole": "Identifier",
+   "keyType": {
+    "name": "PERSON",
+    "label": "Person",
+    "description": "Statistisk enhet er person (individ, enkeltmenenske)"
+   },
+   "representedVariables": [
+    {
+     "description": "Identifikator for person i RAIRD",
+     "validPeriod": {
+      "start": 16755,
+      "stop": 18216
+     },
+     "valueDomain": {
+      "description": "N/A",
+      "unitOfMeasure": "N/A"
+     }
+    }
+   ]
+  }
+ ],
+ "attributeVariables": [
+  {
+   "name": "STOP",
+   "label": "Stoppdato",
+   "notPseudonym": true,
+   "dataType": "Instant",
+   "variableRole": "Stop",
+   "representedVariables": [
+    {
+     "description": "Stoppdato/sluttdato for hendelsen",
+     "validPeriod": {
+      "start": 16755,
+      "stop": 18216
+     },
+     "valueDomain": {
+      "description": "N/A",
+      "unitOfMeasure": "N/A"
+     }
+    }
+   ]
+  },
+  {
+   "name": "START",
+   "label": "Startdato",
+   "notPseudonym": true,
+   "dataType": "Instant",
+   "variableRole": "Start",
+   "representedVariables": [
+    {
+     "description": "Startdato/måletidspunktet for hendelsen",
+     "validPeriod": {
+      "start": 16755,
+      "stop": 18216
+     },
+     "valueDomain": {
+      "description": "N/A",
+      "unitOfMeasure": "N/A"
+     }
+    }
+   ]
+  }
+ ],
+ "temporalStatusDates": [
+  17851,
+  16755,
+  18216,
+  17486,
+  17121
+ ],
+ "temporalEnd": {
+  "description": "Variabelen oppdateres ikke."
+ },
+ "globalTemporalCoverage": {
+  "start": -1096,
+  "stop": 20759
+ },
+ "updatedAt": 1603982268
+}

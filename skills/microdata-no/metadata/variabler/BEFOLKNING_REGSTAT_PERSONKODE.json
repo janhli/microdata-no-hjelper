@@ -1,0 +1,147 @@
+{
+ "name": "BEFOLKNING_REGSTAT_PERSONKODE",
+ "temporality": "STATUS",
+ "languageCode": "no",
+ "sensitivityLevel": "PERSON_GENERAL",
+ "populationDescription": "Variabelen omfatter bosatte per 1.1.ÅÅÅÅ, avgrenset til privathusholdninger.",
+ "subjectFields": [
+  "Barn, Familie og husholdninger",
+  "Befolkning",
+  "Familie",
+  "Husholdning"
+ ],
+ "temporalCoverage": {
+  "start": 12784,
+  "stop": 20089
+ },
+ "measureVariable": {
+  "name": "BEFOLKNING_REGSTAT_PERSONKODE",
+  "label": "Personkode",
+  "notPseudonym": true,
+  "dataType": "String",
+  "variableRole": "Measure",
+  "representedVariables": [
+   {
+    "description": "Kode som viser om personen er referanseperson, lever i par med referansepersonen eller er barn i familien. Som par regnes her ektepar, registrerte partnere og samboere. I den årlige registerstatistikken er referansepersonen den eldste i familien. I FoB2001 er referansepersonen i ektepar mannen, i samboerpar kvinnen og i registrerte partnerskap eldste partner.",
+    "validPeriod": {
+     "start": 12784
+    },
+    "valueDomain": {
+     "codeList": [
+      {
+       "category": "Referanseperson (eldste partner)",
+       "code": "1"
+      },
+      {
+       "category": "Ektefelle/samboer (yngste partner)",
+       "code": "2"
+      },
+      {
+       "category": "Barn",
+       "code": "3"
+      }
+     ],
+     "missingValues": []
+    }
+   }
+  ]
+ },
+ "identifierVariables": [
+  {
+   "name": "PERSONID_1",
+   "label": "Personidentifikator",
+   "notPseudonym": false,
+   "dataType": "Long",
+   "format": "RandomUInt48",
+   "variableRole": "Identifier",
+   "keyType": {
+    "name": "PERSON",
+    "label": "Person",
+    "description": "Person er et enkeltmenneske, individ."
+   },
+   "representedVariables": [
+    {
+     "description": "Identifikator for person i microdata",
+     "validPeriod": {
+      "start": 12784,
+      "stop": 20089
+     },
+     "valueDomain": {
+      "description": "Pseudonymisert personnummer",
+      "unitOfMeasure": "N/A"
+     }
+    }
+   ]
+  }
+ ],
+ "attributeVariables": [
+  {
+   "name": "START",
+   "label": "Startdato",
+   "notPseudonym": true,
+   "dataType": "Instant",
+   "variableRole": "Start",
+   "representedVariables": [
+    {
+     "description": "Startdato/måletidspunktet for hendelsen",
+     "validPeriod": {
+      "start": 12784,
+      "stop": 20089
+     },
+     "valueDomain": {
+      "description": "Dato oppgitt i dager siden 1970-01-01",
+      "unitOfMeasure": "N/A"
+     }
+    }
+   ]
+  },
+  {
+   "name": "STOP",
+   "label": "Stoppdato",
+   "notPseudonym": true,
+   "dataType": "Instant",
+   "variableRole": "Stop",
+   "representedVariables": [
+    {
+     "description": "Stoppdato/måletidspunktet for hendelsen",
+     "validPeriod": {
+      "start": 12784,
+      "stop": 20089
+     },
+     "valueDomain": {
+      "description": "Dato oppgitt i dager siden 1970-01-01",
+      "unitOfMeasure": "N/A"
+     }
+    }
+   ]
+  }
+ ],
+ "temporalStatusDates": [
+  12784,
+  13149,
+  13514,
+  13879,
+  14245,
+  14610,
+  14975,
+  15340,
+  15706,
+  16071,
+  16436,
+  16801,
+  17167,
+  17532,
+  17897,
+  18262,
+  18628,
+  18993,
+  19358,
+  19723,
+  20089
+ ],
+ "globalTemporalCoverage": {
+  "start": -1096,
+  "stop": 20759
+ },
+ "updatedAt": 1760683763
+}

@@ -1,0 +1,110 @@
+{
+ "name": "INNTEKT_TJENPEN",
+ "temporality": "ACCUMULATED",
+ "languageCode": "no",
+ "sensitivityLevel": "PERSON_GENERAL",
+ "populationDescription": "Variabelen omfatter bosatte per 31.12.ÅÅÅÅ. Observasjoner med verdiene 0 og uoppgitt (missing) er utelatt.",
+ "subjectFields": [
+  "Inntekt",
+  "Inntekt og forbruk"
+ ],
+ "temporalCoverage": {
+  "start": 13149,
+  "stop": 17531
+ },
+ "measureVariable": {
+  "name": "INNTEKT_TJENPEN",
+  "label": "Tjenestepensjoner",
+  "notPseudonym": true,
+  "dataType": "Long",
+  "variableRole": "Measure",
+  "representedVariables": [
+   {
+    "description": "Tjenestepensjoner omfatter utbetaling av pensjoner i arbeidsforhold, unntatt avtalefestet pensjon (AFP). I tillegg inngår utbetalinger fra individuell pensjonsavtale (IPA), livrenter og føderådsytelser i jord- og skogbruk.\n Omfatter tjenestepensjon mottatt i løpet av kalenderåret. Tilsvarer post 2.2.2 i selvangivelsen. Inntil 2000 ble også post 2.3.2, ektefelle tjenestepensjon lagt til. F.o.m. 2001 registreres dette i post 2.2.2 i ektefellens egne selvangivelse. Introduksjonsstønaden ble innført som en prøveordning 1/9-2003 og gjort obligatorisk fra 1/8-2004. Supplerende stønad ble innført 1/1-2006. Introduksjonsstønaden trekkes fra tjenestepensjon og legges til andre skattepliktige overføringer fra og med inntektsåret 2005. Supplerende stønad trekkes fra tjenestepensjon og legges til andre skattepliktige overføringer fra og med inntektsåret 2012. Fra og med inntektsåret 2006 trekkes avtalefestet pensjon (AFP) fra tjenestepensjon og spesifiseres som separat inntektskomponent.",
+    "validPeriod": {
+     "start": 13149,
+     "stop": 17531
+    },
+    "valueDomain": {
+     "description": "Beløp.",
+     "unitOfMeasure": "NOK"
+    }
+   }
+  ]
+ },
+ "identifierVariables": [
+  {
+   "name": "PERSONID_1",
+   "label": "Personidentifikator",
+   "notPseudonym": false,
+   "dataType": "Long",
+   "format": "RandomUInt48",
+   "variableRole": "Identifier",
+   "keyType": {
+    "name": "PERSON",
+    "label": "Person",
+    "description": "Statistisk enhet er person (individ, enkeltmenenske)"
+   },
+   "representedVariables": [
+    {
+     "description": "Identifikator for person i RAIRD",
+     "validPeriod": {
+      "start": 13149,
+      "stop": 17531
+     },
+     "valueDomain": {
+      "description": "N/A",
+      "unitOfMeasure": "N/A"
+     }
+    }
+   ]
+  }
+ ],
+ "attributeVariables": [
+  {
+   "name": "STOP",
+   "label": "Stoppdato",
+   "notPseudonym": true,
+   "dataType": "Instant",
+   "variableRole": "Stop",
+   "representedVariables": [
+    {
+     "description": "Stoppdato/sluttdato for hendelsen",
+     "validPeriod": {
+      "start": 13149,
+      "stop": 17531
+     },
+     "valueDomain": {
+      "description": "N/A",
+      "unitOfMeasure": "N/A"
+     }
+    }
+   ]
+  },
+  {
+   "name": "START",
+   "label": "Startdato",
+   "notPseudonym": true,
+   "dataType": "Instant",
+   "variableRole": "Start",
+   "representedVariables": [
+    {
+     "description": "Startdato/måletidspunktet for hendelsen",
+     "validPeriod": {
+      "start": 13149,
+      "stop": 17531
+     },
+     "valueDomain": {
+      "description": "N/A",
+      "unitOfMeasure": "N/A"
+     }
+    }
+   ]
+  }
+ ],
+ "globalTemporalCoverage": {
+  "start": -1096,
+  "stop": 20759
+ },
+ "updatedAt": 1592485055
+}

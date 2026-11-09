@@ -1,0 +1,138 @@
+{
+ "name": "NUDB_KURS_PROVEKANDTYPE",
+ "temporality": "EVENT",
+ "languageCode": "no",
+ "sensitivityLevel": "PERSON_GENERAL",
+ "populationDescription": "Variabelen omfatter de elevene på yrkesfag, vgs. som har gått opp til prøve som fullføringsform i deres videregående utdanningsløp.",
+ "subjectFields": [
+  "Utdanning",
+  "Utdanningsnivå"
+ ],
+ "temporalCoverage": {
+  "start": 16587,
+  "stop": 19875
+ },
+ "measureVariable": {
+  "name": "NUDB_KURS_PROVEKANDTYPE",
+  "label": "Prøvekandidattype",
+  "notPseudonym": true,
+  "dataType": "String",
+  "variableRole": "Measure",
+  "representedVariables": [
+   {
+    "description": "Variabelen viser resultat av opplæringsform forut for prøve for yrkesfagelever.",
+    "validPeriod": {
+     "start": 0
+    },
+    "valueDomain": {
+     "codeList": [
+      {
+       "category": "Praksisbrevkandidat",
+       "code": "B"
+      },
+      {
+       "category": "Fagopplæring i skole",
+       "code": "E"
+      },
+      {
+       "category": "Fagbrev på jobb",
+       "code": "F"
+      },
+      {
+       "category": "Lærekandidat (opplæringskontrakt)",
+       "code": "K"
+      },
+      {
+       "category": "Lærling",
+       "code": "L"
+      },
+      {
+       "category": "Praksiskandidater",
+       "code": "P"
+      },
+      {
+       "category": "Uoppgitt",
+       "code": "9"
+      }
+     ],
+     "missingValues": []
+    }
+   }
+  ]
+ },
+ "identifierVariables": [
+  {
+   "name": "KURSID_1",
+   "label": "Kursidentifikator",
+   "notPseudonym": false,
+   "dataType": "Long",
+   "format": "RandomUInt48",
+   "variableRole": "Identifier",
+   "keyType": {
+    "name": "KURS",
+    "label": "Kurs",
+    "description": "Kurs er en utdanningsaktivitet."
+   },
+   "representedVariables": [
+    {
+     "description": "Identifikator for kurs i microdata",
+     "validPeriod": {
+      "start": 16587,
+      "stop": 19875
+     },
+     "valueDomain": {
+      "description": "Pseudonymisert kombinasjon av personnummer og NUDB kursnummer",
+      "unitOfMeasure": "N/A"
+     }
+    }
+   ]
+  }
+ ],
+ "attributeVariables": [
+  {
+   "name": "START",
+   "label": "Startdato",
+   "notPseudonym": true,
+   "dataType": "Instant",
+   "variableRole": "Start",
+   "representedVariables": [
+    {
+     "description": "Startdato/måletidspunktet for hendelsen",
+     "validPeriod": {
+      "start": 16587,
+      "stop": 19875
+     },
+     "valueDomain": {
+      "description": "Dato oppgitt i dager siden 1970-01-01",
+      "unitOfMeasure": "N/A"
+     }
+    }
+   ]
+  },
+  {
+   "name": "STOP",
+   "label": "Stoppdato",
+   "notPseudonym": true,
+   "dataType": "Instant",
+   "variableRole": "Stop",
+   "representedVariables": [
+    {
+     "description": "Stoppdato/måletidspunktet for hendelsen",
+     "validPeriod": {
+      "start": 16587,
+      "stop": 19875
+     },
+     "valueDomain": {
+      "description": "Dato oppgitt i dager siden 1970-01-01",
+      "unitOfMeasure": "N/A"
+     }
+    }
+   ]
+  }
+ ],
+ "globalTemporalCoverage": {
+  "start": -1096,
+  "stop": 20759
+ },
+ "updatedAt": 1760683763
+}

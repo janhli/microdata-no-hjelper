@@ -1,0 +1,204 @@
+{
+ "name": "ELHUB_PERS_TYPE_STROMFORBRUK",
+ "temporality": "STATUS",
+ "languageCode": "no",
+ "sensitivityLevel": "PERSON_GENERAL",
+ "populationDescription": "Variabelen omfatter alle målepunkt registrert på personer i Norge. Observasjoner med verdiene 0 og uoppgitt (missing) er utelatt.",
+ "subjectFields": [
+  "Elhub",
+  "Energi og industri"
+ ],
+ "temporalCoverage": {
+  "start": 18262,
+  "stop": 20666
+ },
+ "measureVariable": {
+  "name": "ELHUB_PERS_TYPE_STROMFORBRUK",
+  "label": "Type strømforbruk",
+  "notPseudonym": true,
+  "dataType": "String",
+  "variableRole": "Measure",
+  "representedVariables": [
+   {
+    "description": "Variabelen viser om målepunktet er registrert med kode for husholdning (XX), kode for hytter og fritidseiendom(XY) eller en annen kode enn disse to av netteier i Elhub. Hvis målepunktet har en annen kode enn XX (husholdning) eller XY (hytter og fritidseiendom) i Elhub, brukes samlekoden 00 (Annet strømforbruk).  Målepunkt med Annet strømforbruk (00) er enten registrert med en næringskode eller registrert med en spesialkodene for gatelys, drivhus eller annet energisalg i Elhub. \n \n Annet strømforbruk (00) utgjør en liten andel av det totale strømforbruket og strømproduksjonen fra målepunkt registrert på personer i Norge",
+    "validPeriod": {
+     "start": 18262
+    },
+    "valueDomain": {
+     "codeList": [
+      {
+       "category": "Husholdning",
+       "code": "XX"
+      },
+      {
+       "category": "Hytter og fritidseiendom",
+       "code": "XY"
+      },
+      {
+       "category": "Annet strømforbruk",
+       "code": "00"
+      }
+     ],
+     "missingValues": []
+    }
+   }
+  ]
+ },
+ "identifierVariables": [
+  {
+   "name": "MALEPUNKT_ID",
+   "label": "Målepunktsidentifikator",
+   "notPseudonym": false,
+   "dataType": "Long",
+   "format": "RandomUInt48",
+   "variableRole": "Identifier",
+   "keyType": {
+    "name": "MALEPUNKT",
+    "label": "Målepunkt",
+    "description": "Målepunkt er en innretning for måling av strømforbruk."
+   },
+   "representedVariables": [
+    {
+     "description": "Identifikator for målepunkt i microdata",
+     "validPeriod": {
+      "start": 18262,
+      "stop": 20666
+     },
+     "valueDomain": {
+      "description": "Pseudonymisert kombinasjon av personnummer og målepunktsid nummer",
+      "unitOfMeasure": "N/A"
+     }
+    }
+   ]
+  }
+ ],
+ "attributeVariables": [
+  {
+   "name": "START",
+   "label": "Startdato",
+   "notPseudonym": true,
+   "dataType": "Instant",
+   "variableRole": "Start",
+   "representedVariables": [
+    {
+     "description": "Startdato/måletidspunktet for hendelsen",
+     "validPeriod": {
+      "start": 18262,
+      "stop": 20666
+     },
+     "valueDomain": {
+      "description": "Dato oppgitt i dager siden 1970-01-01",
+      "unitOfMeasure": "N/A"
+     }
+    }
+   ]
+  },
+  {
+   "name": "STOP",
+   "label": "Stoppdato",
+   "notPseudonym": true,
+   "dataType": "Instant",
+   "variableRole": "Stop",
+   "representedVariables": [
+    {
+     "description": "Stoppdato/måletidspunktet for hendelsen",
+     "validPeriod": {
+      "start": 18262,
+      "stop": 20666
+     },
+     "valueDomain": {
+      "description": "Dato oppgitt i dager siden 1970-01-01",
+      "unitOfMeasure": "N/A"
+     }
+    }
+   ]
+  }
+ ],
+ "temporalStatusDates": [
+  18262,
+  18293,
+  18322,
+  18353,
+  18383,
+  18414,
+  18444,
+  18475,
+  18506,
+  18536,
+  18567,
+  18597,
+  18628,
+  18659,
+  18687,
+  18718,
+  18748,
+  18779,
+  18809,
+  18840,
+  18871,
+  18901,
+  18932,
+  18962,
+  18993,
+  19024,
+  19052,
+  19083,
+  19113,
+  19144,
+  19174,
+  19205,
+  19236,
+  19266,
+  19297,
+  19327,
+  19358,
+  19389,
+  19417,
+  19448,
+  19478,
+  19509,
+  19539,
+  19570,
+  19601,
+  19631,
+  19662,
+  19692,
+  19723,
+  19754,
+  19783,
+  19814,
+  19844,
+  19875,
+  19905,
+  19936,
+  19967,
+  19997,
+  20028,
+  20058,
+  20089,
+  20120,
+  20148,
+  20179,
+  20209,
+  20240,
+  20270,
+  20301,
+  20332,
+  20362,
+  20393,
+  20423,
+  20454,
+  20485,
+  20513,
+  20544,
+  20574,
+  20605,
+  20635,
+  20666
+ ],
+ "globalTemporalCoverage": {
+  "start": -1096,
+  "stop": 20759
+ },
+ "updatedAt": 1790854458
+}

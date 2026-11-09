@@ -1,0 +1,117 @@
+{
+ "name": "BEFOLKNING_SOESKEN_FNR",
+ "temporality": "FIXED",
+ "languageCode": "no",
+ "sensitivityLevel": "PERSON_GENERAL",
+ "populationDescription": "Variabelen omfatter søsken som i folkeregisteret er oppgitt med felles mor og far, eller med enten ukjent mor eller far.",
+ "subjectFields": [
+  "Barn, Familie og husholdninger",
+  "Befolkning",
+  "Familie og husholdninger"
+ ],
+ "temporalCoverage": {
+  "start": -25567,
+  "stop": 20454
+ },
+ "measureVariable": {
+  "name": "BEFOLKNING_SOESKEN_FNR",
+  "label": "Fødselsnummer søsken",
+  "notPseudonym": false,
+  "dataType": "Long",
+  "format": "RandomUInt48",
+  "variableRole": "Measure",
+  "keyType": {
+   "name": "SOESKEN",
+   "label": "Søsken",
+   "description": "Søsken defineres som personer som i folkeregisteret er registrert med felles mor og far, eller med felles mor eller far der enten mor eller far er ukjent."
+  },
+  "representedVariables": [
+   {
+    "description": "Variabelen viser søsken med utgangspunktet i eldste søsken i søskenflokken. Halvsøsken er ikke inkludert i søskenflokken.",
+    "validPeriod": {
+     "start": -25567,
+     "stop": 20454
+    },
+    "valueDomain": {
+     "description": "Pseudonymisert personnummer",
+     "unitOfMeasure": "N/A"
+    }
+   }
+  ]
+ },
+ "identifierVariables": [
+  {
+   "name": "PERSONID_1",
+   "label": "Personidentifikator",
+   "notPseudonym": false,
+   "dataType": "Long",
+   "format": "RandomUInt48",
+   "variableRole": "Identifier",
+   "keyType": {
+    "name": "PERSON",
+    "label": "Person",
+    "description": "Person er et enkeltmenneske, individ."
+   },
+   "representedVariables": [
+    {
+     "description": "Identifikator for person i microdata",
+     "validPeriod": {
+      "start": -25567,
+      "stop": 20454
+     },
+     "valueDomain": {
+      "description": "Pseudonymisert personnummer",
+      "unitOfMeasure": "N/A"
+     }
+    }
+   ]
+  }
+ ],
+ "attributeVariables": [
+  {
+   "name": "START",
+   "label": "Startdato",
+   "notPseudonym": true,
+   "dataType": "Instant",
+   "variableRole": "Start",
+   "representedVariables": [
+    {
+     "description": "Startdato/måletidspunktet for hendelsen",
+     "validPeriod": {
+      "start": -25567,
+      "stop": 20454
+     },
+     "valueDomain": {
+      "description": "Dato oppgitt i dager siden 1970-01-01",
+      "unitOfMeasure": "N/A"
+     }
+    }
+   ]
+  },
+  {
+   "name": "STOP",
+   "label": "Stoppdato",
+   "notPseudonym": true,
+   "dataType": "Instant",
+   "variableRole": "Stop",
+   "representedVariables": [
+    {
+     "description": "Stoppdato/måletidspunktet for hendelsen",
+     "validPeriod": {
+      "start": -25567,
+      "stop": 20454
+     },
+     "valueDomain": {
+      "description": "Dato oppgitt i dager siden 1970-01-01",
+      "unitOfMeasure": "N/A"
+     }
+    }
+   ]
+  }
+ ],
+ "globalTemporalCoverage": {
+  "start": -1096,
+  "stop": 20759
+ },
+ "updatedAt": 1774604284
+}

@@ -1,0 +1,6406 @@
+{
+ "name": "BEFOLKNING_TETTNR",
+ "temporality": "STATUS",
+ "languageCode": "no",
+ "sensitivityLevel": "PERSON_GENERAL",
+ "populationDescription": "Variabelen omfatter bosatte per 1.1.ÅÅÅÅ.",
+ "subjectFields": [
+  "Befolkning"
+ ],
+ "temporalCoverage": {
+  "start": 10592,
+  "stop": 19723
+ },
+ "measureVariable": {
+  "name": "BEFOLKNING_TETTNR",
+  "label": "Tettsted",
+  "notPseudonym": true,
+  "dataType": "String",
+  "variableRole": "Measure",
+  "representedVariables": [
+   {
+    "description": "En hussamling skal registreres som et tettsted dersom det 1. Bor minst 200 personer der og 2. Avstanden mellom husene skal normalt ikke overstige 50 meter. Det er tillatt med et skjønnsmessig avvik ut over 50 meter mellom husene i områder som ikke skal eller kan bebygges. Dette kan f.eks. være parker, idrettsanlegg, industriområder eller naturlige hindringer som elver eller dyrkbare områder. Husklynger som naturlig hører med til tettstedet tas med inntil en avstand på 400 meter fra tettstedskjernen.",
+    "validPeriod": {
+     "start": 10592,
+     "stop": 10956
+    },
+    "valueDomain": {
+     "codeList": [
+      {
+       "category": "Halden",
+       "code": "0001"
+      },
+      {
+       "category": "Sponvika",
+       "code": "0002"
+      },
+      {
+       "category": "Isebakke",
+       "code": "0003"
+      },
+      {
+       "category": "Hasle",
+       "code": "0012"
+      },
+      {
+       "category": "Stikkaåsen",
+       "code": "0013"
+      },
+      {
+       "category": "Fredrikstad/Sarpsborg",
+       "code": "0022"
+      },
+      {
+       "category": "Moss",
+       "code": "0031"
+      },
+      {
+       "category": "Skjærhalden",
+       "code": "0041"
+      },
+      {
+       "category": "Rød",
+       "code": "0042"
+      },
+      {
+       "category": "Hauge",
+       "code": "0043"
+      },
+      {
+       "category": "Utgård",
+       "code": "0044"
+      },
+      {
+       "category": "Skivika",
+       "code": "0051"
+      },
+      {
+       "category": "Glosli",
+       "code": "0053"
+      },
+      {
+       "category": "Ise",
+       "code": "0061"
+      },
+      {
+       "category": "Skjeberg",
+       "code": "0071"
+      },
+      {
+       "category": "Ullerøy",
+       "code": "0073"
+      },
+      {
+       "category": "Ørje",
+       "code": "0081"
+      },
+      {
+       "category": "Skjønhaug",
+       "code": "0091"
+      },
+      {
+       "category": "Heiås",
+       "code": "0093"
+      },
+      {
+       "category": "Spydeberg",
+       "code": "0101"
+      },
+      {
+       "category": "Askim",
+       "code": "0111"
+      },
+      {
+       "category": "Mysen",
+       "code": "0121"
+      },
+      {
+       "category": "Slitu",
+       "code": "0122"
+      },
+      {
+       "category": "Trømborg",
+       "code": "0123"
+      },
+      {
+       "category": "Skiptvet",
+       "code": "0131"
+      },
+      {
+       "category": "Rakkestad",
+       "code": "0141"
+      },
+      {
+       "category": "Degernes",
+       "code": "0142"
+      },
+      {
+       "category": "Jelsnes",
+       "code": "0151"
+      },
+      {
+       "category": "Rostadneset",
+       "code": "0161"
+      },
+      {
+       "category": "Alshus",
+       "code": "0171"
+      },
+      {
+       "category": "Trolldalen",
+       "code": "0173"
+      },
+      {
+       "category": "Øyenkilen",
+       "code": "0181"
+      },
+      {
+       "category": "Slevik",
+       "code": "0182"
+      },
+      {
+       "category": "Engelsviken",
+       "code": "0184"
+      },
+      {
+       "category": "Lervik",
+       "code": "0185"
+      },
+      {
+       "category": "Spetalen",
+       "code": "0191"
+      },
+      {
+       "category": "Grimstad",
+       "code": "0192"
+      },
+      {
+       "category": "Karlshus",
+       "code": "0193"
+      },
+      {
+       "category": "Ryggebyen",
+       "code": "0201"
+      },
+      {
+       "category": "Larkollen",
+       "code": "0202"
+      },
+      {
+       "category": "Kirkegrenda",
+       "code": "0203"
+      },
+      {
+       "category": "Fuglevik",
+       "code": "0204"
+      },
+      {
+       "category": "Smedhus",
+       "code": "0205"
+      },
+      {
+       "category": "Kirkebygden",
+       "code": "0211"
+      },
+      {
+       "category": "Våk",
+       "code": "0212"
+      },
+      {
+       "category": "Svinndal",
+       "code": "0213"
+      },
+      {
+       "category": "Tomter",
+       "code": "0221"
+      },
+      {
+       "category": "Knapstad",
+       "code": "0222"
+      },
+      {
+       "category": "Ringvoll",
+       "code": "0223"
+      },
+      {
+       "category": "Fosby",
+       "code": "0231"
+      },
+      {
+       "category": "Hølen",
+       "code": "0503"
+      },
+      {
+       "category": "Son/Store Brevik",
+       "code": "0507"
+      },
+      {
+       "category": "Vestby",
+       "code": "0508"
+      },
+      {
+       "category": "Siggerud",
+       "code": "0511"
+      },
+      {
+       "category": "Ski",
+       "code": "0512"
+      },
+      {
+       "category": "Kråkstad",
+       "code": "0513"
+      },
+      {
+       "category": "Togrenda",
+       "code": "0521"
+      },
+      {
+       "category": "Ås",
+       "code": "0523"
+      },
+      {
+       "category": "Drøbak",
+       "code": "0531"
+      },
+      {
+       "category": "Nesoddtangen",
+       "code": "0541"
+      },
+      {
+       "category": "Fjellstrand",
+       "code": "0542"
+      },
+      {
+       "category": "Fagerstrand",
+       "code": "0543"
+      },
+      {
+       "category": "Torvik",
+       "code": "0544"
+      },
+      {
+       "category": "Heggedal",
+       "code": "0571"
+      },
+      {
+       "category": "Konglungen",
+       "code": "0572"
+      },
+      {
+       "category": "Aursmoen",
+       "code": "0581"
+      },
+      {
+       "category": "Bjørkelangen",
+       "code": "0582"
+      },
+      {
+       "category": "Fosser",
+       "code": "0583"
+      },
+      {
+       "category": "Løken",
+       "code": "0584"
+      },
+      {
+       "category": "Momoen",
+       "code": "0585"
+      },
+      {
+       "category": "Hemnes",
+       "code": "0586"
+      },
+      {
+       "category": "Blaker",
+       "code": "0592"
+      },
+      {
+       "category": "Hogsetfeltet",
+       "code": "0593"
+      },
+      {
+       "category": "Sørumsand",
+       "code": "0594"
+      },
+      {
+       "category": "Lørenfallet",
+       "code": "0595"
+      },
+      {
+       "category": "Lindeberg",
+       "code": "0596"
+      },
+      {
+       "category": "Frogner",
+       "code": "0597"
+      },
+      {
+       "category": "Lundermoen",
+       "code": "0598"
+      },
+      {
+       "category": "Fetsund",
+       "code": "0602"
+      },
+      {
+       "category": "Flateby",
+       "code": "0611"
+      },
+      {
+       "category": "Ytre Enebakk",
+       "code": "0612"
+      },
+      {
+       "category": "Kirkebygda",
+       "code": "0613"
+      },
+      {
+       "category": "Leirsund",
+       "code": "0622"
+      },
+      {
+       "category": "Åneby",
+       "code": "0633"
+      },
+      {
+       "category": "Grønvoll",
+       "code": "0634"
+      },
+      {
+       "category": "Rotnes",
+       "code": "0635"
+      },
+      {
+       "category": "Løstad",
+       "code": "0639"
+      },
+      {
+       "category": "Ask (Gjerdrum)",
+       "code": "0641"
+      },
+      {
+       "category": "Grønlund",
+       "code": "0642"
+      },
+      {
+       "category": "Kløfta",
+       "code": "0651"
+      },
+      {
+       "category": "Sessvollmoen",
+       "code": "0655"
+      },
+      {
+       "category": "Nordkisa",
+       "code": "0656"
+      },
+      {
+       "category": "Borgen",
+       "code": "0657"
+      },
+      {
+       "category": "Algarheim",
+       "code": "0658"
+      },
+      {
+       "category": "Jessheim",
+       "code": "0659"
+      },
+      {
+       "category": "Opakermoen",
+       "code": "0661"
+      },
+      {
+       "category": "Årnes",
+       "code": "0662"
+      },
+      {
+       "category": "Haga",
+       "code": "0663"
+      },
+      {
+       "category": "Fjellfoten",
+       "code": "0665"
+      },
+      {
+       "category": "Skogrand",
+       "code": "0666"
+      },
+      {
+       "category": "Brårud",
+       "code": "0667"
+      },
+      {
+       "category": "Vormsund",
+       "code": "0668"
+      },
+      {
+       "category": "Tomteråsen",
+       "code": "0669"
+      },
+      {
+       "category": "Kampå",
+       "code": "0670"
+      },
+      {
+       "category": "Minnesund",
+       "code": "0671"
+      },
+      {
+       "category": "Langset",
+       "code": "0672"
+      },
+      {
+       "category": "Eidsvoll",
+       "code": "0673"
+      },
+      {
+       "category": "Finnbråtan",
+       "code": "0674"
+      },
+      {
+       "category": "Råholt",
+       "code": "0675"
+      },
+      {
+       "category": "Hammerstad",
+       "code": "0676"
+      },
+      {
+       "category": "Maura",
+       "code": "0681"
+      },
+      {
+       "category": "Teigebyen",
+       "code": "0682"
+      },
+      {
+       "category": "Åsgrenda",
+       "code": "0683"
+      },
+      {
+       "category": "Løkenfeltet",
+       "code": "0684"
+      },
+      {
+       "category": "Eltonåsen",
+       "code": "0685"
+      },
+      {
+       "category": "Prestegårdshagen",
+       "code": "0691"
+      },
+      {
+       "category": "Torget",
+       "code": "0692"
+      },
+      {
+       "category": "Smestad",
+       "code": "0701"
+      },
+      {
+       "category": "Fjellstad",
+       "code": "0702"
+      },
+      {
+       "category": "Aulifeltet",
+       "code": "0721"
+      },
+      {
+       "category": "Oslo",
+       "code": "0801"
+      },
+      {
+       "category": "Movatn",
+       "code": "0802"
+      },
+      {
+       "category": "Hamar",
+       "code": "1001"
+      },
+      {
+       "category": "Ingeberg",
+       "code": "1002"
+      },
+      {
+       "category": "Kongsvinger",
+       "code": "1011"
+      },
+      {
+       "category": "Roverud",
+       "code": "1012"
+      },
+      {
+       "category": "Brumunddal",
+       "code": "1021"
+      },
+      {
+       "category": "Moelv",
+       "code": "1023"
+      },
+      {
+       "category": "Nydal",
+       "code": "1024"
+      },
+      {
+       "category": "Kvål",
+       "code": "1025"
+      },
+      {
+       "category": "Kylstad",
+       "code": "1026"
+      },
+      {
+       "category": "Mesnali",
+       "code": "1027"
+      },
+      {
+       "category": "Slemsrud",
+       "code": "1031"
+      },
+      {
+       "category": "Ådalsbruk",
+       "code": "1041"
+      },
+      {
+       "category": "Løten",
+       "code": "1042"
+      },
+      {
+       "category": "Løiten brænderi",
+       "code": "1043"
+      },
+      {
+       "category": "Heimdal",
+       "code": "1044"
+      },
+      {
+       "category": "Tangen",
+       "code": "1051"
+      },
+      {
+       "category": "Stange",
+       "code": "1052"
+      },
+      {
+       "category": "Sørbygdafeltet",
+       "code": "1053"
+      },
+      {
+       "category": "Ilseng",
+       "code": "1054"
+      },
+      {
+       "category": "Gata",
+       "code": "1055"
+      },
+      {
+       "category": "Romedal sentrum",
+       "code": "1056"
+      },
+      {
+       "category": "Bottenfjellet",
+       "code": "1057"
+      },
+      {
+       "category": "Sand",
+       "code": "1061"
+      },
+      {
+       "category": "Mo",
+       "code": "1062"
+      },
+      {
+       "category": "Skarnes",
+       "code": "1071"
+      },
+      {
+       "category": "Sander",
+       "code": "1072"
+      },
+      {
+       "category": "Disenå",
+       "code": "1073"
+      },
+      {
+       "category": "Skotterud",
+       "code": "1082"
+      },
+      {
+       "category": "Magnor",
+       "code": "1083"
+      },
+      {
+       "category": "Namnå",
+       "code": "1091"
+      },
+      {
+       "category": "Kirkenær",
+       "code": "1092"
+      },
+      {
+       "category": "Grinder",
+       "code": "1093"
+      },
+      {
+       "category": "Bergesiden",
+       "code": "1094"
+      },
+      {
+       "category": "Flisa",
+       "code": "1101"
+      },
+      {
+       "category": "Kjellmyra",
+       "code": "1102"
+      },
+      {
+       "category": "Våler",
+       "code": "1112"
+      },
+      {
+       "category": "Braskereidfoss",
+       "code": "1113"
+      },
+      {
+       "category": "Nordhagen",
+       "code": "1114"
+      },
+      {
+       "category": "Elverum",
+       "code": "1121"
+      },
+      {
+       "category": "Heradsbygd",
+       "code": "1122"
+      },
+      {
+       "category": "Østby",
+       "code": "1131"
+      },
+      {
+       "category": "Nybergsund",
+       "code": "1132"
+      },
+      {
+       "category": "Innbygda",
+       "code": "1133"
+      },
+      {
+       "category": "Rena",
+       "code": "1141"
+      },
+      {
+       "category": "Koppang",
+       "code": "1151"
+      },
+      {
+       "category": "Otnes",
+       "code": "1161"
+      },
+      {
+       "category": "Bergset",
+       "code": "1162"
+      },
+      {
+       "category": "Sorken",
+       "code": "1171"
+      },
+      {
+       "category": "Tolga",
+       "code": "1181"
+      },
+      {
+       "category": "Tynset",
+       "code": "1191"
+      },
+      {
+       "category": "Alvdal",
+       "code": "1201"
+      },
+      {
+       "category": "Folldal",
+       "code": "1211"
+      },
+      {
+       "category": "Os",
+       "code": "1221"
+      },
+      {
+       "category": "Lillehammer",
+       "code": "1501"
+      },
+      {
+       "category": "Jørstadmoen/Fåberg",
+       "code": "1504"
+      },
+      {
+       "category": "Gjøvik",
+       "code": "1511"
+      },
+      {
+       "category": "Bybrua",
+       "code": "1513"
+      },
+      {
+       "category": "Biri",
+       "code": "1515"
+      },
+      {
+       "category": "Dovre",
+       "code": "1521"
+      },
+      {
+       "category": "Dombås",
+       "code": "1522"
+      },
+      {
+       "category": "Bismo",
+       "code": "1541"
+      },
+      {
+       "category": "Fossbergom",
+       "code": "1551"
+      },
+      {
+       "category": "Vågåmo",
+       "code": "1561"
+      },
+      {
+       "category": "Vinstra",
+       "code": "1571"
+      },
+      {
+       "category": "Kvam",
+       "code": "1572"
+      },
+      {
+       "category": "Nord-Sel",
+       "code": "1581"
+      },
+      {
+       "category": "Otta",
+       "code": "1582"
+      },
+      {
+       "category": "Dale",
+       "code": "1583"
+      },
+      {
+       "category": "Bjølstad",
+       "code": "1584"
+      },
+      {
+       "category": "Sandbumoen",
+       "code": "1585"
+      },
+      {
+       "category": "Hundorp",
+       "code": "1591"
+      },
+      {
+       "category": "Harpefoss",
+       "code": "1592"
+      },
+      {
+       "category": "Lia",
+       "code": "1593"
+      },
+      {
+       "category": "Ringebu",
+       "code": "1601"
+      },
+      {
+       "category": "Fåvang",
+       "code": "1602"
+      },
+      {
+       "category": "Granrudmoen",
+       "code": "1611"
+      },
+      {
+       "category": "Tretten",
+       "code": "1612"
+      },
+      {
+       "category": "Segalstad bru",
+       "code": "1621"
+      },
+      {
+       "category": "Follebu",
+       "code": "1622"
+      },
+      {
+       "category": "Forset",
+       "code": "1623"
+      },
+      {
+       "category": "Kapp",
+       "code": "1631"
+      },
+      {
+       "category": "Sletta",
+       "code": "1632"
+      },
+      {
+       "category": "Lena",
+       "code": "1633"
+      },
+      {
+       "category": "Skreia",
+       "code": "1635"
+      },
+      {
+       "category": "Lensbygda",
+       "code": "1636"
+      },
+      {
+       "category": "Kolbu",
+       "code": "1637"
+      },
+      {
+       "category": "Nordlia",
+       "code": "1638"
+      },
+      {
+       "category": "Reinsvoll",
+       "code": "1642"
+      },
+      {
+       "category": "Bøverbru",
+       "code": "1643"
+      },
+      {
+       "category": "Eina",
+       "code": "1644"
+      },
+      {
+       "category": "Raufoss",
+       "code": "1645"
+      },
+      {
+       "category": "Jevnaker",
+       "code": "1652"
+      },
+      {
+       "category": "Grua",
+       "code": "1663"
+      },
+      {
+       "category": "Harestua",
+       "code": "1664"
+      },
+      {
+       "category": "Roa/Lunner",
+       "code": "1665"
+      },
+      {
+       "category": "Brandbu/Jaren",
+       "code": "1675"
+      },
+      {
+       "category": "Gran/Ringstad",
+       "code": "1676"
+      },
+      {
+       "category": "Hov",
+       "code": "1683"
+      },
+      {
+       "category": "Dokka",
+       "code": "1691"
+      },
+      {
+       "category": "Bagn",
+       "code": "1701"
+      },
+      {
+       "category": "Fagernes",
+       "code": "1711"
+      },
+      {
+       "category": "Leira",
+       "code": "1712"
+      },
+      {
+       "category": "Aurdal",
+       "code": "1713"
+      },
+      {
+       "category": "Røn",
+       "code": "1721"
+      },
+      {
+       "category": "Slidre",
+       "code": "1722"
+      },
+      {
+       "category": "Moane",
+       "code": "1731"
+      },
+      {
+       "category": "Skoger",
+       "code": "2002"
+      },
+      {
+       "category": "Drammen",
+       "code": "2003"
+      },
+      {
+       "category": "Hvittingfoss",
+       "code": "2011"
+      },
+      {
+       "category": "Skollenborg",
+       "code": "2012"
+      },
+      {
+       "category": "Kongsberg",
+       "code": "2015"
+      },
+      {
+       "category": "Hillestad",
+       "code": "2016"
+      },
+      {
+       "category": "Hen",
+       "code": "2022"
+      },
+      {
+       "category": "Gamleveien",
+       "code": "2023"
+      },
+      {
+       "category": "Vang",
+       "code": "2025"
+      },
+      {
+       "category": "Tyristrand",
+       "code": "2028"
+      },
+      {
+       "category": "Sokna",
+       "code": "2029"
+      },
+      {
+       "category": "Hallingby",
+       "code": "2030"
+      },
+      {
+       "category": "Nes",
+       "code": "2031"
+      },
+      {
+       "category": "Norderhov",
+       "code": "2032"
+      },
+      {
+       "category": "Hønefoss",
+       "code": "2033"
+      },
+      {
+       "category": "Nymoen",
+       "code": "2035"
+      },
+      {
+       "category": "Steinsåsen",
+       "code": "2041"
+      },
+      {
+       "category": "Helgelandsmoen",
+       "code": "2042"
+      },
+      {
+       "category": "Gomnes",
+       "code": "2043"
+      },
+      {
+       "category": "Kroksund",
+       "code": "2044"
+      },
+      {
+       "category": "Sundvollen",
+       "code": "2045"
+      },
+      {
+       "category": "Nesbyen",
+       "code": "2051"
+      },
+      {
+       "category": "Gol",
+       "code": "2061"
+      },
+      {
+       "category": "Hemsedal",
+       "code": "2071"
+      },
+      {
+       "category": "Ål",
+       "code": "2081"
+      },
+      {
+       "category": "Torpo",
+       "code": "2082"
+      },
+      {
+       "category": "Hol",
+       "code": "2091"
+      },
+      {
+       "category": "Geilo",
+       "code": "2092"
+      },
+      {
+       "category": "Krøderen",
+       "code": "2101"
+      },
+      {
+       "category": "Noresund",
+       "code": "2102"
+      },
+      {
+       "category": "Vikersund",
+       "code": "2113"
+      },
+      {
+       "category": "Åmot/Geithus",
+       "code": "2114"
+      },
+      {
+       "category": "Darbu",
+       "code": "2121"
+      },
+      {
+       "category": "Vestfossen",
+       "code": "2122"
+      },
+      {
+       "category": "Skotselv",
+       "code": "2124"
+      },
+      {
+       "category": "Ormåsen",
+       "code": "2125"
+      },
+      {
+       "category": "Lierbyen",
+       "code": "2141"
+      },
+      {
+       "category": "Reistad",
+       "code": "2142"
+      },
+      {
+       "category": "Sylling",
+       "code": "2143"
+      },
+      {
+       "category": "Tranby",
+       "code": "2144"
+      },
+      {
+       "category": "Oddevall/Sjåstad",
+       "code": "2145"
+      },
+      {
+       "category": "Fagerliåsen/Poverudbyen",
+       "code": "2146"
+      },
+      {
+       "category": "Kjenner",
+       "code": "2147"
+      },
+      {
+       "category": "Nærsnes",
+       "code": "2151"
+      },
+      {
+       "category": "Båtstø",
+       "code": "2152"
+      },
+      {
+       "category": "Åros",
+       "code": "2153"
+      },
+      {
+       "category": "Røyken",
+       "code": "2154"
+      },
+      {
+       "category": "Klokkarstua",
+       "code": "2161"
+      },
+      {
+       "category": "Holmsbu",
+       "code": "2162"
+      },
+      {
+       "category": "Sætre",
+       "code": "2165"
+      },
+      {
+       "category": "Tofte",
+       "code": "2166"
+      },
+      {
+       "category": "Rødberg",
+       "code": "2171"
+      },
+      {
+       "category": "Prestfoss",
+       "code": "2191"
+      },
+      {
+       "category": "Veggli",
+       "code": "2211"
+      },
+      {
+       "category": "Holmestrand",
+       "code": "2501"
+      },
+      {
+       "category": "Gullhaug",
+       "code": "2502"
+      },
+      {
+       "category": "Horten",
+       "code": "2511"
+      },
+      {
+       "category": "Tønsberg",
+       "code": "2521"
+      },
+      {
+       "category": "Sandefjord",
+       "code": "2531"
+      },
+      {
+       "category": "Larvik",
+       "code": "2541"
+      },
+      {
+       "category": "Stavern",
+       "code": "2551"
+      },
+      {
+       "category": "Berger",
+       "code": "2561"
+      },
+      {
+       "category": "Svelvik",
+       "code": "2562"
+      },
+      {
+       "category": "Nesbygda",
+       "code": "2563"
+      },
+      {
+       "category": "Selvik",
+       "code": "2571"
+      },
+      {
+       "category": "Sande",
+       "code": "2572"
+      },
+      {
+       "category": "Klevjer",
+       "code": "2573"
+      },
+      {
+       "category": "Ekeberg",
+       "code": "2574"
+      },
+      {
+       "category": "Bjerkøya",
+       "code": "2576"
+      },
+      {
+       "category": "Hof",
+       "code": "2582"
+      },
+      {
+       "category": "Sundbyfoss",
+       "code": "2583"
+      },
+      {
+       "category": "Kirkevoll/Brekkeåsen",
+       "code": "2592"
+      },
+      {
+       "category": "Rånerudåsen",
+       "code": "2593"
+      },
+      {
+       "category": "Revetal/Bergsåsen",
+       "code": "2597"
+      },
+      {
+       "category": "Nykirke",
+       "code": "2601"
+      },
+      {
+       "category": "Skoppum",
+       "code": "2602"
+      },
+      {
+       "category": "Åsgårdstrand",
+       "code": "2603"
+      },
+      {
+       "category": "Borre",
+       "code": "2604"
+      },
+      {
+       "category": "Kodal",
+       "code": "2611"
+      },
+      {
+       "category": "Andebu",
+       "code": "2612"
+      },
+      {
+       "category": "Høyjord",
+       "code": "2613"
+      },
+      {
+       "category": "Vear",
+       "code": "2621"
+      },
+      {
+       "category": "Melsomvik",
+       "code": "2622"
+      },
+      {
+       "category": "Stokke",
+       "code": "2623"
+      },
+      {
+       "category": "Storevar",
+       "code": "2624"
+      },
+      {
+       "category": "Fossnes",
+       "code": "2625"
+      },
+      {
+       "category": "Sem",
+       "code": "2631"
+      },
+      {
+       "category": "Barkåker",
+       "code": "2633"
+      },
+      {
+       "category": "Årøysund",
+       "code": "2644"
+      },
+      {
+       "category": "Tjøme",
+       "code": "2651"
+      },
+      {
+       "category": "Hvasser",
+       "code": "2652"
+      },
+      {
+       "category": "Lauve/Viksjord",
+       "code": "2664"
+      },
+      {
+       "category": "Helgeroa/Nevlunghamn",
+       "code": "2674"
+      },
+      {
+       "category": "Verningen",
+       "code": "2682"
+      },
+      {
+       "category": "Kvelde",
+       "code": "2683"
+      },
+      {
+       "category": "Svarstad",
+       "code": "2691"
+      },
+      {
+       "category": "Langangen",
+       "code": "3001"
+      },
+      {
+       "category": "Sandøya",
+       "code": "3004"
+      },
+      {
+       "category": "Porsgrunn/Skien",
+       "code": "3005"
+      },
+      {
+       "category": "Sneltvedt",
+       "code": "3014"
+      },
+      {
+       "category": "Notodden",
+       "code": "3021"
+      },
+      {
+       "category": "Yli",
+       "code": "3022"
+      },
+      {
+       "category": "Siljan",
+       "code": "3031"
+      },
+      {
+       "category": "Snurråsen",
+       "code": "3032"
+      },
+      {
+       "category": "Herre",
+       "code": "3041"
+      },
+      {
+       "category": "Kil",
+       "code": "3051"
+      },
+      {
+       "category": "Kragerø",
+       "code": "3054"
+      },
+      {
+       "category": "Vadfoss/Helle",
+       "code": "3055"
+      },
+      {
+       "category": "Preststranda",
+       "code": "3061"
+      },
+      {
+       "category": "Neslandsvatn",
+       "code": "3062"
+      },
+      {
+       "category": "Bjervamoen",
+       "code": "3071"
+      },
+      {
+       "category": "Ulefoss",
+       "code": "3072"
+      },
+      {
+       "category": "Bø",
+       "code": "3081"
+      },
+      {
+       "category": "Folkestad",
+       "code": "3083"
+      },
+      {
+       "category": "Hjukse",
+       "code": "3091"
+      },
+      {
+       "category": "Nordagutu",
+       "code": "3092"
+      },
+      {
+       "category": "Gvarv",
+       "code": "3093"
+      },
+      {
+       "category": "Akkerhaug",
+       "code": "3094"
+      },
+      {
+       "category": "Tinn austbygd",
+       "code": "3101"
+      },
+      {
+       "category": "Rjukan",
+       "code": "3102"
+      },
+      {
+       "category": "Miland",
+       "code": "3103"
+      },
+      {
+       "category": "Seljord",
+       "code": "3111"
+      },
+      {
+       "category": "Vrådal",
+       "code": "3121"
+      },
+      {
+       "category": "Kviteseid",
+       "code": "3122"
+      },
+      {
+       "category": "Tveitsund",
+       "code": "3131"
+      },
+      {
+       "category": "Fyresdal",
+       "code": "3141"
+      },
+      {
+       "category": "Dalen",
+       "code": "3151"
+      },
+      {
+       "category": "Åmot",
+       "code": "3161"
+      },
+      {
+       "category": "Risør",
+       "code": "3501"
+      },
+      {
+       "category": "Arendal",
+       "code": "3511"
+      },
+      {
+       "category": "Grimstad",
+       "code": "3523"
+      },
+      {
+       "category": "Jortveit",
+       "code": "3524"
+      },
+      {
+       "category": "Fevik",
+       "code": "3525"
+      },
+      {
+       "category": "Tvedestrand",
+       "code": "3531"
+      },
+      {
+       "category": "Kilsund",
+       "code": "3541"
+      },
+      {
+       "category": "Blakstad",
+       "code": "3551"
+      },
+      {
+       "category": "Rykene",
+       "code": "3561"
+      },
+      {
+       "category": "Lillesand",
+       "code": "3571"
+      },
+      {
+       "category": "Birkeland",
+       "code": "3581"
+      },
+      {
+       "category": "Åmli",
+       "code": "3591"
+      },
+      {
+       "category": "Evje",
+       "code": "3603"
+      },
+      {
+       "category": "Byglandsfjord",
+       "code": "3612"
+      },
+      {
+       "category": "Kongshamn",
+       "code": "3621"
+      },
+      {
+       "category": "Hovden",
+       "code": "3641"
+      },
+      {
+       "category": "Gjerstad",
+       "code": "3651"
+      },
+      {
+       "category": "Eikeland",
+       "code": "3652"
+      },
+      {
+       "category": "Myra",
+       "code": "3661"
+      },
+      {
+       "category": "Skålevik",
+       "code": "4001"
+      },
+      {
+       "category": "Kristiansand",
+       "code": "4002"
+      },
+      {
+       "category": "Strai",
+       "code": "4003"
+      },
+      {
+       "category": "Mosby",
+       "code": "4004"
+      },
+      {
+       "category": "Gjusvik",
+       "code": "4005"
+      },
+      {
+       "category": "Tveit",
+       "code": "4007"
+      },
+      {
+       "category": "Mandal",
+       "code": "4011"
+      },
+      {
+       "category": "Krossen",
+       "code": "4012"
+      },
+      {
+       "category": "Farsund",
+       "code": "4021"
+      },
+      {
+       "category": "Vanse",
+       "code": "4022"
+      },
+      {
+       "category": "Vestbygda",
+       "code": "4023"
+      },
+      {
+       "category": "Flekkefjord",
+       "code": "4031"
+      },
+      {
+       "category": "Sira",
+       "code": "4032"
+      },
+      {
+       "category": "Skarpengland",
+       "code": "4041"
+      },
+      {
+       "category": "Vennesla",
+       "code": "4042"
+      },
+      {
+       "category": "Nodeland",
+       "code": "4051"
+      },
+      {
+       "category": "Volleberg",
+       "code": "4052"
+      },
+      {
+       "category": "Nodelandsheia",
+       "code": "4053"
+      },
+      {
+       "category": "Søgne",
+       "code": "4061"
+      },
+      {
+       "category": "Vedderheia",
+       "code": "4062"
+      },
+      {
+       "category": "Øyslebø",
+       "code": "4071"
+      },
+      {
+       "category": "Høllen",
+       "code": "4081"
+      },
+      {
+       "category": "Vigeland",
+       "code": "4082"
+      },
+      {
+       "category": "Lyngdal",
+       "code": "4091"
+      },
+      {
+       "category": "Skomrak",
+       "code": "4092"
+      },
+      {
+       "category": "Feda",
+       "code": "4101"
+      },
+      {
+       "category": "Liknes",
+       "code": "4102"
+      },
+      {
+       "category": "Tonstad",
+       "code": "4111"
+      },
+      {
+       "category": "Egersund",
+       "code": "4501"
+      },
+      {
+       "category": "Hellvik",
+       "code": "4502"
+      },
+      {
+       "category": "Vatne",
+       "code": "4512"
+      },
+      {
+       "category": "Hommersåk",
+       "code": "4514"
+      },
+      {
+       "category": "Sviland",
+       "code": "4515"
+      },
+      {
+       "category": "Høle",
+       "code": "4516"
+      },
+      {
+       "category": "Stavanger/Sandnes",
+       "code": "4522"
+      },
+      {
+       "category": "Krossberg",
+       "code": "4523"
+      },
+      {
+       "category": "Haugesund",
+       "code": "4532"
+      },
+      {
+       "category": "Hauge",
+       "code": "4541"
+      },
+      {
+       "category": "Moi",
+       "code": "4551"
+      },
+      {
+       "category": "Vikeså",
+       "code": "4561"
+      },
+      {
+       "category": "Nærbø",
+       "code": "4571"
+      },
+      {
+       "category": "Varhaug",
+       "code": "4572"
+      },
+      {
+       "category": "Vigrestad",
+       "code": "4573"
+      },
+      {
+       "category": "Brusand",
+       "code": "4574"
+      },
+      {
+       "category": "Sirevåg",
+       "code": "4575"
+      },
+      {
+       "category": "Ogna",
+       "code": "4576"
+      },
+      {
+       "category": "Pollestad",
+       "code": "4583"
+      },
+      {
+       "category": "Kleppe/Verdalen",
+       "code": "4585"
+      },
+      {
+       "category": "Bryne",
+       "code": "4591"
+      },
+      {
+       "category": "Kvernaland",
+       "code": "4592"
+      },
+      {
+       "category": "Undheim",
+       "code": "4593"
+      },
+      {
+       "category": "Lyefjell",
+       "code": "4594"
+      },
+      {
+       "category": "Ålgård/Figgjo",
+       "code": "4601"
+      },
+      {
+       "category": "Oltedal",
+       "code": "4602"
+      },
+      {
+       "category": "Gilja",
+       "code": "4603"
+      },
+      {
+       "category": "Tananger",
+       "code": "4611"
+      },
+      {
+       "category": "Hålandsmarka",
+       "code": "4614"
+      },
+      {
+       "category": "Stenebyen",
+       "code": "4615"
+      },
+      {
+       "category": "Sola",
+       "code": "4616"
+      },
+      {
+       "category": "Jørpeland",
+       "code": "4631"
+      },
+      {
+       "category": "Tau",
+       "code": "4632"
+      },
+      {
+       "category": "Hjelmelandsvågen",
+       "code": "4641"
+      },
+      {
+       "category": "Sand",
+       "code": "4651"
+      },
+      {
+       "category": "Sauda",
+       "code": "4661"
+      },
+      {
+       "category": "Judaberg",
+       "code": "4671"
+      },
+      {
+       "category": "Ydstebøhamn",
+       "code": "4681"
+      },
+      {
+       "category": "Førdesfjorden",
+       "code": "4691"
+      },
+      {
+       "category": "Aksdal",
+       "code": "4692"
+      },
+      {
+       "category": "Nedstrand",
+       "code": "4693"
+      },
+      {
+       "category": "Sandve",
+       "code": "4703"
+      },
+      {
+       "category": "Skudeneshavn",
+       "code": "4705"
+      },
+      {
+       "category": "Kopervik",
+       "code": "4706"
+      },
+      {
+       "category": "Våre",
+       "code": "4707"
+      },
+      {
+       "category": "Visnes",
+       "code": "4709"
+      },
+      {
+       "category": "Eike",
+       "code": "4710"
+      },
+      {
+       "category": "Skjold",
+       "code": "4731"
+      },
+      {
+       "category": "Sandeid",
+       "code": "4732"
+      },
+      {
+       "category": "Vikedal",
+       "code": "4733"
+      },
+      {
+       "category": "Vikevåg",
+       "code": "4741"
+      },
+      {
+       "category": "Åkrehamn/Vedavågen",
+       "code": "4761"
+      },
+      {
+       "category": "Bergen",
+       "code": "5001"
+      },
+      {
+       "category": "Hylkje",
+       "code": "5004"
+      },
+      {
+       "category": "Breistein",
+       "code": "5005"
+      },
+      {
+       "category": "Ytre Arna",
+       "code": "5006"
+      },
+      {
+       "category": "Arna",
+       "code": "5007"
+      },
+      {
+       "category": "Espeland",
+       "code": "5008"
+      },
+      {
+       "category": "Fanahammeren",
+       "code": "5009"
+      },
+      {
+       "category": "Etne",
+       "code": "5011"
+      },
+      {
+       "category": "Skånevik",
+       "code": "5012"
+      },
+      {
+       "category": "Ølen",
+       "code": "5021"
+      },
+      {
+       "category": "Ølensvåg",
+       "code": "5022"
+      },
+      {
+       "category": "Førde",
+       "code": "5031"
+      },
+      {
+       "category": "Sveio",
+       "code": "5032"
+      },
+      {
+       "category": "Langevåg",
+       "code": "5042"
+      },
+      {
+       "category": "Mosterhamn",
+       "code": "5043"
+      },
+      {
+       "category": "Rubbestadneset",
+       "code": "5044"
+      },
+      {
+       "category": "Svortland",
+       "code": "5045"
+      },
+      {
+       "category": "Melandsvågen",
+       "code": "5046"
+      },
+      {
+       "category": "Foldrøy",
+       "code": "5047"
+      },
+      {
+       "category": "Leirvik",
+       "code": "5053"
+      },
+      {
+       "category": "Sagvåg",
+       "code": "5056"
+      },
+      {
+       "category": "Fitjar",
+       "code": "5061"
+      },
+      {
+       "category": "Rosendal",
+       "code": "5072"
+      },
+      {
+       "category": "Seimsfoss",
+       "code": "5073"
+      },
+      {
+       "category": "Uskedal",
+       "code": "5075"
+      },
+      {
+       "category": "Herøysund",
+       "code": "5076"
+      },
+      {
+       "category": "Husnes",
+       "code": "5077"
+      },
+      {
+       "category": "Sunde/Valen",
+       "code": "5078"
+      },
+      {
+       "category": "Sæbøvik",
+       "code": "5080"
+      },
+      {
+       "category": "Jondal",
+       "code": "5081"
+      },
+      {
+       "category": "Skarde",
+       "code": "5091"
+      },
+      {
+       "category": "Odda",
+       "code": "5092"
+      },
+      {
+       "category": "Tyssedal",
+       "code": "5093"
+      },
+      {
+       "category": "Eitrheim",
+       "code": "5094"
+      },
+      {
+       "category": "Røldal",
+       "code": "5095"
+      },
+      {
+       "category": "Lofthus",
+       "code": "5101"
+      },
+      {
+       "category": "Kinsarvik",
+       "code": "5102"
+      },
+      {
+       "category": "Eidfjord",
+       "code": "5111"
+      },
+      {
+       "category": "Ulvik",
+       "code": "5121"
+      },
+      {
+       "category": "Vossevangen",
+       "code": "5132"
+      },
+      {
+       "category": "Skulestadmoen",
+       "code": "5133"
+      },
+      {
+       "category": "Mønshaugen-Bjørgum",
+       "code": "5134"
+      },
+      {
+       "category": "Ålvik",
+       "code": "5141"
+      },
+      {
+       "category": "Øystese",
+       "code": "5142"
+      },
+      {
+       "category": "Norheimsund",
+       "code": "5143"
+      },
+      {
+       "category": "Eikelandsosen",
+       "code": "5151"
+      },
+      {
+       "category": "Haga",
+       "code": "5161"
+      },
+      {
+       "category": "Søfteland",
+       "code": "5171"
+      },
+      {
+       "category": "Søre Øyane",
+       "code": "5172"
+      },
+      {
+       "category": "Osøyro",
+       "code": "5173"
+      },
+      {
+       "category": "Søvik",
+       "code": "5174"
+      },
+      {
+       "category": "Haljem",
+       "code": "5175"
+      },
+      {
+       "category": "Hagavik",
+       "code": "5176"
+      },
+      {
+       "category": "Klokkarvik",
+       "code": "5181"
+      },
+      {
+       "category": "Hammarsland",
+       "code": "5182"
+      },
+      {
+       "category": "Tælavåg",
+       "code": "5183"
+      },
+      {
+       "category": "Solsvik",
+       "code": "5191"
+      },
+      {
+       "category": "Skoge/Møvik",
+       "code": "5196"
+      },
+      {
+       "category": "Vindenes",
+       "code": "5198"
+      },
+      {
+       "category": "Ågotnes",
+       "code": "5199"
+      },
+      {
+       "category": "Knappskog",
+       "code": "5200"
+      },
+      {
+       "category": "Askøy",
+       "code": "5201"
+      },
+      {
+       "category": "Vaksdal",
+       "code": "5211"
+      },
+      {
+       "category": "Stanghelle",
+       "code": "5212"
+      },
+      {
+       "category": "Dale",
+       "code": "5213"
+      },
+      {
+       "category": "Hausvik",
+       "code": "5221"
+      },
+      {
+       "category": "Lonevåg",
+       "code": "5222"
+      },
+      {
+       "category": "Valestrandfossen",
+       "code": "5223"
+      },
+      {
+       "category": "Haugland",
+       "code": "5231"
+      },
+      {
+       "category": "Manger",
+       "code": "5232"
+      },
+      {
+       "category": "Austmarka",
+       "code": "5233"
+      },
+      {
+       "category": "Lindås",
+       "code": "5241"
+      },
+      {
+       "category": "Knarvik",
+       "code": "5245"
+      },
+      {
+       "category": "Årås",
+       "code": "5252"
+      },
+      {
+       "category": "Fedje",
+       "code": "5261"
+      },
+      {
+       "category": "Våge",
+       "code": "5281"
+      },
+      {
+       "category": "Granvin",
+       "code": "5291"
+      },
+      {
+       "category": "Storebø",
+       "code": "5301"
+      },
+      {
+       "category": "Bekkjarvik",
+       "code": "5302"
+      },
+      {
+       "category": "Frekhaug",
+       "code": "5321"
+      },
+      {
+       "category": "Krossneset",
+       "code": "5322"
+      },
+      {
+       "category": "Holme",
+       "code": "5323"
+      },
+      {
+       "category": "Nordvik",
+       "code": "5341"
+      },
+      {
+       "category": "Flesland",
+       "code": "5342"
+      },
+      {
+       "category": "Knarrevik/Straume",
+       "code": "5352"
+      },
+      {
+       "category": "Florø",
+       "code": "5501"
+      },
+      {
+       "category": "Brandsøy",
+       "code": "5502"
+      },
+      {
+       "category": "Byrknes",
+       "code": "5511"
+      },
+      {
+       "category": "Eivindvik",
+       "code": "5512"
+      },
+      {
+       "category": "Austreim",
+       "code": "5523"
+      },
+      {
+       "category": "Kyrkjebø",
+       "code": "5524"
+      },
+      {
+       "category": "Vadheim",
+       "code": "5525"
+      },
+      {
+       "category": "Høyanger",
+       "code": "5526"
+      },
+      {
+       "category": "Viksøyri",
+       "code": "5531"
+      },
+      {
+       "category": "Balestrand",
+       "code": "5541"
+      },
+      {
+       "category": "Hermansverk/Leikanger",
+       "code": "5553"
+      },
+      {
+       "category": "Sogndalsfjøra",
+       "code": "5561"
+      },
+      {
+       "category": "Kaupanger",
+       "code": "5562"
+      },
+      {
+       "category": "Kjørnes",
+       "code": "5563"
+      },
+      {
+       "category": "Aurlandsvangen",
+       "code": "5571"
+      },
+      {
+       "category": "Lærdalsøyri",
+       "code": "5581"
+      },
+      {
+       "category": "Øvre Årdal",
+       "code": "5591"
+      },
+      {
+       "category": "Årdalstangen",
+       "code": "5592"
+      },
+      {
+       "category": "Seimsdalen",
+       "code": "5593"
+      },
+      {
+       "category": "Gaupne",
+       "code": "5601"
+      },
+      {
+       "category": "Luster",
+       "code": "5602"
+      },
+      {
+       "category": "Askvoll",
+       "code": "5611"
+      },
+      {
+       "category": "Dale",
+       "code": "5622"
+      },
+      {
+       "category": "Flekke",
+       "code": "5623"
+      },
+      {
+       "category": "Sande",
+       "code": "5631"
+      },
+      {
+       "category": "Langhaugane",
+       "code": "5641"
+      },
+      {
+       "category": "Skei",
+       "code": "5643"
+      },
+      {
+       "category": "Førde",
+       "code": "5651"
+      },
+      {
+       "category": "Svelgen",
+       "code": "5671"
+      },
+      {
+       "category": "Kalvåg",
+       "code": "5672"
+      },
+      {
+       "category": "Bremanger",
+       "code": "5673"
+      },
+      {
+       "category": "Raudeberg",
+       "code": "5681"
+      },
+      {
+       "category": "Måløy",
+       "code": "5682"
+      },
+      {
+       "category": "Tennebøen",
+       "code": "5683"
+      },
+      {
+       "category": "Holevik",
+       "code": "5684"
+      },
+      {
+       "category": "Vågsvåg",
+       "code": "5685"
+      },
+      {
+       "category": "Bryggja",
+       "code": "5686"
+      },
+      {
+       "category": "Selje",
+       "code": "5691"
+      },
+      {
+       "category": "Nordfjordeid",
+       "code": "5701"
+      },
+      {
+       "category": "Mogrenda",
+       "code": "5702"
+      },
+      {
+       "category": "Grodås",
+       "code": "5711"
+      },
+      {
+       "category": "Sandane",
+       "code": "5721"
+      },
+      {
+       "category": "Byrkjelo",
+       "code": "5722"
+      },
+      {
+       "category": "Stryn",
+       "code": "5731"
+      },
+      {
+       "category": "Innvik",
+       "code": "5732"
+      },
+      {
+       "category": "Olden",
+       "code": "5733"
+      },
+      {
+       "category": "Hardbakke",
+       "code": "5741"
+      },
+      {
+       "category": "Molde",
+       "code": "6001"
+      },
+      {
+       "category": "Hjelset",
+       "code": "6002"
+      },
+      {
+       "category": "Kleive",
+       "code": "6003"
+      },
+      {
+       "category": "Hovdenakken",
+       "code": "6004"
+      },
+      {
+       "category": "Nesjestranda",
+       "code": "6005"
+      },
+      {
+       "category": "Mek",
+       "code": "6006"
+      },
+      {
+       "category": "Røbekk",
+       "code": "6007"
+      },
+      {
+       "category": "Kristiansund",
+       "code": "6011"
+      },
+      {
+       "category": "Hoffland",
+       "code": "6023"
+      },
+      {
+       "category": "Ålesund",
+       "code": "6025"
+      },
+      {
+       "category": "Årset",
+       "code": "6026"
+      },
+      {
+       "category": "Myklebost",
+       "code": "6027"
+      },
+      {
+       "category": "Larsnes",
+       "code": "6031"
+      },
+      {
+       "category": "Haugsbygda",
+       "code": "6032"
+      },
+      {
+       "category": "Kvalsvik",
+       "code": "6041"
+      },
+      {
+       "category": "Kvalsund",
+       "code": "6042"
+      },
+      {
+       "category": "Remøy",
+       "code": "6044"
+      },
+      {
+       "category": "Moltustranda",
+       "code": "6046"
+      },
+      {
+       "category": "Tjørvåg",
+       "code": "6047"
+      },
+      {
+       "category": "Fosnavåg/Leinstrand",
+       "code": "6048"
+      },
+      {
+       "category": "Ulsteinsvik",
+       "code": "6051"
+      },
+      {
+       "category": "Haddal",
+       "code": "6052"
+      },
+      {
+       "category": "Brandal",
+       "code": "6063"
+      },
+      {
+       "category": "Hareid",
+       "code": "6064"
+      },
+      {
+       "category": "Volda",
+       "code": "6071"
+      },
+      {
+       "category": "Ørsta",
+       "code": "6081"
+      },
+      {
+       "category": "Sætre",
+       "code": "6082"
+      },
+      {
+       "category": "Sjøholt",
+       "code": "6091"
+      },
+      {
+       "category": "Sylte",
+       "code": "6101"
+      },
+      {
+       "category": "Stranda",
+       "code": "6111"
+      },
+      {
+       "category": "Hellesylt",
+       "code": "6112"
+      },
+      {
+       "category": "Helsem",
+       "code": "6113"
+      },
+      {
+       "category": "Stordal",
+       "code": "6121"
+      },
+      {
+       "category": "Ikornnes",
+       "code": "6131"
+      },
+      {
+       "category": "Straumgjerde",
+       "code": "6132"
+      },
+      {
+       "category": "Sykkylven",
+       "code": "6133"
+      },
+      {
+       "category": "Skodje",
+       "code": "6141"
+      },
+      {
+       "category": "Valle",
+       "code": "6142"
+      },
+      {
+       "category": "Langevåg",
+       "code": "6151"
+      },
+      {
+       "category": "Roald",
+       "code": "6165"
+      },
+      {
+       "category": "Leitebakk",
+       "code": "6166"
+      },
+      {
+       "category": "Giske",
+       "code": "6167"
+      },
+      {
+       "category": "Nordstrand",
+       "code": "6168"
+      },
+      {
+       "category": "Austnes",
+       "code": "6171"
+      },
+      {
+       "category": "Brattvåg",
+       "code": "6172"
+      },
+      {
+       "category": "Vatne",
+       "code": "6173"
+      },
+      {
+       "category": "Søvik",
+       "code": "6174"
+      },
+      {
+       "category": "Eidsvik",
+       "code": "6175"
+      },
+      {
+       "category": "Longva",
+       "code": "6176"
+      },
+      {
+       "category": "Tomra",
+       "code": "6181"
+      },
+      {
+       "category": "Vestnes",
+       "code": "6182"
+      },
+      {
+       "category": "Tresfjord",
+       "code": "6185"
+      },
+      {
+       "category": "Isfjorden",
+       "code": "6191"
+      },
+      {
+       "category": "Åndalsnes",
+       "code": "6192"
+      },
+      {
+       "category": "Brønnsletten",
+       "code": "6193"
+      },
+      {
+       "category": "Voll",
+       "code": "6194"
+      },
+      {
+       "category": "Eidsvåg",
+       "code": "6201"
+      },
+      {
+       "category": "Rausand",
+       "code": "6202"
+      },
+      {
+       "category": "Midsund",
+       "code": "6211"
+      },
+      {
+       "category": "Steinshamn",
+       "code": "6221"
+      },
+      {
+       "category": "Aukra",
+       "code": "6231"
+      },
+      {
+       "category": "Varhaugvika",
+       "code": "6233"
+      },
+      {
+       "category": "Elnesvågen",
+       "code": "6241"
+      },
+      {
+       "category": "Bud",
+       "code": "6242"
+      },
+      {
+       "category": "Tornes",
+       "code": "6244"
+      },
+      {
+       "category": "Malme",
+       "code": "6248"
+      },
+      {
+       "category": "Sylte",
+       "code": "6249"
+      },
+      {
+       "category": "Eide",
+       "code": "6251"
+      },
+      {
+       "category": "Storbakken",
+       "code": "6261"
+      },
+      {
+       "category": "Solsletta",
+       "code": "6264"
+      },
+      {
+       "category": "Kvalvåg",
+       "code": "6265"
+      },
+      {
+       "category": "Rensvik",
+       "code": "6266"
+      },
+      {
+       "category": "Tingvollvågen",
+       "code": "6271"
+      },
+      {
+       "category": "Grøa",
+       "code": "6281"
+      },
+      {
+       "category": "Hoelsand",
+       "code": "6282"
+      },
+      {
+       "category": "Sunndalsøra",
+       "code": "6283"
+      },
+      {
+       "category": "Ålvund",
+       "code": "6284"
+      },
+      {
+       "category": "Skei-Surnadalsøra",
+       "code": "6291"
+      },
+      {
+       "category": "Rindal",
+       "code": "6301"
+      },
+      {
+       "category": "Aure",
+       "code": "6311"
+      },
+      {
+       "category": "Dyrnesvågen",
+       "code": "6331"
+      },
+      {
+       "category": "Veiholmen",
+       "code": "6332"
+      },
+      {
+       "category": "Fiskåbygd",
+       "code": "6341"
+      },
+      {
+       "category": "Kårvåg",
+       "code": "6351"
+      },
+      {
+       "category": "Bremsnes",
+       "code": "6352"
+      },
+      {
+       "category": "Langøy",
+       "code": "6353"
+      },
+      {
+       "category": "Batnfjordsøra",
+       "code": "6361"
+      },
+      {
+       "category": "Torvikbukt",
+       "code": "6362"
+      },
+      {
+       "category": "Trondheim",
+       "code": "6501"
+      },
+      {
+       "category": "Trolla",
+       "code": "6502"
+      },
+      {
+       "category": "Spongdal",
+       "code": "6503"
+      },
+      {
+       "category": "Ringvål",
+       "code": "6504"
+      },
+      {
+       "category": "Kyrksæterøra",
+       "code": "6511"
+      },
+      {
+       "category": "Fillan",
+       "code": "6521"
+      },
+      {
+       "category": "Hammarvika",
+       "code": "6531"
+      },
+      {
+       "category": "Sistranda",
+       "code": "6532"
+      },
+      {
+       "category": "Mausund",
+       "code": "6534"
+      },
+      {
+       "category": "Uthaug",
+       "code": "6541"
+      },
+      {
+       "category": "Opphaug",
+       "code": "6542"
+      },
+      {
+       "category": "Brekstad",
+       "code": "6543"
+      },
+      {
+       "category": "Ottersbo",
+       "code": "6544"
+      },
+      {
+       "category": "Selbekken",
+       "code": "6551"
+      },
+      {
+       "category": "Råkvågen",
+       "code": "6561"
+      },
+      {
+       "category": "Årnset",
+       "code": "6562"
+      },
+      {
+       "category": "Botngård",
+       "code": "6571"
+      },
+      {
+       "category": "Lysøysund",
+       "code": "6572"
+      },
+      {
+       "category": "Å i Åfjord",
+       "code": "6581"
+      },
+      {
+       "category": "Oppdal",
+       "code": "6591"
+      },
+      {
+       "category": "Berkåk",
+       "code": "6601"
+      },
+      {
+       "category": "Løkken",
+       "code": "6611"
+      },
+      {
+       "category": "Storås",
+       "code": "6612"
+      },
+      {
+       "category": "Meldal",
+       "code": "6613"
+      },
+      {
+       "category": "Å",
+       "code": "6614"
+      },
+      {
+       "category": "Bjørnli",
+       "code": "6615"
+      },
+      {
+       "category": "Orkanger/Fannrem",
+       "code": "6621"
+      },
+      {
+       "category": "Svorkmo",
+       "code": "6622"
+      },
+      {
+       "category": "Vormstad",
+       "code": "6623"
+      },
+      {
+       "category": "Gjølme",
+       "code": "6624"
+      },
+      {
+       "category": "Røros",
+       "code": "6631"
+      },
+      {
+       "category": "Glåmos",
+       "code": "6632"
+      },
+      {
+       "category": "Støren",
+       "code": "6641"
+      },
+      {
+       "category": "Melhus",
+       "code": "6651"
+      },
+      {
+       "category": "Kvål",
+       "code": "6652"
+      },
+      {
+       "category": "Ler",
+       "code": "6653"
+      },
+      {
+       "category": "Lundamo",
+       "code": "6654"
+      },
+      {
+       "category": "Hovin",
+       "code": "6655"
+      },
+      {
+       "category": "Korsvegen",
+       "code": "6656"
+      },
+      {
+       "category": "Eggkleiva",
+       "code": "6667"
+      },
+      {
+       "category": "Buvika/Ilhaugen",
+       "code": "6668"
+      },
+      {
+       "category": "Børsa",
+       "code": "6669"
+      },
+      {
+       "category": "Klæbu",
+       "code": "6671"
+      },
+      {
+       "category": "Tanem",
+       "code": "6672"
+      },
+      {
+       "category": "Malvik",
+       "code": "6681"
+      },
+      {
+       "category": "Muruvik",
+       "code": "6682"
+      },
+      {
+       "category": "Hommelvik",
+       "code": "6683"
+      },
+      {
+       "category": "Smiskaret",
+       "code": "6684"
+      },
+      {
+       "category": "Mebonden",
+       "code": "6691"
+      },
+      {
+       "category": "Sparbu",
+       "code": "7001"
+      },
+      {
+       "category": "Mære",
+       "code": "7002"
+      },
+      {
+       "category": "Steinkjer",
+       "code": "7003"
+      },
+      {
+       "category": "Lerkehaug",
+       "code": "7004"
+      },
+      {
+       "category": "Sunnan",
+       "code": "7005"
+      },
+      {
+       "category": "Velde",
+       "code": "7006"
+      },
+      {
+       "category": "Bangsund",
+       "code": "7012"
+      },
+      {
+       "category": "Namsos",
+       "code": "7013"
+      },
+      {
+       "category": "Midtbygda",
+       "code": "7021"
+      },
+      {
+       "category": "Hegra",
+       "code": "7031"
+      },
+      {
+       "category": "Skatval",
+       "code": "7033"
+      },
+      {
+       "category": "Stjørdalshalsen",
+       "code": "7034"
+      },
+      {
+       "category": "Hell",
+       "code": "7035"
+      },
+      {
+       "category": "Kvithammer",
+       "code": "7036"
+      },
+      {
+       "category": "Leksvik",
+       "code": "7041"
+      },
+      {
+       "category": "Vanvikan",
+       "code": "7042"
+      },
+      {
+       "category": "Levanger",
+       "code": "7051"
+      },
+      {
+       "category": "Skogn",
+       "code": "7052"
+      },
+      {
+       "category": "Åsen",
+       "code": "7053"
+      },
+      {
+       "category": "Momarka",
+       "code": "7054"
+      },
+      {
+       "category": "Neset",
+       "code": "7055"
+      },
+      {
+       "category": "Mule",
+       "code": "7056"
+      },
+      {
+       "category": "Ekne",
+       "code": "7057"
+      },
+      {
+       "category": "Trones",
+       "code": "7062"
+      },
+      {
+       "category": "Lysthaugen",
+       "code": "7064"
+      },
+      {
+       "category": "Vuku",
+       "code": "7065"
+      },
+      {
+       "category": "Forbregd/Lein",
+       "code": "7066"
+      },
+      {
+       "category": "Verdalsøra",
+       "code": "7068"
+      },
+      {
+       "category": "Malm",
+       "code": "7071"
+      },
+      {
+       "category": "Follafoss",
+       "code": "7072"
+      },
+      {
+       "category": "Namdalseid",
+       "code": "7081"
+      },
+      {
+       "category": "Hylla",
+       "code": "7091"
+      },
+      {
+       "category": "Røra Stasjon",
+       "code": "7092"
+      },
+      {
+       "category": "Straumen",
+       "code": "7093"
+      },
+      {
+       "category": "Gangstadhaugen",
+       "code": "7094"
+      },
+      {
+       "category": "Småland",
+       "code": "7095"
+      },
+      {
+       "category": "Snåsa",
+       "code": "7101"
+      },
+      {
+       "category": "Sandvika",
+       "code": "7111"
+      },
+      {
+       "category": "Grong",
+       "code": "7142"
+      },
+      {
+       "category": "Høylandet",
+       "code": "7151"
+      },
+      {
+       "category": "Hunn",
+       "code": "7161"
+      },
+      {
+       "category": "Ranemsletta",
+       "code": "7162"
+      },
+      {
+       "category": "Svalia",
+       "code": "7163"
+      },
+      {
+       "category": "Skogmo",
+       "code": "7164"
+      },
+      {
+       "category": "Lauvsnes",
+       "code": "7171"
+      },
+      {
+       "category": "Rørvik",
+       "code": "7181"
+      },
+      {
+       "category": "Kolvereid",
+       "code": "7194"
+      },
+      {
+       "category": "Bodø",
+       "code": "7501"
+      },
+      {
+       "category": "Løding",
+       "code": "7502"
+      },
+      {
+       "category": "Løpsmarka",
+       "code": "7503"
+      },
+      {
+       "category": "Bjerkvik",
+       "code": "7511"
+      },
+      {
+       "category": "Narvik",
+       "code": "7512"
+      },
+      {
+       "category": "Beisfjord",
+       "code": "7513"
+      },
+      {
+       "category": "Håkvik",
+       "code": "7514"
+      },
+      {
+       "category": "Terråk",
+       "code": "7521"
+      },
+      {
+       "category": "Vik",
+       "code": "7531"
+      },
+      {
+       "category": "Berg",
+       "code": "7532"
+      },
+      {
+       "category": "Hommelstø",
+       "code": "7541"
+      },
+      {
+       "category": "Brønnøysund",
+       "code": "7542"
+      },
+      {
+       "category": "Gladstad",
+       "code": "7551"
+      },
+      {
+       "category": "Silvalen",
+       "code": "7561"
+      },
+      {
+       "category": "Tjøtta",
+       "code": "7571"
+      },
+      {
+       "category": "Sandnessjøen",
+       "code": "7572"
+      },
+      {
+       "category": "Mosjøen",
+       "code": "7581"
+      },
+      {
+       "category": "Trofors",
+       "code": "7591"
+      },
+      {
+       "category": "Hattfjelldal",
+       "code": "7601"
+      },
+      {
+       "category": "Nesna",
+       "code": "7611"
+      },
+      {
+       "category": "Hemnesberget",
+       "code": "7621"
+      },
+      {
+       "category": "Finneidfjord",
+       "code": "7622"
+      },
+      {
+       "category": "Bjerka",
+       "code": "7623"
+      },
+      {
+       "category": "Korgen",
+       "code": "7624"
+      },
+      {
+       "category": "Mo i Rana",
+       "code": "7631"
+      },
+      {
+       "category": "Storforshei",
+       "code": "7632"
+      },
+      {
+       "category": "Hauknes",
+       "code": "7633"
+      },
+      {
+       "category": "Lovund",
+       "code": "7641"
+      },
+      {
+       "category": "Husøy",
+       "code": "7651"
+      },
+      {
+       "category": "Ørnes",
+       "code": "7661"
+      },
+      {
+       "category": "Glomfjord",
+       "code": "7662"
+      },
+      {
+       "category": "Reipå",
+       "code": "7663"
+      },
+      {
+       "category": "Inndyr",
+       "code": "7671"
+      },
+      {
+       "category": "Sørarnøy",
+       "code": "7672"
+      },
+      {
+       "category": "Rognan",
+       "code": "7681"
+      },
+      {
+       "category": "Røkland",
+       "code": "7682"
+      },
+      {
+       "category": "Sulitjelma",
+       "code": "7691"
+      },
+      {
+       "category": "Fauske",
+       "code": "7692"
+      },
+      {
+       "category": "Strømsnes",
+       "code": "7693"
+      },
+      {
+       "category": "Røsvik",
+       "code": "7701"
+      },
+      {
+       "category": "Straumen",
+       "code": "7702"
+      },
+      {
+       "category": "Oppeid",
+       "code": "7711"
+      },
+      {
+       "category": "Kjøpsvik",
+       "code": "7721"
+      },
+      {
+       "category": "Lødingen",
+       "code": "7731"
+      },
+      {
+       "category": "Fjelldal",
+       "code": "7742"
+      },
+      {
+       "category": "Ramsund",
+       "code": "7743"
+      },
+      {
+       "category": "Bogen",
+       "code": "7752"
+      },
+      {
+       "category": "Ballangen",
+       "code": "7761"
+      },
+      {
+       "category": "Røstlandet",
+       "code": "7771"
+      },
+      {
+       "category": "Sørland",
+       "code": "7781"
+      },
+      {
+       "category": "Stamsund",
+       "code": "7801"
+      },
+      {
+       "category": "Leknes",
+       "code": "7802"
+      },
+      {
+       "category": "Ballstad",
+       "code": "7803"
+      },
+      {
+       "category": "Gravdal",
+       "code": "7804"
+      },
+      {
+       "category": "Skrova",
+       "code": "7811"
+      },
+      {
+       "category": "Kabelvåg",
+       "code": "7812"
+      },
+      {
+       "category": "Henningsvær",
+       "code": "7813"
+      },
+      {
+       "category": "Svolvær",
+       "code": "7814"
+      },
+      {
+       "category": "Stokmarknes",
+       "code": "7821"
+      },
+      {
+       "category": "Melbu",
+       "code": "7822"
+      },
+      {
+       "category": "Bø",
+       "code": "7831"
+      },
+      {
+       "category": "Alsvåg",
+       "code": "7842"
+      },
+      {
+       "category": "Myre",
+       "code": "7843"
+      },
+      {
+       "category": "Sortland",
+       "code": "7851"
+      },
+      {
+       "category": "Sigerfjord",
+       "code": "7852"
+      },
+      {
+       "category": "Strand",
+       "code": "7853"
+      },
+      {
+       "category": "Andenes",
+       "code": "7861"
+      },
+      {
+       "category": "Bleik",
+       "code": "7862"
+      },
+      {
+       "category": "Risøyhamn",
+       "code": "7865"
+      },
+      {
+       "category": "Sørvågen",
+       "code": "7872"
+      },
+      {
+       "category": "Leland",
+       "code": "7891"
+      },
+      {
+       "category": "Misvær",
+       "code": "7931"
+      },
+      {
+       "category": "Kilbotn",
+       "code": "8001"
+      },
+      {
+       "category": "Harstad",
+       "code": "8003"
+      },
+      {
+       "category": "Kasfjord",
+       "code": "8004"
+      },
+      {
+       "category": "Tromsø",
+       "code": "8011"
+      },
+      {
+       "category": "Kaldfjord",
+       "code": "8013"
+      },
+      {
+       "category": "Sommarøy",
+       "code": "8016"
+      },
+      {
+       "category": "Movik",
+       "code": "8018"
+      },
+      {
+       "category": "Borkenes",
+       "code": "8021"
+      },
+      {
+       "category": "Evenskjær",
+       "code": "8031"
+      },
+      {
+       "category": "Grov",
+       "code": "8032"
+      },
+      {
+       "category": "Tovik",
+       "code": "8033"
+      },
+      {
+       "category": "Ibestad",
+       "code": "8051"
+      },
+      {
+       "category": "Setermoen",
+       "code": "8061"
+      },
+      {
+       "category": "Sjøvegan",
+       "code": "8071"
+      },
+      {
+       "category": "Moen",
+       "code": "8081"
+      },
+      {
+       "category": "Heggelia",
+       "code": "8084"
+      },
+      {
+       "category": "Andselv",
+       "code": "8085"
+      },
+      {
+       "category": "Andslimoen",
+       "code": "8086"
+      },
+      {
+       "category": "Sørreisa",
+       "code": "8091"
+      },
+      {
+       "category": "Skøelv",
+       "code": "8092"
+      },
+      {
+       "category": "Gryllefjord",
+       "code": "8101"
+      },
+      {
+       "category": "Torsken",
+       "code": "8102"
+      },
+      {
+       "category": "Senjehopen",
+       "code": "8111"
+      },
+      {
+       "category": "Skaland",
+       "code": "8113"
+      },
+      {
+       "category": "Finnsnes",
+       "code": "8121"
+      },
+      {
+       "category": "Silsand",
+       "code": "8122"
+      },
+      {
+       "category": "Gibostad",
+       "code": "8123"
+      },
+      {
+       "category": "Husøy",
+       "code": "8124"
+      },
+      {
+       "category": "Fjordgard",
+       "code": "8125"
+      },
+      {
+       "category": "Storsteinnes",
+       "code": "8131"
+      },
+      {
+       "category": "Nordkjosbotn",
+       "code": "8132"
+      },
+      {
+       "category": "Hansnes",
+       "code": "8141"
+      },
+      {
+       "category": "Furuflaten",
+       "code": "8151"
+      },
+      {
+       "category": "Lyngseidet",
+       "code": "8152"
+      },
+      {
+       "category": "Olderdalen",
+       "code": "8161"
+      },
+      {
+       "category": "Skjervøy",
+       "code": "8171"
+      },
+      {
+       "category": "Sørkjosen",
+       "code": "8181"
+      },
+      {
+       "category": "Storslett",
+       "code": "8182"
+      },
+      {
+       "category": "Tennevoll",
+       "code": "8221"
+      },
+      {
+       "category": "Fossmo",
+       "code": "8252"
+      },
+      {
+       "category": "Hammerfest",
+       "code": "8501"
+      },
+      {
+       "category": "Forsøl",
+       "code": "8502"
+      },
+      {
+       "category": "Vardø",
+       "code": "8511"
+      },
+      {
+       "category": "Kiberg",
+       "code": "8512"
+      },
+      {
+       "category": "Vadsø",
+       "code": "8521"
+      },
+      {
+       "category": "Vestre Jakobselv",
+       "code": "8522"
+      },
+      {
+       "category": "Kautokeino",
+       "code": "8531"
+      },
+      {
+       "category": "Alta",
+       "code": "8542"
+      },
+      {
+       "category": "Rafsbotn",
+       "code": "8543"
+      },
+      {
+       "category": "Tverrelvdalen",
+       "code": "8544"
+      },
+      {
+       "category": "Øksfjord",
+       "code": "8551"
+      },
+      {
+       "category": "Sørvær",
+       "code": "8561"
+      },
+      {
+       "category": "Breivikbotn",
+       "code": "8562"
+      },
+      {
+       "category": "Hasvik",
+       "code": "8563"
+      },
+      {
+       "category": "Rypefjord",
+       "code": "8571"
+      },
+      {
+       "category": "Kvalsund",
+       "code": "8581"
+      },
+      {
+       "category": "Havøysund",
+       "code": "8592"
+      },
+      {
+       "category": "Honningsvåg",
+       "code": "8602"
+      },
+      {
+       "category": "Nordvågen",
+       "code": "8603"
+      },
+      {
+       "category": "Lakselv",
+       "code": "8611"
+      },
+      {
+       "category": "Karasjok",
+       "code": "8621"
+      },
+      {
+       "category": "Kjøllefjord",
+       "code": "8631"
+      },
+      {
+       "category": "Mehamn",
+       "code": "8641"
+      },
+      {
+       "category": "Gamvik",
+       "code": "8642"
+      },
+      {
+       "category": "Berlevåg",
+       "code": "8651"
+      },
+      {
+       "category": "Tana Bru",
+       "code": "8661"
+      },
+      {
+       "category": "Båtsfjord",
+       "code": "8671"
+      },
+      {
+       "category": "Hesseng",
+       "code": "8682"
+      },
+      {
+       "category": "Bjørnevatn",
+       "code": "8683"
+      },
+      {
+       "category": "Kirkenes",
+       "code": "8684"
+      },
+      {
+       "category": "Uoppgitt",
+       "code": "9999"
+      }
+     ],
+     "missingValues": []
+    }
+   },
+   {
+    "description": "En hussamling skal registreres som et tettsted dersom det 1. Bor minst 200 personer der og 2. Avstanden mellom husene skal normalt ikke overstige 50 meter. Det er tillatt med et skjønnsmessig avvik ut over 50 meter mellom husene i områder som ikke skal eller kan bebygges. Dette kan f.eks. være parker, idrettsanlegg, industriområder eller naturlige hindringer som elver eller dyrkbare områder. Husklynger som naturlig hører med til tettstedet tas med inntil en avstand på 400 meter fra tettstedskjernen.",
+    "validPeriod": {
+     "start": 10957,
+     "stop": 11687
+    },
+    "valueDomain": {
+     "missingValues": [],
+     "delta": {
+      "remove": [
+       64,
+       109,
+       169,
+       265,
+       378,
+       433,
+       457,
+       506,
+       573,
+       592,
+       744,
+       882
+      ],
+      "reorder": [],
+      "replace": {},
+      "insert": {
+       "18": {
+        "category": "Hamnås",
+        "code": "0092"
+       },
+       "78": {
+        "category": "Åkrene",
+        "code": "0601"
+       },
+       "176": {
+        "category": "Vingrom",
+        "code": "1505"
+       },
+       "182": {
+        "category": "Lesja",
+        "code": "1531"
+       },
+       "186": {
+        "category": "Lalm",
+        "code": "1562"
+       },
+       "321": {
+        "category": "Ula",
+        "code": "2665"
+       },
+       "373": {
+        "category": "Tromøy",
+        "code": "3622"
+       },
+       "375": {
+        "category": "Bykle",
+        "code": "3642"
+       },
+       "398": {
+        "category": "Ausvika",
+        "code": "4063"
+       },
+       "477": {
+        "category": "Valvatna",
+        "code": "5055"
+       },
+       "482": {
+        "category": "Dimmelsvik",
+        "code": "5074"
+       },
+       "526": {
+        "category": "Fotlandsvåg",
+        "code": "5224"
+       },
+       "565": {
+        "category": "Hafslo",
+        "code": "5603"
+       },
+       "571": {
+        "category": "Vassenden",
+        "code": "5642"
+       },
+       "574": {
+        "category": "Naustdal",
+        "code": "5661"
+       },
+       "643": {
+        "category": "Fiksdal",
+        "code": "6184"
+       },
+       "714": {
+        "category": "Soknedal",
+        "code": "6642"
+       },
+       "740": {
+        "category": "Kopperå",
+        "code": "7022"
+       },
+       "769": {
+        "category": "Røyrvik",
+        "code": "7121"
+       },
+       "770": {
+        "category": "Bergsmo",
+        "code": "7141"
+       },
+       "780": {
+        "category": "Mosvik",
+        "code": "7211"
+       },
+       "823": {
+        "category": "Skutvik",
+        "code": "7712"
+       },
+       "825": {
+        "category": "Drag",
+        "code": "7722"
+       },
+       "844": {
+        "category": "Straume",
+        "code": "7832"
+       },
+       "853": {
+        "category": "Reine",
+        "code": "7871"
+       },
+       "896": {
+        "category": "Skibotn",
+        "code": "8251"
+       }
+      }
+     }
+    }
+   },
+   {
+    "description": "En hussamling skal registreres som et tettsted dersom det 1. Bor minst 200 personer der og 2. Avstanden mellom husene skal normalt ikke overstige 50 meter. Det er tillatt med et skjønnsmessig avvik ut over 50 meter mellom husene i områder som ikke skal eller kan bebygges. Dette kan f.eks. være parker, idrettsanlegg, industriområder eller naturlige hindringer som elver eller dyrkbare områder. Husklynger som naturlig hører med til tettstedet tas med inntil en avstand på 400 meter fra tettstedskjernen.",
+    "validPeriod": {
+     "start": 11688,
+     "stop": 12052
+    },
+    "valueDomain": {
+     "missingValues": [],
+     "delta": {
+      "remove": [
+       18,
+       37,
+       64,
+       373,
+       403,
+       409,
+       630,
+       639,
+       654,
+       689,
+       712,
+       729,
+       734,
+       740,
+       751,
+       823,
+       857,
+       920
+      ],
+      "reorder": [],
+      "replace": {
+       "7": {
+        "category": "Skjærhollen",
+        "code": "0041"
+       },
+       "85": {
+        "category": "Ask",
+        "code": "0641"
+       },
+       "132": {
+        "category": "Løiten Brænderi",
+        "code": "1043"
+       },
+       "139": {
+        "category": "Romedal Sentrum",
+        "code": "1056"
+       },
+       "198": {
+        "category": "Segalstad Bru",
+        "code": "1621"
+       },
+       "345": {
+        "category": "Tinn Austbygd",
+        "code": "3101"
+       },
+       "442": {
+        "category": "Skudeneshamn",
+        "code": "4705"
+       },
+       "455": {
+        "category": "Indre Arna",
+        "code": "5007"
+       },
+       "494": {
+        "category": "Mønshaugen/Bjørgum",
+        "code": "5134"
+       },
+       "606": {
+        "category": "Ulsteinvik",
+        "code": "6051"
+       },
+       "661": {
+        "category": "Skei/Surnadalsøra",
+        "code": "6291"
+       },
+       "675": {
+        "category": "Ringvol",
+        "code": "6504"
+       },
+       "689": {
+        "category": "Å",
+        "code": "6581"
+       },
+       "692": {
+        "category": "Løkken Verk",
+        "code": "6611"
+       },
+       "748": {
+        "category": "Røra stasjon",
+        "code": "7092"
+       },
+       "758": {
+        "category": "Skage",
+        "code": "7161"
+       },
+       "807": {
+        "category": "Hamarøy",
+        "code": "7711"
+       }
+      },
+      "insert": {
+       "77": {
+        "category": "Fjellsrud",
+        "code": "0603"
+       },
+       "118": {
+        "category": "Neskollen",
+        "code": "0722"
+       },
+       "281": {
+        "category": "Lampeland",
+        "code": "2201"
+       },
+       "282": {
+        "category": "Svene",
+        "code": "2202"
+       },
+       "374": {
+        "category": "Valle",
+        "code": "3631"
+       },
+       "404": {
+        "category": "Svenevik",
+        "code": "4093"
+       },
+       "457": {
+        "category": "Østhusvik",
+        "code": "4742"
+       },
+       "521": {
+        "category": "Hanøy",
+        "code": "5202"
+       },
+       "534": {
+        "category": "Kaland",
+        "code": "5251"
+       },
+       "546": {
+        "category": "Krokeidet",
+        "code": "5343"
+       },
+       "547": {
+        "category": "Li",
+        "code": "5351"
+       },
+       "549": {
+        "category": "Misje",
+        "code": "5353"
+       },
+       "595": {
+        "category": "Re",
+        "code": "5723"
+       },
+       "637": {
+        "category": "Alnes",
+        "code": "6161"
+       },
+       "655": {
+        "category": "Innfjorden",
+        "code": "6195"
+       },
+       "664": {
+        "category": "Nerland",
+        "code": "6247"
+       },
+       "694": {
+        "category": "Hestvika",
+        "code": "6522"
+       },
+       "704": {
+        "category": "Askjem",
+        "code": "6563"
+       },
+       "750": {
+        "category": "Vallan",
+        "code": "7037"
+       },
+       "832": {
+        "category": "Liland",
+        "code": "7751"
+       },
+       "866": {
+        "category": "Ersfjordbotn",
+        "code": "8017"
+       },
+       "896": {
+        "category": "Kåfjordbotn",
+        "code": "8162"
+       }
+      }
+     }
+    }
+   },
+   {
+    "description": "En hussamling skal registreres som et tettsted dersom det 1. Bor minst 200 personer der og 2. Avstanden mellom husene skal normalt ikke overstige 50 meter. Det er tillatt med et skjønnsmessig avvik ut over 50 meter mellom husene i områder som ikke skal eller kan bebygges. Dette kan f.eks. være parker, idrettsanlegg, industriområder eller naturlige hindringer som elver eller dyrkbare områder. Husklynger som naturlig hører med til tettstedet tas med inntil en avstand på 400 meter fra tettstedskjernen.",
+    "validPeriod": {
+     "start": 12053,
+     "stop": 12417
+    },
+    "valueDomain": {
+     "missingValues": [],
+     "delta": {
+      "remove": [
+       33,
+       181,
+       271,
+       302,
+       322,
+       398,
+       493,
+       521,
+       903
+      ],
+      "reorder": [],
+      "replace": {
+       "307": {
+        "category": "Vear i al",
+        "code": "2621"
+       },
+       "759": {
+        "category": "Røra Stasjon",
+        "code": "7092"
+       }
+      },
+      "insert": {
+       "18": {
+        "category": "Hamnås",
+        "code": "0092"
+       },
+       "243": {
+        "category": "Nakkerud",
+        "code": "2034"
+       },
+       "261": {
+        "category": "Sysle",
+        "code": "2115"
+       },
+       "275": {
+        "category": "Hyggen",
+        "code": "2157"
+       },
+       "319": {
+        "category": "Glomstein",
+        "code": "2645"
+       },
+       "424": {
+        "category": "Hæen",
+        "code": "4577"
+       },
+       "542": {
+        "category": "Vikavågen",
+        "code": "5332"
+       },
+       "682": {
+        "category": "Myklebost",
+        "code": "6342"
+       },
+       "692": {
+        "category": "Langørjan",
+        "code": "6505"
+       },
+       "746": {
+        "category": "Kopperå",
+        "code": "7022"
+       },
+       "849": {
+        "category": "Sandnes",
+        "code": "7823"
+       },
+       "879": {
+        "category": "Skjold",
+        "code": "8083"
+       }
+      }
+     }
+    }
+   },
+   {
+    "description": "En hussamling skal registreres som et tettsted dersom det 1. Bor minst 200 personer der og 2. Avstanden mellom husene skal normalt ikke overstige 50 meter. Det er tillatt med et skjønnsmessig avvik ut over 50 meter mellom husene i områder som ikke skal eller kan bebygges. Dette kan f.eks. være parker, idrettsanlegg, industriområder eller naturlige hindringer som elver eller dyrkbare områder. Husklynger som naturlig hører med til tettstedet tas med inntil en avstand på 400 meter fra tettstedskjernen.",
+    "validPeriod": {
+     "start": 12418,
+     "stop": 12783
+    },
+    "valueDomain": {
+     "missingValues": [],
+     "delta": {
+      "remove": [
+       31,
+       158,
+       161,
+       234,
+       240,
+       374,
+       489,
+       542,
+       555,
+       569,
+       573,
+       611,
+       645,
+       648,
+       675,
+       679,
+       680,
+       714,
+       741,
+       774,
+       776,
+       781,
+       782,
+       786,
+       830,
+       888,
+       900,
+       920
+      ],
+      "reorder": [],
+      "replace": {},
+      "insert": {
+       "36": {
+        "category": "Missingmyr",
+        "code": "0194"
+       },
+       "299": {
+        "category": "Rånerudåsen",
+        "code": "2593"
+       },
+       "301": {
+        "category": "Linnestad",
+        "code": "2598"
+       },
+       "400": {
+        "category": "Skomrak",
+        "code": "4092"
+       },
+       "545": {
+        "category": "Fjell",
+        "code": "5354"
+       },
+       "599": {
+        "category": "Torhaug",
+        "code": "6008"
+       },
+       "726": {
+        "category": "Renbygda",
+        "code": "6731"
+       }
+      }
+     }
+    }
+   },
+   {
+    "description": "En hussamling skal registreres som et tettsted dersom det 1. Bor minst 200 personer der og 2. Avstanden mellom husene skal normalt ikke overstige 50 meter. Det er tillatt med et skjønnsmessig avvik ut over 50 meter mellom husene i områder som ikke skal eller kan bebygges. Dette kan f.eks. være parker, idrettsanlegg, industriområder eller naturlige hindringer som elver eller dyrkbare områder. Husklynger som naturlig hører med til tettstedet tas med inntil en avstand på 400 meter fra tettstedskjernen.",
+    "validPeriod": {
+     "start": 12784,
+     "stop": 13148
+    },
+    "valueDomain": {
+     "missingValues": [],
+     "delta": {
+      "remove": [
+       401,
+       868
+      ],
+      "reorder": [],
+      "replace": {},
+      "insert": {}
+     }
+    }
+   },
+   {
+    "description": "En hussamling skal registreres som et tettsted dersom det 1. Bor minst 200 personer der og 2. Avstanden mellom husene skal normalt ikke overstige 50 meter. Det er tillatt med et skjønnsmessig avvik ut over 50 meter mellom husene i områder som ikke skal eller kan bebygges. Dette kan f.eks. være parker, idrettsanlegg, industriområder eller naturlige hindringer som elver eller dyrkbare områder. Husklynger som naturlig hører med til tettstedet tas med inntil en avstand på 400 meter fra tettstedskjernen.",
+    "validPeriod": {
+     "start": 13149,
+     "stop": 13513
+    },
+    "valueDomain": {
+     "missingValues": [],
+     "delta": {
+      "remove": [
+       299,
+       802,
+       855,
+       894
+      ],
+      "reorder": [],
+      "replace": {
+       "379": {
+        "category": "Justvik",
+        "code": "4005"
+       }
+      },
+      "insert": {}
+     }
+    }
+   },
+   {
+    "description": "En hussamling skal registreres som et tettsted dersom det 1. Bor minst 200 personer der og 2. Avstanden mellom husene skal normalt ikke overstige 50 meter. Det er tillatt med et skjønnsmessig avvik ut over 50 meter mellom husene i områder som ikke skal eller kan bebygges. Dette kan f.eks. være parker, idrettsanlegg, industriområder eller naturlige hindringer som elver eller dyrkbare områder. Husklynger som naturlig hører med til tettstedet tas med inntil en avstand på 400 meter fra tettstedskjernen.",
+    "validPeriod": {
+     "start": 13514,
+     "stop": 13878
+    },
+    "valueDomain": {
+     "missingValues": [],
+     "delta": {
+      "remove": [
+       50,
+       732
+      ],
+      "reorder": [],
+      "replace": {
+       "378": {
+        "category": "Gjusvik",
+        "code": "4005"
+       },
+       "694": {
+        "category": "Å i Åfjord",
+        "code": "6581"
+       },
+       "806": {
+        "category": "Oppeid",
+        "code": "7711"
+       }
+      },
+      "insert": {
+       "144": {
+        "category": "Knapper",
+        "code": "1063"
+       },
+       "299": {
+        "category": "Rånerudåsen",
+        "code": "2593"
+       },
+       "329": {
+        "category": "Hoppstad",
+        "code": "3015"
+       },
+       "368": {
+        "category": "Høvåg",
+        "code": "3572"
+       },
+       "403": {
+        "category": "Svenevik",
+        "code": "4093"
+       },
+       "409": {
+        "category": "Hestnes",
+        "code": "4503"
+       },
+       "504": {
+        "category": "Ploganes",
+        "code": "5145"
+       },
+       "533": {
+        "category": "Leknes",
+        "code": "5246"
+       },
+       "657": {
+        "category": "Hollingen",
+        "code": "6232"
+       },
+       "732": {
+        "category": "Trøa",
+        "code": "6692"
+       },
+       "767": {
+        "category": "Sakshaug",
+        "code": "7096"
+       },
+       "769": {
+        "category": "Sandvika",
+        "code": "7111"
+       },
+       "811": {
+        "category": "Sørarnøy",
+        "code": "7672"
+       },
+       "861": {
+        "category": "Kjosen",
+        "code": "8019"
+       }
+      }
+     }
+    }
+   },
+   {
+    "description": "En hussamling skal registreres som et tettsted dersom det 1. Bor minst 200 personer der og 2. Avstanden mellom husene skal normalt ikke overstige 50 meter. Det er tillatt med et skjønnsmessig avvik ut over 50 meter mellom husene i områder som ikke skal eller kan bebygges. Dette kan f.eks. være parker, idrettsanlegg, industriområder eller naturlige hindringer som elver eller dyrkbare områder. Husklynger som naturlig hører med til tettstedet tas med inntil en avstand på 400 meter fra tettstedskjernen.",
+    "validPeriod": {
+     "start": 13879,
+     "stop": 14244
+    },
+    "valueDomain": {
+     "missingValues": [],
+     "delta": {
+      "remove": [
+       46,
+       91,
+       299,
+       409,
+       603,
+       811,
+       817,
+       881
+      ],
+      "reorder": [],
+      "replace": {
+       "681": {
+        "category": "Ringvål",
+        "code": "6504"
+       }
+      },
+      "insert": {
+       "42": {
+        "category": "Møvik",
+        "code": "0206"
+       },
+       "225": {
+        "category": "Beitostølen",
+        "code": "1732"
+       },
+       "226": {
+        "category": "Bruflat",
+        "code": "1751"
+       },
+       "250": {
+        "category": "Svøo",
+        "code": "2072"
+       },
+       "287": {
+        "category": "Vollen",
+        "code": "2522"
+       },
+       "304": {
+        "category": "Gretteåsen",
+        "code": "2599"
+       },
+       "404": {
+        "category": "Svennevik",
+        "code": "4083"
+       },
+       "463": {
+        "category": "Forsand",
+        "code": "4771"
+       },
+       "677": {
+        "category": "Glærem",
+        "code": "6292"
+       },
+       "692": {
+        "category": "Bratsberg",
+        "code": "6506"
+       },
+       "731": {
+        "category": "Viggja",
+        "code": "6670"
+       },
+       "781": {
+        "category": "Svalia",
+        "code": "7163"
+       },
+       "817": {
+        "category": "Eidbukta",
+        "code": "7664"
+       }
+      }
+     }
+    }
+   },
+   {
+    "description": "En hussamling skal registreres som et tettsted dersom det 1. Bor minst 200 personer der og 2. Avstanden mellom husene skal normalt ikke overstige 50 meter. Det er tillatt med et skjønnsmessig avvik ut over 50 meter mellom husene i områder som ikke skal eller kan bebygges. Dette kan f.eks. være parker, idrettsanlegg, industriområder eller naturlige hindringer som elver eller dyrkbare områder. Husklynger som naturlig hører med til tettstedet tas med inntil en avstand på 400 meter fra tettstedskjernen.",
+    "validPeriod": {
+     "start": 14245,
+     "stop": 14974
+    },
+    "valueDomain": {
+     "missingValues": [],
+     "delta": {
+      "remove": [
+       226,
+       287,
+       839
+      ],
+      "reorder": [],
+      "replace": {
+       "7": {
+        "category": "Skjærhalden",
+        "code": "0041"
+       }
+      },
+      "insert": {}
+     }
+    }
+   },
+   {
+    "description": "En hussamling skal registreres som et tettsted dersom det 1. Bor minst 200 personer der og 2. Avstanden mellom husene skal normalt ikke overstige 50 meter. Det er tillatt med et skjønnsmessig avvik ut over 50 meter mellom husene i områder som ikke skal eller kan bebygges. Dette kan f.eks. være parker, idrettsanlegg, industriområder eller naturlige hindringer som elver eller dyrkbare områder. Husklynger som naturlig hører med til tettstedet tas med inntil en avstand på 400 meter fra tettstedskjernen.",
+    "validPeriod": {
+     "start": 14975,
+     "stop": 15339
+    },
+    "valueDomain": {
+     "missingValues": [],
+     "delta": {
+      "remove": [
+       143,
+       152,
+       302,
+       369,
+       736
+      ],
+      "reorder": [],
+      "replace": {},
+      "insert": {
+       "37": {
+        "category": "Tomb",
+        "code": "0195"
+       },
+       "47": {
+        "category": "Rød",
+        "code": "0214"
+       },
+       "52": {
+        "category": "Hvitsten",
+        "code": "0506"
+       },
+       "57": {
+        "category": "Skotbu",
+        "code": "0514"
+       },
+       "133": {
+        "category": "Stavsjø",
+        "code": "1028"
+       },
+       "158": {
+        "category": "Sønsterud",
+        "code": "1103"
+       },
+       "180": {
+        "category": "Monssveen",
+        "code": "1516"
+       },
+       "231": {
+        "category": "Heggenes",
+        "code": "1733"
+       },
+       "292": {
+        "category": "Vollen",
+        "code": "2522"
+       },
+       "307": {
+        "category": "Rånerudåsen",
+        "code": "2593"
+       },
+       "403": {
+        "category": "Brennåsen",
+        "code": "4054"
+       },
+       "416": {
+        "category": "Helle",
+        "code": "4131"
+       },
+       "457": {
+        "category": "Østenstad",
+        "code": "4694"
+       },
+       "458": {
+        "category": "Padlene",
+        "code": "4695"
+       },
+       "516": {
+        "category": "Oma",
+        "code": "5144"
+       },
+       "586": {
+        "category": "Flekke",
+        "code": "5623"
+       },
+       "592": {
+        "category": "Farsund",
+        "code": "5652"
+       },
+       "649": {
+        "category": "Stetteremma",
+        "code": "6143"
+       },
+       "679": {
+        "category": "Trondshaugen",
+        "code": "6250"
+       },
+       "741": {
+        "category": "Storsand",
+        "code": "6657"
+       },
+       "825": {
+        "category": "Alternes",
+        "code": "7634"
+       },
+       "841": {
+        "category": "Drag",
+        "code": "7722"
+       }
+      }
+     }
+    }
+   },
+   {
+    "description": "En hussamling skal registreres som et tettsted dersom det 1. Bor minst 200 personer der og 2. Avstanden mellom husene skal normalt ikke overstige 50 meter. Det er tillatt med et skjønnsmessig avvik ut over 50 meter mellom husene i områder som ikke skal eller kan bebygges. Dette kan f.eks. være parker, idrettsanlegg, industriområder eller naturlige hindringer som elver eller dyrkbare områder. Husklynger som naturlig hører med til tettstedet tas med inntil en avstand på 400 meter fra tettstedskjernen.",
+    "validPeriod": {
+     "start": 15340,
+     "stop": 15705
+    },
+    "valueDomain": {
+     "missingValues": [],
+     "delta": {
+      "remove": [
+       307,
+       841
+      ],
+      "reorder": [],
+      "replace": {},
+      "insert": {
+       "71": {
+        "category": "Setskog",
+        "code": "0587"
+       },
+       "253": {
+        "category": "Sollihøgda",
+        "code": "2046"
+       },
+       "295": {
+        "category": "Rønningåsen",
+        "code": "2523"
+       },
+       "378": {
+        "category": "Høvåg",
+        "code": "3572"
+       },
+       "384": {
+        "category": "Valle",
+        "code": "3631"
+       },
+       "404": {
+        "category": "Hægeland",
+        "code": "4043"
+       },
+       "405": {
+        "category": "Slettebrotane",
+        "code": "4044"
+       },
+       "883": {
+        "category": "Fagernes",
+        "code": "8015"
+       }
+      }
+     }
+    }
+   },
+   {
+    "description": "En hussamling skal registreres som et tettsted dersom det 1. Bor minst 200 personer der og 2. Avstanden mellom husene skal normalt ikke overstige 50 meter. Det er tillatt med et skjønnsmessig avvik ut over 50 meter mellom husene i områder som ikke skal eller kan bebygges. Dette kan f.eks. være parker, idrettsanlegg, industriområder eller naturlige hindringer som elver eller dyrkbare områder. Husklynger som naturlig hører med til tettstedet tas med inntil en avstand på 400 meter fra tettstedskjernen.",
+    "validPeriod": {
+     "start": 15706,
+     "stop": 16070
+    },
+    "valueDomain": {
+     "missingValues": [],
+     "delta": {
+      "remove": [
+       15,
+       18,
+       42,
+       52,
+       67,
+       87,
+       90,
+       130,
+       131,
+       139,
+       154,
+       156,
+       163,
+       169,
+       176,
+       182,
+       197,
+       219,
+       233,
+       239,
+       271,
+       276,
+       277,
+       278,
+       295,
+       306,
+       339,
+       357,
+       362,
+       372,
+       383,
+       392,
+       393,
+       464,
+       470,
+       479,
+       480,
+       482,
+       483,
+       488,
+       497,
+       520,
+       530,
+       534,
+       563,
+       606,
+       624,
+       631,
+       636,
+       638,
+       643,
+       645,
+       648,
+       655,
+       656,
+       667,
+       689,
+       700,
+       703,
+       715,
+       733,
+       735,
+       736,
+       737,
+       781,
+       786,
+       790,
+       792,
+       825,
+       840,
+       848,
+       864,
+       878,
+       880,
+       882,
+       883,
+       910
+      ],
+      "reorder": [],
+      "replace": {
+       "444": {
+        "category": "Arna",
+        "code": "5007"
+       },
+       "707": {
+        "category": "Prestmoen",
+        "code": "7037"
+       }
+      },
+      "insert": {
+       "6": {
+        "category": "Skåra",
+        "code": "0023"
+       },
+       "8": {
+        "category": "Såstadbråten",
+        "code": "0033"
+       },
+       "13": {
+        "category": "Norderhaug",
+        "code": "0045"
+       },
+       "18": {
+        "category": "Høysand",
+        "code": "0072"
+       },
+       "27": {
+        "category": "Finnestad",
+        "code": "0124"
+       },
+       "34": {
+        "category": "Trolldalen",
+        "code": "0173"
+       },
+       "54": {
+        "category": "Pepperstad Skog",
+        "code": "0502"
+       },
+       "61": {
+        "category": "Sandvoll",
+        "code": "0515"
+       },
+       "69": {
+        "category": "Lommedalen",
+        "code": "0551"
+       },
+       "70": {
+        "category": "Heggedal",
+        "code": "0571"
+       },
+       "71": {
+        "category": "Konglungen",
+        "code": "0572"
+       },
+       "97": {
+        "category": "Sand",
+        "code": "0653"
+       },
+       "101": {
+        "category": "Algarheim",
+        "code": "0658"
+       },
+       "117": {
+        "category": "Styrigrenda",
+        "code": "0677"
+       },
+       "133": {
+        "category": "Blæstadgrenda",
+        "code": "1003"
+       },
+       "137": {
+        "category": "Tingnes",
+        "code": "1022"
+       },
+       "153": {
+        "category": "Bekkelaget",
+        "code": "1058"
+       },
+       "179": {
+        "category": "Jørstadmoen",
+        "code": "1502"
+       },
+       "180": {
+        "category": "Fåberg",
+        "code": "1503"
+       },
+       "182": {
+        "category": "Vingnes",
+        "code": "1506"
+       },
+       "215": {
+        "category": "Helgestad",
+        "code": "1640"
+       },
+       "221": {
+        "category": "Lunner",
+        "code": "1661"
+       },
+       "222": {
+        "category": "Roa",
+        "code": "1662"
+       },
+       "238": {
+        "category": "Bruflat",
+        "code": "1751"
+       },
+       "279": {
+        "category": "Askgrenda",
+        "code": "2148"
+       },
+       "280": {
+        "category": "Nærnes",
+        "code": "2151"
+       },
+       "298": {
+        "category": "Hem",
+        "code": "2533"
+       },
+       "300": {
+        "category": "Tveteneåsen",
+        "code": "2542"
+       },
+       "314": {
+        "category": "Solerød",
+        "code": "2600"
+       },
+       "329": {
+        "category": "Kjøpmannsskjær",
+        "code": "2643"
+       },
+       "347": {
+        "category": "Øverbø",
+        "code": "3033"
+       },
+       "349": {
+        "category": "Botten",
+        "code": "3044"
+       },
+       "371": {
+        "category": "Krossen",
+        "code": "3162"
+       },
+       "374": {
+        "category": "Longum",
+        "code": "3512"
+       },
+       "396": {
+        "category": "Korsvik",
+        "code": "4009"
+       },
+       "399": {
+        "category": "Sånum",
+        "code": "4013"
+       },
+       "422": {
+        "category": "Årnes",
+        "code": "4094"
+       },
+       "429": {
+        "category": "Vatne",
+        "code": "4512"
+       },
+       "435": {
+        "category": "Vassøy",
+        "code": "4524"
+       },
+       "447": {
+        "category": "Nærland",
+        "code": "4578"
+       },
+       "460": {
+        "category": "Kolnes",
+        "code": "4617"
+       },
+       "464": {
+        "category": "Fister",
+        "code": "4642"
+       },
+       "473": {
+        "category": "Slåttevik",
+        "code": "4696"
+       },
+       "474": {
+        "category": "Grinde",
+        "code": "4697"
+       },
+       "479": {
+        "category": "Avaldsnes",
+        "code": "4708"
+       },
+       "487": {
+        "category": "Vormedal",
+        "code": "4762"
+       },
+       "489": {
+        "category": "Bokn",
+        "code": "4781"
+       },
+       "497": {
+        "category": "Rophus",
+        "code": "5033"
+       },
+       "504": {
+        "category": "Steinvåg",
+        "code": "5048"
+       },
+       "516": {
+        "category": "Jondal",
+        "code": "5081"
+       },
+       "541": {
+        "category": "Forland",
+        "code": "5184"
+       },
+       "542": {
+        "category": "Glesnes",
+        "code": "5185"
+       },
+       "543": {
+        "category": "Skogsvågen",
+        "code": "5187"
+       },
+       "549": {
+        "category": "Hanøy",
+        "code": "5202"
+       },
+       "550": {
+        "category": "Ramsøy",
+        "code": "5203"
+       },
+       "551": {
+        "category": "Davanger",
+        "code": "5204"
+       },
+       "552": {
+        "category": "Frommereid",
+        "code": "5205"
+       },
+       "560": {
+        "category": "Haugo",
+        "code": "5225"
+       },
+       "561": {
+        "category": "Hamre",
+        "code": "5227"
+       },
+       "578": {
+        "category": "Dalemarka",
+        "code": "5324"
+       },
+       "579": {
+        "category": "Moldekleiv",
+        "code": "5325"
+       },
+       "580": {
+        "category": "Vikebø",
+        "code": "5326"
+       },
+       "581": {
+        "category": "Vikavågen",
+        "code": "5332"
+       },
+       "582": {
+        "category": "Torsteinsvik",
+        "code": "5333"
+       },
+       "585": {
+        "category": "Hordnes",
+        "code": "5344"
+       },
+       "590": {
+        "category": "Sekkingstad",
+        "code": "5356"
+       },
+       "591": {
+        "category": "Eidsvik",
+        "code": "5361"
+       },
+       "592": {
+        "category": "Gjermundshamn",
+        "code": "5362"
+       },
+       "595": {
+        "category": "Eikefjord",
+        "code": "5503"
+       },
+       "600": {
+        "category": "Vadheim",
+        "code": "5525"
+       },
+       "633": {
+        "category": "Leikanger",
+        "code": "5692"
+       },
+       "636": {
+        "category": "Torvika",
+        "code": "5703"
+       },
+       "657": {
+        "category": "Fosnavåg",
+        "code": "6043"
+       },
+       "659": {
+        "category": "Leinstrand",
+        "code": "6045"
+       },
+       "662": {
+        "category": "Leikong",
+        "code": "6049"
+       },
+       "663": {
+        "category": "Dragsund",
+        "code": "6050"
+       },
+       "665": {
+        "category": "Hjørungavåg",
+        "code": "6061"
+       },
+       "689": {
+        "category": "Fiksdal",
+        "code": "6184"
+       },
+       "690": {
+        "category": "Vikebukt",
+        "code": "6186"
+       },
+       "724": {
+        "category": "Sveggen",
+        "code": "6354"
+       },
+       "733": {
+        "category": "Nypan",
+        "code": "6507"
+       },
+       "782": {
+        "category": "Spillum",
+        "code": "7014"
+       },
+       "790": {
+        "category": "Hognesaunet",
+        "code": "7038"
+       },
+       "798": {
+        "category": "Eidsbotn",
+        "code": "7058"
+       },
+       "819": {
+        "category": "Ottersøy",
+        "code": "7192"
+       },
+       "821": {
+        "category": "Mosvik",
+        "code": "7211"
+       },
+       "834": {
+        "category": "Toft",
+        "code": "7543"
+       },
+       "871": {
+        "category": "Napp",
+        "code": "7792"
+       },
+       "890": {
+        "category": "Åse",
+        "code": "7864"
+       },
+       "901": {
+        "category": "Hamna",
+        "code": "8020"
+       },
+       "903": {
+        "category": "Vikvågen",
+        "code": "8022"
+       },
+       "930": {
+        "category": "Burfjord",
+        "code": "8191"
+       },
+       "933": {
+        "category": "Tromsdalen",
+        "code": "8261"
+       },
+       "934": {
+        "category": "Kvaløysletta",
+        "code": "8262"
+       },
+       "936": {
+        "category": "Forsøl",
+        "code": "8502"
+       },
+       "945": {
+        "category": "Amtmannsnes",
+        "code": "8545"
+       },
+       "950": {
+        "category": "Kvalsund",
+        "code": "8581"
+       }
+      }
+     }
+    }
+   },
+   {
+    "description": "En hussamling skal registreres som et tettsted dersom det 1. Bor minst 200 personer der og 2. Avstanden mellom husene skal normalt ikke overstige 50 meter. Det er tillatt med et skjønnsmessig avvik ut over 50 meter mellom husene i områder som ikke skal eller kan bebygges. Dette kan f.eks. være parker, idrettsanlegg, industriområder eller naturlige hindringer som elver eller dyrkbare områder. Husklynger som naturlig hører med til tettstedet tas med inntil en avstand på 400 meter fra tettstedskjernen.",
+    "validPeriod": {
+     "start": 16071,
+     "stop": 16435
+    },
+    "valueDomain": {
+     "missingValues": [],
+     "delta": {
+      "remove": [
+       27,
+       77,
+       117,
+       257,
+       318,
+       486,
+       600,
+       690,
+       724,
+       810,
+       871
+      ],
+      "reorder": [],
+      "replace": {},
+      "insert": {
+       "21": {
+        "category": "Hamnås",
+        "code": "0092"
+       },
+       "159": {
+        "category": "Namnå",
+        "code": "1091"
+       },
+       "279": {
+        "category": "Åros",
+        "code": "2153"
+       },
+       "473": {
+        "category": "Vedavågen",
+        "code": "4701"
+       },
+       "474": {
+        "category": "Åkrehamn",
+        "code": "4702"
+       },
+       "486": {
+        "category": "Askje",
+        "code": "4743"
+       },
+       "488": {
+        "category": "Ferkingstad",
+        "code": "4763"
+       },
+       "530": {
+        "category": "Øystese",
+        "code": "5142"
+       },
+       "570": {
+        "category": "Seim",
+        "code": "5247"
+       },
+       "658": {
+        "category": "Haugsbygda",
+        "code": "6032"
+       },
+       "693": {
+        "category": "Tresfjord",
+        "code": "6185"
+       },
+       "739": {
+        "category": "Hammarvika",
+        "code": "6531"
+       },
+       "749": {
+        "category": "Mælan",
+        "code": "6564"
+       },
+       "759": {
+        "category": "Svorkmo",
+        "code": "6622"
+       },
+       "780": {
+        "category": "Trøa",
+        "code": "6692"
+       },
+       "807": {
+        "category": "Vuku",
+        "code": "7065"
+       },
+       "812": {
+        "category": "Namdalseid",
+        "code": "7081"
+       },
+       "816": {
+        "category": "Gangstadhaugen",
+        "code": "7094"
+       },
+       "820": {
+        "category": "Namsskogan sentrum",
+        "code": "7132"
+       },
+       "821": {
+        "category": "Bergsmo",
+        "code": "7141"
+       },
+       "827": {
+        "category": "Skogmo",
+        "code": "7164"
+       },
+       "937": {
+        "category": "Kåfjordbotn",
+        "code": "8162"
+       },
+       "946": {
+        "category": "Skjelnan",
+        "code": "8263"
+       },
+       "954": {
+        "category": "Talvik",
+        "code": "8541"
+       }
+      }
+     }
+    }
+   },
+   {
+    "description": "En hussamling skal registreres som et tettsted dersom det 1. Bor minst 200 personer der og 2. Avstanden mellom husene skal normalt ikke overstige 50 meter. Det er tillatt med et skjønnsmessig avvik ut over 50 meter mellom husene i områder som ikke skal eller kan bebygges. Dette kan f.eks. være parker, idrettsanlegg, industriområder eller naturlige hindringer som elver eller dyrkbare områder. Husklynger som naturlig hører med til tettstedet tas med inntil en avstand på 400 meter fra tettstedskjernen.",
+    "validPeriod": {
+     "start": 16436,
+     "stop": 16800
+    },
+    "valueDomain": {
+     "missingValues": [],
+     "delta": {
+      "remove": [
+       21,
+       163,
+       214,
+       237,
+       240,
+       323,
+       347,
+       462,
+       473,
+       487,
+       570,
+       698,
+       749,
+       937,
+       946
+      ],
+      "reorder": [],
+      "replace": {
+       "315": {
+        "category": "Vear",
+        "code": "2621"
+       }
+      },
+      "insert": {
+       "27": {
+        "category": "Jansberg",
+        "code": "0125"
+       },
+       "34": {
+        "category": "Buskogen",
+        "code": "0172"
+       },
+       "200": {
+        "category": "Lia",
+        "code": "1593"
+       },
+       "254": {
+        "category": "Sollihøgda",
+        "code": "2046"
+       },
+       "467": {
+        "category": "Padlene",
+        "code": "4695"
+       },
+       "470": {
+        "category": "Skre",
+        "code": "4698"
+       },
+       "489": {
+        "category": "Fanahammeren",
+        "code": "5009"
+       },
+       "543": {
+        "category": "Fardalen",
+        "code": "5188"
+       },
+       "572": {
+        "category": "Uggdalseidet",
+        "code": "5282"
+       },
+       "666": {
+        "category": "Sundgot",
+        "code": "6053"
+       },
+       "672": {
+        "category": "Sætre",
+        "code": "6082"
+       },
+       "682": {
+        "category": "Stetteremma",
+        "code": "6143"
+       },
+       "727": {
+        "category": "Sveggen",
+        "code": "6354"
+       },
+       "750": {
+        "category": "Vangsåsen",
+        "code": "6565"
+       },
+       "753": {
+        "category": "Karlestrand",
+        "code": "6573"
+       },
+       "821": {
+        "category": "Sandvika",
+        "code": "7111"
+       },
+       "878": {
+        "category": "Drag",
+        "code": "7722"
+       },
+       "886": {
+        "category": "Napp",
+        "code": "7792"
+       },
+       "910": {
+        "category": "Misvær",
+        "code": "7931"
+       },
+       "913": {
+        "category": "Fagernes",
+        "code": "8015"
+       }
+      }
+     }
+    }
+   },
+   {
+    "description": "En hussamling skal registreres som et tettsted dersom det 1. Bor minst 200 personer der og 2. Avstanden mellom husene skal normalt ikke overstige 50 meter. Det er tillatt med et skjønnsmessig avvik ut over 50 meter mellom husene i områder som ikke skal eller kan bebygges. Dette kan f.eks. være parker, idrettsanlegg, industriområder eller naturlige hindringer som elver eller dyrkbare områder. Husklynger som naturlig hører med til tettstedet tas med inntil en avstand på 400 meter fra tettstedskjernen.",
+    "validPeriod": {
+     "start": 16801,
+     "stop": 17166
+    },
+    "valueDomain": {
+     "missingValues": [],
+     "delta": {
+      "remove": [
+       6,
+       55,
+       63,
+       240,
+       254,
+       406,
+       545,
+       672,
+       711,
+       886,
+       907,
+       910,
+       955
+      ],
+      "reorder": [],
+      "replace": {},
+      "insert": {
+       "20": {
+        "category": "Hamnås",
+        "code": "0092"
+       },
+       "27": {
+        "category": "Finnestad",
+        "code": "0124"
+       },
+       "91": {
+        "category": "Hellerud",
+        "code": "0623"
+       },
+       "141": {
+        "category": "Brøttum",
+        "code": "1029"
+       },
+       "165": {
+        "category": "Sønsterud",
+        "code": "1103"
+       },
+       "207": {
+        "category": "Øyer",
+        "code": "1613"
+       },
+       "242": {
+        "category": "Saggrenda",
+        "code": "2014"
+       },
+       "261": {
+        "category": "Tuv",
+        "code": "2073"
+       },
+       "348": {
+        "category": "Botten",
+        "code": "3044"
+       },
+       "377": {
+        "category": "Nesgrenda",
+        "code": "3532"
+       },
+       "488": {
+        "category": "Bru",
+        "code": "4744"
+       },
+       "492": {
+        "category": "Føresvik",
+        "code": "4782"
+       },
+       "537": {
+        "category": "Vikøy",
+        "code": "5146"
+       },
+       "574": {
+        "category": "Seim",
+        "code": "5247"
+       },
+       "591": {
+        "category": "Rossnes",
+        "code": "5334"
+       },
+       "600": {
+        "category": "Haganes",
+        "code": "5357"
+       },
+       "659": {
+        "category": "Torhaug",
+        "code": "6008"
+       },
+       "667": {
+        "category": "Gjerde",
+        "code": "6033"
+       },
+       "678": {
+        "category": "Dimna",
+        "code": "6054"
+       },
+       "683": {
+        "category": "Mork",
+        "code": "6072"
+       },
+       "711": {
+        "category": "Innfjorden",
+        "code": "6195"
+       },
+       "803": {
+        "category": "Spillumstranda",
+        "code": "7015"
+       },
+       "954": {
+        "category": "Kåfjordbotn",
+        "code": "8162"
+       }
+      }
+     }
+    }
+   },
+   {
+    "description": "En hussamling skal registreres som et tettsted dersom det 1. Bor minst 200 personer der og 2. Avstanden mellom husene skal normalt ikke overstige 50 meter. Det er tillatt med et skjønnsmessig avvik ut over 50 meter mellom husene i områder som ikke skal eller kan bebygges. Dette kan f.eks. være parker, idrettsanlegg, industriområder eller naturlige hindringer som elver eller dyrkbare områder. Husklynger som naturlig hører med til tettstedet tas med inntil en avstand på 400 meter fra tettstedskjernen.",
+    "validPeriod": {
+     "start": 17167,
+     "stop": 17531
+    },
+    "valueDomain": {
+     "missingValues": [],
+     "delta": {
+      "remove": [
+       55,
+       141,
+       152,
+       195,
+       207,
+       242,
+       261,
+       456,
+       471,
+       492,
+       602,
+       678,
+       694,
+       706,
+       803,
+       811,
+       928
+      ],
+      "reorder": [],
+      "replace": {
+       "34": {
+        "category": "Buskogen",
+        "code": "0171"
+       },
+       "35": {
+        "category": "Lunde",
+        "code": "0172"
+       }
+      },
+      "insert": {
+       "15": {
+        "category": "Holm",
+        "code": "0054"
+       },
+       "87": {
+        "category": "Østersund",
+        "code": "0604"
+       },
+       "237": {
+        "category": "Bruflat",
+        "code": "1751"
+       },
+       "311": {
+        "category": "Skjeggestadåsen",
+        "code": "2599"
+       },
+       "323": {
+        "category": "Brunstad",
+        "code": "2626"
+       },
+       "391": {
+        "category": "Ubergsmoen",
+        "code": "3662"
+       },
+       "425": {
+        "category": "Byremo",
+        "code": "4132"
+       },
+       "492": {
+        "category": "Espeland",
+        "code": "5008"
+       },
+       "590": {
+        "category": "Blomvåg",
+        "code": "5335"
+       },
+       "682": {
+        "category": "Sætre",
+        "code": "6082"
+       },
+       "738": {
+        "category": "Liabø",
+        "code": "6371"
+       },
+       "844": {
+        "category": "Frosta",
+        "code": "7221"
+       },
+       "895": {
+        "category": "Napp",
+        "code": "7792"
+       },
+       "916": {
+        "category": "Reine",
+        "code": "7871"
+       },
+       "919": {
+        "category": "Solfjellsjyen",
+        "code": "7901"
+       },
+       "942": {
+        "category": "Torsken",
+        "code": "8102"
+       },
+       "962": {
+        "category": "Vangsvik",
+        "code": "8271"
+       },
+       "966": {
+        "category": "Kiberg",
+        "code": "8512"
+       }
+      }
+     }
+    }
+   },
+   {
+    "description": "En hussamling skal registreres som et tettsted dersom det 1. Bor minst 200 personer der og 2. Avstanden mellom husene skal normalt ikke overstige 50 meter. Det er tillatt med et skjønnsmessig avvik ut over 50 meter mellom husene i områder som ikke skal eller kan bebygges. Dette kan f.eks. være parker, idrettsanlegg, industriområder eller naturlige hindringer som elver eller dyrkbare områder. Husklynger som naturlig hører med til tettstedet tas med inntil en avstand på 400 meter fra tettstedskjernen.",
+    "validPeriod": {
+     "start": 17532,
+     "stop": 17896
+    },
+    "valueDomain": {
+     "missingValues": [],
+     "delta": {
+      "remove": [
+       160,
+       164,
+       420,
+       424,
+       425,
+       446,
+       504,
+       668,
+       671,
+       855,
+       860,
+       895
+      ],
+      "reorder": [],
+      "replace": {
+       "309": {
+        "category": "Gretteåsen",
+        "code": "2599"
+       },
+       "614": {
+        "category": "Hestnes",
+        "code": "5603"
+       }
+      },
+      "insert": {
+       "186": {
+        "category": "Lesja",
+        "code": "1531"
+       },
+       "315": {
+        "category": "Skjeggestadåsen",
+        "code": "2605"
+       },
+       "385": {
+        "category": "Bygland",
+        "code": "3613"
+       },
+       "423": {
+        "category": "Øye",
+        "code": "4103"
+       },
+       "425": {
+        "category": "Skeie",
+        "code": "4121"
+       },
+       "469": {
+        "category": "Padlene",
+        "code": "4695"
+       },
+       "607": {
+        "category": "Vadheim",
+        "code": "5525"
+       },
+       "622": {
+        "category": "Hafslo",
+        "code": "5604"
+       },
+       "675": {
+        "category": "Dimna",
+        "code": "6054"
+       },
+       "857": {
+        "category": "Nordhus",
+        "code": "7544"
+       },
+       "884": {
+        "category": "Leinesfjord",
+        "code": "7703"
+       },
+       "950": {
+        "category": "Furuflaten",
+        "code": "8151"
+       },
+       "962": {
+        "category": "Skjelnan",
+        "code": "8263"
+       },
+       "994": {
+        "category": "Skytterhusfjellet",
+        "code": "8686"
+       }
+      }
+     }
+    }
+   },
+   {
+    "description": "En hussamling skal registreres som et tettsted dersom det 1. Bor minst 200 personer der og 2. Avstanden mellom husene skal normalt ikke overstige 50 meter. Det er tillatt med et skjønnsmessig avvik ut over 50 meter mellom husene i områder som ikke skal eller kan bebygges. Dette kan f.eks. være parker, idrettsanlegg, industriområder eller naturlige hindringer som elver eller dyrkbare områder. Husklynger som naturlig hører med til tettstedet tas med inntil en avstand på 400 meter fra tettstedskjernen.",
+    "validPeriod": {
+     "start": 17897,
+     "stop": 18261
+    },
+    "valueDomain": {
+     "missingValues": [],
+     "delta": {
+      "remove": [
+       28,
+       37,
+       70,
+       116,
+       386,
+       413,
+       423,
+       477,
+       479,
+       522,
+       530,
+       545,
+       571,
+       607,
+       625,
+       666,
+       707,
+       729,
+       804,
+       812,
+       884,
+       913,
+       914,
+       971
+      ],
+      "reorder": [],
+      "replace": {
+       "141": {
+        "category": "Løiten brænderi",
+        "code": "1043"
+       },
+       "147": {
+        "category": "Romedal sentrum",
+        "code": "1056"
+       },
+       "200": {
+        "category": "Segalstad bru",
+        "code": "1621"
+       },
+       "271": {
+        "category": "Nærsnes",
+        "code": "2151"
+       },
+       "355": {
+        "category": "Tinn austbygd",
+        "code": "3101"
+       },
+       "402": {
+        "category": "Slettebrotane",
+        "code": "4043"
+       },
+       "403": {
+        "category": "Hægeland",
+        "code": "4044"
+       },
+       "468": {
+        "category": "Skudeneshavn",
+        "code": "4705"
+       },
+       "518": {
+        "category": "Mønshaugen-Bjørgum",
+        "code": "5134"
+       },
+       "657": {
+        "category": "Ulsteinsvik",
+        "code": "6051"
+       },
+       "700": {
+        "category": "Farstad",
+        "code": "6247"
+       },
+       "711": {
+        "category": "Skei-Surnadalsøra",
+        "code": "6291"
+       },
+       "724": {
+        "category": "Ringvol",
+        "code": "6504"
+       },
+       "748": {
+        "category": "Løkken",
+        "code": "6611"
+       },
+       "811": {
+        "category": "Namsskogan Sentrum",
+        "code": "7132"
+       }
+      },
+      "insert": {
+       "56": {
+        "category": "Bjerkeskaug",
+        "code": "0509"
+       },
+       "126": {
+        "category": "Bjertnestunet",
+        "code": "0723"
+       },
+       "134": {
+        "category": "Austmarka (Kongsvinger)",
+        "code": "1014"
+       },
+       "142": {
+        "category": "Lismarka",
+        "code": "1032"
+       },
+       "146": {
+        "category": "Heimdal",
+        "code": "1044"
+       },
+       "164": {
+        "category": "Sønsterud",
+        "code": "1103"
+       },
+       "168": {
+        "category": "Heradsbygd",
+        "code": "1122"
+       },
+       "207": {
+        "category": "Øyer",
+        "code": "1613"
+       },
+       "242": {
+        "category": "Konnerud",
+        "code": "2004"
+       },
+       "404": {
+        "category": "Farestad",
+        "code": "4015"
+       },
+       "429": {
+        "category": "Byremo",
+        "code": "4132"
+       },
+       "450": {
+        "category": "Nærland",
+        "code": "4578"
+       },
+       "463": {
+        "category": "Malmheim",
+        "code": "4618"
+       },
+       "538": {
+        "category": "Trengereid",
+        "code": "5156"
+       },
+       "558": {
+        "category": "Ask (Askøy)",
+        "code": "5206"
+       },
+       "639": {
+        "category": "Vågsvåg",
+        "code": "5685"
+       },
+       "660": {
+        "category": "Hesthagen",
+        "code": "6009"
+       },
+       "662": {
+        "category": "Geitnes",
+        "code": "6012"
+       },
+       "673": {
+        "category": "Tjørvåg",
+        "code": "6047"
+       },
+       "693": {
+        "category": "Hundeidvik",
+        "code": "6134"
+       },
+       "984": {
+        "category": "Gamvik",
+        "code": "8642"
+       }
+      }
+     }
+    }
+   },
+   {
+    "description": "En hussamling skal registreres som et tettsted dersom det 1. Bor minst 200 personer der og 2. Avstanden mellom husene skal normalt ikke overstige 50 meter. Det er tillatt med et skjønnsmessig avvik ut over 50 meter mellom husene i områder som ikke skal eller kan bebygges. Dette kan f.eks. være parker, idrettsanlegg, industriområder eller naturlige hindringer som elver eller dyrkbare områder. Husklynger som naturlig hører med til tettstedet tas med inntil en avstand på 400 meter fra tettstedskjernen.",
+    "validPeriod": {
+     "start": 18262,
+     "stop": 18627
+    },
+    "valueDomain": {
+     "missingValues": [],
+     "delta": {
+      "remove": [
+       34,
+       83,
+       85,
+       100,
+       189,
+       205,
+       207,
+       390,
+       414,
+       416,
+       429,
+       536,
+       558,
+       567,
+       678,
+       806,
+       888,
+       924,
+       938
+      ],
+      "reorder": [],
+      "replace": {
+       "42": {
+        "category": "Halmstad",
+        "code": "0201"
+       },
+       "84": {
+        "category": "YtreEnebakk",
+        "code": "0612"
+       },
+       "130": {
+        "category": "Austmarka(Kongsvinger)",
+        "code": "1014"
+       },
+       "604": {
+        "category": "ØvreÅrdal",
+        "code": "5591"
+       },
+       "808": {
+        "category": "RøraStasjon",
+        "code": "7092"
+       },
+       "815": {
+        "category": "Namsskogan sentrum",
+        "code": "7132"
+       },
+       "852": {
+        "category": "MoiRana",
+        "code": "7631"
+       },
+       "967": {
+        "category": "TanaBru",
+        "code": "8661"
+       }
+      },
+      "insert": {
+       "28": {
+        "category": "Finnestad",
+        "code": "0124"
+       },
+       "84": {
+        "category": "Fetsund-Østersund",
+        "code": "0609"
+       },
+       "133": {
+        "category": "Byflaten",
+        "code": "1020"
+       },
+       "204": {
+        "category": "Granrudmoen-Øyer",
+        "code": "1614"
+       },
+       "277": {
+        "category": "Nordal",
+        "code": "2149"
+       },
+       "359": {
+        "category": "Nordbøåsane",
+        "code": "3084"
+       },
+       "378": {
+        "category": "Fevik",
+        "code": "3525"
+       },
+       "414": {
+        "category": "Nodeland-Brennåsen",
+        "code": "4055"
+       },
+       "425": {
+        "category": "Øye",
+        "code": "4103"
+       },
+       "477": {
+        "category": "Høie",
+        "code": "4699"
+       },
+       "507": {
+        "category": "Melandsvågen",
+        "code": "5046"
+       },
+       "526": {
+        "category": "Lofthus",
+        "code": "5101"
+       },
+       "548": {
+        "category": "Glesnes",
+        "code": "5185"
+       },
+       "600": {
+        "category": "Anglavika",
+        "code": "5358"
+       },
+       "626": {
+        "category": "Flekke",
+        "code": "5623"
+       },
+       "707": {
+        "category": "Vikebukt",
+        "code": "6186"
+       },
+       "733": {
+        "category": "Glærem",
+        "code": "6292"
+       },
+       "801": {
+        "category": "Binde",
+        "code": "7008"
+       },
+       "886": {
+        "category": "Leinesfjord",
+        "code": "7703"
+       },
+       "968": {
+        "category": "Talvik",
+        "code": "8541"
+       }
+      }
+     }
+    }
+   },
+   {
+    "description": "En hussamling skal registreres som et tettsted dersom det 1. Bor minst 200 personer der og 2. Avstanden mellom husene skal normalt ikke overstige 50 meter. Det er tillatt med et skjønnsmessig avvik ut over 50 meter mellom husene i områder som ikke skal eller kan bebygges. Dette kan f.eks. være parker, idrettsanlegg, industriområder eller naturlige hindringer som elver eller dyrkbare områder. Husklynger som naturlig hører med til tettstedet tas med inntil en avstand på 400 meter fra tettstedskjernen.",
+    "validPeriod": {
+     "start": 18628,
+     "stop": 18992
+    },
+    "valueDomain": {
+     "missingValues": [],
+     "delta": {
+      "remove": [
+       56,
+       204,
+       622
+      ],
+      "reorder": [],
+      "replace": {},
+      "insert": {
+       "202": {
+        "category": "Granrudmoen",
+        "code": "1611"
+       },
+       "204": {
+        "category": "Øyer",
+        "code": "1613"
+       },
+       "549": {
+        "category": "Hamre",
+        "code": "5186"
+       }
+      }
+     }
+    }
+   },
+   {
+    "description": "En hussamling skal registreres som et tettsted dersom det 1. Bor minst 200 personer der og 2. Avstanden mellom husene skal normalt ikke overstige 50 meter. Det er tillatt med et skjønnsmessig avvik ut over 50 meter mellom husene i områder som ikke skal eller kan bebygges. Dette kan f.eks. være parker, idrettsanlegg, industriområder eller naturlige hindringer som elver eller dyrkbare områder. Husklynger som naturlig hører med til tettstedet tas med inntil en avstand på 400 meter fra tettstedskjernen.",
+    "validPeriod": {
+     "start": 18993,
+     "stop": 19357
+    },
+    "valueDomain": {
+     "missingValues": [],
+     "delta": {
+      "remove": [
+       166,
+       204,
+       249,
+       937
+      ],
+      "reorder": [],
+      "replace": {
+       "546": {
+        "category": "Hamre (Øygarden)",
+        "code": "5186"
+       }
+      },
+      "insert": {
+       "3": {
+        "category": "Solbakken-Sofienberg",
+        "code": "0006"
+       },
+       "68": {
+        "category": "Bomansvik",
+        "code": "0545"
+       },
+       "76": {
+        "category": "Setskog",
+        "code": "0587"
+       },
+       "95": {
+        "category": "Hakadal",
+        "code": "0640"
+       },
+       "121": {
+        "category": "Rustad",
+        "code": "0686"
+       },
+       "265": {
+        "category": "Geilolie",
+        "code": "2093"
+       },
+       "493": {
+        "category": "Vestre Åmøy",
+        "code": "4745"
+       },
+       "505": {
+        "category": "Førde",
+        "code": "5031"
+       },
+       "538": {
+        "category": "Nordheim-Kyte",
+        "code": "5135"
+       },
+       "543": {
+        "category": "Vikøy",
+        "code": "5146"
+       },
+       "589": {
+        "category": "Rabben-Veivågen",
+        "code": "5303"
+       },
+       "626": {
+        "category": "Flåm",
+        "code": "5572"
+       },
+       "632": {
+        "category": "Hestnes",
+        "code": "5603"
+       },
+       "664": {
+        "category": "Bergsida",
+        "code": "5734"
+       },
+       "683": {
+        "category": "Remøy",
+        "code": "6044"
+       },
+       "698": {
+        "category": "Sætrebakkane",
+        "code": "6083"
+       },
+       "725": {
+        "category": "Innfjorden",
+        "code": "6195"
+       },
+       "905": {
+        "category": "Ramsund",
+        "code": "7743"
+       }
+      }
+     }
+    }
+   },
+   {
+    "description": "En hussamling skal registreres som et tettsted dersom det 1. Bor minst 200 personer der og 2. Avstanden mellom husene skal normalt ikke overstige 50 meter. Det er tillatt med et skjønnsmessig avvik ut over 50 meter mellom husene i områder som ikke skal eller kan bebygges. Dette kan f.eks. være parker, idrettsanlegg, industriområder eller naturlige hindringer som elver eller dyrkbare områder. Husklynger som naturlig hører med til tettstedet tas med inntil en avstand på 400 meter fra tettstedskjernen.",
+    "validPeriod": {
+     "start": 19358,
+     "stop": 19722
+    },
+    "valueDomain": {
+     "missingValues": [],
+     "delta": {
+      "remove": [
+       5,
+       76,
+       90,
+       95,
+       221,
+       242,
+       265,
+       329,
+       505,
+       664,
+       687,
+       725,
+       756,
+       845,
+       905
+      ],
+      "reorder": [],
+      "replace": {},
+      "insert": {
+       "35": {
+        "category": "Nylende",
+        "code": "0162"
+       },
+       "57": {
+        "category": "Bjerkeskaug",
+        "code": "0509"
+       },
+       "64": {
+        "category": "Ås",
+        "code": "0524"
+       },
+       "170": {
+        "category": "Heradsbygd",
+        "code": "1122"
+       },
+       "176": {
+        "category": "Drevsjø",
+        "code": "1163"
+       },
+       "209": {
+        "category": "Øyer",
+        "code": "1613"
+       },
+       "238": {
+        "category": "Vang(Valdres)",
+        "code": "1723"
+       },
+       "253": {
+        "category": "Nymoen",
+        "code": "2035"
+       },
+       "345": {
+        "category": "Jønnevall",
+        "code": "3006"
+       },
+       "445": {
+        "category": "Røysland",
+        "code": "4562"
+       },
+       "561": {
+        "category": "Vindenes",
+        "code": "5198"
+       },
+       "682": {
+        "category": "Gjerde",
+        "code": "6033"
+       },
+       "692": {
+        "category": "Dimna",
+        "code": "6054"
+       },
+       "704": {
+        "category": "Geiranger",
+        "code": "6114"
+       },
+       "768": {
+        "category": "Sandstad",
+        "code": "6523"
+       },
+       "865": {
+        "category": "Saltstraumen",
+        "code": "7504"
+       },
+       "953": {
+        "category": "Skøelv",
+        "code": "8092"
+       }
+      }
+     }
+    }
+   },
+   {
+    "description": "En hussamling skal registreres som et tettsted dersom det 1. Bor minst 200 personer der og 2. Avstanden mellom husene skal normalt ikke overstige 50 meter. Det er tillatt med et skjønnsmessig avvik ut over 50 meter mellom husene i områder som ikke skal eller kan bebygges. Dette kan f.eks. være parker, idrettsanlegg, industriområder eller naturlige hindringer som elver eller dyrkbare områder. Husklynger som naturlig hører med til tettstedet tas med inntil en avstand på 400 meter fra tettstedskjernen.",
+    "validPeriod": {
+     "start": 19723
+    },
+    "valueDomain": {
+     "missingValues": [],
+     "delta": {
+      "remove": [],
+      "reorder": [],
+      "replace": {},
+      "insert": {
+       "6": {
+        "category": "Ørmen",
+        "code": "0024"
+       },
+       "193": {
+        "category": "Lesja",
+        "code": "1531"
+       },
+       "218": {
+        "category": "Starum",
+        "code": "1634"
+       },
+       "249": {
+        "category": "Hillestad",
+        "code": "2016"
+       },
+       "280": {
+        "category": "Stevning",
+        "code": "2126"
+       },
+       "399": {
+        "category": "Bygland",
+        "code": "3613"
+       },
+       "510": {
+        "category": "Bjorøyna",
+        "code": "5010"
+       },
+       "514": {
+        "category": "Førde",
+        "code": "5031"
+       },
+       "549": {
+        "category": "Øystese",
+        "code": "5142"
+       },
+       "663": {
+        "category": "Flatraket",
+        "code": "5687"
+       },
+       "676": {
+        "category": "Bergsida",
+        "code": "5734"
+       },
+       "769": {
+        "category": "Liabø",
+        "code": "6371"
+       },
+       "843": {
+        "category": "Mule",
+        "code": "7056"
+       },
+       "860": {
+        "category": "Sandvika",
+        "code": "7111"
+       },
+       "912": {
+        "category": "Røkland",
+        "code": "7682"
+       },
+       "922": {
+        "category": "Ramsund",
+        "code": "7743"
+       },
+       "937": {
+        "category": "Sandnes",
+        "code": "7823"
+       }
+      }
+     }
+    }
+   }
+  ]
+ },
+ "identifierVariables": [
+  {
+   "name": "PERSONID_1",
+   "label": "Personidentifikator",
+   "notPseudonym": false,
+   "dataType": "Long",
+   "format": "RandomUInt48",
+   "variableRole": "Identifier",
+   "keyType": {
+    "name": "PERSON",
+    "label": "Person",
+    "description": "Person er et enkeltmenneske, individ."
+   },
+   "representedVariables": [
+    {
+     "description": "Identifikator for person i microdata",
+     "validPeriod": {
+      "start": 10592,
+      "stop": 19723
+     },
+     "valueDomain": {
+      "description": "Pseudonymisert personnummer",
+      "unitOfMeasure": "N/A"
+     }
+    }
+   ]
+  }
+ ],
+ "attributeVariables": [
+  {
+   "name": "START",
+   "label": "Startdato",
+   "notPseudonym": true,
+   "dataType": "Instant",
+   "variableRole": "Start",
+   "representedVariables": [
+    {
+     "description": "Startdato/måletidspunktet for hendelsen",
+     "validPeriod": {
+      "start": 10592,
+      "stop": 19723
+     },
+     "valueDomain": {
+      "description": "Dato oppgitt i dager siden 1970-01-01",
+      "unitOfMeasure": "N/A"
+     }
+    }
+   ]
+  },
+  {
+   "name": "STOP",
+   "label": "Stoppdato",
+   "notPseudonym": true,
+   "dataType": "Instant",
+   "variableRole": "Stop",
+   "representedVariables": [
+    {
+     "description": "Stoppdato/måletidspunktet for hendelsen",
+     "validPeriod": {
+      "start": 10592,
+      "stop": 19723
+     },
+     "valueDomain": {
+      "description": "Dato oppgitt i dager siden 1970-01-01",
+      "unitOfMeasure": "N/A"
+     }
+    }
+   ]
+  }
+ ],
+ "temporalStatusDates": [
+  10592,
+  10957,
+  11323,
+  11688,
+  12053,
+  12418,
+  12784,
+  13149,
+  13514,
+  13879,
+  14245,
+  14975,
+  15340,
+  15706,
+  16071,
+  16436,
+  16801,
+  17167,
+  17532,
+  17897,
+  18262,
+  18628,
+  18993,
+  19358,
+  19723
+ ],
+ "globalTemporalCoverage": {
+  "start": -1096,
+  "stop": 20759
+ },
+ "updatedAt": 1760683763
+}

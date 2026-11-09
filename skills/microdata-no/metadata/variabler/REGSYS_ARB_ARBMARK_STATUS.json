@@ -1,0 +1,147 @@
+{
+ "name": "REGSYS_ARB_ARBMARK_STATUS",
+ "temporality": "STATUS",
+ "languageCode": "no",
+ "sensitivityLevel": "PERSON_GENERAL",
+ "populationDescription": "Variabelen omfatter bosatte personer 15-74 år som er sysselsatt.",
+ "subjectFields": [
+  "Arbeid og lønn",
+  "Sysselsetting"
+ ],
+ "temporalCoverage": {
+  "start": 16755,
+  "stop": 20408
+ },
+ "measureVariable": {
+  "name": "REGSYS_ARB_ARBMARK_STATUS",
+  "label": "Arbeidsmarkedsstatus, hovedarbeidsforhold",
+  "notPseudonym": true,
+  "dataType": "String",
+  "variableRole": "Measure",
+  "representedVariables": [
+   {
+    "description": "Angir ulike kategorier for arbeidsmarkedsstatus. \n \n Gjelder hovedarbeidsforholdet (det er i hovedsak arbeidsforholdet med høyest avtalt arbeidstid).\n \n Denne variabelen erstatter REGSYS_YRKSTAT fra og med 2015.\n \n Kilde for variabelen er registerbaserte sysselsettingsdata. Les dokumentasjonen om datagrunnlag, prosessering og definisjoner her:\n - [Sysselsetting, registerbasert](https://www.ssb.no/arbeid-og-lonn/sysselsetting/statistikk/sysselsetting-registerbasert) \n - [Om datagrunnlaget for registerbasert sysselsettingsstatistikk](https://www.ssb.no/data-til-forskning/utlan-av-data-til-forskere/variabellister/a-ordningen/om-datagrunnlaget-for-registerbasert-sysselsettingsstatistikk) \n - [Registerbasert lønns- og sysselsettingsstatistikk basert på a-ordningen](https://www.ssb.no/arbeid-og-lonn/sysselsetting/artikler/registerbasert-lonns-og-sysselsettingsstatistikk-basert-pa-a-ordningen)",
+    "validPeriod": {
+     "start": 16451
+    },
+    "valueDomain": {
+     "codeList": [
+      {
+       "category": "Utenfor arbeidsstyrken (kun årlig)",
+       "code": "0"
+      },
+      {
+       "category": "Lønnstaker",
+       "code": "1"
+      },
+      {
+       "category": "Selvstendig (kun årlig)",
+       "code": "2"
+      },
+      {
+       "category": "Helt ledig (annen definisjon enn i statistikken over arbeidsledige, se dokumentasjonen)",
+       "code": "3"
+      },
+      {
+       "category": "Ikke-lønnstaker (kun mnd/kvartal)",
+       "code": "4"
+      },
+      {
+       "category": "Ikke-relevante lønnstakerforhold (holdes utenfor syss statistikk)",
+       "code": "9"
+      }
+     ],
+     "missingValues": []
+    }
+   }
+  ]
+ },
+ "identifierVariables": [
+  {
+   "name": "PERSONID_1",
+   "label": "Personidentifikator",
+   "notPseudonym": false,
+   "dataType": "Long",
+   "format": "RandomUInt48",
+   "variableRole": "Identifier",
+   "keyType": {
+    "name": "PERSON",
+    "label": "Person",
+    "description": "Person er et enkeltmenneske, individ."
+   },
+   "representedVariables": [
+    {
+     "description": "Identifikator for person i microdata",
+     "validPeriod": {
+      "start": 16755,
+      "stop": 20408
+     },
+     "valueDomain": {
+      "description": "Pseudonymisert personnummer",
+      "unitOfMeasure": "N/A"
+     }
+    }
+   ]
+  }
+ ],
+ "attributeVariables": [
+  {
+   "name": "START",
+   "label": "Startdato",
+   "notPseudonym": true,
+   "dataType": "Instant",
+   "variableRole": "Start",
+   "representedVariables": [
+    {
+     "description": "Startdato/måletidspunktet for hendelsen",
+     "validPeriod": {
+      "start": 16755,
+      "stop": 20408
+     },
+     "valueDomain": {
+      "description": "Dato oppgitt i dager siden 1970-01-01",
+      "unitOfMeasure": "N/A"
+     }
+    }
+   ]
+  },
+  {
+   "name": "STOP",
+   "label": "Stoppdato",
+   "notPseudonym": true,
+   "dataType": "Instant",
+   "variableRole": "Stop",
+   "representedVariables": [
+    {
+     "description": "Stoppdato/måletidspunktet for hendelsen",
+     "validPeriod": {
+      "start": 16755,
+      "stop": 20408
+     },
+     "valueDomain": {
+      "description": "Dato oppgitt i dager siden 1970-01-01",
+      "unitOfMeasure": "N/A"
+     }
+    }
+   ]
+  }
+ ],
+ "temporalStatusDates": [
+  16755,
+  17121,
+  17486,
+  17851,
+  18216,
+  18582,
+  18947,
+  19312,
+  19677,
+  20043,
+  20408
+ ],
+ "globalTemporalCoverage": {
+  "start": -1096,
+  "stop": 20759
+ },
+ "updatedAt": 1774604284
+}

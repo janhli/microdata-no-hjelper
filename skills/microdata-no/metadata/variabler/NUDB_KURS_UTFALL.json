@@ -1,0 +1,122 @@
+{
+ "name": "NUDB_KURS_UTFALL",
+ "temporality": "EVENT",
+ "languageCode": "no",
+ "sensitivityLevel": "PERSON_GENERAL",
+ "populationDescription": "Variabelen omfatter personer med en igangværende eller avsluttende registrering i universitet eller høgskole.",
+ "subjectFields": [
+  "Utdanning",
+  "Utdanningsnivå"
+ ],
+ "temporalCoverage": {
+  "start": 1704,
+  "stop": 19936
+ },
+ "measureVariable": {
+  "name": "NUDB_KURS_UTFALL",
+  "label": "Utfall av utdanning, omkodet",
+  "notPseudonym": true,
+  "dataType": "String",
+  "variableRole": "Measure",
+  "representedVariables": [
+   {
+    "description": "Utfall av utdanning, omkodet.",
+    "validPeriod": {
+     "start": 1734
+    },
+    "valueDomain": {
+     "codeList": [
+      {
+       "category": "Kodet avbrutt i NUDB. Kurset har vært registrert som startet på en NUS-kode, men det er ikke registrert noen avslutning og heller ikke registrert som igangværende året etter på samme NUS-kode",
+       "code": "1"
+      },
+      {
+       "category": "Ikke fullført",
+       "code": "2"
+      },
+      {
+       "category": "Fullført",
+       "code": "8"
+      }
+     ],
+     "missingValues": []
+    }
+   }
+  ]
+ },
+ "identifierVariables": [
+  {
+   "name": "KURSID_1",
+   "label": "Kursidentifikator",
+   "notPseudonym": false,
+   "dataType": "Long",
+   "format": "RandomUInt48",
+   "variableRole": "Identifier",
+   "keyType": {
+    "name": "KURS",
+    "label": "Kurs",
+    "description": "Kurs er en utdanningsaktivitet."
+   },
+   "representedVariables": [
+    {
+     "description": "Identifikator for kurs i microdata",
+     "validPeriod": {
+      "start": 1704,
+      "stop": 19936
+     },
+     "valueDomain": {
+      "description": "Pseudonymisert kombinasjon av personnummer og NUDB kursnummer",
+      "unitOfMeasure": "N/A"
+     }
+    }
+   ]
+  }
+ ],
+ "attributeVariables": [
+  {
+   "name": "START",
+   "label": "Startdato",
+   "notPseudonym": true,
+   "dataType": "Instant",
+   "variableRole": "Start",
+   "representedVariables": [
+    {
+     "description": "Startdato/måletidspunktet for hendelsen",
+     "validPeriod": {
+      "start": 1704,
+      "stop": 19936
+     },
+     "valueDomain": {
+      "description": "Dato oppgitt i dager siden 1970-01-01",
+      "unitOfMeasure": "N/A"
+     }
+    }
+   ]
+  },
+  {
+   "name": "STOP",
+   "label": "Stoppdato",
+   "notPseudonym": true,
+   "dataType": "Instant",
+   "variableRole": "Stop",
+   "representedVariables": [
+    {
+     "description": "Stoppdato/måletidspunktet for hendelsen",
+     "validPeriod": {
+      "start": 1704,
+      "stop": 19936
+     },
+     "valueDomain": {
+      "description": "Dato oppgitt i dager siden 1970-01-01",
+      "unitOfMeasure": "N/A"
+     }
+    }
+   ]
+  }
+ ],
+ "globalTemporalCoverage": {
+  "start": -1096,
+  "stop": 20759
+ },
+ "updatedAt": 1760683763
+}

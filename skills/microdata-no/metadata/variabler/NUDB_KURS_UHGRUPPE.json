@@ -1,0 +1,598 @@
+{
+ "name": "NUDB_KURS_UHGRUPPE",
+ "temporality": "EVENT",
+ "languageCode": "no",
+ "sensitivityLevel": "PERSON_GENERAL",
+ "populationDescription": "Variabelen omfatter personer med en igangværende eller avsluttende registrering i universitet eller høgskole.",
+ "subjectFields": [
+  "Høyere utdanning",
+  "Utdanning"
+ ],
+ "temporalCoverage": {
+  "start": 1704,
+  "stop": 19967
+ },
+ "measureVariable": {
+  "name": "NUDB_KURS_UHGRUPPE",
+  "label": "Gruppering av høyere utdanning",
+  "notPseudonym": true,
+  "dataType": "String",
+  "variableRole": "Measure",
+  "representedVariables": [
+   {
+    "description": "Variabelen viser gruppering av høyere utdanning.\n \n Universitets- og høgskolegrupperingen brukes for å gruppere utdanninger på NUS2000-nivå 6-8. Dette er en grovere standardgruppering som først og fremst er tenkt som en forenkling i forbindelse med presentasjon av offisiell utdanningsstatistikk. Gradbenevnelsene bachelor, master og ph.d. ble innført i forbindelse med Kvalitetsreformen innen høyere utdanning fra høsten 2002.",
+    "validPeriod": {
+     "start": 0
+    },
+    "valueDomain": {
+     "codeList": [
+      {
+       "category": "Forberedende prøver",
+       "code": "01"
+      },
+      {
+       "category": "Lavere nivås utdanning",
+       "code": "02"
+      },
+      {
+       "category": "Andre ettårige studier, grunnutdanning",
+       "code": "03"
+      },
+      {
+       "category": "Høgskolekandidat, toårig",
+       "code": "04"
+      },
+      {
+       "category": "Ingeniørutdanning, toårig grunnutdanning",
+       "code": "05"
+      },
+      {
+       "category": "Høgskolekandidat, ingeniørfag, toårig",
+       "code": "05H"
+      },
+      {
+       "category": "Andre toårige studier, grunnutdanninger",
+       "code": "06"
+      },
+      {
+       "category": "Høgskolekandidat, treårig",
+       "code": "07"
+      },
+      {
+       "category": "Allmenn-/grunnskolelærer, fireårig",
+       "code": "08"
+      },
+      {
+       "category": "Bachelor, lærerutdanning",
+       "code": "08B"
+      },
+      {
+       "category": "Førskolelærer, grunnutdanning",
+       "code": "09"
+      },
+      {
+       "category": "Bachelor, førskole-/barnehagelærerutdanning",
+       "code": "09B"
+      },
+      {
+       "category": "Fag- og yrkesfaglærer, grunnutdanning",
+       "code": "10"
+      },
+      {
+       "category": "Bachelor, fag- og yrkesfaglærerutdanning",
+       "code": "10B"
+      },
+      {
+       "category": "Ingeniørutdanning, treårig grunnutdanning",
+       "code": "11"
+      },
+      {
+       "category": "Bachelor, ingeniørfag",
+       "code": "11B"
+      },
+      {
+       "category": "Sykepleieutdanning, grunnutdanning",
+       "code": "12"
+      },
+      {
+       "category": "Bachelor, sykepleieutdanning",
+       "code": "12B"
+      },
+      {
+       "category": "Helsefagutdanning, 3-4 år grunnutdanning, ikke sykepleier",
+       "code": "13"
+      },
+      {
+       "category": "Bachelor, helsefagutdanning, ikke sykepleier",
+       "code": "13B"
+      },
+      {
+       "category": "Høgskolekandidat, fireårig",
+       "code": "14"
+      },
+      {
+       "category": "Bachelor, fireårig",
+       "code": "14B"
+      },
+      {
+       "category": "Etatsutdanning",
+       "code": "15"
+      },
+      {
+       "category": "Andre tre- og fireårige grunnutdanninger (ikke høgskolekandidat)",
+       "code": "16"
+      },
+      {
+       "category": "Cand.mag.utdanning",
+       "code": "17"
+      },
+      {
+       "category": "Videreutdanning i ledelse/organisasjon/administrasjon/økonomi",
+       "code": "18"
+      },
+      {
+       "category": "Videreutdanning for ingeniører",
+       "code": "19"
+      },
+      {
+       "category": "Videreutdanning for sykepleiere",
+       "code": "20"
+      },
+      {
+       "category": "Videreutdanning for annet helsepersonell enn sykepleiere",
+       "code": "21"
+      },
+      {
+       "category": "Annen videreutdanning, til og med to år",
+       "code": "22"
+      },
+      {
+       "category": "Praktisk-pedagogisk utdanning (PPU)",
+       "code": "23"
+      },
+      {
+       "category": "Siviløkonomutdanning, fireårig",
+       "code": "24"
+      },
+      {
+       "category": "Bachelor, allmenne fag",
+       "code": "25B"
+      },
+      {
+       "category": "Bachelor, humanistiske og estetiske fag (ikke fireårig)",
+       "code": "26B"
+      },
+      {
+       "category": "Bachelor, lærerutdanninger og utdanninger i pedagogikk, ikke allmenn-/grunnskole-, førskole-, fag- og yrkesfaglærer)",
+       "code": "27B"
+      },
+      {
+       "category": "Bachelor, samfunnsfag og juridiske fag",
+       "code": "28B"
+      },
+      {
+       "category": "Bachelor, økonomiske og administrative fag",
+       "code": "29B"
+      },
+      {
+       "category": "Bachelor, naturvitenskapelige fag, håndverksfag og tekniske fag (ikke ingeniør)",
+       "code": "30B"
+      },
+      {
+       "category": "Høyere nivås utdanning",
+       "code": "31"
+      },
+      {
+       "category": "Cand.philol.-utdanning",
+       "code": "32"
+      },
+      {
+       "category": "Cand.polit.-utdanning",
+       "code": "33"
+      },
+      {
+       "category": "Cand.scient/Cand.real. - utdanning",
+       "code": "34"
+      },
+      {
+       "category": "Cand.jur. -utdanning",
+       "code": "35"
+      },
+      {
+       "category": "Master, rettsvitenskap",
+       "code": "35M"
+      },
+      {
+       "category": "Cand.med. -utdanning",
+       "code": "36"
+      },
+      {
+       "category": "Cand.agric. -utdanning",
+       "code": "37"
+      },
+      {
+       "category": "Cand.musicae. -utdanning",
+       "code": "38"
+      },
+      {
+       "category": "Cand.theol. -utdanning",
+       "code": "39"
+      },
+      {
+       "category": "Cand.san. -utdanning",
+       "code": "40"
+      },
+      {
+       "category": "Cand.oecon. -utdanning",
+       "code": "41"
+      },
+      {
+       "category": "Cand.psychol. -utdanning",
+       "code": "42"
+      },
+      {
+       "category": "Cand.sociol. -utdanning",
+       "code": "43"
+      },
+      {
+       "category": "Cand.sosion. -utdanning",
+       "code": "44"
+      },
+      {
+       "category": "Cand.act. -utdanning",
+       "code": "45"
+      },
+      {
+       "category": "Master, aktuarfag",
+       "code": "45M"
+      },
+      {
+       "category": "Cand.techn. -utdanning",
+       "code": "46"
+      },
+      {
+       "category": "Cand.pharm. -utdanning",
+       "code": "47"
+      },
+      {
+       "category": "Master, farmasi-utdanning",
+       "code": "47M"
+      },
+      {
+       "category": "Cand.med.vet. -utdanning",
+       "code": "48"
+      },
+      {
+       "category": "Cand.merc. -utdanning",
+       "code": "49"
+      },
+      {
+       "category": "Cand.odont. -utdanning",
+       "code": "50"
+      },
+      {
+       "category": "Master, odontologi-utdanning",
+       "code": "50M"
+      },
+      {
+       "category": "Cand.ed-/Cand.paed.-/Cand.paed.spec. -utdanning",
+       "code": "51"
+      },
+      {
+       "category": "Hovedfagskandidat",
+       "code": "52"
+      },
+      {
+       "category": "Magisterutdanning",
+       "code": "53"
+      },
+      {
+       "category": "Siviløkonomutdanning, CEMS-master",
+       "code": "54"
+      },
+      {
+       "category": "Siviløkonom-/Master-utdanning",
+       "code": "54M"
+      },
+      {
+       "category": "Sivilingeniørutdanning",
+       "code": "55"
+      },
+      {
+       "category": "Master, teknologifag",
+       "code": "55M"
+      },
+      {
+       "category": "Master of Science",
+       "code": "56"
+      },
+      {
+       "category": "Master of Science",
+       "code": "56M"
+      },
+      {
+       "category": "Master of Philosophy",
+       "code": "57"
+      },
+      {
+       "category": "Master of Philosophy",
+       "code": "57M"
+      },
+      {
+       "category": "Master of Arts",
+       "code": "58"
+      },
+      {
+       "category": "Master of Arts",
+       "code": "58M"
+      },
+      {
+       "category": "Master of International Business",
+       "code": "59"
+      },
+      {
+       "category": "Master of International Business",
+       "code": "59M"
+      },
+      {
+       "category": "Master of Business Administration",
+       "code": "60"
+      },
+      {
+       "category": "Master of Business Administration",
+       "code": "60M"
+      },
+      {
+       "category": "Master of Management",
+       "code": "61"
+      },
+      {
+       "category": "Master of Management",
+       "code": "61M"
+      },
+      {
+       "category": "Master of Technology Management",
+       "code": "62"
+      },
+      {
+       "category": "Master of Technology Management",
+       "code": "62M"
+      },
+      {
+       "category": "Andre mastergradutdanninger",
+       "code": "63"
+      },
+      {
+       "category": "Andre mastergradutdanninger",
+       "code": "63M"
+      },
+      {
+       "category": "Master of Laws",
+       "code": "64"
+      },
+      {
+       "category": "Master of Laws",
+       "code": "64M"
+      },
+      {
+       "category": "Annen utdanning på nivå 7, ikke videreutdanning/påbygging",
+       "code": "65"
+      },
+      {
+       "category": "Videreutdanning/påbygging, -inntil to år",
+       "code": "66"
+      },
+      {
+       "category": "Spesialistutdanning for leger og tannleger",
+       "code": "67"
+      },
+      {
+       "category": "Videreutdanning for sykepleiere på nivå 7",
+       "code": "68"
+      },
+      {
+       "category": "Master, ettårig, lavere nivå",
+       "code": "69M"
+      },
+      {
+       "category": "Ph.d.",
+       "code": "70"
+      },
+      {
+       "category": "Master, allmenne fag",
+       "code": "71M"
+      },
+      {
+       "category": "Master, humanistiske og estetiske fag",
+       "code": "72M"
+      },
+      {
+       "category": "Master, lærerutdanninger og utdanninger i pedagogikk",
+       "code": "73M"
+      },
+      {
+       "category": "Master, samfunnsfag og juridiske fag (ikke rettsvitenskap)",
+       "code": "74M"
+      },
+      {
+       "category": "Master, økonomiske og administrative fag (ikke siviløkonom)",
+       "code": "75M"
+      },
+      {
+       "category": "Master, naturvitenskapelige fag, håndverksfag og tekniske fag (ikke sivilingeniør/master i teknologi)",
+       "code": "76M"
+      },
+      {
+       "category": "Master, helse-, sosial- og idrettsfag (ikke farmasi og odontologi)",
+       "code": "77M"
+      },
+      {
+       "category": "Master, primærnæringsfag",
+       "code": "78M"
+      },
+      {
+       "category": "Master, samferdsels- og sikkerhetsfag og andre sevicefag",
+       "code": "79M"
+      },
+      {
+       "category": "Master, uoppgitt fagfelt",
+       "code": "80M"
+      },
+      {
+       "category": "Dr. philos.",
+       "code": "81"
+      },
+      {
+       "category": "Dr.polit.",
+       "code": "82"
+      },
+      {
+       "category": "Dr.scient",
+       "code": "83"
+      },
+      {
+       "category": "Dr.juris./Dr.legis",
+       "code": "84"
+      },
+      {
+       "category": "Dr.med.",
+       "code": "85"
+      },
+      {
+       "category": "Dr.theol",
+       "code": "86"
+      },
+      {
+       "category": "Dr.techn.",
+       "code": "87"
+      },
+      {
+       "category": "Dr.odont.",
+       "code": "88"
+      },
+      {
+       "category": "Dr.med.vet.",
+       "code": "89"
+      },
+      {
+       "category": "Dr.agric.",
+       "code": "90"
+      },
+      {
+       "category": "Dr.oecon",
+       "code": "91"
+      },
+      {
+       "category": "Dr.ing.",
+       "code": "92"
+      },
+      {
+       "category": "Dr.art.",
+       "code": "93"
+      },
+      {
+       "category": "Dr.psychol.",
+       "code": "94"
+      },
+      {
+       "category": "Andre forskerutdanninger, lisensiater",
+       "code": "95"
+      },
+      {
+       "category": "Bachelor, helse-, sosial- og idrettsfag (ikke sykepleier og helsefag som inngår i UH-gruppe 13B)",
+       "code": "96B"
+      },
+      {
+       "category": "Bachelor, primærnæringsfag",
+       "code": "97B"
+      },
+      {
+       "category": "Bachelor, samferdsels- og sikkerhetsfag og andre sevicefag",
+       "code": "98B"
+      },
+      {
+       "category": "Bachelor, uoppgitt fagfelt",
+       "code": "99B"
+      }
+     ],
+     "missingValues": []
+    }
+   }
+  ]
+ },
+ "identifierVariables": [
+  {
+   "name": "KURSID_1",
+   "label": "Kursidentifikator",
+   "notPseudonym": false,
+   "dataType": "Long",
+   "format": "RandomUInt48",
+   "variableRole": "Identifier",
+   "keyType": {
+    "name": "KURS",
+    "label": "Kurs",
+    "description": "Kurs er en utdanningsaktivitet."
+   },
+   "representedVariables": [
+    {
+     "description": "Identifikator for kurs i microdata",
+     "validPeriod": {
+      "start": 1704,
+      "stop": 19967
+     },
+     "valueDomain": {
+      "description": "Pseudonymisert kombinasjon av personnummer og NUDB kursnummer",
+      "unitOfMeasure": "N/A"
+     }
+    }
+   ]
+  }
+ ],
+ "attributeVariables": [
+  {
+   "name": "START",
+   "label": "Startdato",
+   "notPseudonym": true,
+   "dataType": "Instant",
+   "variableRole": "Start",
+   "representedVariables": [
+    {
+     "description": "Startdato/måletidspunktet for hendelsen",
+     "validPeriod": {
+      "start": 1704,
+      "stop": 19967
+     },
+     "valueDomain": {
+      "description": "Dato oppgitt i dager siden 1970-01-01",
+      "unitOfMeasure": "N/A"
+     }
+    }
+   ]
+  },
+  {
+   "name": "STOP",
+   "label": "Stoppdato",
+   "notPseudonym": true,
+   "dataType": "Instant",
+   "variableRole": "Stop",
+   "representedVariables": [
+    {
+     "description": "Stoppdato/måletidspunktet for hendelsen",
+     "validPeriod": {
+      "start": 1704,
+      "stop": 19967
+     },
+     "valueDomain": {
+      "description": "Dato oppgitt i dager siden 1970-01-01",
+      "unitOfMeasure": "N/A"
+     }
+    }
+   ]
+  }
+ ],
+ "globalTemporalCoverage": {
+  "start": -1096,
+  "stop": 20759
+ },
+ "updatedAt": 1760683763
+}

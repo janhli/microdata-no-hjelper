@@ -1,0 +1,1643 @@
+{
+ "name": "ARBSTATUS_PERS_STATUS8",
+ "temporality": "STATUS",
+ "languageCode": "no",
+ "sensitivityLevel": "PERSON_GENERAL",
+ "populationDescription": "Variabelen omfatter alle bosatte personer 15 år eller eldre og samsvarer med populasjonen i statistikken [Tilknytning til arbeid, utdanning og velferdsordninger](https://www.ssb.no/arbeid-og-lonn/sysselsetting/statistikk/tilknytning-til-arbeid-utdanning-og-velferdsordninger) (arbstatus). Se [Om statistikken](https://www.ssb.no/arbeid-og-lonn/sysselsetting/statistikk/tilknytning-til-arbeid-utdanning-og-velferdsordninger#om-statistikken) for mer informasjon. \n \n Det er noen færre personer med i populasjonen i microdata.no sammenlignet med i [statistikkbanken](https://www.ssb.no/statbank/list/arbstatus). Det skyldes manglende eller ugyldige fødselsnummer i datagrunnlaget som dermed ikke kan brukes til kobling mot andre variabler i microdata.no, og er derfor utelatt. For de fleste årgangene er det i underkant av 200 færre i microdata.no, mens det for 2022-årgangen er i overkant av 1 000 færre personer. \n \n System for persondata (SFP) er kilde for både variabelen og statistikken. Denne grunnlagsfilen inkluderer i tillegg til bosatte personer 15 år og eldre, også noen grupper ikke-bosatte. Les mer i [dokumentasjonen](https://www.ssb.no/arbeid-og-lonn/artikler-og-publikasjoner/_attachment/430138?_ts=17433b4b920) om datagrunnlag, prosessering og definisjoner. \n \n ## Brudd i tidsserien fra 2014 til 2015 \n \n Denne variabelen er ikke direkte sammenlignbar før og etter 2015. Det skyldes overgangen til ny datakilde for lønnstakere (a-ordningen) og ny metode for beregning av selvstendig næringsdrivende i sysselsettingsstatistikken. Endringer må derfor tolkes med forsiktighet. \n \n Bruddet fra 2014 til 2015 er nærmere beskrevet i artiklene [Endring i datagrunnlaget for registerbasert sysselsettingsstatistikk](https://www.ssb.no/arbeid-og-lonn/artikler-og-publikasjoner/endring-i-datagrunnlaget-for-registerbasert-sysselsettingsstatistikk) og [Om datagrunnlaget for registerbasert sysselsettingsstatistikk](https://www.ssb.no/data-til-forskning/utlan-av-data-til-forskere/variabellister/a-ordningen/om-datagrunnlaget-for-registerbasert-sysselsettingsstatistikk). Kvaliteten i a-ordningen regnes som bedre enn tidligere kilder (se delkapitlene «3.1.4 A-meldingen – kvalitet» og «3.1.5 Noen sentrale endringer med a-ordningen») i [Registerbasert lønns- og sysselsettingsstatistikk basert på a-ordningen](https://doc.ameld.ssb.no/Datakilder.html#a-meldingen-kvalitet).",
+ "subjectFields": [
+  "Arbeid og lønn",
+  "Sysselsetting",
+  "Tilknytning til arbeid, utdanning og velferdsordninger"
+ ],
+ "temporalCoverage": {
+  "start": 14199,
+  "stop": 20043
+ },
+ "measureVariable": {
+  "name": "ARBSTATUS_PERS_STATUS8",
+  "label": "Prioritert arbeidsstyrkestatus ",
+  "notPseudonym": true,
+  "dataType": "String",
+  "variableRole": "Measure",
+  "representedVariables": [
+   {
+    "description": "Variabelen består av en åttesifret tallstruktur som viser en persons forhold til arbeidsmarkedet, utdanning og offentlige ytelser per 4. kvartal. For referansetidspunkt/tverrsnittdato og brudd i løpet av tidsserien per datakilde, se de enkelte variablene med prefiks «ARBSTATUS_AKT» eller delen «Produksjon» i [Om statistikken](https://www.ssb.no/arbeid-og-lonn/sysselsetting/statistikk/tilknytning-til-arbeid-utdanning-og-velferdsordninger#om-statistikken).  \n \n På åttesiffernivå vil personer som er aktive i flere statuser samtidig, få synliggjort de to høyest prioriterte aktivitetene som en kombinasjonsstatus, for eksempel statusen «08164008 Lønnstaker deltid og ordinær utdanning» hvor de fire første sifrene angir den høyest prioriterte aktiviteten/ytelsen personen er aktiv i (her «0816 Lønnstaker deltid»), og de fire siste sifrene angir den nest høyest prioriterte aktiviteten/ytelsen personen er aktiv i (her «4008 Ordinær utdanning»). \n \n Variabelen beregnes ut fra fulltellingsvariablene med prefiks «ARBSTATUS_AKT» og er basert på en prioritering som tar hensyn til følgende kriterier: \n - Arbeidsstyrken blir prioritert høyest ved beregning av en status. På denne måten sikres konsistens med andre registerbaserte sysselsettingsstatistikker. Dette er også i tråd med den internasjonale arbeidsorganisasjonens (ILO) anbefalinger om arbeidsmarkedsstatistikk. \n - Blant personer utenfor arbeidsstyrken skal grad av nærhet til arbeidsstyrken synliggjøres, og midlertidige aktiviteter/ytelser skal synliggjøres foran mer varige aktiviteter/ytelser. \n - Plasseringen på én status skal bygge på god datakvalitet. \n \n Les mer om begrunnelsen for prioriteringsrekkefølgen i den eksterne [dokumentasjonen](https://www.ssb.no/arbeid-og-lonn/artikler-og-publikasjoner/_attachment/430138?_ts=17433b4b920) til System for persondata (SFP). Dataen blir ikke editert med hensyn til ulovlige eller ulogiske kombinasjoner utover den konsistensbehandlingen som gjøres ved plassering av personer som lønnstakere, selvstendig næringsdrivende, registrert helt arbeidsledige eller utenfor arbeidsstyrken (se de relevante fulltellingsvariablene). Ulogiske kombinasjoner kan også skyldes feil eller forsinkelser i registrene. \n \n På tosiffernivå i ARBSTATUS\\_PERS\\_STATUS8 synliggjøres én aktivitet/ytelse per person på det groveste aggregeringsnivået, for eksempel «08 Lønnstaker». \n \n På firesiffernivå synliggjøres fortsatt bare én aktivitet/ytelse per person, men mer detaljert beskrevet, for eksempel «0816 Lønnstaker deltid». Det er i hovedsak dette detaljnivået som brukes i statistikken «Tilknytning til arbeid, utdanning og velferdsordninger» for bosatte personer 15 år eller eldre. \n \n For mer informasjon om ulike nivåinndelinger av prioritert arbeidsstyrkestatus, se egen tabell under «Definisjoner» i [Om statistikken](https://www.ssb.no/arbeid-og-lonn/sysselsetting/statistikk/tilknytning-til-arbeid-utdanning-og-velferdsordninger#om-statistikken).",
+    "validPeriod": {
+     "start": 13879,
+     "stop": 14609
+    },
+    "valueDomain": {
+     "codeList": [
+      {
+       "category": "Kun lønnstaker heltid",
+       "code": "08080000"
+      },
+      {
+       "category": "Lønnstaker heltid og Ordinære tiltak (ikke nedsatt arbeidsevne)",
+       "code": "08083208"
+      },
+      {
+       "category": "Lønnstaker heltid og Individstønad/tiltakspenger",
+       "code": "08083216"
+      },
+      {
+       "category": "Lønnstaker heltid og Dagpenger",
+       "code": "08083224"
+      },
+      {
+       "category": "Lønnstaker heltid og Introduksjonsprogram",
+       "code": "08083240"
+      },
+      {
+       "category": "Lønnstaker heltid og Ordinær utdanning",
+       "code": "08084008"
+      },
+      {
+       "category": "Lønnstaker heltid og Sykepenger fra folketrygden",
+       "code": "08084808"
+      },
+      {
+       "category": "Lønnstaker heltid og Nedsatt arbeidsevne, på tiltak",
+       "code": "08084816"
+      },
+      {
+       "category": "Lønnstaker heltid og Attføringspenger",
+       "code": "08084824"
+      },
+      {
+       "category": "Lønnstaker heltid og Rehabiliteringspenger (annen attføring)",
+       "code": "08084832"
+      },
+      {
+       "category": "Lønnstaker heltid og Tidsbegrenset uførestønad",
+       "code": "08084840"
+      },
+      {
+       "category": "Lønnstaker heltid og Foreløpig uførestønad",
+       "code": "08084856"
+      },
+      {
+       "category": "Lønnstaker heltid og Varig uførepensjon/uføretrygd",
+       "code": "08084864"
+      },
+      {
+       "category": "Lønnstaker heltid og Etterlatte-/gjenlevendepensjon, inkl. barnepensjon",
+       "code": "08085608"
+      },
+      {
+       "category": "Lønnstaker heltid og Avtalefestet pensjon (AFP i offentlig/privat sektor)",
+       "code": "08085616"
+      },
+      {
+       "category": "Lønnstaker heltid og Supplerende stønad",
+       "code": "08085624"
+      },
+      {
+       "category": "Lønnstaker heltid og Alderspensjon",
+       "code": "08085632"
+      },
+      {
+       "category": "Lønnstaker heltid og Pensjoner fra andre enn Nav/Folketrygden",
+       "code": "08085640"
+      },
+      {
+       "category": "Lønnstaker heltid og Kontantstøtte",
+       "code": "08086408"
+      },
+      {
+       "category": "Lønnstaker heltid og Overgangsstønad",
+       "code": "08086416"
+      },
+      {
+       "category": "Lønnstaker heltid og Sosialhjelp",
+       "code": "08086424"
+      },
+      {
+       "category": "Lønnstaker heltid og Nedsatt arbeidsevne, ikke på tiltak",
+       "code": "08086432"
+      },
+      {
+       "category": "Kun lønnstaker deltid",
+       "code": "08160000"
+      },
+      {
+       "category": "Lønnstaker deltid og Ordinære tiltak (ikke nedsatt arbeidsevne)",
+       "code": "08163208"
+      },
+      {
+       "category": "Lønnstaker deltid og Individstønad/tiltakspenger",
+       "code": "08163216"
+      },
+      {
+       "category": "Lønnstaker deltid og Dagpenger",
+       "code": "08163224"
+      },
+      {
+       "category": "Lønnstaker deltid og Introduksjonsprogram",
+       "code": "08163240"
+      },
+      {
+       "category": "Lønnstaker deltid og Ordinær utdanning",
+       "code": "08164008"
+      },
+      {
+       "category": "Lønnstaker deltid og Sykepenger fra folketrygden",
+       "code": "08164808"
+      },
+      {
+       "category": "Lønnstaker deltid og Nedsatt arbeidsevne, på tiltak",
+       "code": "08164816"
+      },
+      {
+       "category": "Lønnstaker deltid og Attføringspenger",
+       "code": "08164824"
+      },
+      {
+       "category": "Lønnstaker deltid og Rehabiliteringspenger (annen attføring)",
+       "code": "08164832"
+      },
+      {
+       "category": "Lønnstaker deltid og Tidsbegrenset uførestønad",
+       "code": "08164840"
+      },
+      {
+       "category": "Lønnstaker deltid og Foreløpig uførestønad",
+       "code": "08164856"
+      },
+      {
+       "category": "Lønnstaker deltid og Varig uførepensjon/uføretrygd",
+       "code": "08164864"
+      },
+      {
+       "category": "Lønnstaker deltid og Etterlatte-/gjenlevendepensjon, inkl. barnepensjon",
+       "code": "08165608"
+      },
+      {
+       "category": "Lønnstaker deltid og Avtalefestet pensjon (AFP i offentlig/privat sektor)",
+       "code": "08165616"
+      },
+      {
+       "category": "Lønnstaker deltid og Supplerende stønad",
+       "code": "08165624"
+      },
+      {
+       "category": "Lønnstaker deltid og Alderspensjon",
+       "code": "08165632"
+      },
+      {
+       "category": "Lønnstaker deltid og Pensjoner fra andre enn Nav/Folketrygden",
+       "code": "08165640"
+      },
+      {
+       "category": "Lønnstaker deltid og Kontantstøtte",
+       "code": "08166408"
+      },
+      {
+       "category": "Lønnstaker deltid og Overgangsstønad",
+       "code": "08166416"
+      },
+      {
+       "category": "Lønnstaker deltid og Sosialhjelp",
+       "code": "08166424"
+      },
+      {
+       "category": "Lønnstaker deltid og Nedsatt arbeidsevne, ikke på tiltak",
+       "code": "08166432"
+      },
+      {
+       "category": "Kun lønnstaker basert kun på LTO",
+       "code": "08240000"
+      },
+      {
+       "category": "Lønnstaker basert kun på LTO og Ordinære tiltak (ikke nedsatt arbeidsevne)",
+       "code": "08243208"
+      },
+      {
+       "category": "Lønnstaker basert kun på LTO og Individstønad/tiltakspenger",
+       "code": "08243216"
+      },
+      {
+       "category": "Lønnstaker basert kun på LTO og Dagpenger",
+       "code": "08243224"
+      },
+      {
+       "category": "Lønnstaker basert kun på LTO og Introduksjonsprogram",
+       "code": "08243240"
+      },
+      {
+       "category": "Lønnstaker basert kun på LTO og Ordinær utdanning",
+       "code": "08244008"
+      },
+      {
+       "category": "Lønnstaker basert kun på LTO og Sykepenger fra folketrygden",
+       "code": "08244808"
+      },
+      {
+       "category": "Lønnstaker basert kun på LTO og Nedsatt arbeidsevne, på tiltak",
+       "code": "08244816"
+      },
+      {
+       "category": "Lønnstaker basert kun på LTO og Attføringspenger",
+       "code": "08244824"
+      },
+      {
+       "category": "Lønnstaker basert kun på LTO og Rehabiliteringspenger (annen attføring)",
+       "code": "08244832"
+      },
+      {
+       "category": "Lønnstaker basert kun på LTO og Tidsbegrenset uførestønad",
+       "code": "08244840"
+      },
+      {
+       "category": "Lønnstaker basert kun på LTO og Foreløpig uførestønad",
+       "code": "08244856"
+      },
+      {
+       "category": "Lønnstaker basert kun på LTO og Varig uførepensjon/uføretrygd",
+       "code": "08244864"
+      },
+      {
+       "category": "Lønnstaker basert kun på LTO og Etterlatte-/gjenlevendepensjon, inkl. barnepensjon",
+       "code": "08245608"
+      },
+      {
+       "category": "Lønnstaker basert kun på LTO og Avtalefestet pensjon (AFP i offentlig/privat sektor)",
+       "code": "08245616"
+      },
+      {
+       "category": "Lønnstaker basert kun på LTO og Supplerende stønad",
+       "code": "08245624"
+      },
+      {
+       "category": "Lønnstaker basert kun på LTO og Alderspensjon",
+       "code": "08245632"
+      },
+      {
+       "category": "Lønnstaker basert kun på LTO og Pensjoner fra andre enn Nav/Folketrygden",
+       "code": "08245640"
+      },
+      {
+       "category": "Lønnstaker basert kun på LTO og Kontantstøtte",
+       "code": "08246408"
+      },
+      {
+       "category": "Lønnstaker basert kun på LTO og Overgangsstønad",
+       "code": "08246416"
+      },
+      {
+       "category": "Lønnstaker basert kun på LTO og Sosialhjelp",
+       "code": "08246424"
+      },
+      {
+       "category": "Lønnstaker basert kun på LTO og Nedsatt arbeidsevne, ikke på tiltak",
+       "code": "08246432"
+      },
+      {
+       "category": "Kun selvstendig næringsdrivende",
+       "code": "16080000"
+      },
+      {
+       "category": "Selvstendig næringsdrivende og Ordinære tiltak (ikke nedsatt arbeidsevne)",
+       "code": "16083208"
+      },
+      {
+       "category": "Selvstendig næringsdrivende og Individstønad/tiltakspenger",
+       "code": "16083216"
+      },
+      {
+       "category": "Selvstendig næringsdrivende og Dagpenger",
+       "code": "16083224"
+      },
+      {
+       "category": "Selvstendig næringsdrivende og Introduksjonsprogram",
+       "code": "16083240"
+      },
+      {
+       "category": "Selvstendig næringsdrivende og Ordinær utdanning",
+       "code": "16084008"
+      },
+      {
+       "category": "Selvstendig næringsdrivende og Sykepenger fra folketrygden",
+       "code": "16084808"
+      },
+      {
+       "category": "Selvstendig næringsdrivende og Nedsatt arbeidsevne, på tiltak",
+       "code": "16084816"
+      },
+      {
+       "category": "Selvstendig næringsdrivende og Attføringspenger",
+       "code": "16084824"
+      },
+      {
+       "category": "Selvstendig næringsdrivende og Rehabiliteringspenger (annen attføring)",
+       "code": "16084832"
+      },
+      {
+       "category": "Selvstendig næringsdrivende og Tidsbegrenset uførestønad",
+       "code": "16084840"
+      },
+      {
+       "category": "Selvstendig næringsdrivende og Foreløpig uførestønad",
+       "code": "16084856"
+      },
+      {
+       "category": "Selvstendig næringsdrivende og Varig uførepensjon/uføretrygd",
+       "code": "16084864"
+      },
+      {
+       "category": "Selvstendig næringsdrivende og Etterlatte-/gjenlevendepensjon, inkl. barnepensjon",
+       "code": "16085608"
+      },
+      {
+       "category": "Selvstendig næringsdrivende og Avtalefestet pensjon (AFP i offentlig/privat sektor)",
+       "code": "16085616"
+      },
+      {
+       "category": "Selvstendig næringsdrivende og Supplerende stønad",
+       "code": "16085624"
+      },
+      {
+       "category": "Selvstendig næringsdrivende og Alderspensjon",
+       "code": "16085632"
+      },
+      {
+       "category": "Selvstendig næringsdrivende og Pensjoner fra andre enn Nav/Folketrygden",
+       "code": "16085640"
+      },
+      {
+       "category": "Selvstendig næringsdrivende og Kontantstøtte",
+       "code": "16086408"
+      },
+      {
+       "category": "Selvstendig næringsdrivende og Overgangsstønad",
+       "code": "16086416"
+      },
+      {
+       "category": "Selvstendig næringsdrivende og Sosialhjelp",
+       "code": "16086424"
+      },
+      {
+       "category": "Selvstendig næringsdrivende og Nedsatt arbeidsevne, ikke på tiltak",
+       "code": "16086432"
+      },
+      {
+       "category": "Kun registrert helt arbeidsledig",
+       "code": "24080000"
+      },
+      {
+       "category": "Registrert helt arbeidsledig og Individstønad/tiltakspenger",
+       "code": "24083216"
+      },
+      {
+       "category": "Registrert helt arbeidsledig og Dagpenger",
+       "code": "24083224"
+      },
+      {
+       "category": "Registrert helt arbeidsledig og Introduksjonsprogram",
+       "code": "24083240"
+      },
+      {
+       "category": "Registrert helt arbeidsledig og Ordinær utdanning",
+       "code": "24084008"
+      },
+      {
+       "category": "Registrert helt arbeidsledig og Sykepenger fra folketrygden",
+       "code": "24084808"
+      },
+      {
+       "category": "Registrert helt arbeidsledig og Attføringspenger",
+       "code": "24084824"
+      },
+      {
+       "category": "Registrert helt arbeidsledig og Rehabiliteringspenger (annen attføring)",
+       "code": "24084832"
+      },
+      {
+       "category": "Registrert helt arbeidsledig og Tidsbegrenset uførestønad",
+       "code": "24084840"
+      },
+      {
+       "category": "Registrert helt arbeidsledig og Foreløpig uførestønad",
+       "code": "24084856"
+      },
+      {
+       "category": "Registrert helt arbeidsledig og Varig uførepensjon/uføretrygd",
+       "code": "24084864"
+      },
+      {
+       "category": "Registrert helt arbeidsledig og Etterlatte-/gjenlevendepensjon, inkl. barnepensjon",
+       "code": "24085608"
+      },
+      {
+       "category": "Registrert helt arbeidsledig og Avtalefestet pensjon (AFP i offentlig/privat sektor)",
+       "code": "24085616"
+      },
+      {
+       "category": "Registrert helt arbeidsledig og Supplerende stønad",
+       "code": "24085624"
+      },
+      {
+       "category": "Registrert helt arbeidsledig og Alderspensjon",
+       "code": "24085632"
+      },
+      {
+       "category": "Registrert helt arbeidsledig og Pensjoner fra andre enn Nav/Folketrygden",
+       "code": "24085640"
+      },
+      {
+       "category": "Registrert helt arbeidsledig og Kontantstøtte",
+       "code": "24086408"
+      },
+      {
+       "category": "Registrert helt arbeidsledig og Overgangsstønad",
+       "code": "24086416"
+      },
+      {
+       "category": "Registrert helt arbeidsledig og Sosialhjelp",
+       "code": "24086424"
+      },
+      {
+       "category": "Kun ordinære tiltak (ikke nedsatt arbeidsevne)",
+       "code": "32080000"
+      },
+      {
+       "category": "Ordinære tiltak (ikke nedsatt arbeidsevne) og Individstønad/tiltakspenger",
+       "code": "32083216"
+      },
+      {
+       "category": "Ordinære tiltak (ikke nedsatt arbeidsevne) og Dagpenger",
+       "code": "32083224"
+      },
+      {
+       "category": "Ordinære tiltak (ikke nedsatt arbeidsevne) og Introduksjonsprogram",
+       "code": "32083240"
+      },
+      {
+       "category": "Ordinære tiltak (ikke nedsatt arbeidsevne) og Ordinær utdanning",
+       "code": "32084008"
+      },
+      {
+       "category": "Ordinære tiltak (ikke nedsatt arbeidsevne) og Sykepenger fra folketrygden",
+       "code": "32084808"
+      },
+      {
+       "category": "Ordinære tiltak (ikke nedsatt arbeidsevne) og Attføringspenger",
+       "code": "32084824"
+      },
+      {
+       "category": "Ordinære tiltak (ikke nedsatt arbeidsevne) og Rehabiliteringspenger (annen attføring)",
+       "code": "32084832"
+      },
+      {
+       "category": "Ordinære tiltak (ikke nedsatt arbeidsevne) og Tidsbegrenset uførestønad",
+       "code": "32084840"
+      },
+      {
+       "category": "Ordinære tiltak (ikke nedsatt arbeidsevne) og Varig uførepensjon/uføretrygd",
+       "code": "32084864"
+      },
+      {
+       "category": "Ordinære tiltak (ikke nedsatt arbeidsevne) og Etterlatte-/gjenlevendepensjon, inkl. barnepensjon",
+       "code": "32085608"
+      },
+      {
+       "category": "Ordinære tiltak (ikke nedsatt arbeidsevne) og Avtalefestet pensjon (AFP i offentlig/privat sektor)",
+       "code": "32085616"
+      },
+      {
+       "category": "Ordinære tiltak (ikke nedsatt arbeidsevne) og Alderspensjon",
+       "code": "32085632"
+      },
+      {
+       "category": "Ordinære tiltak (ikke nedsatt arbeidsevne) og Pensjoner fra andre enn Nav/Folketrygden",
+       "code": "32085640"
+      },
+      {
+       "category": "Ordinære tiltak (ikke nedsatt arbeidsevne) og Kontantstøtte",
+       "code": "32086408"
+      },
+      {
+       "category": "Ordinære tiltak (ikke nedsatt arbeidsevne) og Overgangsstønad",
+       "code": "32086416"
+      },
+      {
+       "category": "Ordinære tiltak (ikke nedsatt arbeidsevne) og Sosialhjelp",
+       "code": "32086424"
+      },
+      {
+       "category": "Kun individstønad/tiltakspenger",
+       "code": "32160000"
+      },
+      {
+       "category": "Individstønad/tiltakspenger og Introduksjonsprogram",
+       "code": "32163240"
+      },
+      {
+       "category": "Individstønad/tiltakspenger og Ordinær utdanning",
+       "code": "32164008"
+      },
+      {
+       "category": "Individstønad/tiltakspenger og Sykepenger fra folketrygden",
+       "code": "32164808"
+      },
+      {
+       "category": "Individstønad/tiltakspenger og Nedsatt arbeidsevne, på tiltak",
+       "code": "32164816"
+      },
+      {
+       "category": "Individstønad/tiltakspenger og Varig uførepensjon/uføretrygd",
+       "code": "32164864"
+      },
+      {
+       "category": "Individstønad/tiltakspenger og Avtalefestet pensjon (AFP i offentlig/privat sektor)",
+       "code": "32165616"
+      },
+      {
+       "category": "Individstønad/tiltakspenger og Pensjoner fra andre enn Nav/Folketrygden",
+       "code": "32165640"
+      },
+      {
+       "category": "Individstønad/tiltakspenger og Kontantstøtte",
+       "code": "32166408"
+      },
+      {
+       "category": "Individstønad/tiltakspenger og Overgangsstønad",
+       "code": "32166416"
+      },
+      {
+       "category": "Individstønad/tiltakspenger og Sosialhjelp",
+       "code": "32166424"
+      },
+      {
+       "category": "Individstønad/tiltakspenger og Nedsatt arbeidsevne, ikke på tiltak",
+       "code": "32166432"
+      },
+      {
+       "category": "Kun dagpenger",
+       "code": "32240000"
+      },
+      {
+       "category": "Dagpenger og Introduksjonsprogram",
+       "code": "32243240"
+      },
+      {
+       "category": "Dagpenger og Ordinær utdanning",
+       "code": "32244008"
+      },
+      {
+       "category": "Dagpenger og Sykepenger fra folketrygden",
+       "code": "32244808"
+      },
+      {
+       "category": "Dagpenger og Nedsatt arbeidsevne, på tiltak",
+       "code": "32244816"
+      },
+      {
+       "category": "Dagpenger og Rehabiliteringspenger (annen attføring)",
+       "code": "32244832"
+      },
+      {
+       "category": "Dagpenger og Tidsbegrenset uførestønad",
+       "code": "32244840"
+      },
+      {
+       "category": "Dagpenger og Varig uførepensjon/uføretrygd",
+       "code": "32244864"
+      },
+      {
+       "category": "Dagpenger og Etterlatte-/gjenlevendepensjon, inkl. barnepensjon",
+       "code": "32245608"
+      },
+      {
+       "category": "Dagpenger og Avtalefestet pensjon (AFP i offentlig/privat sektor)",
+       "code": "32245616"
+      },
+      {
+       "category": "Dagpenger og Alderspensjon",
+       "code": "32245632"
+      },
+      {
+       "category": "Dagpenger og Pensjoner fra andre enn Nav/Folketrygden",
+       "code": "32245640"
+      },
+      {
+       "category": "Dagpenger og Kontantstøtte",
+       "code": "32246408"
+      },
+      {
+       "category": "Dagpenger og Overgangsstønad",
+       "code": "32246416"
+      },
+      {
+       "category": "Dagpenger og Sosialhjelp",
+       "code": "32246424"
+      },
+      {
+       "category": "Dagpenger og Nedsatt arbeidsevne, ikke på tiltak",
+       "code": "32246432"
+      },
+      {
+       "category": "Kun introduksjonsprogram",
+       "code": "32400000"
+      },
+      {
+       "category": "Introduksjonsprogram og Ordinær utdanning",
+       "code": "32404008"
+      },
+      {
+       "category": "Introduksjonsprogram og Sykepenger fra folketrygden",
+       "code": "32404808"
+      },
+      {
+       "category": "Introduksjonsprogram og Nedsatt arbeidsevne, på tiltak",
+       "code": "32404816"
+      },
+      {
+       "category": "Introduksjonsprogram og Attføringspenger",
+       "code": "32404824"
+      },
+      {
+       "category": "Introduksjonsprogram og Rehabiliteringspenger (annen attføring)",
+       "code": "32404832"
+      },
+      {
+       "category": "Introduksjonsprogram og Varig uførepensjon/uføretrygd",
+       "code": "32404864"
+      },
+      {
+       "category": "Introduksjonsprogram og Etterlatte-/gjenlevendepensjon, inkl. barnepensjon",
+       "code": "32405608"
+      },
+      {
+       "category": "Introduksjonsprogram og Supplerende stønad",
+       "code": "32405624"
+      },
+      {
+       "category": "Introduksjonsprogram og Alderspensjon",
+       "code": "32405632"
+      },
+      {
+       "category": "Introduksjonsprogram og Pensjoner fra andre enn Nav/Folketrygden",
+       "code": "32405640"
+      },
+      {
+       "category": "Introduksjonsprogram og Kontantstøtte",
+       "code": "32406408"
+      },
+      {
+       "category": "Introduksjonsprogram og Overgangsstønad",
+       "code": "32406416"
+      },
+      {
+       "category": "Introduksjonsprogram og Sosialhjelp",
+       "code": "32406424"
+      },
+      {
+       "category": "Introduksjonsprogram og Nedsatt arbeidsevne, ikke på tiltak",
+       "code": "32406432"
+      },
+      {
+       "category": "Kun ordinær utdanning",
+       "code": "40080000"
+      },
+      {
+       "category": "Ordinær utdanning og Sykepenger fra folketrygden",
+       "code": "40084808"
+      },
+      {
+       "category": "Ordinær utdanning og Nedsatt arbeidsevne, på tiltak",
+       "code": "40084816"
+      },
+      {
+       "category": "Ordinær utdanning og Attføringspenger",
+       "code": "40084824"
+      },
+      {
+       "category": "Ordinær utdanning og Rehabiliteringspenger (annen attføring)",
+       "code": "40084832"
+      },
+      {
+       "category": "Ordinær utdanning og Tidsbegrenset uførestønad",
+       "code": "40084840"
+      },
+      {
+       "category": "Ordinær utdanning og Foreløpig uførestønad",
+       "code": "40084856"
+      },
+      {
+       "category": "Ordinær utdanning og Varig uførepensjon/uføretrygd",
+       "code": "40084864"
+      },
+      {
+       "category": "Ordinær utdanning og Etterlatte-/gjenlevendepensjon, inkl. barnepensjon",
+       "code": "40085608"
+      },
+      {
+       "category": "Ordinær utdanning og Avtalefestet pensjon (AFP i offentlig/privat sektor)",
+       "code": "40085616"
+      },
+      {
+       "category": "Ordinær utdanning og Supplerende stønad",
+       "code": "40085624"
+      },
+      {
+       "category": "Ordinær utdanning og Alderspensjon",
+       "code": "40085632"
+      },
+      {
+       "category": "Ordinær utdanning og Pensjoner fra andre enn Nav/Folketrygden",
+       "code": "40085640"
+      },
+      {
+       "category": "Ordinær utdanning og Kontantstøtte",
+       "code": "40086408"
+      },
+      {
+       "category": "Ordinær utdanning og Overgangsstønad",
+       "code": "40086416"
+      },
+      {
+       "category": "Ordinær utdanning og Sosialhjelp",
+       "code": "40086424"
+      },
+      {
+       "category": "Ordinær utdanning og Nedsatt arbeidsevne, ikke på tiltak",
+       "code": "40086432"
+      },
+      {
+       "category": "Kun sykepenger fra folketrygden",
+       "code": "48080000"
+      },
+      {
+       "category": "Sykepenger fra folketrygden og Nedsatt arbeidsevne, på tiltak",
+       "code": "48084816"
+      },
+      {
+       "category": "Sykepenger fra folketrygden og Attføringspenger",
+       "code": "48084824"
+      },
+      {
+       "category": "Sykepenger fra folketrygden og Rehabiliteringspenger (annen attføring)",
+       "code": "48084832"
+      },
+      {
+       "category": "Sykepenger fra folketrygden og Tidsbegrenset uførestønad",
+       "code": "48084840"
+      },
+      {
+       "category": "Sykepenger fra folketrygden og Varig uførepensjon/uføretrygd",
+       "code": "48084864"
+      },
+      {
+       "category": "Sykepenger fra folketrygden og Etterlatte-/gjenlevendepensjon, inkl. barnepensjon",
+       "code": "48085608"
+      },
+      {
+       "category": "Sykepenger fra folketrygden og Avtalefestet pensjon (AFP i offentlig/privat sektor)",
+       "code": "48085616"
+      },
+      {
+       "category": "Sykepenger fra folketrygden og Alderspensjon",
+       "code": "48085632"
+      },
+      {
+       "category": "Sykepenger fra folketrygden og Pensjoner fra andre enn Nav/Folketrygden",
+       "code": "48085640"
+      },
+      {
+       "category": "Sykepenger fra folketrygden og Kontantstøtte",
+       "code": "48086408"
+      },
+      {
+       "category": "Sykepenger fra folketrygden og Overgangsstønad",
+       "code": "48086416"
+      },
+      {
+       "category": "Sykepenger fra folketrygden og Sosialhjelp",
+       "code": "48086424"
+      },
+      {
+       "category": "Sykepenger fra folketrygden og Nedsatt arbeidsevne, ikke på tiltak",
+       "code": "48086432"
+      },
+      {
+       "category": "Kun nedsatt arbeidsevne, på tiltak",
+       "code": "48160000"
+      },
+      {
+       "category": "Nedsatt arbeidsevne, på tiltak og Attføringspenger",
+       "code": "48164824"
+      },
+      {
+       "category": "Nedsatt arbeidsevne, på tiltak og Rehabiliteringspenger (annen attføring)",
+       "code": "48164832"
+      },
+      {
+       "category": "Nedsatt arbeidsevne, på tiltak og Tidsbegrenset uførestønad",
+       "code": "48164840"
+      },
+      {
+       "category": "Nedsatt arbeidsevne, på tiltak og Foreløpig uførestønad",
+       "code": "48164856"
+      },
+      {
+       "category": "Nedsatt arbeidsevne, på tiltak og Varig uførepensjon/uføretrygd",
+       "code": "48164864"
+      },
+      {
+       "category": "Nedsatt arbeidsevne, på tiltak og Etterlatte-/gjenlevendepensjon, inkl. barnepensjon",
+       "code": "48165608"
+      },
+      {
+       "category": "Nedsatt arbeidsevne, på tiltak og Avtalefestet pensjon (AFP i offentlig/privat sektor)",
+       "code": "48165616"
+      },
+      {
+       "category": "Nedsatt arbeidsevne, på tiltak og Alderspensjon",
+       "code": "48165632"
+      },
+      {
+       "category": "Nedsatt arbeidsevne, på tiltak og Pensjoner fra andre enn Nav/Folketrygden",
+       "code": "48165640"
+      },
+      {
+       "category": "Nedsatt arbeidsevne, på tiltak og Kontantstøtte",
+       "code": "48166408"
+      },
+      {
+       "category": "Nedsatt arbeidsevne, på tiltak og Overgangsstønad",
+       "code": "48166416"
+      },
+      {
+       "category": "Nedsatt arbeidsevne, på tiltak og Sosialhjelp",
+       "code": "48166424"
+      },
+      {
+       "category": "Kun attføringspenger",
+       "code": "48240000"
+      },
+      {
+       "category": "Attføringspenger og Rehabiliteringspenger (annen attføring)",
+       "code": "48244832"
+      },
+      {
+       "category": "Attføringspenger og Tidsbegrenset uførestønad",
+       "code": "48244840"
+      },
+      {
+       "category": "Attføringspenger og Foreløpig uførestønad",
+       "code": "48244856"
+      },
+      {
+       "category": "Attføringspenger og Varig uførepensjon/uføretrygd",
+       "code": "48244864"
+      },
+      {
+       "category": "Attføringspenger og Etterlatte-/gjenlevendepensjon, inkl. barnepensjon",
+       "code": "48245608"
+      },
+      {
+       "category": "Attføringspenger og Avtalefestet pensjon (AFP i offentlig/privat sektor)",
+       "code": "48245616"
+      },
+      {
+       "category": "Attføringspenger og Pensjoner fra andre enn Nav/Folketrygden",
+       "code": "48245640"
+      },
+      {
+       "category": "Attføringspenger og Kontantstøtte",
+       "code": "48246408"
+      },
+      {
+       "category": "Attføringspenger og Overgangsstønad",
+       "code": "48246416"
+      },
+      {
+       "category": "Attføringspenger og Sosialhjelp",
+       "code": "48246424"
+      },
+      {
+       "category": "Attføringspenger og Nedsatt arbeidsevne, ikke på tiltak",
+       "code": "48246432"
+      },
+      {
+       "category": "Kun rehabiliteringspenger (annen attføring)",
+       "code": "48320000"
+      },
+      {
+       "category": "Rehabiliteringspenger (annen attføring) og Tidsbegrenset uførestønad",
+       "code": "48324840"
+      },
+      {
+       "category": "Rehabiliteringspenger (annen attføring) og Foreløpig uførestønad",
+       "code": "48324856"
+      },
+      {
+       "category": "Rehabiliteringspenger (annen attføring) og Varig uførepensjon/uføretrygd",
+       "code": "48324864"
+      },
+      {
+       "category": "Rehabiliteringspenger (annen attføring) og Etterlatte-/gjenlevendepensjon, inkl. barnepensjon",
+       "code": "48325608"
+      },
+      {
+       "category": "Rehabiliteringspenger (annen attføring) og Avtalefestet pensjon (AFP i offentlig/privat sektor)",
+       "code": "48325616"
+      },
+      {
+       "category": "Rehabiliteringspenger (annen attføring) og Pensjoner fra andre enn Nav/Folketrygden",
+       "code": "48325640"
+      },
+      {
+       "category": "Rehabiliteringspenger (annen attføring) og Kontantstøtte",
+       "code": "48326408"
+      },
+      {
+       "category": "Rehabiliteringspenger (annen attføring) og Overgangsstønad",
+       "code": "48326416"
+      },
+      {
+       "category": "Rehabiliteringspenger (annen attføring) og Sosialhjelp",
+       "code": "48326424"
+      },
+      {
+       "category": "Rehabiliteringspenger (annen attføring) og Nedsatt arbeidsevne, ikke på tiltak",
+       "code": "48326432"
+      },
+      {
+       "category": "Kun tidsbegrenset uførestønad",
+       "code": "48400000"
+      },
+      {
+       "category": "Tidsbegrenset uførestønad og Foreløpig uførestønad",
+       "code": "48404856"
+      },
+      {
+       "category": "Tidsbegrenset uførestønad og Varig uførepensjon/uføretrygd",
+       "code": "48404864"
+      },
+      {
+       "category": "Tidsbegrenset uførestønad og Etterlatte-/gjenlevendepensjon, inkl. barnepensjon",
+       "code": "48405608"
+      },
+      {
+       "category": "Tidsbegrenset uførestønad og Avtalefestet pensjon (AFP i offentlig/privat sektor)",
+       "code": "48405616"
+      },
+      {
+       "category": "Tidsbegrenset uførestønad og Pensjoner fra andre enn Nav/Folketrygden",
+       "code": "48405640"
+      },
+      {
+       "category": "Tidsbegrenset uførestønad og Kontantstøtte",
+       "code": "48406408"
+      },
+      {
+       "category": "Tidsbegrenset uførestønad og Overgangsstønad",
+       "code": "48406416"
+      },
+      {
+       "category": "Tidsbegrenset uførestønad og Sosialhjelp",
+       "code": "48406424"
+      },
+      {
+       "category": "Tidsbegrenset uførestønad og Nedsatt arbeidsevne, ikke på tiltak",
+       "code": "48406432"
+      },
+      {
+       "category": "Arbeidsavklaringspenger (AAP)  og Foreløpig uførestønad",
+       "code": "48484856"
+      },
+      {
+       "category": "Kun foreløpig uførestønad",
+       "code": "48560000"
+      },
+      {
+       "category": "Foreløpig uførestønad og Varig uførepensjon/uføretrygd",
+       "code": "48564864"
+      },
+      {
+       "category": "Foreløpig uførestønad og Pensjoner fra andre enn Nav/Folketrygden",
+       "code": "48565640"
+      },
+      {
+       "category": "Foreløpig uførestønad og Sosialhjelp",
+       "code": "48566424"
+      },
+      {
+       "category": "Foreløpig uførestønad og Nedsatt arbeidsevne, ikke på tiltak",
+       "code": "48566432"
+      },
+      {
+       "category": "Kun varig uførepensjon/uføretrygd",
+       "code": "48640000"
+      },
+      {
+       "category": "Varig uførepensjon/uføretrygd og Etterlatte-/gjenlevendepensjon, inkl. barnepensjon",
+       "code": "48645608"
+      },
+      {
+       "category": "Varig uførepensjon/uføretrygd og Avtalefestet pensjon (AFP i offentlig/privat sektor)",
+       "code": "48645616"
+      },
+      {
+       "category": "Varig uførepensjon/uføretrygd og Supplerende stønad",
+       "code": "48645624"
+      },
+      {
+       "category": "Varig uførepensjon/uføretrygd og Alderspensjon",
+       "code": "48645632"
+      },
+      {
+       "category": "Varig uførepensjon/uføretrygd og Pensjoner fra andre enn Nav/Folketrygden",
+       "code": "48645640"
+      },
+      {
+       "category": "Varig uførepensjon/uføretrygd og Kontantstøtte",
+       "code": "48646408"
+      },
+      {
+       "category": "Varig uførepensjon/uføretrygd og Overgangsstønad",
+       "code": "48646416"
+      },
+      {
+       "category": "Varig uførepensjon/uføretrygd og Sosialhjelp",
+       "code": "48646424"
+      },
+      {
+       "category": "Varig uførepensjon/uføretrygd og Nedsatt arbeidsevne, ikke på tiltak",
+       "code": "48646432"
+      },
+      {
+       "category": "Kun etterlatte-/gjenlevendepensjon, inkl. barnepensjon",
+       "code": "56080000"
+      },
+      {
+       "category": "Etterlatte-/gjenlevendepensjon, inkl. barnepensjon og Avtalefestet pensjon (AFP i offentlig/privat sektor)",
+       "code": "56085616"
+      },
+      {
+       "category": "Etterlatte-/gjenlevendepensjon, inkl. barnepensjon og Supplerende stønad",
+       "code": "56085624"
+      },
+      {
+       "category": "Etterlatte-/gjenlevendepensjon, inkl. barnepensjon og Alderspensjon",
+       "code": "56085632"
+      },
+      {
+       "category": "Etterlatte-/gjenlevendepensjon, inkl. barnepensjon og Pensjoner fra andre enn Nav/Folketrygden",
+       "code": "56085640"
+      },
+      {
+       "category": "Etterlatte-/gjenlevendepensjon, inkl. barnepensjon og Kontantstøtte",
+       "code": "56086408"
+      },
+      {
+       "category": "Etterlatte-/gjenlevendepensjon, inkl. barnepensjon og Overgangsstønad",
+       "code": "56086416"
+      },
+      {
+       "category": "Etterlatte-/gjenlevendepensjon, inkl. barnepensjon og Sosialhjelp",
+       "code": "56086424"
+      },
+      {
+       "category": "Etterlatte-/gjenlevendepensjon, inkl. barnepensjon og Nedsatt arbeidsevne, ikke på tiltak",
+       "code": "56086432"
+      },
+      {
+       "category": "Kun avtalefestet pensjon (AFP i offentlig/privat sektor)",
+       "code": "56160000"
+      },
+      {
+       "category": "Avtalefestet pensjon (AFP i offentlig/privat sektor) og Supplerende stønad",
+       "code": "56165624"
+      },
+      {
+       "category": "Avtalefestet pensjon (AFP i offentlig/privat sektor) og Alderspensjon",
+       "code": "56165632"
+      },
+      {
+       "category": "Avtalefestet pensjon (AFP i offentlig/privat sektor) og Pensjoner fra andre enn Nav/Folketrygden",
+       "code": "56165640"
+      },
+      {
+       "category": "Avtalefestet pensjon (AFP i offentlig/privat sektor) og Kontantstøtte",
+       "code": "56166408"
+      },
+      {
+       "category": "Avtalefestet pensjon (AFP i offentlig/privat sektor) og Sosialhjelp",
+       "code": "56166424"
+      },
+      {
+       "category": "Avtalefestet pensjon (AFP i offentlig/privat sektor) og Nedsatt arbeidsevne, ikke på tiltak",
+       "code": "56166432"
+      },
+      {
+       "category": "Kun supplerende stønad",
+       "code": "56240000"
+      },
+      {
+       "category": "Supplerende stønad og Alderspensjon",
+       "code": "56245632"
+      },
+      {
+       "category": "Supplerende stønad og Pensjoner fra andre enn Nav/Folketrygden",
+       "code": "56245640"
+      },
+      {
+       "category": "Supplerende stønad og Sosialhjelp",
+       "code": "56246424"
+      },
+      {
+       "category": "Kun alderspensjon",
+       "code": "56320000"
+      },
+      {
+       "category": "Alderspensjon og Pensjoner fra andre enn Nav/Folketrygden",
+       "code": "56325640"
+      },
+      {
+       "category": "Alderspensjon og Kontantstøtte",
+       "code": "56326408"
+      },
+      {
+       "category": "Alderspensjon og Overgangsstønad",
+       "code": "56326416"
+      },
+      {
+       "category": "Alderspensjon og Sosialhjelp",
+       "code": "56326424"
+      },
+      {
+       "category": "Alderspensjon og Nedsatt arbeidsevne, ikke på tiltak",
+       "code": "56326432"
+      },
+      {
+       "category": "Kun pensjoner fra andre enn Nav/Folketrygden",
+       "code": "56400000"
+      },
+      {
+       "category": "Pensjoner fra andre enn Nav/Folketrygden og Kontantstøtte",
+       "code": "56406408"
+      },
+      {
+       "category": "Pensjoner fra andre enn Nav/Folketrygden og Overgangsstønad",
+       "code": "56406416"
+      },
+      {
+       "category": "Pensjoner fra andre enn Nav/Folketrygden og Sosialhjelp",
+       "code": "56406424"
+      },
+      {
+       "category": "Pensjoner fra andre enn Nav/Folketrygden og Nedsatt arbeidsevne, ikke på tiltak",
+       "code": "56406432"
+      },
+      {
+       "category": "Kun kontantstøtte",
+       "code": "64080000"
+      },
+      {
+       "category": "Kontantstøtte og Overgangsstønad",
+       "code": "64086416"
+      },
+      {
+       "category": "Kontantstøtte og Sosialhjelp",
+       "code": "64086424"
+      },
+      {
+       "category": "Kontantstøtte og Nedsatt arbeidsevne, ikke på tiltak",
+       "code": "64086432"
+      },
+      {
+       "category": "Kun overgangsstønad",
+       "code": "64160000"
+      },
+      {
+       "category": "Overgangsstønad og Sosialhjelp",
+       "code": "64166424"
+      },
+      {
+       "category": "Overgangsstønad og Nedsatt arbeidsevne, ikke på tiltak",
+       "code": "64166432"
+      },
+      {
+       "category": "Kun sosialhjelp",
+       "code": "64240000"
+      },
+      {
+       "category": "Sosialhjelp og Nedsatt arbeidsevne, ikke på tiltak",
+       "code": "64246432"
+      },
+      {
+       "category": "Kun nedsatt arbeidsevne, ikke på tiltak",
+       "code": "64320000"
+      },
+      {
+       "category": "Ukjent status",
+       "code": "72080000"
+      }
+     ],
+     "missingValues": []
+    }
+   },
+   {
+    "description": "Variabelen består av en åttesifret tallstruktur som viser en persons forhold til arbeidsmarkedet, utdanning og offentlige ytelser per 4. kvartal. For referansetidspunkt/tverrsnittdato og brudd i løpet av tidsserien per datakilde, se de enkelte variablene med prefiks «ARBSTATUS_AKT» eller delen «Produksjon» i [Om statistikken](https://www.ssb.no/arbeid-og-lonn/sysselsetting/statistikk/tilknytning-til-arbeid-utdanning-og-velferdsordninger#om-statistikken).  \n \n På åttesiffernivå vil personer som er aktive i flere statuser samtidig, få synliggjort de to høyest prioriterte aktivitetene som en kombinasjonsstatus, for eksempel statusen «08164008 Lønnstaker deltid og ordinær utdanning» hvor de fire første sifrene angir den høyest prioriterte aktiviteten/ytelsen personen er aktiv i (her «0816 Lønnstaker deltid»), og de fire siste sifrene angir den nest høyest prioriterte aktiviteten/ytelsen personen er aktiv i (her «4008 Ordinær utdanning»). \n \n Variabelen beregnes ut fra fulltellingsvariablene med prefiks «ARBSTATUS_AKT» og er basert på en prioritering som tar hensyn til følgende kriterier: \n - Arbeidsstyrken blir prioritert høyest ved beregning av en status. På denne måten sikres konsistens med andre registerbaserte sysselsettingsstatistikker. Dette er også i tråd med den internasjonale arbeidsorganisasjonens (ILO) anbefalinger om arbeidsmarkedsstatistikk. \n - Blant personer utenfor arbeidsstyrken skal grad av nærhet til arbeidsstyrken synliggjøres, og midlertidige aktiviteter/ytelser skal synliggjøres foran mer varige aktiviteter/ytelser. \n - Plasseringen på én status skal bygge på god datakvalitet. \n \n Les mer om begrunnelsen for prioriteringsrekkefølgen i den eksterne [dokumentasjonen](https://www.ssb.no/arbeid-og-lonn/artikler-og-publikasjoner/_attachment/430138?_ts=17433b4b920) til System for persondata (SFP). Dataen blir ikke editert med hensyn til ulovlige eller ulogiske kombinasjoner utover den konsistensbehandlingen som gjøres ved plassering av personer som lønnstakere, selvstendig næringsdrivende, registrert helt arbeidsledige eller utenfor arbeidsstyrken (se de relevante fulltellingsvariablene). Ulogiske kombinasjoner kan også skyldes feil eller forsinkelser i registrene. \n \n På tosiffernivå i ARBSTATUS\\_PERS\\_STATUS8 synliggjøres én aktivitet/ytelse per person på det groveste aggregeringsnivået, for eksempel «08 Lønnstaker». \n \n På firesiffernivå synliggjøres fortsatt bare én aktivitet/ytelse per person, men mer detaljert beskrevet, for eksempel «0816 Lønnstaker deltid». Det er i hovedsak dette detaljnivået som brukes i statistikken «Tilknytning til arbeid, utdanning og velferdsordninger» for bosatte personer 15 år eller eldre. \n \n For mer informasjon om ulike nivåinndelinger av prioritert arbeidsstyrkestatus, se egen tabell under «Definisjoner» i [Om statistikken](https://www.ssb.no/arbeid-og-lonn/sysselsetting/statistikk/tilknytning-til-arbeid-utdanning-og-velferdsordninger#om-statistikken).",
+    "validPeriod": {
+     "start": 14610,
+     "stop": 16069
+    },
+    "valueDomain": {
+     "missingValues": [],
+     "delta": {
+      "remove": [
+       8,
+       9,
+       10,
+       30,
+       31,
+       32,
+       52,
+       53,
+       54,
+       74,
+       75,
+       76,
+       94,
+       95,
+       96,
+       113,
+       114,
+       115,
+       141,
+       142,
+       156,
+       157,
+       170,
+       171,
+       172,
+       186,
+       187,
+       188,
+       199,
+       200,
+       201,
+       211,
+       212,
+       213,
+       214,
+       215,
+       216,
+       217,
+       218,
+       219,
+       220,
+       221,
+       222,
+       223,
+       224,
+       225,
+       226,
+       227,
+       228,
+       229,
+       230,
+       231,
+       232,
+       233,
+       234,
+       235,
+       236,
+       237,
+       238,
+       239,
+       240,
+       241,
+       242,
+       243
+      ],
+      "reorder": [],
+      "replace": {},
+      "insert": {
+       "8": {
+        "category": "Lønnstaker heltid og Arbeidsavklaringspenger (AAP) ",
+        "code": "08084848"
+       },
+       "28": {
+        "category": "Lønnstaker deltid og Arbeidsavklaringspenger (AAP) ",
+        "code": "08164848"
+       },
+       "48": {
+        "category": "Lønnstaker basert kun på LTO og Arbeidsavklaringspenger (AAP) ",
+        "code": "08244848"
+       },
+       "68": {
+        "category": "Selvstendig næringsdrivende og Arbeidsavklaringspenger (AAP) ",
+        "code": "16084848"
+       },
+       "86": {
+        "category": "Registrert helt arbeidsledig og Arbeidsavklaringspenger (AAP) ",
+        "code": "24084848"
+       },
+       "103": {
+        "category": "Ordinære tiltak (ikke nedsatt arbeidsevne) og Arbeidsavklaringspenger (AAP) ",
+        "code": "32084848"
+       },
+       "142": {
+        "category": "Introduksjonsprogram og Arbeidsavklaringspenger (AAP) ",
+        "code": "32404848"
+       },
+       "155": {
+        "category": "Ordinær utdanning og Arbeidsavklaringspenger (AAP) ",
+        "code": "40084848"
+       },
+       "169": {
+        "category": "Sykepenger fra folketrygden og Arbeidsavklaringspenger (AAP) ",
+        "code": "48084848"
+       },
+       "180": {
+        "category": "Nedsatt arbeidsevne, på tiltak og Arbeidsavklaringspenger (AAP) ",
+        "code": "48164848"
+       },
+       "190": {
+        "category": "Kun arbeidsavklaringspenger (AAP) ",
+        "code": "48480000"
+       },
+       "192": {
+        "category": "Arbeidsavklaringspenger (AAP)  og Varig uførepensjon/uføretrygd",
+        "code": "48484864"
+       },
+       "193": {
+        "category": "Arbeidsavklaringspenger (AAP)  og Etterlatte-/gjenlevendepensjon, inkl. barnepensjon",
+        "code": "48485608"
+       },
+       "194": {
+        "category": "Arbeidsavklaringspenger (AAP)  og Avtalefestet pensjon (AFP i offentlig/privat sektor)",
+        "code": "48485616"
+       },
+       "195": {
+        "category": "Arbeidsavklaringspenger (AAP)  og Alderspensjon",
+        "code": "48485632"
+       },
+       "196": {
+        "category": "Arbeidsavklaringspenger (AAP)  og Pensjoner fra andre enn Nav/Folketrygden",
+        "code": "48485640"
+       },
+       "197": {
+        "category": "Arbeidsavklaringspenger (AAP)  og Kontantstøtte",
+        "code": "48486408"
+       },
+       "198": {
+        "category": "Arbeidsavklaringspenger (AAP)  og Overgangsstønad",
+        "code": "48486416"
+       },
+       "199": {
+        "category": "Arbeidsavklaringspenger (AAP)  og Sosialhjelp",
+        "code": "48486424"
+       },
+       "200": {
+        "category": "Arbeidsavklaringspenger (AAP)  og Nedsatt arbeidsevne, ikke på tiltak",
+        "code": "48486432"
+       }
+      }
+     }
+    }
+   },
+   {
+    "description": "Variabelen består av en åttesifret tallstruktur som viser en persons forhold til arbeidsmarkedet, utdanning og offentlige ytelser per 4. kvartal. For referansetidspunkt/tverrsnittdato og brudd i løpet av tidsserien per datakilde, se de enkelte variablene med prefiks «ARBSTATUS_AKT» eller delen «Produksjon» i [Om statistikken](https://www.ssb.no/arbeid-og-lonn/sysselsetting/statistikk/tilknytning-til-arbeid-utdanning-og-velferdsordninger#om-statistikken).  \n \n På åttesiffernivå vil personer som er aktive i flere statuser samtidig, få synliggjort de to høyest prioriterte aktivitetene som en kombinasjonsstatus, for eksempel statusen «08164008 Lønnstaker deltid og ordinær utdanning» hvor de fire første sifrene angir den høyest prioriterte aktiviteten/ytelsen personen er aktiv i (her «0816 Lønnstaker deltid»), og de fire siste sifrene angir den nest høyest prioriterte aktiviteten/ytelsen personen er aktiv i (her «4008 Ordinær utdanning»). \n \n Variabelen beregnes ut fra fulltellingsvariablene med prefiks «ARBSTATUS_AKT» og er basert på en prioritering som tar hensyn til følgende kriterier: \n - Arbeidsstyrken blir prioritert høyest ved beregning av en status. På denne måten sikres konsistens med andre registerbaserte sysselsettingsstatistikker. Dette er også i tråd med den internasjonale arbeidsorganisasjonens (ILO) anbefalinger om arbeidsmarkedsstatistikk. \n - Blant personer utenfor arbeidsstyrken skal grad av nærhet til arbeidsstyrken synliggjøres, og midlertidige aktiviteter/ytelser skal synliggjøres foran mer varige aktiviteter/ytelser. \n - Plasseringen på én status skal bygge på god datakvalitet. \n \n Les mer om begrunnelsen for prioriteringsrekkefølgen i den eksterne [dokumentasjonen](https://www.ssb.no/arbeid-og-lonn/artikler-og-publikasjoner/_attachment/430138?_ts=17433b4b920) til System for persondata (SFP). Dataen blir ikke editert med hensyn til ulovlige eller ulogiske kombinasjoner utover den konsistensbehandlingen som gjøres ved plassering av personer som lønnstakere, selvstendig næringsdrivende, registrert helt arbeidsledige eller utenfor arbeidsstyrken (se de relevante fulltellingsvariablene). Ulogiske kombinasjoner kan også skyldes feil eller forsinkelser i registrene. \n \n På tosiffernivå i ARBSTATUS\\_PERS\\_STATUS8 synliggjøres én aktivitet/ytelse per person på det groveste aggregeringsnivået, for eksempel «08 Lønnstaker». \n \n På firesiffernivå synliggjøres fortsatt bare én aktivitet/ytelse per person, men mer detaljert beskrevet, for eksempel «0816 Lønnstaker deltid». Det er i hovedsak dette detaljnivået som brukes i statistikken «Tilknytning til arbeid, utdanning og velferdsordninger» for bosatte personer 15 år eller eldre. \n \n For mer informasjon om ulike nivåinndelinger av prioritert arbeidsstyrkestatus, se egen tabell under «Definisjoner» i [Om statistikken](https://www.ssb.no/arbeid-og-lonn/sysselsetting/statistikk/tilknytning-til-arbeid-utdanning-og-velferdsordninger#om-statistikken).",
+    "validPeriod": {
+     "start": 16070,
+     "stop": 16435
+    },
+    "valueDomain": {
+     "missingValues": [],
+     "delta": {
+      "remove": [
+       9,
+       29,
+       49,
+       69,
+       87,
+       156,
+       181,
+       191,
+       201,
+       202,
+       203,
+       204,
+       205
+      ],
+      "reorder": [],
+      "replace": {},
+      "insert": {}
+     }
+    }
+   },
+   {
+    "description": "Variabelen består av en åttesifret tallstruktur som viser en persons forhold til arbeidsmarkedet, utdanning og offentlige ytelser per 4. kvartal. For referansetidspunkt/tverrsnittdato og brudd i løpet av tidsserien per datakilde, se de enkelte variablene med prefiks «ARBSTATUS_AKT» eller delen «Produksjon» i [Om statistikken](https://www.ssb.no/arbeid-og-lonn/sysselsetting/statistikk/tilknytning-til-arbeid-utdanning-og-velferdsordninger#om-statistikken).  \n \n På åttesiffernivå vil personer som er aktive i flere statuser samtidig, få synliggjort de to høyest prioriterte aktivitetene som en kombinasjonsstatus, for eksempel statusen «08164008 Lønnstaker deltid og ordinær utdanning» hvor de fire første sifrene angir den høyest prioriterte aktiviteten/ytelsen personen er aktiv i (her «0816 Lønnstaker deltid»), og de fire siste sifrene angir den nest høyest prioriterte aktiviteten/ytelsen personen er aktiv i (her «4008 Ordinær utdanning»). \n \n Variabelen beregnes ut fra fulltellingsvariablene med prefiks «ARBSTATUS_AKT» og er basert på en prioritering som tar hensyn til følgende kriterier: \n - Arbeidsstyrken blir prioritert høyest ved beregning av en status. På denne måten sikres konsistens med andre registerbaserte sysselsettingsstatistikker. Dette er også i tråd med den internasjonale arbeidsorganisasjonens (ILO) anbefalinger om arbeidsmarkedsstatistikk. \n - Blant personer utenfor arbeidsstyrken skal grad av nærhet til arbeidsstyrken synliggjøres, og midlertidige aktiviteter/ytelser skal synliggjøres foran mer varige aktiviteter/ytelser. \n - Plasseringen på én status skal bygge på god datakvalitet. \n \n Les mer om begrunnelsen for prioriteringsrekkefølgen i den eksterne [dokumentasjonen](https://www.ssb.no/arbeid-og-lonn/artikler-og-publikasjoner/_attachment/430138?_ts=17433b4b920) til System for persondata (SFP). Dataen blir ikke editert med hensyn til ulovlige eller ulogiske kombinasjoner utover den konsistensbehandlingen som gjøres ved plassering av personer som lønnstakere, selvstendig næringsdrivende, registrert helt arbeidsledige eller utenfor arbeidsstyrken (se de relevante fulltellingsvariablene). Ulogiske kombinasjoner kan også skyldes feil eller forsinkelser i registrene. \n \n På tosiffernivå i ARBSTATUS\\_PERS\\_STATUS8 synliggjøres én aktivitet/ytelse per person på det groveste aggregeringsnivået, for eksempel «08 Lønnstaker». \n \n På firesiffernivå synliggjøres fortsatt bare én aktivitet/ytelse per person, men mer detaljert beskrevet, for eksempel «0816 Lønnstaker deltid». Det er i hovedsak dette detaljnivået som brukes i statistikken «Tilknytning til arbeid, utdanning og velferdsordninger» for bosatte personer 15 år eller eldre. \n \n For mer informasjon om ulike nivåinndelinger av prioritert arbeidsstyrkestatus, se egen tabell under «Definisjoner» i [Om statistikken](https://www.ssb.no/arbeid-og-lonn/sysselsetting/statistikk/tilknytning-til-arbeid-utdanning-og-velferdsordninger#om-statistikken).",
+    "validPeriod": {
+     "start": 16436
+    },
+    "valueDomain": {
+     "missingValues": [],
+     "delta": {
+      "remove": [
+       38,
+       39,
+       40,
+       41,
+       42,
+       43,
+       44,
+       45,
+       46,
+       47,
+       48,
+       49,
+       50,
+       51,
+       52,
+       53,
+       54,
+       55,
+       56
+      ],
+      "reorder": [],
+      "replace": {},
+      "insert": {
+       "38": {
+        "category": "Kun frilanser, oppdragstaker mv.",
+        "code": "08320000"
+       },
+       "39": {
+        "category": "Frilanser, oppdragstaker mv. og Ordinære tiltak (ikke nedsatt arbeidsevne)",
+        "code": "08323208"
+       },
+       "40": {
+        "category": "Frilanser, oppdragstaker mv. og Individstønad/tiltakspenger",
+        "code": "08323216"
+       },
+       "41": {
+        "category": "Frilanser, oppdragstaker mv. og Dagpenger",
+        "code": "08323224"
+       },
+       "42": {
+        "category": "Frilanser, oppdragstaker mv. og Introduksjonsprogram",
+        "code": "08323240"
+       },
+       "43": {
+        "category": "Frilanser, oppdragstaker mv. og Ordinær utdanning",
+        "code": "08324008"
+       },
+       "44": {
+        "category": "Frilanser, oppdragstaker mv. og Sykepenger fra folketrygden",
+        "code": "08324808"
+       },
+       "45": {
+        "category": "Frilanser, oppdragstaker mv. og Nedsatt arbeidsevne, på tiltak",
+        "code": "08324816"
+       },
+       "46": {
+        "category": "Frilanser, oppdragstaker mv. og Arbeidsavklaringspenger (AAP) ",
+        "code": "08324848"
+       },
+       "47": {
+        "category": "Frilanser, oppdragstaker mv. og Varig uførepensjon/uføretrygd",
+        "code": "08324864"
+       },
+       "48": {
+        "category": "Frilanser, oppdragstaker mv. og Etterlatte-/gjenlevendepensjon, inkl. barnepensjon",
+        "code": "08325608"
+       },
+       "49": {
+        "category": "Frilanser, oppdragstaker mv. og Avtalefestet pensjon (AFP i offentlig/privat sektor)",
+        "code": "08325616"
+       },
+       "50": {
+        "category": "Frilanser, oppdragstaker mv. og Supplerende stønad",
+        "code": "08325624"
+       },
+       "51": {
+        "category": "Frilanser, oppdragstaker mv. og Alderspensjon",
+        "code": "08325632"
+       },
+       "52": {
+        "category": "Frilanser, oppdragstaker mv. og Pensjoner fra andre enn Nav/Folketrygden",
+        "code": "08325640"
+       },
+       "53": {
+        "category": "Frilanser, oppdragstaker mv. og Kontantstøtte",
+        "code": "08326408"
+       },
+       "54": {
+        "category": "Frilanser, oppdragstaker mv. og Overgangsstønad",
+        "code": "08326416"
+       },
+       "55": {
+        "category": "Frilanser, oppdragstaker mv. og Sosialhjelp",
+        "code": "08326424"
+       },
+       "56": {
+        "category": "Frilanser, oppdragstaker mv. og Nedsatt arbeidsevne, ikke på tiltak",
+        "code": "08326432"
+       }
+      }
+     }
+    }
+   }
+  ]
+ },
+ "identifierVariables": [
+  {
+   "name": "PERSONID_1",
+   "label": "Personidentifikator",
+   "notPseudonym": false,
+   "dataType": "Long",
+   "format": "RandomUInt48",
+   "variableRole": "Identifier",
+   "keyType": {
+    "name": "PERSON",
+    "label": "Person",
+    "description": "Person er et enkeltmenneske, individ."
+   },
+   "representedVariables": [
+    {
+     "description": "Identifikator for person i microdata",
+     "validPeriod": {
+      "start": 14199,
+      "stop": 20043
+     },
+     "valueDomain": {
+      "description": "Pseudonymisert personnummer",
+      "unitOfMeasure": "N/A"
+     }
+    }
+   ]
+  }
+ ],
+ "attributeVariables": [
+  {
+   "name": "START",
+   "label": "Startdato",
+   "notPseudonym": true,
+   "dataType": "Instant",
+   "variableRole": "Start",
+   "representedVariables": [
+    {
+     "description": "Startdato/måletidspunktet for hendelsen",
+     "validPeriod": {
+      "start": 14199,
+      "stop": 20043
+     },
+     "valueDomain": {
+      "description": "Dato oppgitt i dager siden 1970-01-01",
+      "unitOfMeasure": "N/A"
+     }
+    }
+   ]
+  },
+  {
+   "name": "STOP",
+   "label": "Stoppdato",
+   "notPseudonym": true,
+   "dataType": "Instant",
+   "variableRole": "Stop",
+   "representedVariables": [
+    {
+     "description": "Stoppdato/måletidspunktet for hendelsen",
+     "validPeriod": {
+      "start": 14199,
+      "stop": 20043
+     },
+     "valueDomain": {
+      "description": "Dato oppgitt i dager siden 1970-01-01",
+      "unitOfMeasure": "N/A"
+     }
+    }
+   ]
+  }
+ ],
+ "temporalStatusDates": [
+  14199,
+  14564,
+  14929,
+  15294,
+  15660,
+  16025,
+  16390,
+  16755,
+  17121,
+  17486,
+  17851,
+  18216,
+  18582,
+  18947,
+  19312,
+  19677,
+  20043
+ ],
+ "globalTemporalCoverage": {
+  "start": -1096,
+  "stop": 20759
+ },
+ "updatedAt": 1772621947
+}

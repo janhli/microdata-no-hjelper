@@ -1,0 +1,628 @@
+{
+ "name": "BOFORHOLD_BYGNINGSTYPE",
+ "temporality": "STATUS",
+ "languageCode": "no",
+ "sensitivityLevel": "PERSON_GENERAL",
+ "populationDescription": "Variabelen omfatter bosatte per 01.01.ÅÅÅÅ, avgrenset til privathusholdninger og husholdning koblet til bolig. Observasjoner med verdiene 0 og uoppgitt (missing) er utelatt.",
+ "subjectFields": [
+  "Boforhold",
+  "Husholdning",
+  "Levekår",
+  "Sosiale forhold og kriminalitet"
+ ],
+ "temporalCoverage": {
+  "start": 16436,
+  "stop": 19723
+ },
+ "measureVariable": {
+  "name": "BOFORHOLD_BYGNINGSTYPE",
+  "label": "Bygningstype standard 2000 detaljert inndeling",
+  "notPseudonym": true,
+  "dataType": "String",
+  "variableRole": "Measure",
+  "representedVariables": [
+   {
+    "description": "Bygningstype er en 3-sifret kode som sier hva slags bygg det er. Første siffer identifiserer hvilken hovedkategori bygget er i (f.eks. 1=bolig), mens de siste to spesifiserer ytterligere innefor hovedkategorien (f.eks. 131=rekkehus). Kommunen er ansvarlig for å registrere en gyldig bygningstype på nye bygg.",
+    "validPeriod": {
+     "start": 10957
+    },
+    "valueDomain": {
+     "codeList": [
+      {
+       "category": "Enebolig",
+       "code": "111"
+      },
+      {
+       "category": "Enebolig med hybelleilighet, sokkelleilighet o.l.",
+       "code": "112"
+      },
+      {
+       "category": "Våningshus",
+       "code": "113"
+      },
+      {
+       "category": "Tomannsbolig, vertikaldelt",
+       "code": "121"
+      },
+      {
+       "category": "Tomannsbolig, horisontaldelt",
+       "code": "122"
+      },
+      {
+       "category": "Våningshus, tomannsbolig, vertikaldelt",
+       "code": "123"
+      },
+      {
+       "category": "Våningshus, tomannsbolig, horisontaldelt",
+       "code": "124"
+      },
+      {
+       "category": "Rekkehus",
+       "code": "131"
+      },
+      {
+       "category": "Kjedehus inkl. atriumhus",
+       "code": "133"
+      },
+      {
+       "category": "Terrassehus",
+       "code": "135"
+      },
+      {
+       "category": "Andre småhus med 3 boliger eller flere",
+       "code": "136"
+      },
+      {
+       "category": "Store frittliggende boligbygg på 2 etasjer",
+       "code": "141"
+      },
+      {
+       "category": "Store frittliggende boligbygg på 3 og 4 etasjer",
+       "code": "142"
+      },
+      {
+       "category": "Store frittliggende boligbygg på 5 etasjer eller over",
+       "code": "143"
+      },
+      {
+       "category": "Store sammenbygde boligbygg på 2 etasjer",
+       "code": "144"
+      },
+      {
+       "category": "Store sammenbygde boligbygg på 3 og 4 etasjer",
+       "code": "145"
+      },
+      {
+       "category": "Store sammenbygde boligbygg på 5 etasjer og over",
+       "code": "146"
+      },
+      {
+       "category": "Bo- og servicesenter",
+       "code": "151"
+      },
+      {
+       "category": "Studenthjem/studentboliger",
+       "code": "152"
+      },
+      {
+       "category": "Annen bygning for bofellesskap",
+       "code": "159"
+      },
+      {
+       "category": "Fritidsbygning (hytter, sommerhus o.l.)",
+       "code": "161"
+      },
+      {
+       "category": "Helårsbolig benyttet som fritidsbolig",
+       "code": "162"
+      },
+      {
+       "category": "Våningshus benyttet som fritidsbolig",
+       "code": "163"
+      },
+      {
+       "category": "Seterhus, sel, rorbu o.l.",
+       "code": "171"
+      },
+      {
+       "category": "Skogs- og utmarkskoie, gamme",
+       "code": "172"
+      },
+      {
+       "category": "Garasje, uthus, anneks knyttet til bolig",
+       "code": "181"
+      },
+      {
+       "category": "Garasje, uthus, anneks knyttet til fritidsbolig",
+       "code": "182"
+      },
+      {
+       "category": "Naust, båthus, sjøbu",
+       "code": "183"
+      },
+      {
+       "category": "Boligbrakker",
+       "code": "193"
+      },
+      {
+       "category": "Annen boligbygning (f.eks. sekundærbolig reindrift)",
+       "code": "199"
+      },
+      {
+       "category": "Fabrikkbygning",
+       "code": "211"
+      },
+      {
+       "category": "Verkstedbygning",
+       "code": "212"
+      },
+      {
+       "category": "Bygning for renseanlegg",
+       "code": "214"
+      },
+      {
+       "category": "Bygning for vannforsyning, bl.a. pumpestasjon",
+       "code": "216"
+      },
+      {
+       "category": "Annen industribygning",
+       "code": "219"
+      },
+      {
+       "category": "Kraftstasjon (>15 000 kVA)",
+       "code": "221"
+      },
+      {
+       "category": "Transformatorstasjon (>10 000 kVA)",
+       "code": "223"
+      },
+      {
+       "category": "Annen energiforsyningsbygning",
+       "code": "229"
+      },
+      {
+       "category": "Lagerhall",
+       "code": "231"
+      },
+      {
+       "category": "Kjøle- og fryselager",
+       "code": "232"
+      },
+      {
+       "category": "Silobygning",
+       "code": "233"
+      },
+      {
+       "category": "Annen lagerbygning",
+       "code": "239"
+      },
+      {
+       "category": "Hus for dyr, fôrlager, strølager, frukt- og grønnsakslager, landbrukssilo, høy-/korntørke",
+       "code": "241"
+      },
+      {
+       "category": "Veksthus",
+       "code": "243"
+      },
+      {
+       "category": "Driftsbygning for fiske og fangst, inkl. oppdrettsanlegg",
+       "code": "244"
+      },
+      {
+       "category": "Naust/redskapshus for fiske",
+       "code": "245"
+      },
+      {
+       "category": "Annen fiskeri- og fangstbygning",
+       "code": "248"
+      },
+      {
+       "category": "Annen landbruksbygning",
+       "code": "249"
+      },
+      {
+       "category": "Kontor- og administrasjonsbygning, rådhus",
+       "code": "311"
+      },
+      {
+       "category": "Bankbygning, posthus",
+       "code": "312"
+      },
+      {
+       "category": "Mediebygning",
+       "code": "313"
+      },
+      {
+       "category": "Annen kontorbygning",
+       "code": "319"
+      },
+      {
+       "category": "Kjøpesenter, varehus",
+       "code": "321"
+      },
+      {
+       "category": "Butikkbygning",
+       "code": "322"
+      },
+      {
+       "category": "Bensinstasjon",
+       "code": "323"
+      },
+      {
+       "category": "Annen forretningsbygning",
+       "code": "329"
+      },
+      {
+       "category": "Messe- og kongressbygning",
+       "code": "330"
+      },
+      {
+       "category": "Ekspedisjonsbygning, flyterminal, kontrolltårn",
+       "code": "411"
+      },
+      {
+       "category": "Jernbane- og T-banestasjon",
+       "code": "412"
+      },
+      {
+       "category": "Godsterminal",
+       "code": "415"
+      },
+      {
+       "category": "Postterminal",
+       "code": "416"
+      },
+      {
+       "category": "Annen ekspedisjons- og terminalbygning",
+       "code": "419"
+      },
+      {
+       "category": "Telekommunikasjonsbygning",
+       "code": "429"
+      },
+      {
+       "category": "Parkeringshus",
+       "code": "431"
+      },
+      {
+       "category": "Annen garasje- hangarbygning",
+       "code": "439"
+      },
+      {
+       "category": "Trafikktilsynsbygning",
+       "code": "441"
+      },
+      {
+       "category": "Annen veg- og trafikktilsynsbygning",
+       "code": "449"
+      },
+      {
+       "category": "Hotellbygning",
+       "code": "511"
+      },
+      {
+       "category": "Motellbygning",
+       "code": "512"
+      },
+      {
+       "category": "Annen hotellbygning",
+       "code": "519"
+      },
+      {
+       "category": "Hospits, pensjonat",
+       "code": "521"
+      },
+      {
+       "category": "Vandrerhjem, feriehjem/-koloni, turisthytte",
+       "code": "522"
+      },
+      {
+       "category": "Appartement",
+       "code": "523"
+      },
+      {
+       "category": "Campinghytte/utleiehytte",
+       "code": "524"
+      },
+      {
+       "category": "Annen bygning for overnatting",
+       "code": "529"
+      },
+      {
+       "category": "Restaurantbygning, kafébygning",
+       "code": "531"
+      },
+      {
+       "category": "Sentralkjøkken, kantinebygning",
+       "code": "532"
+      },
+      {
+       "category": "Gatekjøkken, kioskbygning",
+       "code": "533"
+      },
+      {
+       "category": "Annen restaurantbygning",
+       "code": "539"
+      },
+      {
+       "category": "Lekepark",
+       "code": "611"
+      },
+      {
+       "category": "Barnehage",
+       "code": "612"
+      },
+      {
+       "category": "Barneskole",
+       "code": "613"
+      },
+      {
+       "category": "Ungdomsskole",
+       "code": "614"
+      },
+      {
+       "category": "Kombinert barne- og ungdomsskole",
+       "code": "615"
+      },
+      {
+       "category": "Videregående skole",
+       "code": "616"
+      },
+      {
+       "category": "Annen skolebygning",
+       "code": "619"
+      },
+      {
+       "category": "Universitets- og høgskolebygning med integrerte funksjoner, auditorium, lesesal o.a.",
+       "code": "621"
+      },
+      {
+       "category": "Laboratoriebygning",
+       "code": "623"
+      },
+      {
+       "category": "Annen universitets-, høgskole- og forskningsbygning",
+       "code": "629"
+      },
+      {
+       "category": "Museum, kunstgalleri",
+       "code": "641"
+      },
+      {
+       "category": "Bibliotek, mediatek",
+       "code": "642"
+      },
+      {
+       "category": "Zoologisk og botanisk hage",
+       "code": "643"
+      },
+      {
+       "category": "Annen museums- og bibliotekbygning",
+       "code": "649"
+      },
+      {
+       "category": "Idrettshall",
+       "code": "651"
+      },
+      {
+       "category": "Ishall",
+       "code": "652"
+      },
+      {
+       "category": "Svømmehall",
+       "code": "653"
+      },
+      {
+       "category": "Tribune og idrettsgarderobe",
+       "code": "654"
+      },
+      {
+       "category": "Helsestudio",
+       "code": "655"
+      },
+      {
+       "category": "Annen idrettsbygning",
+       "code": "659"
+      },
+      {
+       "category": "Kinobygning, teaterbygning, opera/konserthus",
+       "code": "661"
+      },
+      {
+       "category": "Samfunnshus, grendehus",
+       "code": "662"
+      },
+      {
+       "category": "Diskotek",
+       "code": "663"
+      },
+      {
+       "category": "Annet kulturhus",
+       "code": "669"
+      },
+      {
+       "category": "Kirke, kapell",
+       "code": "671"
+      },
+      {
+       "category": "Bedehus, menighetshus",
+       "code": "672"
+      },
+      {
+       "category": "Krematorium, gravkapell, bårehus",
+       "code": "673"
+      },
+      {
+       "category": "Synagoge, moské",
+       "code": "674"
+      },
+      {
+       "category": "Kloster",
+       "code": "675"
+      },
+      {
+       "category": "Annen bygning for religiøse aktiviteter",
+       "code": "679"
+      },
+      {
+       "category": "Sykehus",
+       "code": "719"
+      },
+      {
+       "category": "Sykehjem",
+       "code": "721"
+      },
+      {
+       "category": "Bo- og behandlingssenter, aldershjem",
+       "code": "722"
+      },
+      {
+       "category": "Rehabiliteringsinstitusjon, kurbad",
+       "code": "723"
+      },
+      {
+       "category": "Annet sykehjem",
+       "code": "729"
+      },
+      {
+       "category": "Klinikk, legekontor/-senter/-vakt",
+       "code": "731"
+      },
+      {
+       "category": "Helse- og sosialsenter, helsestasjon",
+       "code": "732"
+      },
+      {
+       "category": "Annen primærhelsebygning",
+       "code": "739"
+      },
+      {
+       "category": "Fengselsbygning",
+       "code": "819"
+      },
+      {
+       "category": "Politistasjon",
+       "code": "821"
+      },
+      {
+       "category": "Brannstasjon, ambulansestasjon",
+       "code": "822"
+      },
+      {
+       "category": "Fyrstasjon, losstasjon",
+       "code": "823"
+      },
+      {
+       "category": "Stasjon for radarovervåkning av fly- og/eller skipstrafikk",
+       "code": "824"
+      },
+      {
+       "category": "Tilfluktsrom/bunker",
+       "code": "825"
+      },
+      {
+       "category": "Annen beredskapsbygning",
+       "code": "829"
+      },
+      {
+       "category": "Monument",
+       "code": "830"
+      },
+      {
+       "category": "Offentlig toalett",
+       "code": "840"
+      }
+     ],
+     "missingValues": []
+    }
+   }
+  ]
+ },
+ "identifierVariables": [
+  {
+   "name": "PERSONID_1",
+   "label": "Personidentifikator",
+   "notPseudonym": false,
+   "dataType": "Long",
+   "format": "RandomUInt48",
+   "variableRole": "Identifier",
+   "keyType": {
+    "name": "PERSON",
+    "label": "Person",
+    "description": "Person er et enkeltmenneske, individ."
+   },
+   "representedVariables": [
+    {
+     "description": "Identifikator for person i microdata",
+     "validPeriod": {
+      "start": 16436,
+      "stop": 19723
+     },
+     "valueDomain": {
+      "description": "Pseudonymisert personnummer",
+      "unitOfMeasure": "N/A"
+     }
+    }
+   ]
+  }
+ ],
+ "attributeVariables": [
+  {
+   "name": "START",
+   "label": "Startdato",
+   "notPseudonym": true,
+   "dataType": "Instant",
+   "variableRole": "Start",
+   "representedVariables": [
+    {
+     "description": "Startdato/måletidspunktet for hendelsen",
+     "validPeriod": {
+      "start": 16436,
+      "stop": 19723
+     },
+     "valueDomain": {
+      "description": "Dato oppgitt i dager siden 1970-01-01",
+      "unitOfMeasure": "N/A"
+     }
+    }
+   ]
+  },
+  {
+   "name": "STOP",
+   "label": "Stoppdato",
+   "notPseudonym": true,
+   "dataType": "Instant",
+   "variableRole": "Stop",
+   "representedVariables": [
+    {
+     "description": "Stoppdato/måletidspunktet for hendelsen",
+     "validPeriod": {
+      "start": 16436,
+      "stop": 19723
+     },
+     "valueDomain": {
+      "description": "Dato oppgitt i dager siden 1970-01-01",
+      "unitOfMeasure": "N/A"
+     }
+    }
+   ]
+  }
+ ],
+ "temporalStatusDates": [
+  16436,
+  16801,
+  17167,
+  17532,
+  17897,
+  18262,
+  18628,
+  18993,
+  19358,
+  19723
+ ],
+ "globalTemporalCoverage": {
+  "start": -1096,
+  "stop": 20759
+ },
+ "updatedAt": 1742560855
+}

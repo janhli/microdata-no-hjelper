@@ -1,0 +1,119 @@
+{
+ "name": "TRAFULYK_PERS_TYPE",
+ "temporality": "FIXED",
+ "languageCode": "no",
+ "sensitivityLevel": "PERSON_GENERAL",
+ "populationDescription": "Variabelen omfatter dødsulykker og andre ulykker med personskade som er meldt til politiet. Trafikkulykkene som inngår i statistikken har skjedd på offentlig eller privat vei, gate eller plass som er åpen for alminnelig trafikk. Observasjoner med verdiene 0 og uoppgitt (missing) er utelatt.",
+ "subjectFields": [
+  "Landtransport",
+  "Trafikkulykke",
+  "Transport og reiseliv"
+ ],
+ "temporalCoverage": {
+  "start": -25567,
+  "stop": 19723
+ },
+ "measureVariable": {
+  "name": "TRAFULYK_PERS_TYPE",
+  "label": "Type",
+  "notPseudonym": true,
+  "dataType": "String",
+  "variableRole": "Measure",
+  "representedVariables": [
+   {
+    "description": "Variabelen viser om personen er fører eller passasjer.",
+    "validPeriod": {
+     "start": 13514
+    },
+    "valueDomain": {
+     "codeList": [
+      {
+       "category": "Fører",
+       "code": "F"
+      },
+      {
+       "category": "Passasjer",
+       "code": "P"
+      }
+     ],
+     "missingValues": []
+    }
+   }
+  ]
+ },
+ "identifierVariables": [
+  {
+   "name": "PERSON_TRAFIKKULYKKE_ID",
+   "label": "Person i trafikkulykkeidentifikator",
+   "notPseudonym": false,
+   "dataType": "Long",
+   "format": "RandomUInt48",
+   "variableRole": "Identifier",
+   "keyType": {
+    "name": "TRAFIKKULYKKE_PERSON",
+    "label": "Person i trafikkulykke",
+    "description": "Variablene omfatter dødsulykker og andre ulykker med personskade som er meldt til politiet. Trafikkulykkene som inngår i statistikken har skjedd på offentlig eller privat vei, gate eller plass som er åpen for alminnelig trafikk"
+   },
+   "representedVariables": [
+    {
+     "description": "Identifikator for personer involvert i trafikkulykker i microdata",
+     "validPeriod": {
+      "start": -25567,
+      "stop": 19723
+     },
+     "valueDomain": {
+      "description": "Pseudonymisert kombinasjon av internnr, saksnummer og fødselsnummer for trafikkulykker",
+      "unitOfMeasure": "N/A"
+     }
+    }
+   ]
+  }
+ ],
+ "attributeVariables": [
+  {
+   "name": "START",
+   "label": "Startdato",
+   "notPseudonym": true,
+   "dataType": "Instant",
+   "variableRole": "Start",
+   "representedVariables": [
+    {
+     "description": "Startdato/måletidspunktet for hendelsen",
+     "validPeriod": {
+      "start": -25567,
+      "stop": 19723
+     },
+     "valueDomain": {
+      "description": "Dato oppgitt i dager siden 1970-01-01",
+      "unitOfMeasure": "N/A"
+     }
+    }
+   ]
+  },
+  {
+   "name": "STOP",
+   "label": "Stoppdato",
+   "notPseudonym": true,
+   "dataType": "Instant",
+   "variableRole": "Stop",
+   "representedVariables": [
+    {
+     "description": "Stoppdato/måletidspunktet for hendelsen",
+     "validPeriod": {
+      "start": -25567,
+      "stop": 19723
+     },
+     "valueDomain": {
+      "description": "Dato oppgitt i dager siden 1970-01-01",
+      "unitOfMeasure": "N/A"
+     }
+    }
+   ]
+  }
+ ],
+ "globalTemporalCoverage": {
+  "start": -1096,
+  "stop": 20759
+ },
+ "updatedAt": 1730375672
+}

@@ -1,0 +1,31 @@
+<!-- Kilde: https://microdata.no/manual/eksempel/Sammensatte%20operasjoner/Bruke%20funksjoner%20for%20variabelberegninger -->
+
+# Bruke funksjoner for variabelberegninger
+
+Nedenfor vises det hvordan en enkelt kan lage variabler som inneholder resultatet av ulike beregninger på rekkenivå. Rekkefunksjoner gjør i praksis beregninger på individnivå, på tvers av utvalgte variabler.
+
+Dette er bare et lite knippe av alle tilgjengelige rekkefunksjoner. Bruk kommandoen `help-function` for å få en oversikt over øvrige funksjoner.
+
+```
+ require no.ssb.fdb:23 as db
+
+create-dataset rowtest
+import db/BEFOLKNING_KOMMNR_FAKTISK 2019-01-01 as bosted
+sample 10000 1234
+import db/BEFOLKNING_KJOENN as kjønn
+import db/INNTEKT_WLONN 2019-01-01 as lønn19
+import db/INNTEKT_WLONN 2020-01-01 as lønn20
+import db/INNTEKT_WLONN 2021-01-01 as lønn21
+
+// Slå sammen strengeverdier
+generate fornavn = 'Ole' if kjønn == '1'
+replace fornavn = 'Kari' if kjønn == '2'
+generate etternavn = 'Hansen'
+generate navn = rowconcat(fornavn, ' ', etternavn)
+tabulate navn
+
+// Finne høyeste årslønn for hvert individ over årene 2019-2021
+generate makslønn19_21 = rowmax(lønn19, lønn20, lønn21)
+summarize makslønn19_21
+
+```

@@ -1,0 +1,123 @@
+{
+ "name": "REGSYS_ARB_ARBEIDSTID",
+ "temporality": "STATUS",
+ "languageCode": "no",
+ "sensitivityLevel": "PERSON_GENERAL",
+ "populationDescription": "Variabelen omfatter bosatte personer 15-74 år som er sysselsatt. Observasjoner med verdiene 0 og uoppgitt (missing) er utelatt. ",
+ "subjectFields": [
+  "Arbeid og lønn",
+  "Sysselsetting"
+ ],
+ "temporalCoverage": {
+  "start": 16755,
+  "stop": 20408
+ },
+ "measureVariable": {
+  "name": "REGSYS_ARB_ARBEIDSTID",
+  "label": "Forventet/avtalt arbeidstid, eksakte timer - hovedarbeidsforhold",
+  "notPseudonym": true,
+  "dataType": "Double",
+  "variableRole": "Measure",
+  "representedVariables": [
+   {
+    "description": "Avtalt arbeidstid er det antall arbeidstimer som den ansatte ifølge arbeidskontrakten skal være på arbeid. Eventuelt fravær fra arbeidet pga. sykdom, ferie e.l. skal ikke trekkes fra i avtalt arbeidstid, og overtid skal ikke medregnes. \n \n Gjelder hovedarbeidsforholdet (det er i hovedsak arbeidsforholdet med høyest avtalt arbeidstid). \n \n Avtalt arbeidstid per uke er ikke direkte rapportert i A-ordningen men er utledet fra variablene 'Stillingsprosent' og 'Antall timer per uke som en full stilling tilsvarer'.\n \n Mer informasjon om arbeidstid i A-ordningen og om arbeidstid i register før 2015 i [Metode for bedring av informasjon om arbeidstid i a-ordningen](https://www.ssb.no/arbeid-og-lonn/artikler-og-publikasjoner/ny-metode-gir-bedre-informasjon-om-arbeidstid). \n \n Denne variabelen erstatter REGSYS_ARBTIM fra og med 2015.\n \n Kilde for variabelen er registerbaserte sysselsettingsdata. Les dokumentasjonen om datagrunnlag, prosessering og definisjoner her:\n - [Sysselsetting, registerbasert](https://www.ssb.no/arbeid-og-lonn/sysselsetting/statistikk/sysselsetting-registerbasert) \n - [Om datagrunnlaget for registerbasert sysselsettingsstatistikk](https://www.ssb.no/data-til-forskning/utlan-av-data-til-forskere/variabellister/a-ordningen/om-datagrunnlaget-for-registerbasert-sysselsettingsstatistikk) \n - [Registerbasert lønns- og sysselsettingsstatistikk basert på a-ordningen](https://www.ssb.no/arbeid-og-lonn/sysselsetting/artikler/registerbasert-lonns-og-sysselsettingsstatistikk-basert-pa-a-ordningen)",
+    "validPeriod": {
+     "start": 16755,
+     "stop": 20408
+    },
+    "valueDomain": {
+     "description": "Timer.",
+     "unitOfMeasure": "Timer"
+    }
+   }
+  ]
+ },
+ "identifierVariables": [
+  {
+   "name": "PERSONID_1",
+   "label": "Personidentifikator",
+   "notPseudonym": false,
+   "dataType": "Long",
+   "format": "RandomUInt48",
+   "variableRole": "Identifier",
+   "keyType": {
+    "name": "PERSON",
+    "label": "Person",
+    "description": "Person er et enkeltmenneske, individ."
+   },
+   "representedVariables": [
+    {
+     "description": "Identifikator for person i microdata",
+     "validPeriod": {
+      "start": 16755,
+      "stop": 20408
+     },
+     "valueDomain": {
+      "description": "Pseudonymisert personnummer",
+      "unitOfMeasure": "N/A"
+     }
+    }
+   ]
+  }
+ ],
+ "attributeVariables": [
+  {
+   "name": "START",
+   "label": "Startdato",
+   "notPseudonym": true,
+   "dataType": "Instant",
+   "variableRole": "Start",
+   "representedVariables": [
+    {
+     "description": "Startdato/måletidspunktet for hendelsen",
+     "validPeriod": {
+      "start": 16755,
+      "stop": 20408
+     },
+     "valueDomain": {
+      "description": "Dato oppgitt i dager siden 1970-01-01",
+      "unitOfMeasure": "N/A"
+     }
+    }
+   ]
+  },
+  {
+   "name": "STOP",
+   "label": "Stoppdato",
+   "notPseudonym": true,
+   "dataType": "Instant",
+   "variableRole": "Stop",
+   "representedVariables": [
+    {
+     "description": "Stoppdato/måletidspunktet for hendelsen",
+     "validPeriod": {
+      "start": 16755,
+      "stop": 20408
+     },
+     "valueDomain": {
+      "description": "Dato oppgitt i dager siden 1970-01-01",
+      "unitOfMeasure": "N/A"
+     }
+    }
+   ]
+  }
+ ],
+ "temporalStatusDates": [
+  16755,
+  17121,
+  17486,
+  17851,
+  18216,
+  18582,
+  18947,
+  19312,
+  19677,
+  20043,
+  20408
+ ],
+ "globalTemporalCoverage": {
+  "start": -1096,
+  "stop": 20759
+ },
+ "updatedAt": 1774604284
+}

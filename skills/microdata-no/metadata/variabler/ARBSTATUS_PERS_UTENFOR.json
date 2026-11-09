@@ -1,0 +1,138 @@
+{
+ "name": "ARBSTATUS_PERS_UTENFOR",
+ "temporality": "STATUS",
+ "languageCode": "no",
+ "sensitivityLevel": "PERSON_GENERAL",
+ "populationDescription": "Variabelen omfatter alle bosatte personer 15 år eller eldre og samsvarer med populasjonen i statistikken [Tilknytning til arbeid, utdanning og velferdsordninger](https://www.ssb.no/arbeid-og-lonn/sysselsetting/statistikk/tilknytning-til-arbeid-utdanning-og-velferdsordninger) (arbstatus). Se [Om statistikken](https://www.ssb.no/arbeid-og-lonn/sysselsetting/statistikk/tilknytning-til-arbeid-utdanning-og-velferdsordninger#om-statistikken) for mer informasjon. \n \n Det er noen færre personer med i populasjonen i microdata.no sammenlignet med i [statistikkbanken](https://www.ssb.no/statbank/list/arbstatus). Det skyldes manglende eller ugyldige fødselsnummer i datagrunnlaget som dermed ikke kan brukes til kobling mot andre variabler i microdata.no, og er derfor utelatt. For de fleste årgangene er det i underkant av 200 færre i microdata.no, mens det for 2022-årgangen er i overkant av 1 000 færre personer. \n \n System for persondata (SFP) er kilde for både variabelen og statistikken. Denne grunnlagsfilen inkluderer i tillegg til bosatte personer 15 år og eldre, også noen grupper ikke-bosatte. Les mer i [dokumentasjonen](https://www.ssb.no/arbeid-og-lonn/artikler-og-publikasjoner/_attachment/430138?_ts=17433b4b920) om datagrunnlag, prosessering og definisjoner. \n \n ## Brudd i tidsserien fra 2014 til 2015 \n \n Denne variabelen er ikke direkte sammenlignbar før og etter 2015. Det skyldes overgangen til ny datakilde for lønnstakere (a-ordningen) og ny metode for beregning av selvstendig næringsdrivende i sysselsettingsstatistikken. Endringer må derfor tolkes med forsiktighet. \n \n Bruddet fra 2014 til 2015 er nærmere beskrevet i artiklene [Endring i datagrunnlaget for registerbasert sysselsettingsstatistikk](https://www.ssb.no/arbeid-og-lonn/artikler-og-publikasjoner/endring-i-datagrunnlaget-for-registerbasert-sysselsettingsstatistikk) og [Om datagrunnlaget for registerbasert sysselsettingsstatistikk](https://www.ssb.no/data-til-forskning/utlan-av-data-til-forskere/variabellister/a-ordningen/om-datagrunnlaget-for-registerbasert-sysselsettingsstatistikk). Kvaliteten i a-ordningen regnes som bedre enn tidligere kilder (se delkapitlene «3.1.4 A-meldingen – kvalitet» og «3.1.5 Noen sentrale endringer med a-ordningen») i [Registerbasert lønns- og sysselsettingsstatistikk basert på a-ordningen](https://doc.ameld.ssb.no/Datakilder.html#a-meldingen-kvalitet).",
+ "subjectFields": [
+  "Arbeid og lønn",
+  "Sysselsetting",
+  "Tilknytning til arbeid, utdanning og velferdsordninger"
+ ],
+ "temporalCoverage": {
+  "start": 14199,
+  "stop": 20043
+ },
+ "measureVariable": {
+  "name": "ARBSTATUS_PERS_UTENFOR",
+  "label": "Utenfor arbeid, utdanning og arbeidsmarkedstiltak, 15 år og eldre",
+  "notPseudonym": true,
+  "dataType": "String",
+  "variableRole": "Measure",
+  "representedVariables": [
+   {
+    "description": "Variabelen ARBSTATUS_PERS_UTENFOR bruker samme definisjon som for ARBSTATUS_PERS_NEET (15–29 år) til å dele inn alle bosatte 15 år og eldre etter om de er i eller utenfor arbeid, utdanning og arbeidsmarkedstiltak. Da havner også «Mottakere av AFP/alderspensjon» som prioritert status som del av «utenfor»-gruppen (ARBSTATUS_PERS_UTENFOR = 1).\n \n Se «Definisjoner» i [Om statistikken](https://www.ssb.no/arbeid-og-lonn/sysselsetting/statistikk/tilknytning-til-arbeid-utdanning-og-velferdsordninger#om-statistikken) for mer informasjon om utledningen av ARBSTATUS_PERS_UTENFOR fra den åttesifrede variabelen ARBSTATUS_PERS_STATUS8.\n \n Referansetidspunktet for ARBSTATUS_PERS_UTENFOR er 4. kvartal. For referansetidspunkt/tverrsnittdato og brudd i løpet av tidsserien per datakilde, se de enkelte variablene med prefiks «ARBSTATUS_AKT» eller delen «Produksjon» i «Om statistikken» vist til ovenfor.",
+    "validPeriod": {
+     "start": 13879
+    },
+    "valueDomain": {
+     "codeList": [
+      {
+       "category": "I arbeid, under utdanning eller på arbeidsmarkedstiltak",
+       "code": "0"
+      },
+      {
+       "category": "Utenfor arbeid, utdanning og arbeidsmarkedstiltak (inkl. NEET for personer 15–29 år)",
+       "code": "1"
+      }
+     ],
+     "missingValues": []
+    }
+   }
+  ]
+ },
+ "identifierVariables": [
+  {
+   "name": "PERSONID_1",
+   "label": "Personidentifikator",
+   "notPseudonym": false,
+   "dataType": "Long",
+   "format": "RandomUInt48",
+   "variableRole": "Identifier",
+   "keyType": {
+    "name": "PERSON",
+    "label": "Person",
+    "description": "Person er et enkeltmenneske, individ."
+   },
+   "representedVariables": [
+    {
+     "description": "Identifikator for person i microdata",
+     "validPeriod": {
+      "start": 14199,
+      "stop": 20043
+     },
+     "valueDomain": {
+      "description": "Pseudonymisert personnummer",
+      "unitOfMeasure": "N/A"
+     }
+    }
+   ]
+  }
+ ],
+ "attributeVariables": [
+  {
+   "name": "START",
+   "label": "Startdato",
+   "notPseudonym": true,
+   "dataType": "Instant",
+   "variableRole": "Start",
+   "representedVariables": [
+    {
+     "description": "Startdato/måletidspunktet for hendelsen",
+     "validPeriod": {
+      "start": 14199,
+      "stop": 20043
+     },
+     "valueDomain": {
+      "description": "Dato oppgitt i dager siden 1970-01-01",
+      "unitOfMeasure": "N/A"
+     }
+    }
+   ]
+  },
+  {
+   "name": "STOP",
+   "label": "Stoppdato",
+   "notPseudonym": true,
+   "dataType": "Instant",
+   "variableRole": "Stop",
+   "representedVariables": [
+    {
+     "description": "Stoppdato/måletidspunktet for hendelsen",
+     "validPeriod": {
+      "start": 14199,
+      "stop": 20043
+     },
+     "valueDomain": {
+      "description": "Dato oppgitt i dager siden 1970-01-01",
+      "unitOfMeasure": "N/A"
+     }
+    }
+   ]
+  }
+ ],
+ "temporalStatusDates": [
+  14199,
+  14564,
+  14929,
+  15294,
+  15660,
+  16025,
+  16390,
+  16755,
+  17121,
+  17486,
+  17851,
+  18216,
+  18582,
+  18947,
+  19312,
+  19677,
+  20043
+ ],
+ "globalTemporalCoverage": {
+  "start": -1096,
+  "stop": 20759
+ },
+ "updatedAt": 1772621947
+}

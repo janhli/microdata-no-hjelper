@@ -1,0 +1,134 @@
+{
+ "name": "BEFOLKNING_INNGRUNN1",
+ "temporality": "FIXED",
+ "languageCode": "no",
+ "sensitivityLevel": "PERSON_GENERAL",
+ "populationDescription": "Variabelen omfatter personer som har innvandret til Norge fra ikke-nordiske land, fra og med 1990.\n \n Innvandringsgrunn er slik oppholdsgrunnlaget framkommer i registreringer i utlendingsforvaltningens registre, og slik en ellers kan avlede den ut fra ulike relevante variabler.\n \n Variabelen er laget i SSB for demografisk bruk, og avspeiler ikke direkte de litt mer juridisk orienterte registreringene i utlendingsforvaltningen. \n \n Alle førstegangsinnvandrere med ikke-nordisk statsborgerskap som kom etter 1989 har blitt tildelt en av hovedårsakene flukt, familie, arbeid, utdanning eller andre årsaker. \n \n Ikke-nordiske statsborgere må ha et oppholdsgrunnlag som registreres i utlendingsforvaltningens registre. Som nordisk statsborger trenger man ikke oppholdstillatelse/registreringsbevis for å bo og/eller jobbe i Norge, det kan derfor ikke angis innvandringsgrunn for disse og de omfattes ikke av datagrunnlaget",
+ "subjectFields": [
+  "Befolkning",
+  "Innvandrere"
+ ],
+ "temporalCoverage": {
+  "start": -25567,
+  "stop": 20454
+ },
+ "measureVariable": {
+  "name": "BEFOLKNING_INNGRUNN1",
+  "label": "Innvandringsgrunn",
+  "notPseudonym": true,
+  "dataType": "String",
+  "variableRole": "Measure",
+  "representedVariables": [
+   {
+    "description": "Den grunnen til innvandring som gjelder for førstegangsinnvandrere med ikke nordisk statsborgerskap.",
+    "validPeriod": {
+     "start": 7305
+    },
+    "valueDomain": {
+     "codeList": [
+      {
+       "category": "Annet",
+       "code": "ANN"
+      },
+      {
+       "category": "Arbeid",
+       "code": "ARB"
+      },
+      {
+       "category": "Familie",
+       "code": "FAM"
+      },
+      {
+       "category": "Flukt",
+       "code": "FLU"
+      },
+      {
+       "category": "Utdanning",
+       "code": "UTD"
+      },
+      {
+       "category": "Ukjent",
+       "code": "UKJ"
+      }
+     ],
+     "missingValues": []
+    }
+   }
+  ]
+ },
+ "identifierVariables": [
+  {
+   "name": "PERSONID_1",
+   "label": "Personidentifikator",
+   "notPseudonym": false,
+   "dataType": "Long",
+   "format": "RandomUInt48",
+   "variableRole": "Identifier",
+   "keyType": {
+    "name": "PERSON",
+    "label": "Person",
+    "description": "Person er et enkeltmenneske, individ."
+   },
+   "representedVariables": [
+    {
+     "description": "Identifikator for person i microdata",
+     "validPeriod": {
+      "start": -25567,
+      "stop": 20454
+     },
+     "valueDomain": {
+      "description": "Pseudonymisert personnummer",
+      "unitOfMeasure": "N/A"
+     }
+    }
+   ]
+  }
+ ],
+ "attributeVariables": [
+  {
+   "name": "START",
+   "label": "Startdato",
+   "notPseudonym": true,
+   "dataType": "Instant",
+   "variableRole": "Start",
+   "representedVariables": [
+    {
+     "description": "Startdato/måletidspunktet for hendelsen",
+     "validPeriod": {
+      "start": -25567,
+      "stop": 20454
+     },
+     "valueDomain": {
+      "description": "Dato oppgitt i dager siden 1970-01-01",
+      "unitOfMeasure": "N/A"
+     }
+    }
+   ]
+  },
+  {
+   "name": "STOP",
+   "label": "Stoppdato",
+   "notPseudonym": true,
+   "dataType": "Instant",
+   "variableRole": "Stop",
+   "representedVariables": [
+    {
+     "description": "Stoppdato/måletidspunktet for hendelsen",
+     "validPeriod": {
+      "start": -25567,
+      "stop": 20454
+     },
+     "valueDomain": {
+      "description": "Dato oppgitt i dager siden 1970-01-01",
+      "unitOfMeasure": "N/A"
+     }
+    }
+   ]
+  }
+ ],
+ "globalTemporalCoverage": {
+  "start": -1096,
+  "stop": 20759
+ },
+ "updatedAt": 1788166684
+}

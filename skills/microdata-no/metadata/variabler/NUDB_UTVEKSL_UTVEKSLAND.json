@@ -1,0 +1,1375 @@
+{
+ "name": "NUDB_UTVEKSL_UTVEKSLAND",
+ "temporality": "EVENT",
+ "languageCode": "no",
+ "sensitivityLevel": "PERSON_GENERAL",
+ "populationDescription": "Variabelen gjelder for utvekslingsstudenter, dvs. innreisende og utreisende studenter på grunnlag av utvekslingsavtaler ved universiteter og høgskoler.",
+ "subjectFields": [
+  "Høyere utdanning",
+  "Utdanning"
+ ],
+ "temporalCoverage": {
+  "start": 12432,
+  "stop": 19904
+ },
+ "measureVariable": {
+  "name": "NUDB_UTVEKSL_UTVEKSLAND",
+  "label": "Utvekslings-/innvekslingsland",
+  "notPseudonym": true,
+  "dataType": "String",
+  "variableRole": "Measure",
+  "representedVariables": [
+   {
+    "description": "Det benyttes SSBs 3-sifrede tallkode.\n For innreisende studenter fra utlandet benyttes landkoden til landet hvor den utenlandske utvekslingsinstitusjonen studentene kommer fra er lokalisert. For utreisende studenter fra Norge benyttes landkoden til landet der den utenlandske utvekslingsinstitusjonen ligger og der studenten reiser til. Hvis landkoden er ukjent, gis verdien 990.",
+    "validPeriod": {
+     "start": 12784,
+     "stop": 13148
+    },
+    "valueDomain": {
+     "codeList": [
+      {
+       "category": "Norge",
+       "code": "000"
+      },
+      {
+       "category": "Danmark",
+       "code": "101"
+      },
+      {
+       "category": "Grønland",
+       "code": "102"
+      },
+      {
+       "category": "Finland",
+       "code": "103"
+      },
+      {
+       "category": "Færøyene",
+       "code": "104"
+      },
+      {
+       "category": "Island",
+       "code": "105"
+      },
+      {
+       "category": "Sverige",
+       "code": "106"
+      },
+      {
+       "category": "Albania",
+       "code": "111"
+      },
+      {
+       "category": "Belgia",
+       "code": "112"
+      },
+      {
+       "category": "Bulgaria",
+       "code": "113"
+      },
+      {
+       "category": "Andorra",
+       "code": "114"
+      },
+      {
+       "category": "Estland",
+       "code": "115"
+      },
+      {
+       "category": "Frankrike",
+       "code": "117"
+      },
+      {
+       "category": "Gibraltar",
+       "code": "118"
+      },
+      {
+       "category": "Hellas",
+       "code": "119"
+      },
+      {
+       "category": "Hviterussland",
+       "code": "120"
+      },
+      {
+       "category": "Irland",
+       "code": "121"
+      },
+      {
+       "category": "Kroatia",
+       "code": "122"
+      },
+      {
+       "category": "Italia",
+       "code": "123"
+      },
+      {
+       "category": "Latvia",
+       "code": "124"
+      },
+      {
+       "category": "Serbia og Montenegro",
+       "code": "125"
+      },
+      {
+       "category": "Malta",
+       "code": "126"
+      },
+      {
+       "category": "Nederland",
+       "code": "127"
+      },
+      {
+       "category": "Liechtenstein",
+       "code": "128"
+      },
+      {
+       "category": "Luxembourg",
+       "code": "129"
+      },
+      {
+       "category": "Monaco",
+       "code": "130"
+      },
+      {
+       "category": "Polen",
+       "code": "131"
+      },
+      {
+       "category": "Portugal",
+       "code": "132"
+      },
+      {
+       "category": "Romania",
+       "code": "133"
+      },
+      {
+       "category": "San Marino",
+       "code": "134"
+      },
+      {
+       "category": "Sovjetunionen",
+       "code": "135"
+      },
+      {
+       "category": "Litauen",
+       "code": "136"
+      },
+      {
+       "category": "Spania",
+       "code": "137"
+      },
+      {
+       "category": "Moldova",
+       "code": "138"
+      },
+      {
+       "category": "Storbritannia",
+       "code": "139"
+      },
+      {
+       "category": "Russland",
+       "code": "140"
+      },
+      {
+       "category": "Sveits",
+       "code": "141"
+      },
+      {
+       "category": "Tsjekkoslovakia",
+       "code": "142"
+      },
+      {
+       "category": "Tyrkia",
+       "code": "143"
+      },
+      {
+       "category": "Tyskland",
+       "code": "144"
+      },
+      {
+       "category": "Slovenia",
+       "code": "146"
+      },
+      {
+       "category": "Ukraina",
+       "code": "148"
+      },
+      {
+       "category": "DDR (utgått)",
+       "code": "151"
+      },
+      {
+       "category": "Ungarn",
+       "code": "152"
+      },
+      {
+       "category": "Østerrike",
+       "code": "153"
+      },
+      {
+       "category": "Vatikanstaten",
+       "code": "154"
+      },
+      {
+       "category": "Bosnia-Hercegovina",
+       "code": "155"
+      },
+      {
+       "category": "Makedonia",
+       "code": "156"
+      },
+      {
+       "category": "Slovakia",
+       "code": "157"
+      },
+      {
+       "category": "Tsjekkia",
+       "code": "158"
+      },
+      {
+       "category": "Vest-Europa uspesifisert",
+       "code": "194"
+      },
+      {
+       "category": "Resten av Øst-Europa",
+       "code": "195"
+      },
+      {
+       "category": "Resten av Europa S67",
+       "code": "196"
+      },
+      {
+       "category": "Resten av Europa L68/LS71",
+       "code": "199"
+      },
+      {
+       "category": "Algerie",
+       "code": "203"
+      },
+      {
+       "category": "Angola",
+       "code": "204"
+      },
+      {
+       "category": "Botswana",
+       "code": "205"
+      },
+      {
+       "category": "St. Helena",
+       "code": "209"
+      },
+      {
+       "category": "Det britiske området i Indiahavet",
+       "code": "213"
+      },
+      {
+       "category": "Burundi",
+       "code": "216"
+      },
+      {
+       "category": "Komorene",
+       "code": "220"
+      },
+      {
+       "category": "Benin",
+       "code": "229"
+      },
+      {
+       "category": "Ekvatorial-Guinea",
+       "code": "235"
+      },
+      {
+       "category": "Elfenbeinskysten",
+       "code": "239"
+      },
+      {
+       "category": "Eritrea",
+       "code": "241"
+      },
+      {
+       "category": "Etiopia",
+       "code": "246"
+      },
+      {
+       "category": "Egypt",
+       "code": "249"
+      },
+      {
+       "category": "Djibouti",
+       "code": "250"
+      },
+      {
+       "category": "Gabon",
+       "code": "254"
+      },
+      {
+       "category": "Gambia",
+       "code": "256"
+      },
+      {
+       "category": "Ghana",
+       "code": "260"
+      },
+      {
+       "category": "Guinea",
+       "code": "264"
+      },
+      {
+       "category": "Guinea-Bissau",
+       "code": "266"
+      },
+      {
+       "category": "Kamerun",
+       "code": "270"
+      },
+      {
+       "category": "Kapp Verde",
+       "code": "273"
+      },
+      {
+       "category": "Kenya",
+       "code": "276"
+      },
+      {
+       "category": "Kongo-Brazzaville",
+       "code": "278"
+      },
+      {
+       "category": "Kongo",
+       "code": "279"
+      },
+      {
+       "category": "Lesotho",
+       "code": "281"
+      },
+      {
+       "category": "Liberia",
+       "code": "283"
+      },
+      {
+       "category": "Libya",
+       "code": "286"
+      },
+      {
+       "category": "Madagaskar",
+       "code": "289"
+      },
+      {
+       "category": "Malawi",
+       "code": "296"
+      },
+      {
+       "category": "Mali",
+       "code": "299"
+      },
+      {
+       "category": "Marokko",
+       "code": "303"
+      },
+      {
+       "category": "Vest-Sahara",
+       "code": "304"
+      },
+      {
+       "category": "Mauritania",
+       "code": "306"
+      },
+      {
+       "category": "Mauritius",
+       "code": "307"
+      },
+      {
+       "category": "Namibia",
+       "code": "308"
+      },
+      {
+       "category": "Niger",
+       "code": "309"
+      },
+      {
+       "category": "Nigeria",
+       "code": "313"
+      },
+      {
+       "category": "Mosambik",
+       "code": "319"
+      },
+      {
+       "category": "Mayotte",
+       "code": "322"
+      },
+      {
+       "category": "Reunion",
+       "code": "323"
+      },
+      {
+       "category": "Zimbabwe",
+       "code": "326"
+      },
+      {
+       "category": "Rwanda",
+       "code": "329"
+      },
+      {
+       "category": "São Tomé og Príncipe",
+       "code": "333"
+      },
+      {
+       "category": "Senegal",
+       "code": "336"
+      },
+      {
+       "category": "Den sentralafrikanske republikk",
+       "code": "337"
+      },
+      {
+       "category": "Seychellene",
+       "code": "338"
+      },
+      {
+       "category": "Sierra Leone",
+       "code": "339"
+      },
+      {
+       "category": "Somalia",
+       "code": "346"
+      },
+      {
+       "category": "Spanske områder i Afrika (utgått)",
+       "code": "349"
+      },
+      {
+       "category": "Sudan",
+       "code": "356"
+      },
+      {
+       "category": "Swaziland",
+       "code": "357"
+      },
+      {
+       "category": "Sør-Afrika",
+       "code": "359"
+      },
+      {
+       "category": "Tanzania",
+       "code": "369"
+      },
+      {
+       "category": "Tsjad",
+       "code": "373"
+      },
+      {
+       "category": "Togo",
+       "code": "376"
+      },
+      {
+       "category": "Tunisia",
+       "code": "379"
+      },
+      {
+       "category": "Uganda",
+       "code": "386"
+      },
+      {
+       "category": "Zambia",
+       "code": "389"
+      },
+      {
+       "category": "Burkina Faso",
+       "code": "393"
+      },
+      {
+       "category": "Afrika uspesifisert",
+       "code": "394"
+      },
+      {
+       "category": "Resten av Afrika L60",
+       "code": "395"
+      },
+      {
+       "category": "Resten av Afrika L68",
+       "code": "397"
+      },
+      {
+       "category": "Resten av Afrika L70",
+       "code": "398"
+      },
+      {
+       "category": "Resten av Afrika LS71",
+       "code": "399"
+      },
+      {
+       "category": "Afghanistan",
+       "code": "404"
+      },
+      {
+       "category": "Armenia",
+       "code": "406"
+      },
+      {
+       "category": "Aserbajdsjan",
+       "code": "407"
+      },
+      {
+       "category": "Bahrain",
+       "code": "409"
+      },
+      {
+       "category": "Bangladesh",
+       "code": "410"
+      },
+      {
+       "category": "Bhutan",
+       "code": "412"
+      },
+      {
+       "category": "Brunei",
+       "code": "416"
+      },
+      {
+       "category": "Burma",
+       "code": "420"
+      },
+      {
+       "category": "Sri Lanka",
+       "code": "424"
+      },
+      {
+       "category": "De forente arabiske emirater",
+       "code": "426"
+      },
+      {
+       "category": "Filippinene",
+       "code": "428"
+      },
+      {
+       "category": "Georgia",
+       "code": "430"
+      },
+      {
+       "category": "Taiwan",
+       "code": "432"
+      },
+      {
+       "category": "Hongkong",
+       "code": "436"
+      },
+      {
+       "category": "India",
+       "code": "444"
+      },
+      {
+       "category": "Indonesia",
+       "code": "448"
+      },
+      {
+       "category": "Irak",
+       "code": "452"
+      },
+      {
+       "category": "Iran",
+       "code": "456"
+      },
+      {
+       "category": "Israel",
+       "code": "460"
+      },
+      {
+       "category": "Japan",
+       "code": "464"
+      },
+      {
+       "category": "Jordan",
+       "code": "476"
+      },
+      {
+       "category": "Kambodsja",
+       "code": "478"
+      },
+      {
+       "category": "Kasakhstan",
+       "code": "480"
+      },
+      {
+       "category": "Kina",
+       "code": "484"
+      },
+      {
+       "category": "Nord-Korea",
+       "code": "488"
+      },
+      {
+       "category": "Sør-Korea",
+       "code": "492"
+      },
+      {
+       "category": "Kuwait",
+       "code": "496"
+      },
+      {
+       "category": "Kypros",
+       "code": "500"
+      },
+      {
+       "category": "Kirgisistan",
+       "code": "502"
+      },
+      {
+       "category": "Laos",
+       "code": "504"
+      },
+      {
+       "category": "Libanon",
+       "code": "508"
+      },
+      {
+       "category": "Macao",
+       "code": "510"
+      },
+      {
+       "category": "Malaysia",
+       "code": "512"
+      },
+      {
+       "category": "Maldivene",
+       "code": "513"
+      },
+      {
+       "category": "Mongolia",
+       "code": "516"
+      },
+      {
+       "category": "Oman",
+       "code": "520"
+      },
+      {
+       "category": "Det palestinske området",
+       "code": "524"
+      },
+      {
+       "category": "Nepal",
+       "code": "528"
+      },
+      {
+       "category": "Pakistan",
+       "code": "534"
+      },
+      {
+       "category": "Øst-Timor",
+       "code": "537"
+      },
+      {
+       "category": "Qatar",
+       "code": "540"
+      },
+      {
+       "category": "Saudi-Arabia",
+       "code": "544"
+      },
+      {
+       "category": "Sikkim (utgått)",
+       "code": "546"
+      },
+      {
+       "category": "Singapore",
+       "code": "548"
+      },
+      {
+       "category": "Tadsjikistan",
+       "code": "550"
+      },
+      {
+       "category": "Turkmenistan",
+       "code": "552"
+      },
+      {
+       "category": "Usbekistan",
+       "code": "554"
+      },
+      {
+       "category": "Sør-Jemen (utgått)",
+       "code": "556"
+      },
+      {
+       "category": "Syria",
+       "code": "564"
+      },
+      {
+       "category": "Thailand",
+       "code": "568"
+      },
+      {
+       "category": "Nord-Vietnam (utgått)",
+       "code": "572"
+      },
+      {
+       "category": "Vietnam",
+       "code": "575"
+      },
+      {
+       "category": "Sør-Vietnam (utgått)",
+       "code": "576"
+      },
+      {
+       "category": "Jemen",
+       "code": "578"
+      },
+      {
+       "category": "Asia uspesifisert",
+       "code": "594"
+      },
+      {
+       "category": "Resten av Asia L60",
+       "code": "595"
+      },
+      {
+       "category": "Resten av Asia L68",
+       "code": "597"
+      },
+      {
+       "category": "Resten av Asia L70",
+       "code": "598"
+      },
+      {
+       "category": "Resten av Asia LS71",
+       "code": "599"
+      },
+      {
+       "category": "De amerikanske Jomfruøyene",
+       "code": "601"
+      },
+      {
+       "category": "Barbados",
+       "code": "602"
+      },
+      {
+       "category": "Antigua og Barbuda",
+       "code": "603"
+      },
+      {
+       "category": "Belize",
+       "code": "604"
+      },
+      {
+       "category": "Bahamas",
+       "code": "605"
+      },
+      {
+       "category": "Bermuda",
+       "code": "606"
+      },
+      {
+       "category": "De britiske Jomfruøyene",
+       "code": "608"
+      },
+      {
+       "category": "Canada",
+       "code": "612"
+      },
+      {
+       "category": "Caymanøyene",
+       "code": "613"
+      },
+      {
+       "category": "Costa Rica",
+       "code": "616"
+      },
+      {
+       "category": "Cuba",
+       "code": "620"
+      },
+      {
+       "category": "Dominica",
+       "code": "622"
+      },
+      {
+       "category": "Den dominikanske republikk",
+       "code": "624"
+      },
+      {
+       "category": "Franske Antiller (utgått)",
+       "code": "628"
+      },
+      {
+       "category": "Grenada",
+       "code": "629"
+      },
+      {
+       "category": "Guadeloupe",
+       "code": "631"
+      },
+      {
+       "category": "Guatemala",
+       "code": "632"
+      },
+      {
+       "category": "Haiti",
+       "code": "636"
+      },
+      {
+       "category": "Honduras",
+       "code": "644"
+      },
+      {
+       "category": "Jamaica",
+       "code": "648"
+      },
+      {
+       "category": "Martinique",
+       "code": "650"
+      },
+      {
+       "category": "Mexico",
+       "code": "652"
+      },
+      {
+       "category": "Montserrat",
+       "code": "654"
+      },
+      {
+       "category": "De nederlandske Antillene",
+       "code": "656"
+      },
+      {
+       "category": "Aruba",
+       "code": "657"
+      },
+      {
+       "category": "Anguilla",
+       "code": "660"
+      },
+      {
+       "category": "Nicaragua",
+       "code": "664"
+      },
+      {
+       "category": "Panama",
+       "code": "668"
+      },
+      {
+       "category": "Panamakanalsonen (utgått)",
+       "code": "669"
+      },
+      {
+       "category": "El Salvador",
+       "code": "672"
+      },
+      {
+       "category": "Saint-Pierre-et-Miquelon",
+       "code": "676"
+      },
+      {
+       "category": "St. Kitts og Nevis",
+       "code": "677"
+      },
+      {
+       "category": "St. Lucia",
+       "code": "678"
+      },
+      {
+       "category": "St. Vincent og Grenadinene",
+       "code": "679"
+      },
+      {
+       "category": "Trinidad og Tobago",
+       "code": "680"
+      },
+      {
+       "category": "Turks- og Caicosøyene",
+       "code": "681"
+      },
+      {
+       "category": "USA",
+       "code": "684"
+      },
+      {
+       "category": "Puerto Rico",
+       "code": "685"
+      },
+      {
+       "category": "Nord- og Mellom-Amerika uspesifisert",
+       "code": "694"
+      },
+      {
+       "category": "Egentlige Mellom-Amerika",
+       "code": "695"
+      },
+      {
+       "category": "Resten av Nord- og Mellom-Amerika L68",
+       "code": "697"
+      },
+      {
+       "category": "Resten av Nord- og Mellom-Amerika L70",
+       "code": "698"
+      },
+      {
+       "category": "Resten av Nord- og Mellom-Amerika LS71",
+       "code": "699"
+      },
+      {
+       "category": "Argentina",
+       "code": "705"
+      },
+      {
+       "category": "Bolivia",
+       "code": "710"
+      },
+      {
+       "category": "Brasil",
+       "code": "715"
+      },
+      {
+       "category": "Guyana",
+       "code": "720"
+      },
+      {
+       "category": "Chile",
+       "code": "725"
+      },
+      {
+       "category": "Colombia",
+       "code": "730"
+      },
+      {
+       "category": "Ecuador",
+       "code": "735"
+      },
+      {
+       "category": "Falklandsøyene",
+       "code": "740"
+      },
+      {
+       "category": "Fransk Guyana",
+       "code": "745"
+      },
+      {
+       "category": "Paraguay",
+       "code": "755"
+      },
+      {
+       "category": "Peru",
+       "code": "760"
+      },
+      {
+       "category": "Surinam",
+       "code": "765"
+      },
+      {
+       "category": "Uruguay",
+       "code": "770"
+      },
+      {
+       "category": "Venezuela",
+       "code": "775"
+      },
+      {
+       "category": "Sør-Amerika uspesifisert",
+       "code": "794"
+      },
+      {
+       "category": "Resten av Sør- og Mellom-Amerika L60",
+       "code": "795"
+      },
+      {
+       "category": "Resten av Sør-Amerika L68",
+       "code": "797"
+      },
+      {
+       "category": "Resten av Sør-Amerika L70",
+       "code": "798"
+      },
+      {
+       "category": "Resten av Sør-Amerika LS71",
+       "code": "799"
+      },
+      {
+       "category": "Amerikansk Samoa",
+       "code": "802"
+      },
+      {
+       "category": "Australia",
+       "code": "805"
+      },
+      {
+       "category": "Salomonøyene",
+       "code": "806"
+      },
+      {
+       "category": "Christmasøya",
+       "code": "807"
+      },
+      {
+       "category": "Kokosøyene",
+       "code": "808"
+      },
+      {
+       "category": "Cookøyene",
+       "code": "809"
+      },
+      {
+       "category": "Fiji",
+       "code": "811"
+      },
+      {
+       "category": "Vanuatu",
+       "code": "812"
+      },
+      {
+       "category": "Tonga",
+       "code": "813"
+      },
+      {
+       "category": "Fransk Polynesia",
+       "code": "814"
+      },
+      {
+       "category": "Kiribati",
+       "code": "815"
+      },
+      {
+       "category": "Tuvalu",
+       "code": "816"
+      },
+      {
+       "category": "Guam",
+       "code": "817"
+      },
+      {
+       "category": "Nauru",
+       "code": "818"
+      },
+      {
+       "category": "Mindre stillehavsøyer (am.)",
+       "code": "819"
+      },
+      {
+       "category": "New Zealand",
+       "code": "820"
+      },
+      {
+       "category": "Niue",
+       "code": "821"
+      },
+      {
+       "category": "Norfolkøya",
+       "code": "822"
+      },
+      {
+       "category": "Ny-Guineaterritoriet (utgått)",
+       "code": "823"
+      },
+      {
+       "category": "Mikronesiaføderasjonen",
+       "code": "826"
+      },
+      {
+       "category": "Papua Ny-Guinea",
+       "code": "827"
+      },
+      {
+       "category": "Pitcairn",
+       "code": "828"
+      },
+      {
+       "category": "Tokelau",
+       "code": "829"
+      },
+      {
+       "category": "Samoa",
+       "code": "830"
+      },
+      {
+       "category": "Wakeøya (utgått)",
+       "code": "831"
+      },
+      {
+       "category": "Wallis- og Futunaøyene",
+       "code": "832"
+      },
+      {
+       "category": "Ny-Caledonia",
+       "code": "833"
+      },
+      {
+       "category": "Marshalløyene",
+       "code": "835"
+      },
+      {
+       "category": "Palau",
+       "code": "839"
+      },
+      {
+       "category": "Nord-Marianene",
+       "code": "840"
+      },
+      {
+       "category": "Oseania uspesifisert",
+       "code": "894"
+      },
+      {
+       "category": "Oseania L60",
+       "code": "895"
+      },
+      {
+       "category": "Resten av Oseania",
+       "code": "899"
+      },
+      {
+       "category": "Statsløs",
+       "code": "980"
+      },
+      {
+       "category": "Uoppgitt utenlandsk statsborgerskap",
+       "code": "989"
+      },
+      {
+       "category": "Uoppgitt",
+       "code": "990"
+      }
+     ],
+     "missingValues": []
+    }
+   },
+   {
+    "description": "Det benyttes SSBs 3-sifrede tallkode.\n For innreisende studenter fra utlandet benyttes landkoden til landet hvor den utenlandske utvekslingsinstitusjonen studentene kommer fra er lokalisert. For utreisende studenter fra Norge benyttes landkoden til landet der den utenlandske utvekslingsinstitusjonen ligger og der studenten reiser til. Hvis landkoden er ukjent, gis verdien 990.",
+    "validPeriod": {
+     "start": 13149,
+     "stop": 13513
+    },
+    "valueDomain": {
+     "missingValues": [],
+     "delta": {
+      "remove": [],
+      "reorder": [],
+      "replace": {
+       "93": {
+        "category": "Réunion",
+        "code": "323"
+       }
+      },
+      "insert": {}
+     }
+    }
+   },
+   {
+    "description": "Det benyttes SSBs 3-sifrede tallkode.\n For innreisende studenter fra utlandet benyttes landkoden til landet hvor den utenlandske utvekslingsinstitusjonen studentene kommer fra er lokalisert. For utreisende studenter fra Norge benyttes landkoden til landet der den utenlandske utvekslingsinstitusjonen ligger og der studenten reiser til. Hvis landkoden er ukjent, gis verdien 990.",
+    "validPeriod": {
+     "start": 13514,
+     "stop": 13878
+    },
+    "valueDomain": {
+     "missingValues": [],
+     "delta": {
+      "remove": [],
+      "reorder": [],
+      "replace": {},
+      "insert": {
+       "50": {
+        "category": "Serbia",
+        "code": "159"
+       },
+       "51": {
+        "category": "Montenegro",
+        "code": "160"
+       }
+      }
+     }
+    }
+   },
+   {
+    "description": "Det benyttes SSBs 3-sifrede tallkode.\n For innreisende studenter fra utlandet benyttes landkoden til landet hvor den utenlandske utvekslingsinstitusjonen studentene kommer fra er lokalisert. For utreisende studenter fra Norge benyttes landkoden til landet der den utenlandske utvekslingsinstitusjonen ligger og der studenten reiser til. Hvis landkoden er ukjent, gis verdien 990.",
+    "validPeriod": {
+     "start": 13879,
+     "stop": 15308
+    },
+    "valueDomain": {
+     "missingValues": [],
+     "delta": {
+      "remove": [],
+      "reorder": [],
+      "replace": {},
+      "insert": {
+       "52": {
+        "category": "Kosovo",
+        "code": "161"
+       },
+       "218": {
+        "category": "St. Martin",
+        "code": "686"
+       },
+       "219": {
+        "category": "St. Barthélemy",
+        "code": "687"
+       }
+      }
+     }
+    }
+   },
+   {
+    "description": "Det benyttes SSBs 3-sifrede tallkode.\n For innreisende studenter fra utlandet benyttes landkoden til landet hvor den utenlandske utvekslingsinstitusjonen studentene kommer fra er lokalisert. For utreisende studenter fra Norge benyttes landkoden til landet der den utenlandske utvekslingsinstitusjonen ligger og der studenten reiser til. Hvis landkoden er ukjent, gis verdien 990.",
+    "validPeriod": {
+     "start": 15309
+    },
+    "valueDomain": {
+     "missingValues": [],
+     "delta": {
+      "remove": [],
+      "reorder": [],
+      "replace": {
+       "47": {
+        "category": "Nord-Makedonia",
+        "code": "156"
+       },
+       "61": {
+        "category": "Det britiske territoriet i Indiahavet",
+        "code": "213"
+       },
+       "107": {
+        "category": "Eswatini",
+        "code": "357"
+       },
+       "128": {
+        "category": "Myanmar",
+        "code": "420"
+       },
+       "157": {
+        "category": "Palestina",
+        "code": "524"
+       },
+       "211": {
+        "category": "Saint Kitts og Nevis",
+        "code": "677"
+       },
+       "212": {
+        "category": "Saint Lucia",
+        "code": "678"
+       },
+       "213": {
+        "category": "Saint Vincent og Grenadinene",
+        "code": "679"
+       },
+       "218": {
+        "category": "Saint-Martin",
+        "code": "686"
+       },
+       "219": {
+        "category": "Saint-Barthélemy",
+        "code": "687"
+       },
+       "258": {
+        "category": "USAs ytre småøyer",
+        "code": "819"
+       }
+      },
+      "insert": {
+       "53": {
+        "category": "Guernsey",
+        "code": "162"
+       },
+       "54": {
+        "category": "Jersey",
+        "code": "163"
+       },
+       "55": {
+        "category": "Man",
+        "code": "164"
+       },
+       "109": {
+        "category": "Sør-Sudan",
+        "code": "355"
+       },
+       "209": {
+        "category": "Sint Maarten",
+        "code": "658"
+       },
+       "210": {
+        "category": "Bonaire, Sint Eustatius og Saba",
+        "code": "659"
+       },
+       "212": {
+        "category": "Curaçao",
+        "code": "661"
+       }
+      }
+     }
+    }
+   }
+  ]
+ },
+ "identifierVariables": [
+  {
+   "name": "PERSONID_1",
+   "label": "Personidentifikator",
+   "notPseudonym": false,
+   "dataType": "Long",
+   "format": "RandomUInt48",
+   "variableRole": "Identifier",
+   "keyType": {
+    "name": "PERSON",
+    "label": "Person",
+    "description": "Person er et enkeltmenneske, individ."
+   },
+   "representedVariables": [
+    {
+     "description": "Identifikator for person i microdata",
+     "validPeriod": {
+      "start": 12432,
+      "stop": 19904
+     },
+     "valueDomain": {
+      "description": "Pseudonymisert personnummer",
+      "unitOfMeasure": "N/A"
+     }
+    }
+   ]
+  }
+ ],
+ "attributeVariables": [
+  {
+   "name": "START",
+   "label": "Startdato",
+   "notPseudonym": true,
+   "dataType": "Instant",
+   "variableRole": "Start",
+   "representedVariables": [
+    {
+     "description": "Startdato/måletidspunktet for hendelsen",
+     "validPeriod": {
+      "start": 12432,
+      "stop": 19904
+     },
+     "valueDomain": {
+      "description": "Dato oppgitt i dager siden 1970-01-01",
+      "unitOfMeasure": "N/A"
+     }
+    }
+   ]
+  },
+  {
+   "name": "STOP",
+   "label": "Stoppdato",
+   "notPseudonym": true,
+   "dataType": "Instant",
+   "variableRole": "Stop",
+   "representedVariables": [
+    {
+     "description": "Stoppdato/måletidspunktet for hendelsen",
+     "validPeriod": {
+      "start": 12432,
+      "stop": 19904
+     },
+     "valueDomain": {
+      "description": "Dato oppgitt i dager siden 1970-01-01",
+      "unitOfMeasure": "N/A"
+     }
+    }
+   ]
+  }
+ ],
+ "globalTemporalCoverage": {
+  "start": -1096,
+  "stop": 20759
+ },
+ "updatedAt": 1749816031
+}

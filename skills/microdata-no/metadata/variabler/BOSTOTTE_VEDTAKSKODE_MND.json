@@ -1,0 +1,251 @@
+{
+ "name": "BOSTOTTE_VEDTAKSKODE_MND",
+ "temporality": "STATUS",
+ "languageCode": "no",
+ "sensitivityLevel": "PERSON_GENERAL",
+ "populationDescription": "Variabelen omfatter alle personer i bostøtteregisteret som har søkt om bostøtte ved utgangen av året. Observasjoner med verdiene 0 og uoppgitt (missing) er utelatt.",
+ "subjectFields": [
+  "Bostøtte"
+ ],
+ "temporalCoverage": {
+  "start": 17197,
+  "stop": 20453
+ },
+ "measureVariable": {
+  "name": "BOSTOTTE_VEDTAKSKODE_MND",
+  "label": "Vedtak",
+  "notPseudonym": true,
+  "dataType": "String",
+  "variableRole": "Measure",
+  "representedVariables": [
+   {
+    "description": "Variabelen viser resultatet av vedtaket for den gjeldende statistikkmåneden.",
+    "validPeriod": {
+     "start": 17167
+    },
+    "valueDomain": {
+     "codeList": [
+      {
+       "category": "Innvilget",
+       "code": "V00"
+      },
+      {
+       "category": "Noen i husstanden er ikke bosatt på søknadsadresse",
+       "code": "V48"
+      },
+      {
+       "category": " Manglende opplysninger",
+       "code": "V09"
+      },
+      {
+       "category": "Ikke i registrert i folkeregisteret på situasjonsdato",
+       "code": "V05"
+      },
+      {
+       "category": "Hovedperson er død",
+       "code": "V11"
+      },
+      {
+       "category": "Boligen utenfor ordningen",
+       "code": "V04"
+      },
+      {
+       "category": "Ingen støtteberettigede",
+       "code": "V02"
+      },
+      {
+       "category": "For høy inntekt i forhold til boutgift og at inntektsgrunnlaget i husstanden er for høyt i forhold til boutgiftene",
+       "code": "V03"
+      }
+     ],
+     "missingValues": []
+    }
+   }
+  ]
+ },
+ "identifierVariables": [
+  {
+   "name": "PERSONID_1",
+   "label": "Personidentifikator",
+   "notPseudonym": false,
+   "dataType": "Long",
+   "format": "RandomUInt48",
+   "variableRole": "Identifier",
+   "keyType": {
+    "name": "PERSON",
+    "label": "Person",
+    "description": "Person er et enkeltmenneske, individ."
+   },
+   "representedVariables": [
+    {
+     "description": "Identifikator for person i microdata",
+     "validPeriod": {
+      "start": 17197,
+      "stop": 20453
+     },
+     "valueDomain": {
+      "description": "Pseudonymisert personnummer",
+      "unitOfMeasure": "N/A"
+     }
+    }
+   ]
+  }
+ ],
+ "attributeVariables": [
+  {
+   "name": "START",
+   "label": "Startdato",
+   "notPseudonym": true,
+   "dataType": "Instant",
+   "variableRole": "Start",
+   "representedVariables": [
+    {
+     "description": "Startdato/måletidspunktet for hendelsen",
+     "validPeriod": {
+      "start": 17197,
+      "stop": 20453
+     },
+     "valueDomain": {
+      "description": "Dato oppgitt i dager siden 1970-01-01",
+      "unitOfMeasure": "N/A"
+     }
+    }
+   ]
+  },
+  {
+   "name": "STOP",
+   "label": "Stoppdato",
+   "notPseudonym": true,
+   "dataType": "Instant",
+   "variableRole": "Stop",
+   "representedVariables": [
+    {
+     "description": "Stoppdato/måletidspunktet for hendelsen",
+     "validPeriod": {
+      "start": 17197,
+      "stop": 20453
+     },
+     "valueDomain": {
+      "description": "Dato oppgitt i dager siden 1970-01-01",
+      "unitOfMeasure": "N/A"
+     }
+    }
+   ]
+  }
+ ],
+ "temporalStatusDates": [
+  17197,
+  17225,
+  17256,
+  17286,
+  17317,
+  17347,
+  17378,
+  17409,
+  17439,
+  17470,
+  17500,
+  17531,
+  17562,
+  17590,
+  17621,
+  17651,
+  17682,
+  17712,
+  17743,
+  17774,
+  17804,
+  17835,
+  17865,
+  17896,
+  17927,
+  17955,
+  17986,
+  18016,
+  18047,
+  18077,
+  18108,
+  18139,
+  18169,
+  18200,
+  18230,
+  18261,
+  18292,
+  18321,
+  18352,
+  18382,
+  18413,
+  18443,
+  18474,
+  18505,
+  18535,
+  18566,
+  18596,
+  18627,
+  18658,
+  18686,
+  18717,
+  18747,
+  18778,
+  18808,
+  18839,
+  18870,
+  18900,
+  18931,
+  18961,
+  18992,
+  19023,
+  19051,
+  19082,
+  19112,
+  19143,
+  19173,
+  19204,
+  19235,
+  19265,
+  19296,
+  19326,
+  19357,
+  19388,
+  19416,
+  19447,
+  19477,
+  19508,
+  19538,
+  19569,
+  19600,
+  19630,
+  19661,
+  19691,
+  19722,
+  19753,
+  19782,
+  19813,
+  19843,
+  19874,
+  19904,
+  19935,
+  19966,
+  19996,
+  20027,
+  20057,
+  20088,
+  20119,
+  20147,
+  20178,
+  20208,
+  20239,
+  20269,
+  20300,
+  20331,
+  20361,
+  20392,
+  20422,
+  20453
+ ],
+ "globalTemporalCoverage": {
+  "start": -1096,
+  "stop": 20759
+ },
+ "updatedAt": 1780040280
+}

@@ -1,0 +1,120 @@
+{
+ "name": "KJORETOY_TEKN_ANTALL_DORER",
+ "temporality": "STATUS",
+ "languageCode": "no",
+ "sensitivityLevel": "PERSON_GENERAL",
+ "populationDescription": "Variabelen omfatter registrerte kjøretøy per 31.12 for hvert år i variabelens gyldighetsperiode. Observasjoner med verdiene 0 og uoppgitt (missing) er utelatt.\n \n Variabler med enhetstype KJØRETØY er gitt ved kjøretøyets eierforhold. Enhetstypen er en kombinasjon av bilens registreringsnummer og eierens fødselsnunmmer.",
+ "subjectFields": [
+  "Kjøretøy",
+  "Landtransport",
+  "Motorvogn",
+  "Transport og reiseliv"
+ ],
+ "temporalCoverage": {
+  "start": 18627,
+  "stop": 20453
+ },
+ "measureVariable": {
+  "name": "KJORETOY_TEKN_ANTALL_DORER",
+  "label": "Antall dører",
+  "notPseudonym": true,
+  "dataType": "Long",
+  "variableRole": "Measure",
+  "representedVariables": [
+   {
+    "description": "Variabelen viser antall dører totalt på kjøretøyet.",
+    "validPeriod": {
+     "start": 18627,
+     "stop": 20453
+    },
+    "valueDomain": {
+     "description": "Antall.",
+     "unitOfMeasure": "Antall"
+    }
+   }
+  ]
+ },
+ "identifierVariables": [
+  {
+   "name": "KJORETOY_ID",
+   "label": "Kjøretøysidentifikator",
+   "notPseudonym": false,
+   "dataType": "Long",
+   "format": "RandomUInt48",
+   "variableRole": "Identifier",
+   "keyType": {
+    "name": "KJORETOY",
+    "label": "Kjøretøy",
+    "description": "Kjøretøy er en innretning som er bestemt til å kjøre på bakken."
+   },
+   "representedVariables": [
+    {
+     "description": "Identifikator for kjøretøy i microdata",
+     "validPeriod": {
+      "start": 18627,
+      "stop": 20453
+     },
+     "valueDomain": {
+      "description": "Pseudonymisert kombinasjon av personnummer og registreringsnummer for kjøretøy",
+      "unitOfMeasure": "N/A"
+     }
+    }
+   ]
+  }
+ ],
+ "attributeVariables": [
+  {
+   "name": "START",
+   "label": "Startdato",
+   "notPseudonym": true,
+   "dataType": "Instant",
+   "variableRole": "Start",
+   "representedVariables": [
+    {
+     "description": "Startdato/måletidspunktet for hendelsen",
+     "validPeriod": {
+      "start": 18627,
+      "stop": 20453
+     },
+     "valueDomain": {
+      "description": "Dato oppgitt i dager siden 1970-01-01",
+      "unitOfMeasure": "N/A"
+     }
+    }
+   ]
+  },
+  {
+   "name": "STOP",
+   "label": "Stoppdato",
+   "notPseudonym": true,
+   "dataType": "Instant",
+   "variableRole": "Stop",
+   "representedVariables": [
+    {
+     "description": "Stoppdato/måletidspunktet for hendelsen",
+     "validPeriod": {
+      "start": 18627,
+      "stop": 20453
+     },
+     "valueDomain": {
+      "description": "Dato oppgitt i dager siden 1970-01-01",
+      "unitOfMeasure": "N/A"
+     }
+    }
+   ]
+  }
+ ],
+ "temporalStatusDates": [
+  18627,
+  18992,
+  19357,
+  19722,
+  20088,
+  20453
+ ],
+ "globalTemporalCoverage": {
+  "start": -1096,
+  "stop": 20759
+ },
+ "updatedAt": 1780040280
+}

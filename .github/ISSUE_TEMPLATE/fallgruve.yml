@@ -1,0 +1,30 @@
+name: Ny fallgruve
+description: Meld en feil eller overraskelse i microdata.no som andre bør vite om
+title: "Fallgruve: "
+labels: ["fallgruve"]
+body:
+  - type: textarea
+    id: symptom
+    attributes:
+      label: Symptom
+      description: Hva skjedde? Lim gjerne inn den eksakte feilmeldingen.
+    validations:
+      required: true
+  - type: textarea
+    id: kode
+    attributes:
+      label: Minimal kode som gir feilen
+      render: text
+      description: Ikke lim inn resultater med tall fra registerdata, bare kode og feilmeldinger.
+  - type: textarea
+    id: losning
+    attributes:
+      label: Løsning eller omvei
+      description: Hva fungerte? La feltet stå tomt hvis du ikke har funnet en løsning ennå.
+  - type: input
+    id: versjon
+    attributes:
+      label: Datalagerversjon og dato
+      placeholder: "no.ssb.fdb:57, november 2026"
+    validations:
+      required: true

@@ -1,0 +1,279 @@
+{
+ "name": "TRAFULYK_PERS_KJRTKODE",
+ "temporality": "FIXED",
+ "languageCode": "no",
+ "sensitivityLevel": "PERSON_GENERAL",
+ "populationDescription": "Variabelen omfatter dødsulykker og andre ulykker med personskade som er meldt til politiet. Trafikkulykkene som inngår i statistikken har skjedd på offentlig eller privat vei, gate eller plass som er åpen for alminnelig trafikk. Observasjoner med verdiene 0 og uoppgitt (missing) er utelatt.",
+ "subjectFields": [
+  "Landtransport",
+  "Trafikkulykke",
+  "Transport og reiseliv"
+ ],
+ "temporalCoverage": {
+  "start": -25567,
+  "stop": 19723
+ },
+ "measureVariable": {
+  "name": "TRAFULYK_PERS_KJRTKODE",
+  "label": "Kjøretøykode",
+  "notPseudonym": true,
+  "dataType": "String",
+  "variableRole": "Measure",
+  "representedVariables": [
+   {
+    "description": "Variabelen viser personens kjøretøykode.",
+    "validPeriod": {
+     "start": 13514
+    },
+    "valueDomain": {
+     "codeList": [
+      {
+       "category": "Fotgjenger",
+       "code": "01"
+      },
+      {
+       "category": "Akende",
+       "code": "02"
+      },
+      {
+       "category": "Skiløper",
+       "code": "03"
+      },
+      {
+       "category": "Rulleski, -skøyter, -brett",
+       "code": "04"
+      },
+      {
+       "category": "Spark",
+       "code": "05"
+      },
+      {
+       "category": "Sykkel",
+       "code": "10"
+      },
+      {
+       "category": "Hest m/rytter",
+       "code": "12"
+      },
+      {
+       "category": "Hest m/vogn",
+       "code": "13"
+      },
+      {
+       "category": "Moped",
+       "code": "21"
+      },
+      {
+       "category": "Lett motorsykkel",
+       "code": "22"
+      },
+      {
+       "category": "Tung motorsykkel",
+       "code": "23"
+      },
+      {
+       "category": "Motorsykkel m/sidevogn",
+       "code": "24"
+      },
+      {
+       "category": "Snøscooter, beltemotorsykkel (620)",
+       "code": "25"
+      },
+      {
+       "category": "Rullestol",
+       "code": "26"
+      },
+      {
+       "category": "ATV (åpen 3- eller 4 hjuls MC, moped eller traktor)",
+       "code": "27"
+      },
+      {
+       "category": "El-bil",
+       "code": "28"
+      },
+      {
+       "category": "Lukket 3- eller 4 hjuls MC eller moped eller traktor",
+       "code": "29"
+      },
+      {
+       "category": "Personbil, stasjonsvogn",
+       "code": "31"
+      },
+      {
+       "category": "Drosje, også minibuss",
+       "code": "32"
+      },
+      {
+       "category": "Buss/minibuss i rute",
+       "code": "33"
+      },
+      {
+       "category": "Minibuss",
+       "code": "34"
+      },
+      {
+       "category": "Annen buss, turvogn",
+       "code": "35"
+      },
+      {
+       "category": "Annen aktuell syketrsp.",
+       "code": "36"
+      },
+      {
+       "category": "Personbil/stasjonsvogn med campingvogn",
+       "code": "45"
+      },
+      {
+       "category": "Varebil med campingvogn",
+       "code": "46"
+      },
+      {
+       "category": "Tankbil",
+       "code": "47"
+      },
+      {
+       "category": "Campingbil",
+       "code": "48"
+      },
+      {
+       "category": "Personbil/stasjonsvogn med tilhenger (unntatt campingvogn)",
+       "code": "51"
+      },
+      {
+       "category": "Varebil med tilhenger",
+       "code": "52"
+      },
+      {
+       "category": "Lastebil med påhengsvogn 1-akslet",
+       "code": "53"
+      },
+      {
+       "category": "Lastebil med slepevogn 2-akslet",
+       "code": "54"
+      },
+      {
+       "category": "Lastebil med tilhengerredskap",
+       "code": "55"
+      },
+      {
+       "category": "Kombinertbil med tilhenger",
+       "code": "56"
+      },
+      {
+       "category": "Trekkbil med semitrailer",
+       "code": "57"
+      },
+      {
+       "category": "Tankbil med tilhenger",
+       "code": "58"
+      },
+      {
+       "category": "Beltebil. annen bil",
+       "code": "59"
+      },
+      {
+       "category": "Traktor (ordinær)",
+       "code": "61"
+      },
+      {
+       "category": "Tilhengerredskap u/trekkvogn",
+       "code": "71"
+      },
+      {
+       "category": "Jernbanetog",
+       "code": "81"
+      },
+      {
+       "category": "Sporvogn",
+       "code": "82"
+      },
+      {
+       "category": "Annet kjøretøy inkl el-sparkesykkel",
+       "code": "88"
+      },
+      {
+       "category": "Ukjent kjøretøy",
+       "code": "99"
+      }
+     ],
+     "missingValues": []
+    }
+   }
+  ]
+ },
+ "identifierVariables": [
+  {
+   "name": "PERSON_TRAFIKKULYKKE_ID",
+   "label": "Person i trafikkulykkeidentifikator",
+   "notPseudonym": false,
+   "dataType": "Long",
+   "format": "RandomUInt48",
+   "variableRole": "Identifier",
+   "keyType": {
+    "name": "TRAFIKKULYKKE_PERSON",
+    "label": "Person i trafikkulykke",
+    "description": "Variablene omfatter dødsulykker og andre ulykker med personskade som er meldt til politiet. Trafikkulykkene som inngår i statistikken har skjedd på offentlig eller privat vei, gate eller plass som er åpen for alminnelig trafikk"
+   },
+   "representedVariables": [
+    {
+     "description": "Identifikator for personer involvert i trafikkulykker i microdata",
+     "validPeriod": {
+      "start": -25567,
+      "stop": 19723
+     },
+     "valueDomain": {
+      "description": "Pseudonymisert kombinasjon av internnr, saksnummer og fødselsnummer for trafikkulykker",
+      "unitOfMeasure": "N/A"
+     }
+    }
+   ]
+  }
+ ],
+ "attributeVariables": [
+  {
+   "name": "START",
+   "label": "Startdato",
+   "notPseudonym": true,
+   "dataType": "Instant",
+   "variableRole": "Start",
+   "representedVariables": [
+    {
+     "description": "Startdato/måletidspunktet for hendelsen",
+     "validPeriod": {
+      "start": -25567,
+      "stop": 19723
+     },
+     "valueDomain": {
+      "description": "Dato oppgitt i dager siden 1970-01-01",
+      "unitOfMeasure": "N/A"
+     }
+    }
+   ]
+  },
+  {
+   "name": "STOP",
+   "label": "Stoppdato",
+   "notPseudonym": true,
+   "dataType": "Instant",
+   "variableRole": "Stop",
+   "representedVariables": [
+    {
+     "description": "Stoppdato/måletidspunktet for hendelsen",
+     "validPeriod": {
+      "start": -25567,
+      "stop": 19723
+     },
+     "valueDomain": {
+      "description": "Dato oppgitt i dager siden 1970-01-01",
+      "unitOfMeasure": "N/A"
+     }
+    }
+   ]
+  }
+ ],
+ "globalTemporalCoverage": {
+  "start": -1096,
+  "stop": 20759
+ },
+ "updatedAt": 1730375672
+}

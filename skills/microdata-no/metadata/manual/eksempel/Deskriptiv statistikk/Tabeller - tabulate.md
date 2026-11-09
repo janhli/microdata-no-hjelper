@@ -1,0 +1,77 @@
+<!-- Kilde: https://microdata.no/manual/eksempel/Deskriptiv%20statistikk/Tabeller%20-%20tabulate -->
+
+# Tabeller - tabulate
+
+Skriptet nedenfor demonstrerer ulike måter å bruke kommandoen `tabulate` til å lage deskriptiv statistikk.
+
+Kommandoen brukes på kategoriske variabler for å fremstille frekvenstabeller, både endimensjonale og flerdimensjonale. Ved å kombinere med `summarize()`-opsjonen, kan man også lage volumtabeller.
+
+Både numeriske og alfanumeriske variabler kan benyttes som input, men antallet celler i tabellen må ikke overstige en viss grense. F.eks. kan man lage en tabell over alle kommuner (fordelt på kjønn etc), men ikke over alle utdanningskoder.
+
+```
+ require no.ssb.fdb:23 as db
+
+create-dataset demografidata
+import db/INNTEKT_BRUTTOFORM 2020-01-01 as formue
+import db/BEFOLKNING_KJOENN as kjønn
+import db/BEFOLKNING_FOEDSELS_AAR_MND as faarmnd
+import db/SIVSTANDFDT_SIVSTAND 2016-01-01 as sivstand16
+import db/SIVSTANDFDT_SIVSTAND 2020-01-01 as sivstand20
+import db/BOSATTEFDT_BOSTED 2020-01-01 as bosted
+import db/BEFOLKNING_STATUSKODE 2020-01-01 as regstat
+
+// Koder om fra kommune- til fylkesnivå
+generate fylke = substr(bosted,1, 2)
+
+// Genererer deskriptiv statistikk
+
+// Frekvenstabeller - enveis og toveis
+// Den beste måten å gjøre seg kjent med diskrete variabler er gjennom frekvenstabeller. Disse viser antallet enheter
+// for hver kategori, og gir dessuten overblikk over hvilke kategorier som benyttes for den aktuelle variabelen. En kan se
+// på enkeltvariabler gjennom enveistabeller, men også kombinere to eller flere i en og samme tabell (krysstabeller).
+// Dette gir innblikk i hvordan frekvensene fordeler seg, kontrollert for verdier på andre variabler
+
+define-labels fylkerstring \
+	'03' Oslo \
+	'11' Rogaland \
+	'15' 'Møre og Romsdal' \
+	'18' Nordland \
+	'30' Viken \
+	'34' Innlandet \
+	'38' 'Vestfold og Telemark' \
+	'42' Agder \
+	'46' Vestland \
+	'50' Trøndelag \
+	'54' 'Troms og Finnmark' \
+	'21' Spitsbergen \
+	'25' 'Utdanning i utlandet' \
+	'99' Uoppgitt
+
+assign-labels fylke fylkerstring
+
+tabulate fylke
+tabulate kjønn
+tabulate kjønn regstat
+tabulate fylke kjønn
+
+// Krysstabell med kun kategoriverdier (ikke labler)
+tabulate kjønn regstat fylke, nolabels
+
+// Krysstabell der missingverdier tas med
+tabulate fylke regstat, missing
+
+// Krysstabell der vi bare viser resultatet for personer over 30 år
+generate alder = 2020 - int(faarmnd/100)
+tabulate fylke regstat if alder > 30
+
+// Prosenttabeller
+tabulate sivstand16 sivstand20, rowpct
+tabulate sivstand16 sivstand20, colpct
+tabulate sivstand16 sivstand20, cellpct
+tabulate sivstand16 sivstand20, rowpct freq
+
+// tabulate-kommandoen kan også brukes til å lage volumtabeller vha. summarize-option. Dette viser statistikk som gjennomsnitt m.m. for en gitt variabel fordelt på kategorier spesifisert gjennom de valgte tabulate-variable
+
+tabulate fylke kjønn, summarize(formue)
+
+```

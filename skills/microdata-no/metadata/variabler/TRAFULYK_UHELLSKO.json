@@ -1,0 +1,447 @@
+{
+ "name": "TRAFULYK_UHELLSKO",
+ "temporality": "FIXED",
+ "languageCode": "no",
+ "sensitivityLevel": "PERSON_GENERAL",
+ "populationDescription": "Variabelen omfatter dødsulykker og andre ulykker med personskade som er meldt til politiet. Trafikkulykkene som inngår i statistikken har skjedd på offentlig eller privat vei, gate eller plass som er åpen for alminnelig trafikk.",
+ "subjectFields": [
+  "Landtransport",
+  "Trafikkulykke",
+  "Transport og reiseliv"
+ ],
+ "temporalCoverage": {
+  "start": -25567,
+  "stop": 19723
+ },
+ "measureVariable": {
+  "name": "TRAFULYK_UHELLSKO",
+  "label": "Uhellskode",
+  "notPseudonym": true,
+  "dataType": "String",
+  "variableRole": "Measure",
+  "representedVariables": [
+   {
+    "description": "Variabelen viser type uhell.",
+    "validPeriod": {
+     "start": 13514
+    },
+    "valueDomain": {
+     "codeList": [
+      {
+       "category": "Uhell med dyr innblandet",
+       "code": "00"
+      },
+      {
+       "category": "Påkjøring av fast gjenstand på kjørebanen",
+       "code": "01"
+      },
+      {
+       "category": "Hull i veien o.l.",
+       "code": "02"
+      },
+      {
+       "category": "Enslig kjøretøy veltet i kjørebanen",
+       "code": "03"
+      },
+      {
+       "category": "Påkjøring av parkert kjøretøy på høyre side",
+       "code": "04"
+      },
+      {
+       "category": "Påkjøring av parkert kjøretøy på venstre side",
+       "code": "05"
+      },
+      {
+       "category": "Påkjøring av parkert kjøretøy ved forbikjøring",
+       "code": "06"
+      },
+      {
+       "category": "Øvrige parkeringsuhell",
+       "code": "07"
+      },
+      {
+       "category": "Uhell ved av- eller på-stigning av kjøretøy",
+       "code": "08"
+      },
+      {
+       "category": "Uklart forløp og uhell som ikke faller inn under noen bestemt uhellskode",
+       "code": "09"
+      },
+      {
+       "category": "Forbikjøring",
+       "code": "10"
+      },
+      {
+       "category": "Skifte av felt til venstre",
+       "code": "11"
+      },
+      {
+       "category": "Skifte av felt til høyre",
+       "code": "12"
+      },
+      {
+       "category": "Kjøring i parallelle kjørefelt forøvrig",
+       "code": "13"
+      },
+      {
+       "category": "Påkjøring bakfra",
+       "code": "14"
+      },
+      {
+       "category": "Oppstart fra stanset eller parkert kjøretøy",
+       "code": "15"
+      },
+      {
+       "category": "Påkjøring av forankjørende ved skifte til venstre",
+       "code": "16"
+      },
+      {
+       "category": "Påkjøring av forankjørende ved skifte til høyre",
+       "code": "17"
+      },
+      {
+       "category": "Uklart forløp mellom kjøretøy med samme kjøreretning",
+       "code": "19"
+      },
+      {
+       "category": "Møting på rett vegstrekning",
+       "code": "20"
+      },
+      {
+       "category": "Møting i kurve",
+       "code": "21"
+      },
+      {
+       "category": "Møting under forbikjøring på rett  vegstrekning",
+       "code": "22"
+      },
+      {
+       "category": "Møting under forbikjøring i høyrekurve",
+       "code": "23"
+      },
+      {
+       "category": "Møting under forbikjøring i venstrekurve",
+       "code": "24"
+      },
+      {
+       "category": "Møting under forbikjøring av stanset eller parkert kjøretøy",
+       "code": "25"
+      },
+      {
+       "category": "Oppstart fra stanset eller parkert stilling",
+       "code": "26"
+      },
+      {
+       "category": "Uhell med uklart forløp ved møting",
+       "code": "29"
+      },
+      {
+       "category": "Påkjøring bakfra ved høyresving",
+       "code": "30"
+      },
+      {
+       "category": "Påkjøring forøvrig ved høyresving",
+       "code": "31"
+      },
+      {
+       "category": "Påkjøring bakfra ved venstresving",
+       "code": "32"
+      },
+      {
+       "category": "Påkjøring forøvrig ved venstresving",
+       "code": "33"
+      },
+      {
+       "category": "Påkjøring ved vending foran kjørende i samme retning",
+       "code": "34"
+      },
+      {
+       "category": "Påkjøring av kjørende fra fortau eller G/S-veg ved høyresving",
+       "code": "35"
+      },
+      {
+       "category": "Påkjøring av kjørende fra fortau eller G/S-veg ved venstresving",
+       "code": "36"
+      },
+      {
+       "category": "Uklart forløp ved avsvingning fra samme kjøreretning",
+       "code": "39"
+      },
+      {
+       "category": "Venstresving foran kjørende i motsatt retning",
+       "code": "40"
+      },
+      {
+       "category": "Avsvingning i samme retning",
+       "code": "41"
+      },
+      {
+       "category": "Avsvingning i hver sin retning",
+       "code": "42"
+      },
+      {
+       "category": "Vending foran kjørende i motsatt retning",
+       "code": "43"
+      },
+      {
+       "category": "Høyresving foran kjørende i motsatt retning fra fortau eller G/S-veg",
+       "code": "44"
+      },
+      {
+       "category": "Venstresving foran kjørende i motsatt retning fra fortau eller G/S-veg",
+       "code": "45"
+      },
+      {
+       "category": "Uklart forløp ved avsvingning fra motsatt kjøreretning",
+       "code": "49"
+      },
+      {
+       "category": "Kryssende kjøreretninger",
+       "code": "50"
+      },
+      {
+       "category": "Forbikjøring på venstre side i kryss eller avkjørsel",
+       "code": "51"
+      },
+      {
+       "category": "Forbikjøring på høyre side i kryss eller avkjørsel",
+       "code": "52"
+      },
+      {
+       "category": "Kjørende fra fortau eller G/S-veg krysset kj.b. på hitsiden av krysset",
+       "code": "53"
+      },
+      {
+       "category": "Kjørende fra fortau eller G/S-veg krysset kj.b. på bortsiden av krysset",
+       "code": "54"
+      },
+      {
+       "category": "Kjørende fra G/S-veg krysset kjørebanen utenfor kryss",
+       "code": "55"
+      },
+      {
+       "category": "Uklart forløp ved kryssende kørerretning uten at noen kjøretøy foretar  avsvingning",
+       "code": "59"
+      },
+      {
+       "category": "Høyresving foran kjørende i samme retning",
+       "code": "60"
+      },
+      {
+       "category": "Høyresving foran kjørende i motsatt retning",
+       "code": "61"
+      },
+      {
+       "category": "Høyresving foran venstresvingende kjøretøy",
+       "code": "62"
+      },
+      {
+       "category": "Venstresving foran kjørende i samme retning",
+       "code": "63"
+      },
+      {
+       "category": "Venstresving foran kjørende i motsatt retning",
+       "code": "64"
+      },
+      {
+       "category": "Samtidig venstresving",
+       "code": "65"
+      },
+      {
+       "category": "Samtidig høyresving",
+       "code": "66"
+      },
+      {
+       "category": "Uklart forløp ved kryssende kjøreretning hvor ett eller flere kjøretøy foretar avsvingning",
+       "code": "69"
+      },
+      {
+       "category": "Fotgjenger krysset kjørebanen på bortsiden av krysset",
+       "code": "70"
+      },
+      {
+       "category": "Fotgjenger krysset kjørebanen på hitsiden av krysset",
+       "code": "71"
+      },
+      {
+       "category": "Fotgjenger krysset kjørebanen foran høyresvingende kjøretøy i kryss",
+       "code": "72"
+      },
+      {
+       "category": "Fotgjenger krysset kjørebanen foran venstresvingende kjøretøy i kryss",
+       "code": "73"
+      },
+      {
+       "category": "Fotgjenger krysset kjørebanen i gangfelt utenfor kryss",
+       "code": "74"
+      },
+      {
+       "category": "Fotgjenger krysset kjørebanen forøvrig",
+       "code": "75"
+      },
+      {
+       "category": "Fotgjenger krysset kjørebanen i kryss bak parkert eller stanset kjøretøy",
+       "code": "76"
+      },
+      {
+       "category": "Fotgjenger krysset kjørebanen utenfor kryss bak parkert eller stanset kjøretøy",
+       "code": "77"
+      },
+      {
+       "category": "Fotgjenger krysset kjørebanen og ble påkjørt av ryggende kjøretøy",
+       "code": "78"
+      },
+      {
+       "category": "Uklart forløp hvor fotgjenger krysset kjørebanen",
+       "code": "79"
+      },
+      {
+       "category": "Fotgjenger gikk på vegens høyre side",
+       "code": "80"
+      },
+      {
+       "category": "Fotgjenger gikk på vegens venstre side",
+       "code": "81"
+      },
+      {
+       "category": "Fotgjenger påkjørt på fortau",
+       "code": "82"
+      },
+      {
+       "category": "Fotgjenger påkjørt under forbikjøring",
+       "code": "83"
+      },
+      {
+       "category": "Fotgjenger sto stille eller oppholdt seg forøvrig i vegbanen",
+       "code": "84"
+      },
+      {
+       "category": "Fotgjenger gikk langs vegen og ble påkjørt av ryggende kjøretøy",
+       "code": "85"
+      },
+      {
+       "category": "Barn lekte i kjørebanen",
+       "code": "86"
+      },
+      {
+       "category": "Uklart forløp hvor fotgjenger gikk langs eller oppholdt seg i kjørebanen",
+       "code": "89"
+      },
+      {
+       "category": "Enslig kjøretøy kjørte utfor på høyre side på rett vegstrekning",
+       "code": "90"
+      },
+      {
+       "category": "Enslig kjøretøy kjørte utfor på venstre side på rett vegstrekning",
+       "code": "91"
+      },
+      {
+       "category": "Enslig kjøretøy kjørte utfor på venstre side i høyresving",
+       "code": "92"
+      },
+      {
+       "category": "Enslig kjøretøy kjørte utfor på høyre side i høyresving",
+       "code": "93"
+      },
+      {
+       "category": "Enslig kjøretøy kjørte utfor på høyre side i venstresving",
+       "code": "94"
+      },
+      {
+       "category": "Enslig kjøretøy kjørte utfor på venstre side i venstresving",
+       "code": "95"
+      },
+      {
+       "category": "Enslig kjøretøy kjørte utfor ved avsvingning i kryss o.l.",
+       "code": "96"
+      },
+      {
+       "category": "Enslig kjøretøy kjørte på trafikkøy eller ende av midtdeler",
+       "code": "97"
+      },
+      {
+       "category": "Uklart forløp hvor enslig kjøretøy kjørte utfor vegen",
+       "code": "99"
+      }
+     ],
+     "missingValues": []
+    }
+   }
+  ]
+ },
+ "identifierVariables": [
+  {
+   "name": "TRAFIKKULYKKE_ID",
+   "label": "Trafikkulykkeidentifikator",
+   "notPseudonym": false,
+   "dataType": "Long",
+   "format": "RandomUInt48",
+   "variableRole": "Identifier",
+   "keyType": {
+    "name": "TRAFIKKULYKKE",
+    "label": "Trafikkulykke",
+    "description": "Variablene omfatter dødsulykker og andre ulykker med personskade som er meldt til politiet. Trafikkulykkene som inngår i statistikken har skjedd på offentlig eller privat vei, gate eller plass som er åpen for alminnelig trafikk"
+   },
+   "representedVariables": [
+    {
+     "description": "Identifikator for trafikkulykker i microdata",
+     "validPeriod": {
+      "start": -25567,
+      "stop": 19723
+     },
+     "valueDomain": {
+      "description": "Pseudonymisert kombinasjon av internnr og saksnummer for trafikkulykker",
+      "unitOfMeasure": "N/A"
+     }
+    }
+   ]
+  }
+ ],
+ "attributeVariables": [
+  {
+   "name": "START",
+   "label": "Startdato",
+   "notPseudonym": true,
+   "dataType": "Instant",
+   "variableRole": "Start",
+   "representedVariables": [
+    {
+     "description": "Startdato/måletidspunktet for hendelsen",
+     "validPeriod": {
+      "start": -25567,
+      "stop": 19723
+     },
+     "valueDomain": {
+      "description": "Dato oppgitt i dager siden 1970-01-01",
+      "unitOfMeasure": "N/A"
+     }
+    }
+   ]
+  },
+  {
+   "name": "STOP",
+   "label": "Stoppdato",
+   "notPseudonym": true,
+   "dataType": "Instant",
+   "variableRole": "Stop",
+   "representedVariables": [
+    {
+     "description": "Stoppdato/måletidspunktet for hendelsen",
+     "validPeriod": {
+      "start": -25567,
+      "stop": 19723
+     },
+     "valueDomain": {
+      "description": "Dato oppgitt i dager siden 1970-01-01",
+      "unitOfMeasure": "N/A"
+     }
+    }
+   ]
+  }
+ ],
+ "globalTemporalCoverage": {
+  "start": -1096,
+  "stop": 20759
+ },
+ "updatedAt": 1730375672
+}

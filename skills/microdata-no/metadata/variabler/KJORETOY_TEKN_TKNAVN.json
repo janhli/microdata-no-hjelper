@@ -1,0 +1,280 @@
+{
+ "name": "KJORETOY_TEKN_TKNAVN",
+ "temporality": "STATUS",
+ "languageCode": "no",
+ "sensitivityLevel": "PERSON_GENERAL",
+ "populationDescription": "Variabelen omfatter registrerte kjøretøy per 31.12 for hvert år i variabelens gyldighetsperiode. Observasjoner med verdiene 0 og uoppgitt (missing) er utelatt.\n \n Variabler med enhetstype KJØRETØY er gitt ved kjøretøyets eierforhold. Enhetstypen er en kombinasjon av bilens registreringsnummer og eierens fødselsnunmmer.",
+ "subjectFields": [
+  "Kjøretøy",
+  "Landtransport",
+  "Motorvogn",
+  "Transport og reiseliv"
+ ],
+ "temporalCoverage": {
+  "start": 18627,
+  "stop": 20453
+ },
+ "measureVariable": {
+  "name": "KJORETOY_TEKN_TKNAVN",
+  "label": "EU-kode for kjøretøygruppe",
+  "notPseudonym": true,
+  "dataType": "String",
+  "variableRole": "Measure",
+  "representedVariables": [
+   {
+    "description": "Variabelen viser EU-kode for hver kjøretøygruppe.",
+    "validPeriod": {
+     "start": 12966
+    },
+    "valueDomain": {
+     "codeList": [
+      {
+       "category": "Beltetraktor til særlige formål og med maks 40 km/t eller mindre. Omfatter Jordbruks- eller skogbrukstraktor og traktor godkjent 1. juli 2005 og senere",
+       "code": "C4"
+      },
+      {
+       "category": "Beltetraktor med maksimal hastighet over 40 km/t. Omfatter Jordbruks- eller skogbrukstraktor og traktor godkjent 1. juli 2005 og senere",
+       "code": "C5"
+      },
+      {
+       "category": "Moped",
+       "code": "L1e"
+      },
+      {
+       "category": "Moped med 3 hjul",
+       "code": "L2e"
+      },
+      {
+       "category": "Motorsykkel (lett-, mellomtung- og tung motorsykkel).",
+       "code": "L3e"
+      },
+      {
+       "category": "Motorsykkel med sidevogn",
+       "code": "L4e"
+      },
+      {
+       "category": "Motorsykkel med 3 hjul",
+       "code": "L5e"
+      },
+      {
+       "category": "Moped med 4 hjul",
+       "code": "L6e"
+      },
+      {
+       "category": "Motorsykkel med 4 hjul",
+       "code": "L7e"
+      },
+      {
+       "category": "Bil for persontransport med høyst 8 sitteplasser i tillegg til førersetet (Personbil)",
+       "code": "M1"
+      },
+      {
+       "category": "Terrenggående bil for persontransport med høyst 8 sitteplasser i tillegg til førersetet",
+       "code": "M1G"
+      },
+      {
+       "category": "Bil for persontransport med over 8 sitteplasser i tillegg til førersetet og tillatt totalvekt ikke over 5000 kg",
+       "code": "M2"
+      },
+      {
+       "category": "Terrenggående bil for persontransport med over 8 sitteplasser i tillegg til førersetet og tillatt totalvekt ikke over 5000 kg",
+       "code": "M2G"
+      },
+      {
+       "category": "Bil for persontransport med over 8 sitteplasser i tillegg til førersetet og tillatt totalvekt over 5 000 kg (Buss)",
+       "code": "M3"
+      },
+      {
+       "category": "Beltebil",
+       "code": "BB"
+      },
+      {
+       "category": "Beltemotorsykkel",
+       "code": "BM"
+      },
+      {
+       "category": "Beltetraktor med maks.40 km/t eller mindre, minste sporvidde for akselen nærmest føreren 1150 mm eller over, egenvekt over 600 kg, frihøyde 1000 mm eller mindre. Omfatter",
+       "code": "C1"
+      },
+      {
+       "category": "Beltetraktor med maks 40 km/t eller mindre, minste sporvidde under 1150 mm egenvekt over 600 kg, frihøyde ikke over 600 mm. etc",
+       "code": "C2"
+      },
+      {
+       "category": "Terrenggående bil for persontransport med over 8 sitteplasser i tillegg til førersetet og tillatt totalvekt over 5 000 kg (Buss)",
+       "code": "M3G"
+      },
+      {
+       "category": "Motorredskap",
+       "code": "MR"
+      },
+      {
+       "category": "Bil for godsbefordring med tillatt totalvekt ikke over 3 500 kg (Varebil)",
+       "code": "N1"
+      },
+      {
+       "category": "Terrenggående bil for godsbefordring med tillatt totalvekt ikke over 3 500 kg",
+       "code": "N1G"
+      },
+      {
+       "category": "Bil for godsbefordring med tillatt totalvekt på over 3 500 kg, men ikke over 12 000 kg (Lastebil)",
+       "code": "N2"
+      },
+      {
+       "category": "Terrenggående bil for godsbefordring med tillatt totalvekt på over 3 500 kg, men ikke over 12 000 kg (Lastebil)",
+       "code": "N2G"
+      },
+      {
+       "category": "Bil for godsbefordring med tillatt totalvekt over 12 000 kg (Lastebil)",
+       "code": "N3"
+      },
+      {
+       "category": "Terrenggående bil for godsbefordring med tillatt totalvekt over 12 000 kg (Lastebil)",
+       "code": "N3G"
+      },
+      {
+       "category": "Tilhenger med tillatt totalvekt ikke over 750 kg. For påhengsvogn og semitrailer skal summen av tillatte aksellaster legges til grunn for klassifiseringen.",
+       "code": "O1"
+      },
+      {
+       "category": "Tilhenger med tillatt totalvekt over 750 kg, men ikke over 3 500 kg. For påhengsvogn og semitrailer skal summen av tillatte aksellaster legges til grunn for klassifiseringen.",
+       "code": "O2"
+      },
+      {
+       "category": "Tilhenger med tillatt totalvekt over 3 500 kg, men ikke over 10 000 kg. For påhengsvogn og semitrailer skal summen av tillatte aksellaster legges til grunn for klassifiseringen.",
+       "code": "O3"
+      },
+      {
+       "category": "Tilhenger med tillatt totalvekt over 10 000 kg. For påhengsvogn og semitrailer skal summen av tillatte aksellaster legges til grunn for klassifiseringen.",
+       "code": "O4"
+      },
+      {
+       "category": "Tilhenger til traktor der summen av tillatte aksellaster ikke er over 1500 kg.",
+       "code": "R1"
+      },
+      {
+       "category": "Tilhenger til traktor der summen av tillatte aksellaster er over 1500 kg, men ikke over 3500 kg.",
+       "code": "R2"
+      },
+      {
+       "category": "Tilhenger til traktor der summen av tillatte aksellaster er 3500 kg, men ikke over 21000 kg.",
+       "code": "R3"
+      },
+      {
+       "category": "Tilhenger til traktor der summen av tillatte aksellaster er over 21000 kg.",
+       "code": "R4"
+      },
+      {
+       "category": "Traktor med maksimal hastighet 40 km/t eller mindre, minste sporvidde for akselen nærmest føreren 1150 mm eller over, egenvekt over 600 kg, frihøyde 1000 mm eller mindre.",
+       "code": "T1"
+      },
+      {
+       "category": "Traktor med maksimal hastighet 40 km/t eller mindre, minste sporvidde under 1150 mm, egenvekt over 600 kg, frihøyde ikke over 600 mm. Når tyngdepunktshøyde delt på sporvidde er over 0,9, er maksimal hastighet 30 km/t.",
+       "code": "T2"
+      },
+      {
+       "category": "Traktor med maksimal hastighet 40 km/t eller mindre og egenvekt 600 kg eller mindre. Omfatter Jordbruks- eller skogbrukstraktor og traktor godkjent 1. juli 2005 og senere.",
+       "code": "T3"
+      },
+      {
+       "category": "Traktor til særlige formål og med maksimal hastighet 40 km/t eller mindre. Omfatter Jordbruks- eller skogbrukstraktor og traktor godkjent 1. juli 2005 og senere.",
+       "code": "T4"
+      },
+      {
+       "category": "Traktor med maksimal hastighet over 40 km/t. Omfatter traktor godkjent 1. juli 2005 og senere.",
+       "code": "T5"
+      },
+      {
+       "category": "Beltetraktor med maks 40 km/t eller mindre og egenvekt 600 kg eller mindre. Omfatter Jordbruks- eller skogbrukstraktor og traktor godkjent 1. juli 2005 og senere",
+       "code": "C3"
+      }
+     ],
+     "missingValues": []
+    }
+   }
+  ]
+ },
+ "identifierVariables": [
+  {
+   "name": "KJORETOY_ID",
+   "label": "Kjøretøysidentifikator",
+   "notPseudonym": false,
+   "dataType": "Long",
+   "format": "RandomUInt48",
+   "variableRole": "Identifier",
+   "keyType": {
+    "name": "KJORETOY",
+    "label": "Kjøretøy",
+    "description": "Kjøretøy er en innretning som er bestemt til å kjøre på bakken."
+   },
+   "representedVariables": [
+    {
+     "description": "Identifikator for kjøretøy i microdata",
+     "validPeriod": {
+      "start": 18627,
+      "stop": 20453
+     },
+     "valueDomain": {
+      "description": "Pseudonymisert kombinasjon av personnummer og registreringsnummer for kjøretøy",
+      "unitOfMeasure": "N/A"
+     }
+    }
+   ]
+  }
+ ],
+ "attributeVariables": [
+  {
+   "name": "START",
+   "label": "Startdato",
+   "notPseudonym": true,
+   "dataType": "Instant",
+   "variableRole": "Start",
+   "representedVariables": [
+    {
+     "description": "Startdato/måletidspunktet for hendelsen",
+     "validPeriod": {
+      "start": 18627,
+      "stop": 20453
+     },
+     "valueDomain": {
+      "description": "Dato oppgitt i dager siden 1970-01-01",
+      "unitOfMeasure": "N/A"
+     }
+    }
+   ]
+  },
+  {
+   "name": "STOP",
+   "label": "Stoppdato",
+   "notPseudonym": true,
+   "dataType": "Instant",
+   "variableRole": "Stop",
+   "representedVariables": [
+    {
+     "description": "Stoppdato/måletidspunktet for hendelsen",
+     "validPeriod": {
+      "start": 18627,
+      "stop": 20453
+     },
+     "valueDomain": {
+      "description": "Dato oppgitt i dager siden 1970-01-01",
+      "unitOfMeasure": "N/A"
+     }
+    }
+   ]
+  }
+ ],
+ "temporalStatusDates": [
+  18627,
+  18992,
+  19357,
+  19722,
+  20088,
+  20453
+ ],
+ "globalTemporalCoverage": {
+  "start": -1096,
+  "stop": 20759
+ },
+ "updatedAt": 1780040280
+}

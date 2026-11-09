@@ -1,0 +1,130 @@
+{
+ "name": "NUDB_KURS_KOMP",
+ "temporality": "EVENT",
+ "languageCode": "no",
+ "sensitivityLevel": "PERSON_GENERAL",
+ "populationDescription": "Variabelen omfatter personer med en igangværende eller avsluttende registrering i videregående opplæring. Kompetansekoden er kun påført fra og med avslutta 1996/97 og igang 1997 og kun på utdanninger som omfattes av Reform94. Fra oktober 1999 har alle fra videregående utfylt komp, det vil også si at alle er kodet med utdanningskode fra Reform 94. Observasjoner med verdiene missing eller verdier utenfor kodelisten er utelatt.",
+ "subjectFields": [
+  "Utdanning",
+  "Utdanningsnivå"
+ ],
+ "temporalCoverage": {
+  "start": 9709,
+  "stop": 19967
+ },
+ "measureVariable": {
+  "name": "NUDB_KURS_KOMP",
+  "label": "Kompetanse i videregående opplæring",
+  "notPseudonym": true,
+  "dataType": "String",
+  "variableRole": "Measure",
+  "representedVariables": [
+   {
+    "description": "Kompetansekoden gir oversikt over ulike typer av kompetanse fra videregående opplæring. I videregående opplæring skilles det mellom studieforberedende og yrkesfaglig opplæring. Den studieforberedende opplæringen legger mest vekt på teoretisk kunnskap og fører frem til studiekompetanse, mens den yrkesfaglige opplæringen fører frem til et yrke og gir yrkeskompetanse med vitnemål eller fag-/svennebrev. Gjelder 3. og eventuelt 4. år av videregående opplæring, fra og med Reform 94.",
+    "validPeriod": {
+     "start": 0
+    },
+    "valueDomain": {
+     "codeList": [
+      {
+       "category": "Generell studiekompetanse",
+       "code": "1"
+      },
+      {
+       "category": "Yrkeskompetanse dokumentert med svennebrev eller fagbrev, læretid normalt etter to år i skole",
+       "code": "2"
+      },
+      {
+       "category": "Yrkeskompetanse dokumentert med vitnemål",
+       "code": "3"
+      },
+      {
+       "category": "Underveis til yrkeskompetanse, tredje år i skole før læretid",
+       "code": "4"
+      },
+      {
+       "category": "Yrkeskompetanse dokumentert med svennebrev eller fagbrev, læretid etter tre år i skole",
+       "code": "5"
+      }
+     ],
+     "missingValues": []
+    }
+   }
+  ]
+ },
+ "identifierVariables": [
+  {
+   "name": "KURSID_1",
+   "label": "Kursidentifikator",
+   "notPseudonym": false,
+   "dataType": "Long",
+   "format": "RandomUInt48",
+   "variableRole": "Identifier",
+   "keyType": {
+    "name": "KURS",
+    "label": "Kurs",
+    "description": "Kurs er en utdanningsaktivitet."
+   },
+   "representedVariables": [
+    {
+     "description": "Identifikator for kurs i microdata",
+     "validPeriod": {
+      "start": 9709,
+      "stop": 19967
+     },
+     "valueDomain": {
+      "description": "Pseudonymisert kombinasjon av personnummer og NUDB kursnummer",
+      "unitOfMeasure": "N/A"
+     }
+    }
+   ]
+  }
+ ],
+ "attributeVariables": [
+  {
+   "name": "START",
+   "label": "Startdato",
+   "notPseudonym": true,
+   "dataType": "Instant",
+   "variableRole": "Start",
+   "representedVariables": [
+    {
+     "description": "Startdato/måletidspunktet for hendelsen",
+     "validPeriod": {
+      "start": 9709,
+      "stop": 19967
+     },
+     "valueDomain": {
+      "description": "Dato oppgitt i dager siden 1970-01-01",
+      "unitOfMeasure": "N/A"
+     }
+    }
+   ]
+  },
+  {
+   "name": "STOP",
+   "label": "Stoppdato",
+   "notPseudonym": true,
+   "dataType": "Instant",
+   "variableRole": "Stop",
+   "representedVariables": [
+    {
+     "description": "Stoppdato/måletidspunktet for hendelsen",
+     "validPeriod": {
+      "start": 9709,
+      "stop": 19967
+     },
+     "valueDomain": {
+      "description": "Dato oppgitt i dager siden 1970-01-01",
+      "unitOfMeasure": "N/A"
+     }
+    }
+   ]
+  }
+ ],
+ "globalTemporalCoverage": {
+  "start": -1096,
+  "stop": 20759
+ },
+ "updatedAt": 1760683763
+}

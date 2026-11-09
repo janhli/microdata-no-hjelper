@@ -1,0 +1,116 @@
+{
+ "name": "NUDB_NP_SKALAPOENG_NPLES08",
+ "temporality": "FIXED",
+ "languageCode": "no",
+ "sensitivityLevel": "PERSON_GENERAL",
+ "populationDescription": "Variabelen omfatter elever i grunnskolen som har gjennomført nasjonale prøver i engelsk, lesing og/eller regning på 5., 8. og fra 2010 9. trinn. Elever på disse trinnene som er fritatt fra deltagelse, eller av annen grunn ikke har gjennomført de nasjonale prøvene er ikke inkludert.",
+ "subjectFields": [
+  "Grunnskole",
+  "Utdanning"
+ ],
+ "temporalCoverage": {
+  "start": -25567,
+  "stop": 20413
+ },
+ "measureVariable": {
+  "name": "NUDB_NP_SKALAPOENG_NPLES08",
+  "label": "Skalapoeng, Lesing 8.trinn",
+  "notPseudonym": true,
+  "dataType": "Double",
+  "variableRole": "Measure",
+  "representedVariables": [
+   {
+    "description": "Skala som beskriver elevenes ferdigheter og resultater på de nasjonale prøvene. Gjennomsnittet er 50 skalapoeng og standardavviket er 10.\n Elevenes resultater vil fra og med 2014 vises på en ny skala med et gjennomsnitt på 50 skalapoeng og et standardavvik på 10. Poengsum vil variere fra en prøve til en annen, og det vil alltid være forskjeller i vanskelighetsgrad på prøvene fra et år til et annet. Det er derfor utviklet en felles skala som beskriver ferdighetene til elevene med samme tall, til tross for at elevenes resultater er fra ulike prøver. For å få elevenes resultater på en slik felles skala, er det blitt brukt en IRT-modell (Item Response Theory). Deretter har elevenes resultater blitt regnet om til skalapoeng, der gjennomsnittet ble satt til 50. Grensene for mestringsnivåer ble satt fast i lesing i 2016 og engelsk og regning i 2014. Før dette kunne grensene endre seg, og da også fordeling på mestringsnivåer endre seg, uten at dette innebar en endring i elevenes ferdigheter. Fra hhv. 2014 og 2016 kan man se endring på andelen elever på ulike mestringsnivåer.\n \n Statistisk sentralbyrå er ansvarlig for den offisielle statistikken over nasjonale prøver. Dataene hentes fra Utdanningsdirektoratet (Udir), og ferdighetsnivå måles i skalapoeng. En feil i beregningen av disse poengene for årene 2014–2021 ble kommunisert på Udirs nettsider i 2024, se [Feil i resultater fra nasjonale prøver 2014–2021 (udir.no)](https://www.udir.no/tall-og-forskning/feil-i-resultater-fra-nasjonale-prover-20142021/). Udir ble gjort oppmerksom på feilen av forskere ved Frischsenteret, som siden har publisert artikkelen [Skoleferdigheter i endring: Utviklingen over tid målt ved nasjonale prøver (frischsenteret.no)](https://frischsenteret.no/publication-details/?skrift_id=1685). Etter at feilen ble oppdaget har Udir beregnet nye skalapoeng for nasjonale prøver på 5. og 8. trinn. SSB har utnyttet disse nye dataene til å vurdere muligheten for å korrigere publisert statistikk, se notater 2025/32,[Reestimering av nasjonale prøveresultater 2014 – 2021](https://www.ssb.no/utdanning/grunnskoler/artikler/reestimering-av-nasjonale-proveresultater-20142021). Som et resultat av dette arbeidet er statistikken nå oppdatert med korrigerte tall som gir et riktig bilde av hvordan elevene har prestert på nasjonale prøver over tid. Microdatavariablene ble følgelig også oppdatert med re-estimerte skalapoeng x.x.2026. \n \n Se også [Korrigerte tall for nasjonale prøveresultater over tid - SSB](https://www.ssb.no/utdanning/grunnskoler/statistikk/karakterer-ved-avsluttet-grunnskole/artikler/korrigerte-tall-for-nasjonale-proveresultater-over-tid). \n \n Kunnskapsløftet 2020 trådte i kraft fra og med skoleåret 2021/2022. Dette har ført til endringer i de nasjonale prøvene lesing. Resultater vil derfor ikke være sammenlignbare med tidligere år. Variabelen erstattes av NUDB_NPKL_SKALAPOENG_NPLES08.",
+    "validPeriod": {
+     "start": -25567,
+     "stop": 20413
+    },
+    "valueDomain": {
+     "description": "Skalapoeng.",
+     "unitOfMeasure": "Skalapoeng"
+    }
+   }
+  ]
+ },
+ "identifierVariables": [
+  {
+   "name": "PERSONID_1",
+   "label": "Personidentifikator",
+   "notPseudonym": false,
+   "dataType": "Long",
+   "format": "RandomUInt48",
+   "variableRole": "Identifier",
+   "keyType": {
+    "name": "PERSON",
+    "label": "Person",
+    "description": "Person er et enkeltmenneske, individ."
+   },
+   "representedVariables": [
+    {
+     "description": "Identifikator for person i microdata",
+     "validPeriod": {
+      "start": -25567,
+      "stop": 20413
+     },
+     "valueDomain": {
+      "description": "Pseudonymisert personnummer",
+      "unitOfMeasure": "N/A"
+     }
+    }
+   ]
+  }
+ ],
+ "attributeVariables": [
+  {
+   "name": "START",
+   "label": "Startdato",
+   "notPseudonym": true,
+   "dataType": "Instant",
+   "variableRole": "Start",
+   "representedVariables": [
+    {
+     "description": "Startdato/måletidspunktet for hendelsen",
+     "validPeriod": {
+      "start": -25567,
+      "stop": 20413
+     },
+     "valueDomain": {
+      "description": "Dato oppgitt i dager siden 1970-01-01",
+      "unitOfMeasure": "N/A"
+     }
+    }
+   ]
+  },
+  {
+   "name": "STOP",
+   "label": "Stoppdato",
+   "notPseudonym": true,
+   "dataType": "Instant",
+   "variableRole": "Stop",
+   "representedVariables": [
+    {
+     "description": "Stoppdato/måletidspunktet for hendelsen",
+     "validPeriod": {
+      "start": -25567,
+      "stop": 20413
+     },
+     "valueDomain": {
+      "description": "Dato oppgitt i dager siden 1970-01-01",
+      "unitOfMeasure": "N/A"
+     }
+    }
+   ]
+  }
+ ],
+ "temporalEnd": {
+  "description": "Variabelen oppdateres ikke.",
+  "successors": [
+   "NUDB_NPKL_SKALAPOENG_NPLES08"
+  ]
+ },
+ "globalTemporalCoverage": {
+  "start": -1096,
+  "stop": 20759
+ },
+ "updatedAt": 1771925041
+}

@@ -1,0 +1,132 @@
+{
+ "name": "NUDB_VGS_VGPOENG",
+ "temporality": "STATUS",
+ "languageCode": "no",
+ "sensitivityLevel": "PERSON_GENERAL",
+ "populationDescription": "Variabelen omfatter alle som har fullført et år i videregående skole i perioden og har videregåendepoeng større enn 0.",
+ "subjectFields": [
+  "Utdanning",
+  "Utdanningsnivå",
+  "Videregående utdanning"
+ ],
+ "temporalCoverage": {
+  "start": 13329,
+  "stop": 19904
+ },
+ "measureVariable": {
+  "name": "NUDB_VGS_VGPOENG",
+  "label": "Videregåendepoeng",
+  "notPseudonym": true,
+  "dataType": "Double",
+  "variableRole": "Measure",
+  "representedVariables": [
+   {
+    "description": "Videregåendepoeng er antall karakterpoeng per skoleår som gir grunnlag for opptak til neste trinn.",
+    "validPeriod": {
+     "start": 13329,
+     "stop": 19904
+    },
+    "valueDomain": {
+     "description": "Videregåendepoeng.",
+     "unitOfMeasure": "Videregåendepoeng"
+    }
+   }
+  ]
+ },
+ "identifierVariables": [
+  {
+   "name": "PERSONID_1",
+   "label": "Personidentifikator",
+   "notPseudonym": false,
+   "dataType": "Long",
+   "format": "RandomUInt48",
+   "variableRole": "Identifier",
+   "keyType": {
+    "name": "PERSON",
+    "label": "Person",
+    "description": "Person er et enkeltmenneske, individ."
+   },
+   "representedVariables": [
+    {
+     "description": "Identifikator for person i microdata",
+     "validPeriod": {
+      "start": 13329,
+      "stop": 19904
+     },
+     "valueDomain": {
+      "description": "Pseudonymisert personnummer",
+      "unitOfMeasure": "N/A"
+     }
+    }
+   ]
+  }
+ ],
+ "attributeVariables": [
+  {
+   "name": "START",
+   "label": "Startdato",
+   "notPseudonym": true,
+   "dataType": "Instant",
+   "variableRole": "Start",
+   "representedVariables": [
+    {
+     "description": "Startdato/måletidspunktet for hendelsen",
+     "validPeriod": {
+      "start": 13329,
+      "stop": 19904
+     },
+     "valueDomain": {
+      "description": "Dato oppgitt i dager siden 1970-01-01",
+      "unitOfMeasure": "N/A"
+     }
+    }
+   ]
+  },
+  {
+   "name": "STOP",
+   "label": "Stoppdato",
+   "notPseudonym": true,
+   "dataType": "Instant",
+   "variableRole": "Stop",
+   "representedVariables": [
+    {
+     "description": "Stoppdato/måletidspunktet for hendelsen",
+     "validPeriod": {
+      "start": 13329,
+      "stop": 19904
+     },
+     "valueDomain": {
+      "description": "Dato oppgitt i dager siden 1970-01-01",
+      "unitOfMeasure": "N/A"
+     }
+    }
+   ]
+  }
+ ],
+ "temporalStatusDates": [
+  13329,
+  13694,
+  14060,
+  14425,
+  14790,
+  15155,
+  15521,
+  15886,
+  16251,
+  16616,
+  16982,
+  17347,
+  17712,
+  18077,
+  18443,
+  18808,
+  19173,
+  19538,
+  19904
+ ],
+ "globalTemporalCoverage": {
+  "start": -1096,
+  "stop": 20759
+ },
+ "updatedAt": 1758716644
+}

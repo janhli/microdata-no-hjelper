@@ -1,0 +1,142 @@
+{
+ "name": "BARNETRMOTFDT_STATUSK",
+ "temporality": "EVENT",
+ "languageCode": "no",
+ "sensitivityLevel": "PERSON_SPECIAL",
+ "populationDescription": "Hovedsakelig bosatte i Norge (fnr), men noen ikke-bosatte kan inngå (dnr)",
+ "subjectFields": [
+  "Sosiale forhold og kriminalitet",
+  "Trygd og stønad"
+ ],
+ "temporalCoverage": {
+  "start": 9831,
+  "stop": 20058
+ },
+ "measureVariable": {
+  "name": "BARNETRMOTFDT_STATUSK",
+  "label": "Barnetrygd, mottak, type",
+  "notPseudonym": true,
+  "dataType": "String",
+  "variableRole": "Measure",
+  "representedVariables": [
+   {
+    "description": "Kode som angir type barnetrygdstønad som utbetales.",
+    "validPeriod": {
+     "start": 9831
+    },
+    "valueDomain": {
+     "codeList": [
+      {
+       "category": "Trygdekontoret beregner selv stønaden",
+       "code": "0"
+      },
+      {
+       "category": "Ordinær stønad",
+       "code": "1"
+      },
+      {
+       "category": "Enslig forsørger (utvidet stønad, dvs. gis stønad til ett barn mer)",
+       "code": "2"
+      },
+      {
+       "category": "Omsorg for sykt barn (gis utvidet stønad for dette barnet)",
+       "code": "3"
+      },
+      {
+       "category": "Barn anbrakt i institusjon",
+       "code": "4"
+      },
+      {
+       "category": "Stønad etter satsene fom. annet barn fordi ett eller flere av barna i kullet er anbrakt i institusjon",
+       "code": "5"
+      },
+      {
+       "category": "Enslig forsørger som tilstås utvidet stønad etter satsene fom. annet barn fordi ett eller flere av barna i kullet er anbrakt i institusjon.",
+       "code": "6"
+      },
+      {
+       "category": "Stønadsmottaker som får utvidet stønad pga. omsorgen for hjemmeværende sykt barn og som får ordinær stønad etter satsene fom. annet barn fordi ett eller flere av de andre barna i kullet er anbrakt i institusjon",
+       "code": "7"
+      }
+     ],
+     "missingValues": []
+    }
+   }
+  ]
+ },
+ "identifierVariables": [
+  {
+   "name": "PERSONID_1",
+   "label": "Personidentifikator",
+   "notPseudonym": false,
+   "dataType": "Long",
+   "format": "RandomUInt48",
+   "variableRole": "Identifier",
+   "keyType": {
+    "name": "PERSON",
+    "label": "Person",
+    "description": "Person er et enkeltmenneske, individ."
+   },
+   "representedVariables": [
+    {
+     "description": "Identifikator for person i microdata",
+     "validPeriod": {
+      "start": 9831,
+      "stop": 20058
+     },
+     "valueDomain": {
+      "description": "Pseudonymisert personnummer",
+      "unitOfMeasure": "N/A"
+     }
+    }
+   ]
+  }
+ ],
+ "attributeVariables": [
+  {
+   "name": "START",
+   "label": "Startdato",
+   "notPseudonym": true,
+   "dataType": "Instant",
+   "variableRole": "Start",
+   "representedVariables": [
+    {
+     "description": "Startdato/måletidspunktet for hendelsen",
+     "validPeriod": {
+      "start": 9831,
+      "stop": 20058
+     },
+     "valueDomain": {
+      "description": "Dato oppgitt i dager siden 1970-01-01",
+      "unitOfMeasure": "N/A"
+     }
+    }
+   ]
+  },
+  {
+   "name": "STOP",
+   "label": "Stoppdato",
+   "notPseudonym": true,
+   "dataType": "Instant",
+   "variableRole": "Stop",
+   "representedVariables": [
+    {
+     "description": "Stoppdato/måletidspunktet for hendelsen",
+     "validPeriod": {
+      "start": 9831,
+      "stop": 20058
+     },
+     "valueDomain": {
+      "description": "Dato oppgitt i dager siden 1970-01-01",
+      "unitOfMeasure": "N/A"
+     }
+    }
+   ]
+  }
+ ],
+ "globalTemporalCoverage": {
+  "start": -1096,
+  "stop": 20759
+ },
+ "updatedAt": 1769522030
+}

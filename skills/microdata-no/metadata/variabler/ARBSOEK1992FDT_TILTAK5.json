@@ -1,0 +1,134 @@
+{
+ "name": "ARBSOEK1992FDT_TILTAK5",
+ "temporality": "EVENT",
+ "languageCode": "no",
+ "sensitivityLevel": "PERSON_SPECIAL",
+ "populationDescription": "Hovedsakelig bosatte i Norge (fnr), men noen ikke-bosatte kan inngå (dnr)",
+ "subjectFields": [
+  "Arbeid og lønn",
+  "Arbeidsledighet"
+ ],
+ "temporalCoverage": {
+  "start": 8035,
+  "stop": 11442
+ },
+ "measureVariable": {
+  "name": "ARBSOEK1992FDT_TILTAK5",
+  "label": "Arbeidssøker, tiltakskategori, yrkeshemmede",
+  "notPseudonym": true,
+  "dataType": "String",
+  "variableRole": "Measure",
+  "representedVariables": [
+   {
+    "description": "Tiltaksgrupper for yrkeshemmede.",
+    "validPeriod": {
+     "start": 8035
+    },
+    "valueDomain": {
+     "codeList": [
+      {
+       "category": "Yrkeshemmede i vente- og utredningsfaser",
+       "code": "1"
+      },
+      {
+       "category": "Formidlingsklare",
+       "code": "2"
+      },
+      {
+       "category": "Arbeidstreningstiltak",
+       "code": "3"
+      },
+      {
+       "category": "Kvalifiseringstiltak",
+       "code": "4"
+      },
+      {
+       "category": "Varig vernede sysselsettingstiltak",
+       "code": "5"
+      },
+      {
+       "category": "Restgruppe",
+       "code": "6"
+      }
+     ],
+     "missingValues": []
+    }
+   }
+  ]
+ },
+ "identifierVariables": [
+  {
+   "name": "PERSONID_1",
+   "label": "Personidentifikator",
+   "notPseudonym": false,
+   "dataType": "Long",
+   "format": "RandomUInt48",
+   "variableRole": "Identifier",
+   "keyType": {
+    "name": "PERSON",
+    "label": "Person",
+    "description": "Statistisk enhet er person (individ, enkeltmenenske)"
+   },
+   "representedVariables": [
+    {
+     "description": "Identifikator for person i RAIRD",
+     "validPeriod": {
+      "start": 8035,
+      "stop": 11442
+     },
+     "valueDomain": {
+      "description": "N/A",
+      "unitOfMeasure": "N/A"
+     }
+    }
+   ]
+  }
+ ],
+ "attributeVariables": [
+  {
+   "name": "STOP",
+   "label": "Stoppdato",
+   "notPseudonym": true,
+   "dataType": "Instant",
+   "variableRole": "Stop",
+   "representedVariables": [
+    {
+     "description": "Stoppdato/sluttdato for hendelsen",
+     "validPeriod": {
+      "start": 8035,
+      "stop": 11442
+     },
+     "valueDomain": {
+      "description": "N/A",
+      "unitOfMeasure": "N/A"
+     }
+    }
+   ]
+  },
+  {
+   "name": "START",
+   "label": "Startdato",
+   "notPseudonym": true,
+   "dataType": "Instant",
+   "variableRole": "Start",
+   "representedVariables": [
+    {
+     "description": "Startdato/måletidspunktet for hendelsen",
+     "validPeriod": {
+      "start": 8035,
+      "stop": 11442
+     },
+     "valueDomain": {
+      "description": "N/A",
+      "unitOfMeasure": "N/A"
+     }
+    }
+   ]
+  }
+ ],
+ "globalTemporalCoverage": {
+  "start": -1096,
+  "stop": 20759
+ },
+ "updatedAt": 1592485055
+}

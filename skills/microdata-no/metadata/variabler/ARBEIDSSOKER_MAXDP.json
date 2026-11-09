@@ -1,0 +1,209 @@
+{
+ "name": "ARBEIDSSOKER_MAXDP",
+ "temporality": "STATUS",
+ "languageCode": "no",
+ "sensitivityLevel": "PERSON_GENERAL",
+ "populationDescription": "Variabelen omfatter alle personer i arbeidssøkerregisteret og alle personer som får oppfølging (jf Nav-loven §14a) ved utgangen av måneden. Se variabelen ARBEIDSSOKER_DAGDATO1 for nøyaktig uttrekksdato fra arbeidssøkerregisteret.",
+ "subjectFields": [
+  "Arbeid og lønn",
+  "Arbeidsledighet",
+  "Arbeidssøker"
+ ],
+ "temporalCoverage": {
+  "start": 17804,
+  "stop": 20696
+ },
+ "measureVariable": {
+  "name": "ARBEIDSSOKER_MAXDP",
+  "label": "Maksimale dagpengerettigheter, antall uker",
+  "notPseudonym": true,
+  "dataType": "Long",
+  "variableRole": "Measure",
+  "representedVariables": [
+   {
+    "description": "Variabelen angir maksimale dagpengerettigheter, i antall uker.\n \n Informasjon om blant annet begreper, brudd og sammenlignbarhet over tid på [Navs nettsider](https://www.nav.no/no/nav-og-samfunn/statistikk/arbeidssokere-og-stillinger-statistikk/).",
+    "validPeriod": {
+     "start": 17804,
+     "stop": 20696
+    },
+    "valueDomain": {
+     "description": "Antall.",
+     "unitOfMeasure": "Antall"
+    }
+   }
+  ]
+ },
+ "identifierVariables": [
+  {
+   "name": "PERSONID_1",
+   "label": "Personidentifikator",
+   "notPseudonym": false,
+   "dataType": "Long",
+   "format": "RandomUInt48",
+   "variableRole": "Identifier",
+   "keyType": {
+    "name": "PERSON",
+    "label": "Person",
+    "description": "Person er et enkeltmenneske, individ."
+   },
+   "representedVariables": [
+    {
+     "description": "Identifikator for person i microdata",
+     "validPeriod": {
+      "start": 17804,
+      "stop": 20696
+     },
+     "valueDomain": {
+      "description": "Pseudonymisert personnummer",
+      "unitOfMeasure": "N/A"
+     }
+    }
+   ]
+  }
+ ],
+ "attributeVariables": [
+  {
+   "name": "START",
+   "label": "Startdato",
+   "notPseudonym": true,
+   "dataType": "Instant",
+   "variableRole": "Start",
+   "representedVariables": [
+    {
+     "description": "Startdato/måletidspunktet for hendelsen",
+     "validPeriod": {
+      "start": 17804,
+      "stop": 20696
+     },
+     "valueDomain": {
+      "description": "Dato oppgitt i dager siden 1970-01-01",
+      "unitOfMeasure": "N/A"
+     }
+    }
+   ]
+  },
+  {
+   "name": "STOP",
+   "label": "Stoppdato",
+   "notPseudonym": true,
+   "dataType": "Instant",
+   "variableRole": "Stop",
+   "representedVariables": [
+    {
+     "description": "Stoppdato/måletidspunktet for hendelsen",
+     "validPeriod": {
+      "start": 17804,
+      "stop": 20696
+     },
+     "valueDomain": {
+      "description": "Dato oppgitt i dager siden 1970-01-01",
+      "unitOfMeasure": "N/A"
+     }
+    }
+   ]
+  }
+ ],
+ "temporalStatusDates": [
+  17804,
+  17835,
+  17865,
+  17896,
+  17927,
+  17955,
+  17986,
+  18016,
+  18047,
+  18077,
+  18108,
+  18139,
+  18169,
+  18200,
+  18230,
+  18261,
+  18292,
+  18321,
+  18352,
+  18382,
+  18413,
+  18443,
+  18474,
+  18505,
+  18535,
+  18566,
+  18596,
+  18627,
+  18658,
+  18686,
+  18717,
+  18747,
+  18778,
+  18808,
+  18839,
+  18870,
+  18900,
+  18931,
+  18961,
+  18992,
+  19023,
+  19051,
+  19082,
+  19112,
+  19143,
+  19173,
+  19204,
+  19235,
+  19265,
+  19296,
+  19326,
+  19357,
+  19388,
+  19416,
+  19447,
+  19477,
+  19508,
+  19538,
+  19569,
+  19600,
+  19630,
+  19661,
+  19691,
+  19722,
+  19753,
+  19782,
+  19813,
+  19843,
+  19874,
+  19904,
+  19935,
+  19966,
+  19996,
+  20027,
+  20057,
+  20088,
+  20119,
+  20147,
+  20178,
+  20208,
+  20239,
+  20269,
+  20300,
+  20331,
+  20361,
+  20392,
+  20422,
+  20453,
+  20484,
+  20512,
+  20543,
+  20573,
+  20604,
+  20634,
+  20665,
+  20696
+ ],
+ "globalTemporalCoverage": {
+  "start": -1096,
+  "stop": 20759
+ },
+ "updatedAt": 1790854458
+}

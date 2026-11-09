@@ -1,0 +1,338 @@
+{
+ "name": "KRIMINALITET_SIKTEDE_GJFYLKE",
+ "temporality": "STATUS",
+ "languageCode": "no",
+ "sensitivityLevel": "PERSON_GENERAL",
+ "populationDescription": "Variabelen omfatter alle personer med minst en endelig personavgjørelse (jf. Type avgjørelse, hovedlovbrudd) i årgangen som tilsier at personen er antatt skyldig av påtalemyndigheten, uavhengig om personen har FNR, DNR eller ugyldig ID-nummer.",
+ "subjectFields": [
+  "Kriminalitet",
+  "Kriminalitet og rettsvesen",
+  "Sosiale forhold og kriminalitet"
+ ],
+ "temporalCoverage": {
+  "start": 12052,
+  "stop": 20088
+ },
+ "measureVariable": {
+  "name": "KRIMINALITET_SIKTEDE_GJFYLKE",
+  "label": "Gjerningssted fylke, hovedlovbrudd",
+  "notPseudonym": true,
+  "dataType": "String",
+  "variableRole": "Measure",
+  "representedVariables": [
+   {
+    "description": "Variabelen viser gjerningssted gruppert på fylkesnivå, for hovedlovbrudd til siktet person i løpet av året.\n \n Avhengig av årgang, se ulike historiske versjoner i Klass: \n https://www.ssb.no/klass/klassifikasjoner/104/koder \n \n For mer informasjon om statistikkenheten \"siktet person\" se [Om statistikken](https://www.ssb.no/lovbrudde#om-statistikken) for Etterforskede lovbrudd.",
+    "validPeriod": {
+     "start": 11688,
+     "stop": 18627
+    },
+    "valueDomain": {
+     "codeList": [
+      {
+       "category": "Østfold",
+       "code": "01"
+      },
+      {
+       "category": "Akershus",
+       "code": "02"
+      },
+      {
+       "category": "Oslo",
+       "code": "03"
+      },
+      {
+       "category": "Hedmark",
+       "code": "04"
+      },
+      {
+       "category": "Oppland",
+       "code": "05"
+      },
+      {
+       "category": "Buskerud",
+       "code": "06"
+      },
+      {
+       "category": "Vestfold",
+       "code": "07"
+      },
+      {
+       "category": "Telemark",
+       "code": "08"
+      },
+      {
+       "category": "Aust-Agder",
+       "code": "09"
+      },
+      {
+       "category": "Vest-Agder",
+       "code": "10"
+      },
+      {
+       "category": "Rogaland",
+       "code": "11"
+      },
+      {
+       "category": "Hordaland",
+       "code": "12"
+      },
+      {
+       "category": "Sogn og Fjordane",
+       "code": "14"
+      },
+      {
+       "category": "Møre og Romsdal",
+       "code": "15"
+      },
+      {
+       "category": "Sør-Trøndelag",
+       "code": "16"
+      },
+      {
+       "category": "Nord-Trøndelag",
+       "code": "17"
+      },
+      {
+       "category": "Nordland - Nordlálannda",
+       "code": "18"
+      },
+      {
+       "category": "Troms - Romsa",
+       "code": "19"
+      },
+      {
+       "category": "Finnmark - Finnmárkku",
+       "code": "20"
+      },
+      {
+       "category": "Svalbard",
+       "code": "21"
+      },
+      {
+       "category": "Viken",
+       "code": "30"
+      },
+      {
+       "category": "Innlandet",
+       "code": "34"
+      },
+      {
+       "category": "Vestfold og Telemark",
+       "code": "38"
+      },
+      {
+       "category": "Agder",
+       "code": "42"
+      },
+      {
+       "category": "Vestland",
+       "code": "46"
+      },
+      {
+       "category": "Trøndelag - Trööndelage",
+       "code": "50"
+      },
+      {
+       "category": "Troms og Finnmark - Romsa ja Finnmárku - Tromssa ja Finmarkku",
+       "code": "54"
+      },
+      {
+       "category": "Uoppgitt, i Norge",
+       "code": "97"
+      },
+      {
+       "category": "I utlandet",
+       "code": "98"
+      },
+      {
+       "category": "Ukjent gjerningssted",
+       "code": "99"
+      }
+     ],
+     "missingValues": []
+    }
+   },
+   {
+    "description": "Variabelen viser gjerningssted gruppert på fylkesnivå, for hovedlovbrudd til siktet person i løpet av året.\n \n Avhengig av årgang, se ulike historiske versjoner i Klass: \n https://www.ssb.no/klass/klassifikasjoner/104/koder \n \n For mer informasjon om statistikkenheten \"siktet person\" se [Om statistikken](https://www.ssb.no/lovbrudde#om-statistikken) for Etterforskede lovbrudd.",
+    "validPeriod": {
+     "start": 18628,
+     "stop": 19722
+    },
+    "valueDomain": {
+     "missingValues": [],
+     "delta": {
+      "remove": [
+       0,
+       1,
+       3,
+       4,
+       5,
+       6,
+       7,
+       8,
+       9,
+       11,
+       12,
+       13,
+       14,
+       15,
+       17,
+       18
+      ],
+      "reorder": [],
+      "replace": {},
+      "insert": {}
+     }
+    }
+   },
+   {
+    "description": "Variabelen viser gjerningssted gruppert på fylkesnivå, for hovedlovbrudd til siktet person i løpet av året.\n \n Avhengig av årgang, se ulike historiske versjoner i Klass: \n https://www.ssb.no/klass/klassifikasjoner/104/koder \n \n For mer informasjon om statistikkenheten \"siktet person\" se [Om statistikken](https://www.ssb.no/lovbrudde#om-statistikken) for Etterforskede lovbrudd.",
+    "validPeriod": {
+     "start": 19723
+    },
+    "valueDomain": {
+     "missingValues": [],
+     "delta": {
+      "remove": [
+       4,
+       6,
+       10
+      ],
+      "reorder": [],
+      "replace": {},
+      "insert": {
+       "4": {
+        "category": "Østfold",
+        "code": "31"
+       },
+       "5": {
+        "category": "Akershus",
+        "code": "32"
+       },
+       "6": {
+        "category": "Buskerud",
+        "code": "33"
+       },
+       "8": {
+        "category": "Vestfold",
+        "code": "39"
+       },
+       "9": {
+        "category": "Telemark",
+        "code": "40"
+       },
+       "13": {
+        "category": "Troms - Romsa - Tromssa",
+        "code": "55"
+       },
+       "14": {
+        "category": "Finnmark - Finnmárku - Finmarkku",
+        "code": "56"
+       }
+      }
+     }
+    }
+   }
+  ]
+ },
+ "identifierVariables": [
+  {
+   "name": "PERSONID_1",
+   "label": "Personidentifikator",
+   "notPseudonym": false,
+   "dataType": "Long",
+   "format": "RandomUInt48",
+   "variableRole": "Identifier",
+   "keyType": {
+    "name": "PERSON",
+    "label": "Person",
+    "description": "Person er et enkeltmenneske, individ."
+   },
+   "representedVariables": [
+    {
+     "description": "Identifikator for person i microdata",
+     "validPeriod": {
+      "start": 12052,
+      "stop": 20088
+     },
+     "valueDomain": {
+      "description": "Pseudonymisert personnummer",
+      "unitOfMeasure": "N/A"
+     }
+    }
+   ]
+  }
+ ],
+ "attributeVariables": [
+  {
+   "name": "START",
+   "label": "Startdato",
+   "notPseudonym": true,
+   "dataType": "Instant",
+   "variableRole": "Start",
+   "representedVariables": [
+    {
+     "description": "Startdato/måletidspunktet for hendelsen",
+     "validPeriod": {
+      "start": 12052,
+      "stop": 20088
+     },
+     "valueDomain": {
+      "description": "Dato oppgitt i dager siden 1970-01-01",
+      "unitOfMeasure": "N/A"
+     }
+    }
+   ]
+  },
+  {
+   "name": "STOP",
+   "label": "Stoppdato",
+   "notPseudonym": true,
+   "dataType": "Instant",
+   "variableRole": "Stop",
+   "representedVariables": [
+    {
+     "description": "Stoppdato/måletidspunktet for hendelsen",
+     "validPeriod": {
+      "start": 12052,
+      "stop": 20088
+     },
+     "valueDomain": {
+      "description": "Dato oppgitt i dager siden 1970-01-01",
+      "unitOfMeasure": "N/A"
+     }
+    }
+   ]
+  }
+ ],
+ "temporalStatusDates": [
+  12052,
+  12417,
+  12783,
+  13148,
+  13513,
+  13878,
+  14244,
+  14609,
+  14974,
+  15339,
+  15705,
+  16070,
+  16435,
+  16800,
+  17166,
+  17531,
+  17896,
+  18261,
+  18627,
+  18992,
+  19357,
+  19722,
+  20088
+ ],
+ "globalTemporalCoverage": {
+  "start": -1096,
+  "stop": 20759
+ },
+ "updatedAt": 1763646904
+}

@@ -1,0 +1,7 @@
+{
+  "name": "microdata-no",
+  "description": "Hjelp til skript for microdata.no: lokal variabelkatalog, kodelister, manual og en felles samling fallgruver.",
+  "version": "0.1.0",
+  "author": { "name": "Jan Hiroshi Lintvedt" },
+  "keywords": ["microdata.no", "ssb", "sikt", "registerdata", "statistikk"]
+}

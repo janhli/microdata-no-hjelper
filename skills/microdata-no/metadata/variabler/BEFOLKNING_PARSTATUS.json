@@ -1,0 +1,192 @@
+{
+ "name": "BEFOLKNING_PARSTATUS",
+ "temporality": "STATUS",
+ "languageCode": "no",
+ "sensitivityLevel": "PERSON_GENERAL",
+ "populationDescription": "Variabelen omfatter bosatte per 1.1.ÅÅÅÅ, avgrenset til privathusholdninger.",
+ "subjectFields": [
+  "Barn, Familie og husholdninger",
+  "Befolkning",
+  "Familie",
+  "Husholdning"
+ ],
+ "temporalCoverage": {
+  "start": 12784,
+  "stop": 20089
+ },
+ "measureVariable": {
+  "name": "BEFOLKNING_PARSTATUS",
+  "label": "Parstatus i familien",
+  "notPseudonym": true,
+  "dataType": "String",
+  "variableRole": "Measure",
+  "representedVariables": [
+   {
+    "description": "Personer bosatt i privathusholdninger er klassifisert etter om de inngår i et par eller ikke og eventuelt type par (gift, registrert partner, samboer av motsatt/samme kjønn). Barn, som per definisjon ikke inngår i et par, er klassifisert etter om de tilhører en familie med et par eller ikke eventuelt og type par.\n Opplysninger om samboere av samme kjønn finnes bare i FoB2001 og ikke i den årlige husholdningsstatistikken.",
+    "validPeriod": {
+     "start": 12784,
+     "stop": 16070
+    },
+    "valueDomain": {
+     "codeList": [
+      {
+       "category": "Ikke i familie med par (enslig/barn i familie med enslig)",
+       "code": "0"
+      },
+      {
+       "category": "Ektefelle ulikekjønnet par",
+       "code": "1"
+      },
+      {
+       "category": "Ektefelle likekjønnet par/registrert partner",
+       "code": "2"
+      },
+      {
+       "category": "Samboer med felles barn",
+       "code": "3"
+      },
+      {
+       "category": "Samboer uten felles barn, motsatt kjønn - uendret siden forrige årgang/(FOB2001)",
+       "code": "5"
+      },
+      {
+       "category": "Samboer uten felles barn, motsatt kjønn - ny siden forrige årgang - samme flyttedato",
+       "code": "6"
+      },
+      {
+       "category": "Samboer uten felles barn, motsatt kjønn - ny siden forrige årgang - ulik flyttedato",
+       "code": "7"
+      },
+      {
+       "category": "Barn i familie med par",
+       "code": "8"
+      }
+     ],
+     "missingValues": []
+    }
+   },
+   {
+    "description": "Personer bosatt i privathusholdninger er klassifisert etter om de inngår i et par eller ikke og eventuelt type par (gift, registrert partner, samboer av motsatt/samme kjønn). Barn, som per definisjon ikke inngår i et par, er klassifisert etter om de tilhører en familie med et par eller ikke eventuelt og type par.\n Opplysninger om samboere av samme kjønn finnes bare i FoB2001 og ikke i den årlige husholdningsstatistikken.",
+    "validPeriod": {
+     "start": 16071
+    },
+    "valueDomain": {
+     "missingValues": [],
+     "delta": {
+      "remove": [],
+      "reorder": [],
+      "replace": {},
+      "insert": {
+       "8": {
+        "category": "Imputerte par av unge enslige",
+        "code": "u"
+       },
+       "9": {
+        "category": "Imputerte par på adresser med tre eller flere husholdninger som kobler til samme bolig",
+        "code": "p"
+       }
+      }
+     }
+    }
+   }
+  ]
+ },
+ "identifierVariables": [
+  {
+   "name": "PERSONID_1",
+   "label": "Personidentifikator",
+   "notPseudonym": false,
+   "dataType": "Long",
+   "format": "RandomUInt48",
+   "variableRole": "Identifier",
+   "keyType": {
+    "name": "PERSON",
+    "label": "Person",
+    "description": "Person er et enkeltmenneske, individ."
+   },
+   "representedVariables": [
+    {
+     "description": "Identifikator for person i microdata",
+     "validPeriod": {
+      "start": 12784,
+      "stop": 20089
+     },
+     "valueDomain": {
+      "description": "Pseudonymisert personnummer",
+      "unitOfMeasure": "N/A"
+     }
+    }
+   ]
+  }
+ ],
+ "attributeVariables": [
+  {
+   "name": "START",
+   "label": "Startdato",
+   "notPseudonym": true,
+   "dataType": "Instant",
+   "variableRole": "Start",
+   "representedVariables": [
+    {
+     "description": "Startdato/måletidspunktet for hendelsen",
+     "validPeriod": {
+      "start": 12784,
+      "stop": 20089
+     },
+     "valueDomain": {
+      "description": "Dato oppgitt i dager siden 1970-01-01",
+      "unitOfMeasure": "N/A"
+     }
+    }
+   ]
+  },
+  {
+   "name": "STOP",
+   "label": "Stoppdato",
+   "notPseudonym": true,
+   "dataType": "Instant",
+   "variableRole": "Stop",
+   "representedVariables": [
+    {
+     "description": "Stoppdato/måletidspunktet for hendelsen",
+     "validPeriod": {
+      "start": 12784,
+      "stop": 20089
+     },
+     "valueDomain": {
+      "description": "Dato oppgitt i dager siden 1970-01-01",
+      "unitOfMeasure": "N/A"
+     }
+    }
+   ]
+  }
+ ],
+ "temporalStatusDates": [
+  12784,
+  13149,
+  13514,
+  13879,
+  14245,
+  14610,
+  14975,
+  15340,
+  15706,
+  16071,
+  16436,
+  16801,
+  17167,
+  17532,
+  17897,
+  18262,
+  18628,
+  18993,
+  19358,
+  19723,
+  20089
+ ],
+ "globalTemporalCoverage": {
+  "start": -1096,
+  "stop": 20759
+ },
+ "updatedAt": 1760683763
+}

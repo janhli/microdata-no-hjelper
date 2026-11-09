@@ -1,0 +1,110 @@
+{
+ "name": "NUDB_KURS_GRPOENG",
+ "temporality": "FIXED",
+ "languageCode": "no",
+ "sensitivityLevel": "PERSON_GENERAL",
+ "populationDescription": "Variabelen inneholder alle som har fullført grunnskolen i perioden, som fullførte med minst 1 grunnskolepoeng.",
+ "subjectFields": [
+  "Utdanning",
+  "Utdanningsnivå"
+ ],
+ "temporalCoverage": {
+  "start": -25567,
+  "stop": 19630
+ },
+ "measureVariable": {
+  "name": "NUDB_KURS_GRPOENG",
+  "label": "Grunnskolepoeng",
+  "notPseudonym": true,
+  "dataType": "Double",
+  "variableRole": "Measure",
+  "representedVariables": [
+   {
+    "description": "Grunnskolepoeng er samlet antall karakterpoeng ved avsluttet grunnskole.\n \n Definisjon fram til og med 2006:\n Summen av elevens fagkarakterer i 11 fag. Når eleven har både standpunktkarakter og eksamenskarakter, er fagkarakteren gjennomsnittet av disse karakterene. Hvis eleven mangler karakter i noen fag, blir det lagt til poeng for inntil to fag ut fra gjennomsnittskarakteren i de fagene eleven har karakter i. \n \n Definisjon fra og med 2007: \n Summen av alle karakterer dividert på antall karakterer, multiplisert med 10, kun for personer med 8 karakterer eller mer.",
+    "validPeriod": {
+     "start": -25567,
+     "stop": 19630
+    },
+    "valueDomain": {
+     "description": "Grunnskolepoeng.",
+     "unitOfMeasure": "Grunnskolepoeng"
+    }
+   }
+  ]
+ },
+ "identifierVariables": [
+  {
+   "name": "PERSONID_1",
+   "label": "Personidentifikator",
+   "notPseudonym": false,
+   "dataType": "Long",
+   "format": "RandomUInt48",
+   "variableRole": "Identifier",
+   "keyType": {
+    "name": "PERSON",
+    "label": "Person",
+    "description": "Person er et enkeltmenneske, individ."
+   },
+   "representedVariables": [
+    {
+     "description": "Identifikator for person i microdata",
+     "validPeriod": {
+      "start": -25567,
+      "stop": 19630
+     },
+     "valueDomain": {
+      "description": "Pseudonymisert personnummer",
+      "unitOfMeasure": "N/A"
+     }
+    }
+   ]
+  }
+ ],
+ "attributeVariables": [
+  {
+   "name": "START",
+   "label": "Startdato",
+   "notPseudonym": true,
+   "dataType": "Instant",
+   "variableRole": "Start",
+   "representedVariables": [
+    {
+     "description": "Startdato/måletidspunktet for hendelsen",
+     "validPeriod": {
+      "start": -25567,
+      "stop": 19630
+     },
+     "valueDomain": {
+      "description": "Dato oppgitt i dager siden 1970-01-01",
+      "unitOfMeasure": "N/A"
+     }
+    }
+   ]
+  },
+  {
+   "name": "STOP",
+   "label": "Stoppdato",
+   "notPseudonym": true,
+   "dataType": "Instant",
+   "variableRole": "Stop",
+   "representedVariables": [
+    {
+     "description": "Stoppdato/måletidspunktet for hendelsen",
+     "validPeriod": {
+      "start": -25567,
+      "stop": 19630
+     },
+     "valueDomain": {
+      "description": "Dato oppgitt i dager siden 1970-01-01",
+      "unitOfMeasure": "N/A"
+     }
+    }
+   ]
+  }
+ ],
+ "globalTemporalCoverage": {
+  "start": -1096,
+  "stop": 20759
+ },
+ "updatedAt": 1719822345
+}

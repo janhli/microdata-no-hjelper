@@ -1,0 +1,110 @@
+{
+ "name": "NUDB_NPKL_SKALAPOENG_NPLES09",
+ "temporality": "FIXED",
+ "languageCode": "no",
+ "sensitivityLevel": "PERSON_GENERAL",
+ "populationDescription": "Variabelen omfatter elever i grunnskolen som har gjennomført nasjonale prøver i engelsk, lesing og/eller regning på 5., 8. og fra 2010 9. trinn. Elever på disse trinnene som er fritatt fra deltagelse, eller av annen grunn ikke har gjennomført de nasjonale prøvene er ikke inkludert.",
+ "subjectFields": [
+  "Grunnskole",
+  "Utdanning"
+ ],
+ "temporalCoverage": {
+  "start": -25567,
+  "stop": 20413
+ },
+ "measureVariable": {
+  "name": "NUDB_NPKL_SKALAPOENG_NPLES09",
+  "label": "Skalapoeng, Lesing 9.trinn etter Kunnskapsløftet 2020 (LK20)",
+  "notPseudonym": true,
+  "dataType": "Double",
+  "variableRole": "Measure",
+  "representedVariables": [
+   {
+    "description": "Skala som beskriver elevenes ferdigheter og resultater på de nasjonale prøvene. Fra 2022 startet måling av utvikling over tid på nytt, og gjennomsnittet for hele landet ble igjen satt til 50 skalapoeng og standardavviket ble satt til 10. Resultatene fra og med 2022 kan derfor ikke direkte sammenlignes med tidligere år. Poengsum vil variere fra en prøve til en annen, og det vil alltid være forskjeller i vanskelighetsgrad på prøvene fra et år til et annet. Det er derfor utviklet en felles skala som beskriver ferdighetene til elevene med samme tall, til tross for at elevenes resultater er fra ulike prøver. For å få elevenes resultater på en slik felles skala, er det blitt brukt en IRT-modell (Item Response Theory). Deretter har elevenes resultater blitt regnet om til skalapoeng, der gjennomsnittet ble satt til 50.\n \n Kunnskapsløftet 2020 trådte i kraft fra og med skoleåret 2021/2022. Dette har ført til endringer i de nasjonale prøvene engelsk. Resultater vil derfor ikke være sammenlignbare med tidligere år. Variabelen erstatter NUDB_NP_SKALAPOENG_NPLES09.",
+    "validPeriod": {
+     "start": -25567,
+     "stop": 20413
+    },
+    "valueDomain": {
+     "description": "Skalapoeng.",
+     "unitOfMeasure": "Skalapoeng"
+    }
+   }
+  ]
+ },
+ "identifierVariables": [
+  {
+   "name": "PERSONID_1",
+   "label": "Personidentifikator",
+   "notPseudonym": false,
+   "dataType": "Long",
+   "format": "RandomUInt48",
+   "variableRole": "Identifier",
+   "keyType": {
+    "name": "PERSON",
+    "label": "Person",
+    "description": "Person er et enkeltmenneske, individ."
+   },
+   "representedVariables": [
+    {
+     "description": "Identifikator for person i microdata",
+     "validPeriod": {
+      "start": -25567,
+      "stop": 20413
+     },
+     "valueDomain": {
+      "description": "Pseudonymisert personnummer",
+      "unitOfMeasure": "N/A"
+     }
+    }
+   ]
+  }
+ ],
+ "attributeVariables": [
+  {
+   "name": "START",
+   "label": "Startdato",
+   "notPseudonym": true,
+   "dataType": "Instant",
+   "variableRole": "Start",
+   "representedVariables": [
+    {
+     "description": "Startdato/måletidspunktet for hendelsen",
+     "validPeriod": {
+      "start": -25567,
+      "stop": 20413
+     },
+     "valueDomain": {
+      "description": "Dato oppgitt i dager siden 1970-01-01",
+      "unitOfMeasure": "N/A"
+     }
+    }
+   ]
+  },
+  {
+   "name": "STOP",
+   "label": "Stoppdato",
+   "notPseudonym": true,
+   "dataType": "Instant",
+   "variableRole": "Stop",
+   "representedVariables": [
+    {
+     "description": "Stoppdato/måletidspunktet for hendelsen",
+     "validPeriod": {
+      "start": -25567,
+      "stop": 20413
+     },
+     "valueDomain": {
+      "description": "Dato oppgitt i dager siden 1970-01-01",
+      "unitOfMeasure": "N/A"
+     }
+    }
+   ]
+  }
+ ],
+ "globalTemporalCoverage": {
+  "start": -1096,
+  "stop": 20759
+ },
+ "updatedAt": 1771925041
+}

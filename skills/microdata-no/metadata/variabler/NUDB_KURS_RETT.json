@@ -1,0 +1,126 @@
+{
+ "name": "NUDB_KURS_RETT",
+ "temporality": "EVENT",
+ "languageCode": "no",
+ "sensitivityLevel": "PERSON_GENERAL",
+ "populationDescription": "Variabelen omfatter personer med en igangværende eller avsluttende registrering i videregående opplæring. Observasjoner med verdiene missing eller verdier utenfor kodelisten er utelatt. Verdiene \"ikke rettselev\" og \"ungdomsrett\" utfylt fra 1998, verdier for \"voksenrett\" og \"fullføringsrett\" utfylt fra 2001.",
+ "subjectFields": [
+  "Utdanning",
+  "Utdanningsnivå"
+ ],
+ "temporalCoverage": {
+  "start": 10500,
+  "stop": 19967
+ },
+ "measureVariable": {
+  "name": "NUDB_KURS_RETT",
+  "label": "Rett til videregående opplæring",
+  "notPseudonym": true,
+  "dataType": "String",
+  "variableRole": "Measure",
+  "representedVariables": [
+   {
+    "description": "Variabelen angir om eleven har rett til videregående opplæring. Retten beregnes i VIGO (Fylkeskommunens administrative datasystem for inntak til videregående opplæring).\n \n Opplæringsloven gir ungdom og voksne rett til videregående opplæring etter bestemte regler. \n \n Registreres kun ved kurstilgang fra igangværende universitets- og høgskoleutdanning.",
+    "validPeriod": {
+     "start": 0
+    },
+    "valueDomain": {
+     "codeList": [
+      {
+       "category": "Ikke rettselev",
+       "code": "1"
+      },
+      {
+       "category": "Ungdomsrett",
+       "code": "2"
+      },
+      {
+       "category": "Voksenrett",
+       "code": "3"
+      },
+      {
+       "category": "Fullføringsrett",
+       "code": "4"
+      }
+     ],
+     "missingValues": []
+    }
+   }
+  ]
+ },
+ "identifierVariables": [
+  {
+   "name": "KURSID_1",
+   "label": "Kursidentifikator",
+   "notPseudonym": false,
+   "dataType": "Long",
+   "format": "RandomUInt48",
+   "variableRole": "Identifier",
+   "keyType": {
+    "name": "KURS",
+    "label": "Kurs",
+    "description": "Kurs er en utdanningsaktivitet."
+   },
+   "representedVariables": [
+    {
+     "description": "Identifikator for kurs i microdata",
+     "validPeriod": {
+      "start": 10500,
+      "stop": 19967
+     },
+     "valueDomain": {
+      "description": "Pseudonymisert kombinasjon av personnummer og NUDB kursnummer",
+      "unitOfMeasure": "N/A"
+     }
+    }
+   ]
+  }
+ ],
+ "attributeVariables": [
+  {
+   "name": "START",
+   "label": "Startdato",
+   "notPseudonym": true,
+   "dataType": "Instant",
+   "variableRole": "Start",
+   "representedVariables": [
+    {
+     "description": "Startdato/måletidspunktet for hendelsen",
+     "validPeriod": {
+      "start": 10500,
+      "stop": 19967
+     },
+     "valueDomain": {
+      "description": "Dato oppgitt i dager siden 1970-01-01",
+      "unitOfMeasure": "N/A"
+     }
+    }
+   ]
+  },
+  {
+   "name": "STOP",
+   "label": "Stoppdato",
+   "notPseudonym": true,
+   "dataType": "Instant",
+   "variableRole": "Stop",
+   "representedVariables": [
+    {
+     "description": "Stoppdato/måletidspunktet for hendelsen",
+     "validPeriod": {
+      "start": 10500,
+      "stop": 19967
+     },
+     "valueDomain": {
+      "description": "Dato oppgitt i dager siden 1970-01-01",
+      "unitOfMeasure": "N/A"
+     }
+    }
+   ]
+  }
+ ],
+ "globalTemporalCoverage": {
+  "start": -1096,
+  "stop": 20759
+ },
+ "updatedAt": 1760683763
+}

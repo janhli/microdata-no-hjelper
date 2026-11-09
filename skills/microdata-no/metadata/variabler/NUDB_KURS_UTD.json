@@ -1,0 +1,178 @@
+{
+ "name": "NUDB_KURS_UTD",
+ "temporality": "EVENT",
+ "languageCode": "no",
+ "sensitivityLevel": "PERSON_GENERAL",
+ "populationDescription": "Variabelen omfatter alle personer registrert med en utdanning, fra grunnskole til universitet og høgskole.",
+ "subjectFields": [
+  "Utdanning",
+  "Utdanningsnivå"
+ ],
+ "temporalCoverage": {
+  "start": 6787,
+  "stop": 19967
+ },
+ "measureVariable": {
+  "name": "NUDB_KURS_UTD",
+  "label": "Gruppering av skoleslag",
+  "notPseudonym": true,
+  "dataType": "String",
+  "variableRole": "Measure",
+  "representedVariables": [
+   {
+    "description": "Variabelen viser gruppering av skoleslag. \n \n Grupperingen er laget ved å kombinere opplysninger om utdanningens art, institusjonens næringskode og lovverket som regulerer utdanningsvirksomheten (Lov om grunnskolen og den videregående opplæringa (opplæringslova), Lov om frittståande skolar (friskolelova), Lov om fagskoleutdanning, Lov om folkehøyskoler (folkehøyskoleloven) og Lov om universiteter og høyskoler). Den særskilte skoleslagsgrupperingen er en intern kode som benyttes i statistikkproduksjonen. Grupperingen har som formål å gi en mer presis angivelse av ulike skole- og utdanningstyper innenfor utdanningssystemet. Den vil være en sentral grupperingsvariabel i tabeller over utdanning publisert i Statistisk sentralbyrå.",
+    "validPeriod": {
+     "start": 0
+    },
+    "valueDomain": {
+     "codeList": [
+      {
+       "category": "Grunnskoler",
+       "code": "100"
+      },
+      {
+       "category": "Videregående skoler",
+       "code": "211"
+      },
+      {
+       "category": "Lærlinger",
+       "code": "212"
+      },
+      {
+       "category": "Annen videregående utdanning",
+       "code": "220"
+      },
+      {
+       "category": "Statlige høgskoler",
+       "code": "311"
+      },
+      {
+       "category": "Militære høgskoler",
+       "code": "312"
+      },
+      {
+       "category": "Andre høgskoler",
+       "code": "313"
+      },
+      {
+       "category": "Annen universitets- og høgskoleutdanning (Univ. og høgsk.utd. som gir studiepoeng, men blir tatt ved læresteder som ikke er godkjente univ. eller høgskoler)",
+       "code": "320"
+      },
+      {
+       "category": "Høgskoler",
+       "code": "399"
+      },
+      {
+       "category": "Universiteter og vitenskapelige høgskoler",
+       "code": "400"
+      },
+      {
+       "category": "Universiteter",
+       "code": "401"
+      },
+      {
+       "category": "Vitenskapelige høgskoler",
+       "code": "402"
+      },
+      {
+       "category": "Folkehøgskoler",
+       "code": "510"
+      },
+      {
+       "category": "Arbeidsmarkedskurs",
+       "code": "520"
+      },
+      {
+       "category": "Videregående utdanning i utlandet",
+       "code": "610"
+      },
+      {
+       "category": "Høyere utdanning i utlandet",
+       "code": "620"
+      },
+      {
+       "category": "Fagskoler (egen gruppering fra 2004/2005)",
+       "code": "710"
+      }
+     ],
+     "missingValues": []
+    }
+   }
+  ]
+ },
+ "identifierVariables": [
+  {
+   "name": "KURSID_1",
+   "label": "Kursidentifikator",
+   "notPseudonym": false,
+   "dataType": "Long",
+   "format": "RandomUInt48",
+   "variableRole": "Identifier",
+   "keyType": {
+    "name": "KURS",
+    "label": "Kurs",
+    "description": "Kurs er en utdanningsaktivitet."
+   },
+   "representedVariables": [
+    {
+     "description": "Identifikator for kurs i microdata",
+     "validPeriod": {
+      "start": 6787,
+      "stop": 19967
+     },
+     "valueDomain": {
+      "description": "Pseudonymisert kombinasjon av personnummer og NUDB kursnummer",
+      "unitOfMeasure": "N/A"
+     }
+    }
+   ]
+  }
+ ],
+ "attributeVariables": [
+  {
+   "name": "START",
+   "label": "Startdato",
+   "notPseudonym": true,
+   "dataType": "Instant",
+   "variableRole": "Start",
+   "representedVariables": [
+    {
+     "description": "Startdato/måletidspunktet for hendelsen",
+     "validPeriod": {
+      "start": 6787,
+      "stop": 19967
+     },
+     "valueDomain": {
+      "description": "Dato oppgitt i dager siden 1970-01-01",
+      "unitOfMeasure": "N/A"
+     }
+    }
+   ]
+  },
+  {
+   "name": "STOP",
+   "label": "Stoppdato",
+   "notPseudonym": true,
+   "dataType": "Instant",
+   "variableRole": "Stop",
+   "representedVariables": [
+    {
+     "description": "Stoppdato/måletidspunktet for hendelsen",
+     "validPeriod": {
+      "start": 6787,
+      "stop": 19967
+     },
+     "valueDomain": {
+      "description": "Dato oppgitt i dager siden 1970-01-01",
+      "unitOfMeasure": "N/A"
+     }
+    }
+   ]
+  }
+ ],
+ "globalTemporalCoverage": {
+  "start": -1096,
+  "stop": 20759
+ },
+ "updatedAt": 1760683763
+}

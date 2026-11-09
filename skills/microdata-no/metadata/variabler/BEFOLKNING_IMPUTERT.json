@@ -1,0 +1,177 @@
+{
+ "name": "BEFOLKNING_IMPUTERT",
+ "temporality": "STATUS",
+ "languageCode": "no",
+ "sensitivityLevel": "PERSON_GENERAL",
+ "populationDescription": "Variabelen omfatter bosatte per 1.1.ÅÅÅÅ. Utfylt for personer som har fått imputert opplysningene om bosted og husholdningsfastsetting.",
+ "subjectFields": [
+  "Barn, Familie og husholdninger",
+  "Befolkning",
+  "Husholdning"
+ ],
+ "temporalCoverage": {
+  "start": 16071,
+  "stop": 20089
+ },
+ "measureVariable": {
+  "name": "BEFOLKNING_IMPUTERT",
+  "label": "Student med imputert husholdning",
+  "notPseudonym": true,
+  "dataType": "String",
+  "variableRole": "Measure",
+  "representedVariables": [
+   {
+    "description": "Variabelen beskriver på hvilket nivå husholdningsinformasjonen er imputert.",
+    "validPeriod": {
+     "start": 16071
+    },
+    "valueDomain": {
+     "codeList": [
+      {
+       "category": "Student, imputert på adr26 giver 1.gang",
+       "code": "1A"
+      },
+      {
+       "category": "Student, imputert på adr26 giver 2.gang",
+       "code": "1B"
+      },
+      {
+       "category": "Student, imputert på adr21 giver 1.gang",
+       "code": "2A"
+      },
+      {
+       "category": "Student, imputert på adr21 giver 2.gang",
+       "code": "2B"
+      },
+      {
+       "category": "Student, imputert på adr21 giver 3.gang",
+       "code": "2C"
+      },
+      {
+       "category": "Student, imputert på adr21 giver 4.gang",
+       "code": "2D"
+      },
+      {
+       "category": "Student, imputert på adr21 giver 5.gang",
+       "code": "2E"
+      },
+      {
+       "category": "Student, imputert på adr21 giver 6.gang",
+       "code": "2F"
+      },
+      {
+       "category": "Student, imputert NN-koblet, alene el med andre stud.",
+       "code": "3A"
+      },
+      {
+       "category": "Student, imputert NN-koblet, bor med flere",
+       "code": "3B"
+      },
+      {
+       "category": "Student, imputert Utlandet, alene",
+       "code": "3U"
+      },
+      {
+       "category": "Student, imputert Ikke NN-koblet tr 3.2, bor alene",
+       "code": "3X"
+      },
+      {
+       "category": "Student, imputert Ikke_NN-koblet tr 3.1, bor alene",
+       "code": "3Y"
+      }
+     ],
+     "missingValues": []
+    }
+   }
+  ]
+ },
+ "identifierVariables": [
+  {
+   "name": "PERSONID_1",
+   "label": "Personidentifikator",
+   "notPseudonym": false,
+   "dataType": "Long",
+   "format": "RandomUInt48",
+   "variableRole": "Identifier",
+   "keyType": {
+    "name": "PERSON",
+    "label": "Person",
+    "description": "Person er et enkeltmenneske, individ."
+   },
+   "representedVariables": [
+    {
+     "description": "Identifikator for person i microdata",
+     "validPeriod": {
+      "start": 16071,
+      "stop": 20089
+     },
+     "valueDomain": {
+      "description": "Pseudonymisert personnummer",
+      "unitOfMeasure": "N/A"
+     }
+    }
+   ]
+  }
+ ],
+ "attributeVariables": [
+  {
+   "name": "START",
+   "label": "Startdato",
+   "notPseudonym": true,
+   "dataType": "Instant",
+   "variableRole": "Start",
+   "representedVariables": [
+    {
+     "description": "Startdato/måletidspunktet for hendelsen",
+     "validPeriod": {
+      "start": 16071,
+      "stop": 20089
+     },
+     "valueDomain": {
+      "description": "Dato oppgitt i dager siden 1970-01-01",
+      "unitOfMeasure": "N/A"
+     }
+    }
+   ]
+  },
+  {
+   "name": "STOP",
+   "label": "Stoppdato",
+   "notPseudonym": true,
+   "dataType": "Instant",
+   "variableRole": "Stop",
+   "representedVariables": [
+    {
+     "description": "Stoppdato/måletidspunktet for hendelsen",
+     "validPeriod": {
+      "start": 16071,
+      "stop": 20089
+     },
+     "valueDomain": {
+      "description": "Dato oppgitt i dager siden 1970-01-01",
+      "unitOfMeasure": "N/A"
+     }
+    }
+   ]
+  }
+ ],
+ "temporalStatusDates": [
+  16071,
+  16436,
+  16801,
+  17167,
+  17532,
+  17897,
+  18262,
+  18628,
+  18993,
+  19358,
+  19723,
+  20089
+ ],
+ "globalTemporalCoverage": {
+  "start": -1096,
+  "stop": 20759
+ },
+ "updatedAt": 1760683763
+}

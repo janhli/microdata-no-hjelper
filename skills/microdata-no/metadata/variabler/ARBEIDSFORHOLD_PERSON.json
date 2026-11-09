@@ -1,0 +1,120 @@
+{
+ "name": "ARBEIDSFORHOLD_PERSON",
+ "temporality": "FIXED",
+ "languageCode": "no",
+ "sensitivityLevel": "PERSON_GENERAL",
+ "populationDescription": "Variabelen omfatter alle arbeidsforhold meldt inn gjennom A-ordningen som SSB anser å være aktive i referanseperioden, uavhengig av alder og bosatt-status i Folkeregisteret. \n \n Arbeidsforhold innhentes også fra andre kilder (SKDs arbeidsforholds- og oppdragsregister (tidligere SFU) og vernepliktige). A-ordningen er hovedkilden til informasjon om arbeidsforhold.\n \n Observasjoner med verdiene 0 og uoppgitt (missing) er utelatt. ",
+ "subjectFields": [
+  "A-ordningen",
+  "Arbeid og lønn",
+  "Arbeidsmarked",
+  "Lønn",
+  "Sykefravær",
+  "Sysselsetting"
+ ],
+ "temporalCoverage": {
+  "start": -25567,
+  "stop": 20721
+ },
+ "measureVariable": {
+  "name": "ARBEIDSFORHOLD_PERSON",
+  "label": "Arbeidsforhold, person",
+  "notPseudonym": false,
+  "dataType": "Long",
+  "format": "RandomUInt48",
+  "variableRole": "Measure",
+  "keyType": {
+   "name": "PERSON",
+   "label": "Person",
+   "description": "Person er et enkeltmenneske, individ."
+  },
+  "representedVariables": [
+   {
+    "description": "Variabelen er en nøkkel som gir deg muligheten å koble person og arbeidsforhold.\n \n En person kan ha flere arbeidsforhold i en periode, men ikke i samme virksomhet. Dersom en person har flere arbeidsforhold innenfor én virksomhet slås disse sammen.",
+    "validPeriod": {
+     "start": -25567,
+     "stop": 20721
+    },
+    "valueDomain": {
+     "description": "Pseudonymisert personnummer",
+     "unitOfMeasure": "N/A"
+    }
+   }
+  ]
+ },
+ "identifierVariables": [
+  {
+   "name": "JOBBID_1",
+   "label": "Jobbidentifikator",
+   "notPseudonym": false,
+   "dataType": "Long",
+   "format": "RandomUInt48",
+   "variableRole": "Identifier",
+   "keyType": {
+    "name": "JOBB",
+    "label": "Jobb",
+    "description": "En jobb er en persons arbeidsforhold i en virksomhet. En person kan ha flere arbeidsforhold, også innenfor en periode."
+   },
+   "representedVariables": [
+    {
+     "description": "Identifikator for jobb i microdata",
+     "validPeriod": {
+      "start": -25567,
+      "stop": 20721
+     },
+     "valueDomain": {
+      "description": "Pseudonymisert kombinasjon av personnummer og organisasjonsnummer",
+      "unitOfMeasure": "N/A"
+     }
+    }
+   ]
+  }
+ ],
+ "attributeVariables": [
+  {
+   "name": "START",
+   "label": "Startdato",
+   "notPseudonym": true,
+   "dataType": "Instant",
+   "variableRole": "Start",
+   "representedVariables": [
+    {
+     "description": "Startdato/måletidspunktet for hendelsen",
+     "validPeriod": {
+      "start": -25567,
+      "stop": 20721
+     },
+     "valueDomain": {
+      "description": "Dato oppgitt i dager siden 1970-01-01",
+      "unitOfMeasure": "N/A"
+     }
+    }
+   ]
+  },
+  {
+   "name": "STOP",
+   "label": "Stoppdato",
+   "notPseudonym": true,
+   "dataType": "Instant",
+   "variableRole": "Stop",
+   "representedVariables": [
+    {
+     "description": "Stoppdato/måletidspunktet for hendelsen",
+     "validPeriod": {
+      "start": -25567,
+      "stop": 20721
+     },
+     "valueDomain": {
+      "description": "Dato oppgitt i dager siden 1970-01-01",
+      "unitOfMeasure": "N/A"
+     }
+    }
+   ]
+  }
+ ],
+ "globalTemporalCoverage": {
+  "start": -1096,
+  "stop": 20759
+ },
+ "updatedAt": 1790854458
+}

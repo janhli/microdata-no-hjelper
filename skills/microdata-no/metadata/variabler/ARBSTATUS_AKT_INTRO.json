@@ -1,0 +1,138 @@
+{
+ "name": "ARBSTATUS_AKT_INTRO",
+ "temporality": "STATUS",
+ "languageCode": "no",
+ "sensitivityLevel": "PERSON_GENERAL",
+ "populationDescription": "Variabelen omfatter alle bosatte personer 15 år eller eldre og samsvarer med populasjonen i statistikken [Tilknytning til arbeid, utdanning og velferdsordninger](https://www.ssb.no/arbeid-og-lonn/sysselsetting/statistikk/tilknytning-til-arbeid-utdanning-og-velferdsordninger) (arbstatus). Se [Om statistikken](https://www.ssb.no/arbeid-og-lonn/sysselsetting/statistikk/tilknytning-til-arbeid-utdanning-og-velferdsordninger#om-statistikken) for mer informasjon. \n \n Det er noen færre personer med i populasjonen i microdata.no sammenlignet med i [statistikkbanken](https://www.ssb.no/statbank/list/arbstatus). Det skyldes manglende eller ugyldige fødselsnummer i datagrunnlaget som dermed ikke kan brukes til kobling mot andre variabler i microdata.no, og er derfor utelatt. For de fleste årgangene er det i underkant av 200 færre i microdata.no, mens det for 2022-årgangen er i overkant av 1 000 færre personer.\n \n System for persondata (SFP) er kilde for både variabelen og statistikken. Denne grunnlagsfilen inkluderer i tillegg til bosatte personer 15 år og eldre, også noen grupper ikke-bosatte. Les mer i [dokumentasjonen](https://www.ssb.no/arbeid-og-lonn/artikler-og-publikasjoner/_attachment/430138?_ts=17433b4b920) om datagrunnlag, prosessering og definisjoner.",
+ "subjectFields": [
+  "Arbeid og lønn",
+  "Sysselsetting",
+  "Tilknytning til arbeid, utdanning og velferdsordninger"
+ ],
+ "temporalCoverage": {
+  "start": 14199,
+  "stop": 20043
+ },
+ "measureVariable": {
+  "name": "ARBSTATUS_AKT_INTRO",
+  "label": "Introduksjonsprogram",
+  "notPseudonym": true,
+  "dataType": "String",
+  "variableRole": "Measure",
+  "representedVariables": [
+   {
+    "description": "Fulltellingsvariabel (ARBSTATUS_AKT_INTRO= '1') for deltakelse i introduksjonsprogrammet i den tredje uken i november (fra og med 2015 ytterligere definert som uken med den 16. november).\n \n For å undersøke forløp når det kommer til mottak av introduksjonsstønad, kan variabelen INTROSTFDT_MOTTAK brukes. Se følgende dokumentasjon for mer informasjon: [Variabelområdet FD-Trygd](https://www.ssb.no/data-til-forskning/utlan-av-data-til-forskere/variabellister/fd-trygd).\n \n Variabelen ARBSTATUS_AKT_INTRO inngår i prioriteringen av status i variabelen ARBSTATUS_PERS_STATUS8.\n \n ## Brudd i tidsserien fra 2016 til 2017 og fra 2019 til 2020 \n Både overgang til ny datakilde fra og med 2017-årgangen og endring i identifisering av deltakere fra og med 2020-årgangen gjør at tallene ikke er direkte sammenlignbare i hele tidsserien. \n \n Til og med 2016 ble data innsamlet fra kommunene gjennom KOSTRA (KOmmune-STat-RApportering). De som hadde startet introduksjonsprogrammet i eller før referanseuken, samt de som hadde avsluttet i eller etter referanseuken, ble regnet som deltakere i introduksjonsprogrammet. KOSTRA-skjemaet inneholdt kun avkrysning for hvilke tiltak personen hadde deltatt på i løpet av året, uten datering av disse, så dette ble ikke tatt hensyn til i uttrekket. \n \n Fra og med 2017 er data basert på opplysninger rapportert fra kommunene til Nasjonalt Introduksjonsregister (NIR) hos Integrerings- og mangfoldsdirektoratet (IMDi). Grunnlaget for rapportering fra kommunenes fagsystemer er det samme i perioden før og etter 2017, selv om selve rapporteringen er endret fra skjema. \n \n For årgangene 2017–2019 er avgrensingen gjort ved at personer som kun hadde tiltak i introduksjonsprogrammet med startdato før eller i referanseuken, eller stoppdato etter referanseuken, var inkludert. \n \n Fra og med 2020-årgangen brukes såkalt «proxy startdato» og «proxy avslutningsdato» for å identifisere aktive deltakere i referanseuken. Den nye avgrensningen i 2020 ga en økning fra om lag 8 000 til 9 300 personer med verdi ARBSTATUS_AKT_INTRO = ‘1’, og fra 6 700 til 7 700 som hadde deltakelse i introduksjonsordningen som sin prioriterte arbeidsstyrkestatus (ARBSTATUS_PERS_STATUS8). \n \n Se «Sammenlignbarhet over tid og sted» under «Produksjon» i [Om statistikken](https://www.ssb.no/arbeid-og-lonn/sysselsetting/statistikk/tilknytning-til-arbeid-utdanning-og-velferdsordninger#om-statistikken) for mer informasjon.",
+    "validPeriod": {
+     "start": 13879
+    },
+    "valueDomain": {
+     "codeList": [
+      {
+       "category": "Deltok ikke i introduksjonsprogrammet",
+       "code": "0"
+      },
+      {
+       "category": "Deltok i introduksjonsprogrammet",
+       "code": "1"
+      }
+     ],
+     "missingValues": []
+    }
+   }
+  ]
+ },
+ "identifierVariables": [
+  {
+   "name": "PERSONID_1",
+   "label": "Personidentifikator",
+   "notPseudonym": false,
+   "dataType": "Long",
+   "format": "RandomUInt48",
+   "variableRole": "Identifier",
+   "keyType": {
+    "name": "PERSON",
+    "label": "Person",
+    "description": "Person er et enkeltmenneske, individ."
+   },
+   "representedVariables": [
+    {
+     "description": "Identifikator for person i microdata",
+     "validPeriod": {
+      "start": 14199,
+      "stop": 20043
+     },
+     "valueDomain": {
+      "description": "Pseudonymisert personnummer",
+      "unitOfMeasure": "N/A"
+     }
+    }
+   ]
+  }
+ ],
+ "attributeVariables": [
+  {
+   "name": "START",
+   "label": "Startdato",
+   "notPseudonym": true,
+   "dataType": "Instant",
+   "variableRole": "Start",
+   "representedVariables": [
+    {
+     "description": "Startdato/måletidspunktet for hendelsen",
+     "validPeriod": {
+      "start": 14199,
+      "stop": 20043
+     },
+     "valueDomain": {
+      "description": "Dato oppgitt i dager siden 1970-01-01",
+      "unitOfMeasure": "N/A"
+     }
+    }
+   ]
+  },
+  {
+   "name": "STOP",
+   "label": "Stoppdato",
+   "notPseudonym": true,
+   "dataType": "Instant",
+   "variableRole": "Stop",
+   "representedVariables": [
+    {
+     "description": "Stoppdato/måletidspunktet for hendelsen",
+     "validPeriod": {
+      "start": 14199,
+      "stop": 20043
+     },
+     "valueDomain": {
+      "description": "Dato oppgitt i dager siden 1970-01-01",
+      "unitOfMeasure": "N/A"
+     }
+    }
+   ]
+  }
+ ],
+ "temporalStatusDates": [
+  14199,
+  14564,
+  14929,
+  15294,
+  15660,
+  16025,
+  16390,
+  16755,
+  17121,
+  17486,
+  17851,
+  18216,
+  18582,
+  18947,
+  19312,
+  19677,
+  20043
+ ],
+ "globalTemporalCoverage": {
+  "start": -1096,
+  "stop": 20759
+ },
+ "updatedAt": 1772621947
+}

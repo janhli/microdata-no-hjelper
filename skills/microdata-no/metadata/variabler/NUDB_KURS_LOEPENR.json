@@ -1,0 +1,110 @@
+{
+ "name": "NUDB_KURS_LOEPENR",
+ "temporality": "FIXED",
+ "languageCode": "no",
+ "sensitivityLevel": "PERSON_GENERAL",
+ "populationDescription": "Variabelen omfatter alle personer registrert med en utdanning, fra grunnskole til universitet og høgskole.",
+ "subjectFields": [
+  "Utdanning",
+  "Utdanningsnivå"
+ ],
+ "temporalCoverage": {
+  "start": -25567,
+  "stop": 19996
+ },
+ "measureVariable": {
+  "name": "NUDB_KURS_LOEPENR",
+  "label": "Løpenummer for kurs",
+  "notPseudonym": true,
+  "dataType": "Long",
+  "variableRole": "Measure",
+  "representedVariables": [
+   {
+    "description": "Inngår som en del av identifikasjonsnøkkelen på KURS-nivå. G155  Fram tom. 1999:  For å kunne registrere dubletter av kurs med hensyn til NUS2000 som følge av omkoding fra NUS89 til NUS2000.  Etter 1999: For å kunne registrere dubletter av kurs med hensyn til NUS2000 som følge av at NUS2000 ikke skiller mellom endel ulike grunnfag og mellomfag og at f.eks. MATNAT studenter kan få registrert mange tilsynelatende like kurs for ulike vekttallsfag som tas.  Starter på 1 for det første kurset i NUDB og nummereres fortløpende.  Alle records innenfor det samme KURSTILFELLET vil ha det samme løpenummeret.  Unike kurs er definert som: FNR x NUS2000 x LOEPENR_KURS.",
+    "validPeriod": {
+     "start": -25567,
+     "stop": 19996
+    },
+    "valueDomain": {
+     "description": "Pseudonymisert NUDB løpenummer kurs.",
+     "unitOfMeasure": "N/A"
+    }
+   }
+  ]
+ },
+ "identifierVariables": [
+  {
+   "name": "KURSID_1",
+   "label": "Kursidentifikator",
+   "notPseudonym": false,
+   "dataType": "Long",
+   "format": "RandomUInt48",
+   "variableRole": "Identifier",
+   "keyType": {
+    "name": "KURS",
+    "label": "Kurs",
+    "description": "Kurs er en utdanningsaktivitet."
+   },
+   "representedVariables": [
+    {
+     "description": "Identifikator for kurs i microdata",
+     "validPeriod": {
+      "start": -25567,
+      "stop": 19996
+     },
+     "valueDomain": {
+      "description": "Pseudonymisert kombinasjon av personnummer og NUDB kursnummer",
+      "unitOfMeasure": "N/A"
+     }
+    }
+   ]
+  }
+ ],
+ "attributeVariables": [
+  {
+   "name": "START",
+   "label": "Startdato",
+   "notPseudonym": true,
+   "dataType": "Instant",
+   "variableRole": "Start",
+   "representedVariables": [
+    {
+     "description": "Startdato/måletidspunktet for hendelsen",
+     "validPeriod": {
+      "start": -25567,
+      "stop": 19996
+     },
+     "valueDomain": {
+      "description": "Dato oppgitt i dager siden 1970-01-01",
+      "unitOfMeasure": "N/A"
+     }
+    }
+   ]
+  },
+  {
+   "name": "STOP",
+   "label": "Stoppdato",
+   "notPseudonym": true,
+   "dataType": "Instant",
+   "variableRole": "Stop",
+   "representedVariables": [
+    {
+     "description": "Stoppdato/måletidspunktet for hendelsen",
+     "validPeriod": {
+      "start": -25567,
+      "stop": 19996
+     },
+     "valueDomain": {
+      "description": "Dato oppgitt i dager siden 1970-01-01",
+      "unitOfMeasure": "N/A"
+     }
+    }
+   ]
+  }
+ ],
+ "globalTemporalCoverage": {
+  "start": -1096,
+  "stop": 20759
+ },
+ "updatedAt": 1760683763
+}

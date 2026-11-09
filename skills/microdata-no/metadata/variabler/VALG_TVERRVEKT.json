@@ -1,0 +1,118 @@
+{
+ "name": "VALG_TVERRVEKT",
+ "temporality": "STATUS",
+ "languageCode": "no",
+ "sensitivityLevel": "PERSON_GENERAL",
+ "populationDescription": "Variabelen omfatter alle personer som har stemmerett i valg. For å ha stemmerett i valg må man stå i manntallet i den kommunen en skal stemme. Folkeregisteret danner grunnlaget for manntallet. Observasjoner med missing er utelatt.",
+ "subjectFields": [
+  "Valg"
+ ],
+ "temporalCoverage": {
+  "start": 15957,
+  "stop": 18148
+ },
+ "measureVariable": {
+  "name": "VALG_TVERRVEKT",
+  "label": "Vekt som gir utvalget tverrsnittsegenskaper for hele landet",
+  "notPseudonym": true,
+  "dataType": "Double",
+  "variableRole": "Measure",
+  "representedVariables": [
+   {
+    "description": "Variabelen viser vekt som gir utvalget tverssnittsegenskaper for hele landet.\n \n Mer informasjon om valg og bruk av data i statistikk og for forskning og analyse: \n [Variabelområdet valg hos SSB]  (https://www.ssb.no/data-til-forskning/utlan-av-data-til-forskere/variabellister/valg)",
+    "validPeriod": {
+     "start": 15957,
+     "stop": 18148
+    },
+    "valueDomain": {
+     "description": "Tverrvekt gir utvalget tverssnittsegenskaper for hele landet.",
+     "unitOfMeasure": "N/A"
+    }
+   }
+  ]
+ },
+ "identifierVariables": [
+  {
+   "name": "PERSONID_1",
+   "label": "Personidentifikator",
+   "notPseudonym": false,
+   "dataType": "Long",
+   "format": "RandomUInt48",
+   "variableRole": "Identifier",
+   "keyType": {
+    "name": "PERSON",
+    "label": "Person",
+    "description": "Statistisk enhet er person (individ, enkeltmenenske)"
+   },
+   "representedVariables": [
+    {
+     "description": "Identifikator for person i RAIRD",
+     "validPeriod": {
+      "start": 15957,
+      "stop": 18148
+     },
+     "valueDomain": {
+      "description": "N/A",
+      "unitOfMeasure": "N/A"
+     }
+    }
+   ]
+  }
+ ],
+ "attributeVariables": [
+  {
+   "name": "STOP",
+   "label": "Stoppdato",
+   "notPseudonym": true,
+   "dataType": "Instant",
+   "variableRole": "Stop",
+   "representedVariables": [
+    {
+     "description": "Stoppdato/sluttdato for hendelsen",
+     "validPeriod": {
+      "start": 15957,
+      "stop": 18148
+     },
+     "valueDomain": {
+      "description": "N/A",
+      "unitOfMeasure": "N/A"
+     }
+    }
+   ]
+  },
+  {
+   "name": "START",
+   "label": "Startdato",
+   "notPseudonym": true,
+   "dataType": "Instant",
+   "variableRole": "Start",
+   "representedVariables": [
+    {
+     "description": "Startdato/måletidspunktet for hendelsen",
+     "validPeriod": {
+      "start": 15957,
+      "stop": 18148
+     },
+     "valueDomain": {
+      "description": "N/A",
+      "unitOfMeasure": "N/A"
+     }
+    }
+   ]
+  }
+ ],
+ "temporalStatusDates": [
+  17420,
+  18148,
+  15957,
+  16692
+ ],
+ "temporalEnd": {
+  "description": "Variabelen oppdateres ikke. SSB gikk over til fulltelling etter valget 2019."
+ },
+ "globalTemporalCoverage": {
+  "start": -1096,
+  "stop": 20759
+ },
+ "updatedAt": 1633937990
+}
