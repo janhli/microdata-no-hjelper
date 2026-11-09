@@ -81,6 +81,15 @@ med pull request (se CONTRIBUTING.md). Tagg dem med datalagerversjon/dato hvis d
 - Fylkesnumrene fra 2024 gjelder: 31 Østfold, 32 Akershus, 33 Buskerud osv. Kommuner i Viken (30xx)
   i 2020–2023 må omkodes til nummeret de fikk i 2024 (31xx/32xx/33xx) før du sammenligner over tid.
   Tilsvarende gjelder Vestfold og Telemark (38xx → 39xx/40xx) og Troms og Finnmark (54xx → 55xx/56xx).
+- Bruk `python verktoy/kommuneomkoding.py` til å lage `recode` fra gamle til nyere inndeling
+  (data: SSB Klass 131 i `metadata/kommuneendringer.json`). Fallgruver:
+  - Delte kommuner (Varteig 0114, Stokke 0720, Snillfjord 1613 og 5012, Tysfjord 1850) kan ikke
+    omkodes uten adresse. Verktøyet lar dem stå uendret, og de vises som gamle koder i tabellen.
+  - Når Ålesund ble delt i 2024 (Haram ut igjen), kjedes de gamle kodene via navn. Haram 1534 blir 1580,
+    og Ørskog, Skodje og Sandøy blir 1508. Verktøyet lister slike valg som «kontroller».
+  - Klass dekker ikke Svalbard-kodene 2111, 2112, 2115, 2121 og 2131 (i kodelisten til
+    `BEFOLKNING_KOMMNR_FORMELL`). Legg dem til for hånd hvis de skal slås sammen til 2100.
+  - Klass har endringer til 2026 (bl.a. Indre Østfold). Standard er `--til 2024`.
 
 ## Alder
 

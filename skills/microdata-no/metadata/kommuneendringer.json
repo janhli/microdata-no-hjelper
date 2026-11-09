@@ -1,0 +1,5725 @@
+{
+ "kilde": "SSB Klass 131, Standard for kommuneinndeling (https://www.ssb.no/klass/klassifikasjoner/131)",
+ "hentet": "2026-11-09",
+ "fra": "1989-01-01",
+ "koder_ved_fra": [
+  {
+   "kode": "0101",
+   "navn": "Halden"
+  },
+  {
+   "kode": "0102",
+   "navn": "Sarpsborg"
+  },
+  {
+   "kode": "0103",
+   "navn": "Fredrikstad"
+  },
+  {
+   "kode": "0104",
+   "navn": "Moss"
+  },
+  {
+   "kode": "0111",
+   "navn": "Hvaler"
+  },
+  {
+   "kode": "0113",
+   "navn": "Borge (Østfold)"
+  },
+  {
+   "kode": "0114",
+   "navn": "Varteig"
+  },
+  {
+   "kode": "0115",
+   "navn": "Skjeberg"
+  },
+  {
+   "kode": "0118",
+   "navn": "Aremark"
+  },
+  {
+   "kode": "0119",
+   "navn": "Marker"
+  },
+  {
+   "kode": "0121",
+   "navn": "Rømskog"
+  },
+  {
+   "kode": "0122",
+   "navn": "Trøgstad"
+  },
+  {
+   "kode": "0123",
+   "navn": "Spydeberg"
+  },
+  {
+   "kode": "0124",
+   "navn": "Askim"
+  },
+  {
+   "kode": "0125",
+   "navn": "Eidsberg"
+  },
+  {
+   "kode": "0127",
+   "navn": "Skiptvet"
+  },
+  {
+   "kode": "0128",
+   "navn": "Rakkestad"
+  },
+  {
+   "kode": "0130",
+   "navn": "Tune"
+  },
+  {
+   "kode": "0131",
+   "navn": "Rolvsøy"
+  },
+  {
+   "kode": "0133",
+   "navn": "Kråkerøy"
+  },
+  {
+   "kode": "0134",
+   "navn": "Onsøy"
+  },
+  {
+   "kode": "0135",
+   "navn": "Råde"
+  },
+  {
+   "kode": "0136",
+   "navn": "Rygge"
+  },
+  {
+   "kode": "0137",
+   "navn": "Våler (Østfold)"
+  },
+  {
+   "kode": "0138",
+   "navn": "Hobøl"
+  },
+  {
+   "kode": "0211",
+   "navn": "Vestby"
+  },
+  {
+   "kode": "0213",
+   "navn": "Ski"
+  },
+  {
+   "kode": "0214",
+   "navn": "Ås"
+  },
+  {
+   "kode": "0215",
+   "navn": "Frogn"
+  },
+  {
+   "kode": "0216",
+   "navn": "Nesodden"
+  },
+  {
+   "kode": "0217",
+   "navn": "Oppegård"
+  },
+  {
+   "kode": "0219",
+   "navn": "Bærum"
+  },
+  {
+   "kode": "0220",
+   "navn": "Asker"
+  },
+  {
+   "kode": "0221",
+   "navn": "Aurskog-Høland"
+  },
+  {
+   "kode": "0226",
+   "navn": "Sørum"
+  },
+  {
+   "kode": "0227",
+   "navn": "Fet"
+  },
+  {
+   "kode": "0228",
+   "navn": "Rælingen"
+  },
+  {
+   "kode": "0229",
+   "navn": "Enebakk"
+  },
+  {
+   "kode": "0230",
+   "navn": "Lørenskog"
+  },
+  {
+   "kode": "0231",
+   "navn": "Skedsmo"
+  },
+  {
+   "kode": "0233",
+   "navn": "Nittedal"
+  },
+  {
+   "kode": "0234",
+   "navn": "Gjerdrum"
+  },
+  {
+   "kode": "0235",
+   "navn": "Ullensaker"
+  },
+  {
+   "kode": "0236",
+   "navn": "Nes (Akershus)"
+  },
+  {
+   "kode": "0237",
+   "navn": "Eidsvoll"
+  },
+  {
+   "kode": "0238",
+   "navn": "Nannestad"
+  },
+  {
+   "kode": "0239",
+   "navn": "Hurdal"
+  },
+  {
+   "kode": "0301",
+   "navn": "Oslo"
+  },
+  {
+   "kode": "0401",
+   "navn": "Hamar"
+  },
+  {
+   "kode": "0402",
+   "navn": "Kongsvinger"
+  },
+  {
+   "kode": "0412",
+   "navn": "Ringsaker"
+  },
+  {
+   "kode": "0414",
+   "navn": "Vang (Hedmark)"
+  },
+  {
+   "kode": "0415",
+   "navn": "Løten"
+  },
+  {
+   "kode": "0417",
+   "navn": "Stange"
+  },
+  {
+   "kode": "0418",
+   "navn": "Nord-Odal"
+  },
+  {
+   "kode": "0419",
+   "navn": "Sør-Odal"
+  },
+  {
+   "kode": "0420",
+   "navn": "Eidskog"
+  },
+  {
+   "kode": "0423",
+   "navn": "Grue"
+  },
+  {
+   "kode": "0425",
+   "navn": "Åsnes"
+  },
+  {
+   "kode": "0426",
+   "navn": "Våler (Hedmark)"
+  },
+  {
+   "kode": "0427",
+   "navn": "Elverum"
+  },
+  {
+   "kode": "0428",
+   "navn": "Trysil"
+  },
+  {
+   "kode": "0429",
+   "navn": "Åmot"
+  },
+  {
+   "kode": "0430",
+   "navn": "Stor-Elvdal"
+  },
+  {
+   "kode": "0432",
+   "navn": "Rendalen"
+  },
+  {
+   "kode": "0434",
+   "navn": "Engerdal"
+  },
+  {
+   "kode": "0436",
+   "navn": "Tolga"
+  },
+  {
+   "kode": "0437",
+   "navn": "Tynset"
+  },
+  {
+   "kode": "0438",
+   "navn": "Alvdal"
+  },
+  {
+   "kode": "0439",
+   "navn": "Folldal"
+  },
+  {
+   "kode": "0441",
+   "navn": "Os (Hedmark)"
+  },
+  {
+   "kode": "0501",
+   "navn": "Lillehammer"
+  },
+  {
+   "kode": "0502",
+   "navn": "Gjøvik"
+  },
+  {
+   "kode": "0511",
+   "navn": "Dovre"
+  },
+  {
+   "kode": "0512",
+   "navn": "Lesja"
+  },
+  {
+   "kode": "0513",
+   "navn": "Skjåk"
+  },
+  {
+   "kode": "0514",
+   "navn": "Lom"
+  },
+  {
+   "kode": "0515",
+   "navn": "Vågå"
+  },
+  {
+   "kode": "0516",
+   "navn": "Nord-Fron"
+  },
+  {
+   "kode": "0517",
+   "navn": "Sel"
+  },
+  {
+   "kode": "0519",
+   "navn": "Sør-Fron"
+  },
+  {
+   "kode": "0520",
+   "navn": "Ringebu"
+  },
+  {
+   "kode": "0521",
+   "navn": "Øyer"
+  },
+  {
+   "kode": "0522",
+   "navn": "Gausdal"
+  },
+  {
+   "kode": "0528",
+   "navn": "Østre Toten"
+  },
+  {
+   "kode": "0529",
+   "navn": "Vestre Toten"
+  },
+  {
+   "kode": "0532",
+   "navn": "Jevnaker"
+  },
+  {
+   "kode": "0533",
+   "navn": "Lunner"
+  },
+  {
+   "kode": "0534",
+   "navn": "Gran"
+  },
+  {
+   "kode": "0536",
+   "navn": "Søndre Land"
+  },
+  {
+   "kode": "0538",
+   "navn": "Nordre Land"
+  },
+  {
+   "kode": "0540",
+   "navn": "Sør-Aurdal"
+  },
+  {
+   "kode": "0541",
+   "navn": "Etnedal"
+  },
+  {
+   "kode": "0542",
+   "navn": "Nord-Aurdal"
+  },
+  {
+   "kode": "0543",
+   "navn": "Vestre Slidre"
+  },
+  {
+   "kode": "0544",
+   "navn": "Øystre Slidre"
+  },
+  {
+   "kode": "0545",
+   "navn": "Vang (Oppland)"
+  },
+  {
+   "kode": "0602",
+   "navn": "Drammen"
+  },
+  {
+   "kode": "0604",
+   "navn": "Kongsberg"
+  },
+  {
+   "kode": "0605",
+   "navn": "Ringerike"
+  },
+  {
+   "kode": "0612",
+   "navn": "Hole"
+  },
+  {
+   "kode": "0615",
+   "navn": "Flå (Buskerud)"
+  },
+  {
+   "kode": "0616",
+   "navn": "Nes (Buskerud)"
+  },
+  {
+   "kode": "0617",
+   "navn": "Gol"
+  },
+  {
+   "kode": "0618",
+   "navn": "Hemsedal"
+  },
+  {
+   "kode": "0619",
+   "navn": "Ål"
+  },
+  {
+   "kode": "0620",
+   "navn": "Hol (Buskerud)"
+  },
+  {
+   "kode": "0621",
+   "navn": "Sigdal"
+  },
+  {
+   "kode": "0622",
+   "navn": "Krødsherad"
+  },
+  {
+   "kode": "0623",
+   "navn": "Modum"
+  },
+  {
+   "kode": "0624",
+   "navn": "Øvre Eiker"
+  },
+  {
+   "kode": "0625",
+   "navn": "Nedre Eiker"
+  },
+  {
+   "kode": "0626",
+   "navn": "Lier"
+  },
+  {
+   "kode": "0627",
+   "navn": "Røyken"
+  },
+  {
+   "kode": "0628",
+   "navn": "Hurum"
+  },
+  {
+   "kode": "0631",
+   "navn": "Flesberg"
+  },
+  {
+   "kode": "0632",
+   "navn": "Rollag"
+  },
+  {
+   "kode": "0633",
+   "navn": "Nore og Uvdal"
+  },
+  {
+   "kode": "0701",
+   "navn": "Borre"
+  },
+  {
+   "kode": "0702",
+   "navn": "Holmestrand"
+  },
+  {
+   "kode": "0704",
+   "navn": "Tønsberg"
+  },
+  {
+   "kode": "0706",
+   "navn": "Sandefjord"
+  },
+  {
+   "kode": "0709",
+   "navn": "Larvik"
+  },
+  {
+   "kode": "0711",
+   "navn": "Svelvik"
+  },
+  {
+   "kode": "0713",
+   "navn": "Sande (Vestfold)"
+  },
+  {
+   "kode": "0714",
+   "navn": "Hof (Vestfold)"
+  },
+  {
+   "kode": "0716",
+   "navn": "Våle"
+  },
+  {
+   "kode": "0718",
+   "navn": "Ramnes"
+  },
+  {
+   "kode": "0719",
+   "navn": "Andebu"
+  },
+  {
+   "kode": "0720",
+   "navn": "Stokke"
+  },
+  {
+   "kode": "0722",
+   "navn": "Nøtterøy"
+  },
+  {
+   "kode": "0723",
+   "navn": "Tjøme"
+  },
+  {
+   "kode": "0728",
+   "navn": "Lardal"
+  },
+  {
+   "kode": "0805",
+   "navn": "Porsgrunn"
+  },
+  {
+   "kode": "0806",
+   "navn": "Skien"
+  },
+  {
+   "kode": "0807",
+   "navn": "Notodden"
+  },
+  {
+   "kode": "0811",
+   "navn": "Siljan"
+  },
+  {
+   "kode": "0814",
+   "navn": "Bamble"
+  },
+  {
+   "kode": "0815",
+   "navn": "Kragerø"
+  },
+  {
+   "kode": "0817",
+   "navn": "Drangedal"
+  },
+  {
+   "kode": "0819",
+   "navn": "Nome"
+  },
+  {
+   "kode": "0821",
+   "navn": "Bø (Telemark)"
+  },
+  {
+   "kode": "0822",
+   "navn": "Sauherad"
+  },
+  {
+   "kode": "0826",
+   "navn": "Tinn"
+  },
+  {
+   "kode": "0827",
+   "navn": "Hjartdal"
+  },
+  {
+   "kode": "0828",
+   "navn": "Seljord"
+  },
+  {
+   "kode": "0829",
+   "navn": "Kviteseid"
+  },
+  {
+   "kode": "0830",
+   "navn": "Nissedal"
+  },
+  {
+   "kode": "0831",
+   "navn": "Fyresdal"
+  },
+  {
+   "kode": "0833",
+   "navn": "Tokke"
+  },
+  {
+   "kode": "0834",
+   "navn": "Vinje"
+  },
+  {
+   "kode": "0901",
+   "navn": "Risør"
+  },
+  {
+   "kode": "0903",
+   "navn": "Arendal"
+  },
+  {
+   "kode": "0904",
+   "navn": "Grimstad"
+  },
+  {
+   "kode": "0911",
+   "navn": "Gjerstad"
+  },
+  {
+   "kode": "0912",
+   "navn": "Vegårshei"
+  },
+  {
+   "kode": "0914",
+   "navn": "Tvedestrand"
+  },
+  {
+   "kode": "0918",
+   "navn": "Moland"
+  },
+  {
+   "kode": "0919",
+   "navn": "Froland"
+  },
+  {
+   "kode": "0920",
+   "navn": "Øyestad"
+  },
+  {
+   "kode": "0921",
+   "navn": "Tromøy"
+  },
+  {
+   "kode": "0922",
+   "navn": "Hisøy"
+  },
+  {
+   "kode": "0926",
+   "navn": "Lillesand"
+  },
+  {
+   "kode": "0928",
+   "navn": "Birkenes"
+  },
+  {
+   "kode": "0929",
+   "navn": "Åmli"
+  },
+  {
+   "kode": "0935",
+   "navn": "Iveland"
+  },
+  {
+   "kode": "0937",
+   "navn": "Evje og Hornnes"
+  },
+  {
+   "kode": "0938",
+   "navn": "Bygland"
+  },
+  {
+   "kode": "0940",
+   "navn": "Valle"
+  },
+  {
+   "kode": "0941",
+   "navn": "Bykle"
+  },
+  {
+   "kode": "1001",
+   "navn": "Kristiansand"
+  },
+  {
+   "kode": "1002",
+   "navn": "Mandal"
+  },
+  {
+   "kode": "1003",
+   "navn": "Farsund"
+  },
+  {
+   "kode": "1004",
+   "navn": "Flekkefjord"
+  },
+  {
+   "kode": "1014",
+   "navn": "Vennesla"
+  },
+  {
+   "kode": "1017",
+   "navn": "Songdalen"
+  },
+  {
+   "kode": "1018",
+   "navn": "Søgne"
+  },
+  {
+   "kode": "1021",
+   "navn": "Marnardal"
+  },
+  {
+   "kode": "1026",
+   "navn": "Åseral"
+  },
+  {
+   "kode": "1027",
+   "navn": "Audnedal"
+  },
+  {
+   "kode": "1029",
+   "navn": "Lindesnes"
+  },
+  {
+   "kode": "1032",
+   "navn": "Lyngdal"
+  },
+  {
+   "kode": "1034",
+   "navn": "Hægebostad"
+  },
+  {
+   "kode": "1037",
+   "navn": "Kvinesdal"
+  },
+  {
+   "kode": "1046",
+   "navn": "Sirdal"
+  },
+  {
+   "kode": "1101",
+   "navn": "Eigersund"
+  },
+  {
+   "kode": "1102",
+   "navn": "Sandnes"
+  },
+  {
+   "kode": "1103",
+   "navn": "Stavanger"
+  },
+  {
+   "kode": "1106",
+   "navn": "Haugesund"
+  },
+  {
+   "kode": "1111",
+   "navn": "Sokndal"
+  },
+  {
+   "kode": "1112",
+   "navn": "Lund"
+  },
+  {
+   "kode": "1114",
+   "navn": "Bjerkreim"
+  },
+  {
+   "kode": "1119",
+   "navn": "Hå"
+  },
+  {
+   "kode": "1120",
+   "navn": "Klepp"
+  },
+  {
+   "kode": "1121",
+   "navn": "Time"
+  },
+  {
+   "kode": "1122",
+   "navn": "Gjesdal"
+  },
+  {
+   "kode": "1124",
+   "navn": "Sola"
+  },
+  {
+   "kode": "1127",
+   "navn": "Randaberg"
+  },
+  {
+   "kode": "1129",
+   "navn": "Forsand"
+  },
+  {
+   "kode": "1130",
+   "navn": "Strand"
+  },
+  {
+   "kode": "1133",
+   "navn": "Hjelmeland"
+  },
+  {
+   "kode": "1134",
+   "navn": "Suldal"
+  },
+  {
+   "kode": "1135",
+   "navn": "Sauda"
+  },
+  {
+   "kode": "1141",
+   "navn": "Finnøy"
+  },
+  {
+   "kode": "1142",
+   "navn": "Rennesøy"
+  },
+  {
+   "kode": "1144",
+   "navn": "Kvitsøy"
+  },
+  {
+   "kode": "1145",
+   "navn": "Bokn"
+  },
+  {
+   "kode": "1146",
+   "navn": "Tysvær"
+  },
+  {
+   "kode": "1149",
+   "navn": "Karmøy"
+  },
+  {
+   "kode": "1151",
+   "navn": "Utsira"
+  },
+  {
+   "kode": "1154",
+   "navn": "Vindafjord"
+  },
+  {
+   "kode": "1201",
+   "navn": "Bergen"
+  },
+  {
+   "kode": "1211",
+   "navn": "Etne"
+  },
+  {
+   "kode": "1214",
+   "navn": "Ølen"
+  },
+  {
+   "kode": "1216",
+   "navn": "Sveio"
+  },
+  {
+   "kode": "1219",
+   "navn": "Bømlo"
+  },
+  {
+   "kode": "1221",
+   "navn": "Stord"
+  },
+  {
+   "kode": "1222",
+   "navn": "Fitjar"
+  },
+  {
+   "kode": "1223",
+   "navn": "Tysnes"
+  },
+  {
+   "kode": "1224",
+   "navn": "Kvinnherad"
+  },
+  {
+   "kode": "1227",
+   "navn": "Jondal"
+  },
+  {
+   "kode": "1228",
+   "navn": "Odda"
+  },
+  {
+   "kode": "1231",
+   "navn": "Ullensvang"
+  },
+  {
+   "kode": "1232",
+   "navn": "Eidfjord"
+  },
+  {
+   "kode": "1233",
+   "navn": "Ulvik"
+  },
+  {
+   "kode": "1234",
+   "navn": "Granvin"
+  },
+  {
+   "kode": "1235",
+   "navn": "Voss"
+  },
+  {
+   "kode": "1238",
+   "navn": "Kvam"
+  },
+  {
+   "kode": "1241",
+   "navn": "Fusa"
+  },
+  {
+   "kode": "1242",
+   "navn": "Samnanger"
+  },
+  {
+   "kode": "1243",
+   "navn": "Os (Hordaland)"
+  },
+  {
+   "kode": "1244",
+   "navn": "Austevoll"
+  },
+  {
+   "kode": "1245",
+   "navn": "Sund"
+  },
+  {
+   "kode": "1246",
+   "navn": "Fjell"
+  },
+  {
+   "kode": "1247",
+   "navn": "Askøy"
+  },
+  {
+   "kode": "1251",
+   "navn": "Vaksdal"
+  },
+  {
+   "kode": "1252",
+   "navn": "Modalen"
+  },
+  {
+   "kode": "1253",
+   "navn": "Osterøy"
+  },
+  {
+   "kode": "1256",
+   "navn": "Meland"
+  },
+  {
+   "kode": "1259",
+   "navn": "Øygarden"
+  },
+  {
+   "kode": "1260",
+   "navn": "Radøy"
+  },
+  {
+   "kode": "1263",
+   "navn": "Lindås"
+  },
+  {
+   "kode": "1264",
+   "navn": "Austrheim"
+  },
+  {
+   "kode": "1265",
+   "navn": "Fedje"
+  },
+  {
+   "kode": "1266",
+   "navn": "Masfjorden"
+  },
+  {
+   "kode": "1401",
+   "navn": "Flora"
+  },
+  {
+   "kode": "1411",
+   "navn": "Gulen"
+  },
+  {
+   "kode": "1412",
+   "navn": "Solund"
+  },
+  {
+   "kode": "1413",
+   "navn": "Hyllestad"
+  },
+  {
+   "kode": "1416",
+   "navn": "Høyanger"
+  },
+  {
+   "kode": "1417",
+   "navn": "Vik"
+  },
+  {
+   "kode": "1418",
+   "navn": "Balestrand"
+  },
+  {
+   "kode": "1419",
+   "navn": "Leikanger"
+  },
+  {
+   "kode": "1420",
+   "navn": "Sogndal (Sogn og Fjordane)"
+  },
+  {
+   "kode": "1421",
+   "navn": "Aurland"
+  },
+  {
+   "kode": "1422",
+   "navn": "Lærdal"
+  },
+  {
+   "kode": "1424",
+   "navn": "Årdal (Sogn og Fjordane)"
+  },
+  {
+   "kode": "1426",
+   "navn": "Luster"
+  },
+  {
+   "kode": "1428",
+   "navn": "Askvoll"
+  },
+  {
+   "kode": "1429",
+   "navn": "Fjaler"
+  },
+  {
+   "kode": "1430",
+   "navn": "Gaular"
+  },
+  {
+   "kode": "1431",
+   "navn": "Jølster"
+  },
+  {
+   "kode": "1432",
+   "navn": "Førde"
+  },
+  {
+   "kode": "1433",
+   "navn": "Naustdal"
+  },
+  {
+   "kode": "1438",
+   "navn": "Bremanger"
+  },
+  {
+   "kode": "1439",
+   "navn": "Vågsøy"
+  },
+  {
+   "kode": "1441",
+   "navn": "Selje"
+  },
+  {
+   "kode": "1443",
+   "navn": "Eid (Sogn og Fjordane)"
+  },
+  {
+   "kode": "1444",
+   "navn": "Hornindal"
+  },
+  {
+   "kode": "1445",
+   "navn": "Gloppen"
+  },
+  {
+   "kode": "1449",
+   "navn": "Stryn"
+  },
+  {
+   "kode": "1502",
+   "navn": "Molde"
+  },
+  {
+   "kode": "1503",
+   "navn": "Kristiansund"
+  },
+  {
+   "kode": "1504",
+   "navn": "Ålesund"
+  },
+  {
+   "kode": "1511",
+   "navn": "Vanylven"
+  },
+  {
+   "kode": "1514",
+   "navn": "Sande (Møre og Romsdal)"
+  },
+  {
+   "kode": "1515",
+   "navn": "Herøy (Møre og Romsdal)"
+  },
+  {
+   "kode": "1516",
+   "navn": "Ulstein"
+  },
+  {
+   "kode": "1517",
+   "navn": "Hareid"
+  },
+  {
+   "kode": "1519",
+   "navn": "Volda"
+  },
+  {
+   "kode": "1520",
+   "navn": "Ørsta"
+  },
+  {
+   "kode": "1523",
+   "navn": "Ørskog"
+  },
+  {
+   "kode": "1524",
+   "navn": "Norddal"
+  },
+  {
+   "kode": "1525",
+   "navn": "Stranda"
+  },
+  {
+   "kode": "1526",
+   "navn": "Stordal"
+  },
+  {
+   "kode": "1528",
+   "navn": "Sykkylven"
+  },
+  {
+   "kode": "1529",
+   "navn": "Skodje"
+  },
+  {
+   "kode": "1531",
+   "navn": "Sula"
+  },
+  {
+   "kode": "1532",
+   "navn": "Giske"
+  },
+  {
+   "kode": "1534",
+   "navn": "Haram"
+  },
+  {
+   "kode": "1535",
+   "navn": "Vestnes"
+  },
+  {
+   "kode": "1539",
+   "navn": "Rauma"
+  },
+  {
+   "kode": "1543",
+   "navn": "Nesset"
+  },
+  {
+   "kode": "1545",
+   "navn": "Midsund"
+  },
+  {
+   "kode": "1546",
+   "navn": "Sandøy"
+  },
+  {
+   "kode": "1547",
+   "navn": "Aukra"
+  },
+  {
+   "kode": "1548",
+   "navn": "Fræna"
+  },
+  {
+   "kode": "1551",
+   "navn": "Eide (Møre og Romsdal)"
+  },
+  {
+   "kode": "1554",
+   "navn": "Averøy"
+  },
+  {
+   "kode": "1556",
+   "navn": "Frei"
+  },
+  {
+   "kode": "1557",
+   "navn": "Gjemnes"
+  },
+  {
+   "kode": "1560",
+   "navn": "Tingvoll"
+  },
+  {
+   "kode": "1563",
+   "navn": "Sunndal"
+  },
+  {
+   "kode": "1566",
+   "navn": "Surnadal"
+  },
+  {
+   "kode": "1567",
+   "navn": "Rindal"
+  },
+  {
+   "kode": "1569",
+   "navn": "Aure"
+  },
+  {
+   "kode": "1571",
+   "navn": "Halsa"
+  },
+  {
+   "kode": "1572",
+   "navn": "Tustna"
+  },
+  {
+   "kode": "1573",
+   "navn": "Smøla"
+  },
+  {
+   "kode": "1601",
+   "navn": "Trondheim"
+  },
+  {
+   "kode": "1612",
+   "navn": "Hemne"
+  },
+  {
+   "kode": "1613",
+   "navn": "Snillfjord"
+  },
+  {
+   "kode": "1617",
+   "navn": "Hitra"
+  },
+  {
+   "kode": "1620",
+   "navn": "Frøya"
+  },
+  {
+   "kode": "1621",
+   "navn": "Ørland"
+  },
+  {
+   "kode": "1622",
+   "navn": "Agdenes"
+  },
+  {
+   "kode": "1624",
+   "navn": "Rissa"
+  },
+  {
+   "kode": "1627",
+   "navn": "Bjugn"
+  },
+  {
+   "kode": "1630",
+   "navn": "Åfjord"
+  },
+  {
+   "kode": "1632",
+   "navn": "Roan"
+  },
+  {
+   "kode": "1633",
+   "navn": "Osen"
+  },
+  {
+   "kode": "1634",
+   "navn": "Oppdal"
+  },
+  {
+   "kode": "1635",
+   "navn": "Rennebu"
+  },
+  {
+   "kode": "1636",
+   "navn": "Meldal"
+  },
+  {
+   "kode": "1638",
+   "navn": "Orkdal"
+  },
+  {
+   "kode": "1640",
+   "navn": "Røros"
+  },
+  {
+   "kode": "1644",
+   "navn": "Holtålen"
+  },
+  {
+   "kode": "1648",
+   "navn": "Midtre Gauldal"
+  },
+  {
+   "kode": "1653",
+   "navn": "Melhus"
+  },
+  {
+   "kode": "1657",
+   "navn": "Skaun"
+  },
+  {
+   "kode": "1662",
+   "navn": "Klæbu"
+  },
+  {
+   "kode": "1663",
+   "navn": "Malvik"
+  },
+  {
+   "kode": "1664",
+   "navn": "Selbu"
+  },
+  {
+   "kode": "1665",
+   "navn": "Tydal"
+  },
+  {
+   "kode": "1702",
+   "navn": "Steinkjer"
+  },
+  {
+   "kode": "1703",
+   "navn": "Namsos"
+  },
+  {
+   "kode": "1711",
+   "navn": "Meråker"
+  },
+  {
+   "kode": "1714",
+   "navn": "Stjørdal"
+  },
+  {
+   "kode": "1717",
+   "navn": "Frosta"
+  },
+  {
+   "kode": "1718",
+   "navn": "Leksvik"
+  },
+  {
+   "kode": "1719",
+   "navn": "Levanger"
+  },
+  {
+   "kode": "1721",
+   "navn": "Verdal"
+  },
+  {
+   "kode": "1723",
+   "navn": "Mosvik"
+  },
+  {
+   "kode": "1724",
+   "navn": "Verran"
+  },
+  {
+   "kode": "1725",
+   "navn": "Namdalseid"
+  },
+  {
+   "kode": "1729",
+   "navn": "Inderøy"
+  },
+  {
+   "kode": "1736",
+   "navn": "Snåsa"
+  },
+  {
+   "kode": "1738",
+   "navn": "Lierne"
+  },
+  {
+   "kode": "1739",
+   "navn": "Røyrvik"
+  },
+  {
+   "kode": "1740",
+   "navn": "Namsskogan"
+  },
+  {
+   "kode": "1742",
+   "navn": "Grong"
+  },
+  {
+   "kode": "1743",
+   "navn": "Høylandet"
+  },
+  {
+   "kode": "1744",
+   "navn": "Overhalla"
+  },
+  {
+   "kode": "1748",
+   "navn": "Fosnes"
+  },
+  {
+   "kode": "1749",
+   "navn": "Flatanger"
+  },
+  {
+   "kode": "1750",
+   "navn": "Vikna"
+  },
+  {
+   "kode": "1751",
+   "navn": "Nærøy"
+  },
+  {
+   "kode": "1755",
+   "navn": "Leka"
+  },
+  {
+   "kode": "1804",
+   "navn": "Bodø"
+  },
+  {
+   "kode": "1805",
+   "navn": "Narvik"
+  },
+  {
+   "kode": "1811",
+   "navn": "Bindal"
+  },
+  {
+   "kode": "1812",
+   "navn": "Sømna"
+  },
+  {
+   "kode": "1813",
+   "navn": "Brønnøy"
+  },
+  {
+   "kode": "1815",
+   "navn": "Vega"
+  },
+  {
+   "kode": "1816",
+   "navn": "Vevelstad"
+  },
+  {
+   "kode": "1818",
+   "navn": "Herøy (Nordland)"
+  },
+  {
+   "kode": "1820",
+   "navn": "Alstahaug"
+  },
+  {
+   "kode": "1822",
+   "navn": "Leirfjord"
+  },
+  {
+   "kode": "1824",
+   "navn": "Vefsn"
+  },
+  {
+   "kode": "1825",
+   "navn": "Grane"
+  },
+  {
+   "kode": "1826",
+   "navn": "Hattfjelldal"
+  },
+  {
+   "kode": "1827",
+   "navn": "Dønna"
+  },
+  {
+   "kode": "1828",
+   "navn": "Nesna"
+  },
+  {
+   "kode": "1832",
+   "navn": "Hemnes"
+  },
+  {
+   "kode": "1833",
+   "navn": "Rana"
+  },
+  {
+   "kode": "1834",
+   "navn": "Lurøy"
+  },
+  {
+   "kode": "1835",
+   "navn": "Træna"
+  },
+  {
+   "kode": "1836",
+   "navn": "Rødøy"
+  },
+  {
+   "kode": "1837",
+   "navn": "Meløy"
+  },
+  {
+   "kode": "1838",
+   "navn": "Gildeskål"
+  },
+  {
+   "kode": "1839",
+   "navn": "Beiarn"
+  },
+  {
+   "kode": "1840",
+   "navn": "Saltdal"
+  },
+  {
+   "kode": "1841",
+   "navn": "Fauske"
+  },
+  {
+   "kode": "1842",
+   "navn": "Skjerstad"
+  },
+  {
+   "kode": "1845",
+   "navn": "Sørfold"
+  },
+  {
+   "kode": "1848",
+   "navn": "Steigen"
+  },
+  {
+   "kode": "1849",
+   "navn": "Hamarøy"
+  },
+  {
+   "kode": "1850",
+   "navn": "Tysfjord"
+  },
+  {
+   "kode": "1851",
+   "navn": "Lødingen"
+  },
+  {
+   "kode": "1852",
+   "navn": "Tjeldsund"
+  },
+  {
+   "kode": "1853",
+   "navn": "Evenes"
+  },
+  {
+   "kode": "1854",
+   "navn": "Ballangen"
+  },
+  {
+   "kode": "1856",
+   "navn": "Røst"
+  },
+  {
+   "kode": "1857",
+   "navn": "Værøy"
+  },
+  {
+   "kode": "1859",
+   "navn": "Flakstad"
+  },
+  {
+   "kode": "1860",
+   "navn": "Vestvågøy"
+  },
+  {
+   "kode": "1865",
+   "navn": "Vågan"
+  },
+  {
+   "kode": "1866",
+   "navn": "Hadsel"
+  },
+  {
+   "kode": "1867",
+   "navn": "Bø (Nordland)"
+  },
+  {
+   "kode": "1868",
+   "navn": "Øksnes"
+  },
+  {
+   "kode": "1870",
+   "navn": "Sortland"
+  },
+  {
+   "kode": "1871",
+   "navn": "Andøy"
+  },
+  {
+   "kode": "1874",
+   "navn": "Moskenes"
+  },
+  {
+   "kode": "1901",
+   "navn": "Harstad"
+  },
+  {
+   "kode": "1902",
+   "navn": "Tromsø"
+  },
+  {
+   "kode": "1911",
+   "navn": "Kvæfjord"
+  },
+  {
+   "kode": "1913",
+   "navn": "Skånland"
+  },
+  {
+   "kode": "1915",
+   "navn": "Bjarkøy"
+  },
+  {
+   "kode": "1917",
+   "navn": "Ibestad"
+  },
+  {
+   "kode": "1919",
+   "navn": "Gratangen"
+  },
+  {
+   "kode": "1920",
+   "navn": "Lavangen"
+  },
+  {
+   "kode": "1922",
+   "navn": "Bardu"
+  },
+  {
+   "kode": "1923",
+   "navn": "Salangen"
+  },
+  {
+   "kode": "1924",
+   "navn": "Målselv"
+  },
+  {
+   "kode": "1925",
+   "navn": "Sørreisa"
+  },
+  {
+   "kode": "1926",
+   "navn": "Dyrøy"
+  },
+  {
+   "kode": "1927",
+   "navn": "Tranøy"
+  },
+  {
+   "kode": "1928",
+   "navn": "Torsken"
+  },
+  {
+   "kode": "1929",
+   "navn": "Berg (Troms)"
+  },
+  {
+   "kode": "1931",
+   "navn": "Lenvik"
+  },
+  {
+   "kode": "1933",
+   "navn": "Balsfjord"
+  },
+  {
+   "kode": "1936",
+   "navn": "Karlsøy"
+  },
+  {
+   "kode": "1938",
+   "navn": "Lyngen"
+  },
+  {
+   "kode": "1939",
+   "navn": "Storfjord"
+  },
+  {
+   "kode": "1940",
+   "navn": "Kåfjord"
+  },
+  {
+   "kode": "1941",
+   "navn": "Skjervøy"
+  },
+  {
+   "kode": "1942",
+   "navn": "Nordreisa"
+  },
+  {
+   "kode": "1943",
+   "navn": "Kvænangen"
+  },
+  {
+   "kode": "2001",
+   "navn": "Hammerfest by"
+  },
+  {
+   "kode": "2002",
+   "navn": "Vardø"
+  },
+  {
+   "kode": "2003",
+   "navn": "Vadsø"
+  },
+  {
+   "kode": "2011",
+   "navn": "Guovdageaidnu - Kautokeino"
+  },
+  {
+   "kode": "2012",
+   "navn": "Alta"
+  },
+  {
+   "kode": "2014",
+   "navn": "Loppa"
+  },
+  {
+   "kode": "2015",
+   "navn": "Hasvik"
+  },
+  {
+   "kode": "2016",
+   "navn": "Sørøysund"
+  },
+  {
+   "kode": "2017",
+   "navn": "Kvalsund"
+  },
+  {
+   "kode": "2018",
+   "navn": "Måsøy"
+  },
+  {
+   "kode": "2019",
+   "navn": "Nordkapp"
+  },
+  {
+   "kode": "2020",
+   "navn": "Porsanger"
+  },
+  {
+   "kode": "2021",
+   "navn": "Karasjok"
+  },
+  {
+   "kode": "2022",
+   "navn": "Lebesby"
+  },
+  {
+   "kode": "2023",
+   "navn": "Gamvik"
+  },
+  {
+   "kode": "2024",
+   "navn": "Berlevåg"
+  },
+  {
+   "kode": "2025",
+   "navn": "Tana"
+  },
+  {
+   "kode": "2027",
+   "navn": "Nesseby"
+  },
+  {
+   "kode": "2028",
+   "navn": "Båtsfjord"
+  },
+  {
+   "kode": "2030",
+   "navn": "Sør-Varanger"
+  },
+  {
+   "kode": "9999",
+   "navn": "Uoppgitt"
+  }
+ ],
+ "endringer": [
+  {
+   "gammel": "2027",
+   "gammelt_navn": "Nesseby",
+   "ny": "2027",
+   "nytt_navn": "Unjárga - Nesseby",
+   "dato": "1990-01-01"
+  },
+  {
+   "gammel": "2021",
+   "gammelt_navn": "Karasjok",
+   "ny": "2021",
+   "nytt_navn": "Kárášjohka - Karasjok",
+   "dato": "1991-01-01"
+  },
+  {
+   "gammel": "0102",
+   "gammelt_navn": "Sarpsborg",
+   "ny": "0105",
+   "nytt_navn": "Sarpsborg",
+   "dato": "1992-01-01"
+  },
+  {
+   "gammel": "0114",
+   "gammelt_navn": "Varteig",
+   "ny": "0105",
+   "nytt_navn": "Sarpsborg",
+   "dato": "1992-01-01"
+  },
+  {
+   "gammel": "0114",
+   "gammelt_navn": "Varteig",
+   "ny": "0128",
+   "nytt_navn": "Rakkestad",
+   "dato": "1992-01-01"
+  },
+  {
+   "gammel": "0115",
+   "gammelt_navn": "Skjeberg",
+   "ny": "0105",
+   "nytt_navn": "Sarpsborg",
+   "dato": "1992-01-01"
+  },
+  {
+   "gammel": "0130",
+   "gammelt_navn": "Tune",
+   "ny": "0105",
+   "nytt_navn": "Sarpsborg",
+   "dato": "1992-01-01"
+  },
+  {
+   "gammel": "0401",
+   "gammelt_navn": "Hamar",
+   "ny": "0403",
+   "nytt_navn": "Hamar",
+   "dato": "1992-01-01"
+  },
+  {
+   "gammel": "0412",
+   "gammelt_navn": "Ringsaker",
+   "ny": "0403",
+   "nytt_navn": "Hamar",
+   "dato": "1992-01-01"
+  },
+  {
+   "gammel": "0412",
+   "gammelt_navn": "Ringsaker",
+   "ny": "0412",
+   "nytt_navn": "Ringsaker",
+   "dato": "1992-01-01"
+  },
+  {
+   "gammel": "0414",
+   "gammelt_navn": "Vang (Hedmark)",
+   "ny": "0403",
+   "nytt_navn": "Hamar",
+   "dato": "1992-01-01"
+  },
+  {
+   "gammel": "0903",
+   "gammelt_navn": "Arendal",
+   "ny": "0906",
+   "nytt_navn": "Arendal",
+   "dato": "1992-01-01"
+  },
+  {
+   "gammel": "0918",
+   "gammelt_navn": "Moland",
+   "ny": "0906",
+   "nytt_navn": "Arendal",
+   "dato": "1992-01-01"
+  },
+  {
+   "gammel": "0920",
+   "gammelt_navn": "Øyestad",
+   "ny": "0906",
+   "nytt_navn": "Arendal",
+   "dato": "1992-01-01"
+  },
+  {
+   "gammel": "0921",
+   "gammelt_navn": "Tromøy",
+   "ny": "0906",
+   "nytt_navn": "Arendal",
+   "dato": "1992-01-01"
+  },
+  {
+   "gammel": "0922",
+   "gammelt_navn": "Hisøy",
+   "ny": "0906",
+   "nytt_navn": "Arendal",
+   "dato": "1992-01-01"
+  },
+  {
+   "gammel": "2001",
+   "gammelt_navn": "Hammerfest by",
+   "ny": "2004",
+   "nytt_navn": "Hammerfest",
+   "dato": "1992-01-01"
+  },
+  {
+   "gammel": "2016",
+   "gammelt_navn": "Sørøysund",
+   "ny": "2004",
+   "nytt_navn": "Hammerfest",
+   "dato": "1992-01-01"
+  },
+  {
+   "gammel": "2025",
+   "gammelt_navn": "Tana",
+   "ny": "2025",
+   "nytt_navn": "Deatnu - Tana",
+   "dato": "1993-01-01"
+  },
+  {
+   "gammel": "0103",
+   "gammelt_navn": "Fredrikstad",
+   "ny": "0106",
+   "nytt_navn": "Fredrikstad",
+   "dato": "1994-01-01"
+  },
+  {
+   "gammel": "0113",
+   "gammelt_navn": "Borge (Østfold)",
+   "ny": "0106",
+   "nytt_navn": "Fredrikstad",
+   "dato": "1994-01-01"
+  },
+  {
+   "gammel": "0131",
+   "gammelt_navn": "Rolvsøy",
+   "ny": "0106",
+   "nytt_navn": "Fredrikstad",
+   "dato": "1994-01-01"
+  },
+  {
+   "gammel": "0133",
+   "gammelt_navn": "Kråkerøy",
+   "ny": "0106",
+   "nytt_navn": "Fredrikstad",
+   "dato": "1994-01-01"
+  },
+  {
+   "gammel": "0134",
+   "gammelt_navn": "Onsøy",
+   "ny": "0106",
+   "nytt_navn": "Fredrikstad",
+   "dato": "1994-01-01"
+  },
+  {
+   "gammel": "1940",
+   "gammelt_navn": "Kåfjord",
+   "ny": "1940",
+   "nytt_navn": "Gáivuotna - Kåfjord",
+   "dato": "1995-01-01"
+  },
+  {
+   "gammel": "0716",
+   "gammelt_navn": "Våle",
+   "ny": "0716",
+   "nytt_navn": "Re",
+   "dato": "2002-01-01"
+  },
+  {
+   "gammel": "0718",
+   "gammelt_navn": "Ramnes",
+   "ny": "0716",
+   "nytt_navn": "Re",
+   "dato": "2002-01-01"
+  },
+  {
+   "gammel": "1214",
+   "gammelt_navn": "Ølen",
+   "ny": "1159",
+   "nytt_navn": "Ølen",
+   "dato": "2002-01-01"
+  },
+  {
+   "gammel": "0701",
+   "gammelt_navn": "Borre",
+   "ny": "0701",
+   "nytt_navn": "Horten",
+   "dato": "2003-01-01"
+  },
+  {
+   "gammel": "2020",
+   "gammelt_navn": "Porsanger",
+   "ny": "2020",
+   "nytt_navn": "Porsanger - Porsángu - Porsanki",
+   "dato": "2004-01-01"
+  },
+  {
+   "gammel": "1804",
+   "gammelt_navn": "Bodø",
+   "ny": "1804",
+   "nytt_navn": "Bodø",
+   "dato": "2005-01-01"
+  },
+  {
+   "gammel": "1842",
+   "gammelt_navn": "Skjerstad",
+   "ny": "1804",
+   "nytt_navn": "Bodø",
+   "dato": "2005-01-01"
+  },
+  {
+   "gammel": "1154",
+   "gammelt_navn": "Vindafjord",
+   "ny": "1160",
+   "nytt_navn": "Vindafjord",
+   "dato": "2006-01-01"
+  },
+  {
+   "gammel": "1159",
+   "gammelt_navn": "Ølen",
+   "ny": "1160",
+   "nytt_navn": "Vindafjord",
+   "dato": "2006-01-01"
+  },
+  {
+   "gammel": "1569",
+   "gammelt_navn": "Aure",
+   "ny": "1576",
+   "nytt_navn": "Aure",
+   "dato": "2006-01-01"
+  },
+  {
+   "gammel": "1572",
+   "gammelt_navn": "Tustna",
+   "ny": "1576",
+   "nytt_navn": "Aure",
+   "dato": "2006-01-01"
+  },
+  {
+   "gammel": "1503",
+   "gammelt_navn": "Kristiansund",
+   "ny": "1505",
+   "nytt_navn": "Kristiansund",
+   "dato": "2008-01-01"
+  },
+  {
+   "gammel": "1556",
+   "gammelt_navn": "Frei",
+   "ny": "1505",
+   "nytt_navn": "Kristiansund",
+   "dato": "2008-01-01"
+  },
+  {
+   "gammel": "1736",
+   "gammelt_navn": "Snåsa",
+   "ny": "1736",
+   "nytt_navn": "Snåase - Snåsa",
+   "dato": "2011-01-01"
+  },
+  {
+   "gammel": "1723",
+   "gammelt_navn": "Mosvik",
+   "ny": "1756",
+   "nytt_navn": "Inderøy",
+   "dato": "2012-01-01"
+  },
+  {
+   "gammel": "1729",
+   "gammelt_navn": "Inderøy",
+   "ny": "1756",
+   "nytt_navn": "Inderøy",
+   "dato": "2012-01-01"
+  },
+  {
+   "gammel": "1849",
+   "gammelt_navn": "Hamarøy",
+   "ny": "1849",
+   "nytt_navn": "Hábmer - Hamarøy",
+   "dato": "2012-01-01"
+  },
+  {
+   "gammel": "1850",
+   "gammelt_navn": "Tysfjord",
+   "ny": "1850",
+   "nytt_navn": "Tysfjord - Divtasvuodna",
+   "dato": "2012-01-01"
+  },
+  {
+   "gammel": "1901",
+   "gammelt_navn": "Harstad",
+   "ny": "1903",
+   "nytt_navn": "Harstad",
+   "dato": "2013-01-01"
+  },
+  {
+   "gammel": "1915",
+   "gammelt_navn": "Bjarkøy",
+   "ny": "1903",
+   "nytt_navn": "Harstad",
+   "dato": "2013-01-01"
+  },
+  {
+   "gammel": "1739",
+   "gammelt_navn": "Røyrvik",
+   "ny": "1739",
+   "nytt_navn": "Raarvihke - Røyrvik",
+   "dato": "2015-01-01"
+  },
+  {
+   "gammel": "1920",
+   "gammelt_navn": "Lavangen",
+   "ny": "1920",
+   "nytt_navn": "Loabák - Lavangen",
+   "dato": "2015-01-01"
+  },
+  {
+   "gammel": "1939",
+   "gammelt_navn": "Storfjord",
+   "ny": "1939",
+   "nytt_navn": "Storfjord - Omasvuotna - Omasvuono",
+   "dato": "2015-01-01"
+  },
+  {
+   "gammel": "0704",
+   "gammelt_navn": "Tønsberg",
+   "ny": "0704",
+   "nytt_navn": "Tønsberg",
+   "dato": "2017-01-01"
+  },
+  {
+   "gammel": "0706",
+   "gammelt_navn": "Sandefjord",
+   "ny": "0710",
+   "nytt_navn": "Sandefjord",
+   "dato": "2017-01-01"
+  },
+  {
+   "gammel": "0719",
+   "gammelt_navn": "Andebu",
+   "ny": "0710",
+   "nytt_navn": "Sandefjord",
+   "dato": "2017-01-01"
+  },
+  {
+   "gammel": "0720",
+   "gammelt_navn": "Stokke",
+   "ny": "0704",
+   "nytt_navn": "Tønsberg",
+   "dato": "2017-01-01"
+  },
+  {
+   "gammel": "0720",
+   "gammelt_navn": "Stokke",
+   "ny": "0710",
+   "nytt_navn": "Sandefjord",
+   "dato": "2017-01-01"
+  },
+  {
+   "gammel": "1841",
+   "gammelt_navn": "Fauske",
+   "ny": "1841",
+   "nytt_navn": "Fauske - Fuossko",
+   "dato": "2017-01-01"
+  },
+  {
+   "gammel": "0702",
+   "gammelt_navn": "Holmestrand",
+   "ny": "0715",
+   "nytt_navn": "Holmestrand",
+   "dato": "2018-01-01"
+  },
+  {
+   "gammel": "0709",
+   "gammelt_navn": "Larvik",
+   "ny": "0712",
+   "nytt_navn": "Larvik",
+   "dato": "2018-01-01"
+  },
+  {
+   "gammel": "0714",
+   "gammelt_navn": "Hof",
+   "ny": "0715",
+   "nytt_navn": "Holmestrand",
+   "dato": "2018-01-01"
+  },
+  {
+   "gammel": "0722",
+   "gammelt_navn": "Nøtterøy",
+   "ny": "0729",
+   "nytt_navn": "Færder",
+   "dato": "2018-01-01"
+  },
+  {
+   "gammel": "0723",
+   "gammelt_navn": "Tjøme",
+   "ny": "0729",
+   "nytt_navn": "Færder",
+   "dato": "2018-01-01"
+  },
+  {
+   "gammel": "0728",
+   "gammelt_navn": "Lardal",
+   "ny": "0712",
+   "nytt_navn": "Larvik",
+   "dato": "2018-01-01"
+  },
+  {
+   "gammel": "1601",
+   "gammelt_navn": "Trondheim",
+   "ny": "5001",
+   "nytt_navn": "Trondheim",
+   "dato": "2018-01-01"
+  },
+  {
+   "gammel": "1612",
+   "gammelt_navn": "Hemne",
+   "ny": "5011",
+   "nytt_navn": "Hemne",
+   "dato": "2018-01-01"
+  },
+  {
+   "gammel": "1613",
+   "gammelt_navn": "Snillfjord",
+   "ny": "5012",
+   "nytt_navn": "Snillfjord",
+   "dato": "2018-01-01"
+  },
+  {
+   "gammel": "1617",
+   "gammelt_navn": "Hitra",
+   "ny": "5013",
+   "nytt_navn": "Hitra",
+   "dato": "2018-01-01"
+  },
+  {
+   "gammel": "1620",
+   "gammelt_navn": "Frøya",
+   "ny": "5014",
+   "nytt_navn": "Frøya",
+   "dato": "2018-01-01"
+  },
+  {
+   "gammel": "1621",
+   "gammelt_navn": "Ørland",
+   "ny": "5015",
+   "nytt_navn": "Ørland",
+   "dato": "2018-01-01"
+  },
+  {
+   "gammel": "1622",
+   "gammelt_navn": "Agdenes",
+   "ny": "5016",
+   "nytt_navn": "Agdenes",
+   "dato": "2018-01-01"
+  },
+  {
+   "gammel": "1624",
+   "gammelt_navn": "Rissa",
+   "ny": "5054",
+   "nytt_navn": "Indre Fosen",
+   "dato": "2018-01-01"
+  },
+  {
+   "gammel": "1627",
+   "gammelt_navn": "Bjugn",
+   "ny": "5017",
+   "nytt_navn": "Bjugn",
+   "dato": "2018-01-01"
+  },
+  {
+   "gammel": "1630",
+   "gammelt_navn": "Åfjord",
+   "ny": "5018",
+   "nytt_navn": "Åfjord",
+   "dato": "2018-01-01"
+  },
+  {
+   "gammel": "1632",
+   "gammelt_navn": "Roan",
+   "ny": "5019",
+   "nytt_navn": "Roan",
+   "dato": "2018-01-01"
+  },
+  {
+   "gammel": "1633",
+   "gammelt_navn": "Osen",
+   "ny": "5020",
+   "nytt_navn": "Osen",
+   "dato": "2018-01-01"
+  },
+  {
+   "gammel": "1634",
+   "gammelt_navn": "Oppdal",
+   "ny": "5021",
+   "nytt_navn": "Oppdal",
+   "dato": "2018-01-01"
+  },
+  {
+   "gammel": "1635",
+   "gammelt_navn": "Rennebu",
+   "ny": "5022",
+   "nytt_navn": "Rennebu",
+   "dato": "2018-01-01"
+  },
+  {
+   "gammel": "1636",
+   "gammelt_navn": "Meldal",
+   "ny": "5023",
+   "nytt_navn": "Meldal",
+   "dato": "2018-01-01"
+  },
+  {
+   "gammel": "1638",
+   "gammelt_navn": "Orkdal",
+   "ny": "5024",
+   "nytt_navn": "Orkdal",
+   "dato": "2018-01-01"
+  },
+  {
+   "gammel": "1640",
+   "gammelt_navn": "Røros",
+   "ny": "5025",
+   "nytt_navn": "Røros",
+   "dato": "2018-01-01"
+  },
+  {
+   "gammel": "1644",
+   "gammelt_navn": "Holtålen",
+   "ny": "5026",
+   "nytt_navn": "Holtålen",
+   "dato": "2018-01-01"
+  },
+  {
+   "gammel": "1648",
+   "gammelt_navn": "Midtre Gauldal",
+   "ny": "5027",
+   "nytt_navn": "Midtre Gauldal",
+   "dato": "2018-01-01"
+  },
+  {
+   "gammel": "1653",
+   "gammelt_navn": "Melhus",
+   "ny": "5028",
+   "nytt_navn": "Melhus",
+   "dato": "2018-01-01"
+  },
+  {
+   "gammel": "1657",
+   "gammelt_navn": "Skaun",
+   "ny": "5029",
+   "nytt_navn": "Skaun",
+   "dato": "2018-01-01"
+  },
+  {
+   "gammel": "1662",
+   "gammelt_navn": "Klæbu",
+   "ny": "5030",
+   "nytt_navn": "Klæbu",
+   "dato": "2018-01-01"
+  },
+  {
+   "gammel": "1663",
+   "gammelt_navn": "Malvik",
+   "ny": "5031",
+   "nytt_navn": "Malvik",
+   "dato": "2018-01-01"
+  },
+  {
+   "gammel": "1664",
+   "gammelt_navn": "Selbu",
+   "ny": "5032",
+   "nytt_navn": "Selbu",
+   "dato": "2018-01-01"
+  },
+  {
+   "gammel": "1665",
+   "gammelt_navn": "Tydal",
+   "ny": "5033",
+   "nytt_navn": "Tydal",
+   "dato": "2018-01-01"
+  },
+  {
+   "gammel": "1702",
+   "gammelt_navn": "Steinkjer",
+   "ny": "5004",
+   "nytt_navn": "Steinkjer",
+   "dato": "2018-01-01"
+  },
+  {
+   "gammel": "1703",
+   "gammelt_navn": "Namsos",
+   "ny": "5005",
+   "nytt_navn": "Namsos",
+   "dato": "2018-01-01"
+  },
+  {
+   "gammel": "1711",
+   "gammelt_navn": "Meråker",
+   "ny": "5034",
+   "nytt_navn": "Meråker",
+   "dato": "2018-01-01"
+  },
+  {
+   "gammel": "1714",
+   "gammelt_navn": "Stjørdal",
+   "ny": "5035",
+   "nytt_navn": "Stjørdal",
+   "dato": "2018-01-01"
+  },
+  {
+   "gammel": "1717",
+   "gammelt_navn": "Frosta",
+   "ny": "5036",
+   "nytt_navn": "Frosta",
+   "dato": "2018-01-01"
+  },
+  {
+   "gammel": "1718",
+   "gammelt_navn": "Leksvik",
+   "ny": "5054",
+   "nytt_navn": "Indre Fosen",
+   "dato": "2018-01-01"
+  },
+  {
+   "gammel": "1719",
+   "gammelt_navn": "Levanger",
+   "ny": "5037",
+   "nytt_navn": "Levanger",
+   "dato": "2018-01-01"
+  },
+  {
+   "gammel": "1721",
+   "gammelt_navn": "Verdal",
+   "ny": "5038",
+   "nytt_navn": "Verdal",
+   "dato": "2018-01-01"
+  },
+  {
+   "gammel": "1724",
+   "gammelt_navn": "Verran",
+   "ny": "5039",
+   "nytt_navn": "Verran",
+   "dato": "2018-01-01"
+  },
+  {
+   "gammel": "1725",
+   "gammelt_navn": "Namdalseid",
+   "ny": "5040",
+   "nytt_navn": "Namdalseid",
+   "dato": "2018-01-01"
+  },
+  {
+   "gammel": "1736",
+   "gammelt_navn": "Snåase - Snåsa",
+   "ny": "5041",
+   "nytt_navn": "Snåase - Snåsa",
+   "dato": "2018-01-01"
+  },
+  {
+   "gammel": "1738",
+   "gammelt_navn": "Lierne",
+   "ny": "5042",
+   "nytt_navn": "Lierne",
+   "dato": "2018-01-01"
+  },
+  {
+   "gammel": "1739",
+   "gammelt_navn": "Raarvihke - Røyrvik",
+   "ny": "5043",
+   "nytt_navn": "Raarvihke - Røyrvik",
+   "dato": "2018-01-01"
+  },
+  {
+   "gammel": "1740",
+   "gammelt_navn": "Namsskogan",
+   "ny": "5044",
+   "nytt_navn": "Namsskogan",
+   "dato": "2018-01-01"
+  },
+  {
+   "gammel": "1742",
+   "gammelt_navn": "Grong",
+   "ny": "5045",
+   "nytt_navn": "Grong",
+   "dato": "2018-01-01"
+  },
+  {
+   "gammel": "1743",
+   "gammelt_navn": "Høylandet",
+   "ny": "5046",
+   "nytt_navn": "Høylandet",
+   "dato": "2018-01-01"
+  },
+  {
+   "gammel": "1744",
+   "gammelt_navn": "Overhalla",
+   "ny": "5047",
+   "nytt_navn": "Overhalla",
+   "dato": "2018-01-01"
+  },
+  {
+   "gammel": "1748",
+   "gammelt_navn": "Fosnes",
+   "ny": "5048",
+   "nytt_navn": "Fosnes",
+   "dato": "2018-01-01"
+  },
+  {
+   "gammel": "1749",
+   "gammelt_navn": "Flatanger",
+   "ny": "5049",
+   "nytt_navn": "Flatanger",
+   "dato": "2018-01-01"
+  },
+  {
+   "gammel": "1750",
+   "gammelt_navn": "Vikna",
+   "ny": "5050",
+   "nytt_navn": "Vikna",
+   "dato": "2018-01-01"
+  },
+  {
+   "gammel": "1751",
+   "gammelt_navn": "Nærøy",
+   "ny": "5051",
+   "nytt_navn": "Nærøy",
+   "dato": "2018-01-01"
+  },
+  {
+   "gammel": "1755",
+   "gammelt_navn": "Leka",
+   "ny": "5052",
+   "nytt_navn": "Leka",
+   "dato": "2018-01-01"
+  },
+  {
+   "gammel": "1756",
+   "gammelt_navn": "Inderøy",
+   "ny": "5053",
+   "nytt_navn": "Inderøy",
+   "dato": "2018-01-01"
+  },
+  {
+   "gammel": "1852",
+   "gammelt_navn": "Tjeldsund",
+   "ny": "1852",
+   "nytt_navn": "Dielddanuorri - Tjeldsund",
+   "dato": "2018-01-01"
+  },
+  {
+   "gammel": "1870",
+   "gammelt_navn": "Sortland",
+   "ny": "1870",
+   "nytt_navn": "Sortland - Suortá",
+   "dato": "2018-01-01"
+  },
+  {
+   "gammel": "1903",
+   "gammelt_navn": "Harstad",
+   "ny": "1903",
+   "nytt_navn": "Harstad - Hárstták",
+   "dato": "2018-01-01"
+  },
+  {
+   "gammel": "1940",
+   "gammelt_navn": "Gáivuotna - Kåfjord",
+   "ny": "1940",
+   "nytt_navn": "Gáivuotna - Kåfjord - Kaivuono",
+   "dato": "2018-01-01"
+  },
+  {
+   "gammel": "1567",
+   "gammelt_navn": "Rindal",
+   "ny": "5061",
+   "nytt_navn": "Rindal",
+   "dato": "2019-01-01"
+  },
+  {
+   "gammel": "1942",
+   "gammelt_navn": "Nordreisa",
+   "ny": "1942",
+   "nytt_navn": "Nordreisa - Ráisa - Raisi",
+   "dato": "2019-01-01"
+  },
+  {
+   "gammel": "2004",
+   "gammelt_navn": "Hammerfest",
+   "ny": "2004",
+   "nytt_navn": "Hammerfest - Hámmerfeasta",
+   "dato": "2019-01-01"
+  },
+  {
+   "gammel": "5005",
+   "gammelt_navn": "Namsos",
+   "ny": "5005",
+   "nytt_navn": "Namsos - Nåavmesjenjaelmie",
+   "dato": "2019-01-01"
+  },
+  {
+   "gammel": "0101",
+   "gammelt_navn": "Halden",
+   "ny": "3001",
+   "nytt_navn": "Halden",
+   "dato": "2020-01-01"
+  },
+  {
+   "gammel": "0104",
+   "gammelt_navn": "Moss",
+   "ny": "3002",
+   "nytt_navn": "Moss",
+   "dato": "2020-01-01"
+  },
+  {
+   "gammel": "0105",
+   "gammelt_navn": "Sarpsborg",
+   "ny": "3003",
+   "nytt_navn": "Sarpsborg",
+   "dato": "2020-01-01"
+  },
+  {
+   "gammel": "0106",
+   "gammelt_navn": "Fredrikstad",
+   "ny": "3004",
+   "nytt_navn": "Fredrikstad",
+   "dato": "2020-01-01"
+  },
+  {
+   "gammel": "0111",
+   "gammelt_navn": "Hvaler",
+   "ny": "3011",
+   "nytt_navn": "Hvaler",
+   "dato": "2020-01-01"
+  },
+  {
+   "gammel": "0118",
+   "gammelt_navn": "Aremark",
+   "ny": "3012",
+   "nytt_navn": "Aremark",
+   "dato": "2020-01-01"
+  },
+  {
+   "gammel": "0119",
+   "gammelt_navn": "Marker",
+   "ny": "3013",
+   "nytt_navn": "Marker",
+   "dato": "2020-01-01"
+  },
+  {
+   "gammel": "0121",
+   "gammelt_navn": "Rømskog",
+   "ny": "3026",
+   "nytt_navn": "Aurskog-Høland",
+   "dato": "2020-01-01"
+  },
+  {
+   "gammel": "0122",
+   "gammelt_navn": "Trøgstad",
+   "ny": "3014",
+   "nytt_navn": "Indre Østfold",
+   "dato": "2020-01-01"
+  },
+  {
+   "gammel": "0123",
+   "gammelt_navn": "Spydeberg",
+   "ny": "3014",
+   "nytt_navn": "Indre Østfold",
+   "dato": "2020-01-01"
+  },
+  {
+   "gammel": "0124",
+   "gammelt_navn": "Askim",
+   "ny": "3014",
+   "nytt_navn": "Indre Østfold",
+   "dato": "2020-01-01"
+  },
+  {
+   "gammel": "0125",
+   "gammelt_navn": "Eidsberg",
+   "ny": "3014",
+   "nytt_navn": "Indre Østfold",
+   "dato": "2020-01-01"
+  },
+  {
+   "gammel": "0127",
+   "gammelt_navn": "Skiptvet",
+   "ny": "3015",
+   "nytt_navn": "Skiptvet",
+   "dato": "2020-01-01"
+  },
+  {
+   "gammel": "0128",
+   "gammelt_navn": "Rakkestad",
+   "ny": "3016",
+   "nytt_navn": "Rakkestad",
+   "dato": "2020-01-01"
+  },
+  {
+   "gammel": "0135",
+   "gammelt_navn": "Råde",
+   "ny": "3017",
+   "nytt_navn": "Råde",
+   "dato": "2020-01-01"
+  },
+  {
+   "gammel": "0136",
+   "gammelt_navn": "Rygge",
+   "ny": "3002",
+   "nytt_navn": "Moss",
+   "dato": "2020-01-01"
+  },
+  {
+   "gammel": "0137",
+   "gammelt_navn": "Våler (Østfold)",
+   "ny": "3018",
+   "nytt_navn": "Våler (Viken)",
+   "dato": "2020-01-01"
+  },
+  {
+   "gammel": "0138",
+   "gammelt_navn": "Hobøl",
+   "ny": "3014",
+   "nytt_navn": "Indre Østfold",
+   "dato": "2020-01-01"
+  },
+  {
+   "gammel": "0211",
+   "gammelt_navn": "Vestby",
+   "ny": "3019",
+   "nytt_navn": "Vestby",
+   "dato": "2020-01-01"
+  },
+  {
+   "gammel": "0213",
+   "gammelt_navn": "Ski",
+   "ny": "3020",
+   "nytt_navn": "Nordre Follo",
+   "dato": "2020-01-01"
+  },
+  {
+   "gammel": "0214",
+   "gammelt_navn": "Ås",
+   "ny": "3021",
+   "nytt_navn": "Ås",
+   "dato": "2020-01-01"
+  },
+  {
+   "gammel": "0215",
+   "gammelt_navn": "Frogn",
+   "ny": "3022",
+   "nytt_navn": "Frogn",
+   "dato": "2020-01-01"
+  },
+  {
+   "gammel": "0216",
+   "gammelt_navn": "Nesodden",
+   "ny": "3023",
+   "nytt_navn": "Nesodden",
+   "dato": "2020-01-01"
+  },
+  {
+   "gammel": "0217",
+   "gammelt_navn": "Oppegård",
+   "ny": "3020",
+   "nytt_navn": "Nordre Follo",
+   "dato": "2020-01-01"
+  },
+  {
+   "gammel": "0219",
+   "gammelt_navn": "Bærum",
+   "ny": "3024",
+   "nytt_navn": "Bærum",
+   "dato": "2020-01-01"
+  },
+  {
+   "gammel": "0220",
+   "gammelt_navn": "Asker",
+   "ny": "3025",
+   "nytt_navn": "Asker",
+   "dato": "2020-01-01"
+  },
+  {
+   "gammel": "0221",
+   "gammelt_navn": "Aurskog-Høland",
+   "ny": "3026",
+   "nytt_navn": "Aurskog-Høland",
+   "dato": "2020-01-01"
+  },
+  {
+   "gammel": "0226",
+   "gammelt_navn": "Sørum",
+   "ny": "3030",
+   "nytt_navn": "Lillestrøm",
+   "dato": "2020-01-01"
+  },
+  {
+   "gammel": "0227",
+   "gammelt_navn": "Fet",
+   "ny": "3030",
+   "nytt_navn": "Lillestrøm",
+   "dato": "2020-01-01"
+  },
+  {
+   "gammel": "0228",
+   "gammelt_navn": "Rælingen",
+   "ny": "3027",
+   "nytt_navn": "Rælingen",
+   "dato": "2020-01-01"
+  },
+  {
+   "gammel": "0229",
+   "gammelt_navn": "Enebakk",
+   "ny": "3028",
+   "nytt_navn": "Enebakk",
+   "dato": "2020-01-01"
+  },
+  {
+   "gammel": "0230",
+   "gammelt_navn": "Lørenskog",
+   "ny": "3029",
+   "nytt_navn": "Lørenskog",
+   "dato": "2020-01-01"
+  },
+  {
+   "gammel": "0231",
+   "gammelt_navn": "Skedsmo",
+   "ny": "3030",
+   "nytt_navn": "Lillestrøm",
+   "dato": "2020-01-01"
+  },
+  {
+   "gammel": "0233",
+   "gammelt_navn": "Nittedal",
+   "ny": "3031",
+   "nytt_navn": "Nittedal",
+   "dato": "2020-01-01"
+  },
+  {
+   "gammel": "0234",
+   "gammelt_navn": "Gjerdrum",
+   "ny": "3032",
+   "nytt_navn": "Gjerdrum",
+   "dato": "2020-01-01"
+  },
+  {
+   "gammel": "0235",
+   "gammelt_navn": "Ullensaker",
+   "ny": "3033",
+   "nytt_navn": "Ullensaker",
+   "dato": "2020-01-01"
+  },
+  {
+   "gammel": "0236",
+   "gammelt_navn": "Nes (Akershus)",
+   "ny": "3034",
+   "nytt_navn": "Nes",
+   "dato": "2020-01-01"
+  },
+  {
+   "gammel": "0237",
+   "gammelt_navn": "Eidsvoll",
+   "ny": "3035",
+   "nytt_navn": "Eidsvoll",
+   "dato": "2020-01-01"
+  },
+  {
+   "gammel": "0238",
+   "gammelt_navn": "Nannestad",
+   "ny": "3036",
+   "nytt_navn": "Nannestad",
+   "dato": "2020-01-01"
+  },
+  {
+   "gammel": "0239",
+   "gammelt_navn": "Hurdal",
+   "ny": "3037",
+   "nytt_navn": "Hurdal",
+   "dato": "2020-01-01"
+  },
+  {
+   "gammel": "0402",
+   "gammelt_navn": "Kongsvinger",
+   "ny": "3401",
+   "nytt_navn": "Kongsvinger",
+   "dato": "2020-01-01"
+  },
+  {
+   "gammel": "0403",
+   "gammelt_navn": "Hamar",
+   "ny": "3403",
+   "nytt_navn": "Hamar",
+   "dato": "2020-01-01"
+  },
+  {
+   "gammel": "0412",
+   "gammelt_navn": "Ringsaker",
+   "ny": "3411",
+   "nytt_navn": "Ringsaker",
+   "dato": "2020-01-01"
+  },
+  {
+   "gammel": "0415",
+   "gammelt_navn": "Løten",
+   "ny": "3412",
+   "nytt_navn": "Løten",
+   "dato": "2020-01-01"
+  },
+  {
+   "gammel": "0417",
+   "gammelt_navn": "Stange",
+   "ny": "3413",
+   "nytt_navn": "Stange",
+   "dato": "2020-01-01"
+  },
+  {
+   "gammel": "0418",
+   "gammelt_navn": "Nord-Odal",
+   "ny": "3414",
+   "nytt_navn": "Nord-Odal",
+   "dato": "2020-01-01"
+  },
+  {
+   "gammel": "0419",
+   "gammelt_navn": "Sør-Odal",
+   "ny": "3415",
+   "nytt_navn": "Sør-Odal",
+   "dato": "2020-01-01"
+  },
+  {
+   "gammel": "0420",
+   "gammelt_navn": "Eidskog",
+   "ny": "3416",
+   "nytt_navn": "Eidskog",
+   "dato": "2020-01-01"
+  },
+  {
+   "gammel": "0423",
+   "gammelt_navn": "Grue",
+   "ny": "3417",
+   "nytt_navn": "Grue",
+   "dato": "2020-01-01"
+  },
+  {
+   "gammel": "0425",
+   "gammelt_navn": "Åsnes",
+   "ny": "3418",
+   "nytt_navn": "Åsnes",
+   "dato": "2020-01-01"
+  },
+  {
+   "gammel": "0426",
+   "gammelt_navn": "Våler (Hedmark)",
+   "ny": "3419",
+   "nytt_navn": "Våler (Innlandet)",
+   "dato": "2020-01-01"
+  },
+  {
+   "gammel": "0427",
+   "gammelt_navn": "Elverum",
+   "ny": "3420",
+   "nytt_navn": "Elverum",
+   "dato": "2020-01-01"
+  },
+  {
+   "gammel": "0428",
+   "gammelt_navn": "Trysil",
+   "ny": "3421",
+   "nytt_navn": "Trysil",
+   "dato": "2020-01-01"
+  },
+  {
+   "gammel": "0429",
+   "gammelt_navn": "Åmot",
+   "ny": "3422",
+   "nytt_navn": "Åmot",
+   "dato": "2020-01-01"
+  },
+  {
+   "gammel": "0430",
+   "gammelt_navn": "Stor-Elvdal",
+   "ny": "3423",
+   "nytt_navn": "Stor-Elvdal",
+   "dato": "2020-01-01"
+  },
+  {
+   "gammel": "0432",
+   "gammelt_navn": "Rendalen",
+   "ny": "3424",
+   "nytt_navn": "Rendalen",
+   "dato": "2020-01-01"
+  },
+  {
+   "gammel": "0434",
+   "gammelt_navn": "Engerdal",
+   "ny": "3425",
+   "nytt_navn": "Engerdal",
+   "dato": "2020-01-01"
+  },
+  {
+   "gammel": "0436",
+   "gammelt_navn": "Tolga",
+   "ny": "3426",
+   "nytt_navn": "Tolga",
+   "dato": "2020-01-01"
+  },
+  {
+   "gammel": "0437",
+   "gammelt_navn": "Tynset",
+   "ny": "3427",
+   "nytt_navn": "Tynset",
+   "dato": "2020-01-01"
+  },
+  {
+   "gammel": "0438",
+   "gammelt_navn": "Alvdal",
+   "ny": "3428",
+   "nytt_navn": "Alvdal",
+   "dato": "2020-01-01"
+  },
+  {
+   "gammel": "0439",
+   "gammelt_navn": "Folldal",
+   "ny": "3429",
+   "nytt_navn": "Folldal",
+   "dato": "2020-01-01"
+  },
+  {
+   "gammel": "0441",
+   "gammelt_navn": "Os (Hedmark)",
+   "ny": "3430",
+   "nytt_navn": "Os",
+   "dato": "2020-01-01"
+  },
+  {
+   "gammel": "0501",
+   "gammelt_navn": "Lillehammer",
+   "ny": "3405",
+   "nytt_navn": "Lillehammer",
+   "dato": "2020-01-01"
+  },
+  {
+   "gammel": "0502",
+   "gammelt_navn": "Gjøvik",
+   "ny": "3407",
+   "nytt_navn": "Gjøvik",
+   "dato": "2020-01-01"
+  },
+  {
+   "gammel": "0511",
+   "gammelt_navn": "Dovre",
+   "ny": "3431",
+   "nytt_navn": "Dovre",
+   "dato": "2020-01-01"
+  },
+  {
+   "gammel": "0512",
+   "gammelt_navn": "Lesja",
+   "ny": "3432",
+   "nytt_navn": "Lesja",
+   "dato": "2020-01-01"
+  },
+  {
+   "gammel": "0513",
+   "gammelt_navn": "Skjåk",
+   "ny": "3433",
+   "nytt_navn": "Skjåk",
+   "dato": "2020-01-01"
+  },
+  {
+   "gammel": "0514",
+   "gammelt_navn": "Lom",
+   "ny": "3434",
+   "nytt_navn": "Lom",
+   "dato": "2020-01-01"
+  },
+  {
+   "gammel": "0515",
+   "gammelt_navn": "Vågå",
+   "ny": "3435",
+   "nytt_navn": "Vågå",
+   "dato": "2020-01-01"
+  },
+  {
+   "gammel": "0516",
+   "gammelt_navn": "Nord-Fron",
+   "ny": "3436",
+   "nytt_navn": "Nord-Fron",
+   "dato": "2020-01-01"
+  },
+  {
+   "gammel": "0517",
+   "gammelt_navn": "Sel",
+   "ny": "3437",
+   "nytt_navn": "Sel",
+   "dato": "2020-01-01"
+  },
+  {
+   "gammel": "0519",
+   "gammelt_navn": "Sør-Fron",
+   "ny": "3438",
+   "nytt_navn": "Sør-Fron",
+   "dato": "2020-01-01"
+  },
+  {
+   "gammel": "0520",
+   "gammelt_navn": "Ringebu",
+   "ny": "3439",
+   "nytt_navn": "Ringebu",
+   "dato": "2020-01-01"
+  },
+  {
+   "gammel": "0521",
+   "gammelt_navn": "Øyer",
+   "ny": "3440",
+   "nytt_navn": "Øyer",
+   "dato": "2020-01-01"
+  },
+  {
+   "gammel": "0522",
+   "gammelt_navn": "Gausdal",
+   "ny": "3441",
+   "nytt_navn": "Gausdal",
+   "dato": "2020-01-01"
+  },
+  {
+   "gammel": "0528",
+   "gammelt_navn": "Østre Toten",
+   "ny": "3442",
+   "nytt_navn": "Østre Toten",
+   "dato": "2020-01-01"
+  },
+  {
+   "gammel": "0529",
+   "gammelt_navn": "Vestre Toten",
+   "ny": "3443",
+   "nytt_navn": "Vestre Toten",
+   "dato": "2020-01-01"
+  },
+  {
+   "gammel": "0532",
+   "gammelt_navn": "Jevnaker",
+   "ny": "3053",
+   "nytt_navn": "Jevnaker",
+   "dato": "2020-01-01"
+  },
+  {
+   "gammel": "0533",
+   "gammelt_navn": "Lunner",
+   "ny": "3054",
+   "nytt_navn": "Lunner",
+   "dato": "2020-01-01"
+  },
+  {
+   "gammel": "0534",
+   "gammelt_navn": "Gran",
+   "ny": "3446",
+   "nytt_navn": "Gran",
+   "dato": "2020-01-01"
+  },
+  {
+   "gammel": "0536",
+   "gammelt_navn": "Søndre Land",
+   "ny": "3447",
+   "nytt_navn": "Søndre Land",
+   "dato": "2020-01-01"
+  },
+  {
+   "gammel": "0538",
+   "gammelt_navn": "Nordre Land",
+   "ny": "3448",
+   "nytt_navn": "Nordre Land",
+   "dato": "2020-01-01"
+  },
+  {
+   "gammel": "0540",
+   "gammelt_navn": "Sør-Aurdal",
+   "ny": "3449",
+   "nytt_navn": "Sør-Aurdal",
+   "dato": "2020-01-01"
+  },
+  {
+   "gammel": "0541",
+   "gammelt_navn": "Etnedal",
+   "ny": "3450",
+   "nytt_navn": "Etnedal",
+   "dato": "2020-01-01"
+  },
+  {
+   "gammel": "0542",
+   "gammelt_navn": "Nord-Aurdal",
+   "ny": "3451",
+   "nytt_navn": "Nord-Aurdal",
+   "dato": "2020-01-01"
+  },
+  {
+   "gammel": "0543",
+   "gammelt_navn": "Vestre Slidre",
+   "ny": "3452",
+   "nytt_navn": "Vestre Slidre",
+   "dato": "2020-01-01"
+  },
+  {
+   "gammel": "0544",
+   "gammelt_navn": "Øystre Slidre",
+   "ny": "3453",
+   "nytt_navn": "Øystre Slidre",
+   "dato": "2020-01-01"
+  },
+  {
+   "gammel": "0545",
+   "gammelt_navn": "Vang",
+   "ny": "3454",
+   "nytt_navn": "Vang",
+   "dato": "2020-01-01"
+  },
+  {
+   "gammel": "0602",
+   "gammelt_navn": "Drammen",
+   "ny": "3005",
+   "nytt_navn": "Drammen",
+   "dato": "2020-01-01"
+  },
+  {
+   "gammel": "0604",
+   "gammelt_navn": "Kongsberg",
+   "ny": "3006",
+   "nytt_navn": "Kongsberg",
+   "dato": "2020-01-01"
+  },
+  {
+   "gammel": "0605",
+   "gammelt_navn": "Ringerike",
+   "ny": "3007",
+   "nytt_navn": "Ringerike",
+   "dato": "2020-01-01"
+  },
+  {
+   "gammel": "0612",
+   "gammelt_navn": "Hole",
+   "ny": "3038",
+   "nytt_navn": "Hole",
+   "dato": "2020-01-01"
+  },
+  {
+   "gammel": "0615",
+   "gammelt_navn": "Flå",
+   "ny": "3039",
+   "nytt_navn": "Flå",
+   "dato": "2020-01-01"
+  },
+  {
+   "gammel": "0616",
+   "gammelt_navn": "Nes (Buskerud)",
+   "ny": "3040",
+   "nytt_navn": "Nesbyen",
+   "dato": "2020-01-01"
+  },
+  {
+   "gammel": "0617",
+   "gammelt_navn": "Gol",
+   "ny": "3041",
+   "nytt_navn": "Gol",
+   "dato": "2020-01-01"
+  },
+  {
+   "gammel": "0618",
+   "gammelt_navn": "Hemsedal",
+   "ny": "3042",
+   "nytt_navn": "Hemsedal",
+   "dato": "2020-01-01"
+  },
+  {
+   "gammel": "0619",
+   "gammelt_navn": "Ål",
+   "ny": "3043",
+   "nytt_navn": "Ål",
+   "dato": "2020-01-01"
+  },
+  {
+   "gammel": "0620",
+   "gammelt_navn": "Hol",
+   "ny": "3044",
+   "nytt_navn": "Hol",
+   "dato": "2020-01-01"
+  },
+  {
+   "gammel": "0621",
+   "gammelt_navn": "Sigdal",
+   "ny": "3045",
+   "nytt_navn": "Sigdal",
+   "dato": "2020-01-01"
+  },
+  {
+   "gammel": "0622",
+   "gammelt_navn": "Krødsherad",
+   "ny": "3046",
+   "nytt_navn": "Krødsherad",
+   "dato": "2020-01-01"
+  },
+  {
+   "gammel": "0623",
+   "gammelt_navn": "Modum",
+   "ny": "3047",
+   "nytt_navn": "Modum",
+   "dato": "2020-01-01"
+  },
+  {
+   "gammel": "0624",
+   "gammelt_navn": "Øvre Eiker",
+   "ny": "3048",
+   "nytt_navn": "Øvre Eiker",
+   "dato": "2020-01-01"
+  },
+  {
+   "gammel": "0625",
+   "gammelt_navn": "Nedre Eiker",
+   "ny": "3005",
+   "nytt_navn": "Drammen",
+   "dato": "2020-01-01"
+  },
+  {
+   "gammel": "0626",
+   "gammelt_navn": "Lier",
+   "ny": "3049",
+   "nytt_navn": "Lier",
+   "dato": "2020-01-01"
+  },
+  {
+   "gammel": "0627",
+   "gammelt_navn": "Røyken",
+   "ny": "3025",
+   "nytt_navn": "Asker",
+   "dato": "2020-01-01"
+  },
+  {
+   "gammel": "0628",
+   "gammelt_navn": "Hurum",
+   "ny": "3025",
+   "nytt_navn": "Asker",
+   "dato": "2020-01-01"
+  },
+  {
+   "gammel": "0631",
+   "gammelt_navn": "Flesberg",
+   "ny": "3050",
+   "nytt_navn": "Flesberg",
+   "dato": "2020-01-01"
+  },
+  {
+   "gammel": "0632",
+   "gammelt_navn": "Rollag",
+   "ny": "3051",
+   "nytt_navn": "Rollag",
+   "dato": "2020-01-01"
+  },
+  {
+   "gammel": "0633",
+   "gammelt_navn": "Nore og Uvdal",
+   "ny": "3052",
+   "nytt_navn": "Nore og Uvdal",
+   "dato": "2020-01-01"
+  },
+  {
+   "gammel": "0701",
+   "gammelt_navn": "Horten",
+   "ny": "3801",
+   "nytt_navn": "Horten",
+   "dato": "2020-01-01"
+  },
+  {
+   "gammel": "0704",
+   "gammelt_navn": "Tønsberg",
+   "ny": "3803",
+   "nytt_navn": "Tønsberg",
+   "dato": "2020-01-01"
+  },
+  {
+   "gammel": "0710",
+   "gammelt_navn": "Sandefjord",
+   "ny": "3804",
+   "nytt_navn": "Sandefjord",
+   "dato": "2020-01-01"
+  },
+  {
+   "gammel": "0711",
+   "gammelt_navn": "Svelvik",
+   "ny": "3005",
+   "nytt_navn": "Drammen",
+   "dato": "2020-01-01"
+  },
+  {
+   "gammel": "0712",
+   "gammelt_navn": "Larvik",
+   "ny": "3805",
+   "nytt_navn": "Larvik",
+   "dato": "2020-01-01"
+  },
+  {
+   "gammel": "0713",
+   "gammelt_navn": "Sande (Vestfold)",
+   "ny": "3802",
+   "nytt_navn": "Holmestrand",
+   "dato": "2020-01-01"
+  },
+  {
+   "gammel": "0715",
+   "gammelt_navn": "Holmestrand",
+   "ny": "3802",
+   "nytt_navn": "Holmestrand",
+   "dato": "2020-01-01"
+  },
+  {
+   "gammel": "0716",
+   "gammelt_navn": "Re",
+   "ny": "3803",
+   "nytt_navn": "Tønsberg",
+   "dato": "2020-01-01"
+  },
+  {
+   "gammel": "0729",
+   "gammelt_navn": "Færder",
+   "ny": "3811",
+   "nytt_navn": "Færder",
+   "dato": "2020-01-01"
+  },
+  {
+   "gammel": "0805",
+   "gammelt_navn": "Porsgrunn",
+   "ny": "3806",
+   "nytt_navn": "Porsgrunn",
+   "dato": "2020-01-01"
+  },
+  {
+   "gammel": "0806",
+   "gammelt_navn": "Skien",
+   "ny": "3807",
+   "nytt_navn": "Skien",
+   "dato": "2020-01-01"
+  },
+  {
+   "gammel": "0807",
+   "gammelt_navn": "Notodden",
+   "ny": "3808",
+   "nytt_navn": "Notodden",
+   "dato": "2020-01-01"
+  },
+  {
+   "gammel": "0811",
+   "gammelt_navn": "Siljan",
+   "ny": "3812",
+   "nytt_navn": "Siljan",
+   "dato": "2020-01-01"
+  },
+  {
+   "gammel": "0814",
+   "gammelt_navn": "Bamble",
+   "ny": "3813",
+   "nytt_navn": "Bamble",
+   "dato": "2020-01-01"
+  },
+  {
+   "gammel": "0815",
+   "gammelt_navn": "Kragerø",
+   "ny": "3814",
+   "nytt_navn": "Kragerø",
+   "dato": "2020-01-01"
+  },
+  {
+   "gammel": "0817",
+   "gammelt_navn": "Drangedal",
+   "ny": "3815",
+   "nytt_navn": "Drangedal",
+   "dato": "2020-01-01"
+  },
+  {
+   "gammel": "0819",
+   "gammelt_navn": "Nome",
+   "ny": "3816",
+   "nytt_navn": "Nome",
+   "dato": "2020-01-01"
+  },
+  {
+   "gammel": "0821",
+   "gammelt_navn": "Bø (Telemark)",
+   "ny": "3817",
+   "nytt_navn": "Midt-Telemark",
+   "dato": "2020-01-01"
+  },
+  {
+   "gammel": "0822",
+   "gammelt_navn": "Sauherad",
+   "ny": "3817",
+   "nytt_navn": "Midt-Telemark",
+   "dato": "2020-01-01"
+  },
+  {
+   "gammel": "0826",
+   "gammelt_navn": "Tinn",
+   "ny": "3818",
+   "nytt_navn": "Tinn",
+   "dato": "2020-01-01"
+  },
+  {
+   "gammel": "0827",
+   "gammelt_navn": "Hjartdal",
+   "ny": "3819",
+   "nytt_navn": "Hjartdal",
+   "dato": "2020-01-01"
+  },
+  {
+   "gammel": "0828",
+   "gammelt_navn": "Seljord",
+   "ny": "3820",
+   "nytt_navn": "Seljord",
+   "dato": "2020-01-01"
+  },
+  {
+   "gammel": "0829",
+   "gammelt_navn": "Kviteseid",
+   "ny": "3821",
+   "nytt_navn": "Kviteseid",
+   "dato": "2020-01-01"
+  },
+  {
+   "gammel": "0830",
+   "gammelt_navn": "Nissedal",
+   "ny": "3822",
+   "nytt_navn": "Nissedal",
+   "dato": "2020-01-01"
+  },
+  {
+   "gammel": "0831",
+   "gammelt_navn": "Fyresdal",
+   "ny": "3823",
+   "nytt_navn": "Fyresdal",
+   "dato": "2020-01-01"
+  },
+  {
+   "gammel": "0833",
+   "gammelt_navn": "Tokke",
+   "ny": "3824",
+   "nytt_navn": "Tokke",
+   "dato": "2020-01-01"
+  },
+  {
+   "gammel": "0834",
+   "gammelt_navn": "Vinje",
+   "ny": "3825",
+   "nytt_navn": "Vinje",
+   "dato": "2020-01-01"
+  },
+  {
+   "gammel": "0901",
+   "gammelt_navn": "Risør",
+   "ny": "4201",
+   "nytt_navn": "Risør",
+   "dato": "2020-01-01"
+  },
+  {
+   "gammel": "0904",
+   "gammelt_navn": "Grimstad",
+   "ny": "4202",
+   "nytt_navn": "Grimstad",
+   "dato": "2020-01-01"
+  },
+  {
+   "gammel": "0906",
+   "gammelt_navn": "Arendal",
+   "ny": "4203",
+   "nytt_navn": "Arendal",
+   "dato": "2020-01-01"
+  },
+  {
+   "gammel": "0911",
+   "gammelt_navn": "Gjerstad",
+   "ny": "4211",
+   "nytt_navn": "Gjerstad",
+   "dato": "2020-01-01"
+  },
+  {
+   "gammel": "0912",
+   "gammelt_navn": "Vegårshei",
+   "ny": "4212",
+   "nytt_navn": "Vegårshei",
+   "dato": "2020-01-01"
+  },
+  {
+   "gammel": "0914",
+   "gammelt_navn": "Tvedestrand",
+   "ny": "4213",
+   "nytt_navn": "Tvedestrand",
+   "dato": "2020-01-01"
+  },
+  {
+   "gammel": "0919",
+   "gammelt_navn": "Froland",
+   "ny": "4214",
+   "nytt_navn": "Froland",
+   "dato": "2020-01-01"
+  },
+  {
+   "gammel": "0926",
+   "gammelt_navn": "Lillesand",
+   "ny": "4215",
+   "nytt_navn": "Lillesand",
+   "dato": "2020-01-01"
+  },
+  {
+   "gammel": "0928",
+   "gammelt_navn": "Birkenes",
+   "ny": "4216",
+   "nytt_navn": "Birkenes",
+   "dato": "2020-01-01"
+  },
+  {
+   "gammel": "0929",
+   "gammelt_navn": "Åmli",
+   "ny": "4217",
+   "nytt_navn": "Åmli",
+   "dato": "2020-01-01"
+  },
+  {
+   "gammel": "0935",
+   "gammelt_navn": "Iveland",
+   "ny": "4218",
+   "nytt_navn": "Iveland",
+   "dato": "2020-01-01"
+  },
+  {
+   "gammel": "0937",
+   "gammelt_navn": "Evje og Hornnes",
+   "ny": "4219",
+   "nytt_navn": "Evje og Hornnes",
+   "dato": "2020-01-01"
+  },
+  {
+   "gammel": "0938",
+   "gammelt_navn": "Bygland",
+   "ny": "4220",
+   "nytt_navn": "Bygland",
+   "dato": "2020-01-01"
+  },
+  {
+   "gammel": "0940",
+   "gammelt_navn": "Valle",
+   "ny": "4221",
+   "nytt_navn": "Valle",
+   "dato": "2020-01-01"
+  },
+  {
+   "gammel": "0941",
+   "gammelt_navn": "Bykle",
+   "ny": "4222",
+   "nytt_navn": "Bykle",
+   "dato": "2020-01-01"
+  },
+  {
+   "gammel": "1001",
+   "gammelt_navn": "Kristiansand",
+   "ny": "4204",
+   "nytt_navn": "Kristiansand",
+   "dato": "2020-01-01"
+  },
+  {
+   "gammel": "1002",
+   "gammelt_navn": "Mandal",
+   "ny": "4205",
+   "nytt_navn": "Lindesnes",
+   "dato": "2020-01-01"
+  },
+  {
+   "gammel": "1003",
+   "gammelt_navn": "Farsund",
+   "ny": "4206",
+   "nytt_navn": "Farsund",
+   "dato": "2020-01-01"
+  },
+  {
+   "gammel": "1004",
+   "gammelt_navn": "Flekkefjord",
+   "ny": "4207",
+   "nytt_navn": "Flekkefjord",
+   "dato": "2020-01-01"
+  },
+  {
+   "gammel": "1014",
+   "gammelt_navn": "Vennesla",
+   "ny": "4223",
+   "nytt_navn": "Vennesla",
+   "dato": "2020-01-01"
+  },
+  {
+   "gammel": "1017",
+   "gammelt_navn": "Songdalen",
+   "ny": "4204",
+   "nytt_navn": "Kristiansand",
+   "dato": "2020-01-01"
+  },
+  {
+   "gammel": "1018",
+   "gammelt_navn": "Søgne",
+   "ny": "4204",
+   "nytt_navn": "Kristiansand",
+   "dato": "2020-01-01"
+  },
+  {
+   "gammel": "1021",
+   "gammelt_navn": "Marnardal",
+   "ny": "4205",
+   "nytt_navn": "Lindesnes",
+   "dato": "2020-01-01"
+  },
+  {
+   "gammel": "1026",
+   "gammelt_navn": "Åseral",
+   "ny": "4224",
+   "nytt_navn": "Åseral",
+   "dato": "2020-01-01"
+  },
+  {
+   "gammel": "1027",
+   "gammelt_navn": "Audnedal",
+   "ny": "4225",
+   "nytt_navn": "Lyngdal",
+   "dato": "2020-01-01"
+  },
+  {
+   "gammel": "1029",
+   "gammelt_navn": "Lindesnes",
+   "ny": "4205",
+   "nytt_navn": "Lindesnes",
+   "dato": "2020-01-01"
+  },
+  {
+   "gammel": "1032",
+   "gammelt_navn": "Lyngdal",
+   "ny": "4225",
+   "nytt_navn": "Lyngdal",
+   "dato": "2020-01-01"
+  },
+  {
+   "gammel": "1034",
+   "gammelt_navn": "Hægebostad",
+   "ny": "4226",
+   "nytt_navn": "Hægebostad",
+   "dato": "2020-01-01"
+  },
+  {
+   "gammel": "1037",
+   "gammelt_navn": "Kvinesdal",
+   "ny": "4227",
+   "nytt_navn": "Kvinesdal",
+   "dato": "2020-01-01"
+  },
+  {
+   "gammel": "1046",
+   "gammelt_navn": "Sirdal",
+   "ny": "4228",
+   "nytt_navn": "Sirdal",
+   "dato": "2020-01-01"
+  },
+  {
+   "gammel": "1102",
+   "gammelt_navn": "Sandnes",
+   "ny": "1108",
+   "nytt_navn": "Sandnes",
+   "dato": "2020-01-01"
+  },
+  {
+   "gammel": "1103",
+   "gammelt_navn": "Stavanger",
+   "ny": "1103",
+   "nytt_navn": "Stavanger",
+   "dato": "2020-01-01"
+  },
+  {
+   "gammel": "1129",
+   "gammelt_navn": "Forsand",
+   "ny": "1108",
+   "nytt_navn": "Sandnes",
+   "dato": "2020-01-01"
+  },
+  {
+   "gammel": "1141",
+   "gammelt_navn": "Finnøy",
+   "ny": "1103",
+   "nytt_navn": "Stavanger",
+   "dato": "2020-01-01"
+  },
+  {
+   "gammel": "1142",
+   "gammelt_navn": "Rennesøy",
+   "ny": "1103",
+   "nytt_navn": "Stavanger",
+   "dato": "2020-01-01"
+  },
+  {
+   "gammel": "1201",
+   "gammelt_navn": "Bergen",
+   "ny": "4601",
+   "nytt_navn": "Bergen",
+   "dato": "2020-01-01"
+  },
+  {
+   "gammel": "1211",
+   "gammelt_navn": "Etne",
+   "ny": "4611",
+   "nytt_navn": "Etne",
+   "dato": "2020-01-01"
+  },
+  {
+   "gammel": "1216",
+   "gammelt_navn": "Sveio",
+   "ny": "4612",
+   "nytt_navn": "Sveio",
+   "dato": "2020-01-01"
+  },
+  {
+   "gammel": "1219",
+   "gammelt_navn": "Bømlo",
+   "ny": "4613",
+   "nytt_navn": "Bømlo",
+   "dato": "2020-01-01"
+  },
+  {
+   "gammel": "1221",
+   "gammelt_navn": "Stord",
+   "ny": "4614",
+   "nytt_navn": "Stord",
+   "dato": "2020-01-01"
+  },
+  {
+   "gammel": "1222",
+   "gammelt_navn": "Fitjar",
+   "ny": "4615",
+   "nytt_navn": "Fitjar",
+   "dato": "2020-01-01"
+  },
+  {
+   "gammel": "1223",
+   "gammelt_navn": "Tysnes",
+   "ny": "4616",
+   "nytt_navn": "Tysnes",
+   "dato": "2020-01-01"
+  },
+  {
+   "gammel": "1224",
+   "gammelt_navn": "Kvinnherad",
+   "ny": "4617",
+   "nytt_navn": "Kvinnherad",
+   "dato": "2020-01-01"
+  },
+  {
+   "gammel": "1227",
+   "gammelt_navn": "Jondal",
+   "ny": "4618",
+   "nytt_navn": "Ullensvang",
+   "dato": "2020-01-01"
+  },
+  {
+   "gammel": "1228",
+   "gammelt_navn": "Odda",
+   "ny": "4618",
+   "nytt_navn": "Ullensvang",
+   "dato": "2020-01-01"
+  },
+  {
+   "gammel": "1231",
+   "gammelt_navn": "Ullensvang",
+   "ny": "4618",
+   "nytt_navn": "Ullensvang",
+   "dato": "2020-01-01"
+  },
+  {
+   "gammel": "1232",
+   "gammelt_navn": "Eidfjord",
+   "ny": "4619",
+   "nytt_navn": "Eidfjord",
+   "dato": "2020-01-01"
+  },
+  {
+   "gammel": "1233",
+   "gammelt_navn": "Ulvik",
+   "ny": "4620",
+   "nytt_navn": "Ulvik",
+   "dato": "2020-01-01"
+  },
+  {
+   "gammel": "1234",
+   "gammelt_navn": "Granvin",
+   "ny": "4621",
+   "nytt_navn": "Voss",
+   "dato": "2020-01-01"
+  },
+  {
+   "gammel": "1235",
+   "gammelt_navn": "Voss",
+   "ny": "4621",
+   "nytt_navn": "Voss",
+   "dato": "2020-01-01"
+  },
+  {
+   "gammel": "1238",
+   "gammelt_navn": "Kvam",
+   "ny": "4622",
+   "nytt_navn": "Kvam",
+   "dato": "2020-01-01"
+  },
+  {
+   "gammel": "1241",
+   "gammelt_navn": "Fusa",
+   "ny": "4624",
+   "nytt_navn": "Bjørnafjorden",
+   "dato": "2020-01-01"
+  },
+  {
+   "gammel": "1242",
+   "gammelt_navn": "Samnanger",
+   "ny": "4623",
+   "nytt_navn": "Samnanger",
+   "dato": "2020-01-01"
+  },
+  {
+   "gammel": "1243",
+   "gammelt_navn": "Os (Hordaland)",
+   "ny": "4624",
+   "nytt_navn": "Bjørnafjorden",
+   "dato": "2020-01-01"
+  },
+  {
+   "gammel": "1244",
+   "gammelt_navn": "Austevoll",
+   "ny": "4625",
+   "nytt_navn": "Austevoll",
+   "dato": "2020-01-01"
+  },
+  {
+   "gammel": "1245",
+   "gammelt_navn": "Sund",
+   "ny": "4626",
+   "nytt_navn": "Øygarden",
+   "dato": "2020-01-01"
+  },
+  {
+   "gammel": "1246",
+   "gammelt_navn": "Fjell",
+   "ny": "4626",
+   "nytt_navn": "Øygarden",
+   "dato": "2020-01-01"
+  },
+  {
+   "gammel": "1247",
+   "gammelt_navn": "Askøy",
+   "ny": "4627",
+   "nytt_navn": "Askøy",
+   "dato": "2020-01-01"
+  },
+  {
+   "gammel": "1251",
+   "gammelt_navn": "Vaksdal",
+   "ny": "4628",
+   "nytt_navn": "Vaksdal",
+   "dato": "2020-01-01"
+  },
+  {
+   "gammel": "1252",
+   "gammelt_navn": "Modalen",
+   "ny": "4629",
+   "nytt_navn": "Modalen",
+   "dato": "2020-01-01"
+  },
+  {
+   "gammel": "1253",
+   "gammelt_navn": "Osterøy",
+   "ny": "4630",
+   "nytt_navn": "Osterøy",
+   "dato": "2020-01-01"
+  },
+  {
+   "gammel": "1256",
+   "gammelt_navn": "Meland",
+   "ny": "4631",
+   "nytt_navn": "Alver",
+   "dato": "2020-01-01"
+  },
+  {
+   "gammel": "1259",
+   "gammelt_navn": "Øygarden",
+   "ny": "4626",
+   "nytt_navn": "Øygarden",
+   "dato": "2020-01-01"
+  },
+  {
+   "gammel": "1260",
+   "gammelt_navn": "Radøy",
+   "ny": "4631",
+   "nytt_navn": "Alver",
+   "dato": "2020-01-01"
+  },
+  {
+   "gammel": "1263",
+   "gammelt_navn": "Lindås",
+   "ny": "4631",
+   "nytt_navn": "Alver",
+   "dato": "2020-01-01"
+  },
+  {
+   "gammel": "1264",
+   "gammelt_navn": "Austrheim",
+   "ny": "4632",
+   "nytt_navn": "Austrheim",
+   "dato": "2020-01-01"
+  },
+  {
+   "gammel": "1265",
+   "gammelt_navn": "Fedje",
+   "ny": "4633",
+   "nytt_navn": "Fedje",
+   "dato": "2020-01-01"
+  },
+  {
+   "gammel": "1266",
+   "gammelt_navn": "Masfjorden",
+   "ny": "4634",
+   "nytt_navn": "Masfjorden",
+   "dato": "2020-01-01"
+  },
+  {
+   "gammel": "1401",
+   "gammelt_navn": "Flora",
+   "ny": "4602",
+   "nytt_navn": "Kinn",
+   "dato": "2020-01-01"
+  },
+  {
+   "gammel": "1411",
+   "gammelt_navn": "Gulen",
+   "ny": "4635",
+   "nytt_navn": "Gulen",
+   "dato": "2020-01-01"
+  },
+  {
+   "gammel": "1412",
+   "gammelt_navn": "Solund",
+   "ny": "4636",
+   "nytt_navn": "Solund",
+   "dato": "2020-01-01"
+  },
+  {
+   "gammel": "1413",
+   "gammelt_navn": "Hyllestad",
+   "ny": "4637",
+   "nytt_navn": "Hyllestad",
+   "dato": "2020-01-01"
+  },
+  {
+   "gammel": "1416",
+   "gammelt_navn": "Høyanger",
+   "ny": "4638",
+   "nytt_navn": "Høyanger",
+   "dato": "2020-01-01"
+  },
+  {
+   "gammel": "1417",
+   "gammelt_navn": "Vik",
+   "ny": "4639",
+   "nytt_navn": "Vik",
+   "dato": "2020-01-01"
+  },
+  {
+   "gammel": "1418",
+   "gammelt_navn": "Balestrand",
+   "ny": "4640",
+   "nytt_navn": "Sogndal",
+   "dato": "2020-01-01"
+  },
+  {
+   "gammel": "1419",
+   "gammelt_navn": "Leikanger",
+   "ny": "4640",
+   "nytt_navn": "Sogndal",
+   "dato": "2020-01-01"
+  },
+  {
+   "gammel": "1420",
+   "gammelt_navn": "Sogndal",
+   "ny": "4640",
+   "nytt_navn": "Sogndal",
+   "dato": "2020-01-01"
+  },
+  {
+   "gammel": "1421",
+   "gammelt_navn": "Aurland",
+   "ny": "4641",
+   "nytt_navn": "Aurland",
+   "dato": "2020-01-01"
+  },
+  {
+   "gammel": "1422",
+   "gammelt_navn": "Lærdal",
+   "ny": "4642",
+   "nytt_navn": "Lærdal",
+   "dato": "2020-01-01"
+  },
+  {
+   "gammel": "1424",
+   "gammelt_navn": "Årdal",
+   "ny": "4643",
+   "nytt_navn": "Årdal",
+   "dato": "2020-01-01"
+  },
+  {
+   "gammel": "1426",
+   "gammelt_navn": "Luster",
+   "ny": "4644",
+   "nytt_navn": "Luster",
+   "dato": "2020-01-01"
+  },
+  {
+   "gammel": "1428",
+   "gammelt_navn": "Askvoll",
+   "ny": "4645",
+   "nytt_navn": "Askvoll",
+   "dato": "2020-01-01"
+  },
+  {
+   "gammel": "1429",
+   "gammelt_navn": "Fjaler",
+   "ny": "4646",
+   "nytt_navn": "Fjaler",
+   "dato": "2020-01-01"
+  },
+  {
+   "gammel": "1430",
+   "gammelt_navn": "Gaular",
+   "ny": "4647",
+   "nytt_navn": "Sunnfjord",
+   "dato": "2020-01-01"
+  },
+  {
+   "gammel": "1431",
+   "gammelt_navn": "Jølster",
+   "ny": "4647",
+   "nytt_navn": "Sunnfjord",
+   "dato": "2020-01-01"
+  },
+  {
+   "gammel": "1432",
+   "gammelt_navn": "Førde",
+   "ny": "4647",
+   "nytt_navn": "Sunnfjord",
+   "dato": "2020-01-01"
+  },
+  {
+   "gammel": "1433",
+   "gammelt_navn": "Naustdal",
+   "ny": "4647",
+   "nytt_navn": "Sunnfjord",
+   "dato": "2020-01-01"
+  },
+  {
+   "gammel": "1438",
+   "gammelt_navn": "Bremanger",
+   "ny": "4648",
+   "nytt_navn": "Bremanger",
+   "dato": "2020-01-01"
+  },
+  {
+   "gammel": "1439",
+   "gammelt_navn": "Vågsøy",
+   "ny": "4602",
+   "nytt_navn": "Kinn",
+   "dato": "2020-01-01"
+  },
+  {
+   "gammel": "1441",
+   "gammelt_navn": "Selje",
+   "ny": "4649",
+   "nytt_navn": "Stad",
+   "dato": "2020-01-01"
+  },
+  {
+   "gammel": "1443",
+   "gammelt_navn": "Eid",
+   "ny": "4649",
+   "nytt_navn": "Stad",
+   "dato": "2020-01-01"
+  },
+  {
+   "gammel": "1444",
+   "gammelt_navn": "Hornindal",
+   "ny": "1577",
+   "nytt_navn": "Volda",
+   "dato": "2020-01-01"
+  },
+  {
+   "gammel": "1445",
+   "gammelt_navn": "Gloppen",
+   "ny": "4650",
+   "nytt_navn": "Gloppen",
+   "dato": "2020-01-01"
+  },
+  {
+   "gammel": "1449",
+   "gammelt_navn": "Stryn",
+   "ny": "4651",
+   "nytt_navn": "Stryn",
+   "dato": "2020-01-01"
+  },
+  {
+   "gammel": "1502",
+   "gammelt_navn": "Molde",
+   "ny": "1506",
+   "nytt_navn": "Molde",
+   "dato": "2020-01-01"
+  },
+  {
+   "gammel": "1504",
+   "gammelt_navn": "Ålesund",
+   "ny": "1507",
+   "nytt_navn": "Ålesund",
+   "dato": "2020-01-01"
+  },
+  {
+   "gammel": "1514",
+   "gammelt_navn": "Sande (Møre og Romsdal)",
+   "ny": "1514",
+   "nytt_navn": "Sande",
+   "dato": "2020-01-01"
+  },
+  {
+   "gammel": "1519",
+   "gammelt_navn": "Volda",
+   "ny": "1577",
+   "nytt_navn": "Volda",
+   "dato": "2020-01-01"
+  },
+  {
+   "gammel": "1523",
+   "gammelt_navn": "Ørskog",
+   "ny": "1507",
+   "nytt_navn": "Ålesund",
+   "dato": "2020-01-01"
+  },
+  {
+   "gammel": "1524",
+   "gammelt_navn": "Norddal",
+   "ny": "1578",
+   "nytt_navn": "Fjord",
+   "dato": "2020-01-01"
+  },
+  {
+   "gammel": "1526",
+   "gammelt_navn": "Stordal",
+   "ny": "1578",
+   "nytt_navn": "Fjord",
+   "dato": "2020-01-01"
+  },
+  {
+   "gammel": "1529",
+   "gammelt_navn": "Skodje",
+   "ny": "1507",
+   "nytt_navn": "Ålesund",
+   "dato": "2020-01-01"
+  },
+  {
+   "gammel": "1534",
+   "gammelt_navn": "Haram",
+   "ny": "1507",
+   "nytt_navn": "Ålesund",
+   "dato": "2020-01-01"
+  },
+  {
+   "gammel": "1543",
+   "gammelt_navn": "Nesset",
+   "ny": "1506",
+   "nytt_navn": "Molde",
+   "dato": "2020-01-01"
+  },
+  {
+   "gammel": "1545",
+   "gammelt_navn": "Midsund",
+   "ny": "1506",
+   "nytt_navn": "Molde",
+   "dato": "2020-01-01"
+  },
+  {
+   "gammel": "1546",
+   "gammelt_navn": "Sandøy",
+   "ny": "1507",
+   "nytt_navn": "Ålesund",
+   "dato": "2020-01-01"
+  },
+  {
+   "gammel": "1548",
+   "gammelt_navn": "Fræna",
+   "ny": "1579",
+   "nytt_navn": "Hustadvika",
+   "dato": "2020-01-01"
+  },
+  {
+   "gammel": "1551",
+   "gammelt_navn": "Eide",
+   "ny": "1579",
+   "nytt_navn": "Hustadvika",
+   "dato": "2020-01-01"
+  },
+  {
+   "gammel": "1571",
+   "gammelt_navn": "Halsa",
+   "ny": "5055",
+   "nytt_navn": "Heim",
+   "dato": "2020-01-01"
+  },
+  {
+   "gammel": "1805",
+   "gammelt_navn": "Narvik",
+   "ny": "1806",
+   "nytt_navn": "Narvik",
+   "dato": "2020-01-01"
+  },
+  {
+   "gammel": "1826",
+   "gammelt_navn": "Hattfjelldal",
+   "ny": "1826",
+   "nytt_navn": "Aarborte - Hattfjelldal",
+   "dato": "2020-01-01"
+  },
+  {
+   "gammel": "1849",
+   "gammelt_navn": "Hábmer - Hamarøy",
+   "ny": "1875",
+   "nytt_navn": "Hábmer - Hamarøy",
+   "dato": "2020-01-01"
+  },
+  {
+   "gammel": "1850",
+   "gammelt_navn": "Tysfjord - Divtasvuodna",
+   "ny": "1806",
+   "nytt_navn": "Narvik",
+   "dato": "2020-01-01"
+  },
+  {
+   "gammel": "1850",
+   "gammelt_navn": "Tysfjord - Divtasvuodna",
+   "ny": "1875",
+   "nytt_navn": "Hábmer - Hamarøy",
+   "dato": "2020-01-01"
+  },
+  {
+   "gammel": "1852",
+   "gammelt_navn": "Dielddanuorri - Tjeldsund",
+   "ny": "5412",
+   "nytt_navn": "Dielddanuorri - Tjeldsund",
+   "dato": "2020-01-01"
+  },
+  {
+   "gammel": "1854",
+   "gammelt_navn": "Ballangen",
+   "ny": "1806",
+   "nytt_navn": "Narvik",
+   "dato": "2020-01-01"
+  },
+  {
+   "gammel": "1867",
+   "gammelt_navn": "Bø (Nordland)",
+   "ny": "1867",
+   "nytt_navn": "Bø",
+   "dato": "2020-01-01"
+  },
+  {
+   "gammel": "1902",
+   "gammelt_navn": "Tromsø",
+   "ny": "5401",
+   "nytt_navn": "Tromsø",
+   "dato": "2020-01-01"
+  },
+  {
+   "gammel": "1903",
+   "gammelt_navn": "Harstad - Hárstták",
+   "ny": "5402",
+   "nytt_navn": "Harstad - Hárstták",
+   "dato": "2020-01-01"
+  },
+  {
+   "gammel": "1911",
+   "gammelt_navn": "Kvæfjord",
+   "ny": "5411",
+   "nytt_navn": "Kvæfjord",
+   "dato": "2020-01-01"
+  },
+  {
+   "gammel": "1913",
+   "gammelt_navn": "Skånland",
+   "ny": "5412",
+   "nytt_navn": "Dielddanuorri - Tjeldsund",
+   "dato": "2020-01-01"
+  },
+  {
+   "gammel": "1917",
+   "gammelt_navn": "Ibestad",
+   "ny": "5413",
+   "nytt_navn": "Ibestad",
+   "dato": "2020-01-01"
+  },
+  {
+   "gammel": "1919",
+   "gammelt_navn": "Gratangen",
+   "ny": "5414",
+   "nytt_navn": "Gratangen",
+   "dato": "2020-01-01"
+  },
+  {
+   "gammel": "1920",
+   "gammelt_navn": "Loabák - Lavangen",
+   "ny": "5415",
+   "nytt_navn": "Loabák - Lavangen",
+   "dato": "2020-01-01"
+  },
+  {
+   "gammel": "1922",
+   "gammelt_navn": "Bardu",
+   "ny": "5416",
+   "nytt_navn": "Bardu",
+   "dato": "2020-01-01"
+  },
+  {
+   "gammel": "1923",
+   "gammelt_navn": "Salangen",
+   "ny": "5417",
+   "nytt_navn": "Salangen",
+   "dato": "2020-01-01"
+  },
+  {
+   "gammel": "1924",
+   "gammelt_navn": "Målselv",
+   "ny": "5418",
+   "nytt_navn": "Målselv",
+   "dato": "2020-01-01"
+  },
+  {
+   "gammel": "1925",
+   "gammelt_navn": "Sørreisa",
+   "ny": "5419",
+   "nytt_navn": "Sørreisa",
+   "dato": "2020-01-01"
+  },
+  {
+   "gammel": "1926",
+   "gammelt_navn": "Dyrøy",
+   "ny": "5420",
+   "nytt_navn": "Dyrøy",
+   "dato": "2020-01-01"
+  },
+  {
+   "gammel": "1927",
+   "gammelt_navn": "Tranøy",
+   "ny": "5421",
+   "nytt_navn": "Senja",
+   "dato": "2020-01-01"
+  },
+  {
+   "gammel": "1928",
+   "gammelt_navn": "Torsken",
+   "ny": "5421",
+   "nytt_navn": "Senja",
+   "dato": "2020-01-01"
+  },
+  {
+   "gammel": "1929",
+   "gammelt_navn": "Berg",
+   "ny": "5421",
+   "nytt_navn": "Senja",
+   "dato": "2020-01-01"
+  },
+  {
+   "gammel": "1931",
+   "gammelt_navn": "Lenvik",
+   "ny": "5421",
+   "nytt_navn": "Senja",
+   "dato": "2020-01-01"
+  },
+  {
+   "gammel": "1933",
+   "gammelt_navn": "Balsfjord",
+   "ny": "5422",
+   "nytt_navn": "Balsfjord",
+   "dato": "2020-01-01"
+  },
+  {
+   "gammel": "1936",
+   "gammelt_navn": "Karlsøy",
+   "ny": "5423",
+   "nytt_navn": "Karlsøy",
+   "dato": "2020-01-01"
+  },
+  {
+   "gammel": "1938",
+   "gammelt_navn": "Lyngen",
+   "ny": "5424",
+   "nytt_navn": "Lyngen",
+   "dato": "2020-01-01"
+  },
+  {
+   "gammel": "1939",
+   "gammelt_navn": "Storfjord - Omasvuotna - Omasvuono",
+   "ny": "5425",
+   "nytt_navn": "Storfjord - Omasvuotna - Omasvuono",
+   "dato": "2020-01-01"
+  },
+  {
+   "gammel": "1940",
+   "gammelt_navn": "Gáivuotna - Kåfjord - Kaivuono",
+   "ny": "5426",
+   "nytt_navn": "Gáivuotna - Kåfjord - Kaivuono",
+   "dato": "2020-01-01"
+  },
+  {
+   "gammel": "1941",
+   "gammelt_navn": "Skjervøy",
+   "ny": "5427",
+   "nytt_navn": "Skjervøy",
+   "dato": "2020-01-01"
+  },
+  {
+   "gammel": "1942",
+   "gammelt_navn": "Nordreisa - Ráisa - Raisi",
+   "ny": "5428",
+   "nytt_navn": "Nordreisa - Ráisa - Raisi",
+   "dato": "2020-01-01"
+  },
+  {
+   "gammel": "1943",
+   "gammelt_navn": "Kvænangen",
+   "ny": "5429",
+   "nytt_navn": "Kvænangen",
+   "dato": "2020-01-01"
+  },
+  {
+   "gammel": "2002",
+   "gammelt_navn": "Vardø",
+   "ny": "5404",
+   "nytt_navn": "Vardø",
+   "dato": "2020-01-01"
+  },
+  {
+   "gammel": "2003",
+   "gammelt_navn": "Vadsø",
+   "ny": "5405",
+   "nytt_navn": "Vadsø",
+   "dato": "2020-01-01"
+  },
+  {
+   "gammel": "2004",
+   "gammelt_navn": "Hammerfest - Hámmerfeasta",
+   "ny": "5406",
+   "nytt_navn": "Hammerfest - Hámmerfeasta",
+   "dato": "2020-01-01"
+  },
+  {
+   "gammel": "2011",
+   "gammelt_navn": "Guovdageaidnu - Kautokeino",
+   "ny": "5430",
+   "nytt_navn": "Guovdageaidnu - Kautokeino",
+   "dato": "2020-01-01"
+  },
+  {
+   "gammel": "2012",
+   "gammelt_navn": "Alta",
+   "ny": "5403",
+   "nytt_navn": "Alta",
+   "dato": "2020-01-01"
+  },
+  {
+   "gammel": "2014",
+   "gammelt_navn": "Loppa",
+   "ny": "5432",
+   "nytt_navn": "Loppa",
+   "dato": "2020-01-01"
+  },
+  {
+   "gammel": "2015",
+   "gammelt_navn": "Hasvik",
+   "ny": "5433",
+   "nytt_navn": "Hasvik",
+   "dato": "2020-01-01"
+  },
+  {
+   "gammel": "2017",
+   "gammelt_navn": "Kvalsund",
+   "ny": "5406",
+   "nytt_navn": "Hammerfest - Hámmerfeasta",
+   "dato": "2020-01-01"
+  },
+  {
+   "gammel": "2018",
+   "gammelt_navn": "Måsøy",
+   "ny": "5434",
+   "nytt_navn": "Måsøy",
+   "dato": "2020-01-01"
+  },
+  {
+   "gammel": "2019",
+   "gammelt_navn": "Nordkapp",
+   "ny": "5435",
+   "nytt_navn": "Nordkapp",
+   "dato": "2020-01-01"
+  },
+  {
+   "gammel": "2020",
+   "gammelt_navn": "Porsanger - Porsángu - Porsanki",
+   "ny": "5436",
+   "nytt_navn": "Porsanger - Porsángu - Porsanki",
+   "dato": "2020-01-01"
+  },
+  {
+   "gammel": "2021",
+   "gammelt_navn": "Kárášjohka - Karasjok",
+   "ny": "5437",
+   "nytt_navn": "Kárášjohka - Karasjok",
+   "dato": "2020-01-01"
+  },
+  {
+   "gammel": "2022",
+   "gammelt_navn": "Lebesby",
+   "ny": "5438",
+   "nytt_navn": "Lebesby",
+   "dato": "2020-01-01"
+  },
+  {
+   "gammel": "2023",
+   "gammelt_navn": "Gamvik",
+   "ny": "5439",
+   "nytt_navn": "Gamvik",
+   "dato": "2020-01-01"
+  },
+  {
+   "gammel": "2024",
+   "gammelt_navn": "Berlevåg",
+   "ny": "5440",
+   "nytt_navn": "Berlevåg",
+   "dato": "2020-01-01"
+  },
+  {
+   "gammel": "2025",
+   "gammelt_navn": "Deatnu - Tana",
+   "ny": "5441",
+   "nytt_navn": "Deatnu - Tana",
+   "dato": "2020-01-01"
+  },
+  {
+   "gammel": "2027",
+   "gammelt_navn": "Unjárga - Nesseby",
+   "ny": "5442",
+   "nytt_navn": "Unjárga - Nesseby",
+   "dato": "2020-01-01"
+  },
+  {
+   "gammel": "2028",
+   "gammelt_navn": "Båtsfjord",
+   "ny": "5443",
+   "nytt_navn": "Båtsfjord",
+   "dato": "2020-01-01"
+  },
+  {
+   "gammel": "2030",
+   "gammelt_navn": "Sør-Varanger",
+   "ny": "5444",
+   "nytt_navn": "Sør-Varanger",
+   "dato": "2020-01-01"
+  },
+  {
+   "gammel": "5001",
+   "gammelt_navn": "Trondheim",
+   "ny": "5001",
+   "nytt_navn": "Trondheim",
+   "dato": "2020-01-01"
+  },
+  {
+   "gammel": "5004",
+   "gammelt_navn": "Steinkjer",
+   "ny": "5006",
+   "nytt_navn": "Steinkjer",
+   "dato": "2020-01-01"
+  },
+  {
+   "gammel": "5005",
+   "gammelt_navn": "Namsos - Nåavmesjenjaelmie",
+   "ny": "5007",
+   "nytt_navn": "Namsos - Nåavmesjenjaelmie",
+   "dato": "2020-01-01"
+  },
+  {
+   "gammel": "5011",
+   "gammelt_navn": "Hemne",
+   "ny": "5055",
+   "nytt_navn": "Heim",
+   "dato": "2020-01-01"
+  },
+  {
+   "gammel": "5012",
+   "gammelt_navn": "Snillfjord",
+   "ny": "5055",
+   "nytt_navn": "Heim",
+   "dato": "2020-01-01"
+  },
+  {
+   "gammel": "5012",
+   "gammelt_navn": "Snillfjord",
+   "ny": "5056",
+   "nytt_navn": "Hitra",
+   "dato": "2020-01-01"
+  },
+  {
+   "gammel": "5012",
+   "gammelt_navn": "Snillfjord",
+   "ny": "5059",
+   "nytt_navn": "Orkland",
+   "dato": "2020-01-01"
+  },
+  {
+   "gammel": "5013",
+   "gammelt_navn": "Hitra",
+   "ny": "5056",
+   "nytt_navn": "Hitra",
+   "dato": "2020-01-01"
+  },
+  {
+   "gammel": "5015",
+   "gammelt_navn": "Ørland",
+   "ny": "5057",
+   "nytt_navn": "Ørland",
+   "dato": "2020-01-01"
+  },
+  {
+   "gammel": "5016",
+   "gammelt_navn": "Agdenes",
+   "ny": "5059",
+   "nytt_navn": "Orkland",
+   "dato": "2020-01-01"
+  },
+  {
+   "gammel": "5017",
+   "gammelt_navn": "Bjugn",
+   "ny": "5057",
+   "nytt_navn": "Ørland",
+   "dato": "2020-01-01"
+  },
+  {
+   "gammel": "5018",
+   "gammelt_navn": "Åfjord",
+   "ny": "5058",
+   "nytt_navn": "Åfjord",
+   "dato": "2020-01-01"
+  },
+  {
+   "gammel": "5019",
+   "gammelt_navn": "Roan",
+   "ny": "5058",
+   "nytt_navn": "Åfjord",
+   "dato": "2020-01-01"
+  },
+  {
+   "gammel": "5023",
+   "gammelt_navn": "Meldal",
+   "ny": "5059",
+   "nytt_navn": "Orkland",
+   "dato": "2020-01-01"
+  },
+  {
+   "gammel": "5024",
+   "gammelt_navn": "Orkdal",
+   "ny": "5059",
+   "nytt_navn": "Orkland",
+   "dato": "2020-01-01"
+  },
+  {
+   "gammel": "5030",
+   "gammelt_navn": "Klæbu",
+   "ny": "5001",
+   "nytt_navn": "Trondheim",
+   "dato": "2020-01-01"
+  },
+  {
+   "gammel": "5039",
+   "gammelt_navn": "Verran",
+   "ny": "5006",
+   "nytt_navn": "Steinkjer",
+   "dato": "2020-01-01"
+  },
+  {
+   "gammel": "5040",
+   "gammelt_navn": "Namdalseid",
+   "ny": "5007",
+   "nytt_navn": "Namsos - Nåavmesjenjaelmie",
+   "dato": "2020-01-01"
+  },
+  {
+   "gammel": "5048",
+   "gammelt_navn": "Fosnes",
+   "ny": "5007",
+   "nytt_navn": "Namsos - Nåavmesjenjaelmie",
+   "dato": "2020-01-01"
+  },
+  {
+   "gammel": "5050",
+   "gammelt_navn": "Vikna",
+   "ny": "5060",
+   "nytt_navn": "Nærøysund",
+   "dato": "2020-01-01"
+  },
+  {
+   "gammel": "5051",
+   "gammelt_navn": "Nærøy",
+   "ny": "5060",
+   "nytt_navn": "Nærøysund",
+   "dato": "2020-01-01"
+  },
+  {
+   "gammel": "1853",
+   "gammelt_navn": "Evenes",
+   "ny": "1853",
+   "nytt_navn": "Evenes - Evenášši",
+   "dato": "2022-01-01"
+  },
+  {
+   "gammel": "5001",
+   "gammelt_navn": "Trondheim",
+   "ny": "5001",
+   "nytt_navn": "Trondheim - Tråante",
+   "dato": "2023-01-01"
+  },
+  {
+   "gammel": "5025",
+   "gammelt_navn": "Røros",
+   "ny": "5025",
+   "nytt_navn": "Røros - Rosse",
+   "dato": "2023-01-01"
+  },
+  {
+   "gammel": "1507",
+   "gammelt_navn": "Ålesund",
+   "ny": "1508",
+   "nytt_navn": "Ålesund",
+   "dato": "2024-01-01"
+  },
+  {
+   "gammel": "1507",
+   "gammelt_navn": "Ålesund",
+   "ny": "1580",
+   "nytt_navn": "Haram",
+   "dato": "2024-01-01"
+  },
+  {
+   "gammel": "1833",
+   "gammelt_navn": "Rana",
+   "ny": "1833",
+   "nytt_navn": "Rana - Raane",
+   "dato": "2024-01-01"
+  },
+  {
+   "gammel": "1845",
+   "gammelt_navn": "Sørfold",
+   "ny": "1845",
+   "nytt_navn": "Sørfold - Fuolldá",
+   "dato": "2024-01-01"
+  },
+  {
+   "gammel": "3001",
+   "gammelt_navn": "Halden",
+   "ny": "3101",
+   "nytt_navn": "Halden",
+   "dato": "2024-01-01"
+  },
+  {
+   "gammel": "3002",
+   "gammelt_navn": "Moss",
+   "ny": "3103",
+   "nytt_navn": "Moss",
+   "dato": "2024-01-01"
+  },
+  {
+   "gammel": "3003",
+   "gammelt_navn": "Sarpsborg",
+   "ny": "3105",
+   "nytt_navn": "Sarpsborg",
+   "dato": "2024-01-01"
+  },
+  {
+   "gammel": "3004",
+   "gammelt_navn": "Fredrikstad",
+   "ny": "3107",
+   "nytt_navn": "Fredrikstad",
+   "dato": "2024-01-01"
+  },
+  {
+   "gammel": "3005",
+   "gammelt_navn": "Drammen",
+   "ny": "3301",
+   "nytt_navn": "Drammen",
+   "dato": "2024-01-01"
+  },
+  {
+   "gammel": "3006",
+   "gammelt_navn": "Kongsberg",
+   "ny": "3303",
+   "nytt_navn": "Kongsberg",
+   "dato": "2024-01-01"
+  },
+  {
+   "gammel": "3007",
+   "gammelt_navn": "Ringerike",
+   "ny": "3305",
+   "nytt_navn": "Ringerike",
+   "dato": "2024-01-01"
+  },
+  {
+   "gammel": "3011",
+   "gammelt_navn": "Hvaler",
+   "ny": "3110",
+   "nytt_navn": "Hvaler",
+   "dato": "2024-01-01"
+  },
+  {
+   "gammel": "3012",
+   "gammelt_navn": "Aremark",
+   "ny": "3124",
+   "nytt_navn": "Aremark",
+   "dato": "2024-01-01"
+  },
+  {
+   "gammel": "3013",
+   "gammelt_navn": "Marker",
+   "ny": "3122",
+   "nytt_navn": "Marker",
+   "dato": "2024-01-01"
+  },
+  {
+   "gammel": "3014",
+   "gammelt_navn": "Indre Østfold",
+   "ny": "3118",
+   "nytt_navn": "Indre Østfold",
+   "dato": "2024-01-01"
+  },
+  {
+   "gammel": "3015",
+   "gammelt_navn": "Skiptvet",
+   "ny": "3116",
+   "nytt_navn": "Skiptvet",
+   "dato": "2024-01-01"
+  },
+  {
+   "gammel": "3016",
+   "gammelt_navn": "Rakkestad",
+   "ny": "3120",
+   "nytt_navn": "Rakkestad",
+   "dato": "2024-01-01"
+  },
+  {
+   "gammel": "3017",
+   "gammelt_navn": "Råde",
+   "ny": "3112",
+   "nytt_navn": "Råde",
+   "dato": "2024-01-01"
+  },
+  {
+   "gammel": "3018",
+   "gammelt_navn": "Våler (Viken)",
+   "ny": "3114",
+   "nytt_navn": "Våler (Østfold)",
+   "dato": "2024-01-01"
+  },
+  {
+   "gammel": "3019",
+   "gammelt_navn": "Vestby",
+   "ny": "3216",
+   "nytt_navn": "Vestby",
+   "dato": "2024-01-01"
+  },
+  {
+   "gammel": "3020",
+   "gammelt_navn": "Nordre Follo",
+   "ny": "3207",
+   "nytt_navn": "Nordre Follo",
+   "dato": "2024-01-01"
+  },
+  {
+   "gammel": "3021",
+   "gammelt_navn": "Ås",
+   "ny": "3218",
+   "nytt_navn": "Ås",
+   "dato": "2024-01-01"
+  },
+  {
+   "gammel": "3022",
+   "gammelt_navn": "Frogn",
+   "ny": "3214",
+   "nytt_navn": "Frogn",
+   "dato": "2024-01-01"
+  },
+  {
+   "gammel": "3023",
+   "gammelt_navn": "Nesodden",
+   "ny": "3212",
+   "nytt_navn": "Nesodden",
+   "dato": "2024-01-01"
+  },
+  {
+   "gammel": "3024",
+   "gammelt_navn": "Bærum",
+   "ny": "3201",
+   "nytt_navn": "Bærum",
+   "dato": "2024-01-01"
+  },
+  {
+   "gammel": "3025",
+   "gammelt_navn": "Asker",
+   "ny": "3203",
+   "nytt_navn": "Asker",
+   "dato": "2024-01-01"
+  },
+  {
+   "gammel": "3026",
+   "gammelt_navn": "Aurskog-Høland",
+   "ny": "3226",
+   "nytt_navn": "Aurskog-Høland",
+   "dato": "2024-01-01"
+  },
+  {
+   "gammel": "3027",
+   "gammelt_navn": "Rælingen",
+   "ny": "3224",
+   "nytt_navn": "Rælingen",
+   "dato": "2024-01-01"
+  },
+  {
+   "gammel": "3028",
+   "gammelt_navn": "Enebakk",
+   "ny": "3220",
+   "nytt_navn": "Enebakk",
+   "dato": "2024-01-01"
+  },
+  {
+   "gammel": "3029",
+   "gammelt_navn": "Lørenskog",
+   "ny": "3222",
+   "nytt_navn": "Lørenskog",
+   "dato": "2024-01-01"
+  },
+  {
+   "gammel": "3030",
+   "gammelt_navn": "Lillestrøm",
+   "ny": "3205",
+   "nytt_navn": "Lillestrøm",
+   "dato": "2024-01-01"
+  },
+  {
+   "gammel": "3031",
+   "gammelt_navn": "Nittedal",
+   "ny": "3232",
+   "nytt_navn": "Nittedal",
+   "dato": "2024-01-01"
+  },
+  {
+   "gammel": "3032",
+   "gammelt_navn": "Gjerdrum",
+   "ny": "3230",
+   "nytt_navn": "Gjerdrum",
+   "dato": "2024-01-01"
+  },
+  {
+   "gammel": "3033",
+   "gammelt_navn": "Ullensaker",
+   "ny": "3209",
+   "nytt_navn": "Ullensaker",
+   "dato": "2024-01-01"
+  },
+  {
+   "gammel": "3034",
+   "gammelt_navn": "Nes",
+   "ny": "3228",
+   "nytt_navn": "Nes",
+   "dato": "2024-01-01"
+  },
+  {
+   "gammel": "3035",
+   "gammelt_navn": "Eidsvoll",
+   "ny": "3240",
+   "nytt_navn": "Eidsvoll",
+   "dato": "2024-01-01"
+  },
+  {
+   "gammel": "3036",
+   "gammelt_navn": "Nannestad",
+   "ny": "3238",
+   "nytt_navn": "Nannestad",
+   "dato": "2024-01-01"
+  },
+  {
+   "gammel": "3037",
+   "gammelt_navn": "Hurdal",
+   "ny": "3242",
+   "nytt_navn": "Hurdal",
+   "dato": "2024-01-01"
+  },
+  {
+   "gammel": "3038",
+   "gammelt_navn": "Hole",
+   "ny": "3310",
+   "nytt_navn": "Hole",
+   "dato": "2024-01-01"
+  },
+  {
+   "gammel": "3039",
+   "gammelt_navn": "Flå",
+   "ny": "3320",
+   "nytt_navn": "Flå",
+   "dato": "2024-01-01"
+  },
+  {
+   "gammel": "3040",
+   "gammelt_navn": "Nesbyen",
+   "ny": "3322",
+   "nytt_navn": "Nesbyen",
+   "dato": "2024-01-01"
+  },
+  {
+   "gammel": "3041",
+   "gammelt_navn": "Gol",
+   "ny": "3324",
+   "nytt_navn": "Gol",
+   "dato": "2024-01-01"
+  },
+  {
+   "gammel": "3042",
+   "gammelt_navn": "Hemsedal",
+   "ny": "3326",
+   "nytt_navn": "Hemsedal",
+   "dato": "2024-01-01"
+  },
+  {
+   "gammel": "3043",
+   "gammelt_navn": "Ål",
+   "ny": "3328",
+   "nytt_navn": "Ål",
+   "dato": "2024-01-01"
+  },
+  {
+   "gammel": "3044",
+   "gammelt_navn": "Hol",
+   "ny": "3330",
+   "nytt_navn": "Hol",
+   "dato": "2024-01-01"
+  },
+  {
+   "gammel": "3045",
+   "gammelt_navn": "Sigdal",
+   "ny": "3332",
+   "nytt_navn": "Sigdal",
+   "dato": "2024-01-01"
+  },
+  {
+   "gammel": "3046",
+   "gammelt_navn": "Krødsherad",
+   "ny": "3318",
+   "nytt_navn": "Krødsherad",
+   "dato": "2024-01-01"
+  },
+  {
+   "gammel": "3047",
+   "gammelt_navn": "Modum",
+   "ny": "3316",
+   "nytt_navn": "Modum",
+   "dato": "2024-01-01"
+  },
+  {
+   "gammel": "3048",
+   "gammelt_navn": "Øvre Eiker",
+   "ny": "3314",
+   "nytt_navn": "Øvre Eiker",
+   "dato": "2024-01-01"
+  },
+  {
+   "gammel": "3049",
+   "gammelt_navn": "Lier",
+   "ny": "3312",
+   "nytt_navn": "Lier",
+   "dato": "2024-01-01"
+  },
+  {
+   "gammel": "3050",
+   "gammelt_navn": "Flesberg",
+   "ny": "3334",
+   "nytt_navn": "Flesberg",
+   "dato": "2024-01-01"
+  },
+  {
+   "gammel": "3051",
+   "gammelt_navn": "Rollag",
+   "ny": "3336",
+   "nytt_navn": "Rollag",
+   "dato": "2024-01-01"
+  },
+  {
+   "gammel": "3052",
+   "gammelt_navn": "Nore og Uvdal",
+   "ny": "3338",
+   "nytt_navn": "Nore og Uvdal",
+   "dato": "2024-01-01"
+  },
+  {
+   "gammel": "3053",
+   "gammelt_navn": "Jevnaker",
+   "ny": "3236",
+   "nytt_navn": "Jevnaker",
+   "dato": "2024-01-01"
+  },
+  {
+   "gammel": "3054",
+   "gammelt_navn": "Lunner",
+   "ny": "3234",
+   "nytt_navn": "Lunner",
+   "dato": "2024-01-01"
+  },
+  {
+   "gammel": "3801",
+   "gammelt_navn": "Horten",
+   "ny": "3901",
+   "nytt_navn": "Horten",
+   "dato": "2024-01-01"
+  },
+  {
+   "gammel": "3802",
+   "gammelt_navn": "Holmestrand",
+   "ny": "3903",
+   "nytt_navn": "Holmestrand",
+   "dato": "2024-01-01"
+  },
+  {
+   "gammel": "3803",
+   "gammelt_navn": "Tønsberg",
+   "ny": "3905",
+   "nytt_navn": "Tønsberg",
+   "dato": "2024-01-01"
+  },
+  {
+   "gammel": "3804",
+   "gammelt_navn": "Sandefjord",
+   "ny": "3907",
+   "nytt_navn": "Sandefjord",
+   "dato": "2024-01-01"
+  },
+  {
+   "gammel": "3805",
+   "gammelt_navn": "Larvik",
+   "ny": "3909",
+   "nytt_navn": "Larvik",
+   "dato": "2024-01-01"
+  },
+  {
+   "gammel": "3806",
+   "gammelt_navn": "Porsgrunn",
+   "ny": "4001",
+   "nytt_navn": "Porsgrunn",
+   "dato": "2024-01-01"
+  },
+  {
+   "gammel": "3807",
+   "gammelt_navn": "Skien",
+   "ny": "4003",
+   "nytt_navn": "Skien",
+   "dato": "2024-01-01"
+  },
+  {
+   "gammel": "3808",
+   "gammelt_navn": "Notodden",
+   "ny": "4005",
+   "nytt_navn": "Notodden",
+   "dato": "2024-01-01"
+  },
+  {
+   "gammel": "3811",
+   "gammelt_navn": "Færder",
+   "ny": "3911",
+   "nytt_navn": "Færder",
+   "dato": "2024-01-01"
+  },
+  {
+   "gammel": "3812",
+   "gammelt_navn": "Siljan",
+   "ny": "4010",
+   "nytt_navn": "Siljan",
+   "dato": "2024-01-01"
+  },
+  {
+   "gammel": "3813",
+   "gammelt_navn": "Bamble",
+   "ny": "4012",
+   "nytt_navn": "Bamble",
+   "dato": "2024-01-01"
+  },
+  {
+   "gammel": "3814",
+   "gammelt_navn": "Kragerø",
+   "ny": "4014",
+   "nytt_navn": "Kragerø",
+   "dato": "2024-01-01"
+  },
+  {
+   "gammel": "3815",
+   "gammelt_navn": "Drangedal",
+   "ny": "4016",
+   "nytt_navn": "Drangedal",
+   "dato": "2024-01-01"
+  },
+  {
+   "gammel": "3816",
+   "gammelt_navn": "Nome",
+   "ny": "4018",
+   "nytt_navn": "Nome",
+   "dato": "2024-01-01"
+  },
+  {
+   "gammel": "3817",
+   "gammelt_navn": "Midt-Telemark",
+   "ny": "4020",
+   "nytt_navn": "Midt-Telemark",
+   "dato": "2024-01-01"
+  },
+  {
+   "gammel": "3818",
+   "gammelt_navn": "Tinn",
+   "ny": "4026",
+   "nytt_navn": "Tinn",
+   "dato": "2024-01-01"
+  },
+  {
+   "gammel": "3819",
+   "gammelt_navn": "Hjartdal",
+   "ny": "4024",
+   "nytt_navn": "Hjartdal",
+   "dato": "2024-01-01"
+  },
+  {
+   "gammel": "3820",
+   "gammelt_navn": "Seljord",
+   "ny": "4022",
+   "nytt_navn": "Seljord",
+   "dato": "2024-01-01"
+  },
+  {
+   "gammel": "3821",
+   "gammelt_navn": "Kviteseid",
+   "ny": "4028",
+   "nytt_navn": "Kviteseid",
+   "dato": "2024-01-01"
+  },
+  {
+   "gammel": "3822",
+   "gammelt_navn": "Nissedal",
+   "ny": "4030",
+   "nytt_navn": "Nissedal",
+   "dato": "2024-01-01"
+  },
+  {
+   "gammel": "3823",
+   "gammelt_navn": "Fyresdal",
+   "ny": "4032",
+   "nytt_navn": "Fyresdal",
+   "dato": "2024-01-01"
+  },
+  {
+   "gammel": "3824",
+   "gammelt_navn": "Tokke",
+   "ny": "4034",
+   "nytt_navn": "Tokke",
+   "dato": "2024-01-01"
+  },
+  {
+   "gammel": "3825",
+   "gammelt_navn": "Vinje",
+   "ny": "4036",
+   "nytt_navn": "Vinje",
+   "dato": "2024-01-01"
+  },
+  {
+   "gammel": "5037",
+   "gammelt_navn": "Levanger",
+   "ny": "5037",
+   "nytt_navn": "Levanger - Levangke",
+   "dato": "2024-01-01"
+  },
+  {
+   "gammel": "5401",
+   "gammelt_navn": "Tromsø",
+   "ny": "5501",
+   "nytt_navn": "Tromsø",
+   "dato": "2024-01-01"
+  },
+  {
+   "gammel": "5402",
+   "gammelt_navn": "Harstad - Hárstták",
+   "ny": "5503",
+   "nytt_navn": "Harstad - Hárstták",
+   "dato": "2024-01-01"
+  },
+  {
+   "gammel": "5403",
+   "gammelt_navn": "Alta",
+   "ny": "5601",
+   "nytt_navn": "Alta",
+   "dato": "2024-01-01"
+  },
+  {
+   "gammel": "5404",
+   "gammelt_navn": "Vardø",
+   "ny": "5634",
+   "nytt_navn": "Vardø",
+   "dato": "2024-01-01"
+  },
+  {
+   "gammel": "5405",
+   "gammelt_navn": "Vadsø",
+   "ny": "5607",
+   "nytt_navn": "Vadsø",
+   "dato": "2024-01-01"
+  },
+  {
+   "gammel": "5406",
+   "gammelt_navn": "Hammerfest - Hámmerfeasta",
+   "ny": "5603",
+   "nytt_navn": "Hammerfest - Hámmerfeasta",
+   "dato": "2024-01-01"
+  },
+  {
+   "gammel": "5411",
+   "gammelt_navn": "Kvæfjord",
+   "ny": "5510",
+   "nytt_navn": "Kvæfjord",
+   "dato": "2024-01-01"
+  },
+  {
+   "gammel": "5412",
+   "gammelt_navn": "Dielddanuorri - Tjeldsund",
+   "ny": "5512",
+   "nytt_navn": "Dielddanuorri - Tjeldsund",
+   "dato": "2024-01-01"
+  },
+  {
+   "gammel": "5413",
+   "gammelt_navn": "Ibestad",
+   "ny": "5514",
+   "nytt_navn": "Ibestad",
+   "dato": "2024-01-01"
+  },
+  {
+   "gammel": "5414",
+   "gammelt_navn": "Gratangen",
+   "ny": "5516",
+   "nytt_navn": "Gratangen - Rivtták",
+   "dato": "2024-01-01"
+  },
+  {
+   "gammel": "5415",
+   "gammelt_navn": "Loabák - Lavangen",
+   "ny": "5518",
+   "nytt_navn": "Loabák - Lavangen",
+   "dato": "2024-01-01"
+  },
+  {
+   "gammel": "5416",
+   "gammelt_navn": "Bardu",
+   "ny": "5520",
+   "nytt_navn": "Bardu",
+   "dato": "2024-01-01"
+  },
+  {
+   "gammel": "5417",
+   "gammelt_navn": "Salangen",
+   "ny": "5522",
+   "nytt_navn": "Salangen",
+   "dato": "2024-01-01"
+  },
+  {
+   "gammel": "5418",
+   "gammelt_navn": "Målselv",
+   "ny": "5524",
+   "nytt_navn": "Målselv",
+   "dato": "2024-01-01"
+  },
+  {
+   "gammel": "5419",
+   "gammelt_navn": "Sørreisa",
+   "ny": "5526",
+   "nytt_navn": "Sørreisa",
+   "dato": "2024-01-01"
+  },
+  {
+   "gammel": "5420",
+   "gammelt_navn": "Dyrøy",
+   "ny": "5528",
+   "nytt_navn": "Dyrøy",
+   "dato": "2024-01-01"
+  },
+  {
+   "gammel": "5421",
+   "gammelt_navn": "Senja",
+   "ny": "5530",
+   "nytt_navn": "Senja",
+   "dato": "2024-01-01"
+  },
+  {
+   "gammel": "5422",
+   "gammelt_navn": "Balsfjord",
+   "ny": "5532",
+   "nytt_navn": "Balsfjord",
+   "dato": "2024-01-01"
+  },
+  {
+   "gammel": "5423",
+   "gammelt_navn": "Karlsøy",
+   "ny": "5534",
+   "nytt_navn": "Karlsøy",
+   "dato": "2024-01-01"
+  },
+  {
+   "gammel": "5424",
+   "gammelt_navn": "Lyngen",
+   "ny": "5536",
+   "nytt_navn": "Lyngen",
+   "dato": "2024-01-01"
+  },
+  {
+   "gammel": "5425",
+   "gammelt_navn": "Storfjord - Omasvuotna - Omasvuono",
+   "ny": "5538",
+   "nytt_navn": "Storfjord - Omasvuotna - Omasvuono",
+   "dato": "2024-01-01"
+  },
+  {
+   "gammel": "5426",
+   "gammelt_navn": "Gáivuotna - Kåfjord - Kaivuono",
+   "ny": "5540",
+   "nytt_navn": "Gáivuotna - Kåfjord - Kaivuono",
+   "dato": "2024-01-01"
+  },
+  {
+   "gammel": "5427",
+   "gammelt_navn": "Skjervøy",
+   "ny": "5542",
+   "nytt_navn": "Skjervøy",
+   "dato": "2024-01-01"
+  },
+  {
+   "gammel": "5428",
+   "gammelt_navn": "Nordreisa - Ráisa - Raisi",
+   "ny": "5544",
+   "nytt_navn": "Nordreisa - Ráisa - Raisi",
+   "dato": "2024-01-01"
+  },
+  {
+   "gammel": "5429",
+   "gammelt_navn": "Kvænangen",
+   "ny": "5546",
+   "nytt_navn": "Kvænangen",
+   "dato": "2024-01-01"
+  },
+  {
+   "gammel": "5430",
+   "gammelt_navn": "Guovdageaidnu - Kautokeino",
+   "ny": "5612",
+   "nytt_navn": "Guovdageaidnu - Kautokeino",
+   "dato": "2024-01-01"
+  },
+  {
+   "gammel": "5432",
+   "gammelt_navn": "Loppa",
+   "ny": "5614",
+   "nytt_navn": "Loppa",
+   "dato": "2024-01-01"
+  },
+  {
+   "gammel": "5433",
+   "gammelt_navn": "Hasvik",
+   "ny": "5616",
+   "nytt_navn": "Hasvik",
+   "dato": "2024-01-01"
+  },
+  {
+   "gammel": "5434",
+   "gammelt_navn": "Måsøy",
+   "ny": "5618",
+   "nytt_navn": "Måsøy",
+   "dato": "2024-01-01"
+  },
+  {
+   "gammel": "5435",
+   "gammelt_navn": "Nordkapp",
+   "ny": "5620",
+   "nytt_navn": "Nordkapp",
+   "dato": "2024-01-01"
+  },
+  {
+   "gammel": "5436",
+   "gammelt_navn": "Porsanger - Porsángu - Porsanki",
+   "ny": "5622",
+   "nytt_navn": "Porsanger - Porsángu - Porsanki",
+   "dato": "2024-01-01"
+  },
+  {
+   "gammel": "5437",
+   "gammelt_navn": "Kárášjohka - Karasjok",
+   "ny": "5610",
+   "nytt_navn": "Kárášjohka - Karasjok",
+   "dato": "2024-01-01"
+  },
+  {
+   "gammel": "5438",
+   "gammelt_navn": "Lebesby",
+   "ny": "5624",
+   "nytt_navn": "Lebesby",
+   "dato": "2024-01-01"
+  },
+  {
+   "gammel": "5439",
+   "gammelt_navn": "Gamvik",
+   "ny": "5626",
+   "nytt_navn": "Gamvik",
+   "dato": "2024-01-01"
+  },
+  {
+   "gammel": "5440",
+   "gammelt_navn": "Berlevåg",
+   "ny": "5630",
+   "nytt_navn": "Berlevåg",
+   "dato": "2024-01-01"
+  },
+  {
+   "gammel": "5441",
+   "gammelt_navn": "Deatnu - Tana",
+   "ny": "5628",
+   "nytt_navn": "Deatnu - Tana",
+   "dato": "2024-01-01"
+  },
+  {
+   "gammel": "5442",
+   "gammelt_navn": "Unjárga - Nesseby",
+   "ny": "5636",
+   "nytt_navn": "Unjárga - Nesseby",
+   "dato": "2024-01-01"
+  },
+  {
+   "gammel": "5443",
+   "gammelt_navn": "Båtsfjord",
+   "ny": "5632",
+   "nytt_navn": "Båtsfjord",
+   "dato": "2024-01-01"
+  },
+  {
+   "gammel": "5444",
+   "gammelt_navn": "Sør-Varanger",
+   "ny": "5605",
+   "nytt_navn": "Sør-Varanger",
+   "dato": "2024-01-01"
+  },
+  {
+   "gammel": "0301",
+   "gammelt_navn": "Oslo",
+   "ny": "0301",
+   "nytt_navn": "Oslo - Oslove",
+   "dato": "2026-01-01"
+  },
+  {
+   "gammel": "3118",
+   "gammelt_navn": "Indre Østfold",
+   "ny": "3118",
+   "nytt_navn": "Indre Østfold",
+   "dato": "2026-01-01"
+  },
+  {
+   "gammel": "3118",
+   "gammelt_navn": "Indre Østfold",
+   "ny": "3207",
+   "nytt_navn": "Nordre Follo",
+   "dato": "2026-01-01"
+  },
+  {
+   "gammel": "3118",
+   "gammelt_navn": "Indre Østfold",
+   "ny": "3216",
+   "nytt_navn": "Vestby",
+   "dato": "2026-01-01"
+  },
+  {
+   "gammel": "5006",
+   "gammelt_navn": "Steinkjer",
+   "ny": "5006",
+   "nytt_navn": "Steinkjer - Stïentje",
+   "dato": "2026-01-01"
+  },
+  {
+   "gammel": "5536",
+   "gammelt_navn": "Lyngen",
+   "ny": "5536",
+   "nytt_navn": "Lyngen - Ivgu - Yykeä",
+   "dato": "2026-01-01"
+  }
+ ]
+}

@@ -33,7 +33,6 @@ testen er. Kjør snutten på nytt og oppdater linjen når du har gjort det.
 
 ## Ønskeliste (bidra gjerne)
 
-- Kommunenummer fra alle regionreformene omkodet til gjeldende inndeling (hele landet)
 - Fylke med navn (2024-inndeling)
 - Familietype og husholdningstype
 - Pendling (bosted mot arbeidssted)
