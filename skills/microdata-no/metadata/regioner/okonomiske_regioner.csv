@@ -1,0 +1,358 @@
+kommunenr;regionkode;regionnavn
+0301;03001;Oslo
+1101;11001;Dalane
+1103;11002;Stavanger/Sandnes
+1106;11005;Haugaland
+1108;11002;Stavanger/Sandnes
+1111;11001;Dalane
+1112;11001;Dalane
+1114;11001;Dalane
+1119;11003;Jæren
+1120;11003;Jæren
+1121;11003;Jæren
+1122;11003;Jæren
+1124;11003;Jæren
+1127;11003;Jæren
+1130;11003;Jæren
+1133;11004;Indre Ryfylke
+1134;11004;Indre Ryfylke
+1135;11004;Indre Ryfylke
+1144;11003;Jæren
+1145;11005;Haugaland
+1146;11005;Haugaland
+1149;11005;Haugaland
+1151;11005;Haugaland
+1160;11005;Haugaland
+1505;15006;Kristiansund
+1506;15005;Molde
+1508;15003;Ålesund
+1511;15002;Søre Sunnmøre
+1514;15002;Søre Sunnmøre
+1515;15002;Søre Sunnmøre
+1516;15002;Søre Sunnmøre
+1517;15002;Søre Sunnmøre
+1520;15001;Ørsta/Volda
+1525;15004;Ålesund omland
+1528;15004;Ålesund omland
+1531;15004;Ålesund omland
+1532;15004;Ålesund omland
+1535;15005;Molde
+1539;15005;Molde
+1547;15005;Molde
+1554;15006;Kristiansund
+1557;15005;Molde
+1560;15006;Kristiansund
+1563;15007;Sunndal/Surnadal
+1566;15007;Sunndal/Surnadal
+1573;15006;Kristiansund
+1576;15006;Kristiansund
+1577;15001;Ørsta/Volda
+1578;15004;Ålesund omland
+1579;15005;Molde
+1580;15004;Ålesund omland
+1804;18005;Bodø
+1806;18007;Ofoten
+1811;18001;Brønnøysund
+1812;18001;Brønnøysund
+1813;18001;Brønnøysund
+1815;18001;Brønnøysund
+1816;18001;Brønnøysund
+1818;18003;Sandnessjøen
+1820;18003;Sandnessjøen
+1822;18003;Sandnessjøen
+1824;18002;Mosjøen
+1825;18002;Mosjøen
+1826;18002;Mosjøen
+1827;18003;Sandnessjøen
+1828;18004;Mo i Rana
+1832;18004;Mo i Rana
+1833;18004;Mo i Rana
+1834;18003;Sandnessjøen
+1835;18003;Sandnessjøen
+1836;18003;Sandnessjøen
+1837;18006;Salten
+1838;18006;Salten
+1839;18006;Salten
+1840;18006;Salten
+1841;18006;Salten
+1845;18006;Salten
+1848;18006;Salten
+1851;18009;Vesterålen
+1853;18007;Ofoten
+1856;18008;Lofoten
+1857;18008;Lofoten
+1859;18008;Lofoten
+1860;18008;Lofoten
+1865;18008;Lofoten
+1866;18009;Vesterålen
+1867;18009;Vesterålen
+1868;18009;Vesterålen
+1870;18009;Vesterålen
+1871;18009;Vesterålen
+1874;18008;Lofoten
+1875;18006;Salten
+3101;31001;Halden
+3103;31003;Moss
+3105;31002;Fredrikstad/Sarpsborg
+3107;31002;Fredrikstad/Sarpsborg
+3110;31002;Fredrikstad/Sarpsborg
+3112;31002;Fredrikstad/Sarpsborg
+3114;31003;Moss
+3116;31004;Indre Østfold
+3118;31004;Indre Østfold
+3120;31004;Indre Østfold
+3122;31004;Indre Østfold
+3124;31001;Halden
+3201;32004;Asker/Bærum
+3203;32004;Asker/Bærum
+3205;32002;Lillestrøm
+3207;32001;Follo
+3209;32003;Ullensaker/Eidsvoll
+3212;32001;Follo
+3214;32001;Follo
+3216;32001;Follo
+3218;32001;Follo
+3220;32001;Follo
+3222;32002;Lillestrøm
+3224;32002;Lillestrøm
+3226;32002;Lillestrøm
+3228;32002;Lillestrøm
+3230;32002;Lillestrøm
+3232;32002;Lillestrøm
+3234;32002;Lillestrøm
+3236;32002;Lillestrøm
+3238;32003;Ullensaker/Eidsvoll
+3240;32003;Ullensaker/Eidsvoll
+3242;32003;Ullensaker/Eidsvoll
+3301;33002;Drammen
+3303;33003;Kongsberg
+3305;33001;Hønefoss
+3310;33001;Hønefoss
+3312;33002;Drammen
+3314;33002;Drammen
+3316;33002;Drammen
+3318;33001;Hønefoss
+3320;33004;Hallingdal
+3322;33004;Hallingdal
+3324;33004;Hallingdal
+3326;33004;Hallingdal
+3328;33004;Hallingdal
+3330;33004;Hallingdal
+3332;33002;Drammen
+3334;33003;Kongsberg
+3336;33003;Kongsberg
+3338;33003;Kongsberg
+3401;34001;Kongsvinger
+3403;34002;Hamar
+3405;34007;Lillehammer
+3407;34008;Gjøvik
+3411;34002;Hamar
+3412;34002;Hamar
+3413;34002;Hamar
+3414;34001;Kongsvinger
+3415;34001;Kongsvinger
+3416;34001;Kongsvinger
+3417;34001;Kongsvinger
+3418;34003;Elverum
+3419;34003;Elverum
+3420;34003;Elverum
+3421;34003;Elverum
+3422;34003;Elverum
+3423;34004;Tynset
+3424;34004;Tynset
+3425;34003;Elverum
+3426;34004;Tynset
+3427;34004;Tynset
+3428;34004;Tynset
+3429;34004;Tynset
+3430;34004;Tynset
+3431;34005;Nord-Gudbrandsdal
+3432;34005;Nord-Gudbrandsdal
+3433;34005;Nord-Gudbrandsdal
+3434;34005;Nord-Gudbrandsdal
+3435;34005;Nord-Gudbrandsdal
+3436;34006;Midt-Gudbrandsdal
+3437;34005;Nord-Gudbrandsdal
+3438;34006;Midt-Gudbrandsdal
+3439;34006;Midt-Gudbrandsdal
+3440;34007;Lillehammer
+3441;34007;Lillehammer
+3442;34008;Gjøvik
+3443;34008;Gjøvik
+3446;34008;Gjøvik
+3447;34008;Gjøvik
+3448;34008;Gjøvik
+3449;34009;Valdres
+3450;34009;Valdres
+3451;34009;Valdres
+3452;34009;Valdres
+3453;34009;Valdres
+3454;34009;Valdres
+3901;39002;Tønsberg/Horten
+3903;39001;Holmestrand
+3905;39002;Tønsberg/Horten
+3907;39003;Sandefjord/Larvik
+3909;39003;Sandefjord/Larvik
+3911;39002;Tønsberg/Horten
+4001;40001;Porsgrunn/Skien
+4003;40001;Porsgrunn/Skien
+4005;40004;Øst-Telemark
+4010;40002;Grenland
+4012;40002;Grenland
+4014;40002;Grenland
+4016;40002;Grenland
+4018;40003;Midt-Telemark
+4020;40003;Midt-Telemark
+4022;40005;Vest-Telemark
+4024;40004;Øst-Telemark
+4026;40004;Øst-Telemark
+4028;40005;Vest-Telemark
+4030;40005;Vest-Telemark
+4032;40005;Vest-Telemark
+4034;40005;Vest-Telemark
+4036;40005;Vest-Telemark
+4201;42001;Østregionen
+4202;42002;Arendal
+4203;42002;Arendal
+4204;42003;Kristiansand
+4205;42005;Mandal
+4206;42006;Lyngdal/Farsund
+4207;42007;Flekkefjord
+4211;42001;Østregionen
+4212;42001;Østregionen
+4213;42001;Østregionen
+4214;42002;Arendal
+4215;42004;Kristiansand omland
+4216;42004;Kristiansand omland
+4217;42001;Østregionen
+4218;42004;Kristiansand omland
+4219;42008;Setesdal og Sirdal
+4220;42008;Setesdal og Sirdal
+4221;42008;Setesdal og Sirdal
+4222;42008;Setesdal og Sirdal
+4223;42004;Kristiansand omland
+4224;42008;Setesdal og Sirdal
+4225;42006;Lyngdal/Farsund
+4226;42006;Lyngdal/Farsund
+4227;42007;Flekkefjord
+4228;42008;Setesdal og Sirdal
+4601;46005;Bergen
+4602;46010;Nordfjord og Kinn
+4611;46002;Sunnhordland Aust
+4612;46001;Stord
+4613;46001;Stord
+4614;46001;Stord
+4615;46001;Stord
+4616;46002;Sunnhordland Aust
+4617;46002;Sunnhordland Aust
+4618;46003;Indre Hardanger
+4619;46003;Indre Hardanger
+4620;46004;Voss
+4621;46004;Voss
+4622;46004;Voss
+4623;46006;Midthordland
+4624;46006;Midthordland
+4625;46006;Midthordland
+4626;46006;Midthordland
+4627;46006;Midthordland
+4628;46004;Voss
+4629;46007;Nordhordland
+4630;46006;Midthordland
+4631;46007;Nordhordland
+4632;46007;Nordhordland
+4633;46007;Nordhordland
+4634;46007;Nordhordland
+4635;46007;Nordhordland
+4636;46009;Sunnfjord og Ytre Sogn
+4637;46009;Sunnfjord og Ytre Sogn
+4638;46009;Sunnfjord og Ytre Sogn
+4639;46008;Indre Sogn
+4640;46008;Indre Sogn
+4641;46008;Indre Sogn
+4642;46008;Indre Sogn
+4643;46008;Indre Sogn
+4644;46008;Indre Sogn
+4645;46009;Sunnfjord og Ytre Sogn
+4646;46009;Sunnfjord og Ytre Sogn
+4647;46009;Sunnfjord og Ytre Sogn
+4648;46010;Nordfjord og Kinn
+4649;46010;Nordfjord og Kinn
+4650;46010;Nordfjord og Kinn
+4651;46010;Nordfjord og Kinn
+5001;50003;Trondheim
+5006;50007;Steinkjer
+5007;50009;Namdal
+5014;50002;Orkland og øyregionen
+5020;50008;Fosen
+5021;50001;Trøndelag sør
+5022;50001;Trøndelag sør
+5025;50001;Trøndelag sør
+5026;50001;Trøndelag sør
+5027;50001;Trøndelag sør
+5028;50004;Trondheim forstad
+5029;50004;Trondheim forstad
+5031;50004;Trondheim forstad
+5032;50005;Værnes
+5033;50005;Værnes
+5034;50005;Værnes
+5035;50005;Værnes
+5036;50006;Levanger/Verdalsøra
+5037;50006;Levanger/Verdalsøra
+5038;50006;Levanger/Verdalsøra
+5041;50007;Steinkjer
+5042;50009;Namdal
+5043;50009;Namdal
+5044;50009;Namdal
+5045;50009;Namdal
+5046;50009;Namdal
+5047;50009;Namdal
+5049;50009;Namdal
+5052;50009;Namdal
+5053;50007;Steinkjer
+5054;50008;Fosen
+5055;50002;Orkland og øyregionen
+5056;50002;Orkland og øyregionen
+5057;50008;Fosen
+5058;50008;Fosen
+5059;50002;Orkland og øyregionen
+5060;50009;Namdal
+5061;50002;Orkland og øyregionen
+5501;55003;Tromsø
+5503;55001;Sør-Troms
+5510;55001;Sør-Troms
+5512;55001;Sør-Troms
+5514;55001;Sør-Troms
+5516;55001;Sør-Troms
+5518;55001;Sør-Troms
+5520;55002;Midt-Troms
+5522;55001;Sør-Troms
+5524;55002;Midt-Troms
+5526;55002;Midt-Troms
+5528;55002;Midt-Troms
+5530;55002;Midt-Troms
+5532;55004;Nord-Troms
+5534;55004;Nord-Troms
+5536;55004;Nord-Troms
+5538;55004;Nord-Troms
+5540;55004;Nord-Troms
+5542;55004;Nord-Troms
+5544;55004;Nord-Troms
+5546;55004;Nord-Troms
+5601;56001;Vest-Finnmark
+5603;56002;Midt-Finnmark
+5605;56003;Øst-Finnmark
+5607;56003;Øst-Finnmark
+5610;56002;Midt-Finnmark
+5612;56001;Vest-Finnmark
+5614;56001;Vest-Finnmark
+5616;56001;Vest-Finnmark
+5618;56002;Midt-Finnmark
+5620;56002;Midt-Finnmark
+5622;56002;Midt-Finnmark
+5624;56002;Midt-Finnmark
+5626;56002;Midt-Finnmark
+5628;56003;Øst-Finnmark
+5630;56003;Øst-Finnmark
+5632;56003;Øst-Finnmark
+5634;56003;Øst-Finnmark
+5636;56003;Øst-Finnmark

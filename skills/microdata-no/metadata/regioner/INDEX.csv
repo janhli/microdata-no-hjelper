@@ -1,0 +1,12 @@
+inndeling;beskrivelse;kilde;tabell;oversatt_fra_eldre_kommuneinndeling;antall_regioner;antall_kommuner
+politidistrikt;Politidistrikt;Klass 109;Politidistrikt 2016 - Kommuneinndeling 2024;nei;12;357
+valgdistrikt;Valgdistrikt (stortingsvalg);Klass 543;Valgdistrikt 2021 - Kommuneinndeling 2024;nei;19;357
+okonomiske_regioner;Økonomiske regioner;Klass 108;Økonomiske regioner 2024 - Kommuneinndeling 2024;nei;85;357
+helseregioner;Helseregioner;Klass 105;Helseregioner 2007 - Kommuneinndeling 2020;ja;4;357
+familievernregioner;Familievernregioner;Klass 557;Familievernregioner 2020 - Kommuneinndeling 2024;nei;5;357
+barnevernsregioner;Barnevernsregioner;Klass 563;Barnevernsregionar 2004 - Kommuneinndeling 2024;nei;6;357
+reiselivsregioner;Reiselivsregioner;Klass 527;Reiselivsregioner 2024 - Kommuneinndeling 2024;nei;65;357
+samiske_valgkretser;Samiske valgkretser;Klass 581;Samiske valgkretser 2009 - Kommuneinndeling 2024;nei;7;357
+sentralitet;Sentralitet (SSBs indeks, ikke sammenhengende regioner);Klass 128;Sentralitet 2020 - Kommuneinndeling 2024;nei;6;357
+landsdeler;Landsdeler (via fylke);Klass 106;Landsdelsinndeling 2026 - Fylkesinndeling 2026;nei;6;357
+bo_og_arbeidsmarkedsregioner;Bo- og arbeidsmarkedsregioner (TØI 2019, omkodet til 2024);Manuelt (TØI);bo_og_arbeidsmarkedsregioner_2024.csv;nei;159;357

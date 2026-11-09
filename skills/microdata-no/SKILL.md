@@ -20,6 +20,7 @@ Alle stier er relative til denne skill-mappen. Søk med Grep, og ikke les hele f
 | `metadata/variabler/<NAVN>.json` | Full metadata: kodelistehistorikk, måletidspunkter (`temporalStatusDates`, dager siden 1970-01-01) og beskrivelser per periode |
 | `metadata/datalager.json` | Versjonshistorikk for `no.ssb.fdb`, med hvilke variabler som er endret i hver versjon |
 | `metadata/kommuneendringer.json` | Kommuneendringer fra SSB Klass 131 siden 1989 (gammel kode, ny kode, dato, navn). Brukes av `verktoy/kommuneomkoding.py` |
+| `metadata/regioner/*.csv` | Koblingstabeller fra kommune (2024) til regioninndelinger: politidistrikt, valgdistrikt, økonomiske regioner, helseregioner, familievern, barnevern, reiseliv, samiske valgkretser, sentralitet, landsdeler og bo- og arbeidsmarkedsregioner. Kolonner `kommunenr;regionkode;regionnavn`. Oversikt i `INDEX.csv`, manuelt lastede filer i `manuelt/` |
 | `metadata/manual/**/*.md` | Hele manualen som Markdown. Kommandoreferansen ligger i `kommandoer_og_funksjoner/kommandoer.md` og funksjonene i `.../funksjoner.md`. |
 | `referanser/fallgruver.md` | Feil som ikke står (tydelig) i manualen, med feilmelding og løsning. **Les den før du leverer et skript.** |
 | `kodesnutter/` | Frittstående og kommenterte snutter med teststatus: analysemal, alder, innvandringskategori, landbakgrunn, utdanning, arbeidsstyrkestatus, samliv, lavinntekt, verdi ved hendelse, mor–barn og forløp. Oversikt i `kodesnutter/README.md`. **Ta utgangspunkt i disse før du skriver noe selv.** |
@@ -34,6 +35,11 @@ Skal data fra flere år sammenlignes på kommune, må gamle kommunenumre omkodes
 Ikke skriv reglene for hånd. Kjør `python verktoy/kommuneomkoding.py --fra <år> --til <år> --navn <variabel>`
 og lim `recode`-linjene inn i skriptet. Verktøyet lister kommuner som er delt i flere (f.eks. Tysfjord)
 og lar dem stå uendret. Si fra til brukeren om disse. Se også «Geografi» i `referanser/fallgruver.md`.
+
+For å gruppere kommuner i regioner (helseregion, politidistrikt, økonomisk region osv.): kjør
+`python verktoy/regionomkoding.py <inndeling> --fra <kommunevariabel> --til <ny variabel>`
+(`--liste` viser inndelingene). Tabellene gjelder kommunenummer i 2024-inndelingen, så omkod gamle
+kommunenumre først. Oppdater tabellene med `python verktoy/hent_regioninndelinger.py`.
 
 ## Arbeidsflyt
 

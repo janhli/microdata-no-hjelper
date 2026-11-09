@@ -90,6 +90,15 @@ med pull request (se CONTRIBUTING.md). Tagg dem med datalagerversjon/dato hvis d
   - Klass dekker ikke Svalbard-kodene 2111, 2112, 2115, 2121 og 2131 (i kodelisten til
     `BEFOLKNING_KOMMNR_FORMELL`). Legg dem til for hånd hvis de skal slås sammen til 2100.
   - Klass har endringer til 2026 (bl.a. Indre Østfold). Standard er `--til 2024`.
+- Regiontabellene i `metadata/regioner/` gjelder kommunenummer i 2024-inndelingen. Gamle kommunenumre
+  gir «Ukjent region» (`xxxx`) hvis de ikke omkodes først.
+  - Regionene er dagens inndeling. Politidistrikt (2016), helseregioner (2007), barnevern (2004) og
+    samiske valgkretser (2009) har eldre versjoner enn 2024, og tabellene viser dagens kobling.
+  - Helseregionene har bare tabell mot Kommuneinndeling 2020 hos Klass. Kommunekodene er oversatt
+    til 2024 med Klass' kommuneendringer (merket i `INDEX.csv`).
+  - Sentralitet er en gruppering etter SSBs indeks, ikke sammenhengende regioner.
+  - Bo- og arbeidsmarkedsregioner (TØI) finnes ikke i Klass og er lastet inn manuelt.
+    Se `metadata/regioner/manuelt/README.md`.
 
 ## Alder
 
