@@ -26,6 +26,7 @@ testen er. Kjør snutten på nytt og oppdater linjen når du har gjort det.
 | [arbeidsstyrkestatus.txt](arbeidsstyrkestatus.txt) | Prioritert arbeidsstyrkestatus i åtte grupper | testet i større skript |
 | [samlivsstatus.txt](samlivsstatus.txt) | Gift / samboer / enslig / bor hos foreldre | testet i større skript |
 | [lavinntekt_eu60.txt](lavinntekt_eu60.txt) | Flagg for lavinntekt (EU-60) med egen medianberegning | testet i større skript |
+| [lavinntekt_vedvarende.txt](lavinntekt_vedvarende.txt) | Vedvarende lavinntekt (EU-60, treårsgjennomsnitt, KPI-justert), eksempel med barn per fylke | utkast |
 | [verdi_ved_hendelse.txt](verdi_ved_hendelse.txt) | Verdi av en variabel året før en hendelse (f.eks. fødsel) | testet i større skript |
 | [mor_barn.txt](mor_barn.txt) | Koble barn til mor, og telle barn per mor | testet i større skript |
 | [forlop_til_person.txt](forlop_til_person.txt) | Første start og siste stopp i et forløp, per person | testet i større skript |

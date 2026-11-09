@@ -1,0 +1,80 @@
+// =====================================================================
+// Vedvarende lavinntekt (EU-60, treårsperiode)
+// Status:    utkast (ikke kjørt) – skrevet for no.ssb.fdb:57, 2026-11
+// Variabler: INNTEKT_HUSH_IES_EU (akkumulert, til 2024-12-31)
+//            https://microdata.no/discovery/variable/no.ssb.fdb/58/INNTEKT_HUSH_IES_EU
+//            INNTEKT_KODE_PRIVATHUSH2
+//            https://microdata.no/discovery/variable/no.ssb.fdb/58/INNTEKT_KODE_PRIVATHUSH2
+//            BEFOLKNING_FOEDSELS_AAR_MND, BEFOLKNING_KOMMNR_FORMELL
+// Lager:     snitt3 – gjennomsnittlig inntekt per forbruksenhet 2022–2024 i 2024-kroner
+//            vlav   – 1 = vedvarende lavinntekt (snitt3 under 60 % av medianen)
+//            vlavgr – tekstvariabel med kategori for ukjent
+// Definisjon (SSB):
+//   Personer i husholdninger der gjennomsnittlig inntekt etter skatt per forbruksenhet (EU-skala)
+//   over en treårsperiode er under 60 % av medianen for treårsgjennomsnittene. Inntektene
+//   KPI-justeres til siste år. Bare personer som er med alle tre årene, inngår.
+// Fallgruver:
+//   - Medianen beregnes for hele landet (alle som er med i alle tre årene), ikke for din populasjon.
+//   - Kravet om privathusholdning i alle tre årene er litt strengere enn SSBs definisjon, så
+//     andelene kan avvike noe fra Statistikkbanken (tabell 08764) og Bufdirs barnetall.
+//   - KPI-faktorene er årsgjennomsnitt (2015 = 100). Kontroller dem mot Statistikkbanken
+//     (tabell 03014) og oppdater dem når perioden flyttes. Rangeringen påvirkes lite, men
+//     medianen og grensen gjør det.
+//   - Årlig lavinntekt (lavinntekt_eu60.txt) gir høyere andeler enn vedvarende lavinntekt.
+// =====================================================================
+
+require no.ssb.fdb:57 as fdb
+
+// --- 1. Treårsgjennomsnitt og landsmedian ---
+create-dataset vedvarende
+for aar in 2022 : 2024
+  let dato = $aar ++ "-12-31"
+  let ivar = ies ++ $aar
+  let pvar = ph ++ $aar
+  import fdb/INNTEKT_HUSH_IES_EU $dato as $ivar
+  import fdb/INNTEKT_KODE_PRIVATHUSH2 $dato as $pvar
+end
+
+// Med alle tre årene, i privathusholdning (studenthusholdninger og institusjoner er utenfor)
+keep if ph2022 == '1' & ph2023 == '1' & ph2024 == '1'
+drop if sysmiss(ies2022) | sysmiss(ies2023) | sysmiss(ies2024)
+
+// KPI, årsgjennomsnitt (2015 = 100): 2022 = 122.8, 2023 = 130.0, 2024 = 133.9
+generate snitt3 = (ies2022 * 133.9 / 122.8 + ies2023 * 133.9 / 130.0 + ies2024) / 3
+
+generate alle = 1
+aggregate (median) snitt3 -> median3, by(alle)
+generate vlav = 0
+replace vlav = 1 if snitt3 < 0.6 * median3
+
+// --- 2. Populasjon: barn 0–17 år bosatt ved utgangen av perioden ---
+create-dataset barn
+import fdb/BEFOLKNING_KOMMNR_FORMELL 2025-01-01 as kommune
+import fdb/BEFOLKNING_FOEDSELS_AAR_MND as faarmnd
+generate alder = 2024 - int(faarmnd/100)
+keep if alder >= 0 & alder <= 17
+generate fylke = substr(kommune, 1, 2)
+
+merge snitt3 vlav into barn
+delete-dataset vedvarende
+use barn
+
+generate vlavgr = '9'
+replace vlavgr = '0' if vlav == 0
+replace vlavgr = '1' if vlav == 1
+define-labels vlavgrtxt '0' 'Ikke vedvarende lavinntekt' '1' 'Vedvarende lavinntekt (EU-60, 2022–2024)' '9' 'Ikke med alle tre årene / ukjent'
+assign-labels vlavgr vlavgrtxt
+
+textblock
+## Barn 0–17 år i husholdninger med vedvarende lavinntekt, 2022–2024
+Gjennomsnittlig inntekt etter skatt per forbruksenhet (EU-skala) for 2022–2024, i 2024-kroner, under
+60 % av medianen for hele landet. «Ikke med alle tre årene» er i hovedsak barn som er født eller har
+innvandret i perioden. SSB holder dem utenfor nevneren.
+endblock
+tabulate vlavgr, missing
+
+textblock
+## Andel barn i vedvarende lavinntekt etter fylke, 2022–2024 (radprosent)
+Bare barn som er med alle tre årene.
+endblock
+tabulate fylke vlavgr if vlavgr != '9', rowpct
