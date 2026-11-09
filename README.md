@@ -38,11 +38,33 @@ python verktoy/hent_variabler.py          # nye variabler (--alle: alt på nytt,
 python verktoy/hent_manual.py
 ```
 
+## Bidrag og vedlikehold
+
+Alle kan foreslå endringer, men en liten gruppe vedlikeholdere godkjenner dem. Innholdet havner i
+Claude-sesjonen til alle som bruker skillen, så alt gjennomgås før det flettes inn. Se
+[CONTRIBUTING.md](CONTRIBUTING.md).
+
+Vedlikeholdere står i [`.github/CODEOWNERS`](.github/CODEOWNERS).
+
+### Oppsett på GitHub (én gang, for eieren av repoet)
+
+1. **Settings → Branches → Add branch ruleset** (eller «Add rule») for `main`:
+   - Require a pull request before merging
+   - Require approvals: 1
+   - Require review from Code Owners
+   - Block force pushes
+2. **Settings → Actions → General → Workflow permissions:** velg «Read and write permissions» og kryss
+   av for «Allow GitHub Actions to create and approve pull requests». Da kan den ukentlige
+   metadataoppdateringen åpne pull requests.
+3. **Issues → Labels:** opprett etikettene `fallgruve` og `metadata`.
+4. Ny vedlikeholder: gi personen rollen *Write* under Settings → Collaborators, og legg brukernavnet
+   til i `CODEOWNERS`.
+
 ## Kilder og kreditering
 
 - Variabelmetadata og manual: [microdata.no](https://microdata.no/) (SSB og Sikt). Innholdet tilhører
   dem og er hentet fra de åpne sidene. <!-- TODO: avklar lisens før publisering -->
 - Kodeeksempler: [JOSliper/Microdata-skript](https://github.com/JOSliper/Microdata-skript) (Trøndelag)
-  er det viste til, ikke kopiert.
+  er bare lenket til, ikke kopiert (repoet har ingen lisens).
 
 Dette er et uoffisielt fellesskapsprosjekt og ikke tilknyttet SSB eller Sikt.
