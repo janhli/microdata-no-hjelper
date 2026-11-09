@@ -91,7 +91,12 @@ med pull request (se CONTRIBUTING.md). Tagg dem med datalagerversjon/dato hvis d
     `BEFOLKNING_KOMMNR_FORMELL`). Legg dem til for hånd hvis de skal slås sammen til 2100.
   - Klass har endringer til 2026 (bl.a. Indre Østfold). Standard er `--til 2024`.
 - Regiontabellene i `metadata/regioner/` gjelder kommunenummer i 2024-inndelingen. Gamle kommunenumre
-  gir «Ukjent region» (`xxxx`) hvis de ikke omkodes først.
+  står uendret hvis de ikke omkodes først, og blir stående som kommunekode i regionvariabelen.
+  Kontroller med `tabulate`, eller bruk `--ukjent` (se neste punkt).
+  - `recode (* = ...)` må stå som siste regel i samme kommando som de andre reglene. I en egen kommando
+    treffer den alle verdier, også de som allerede er omkodet. Derfor lager `regionomkoding.py` ingen
+    sluttregel som standard. `--ukjent` gir én lang kommando, og det er ikke prøvd om microdata.no tåler
+    linjelengden.
   - Regionene er dagens inndeling. Politidistrikt (2016), helseregioner (2007), barnevern (2004) og
     samiske valgkretser (2009) har eldre versjoner enn 2024, og tabellene viser dagens kobling.
   - Helseregionene har bare tabell mot Kommuneinndeling 2020 hos Klass. Kommunekodene er oversatt
