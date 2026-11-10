@@ -16,7 +16,8 @@ Hvordan det virker:
     kommunen som har samme navn som kommunen som ble delt (Ålesund -> Ålesund). Gjenstår flere
     kandidater, er koden en ekte deling som ikke kan løses uten adresse. Slike koder står
     uendret (--splitt behold) eller får første kandidat (--splitt forste).
-  * Reglene kan limes inn i flere recode-kommandoer. Ingen kode er både kilde og mål.
+  * recode-linjene lages av verktoy/recode_regler.py. Er en kode både kilde og mål, samles de reglene
+    i én kommando, så ingen verdi omkodes to ganger.
 """
 
 import argparse
@@ -27,7 +28,9 @@ from collections import defaultdict
 from pathlib import Path
 
 DATA = Path(__file__).resolve().parent.parent / "metadata" / "kommuneendringer.json"
-PER_LINJE = 8
+
+sys.path.insert(0, str(Path(__file__).resolve().parent))
+from recode_regler import konflikter, recode_linjer  # noqa: E402
 
 
 def navnesett(n):
@@ -122,14 +125,12 @@ def main():
         for k, (_, mal) in delt.items():
             kart[k] = mal[0][0]
 
-    per_mal = defaultdict(list)
-    for k, m in kart.items():
-        per_mal[m].append(k)
-    regler = [f"(" + " ".join(f"'{k}'" for k in sorted(per_mal[m])) + f" = '{m}')" for m in sorted(per_mal)]
-
     out = []
     out.append(f"// Kommunenumre {a.fra} -> inndelingen {a.til}. Kilde: SSB Klass 131 (hentet {d['hentet']}).")
-    out.append(f"// {len(kart)} koder omkodes til {len(per_mal)} kommuner. Øvrige koder står uendret.")
+    out.append(f"// {len(kart)} koder omkodes til {len(set(kart.values()))} kommuner. Øvrige koder står uendret.")
+    konf = konflikter(kart)
+    if konf:
+        out.append(f"// {len(konf)} koder er både kilde og mål. De står samlet i første recode-kommando. Ikke del den linjen.")
     if delt:
         out.append("// Delte kommuner (kan ikke løses uten adresse), "
                    + ("står uendret:" if a.splitt == "behold" else "satt til første kandidat:"))
@@ -141,8 +142,7 @@ def main():
         for k in sorted(antatt):
             dato, kilde, m = antatt[k]
             out.append(f"//   {k} {kand[k][1]}: {dato[:4]} delt av {kilde}, satt til {m}")
-    for i in range(0, len(regler), PER_LINJE):
-        out.append(f"recode {a.navn} " + " ".join(regler[i : i + PER_LINJE]))
+    out += recode_linjer(a.navn, kart)
     print("\n".join(out))
 
 

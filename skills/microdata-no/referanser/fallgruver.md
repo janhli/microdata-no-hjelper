@@ -28,6 +28,13 @@ med pull request (se CONTRIBUTING.md). Tagg dem med datalagerversjon/dato hvis d
   `ARBSTATUS_PERS_STATUS8` for prioritert status for alle bosatte 15+ (4. kvartal).
 - Sjekk alltid `fra`/`til` i `metadata/variabler.csv` før du bruker en variabel fra et eldre skript.
 
+### Sektor på personnivå er stoppet etter 2019
+- **Symptom:** `REGSYS_FRTK_SEKTOR_2014` har ingen data etter 2019-11-16.
+- **Årsak:** SSB stoppet variabelen av personvernhensyn (risiko for å avsløre opplysninger om foretak).
+- **Løsning:** For lønnstakere: bruk `ARBLONN_FRTK_SEKTOR_2014` på jobbnivå og velg sektoren med mest
+  avtalt arbeidstid per person. Se `kodesnutter/sektor_lonnstakere.txt`, som treffer SSB tabell 13926
+  innenfor 0,1 % for stat og kommune (4. kvartal 2025, versjon 59). Selvstendige kommer ikke med.
+
 ### `BEFOLKNING_PARITET` mangler for de siste fødselskullene
 - **Symptom:** 100 % ukjent paritet for barn født i 2025 (observert november 2026).
 - **Løsning:** Utled paritet av mors tidligere fødsler, eller hold det siste året utenfor.
@@ -59,9 +66,32 @@ med pull request (se CONTRIBUTING.md). Tagg dem med datalagerversjon/dato hvis d
 - Frekvensen er antall enheter i datasettet (f.eks. kvinner), ikke summen av x. Ta med `sum` når x
   er en telling (f.eks. antall fødsler), og forklar radene i en `textblock`.
 
+### Region i Statistikkbankens lønnstakertabeller er arbeidssted
+- **Symptom:** Antall lønnstakere i en kommune er langt lavere enn i SSB tabell 13926 (Bergen 2025K4:
+  154 082 etter bosted mot 182 619 i tabellen).
+- **Årsak:** Tabellen fordeler etter arbeidsstedet for hovedarbeidsforholdet. `REGSYS_ARB_ARBKOMM` gir
+  heller ikke samme tall, fordi den bare har bosatte sysselsatte 15–74 år.
+- **Løsning:** Bruk `ARBLONN_ARB_ARBKOMM` for jobben der `ARBLONN_ARB_HOVEDARBEID == '1'`. Det ga
+  182 609 for Bergen (testet november 2026, versjon 59).
+
 ### Manglende verdier i sammenligninger er udokumentert
 - Hvordan `sysmiss` håndteres i `if`-sammenligninger er ikke dokumentert. Avslutt alltid grupperinger
   med `replace gr = 'ukjent' if sysmiss(x)`, så ingen enheter havner i feil gruppe i stillhet.
+
+## Bindinger og løkker
+
+### Variabelnavn fra en iterator
+- **Symptom:** «Feil ved generate: Syntaksfeil» på `generate t$i = 0` inne i en `for`-løkke.
+- **Årsak:** `$i` limes ikke inn i et navn. Navn settes sammen med `++`.
+- **Løsning:** `let v = tid_ ++ $i` og deretter `generate $v = 0`. Bruk `let` i stedet for `++` direkte
+  i kommandoen, for det virker ikke i `collapse`, `aggregate`, `recode` og `reshape-to-panel`
+  (manualen, 6.2 Løkker).
+
+### Navn som er funksjonsnavn
+- **Symptom:** «Feil ved t: Kan ikke bruke funksjonen t i en binding» på `let t = t ++ $i`.
+- **Årsak:** `t` er en funksjon (Students t-fordeling). Bindinger og variabler kan ikke hete det samme
+  som en funksjon.
+- **Løsning:** Bruk beskrivende navn, og sjekk korte navn mot `metadata/manual/kommandoer_og_funksjoner/funksjoner.md`.
 
 ## Avsløringskontroll
 
@@ -117,7 +147,11 @@ med pull request (se CONTRIBUTING.md). Tagg dem med datalagerversjon/dato hvis d
   - SN2007: sammenfattede koder som `01.000` og `00.000`, og koder som ikke finnes i SN2007 i Klass på datoen (f.eks. `10.100`, `55.100`). Sjekk dem mot kodelisten før du omkoder dem.
 - **Resultatet er en kopi av kodene i Klass akkurat nå.** Klassifikasjoner endres. Oppgi hentedato i skriptet (verktøyet
   skriver den i en kommentar).
-- **Koblingstabeller kan være mange-til-mange.** `kobling` utelater koder som går til flere mål og lister dem i en kommentar.
+- **Koblingstabeller kan være mange-til-mange.** `kobling` utelater koder som går til flere mål, og koder uten
+  motpart (Klass har rader uten mål, f.eks. `46.890` i SN2025–SN2007), og lister dem i en kommentar.
+- **Samme kode som kilde i én regel og mål i en annen** (vanlig mellom versjoner, f.eks. `25.300 -> 25.400` og
+  `25.400 -> 25.500`): står reglene i ulike `recode`-kommandoer, omkodes verdien to ganger. Verktøyene samler
+  slike regler i første kommando. Ikke del den linjen, og ikke flytt regler mellom linjene.
 - **`recode` på strenger.** Koder som `'01.110'` og `'0110'` må skrives som strenger. Landkodene i `BEFOLKNING_LANDBAK3GEN` er
   strenger. Snutten `landbakgrunn_region.txt` bruker `destring` og tallintervaller. Det går også, men verktøyets
   utskrift er strenger og skal ikke kombineres med `destring`.

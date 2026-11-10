@@ -24,6 +24,7 @@ testen er. Kjør snutten på nytt og oppdater linjen når du har gjort det.
 | [landbakgrunn_region.txt](landbakgrunn_region.txt) | Landbakgrunn gruppert i verdensregioner | testet i større skript |
 | [utdanningsniva.txt](utdanningsniva.txt) | Høyeste fullførte utdanning, seks nivåer (NUS) | testet i større skript |
 | [arbeidsstyrkestatus.txt](arbeidsstyrkestatus.txt) | Prioritert arbeidsstyrkestatus i åtte grupper | testet i større skript |
+| [sektor_lonnstakere.txt](sektor_lonnstakere.txt) | Lønnstakere etter sektor (stat/kommune/privat/offentlig foretak) fra jobbnivå, med arbeidssted. Treffer SSB tabell 13926 | testet |
 | [samlivsstatus.txt](samlivsstatus.txt) | Gift / samboer / enslig / bor hos foreldre | testet i større skript |
 | [lavinntekt_eu60.txt](lavinntekt_eu60.txt) | Flagg for lavinntekt (EU-60) med egen medianberegning | testet i større skript |
 | [lavinntekt_vedvarende.txt](lavinntekt_vedvarende.txt) | Vedvarende lavinntekt (EU-60, treårsgjennomsnitt, KPI-justert), eksempel med barn per fylke | utkast |

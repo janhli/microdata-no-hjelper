@@ -40,3 +40,14 @@ feilmeldinger og beskrivelser. Tabeller fra analysemiljøet er underlagt microda
 
 `skills/microdata-no/metadata/` oppdateres hver uke av en GitHub Action, som åpner en pull request
 når noe er endret. Ikke rediger filene der for hånd. Feil i hentescriptene rettes i `skills/microdata-no/verktoy/`.
+
+## Tester
+
+Endrer du noe i `skills/microdata-no/verktoy/`, kjør testene fra repoets rot (ingen avhengigheter):
+
+    python -m unittest discover -s tests
+
+De kjøres også av GitHub Actions ved push og pull request. Testene for `klass.py` bruker SSB Klass og
+hoppes over uten nett (eller med `UTEN_NETT=1`). Testene sjekker at `recode`-utskriften gir riktig
+resultat slik manualen beskriver `recode`. Om microdata.no oppfører seg slik, står i
+[`TESTLISTE.md`](TESTLISTE.md).

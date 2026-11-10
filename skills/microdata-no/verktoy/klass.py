@@ -21,8 +21,9 @@ Eksempler:
   python verktoy/klass.py grupper 6 --nivaa 2 --dato 2024-01-01 --variabel REGSYS_NARING_SN2007 --navn naring
   python verktoy/klass.py kobling 36 --tabell "ISCED 2011 Attainment" --navn nus
 
-Utskriften er `generate`/`recode` for en strengvariabel. Reglene kjører i rekkefølge, og verdier som allerede
-er omkodet påvirkes ikke av senere regler. Med --variabel tas bare koder med som finnes i variabelens
+Utskriften er `generate`/`recode` for en strengvariabel, laget av verktoy/recode_regler.py. Er en kode både
+kilde og mål (vanlig i koblinger mellom versjoner, f.eks. SN2007 og SN2025), samles de reglene i én kommando,
+så ingen verdi omkodes to ganger. Med --variabel tas bare koder med som finnes i variabelens
 kodeliste (metadata/kodelister.csv), og koder som mangler i Klass på datoen listes i en kommentar.
 """
 
@@ -40,8 +41,9 @@ from pathlib import Path
 
 KLASS = "https://data.ssb.no/api/klass/v1"
 KODELISTER = Path(__file__).resolve().parent.parent / "metadata" / "kodelister.csv"
-MAKS_KODER = 25  # koder per regel
-MAKS_TEGN = 600  # omtrentlig makslengde på en recode-linje
+
+sys.path.insert(0, str(Path(__file__).resolve().parent))
+from recode_regler import konflikter, recode_linjer  # noqa: E402
 
 
 def hent(url):
@@ -68,29 +70,14 @@ def kodeliste(variabel):
     return koder
 
 
-def q(tekst):
-    return "'" + tekst.replace("'", "’") + "'"
-
-
-def regler_fra(mapping, navn):
-    """mapping: {mål: (merkelapp, [kilder])} -> recode-linjer (store regioner deles i biter)."""
-    regler = []
-    for mal in sorted(mapping):
-        merke, kilder = mapping[mal]
-        kilder = sorted(set(kilder))
-        for i in range(0, len(kilder), MAKS_KODER):
-            bit = " ".join(q(k) for k in kilder[i : i + MAKS_KODER])
-            lab = f" {q(merke)}" if i == 0 and merke else ""
-            regler.append(f"({bit} = {q(mal)}{lab})")
-    linjer, naa = [], ""
-    for regel in regler:
-        if naa and len(naa) + len(regel) > MAKS_TEGN:
-            linjer.append(naa)
-            naa = ""
-        naa = f"{naa} {regel}" if naa else regel
-    if naa:
-        linjer.append(naa)
-    return [f"recode {navn} {l}" for l in linjer]
+def skriv_recode(variabel, kart, merkelapper):
+    """Skriver recode-linjene, og sier fra hvis noen regler måtte samles i én kommando."""
+    konf = konflikter({k: m for k, m in kart.items() if k != m})
+    if konf:
+        print(f"// {len(konf)} koder er både kilde og mål i ulike regler. De står samlet i første recode-kommando,")
+        print("// så ingen verdi omkodes to ganger. Ikke del den linjen.")
+    for linje in recode_linjer(variabel, kart, merkelapper):
+        print(linje)
 
 
 def kommando_sok(a):
@@ -127,7 +114,7 @@ def kommando_grupper(a):
         return c["code"] if int(c["level"]) == a.nivaa else None
 
     onsket = kodeliste(a.variabel) if a.variabel else sorted(koder)
-    mapping = defaultdict(lambda: ("", []))
+    kart, merkelapper = {}, {}
     mangler, hoyt = [], 0
     for k in onsket:
         if k not in koder:
@@ -139,7 +126,8 @@ def kommando_grupper(a):
             continue
         if mal == k:
             continue  # kilden er allerede på målnivå
-        mapping[mal] = (koder[mal]["name"], mapping[mal][1] + [k])
+        kart[k] = mal
+        merkelapper[mal] = koder[mal]["name"]
 
     print(f"// Klass {a.id} ({a.dato}): koder omkodet til nivå {a.nivaa}. Hentet {date.today().isoformat()}.")
     if a.variabel:
@@ -150,8 +138,7 @@ def kommando_grupper(a):
     if hoyt:
         print(f"// {hoyt} koder ligger over nivå {a.nivaa} og står uendret.")
     print(f"generate {a.navn}_nivaa{a.nivaa} = {a.navn}")
-    for linje in regler_fra(mapping, f"{a.navn}_nivaa{a.nivaa}"):
-        print(linje)
+    skriv_recode(f"{a.navn}_nivaa{a.nivaa}", kart, merkelapper)
 
 
 def kommando_kobling(a):
@@ -172,23 +159,32 @@ def kommando_kobling(a):
     t = treff[0]
     tab = hent(t["_links"]["self"]["href"])
     forste = t["name"].strip().startswith(v["name"].strip())
-    mapping, delt = defaultdict(lambda: ("", [])), defaultdict(set)
-    kobl = {}
+    # Alle mål per kilde. Klass kan ha rader uten mål (targetCode er null): koden har ingen motpart.
+    maal_per_kilde, navn_paa_maal = defaultdict(set), {}
     for m in tab["correspondenceMaps"]:
         kilde, mal, mnavn = (m["sourceCode"], m["targetCode"], m["targetName"]) if forste else (m["targetCode"], m["sourceCode"], m["sourceName"])
-        if kilde in kobl and kobl[kilde][0] != mal:
-            delt[kilde] |= {kobl[kilde][0], mal}
-        kobl.setdefault(kilde, (mal, mnavn))
-    for kilde, (mal, mnavn) in kobl.items():
-        if kilde in delt:
+        if kilde is None:
             continue
-        mapping[mal] = (mnavn.strip(), mapping[mal][1] + [kilde])
+        maal_per_kilde[kilde].add(mal)
+        if mal is not None:
+            navn_paa_maal[mal] = (mnavn or "").strip()
+    kart, delt, uten_maal = {}, [], []
+    for kilde, maal in maal_per_kilde.items():
+        if maal == {None}:
+            uten_maal.append(kilde)
+        elif len(maal) > 1:
+            delt.append(kilde)  # flere mål, eller bare delvis motpart
+        else:
+            kart[kilde] = next(iter(maal))
     print(f"// {t['name'].strip()}. Hentet {date.today().isoformat()}.")
+    print(f"// Retning: koder i {v['name'].strip()} -> den andre klassifikasjonen (velg versjon med --dato).")
     if delt:
-        print(f"// {len(delt)} koder kobles til flere mål og er utelatt (står uendret): " + " ".join(sorted(delt)[:30]))
+        print(f"// {len(delt)} koder kobles til flere mål og er utelatt (står uendret): " + " ".join(sorted(delt)[:30])
+              + (" ..." if len(delt) > 30 else ""))
+    if uten_maal:
+        print(f"// {len(uten_maal)} koder har ingen motpart i tabellen og står uendret: " + " ".join(sorted(uten_maal)))
     print(f"generate {a.navn}_kobl = {a.navn}")
-    for linje in regler_fra(mapping, f"{a.navn}_kobl"):
-        print(linje)
+    skriv_recode(f"{a.navn}_kobl", kart, navn_paa_maal)
 
 
 def main():

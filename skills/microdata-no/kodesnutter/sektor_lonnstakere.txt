@@ -1,0 +1,109 @@
+// =====================================================================
+// Lønnstakere etter sektor (stat, kommune, privat, offentlig foretak), fra jobbnivå
+// Status:    testet (no.ssb.fdb:59, 2026-11). Logikken er kjørt; denne renskrevne versjonen har bare
+//            nye navn, kommentarer og titler.
+// Variabler: ARBLONN_FRTK_SEKTOR_2014 (jobb, månedlig 16., 2015-01 til 2026-07)
+//            https://microdata.no/discovery/variable/no.ssb.fdb/59/ARBLONN_FRTK_SEKTOR_2014
+//            ARBLONN_ARB_ARBEIDSTID (jobb, avtalt arbeidstid per uke)
+//            https://microdata.no/discovery/variable/no.ssb.fdb/59/ARBLONN_ARB_ARBEIDSTID
+//            ARBEIDSFORHOLD_PERSON (kobling jobb -> person)
+//            https://microdata.no/discovery/variable/no.ssb.fdb/59/ARBEIDSFORHOLD_PERSON
+//            ARBLONN_ARB_HOVEDARBEID (jobb, '1' = hovedarbeidsforhold)
+//            https://microdata.no/discovery/variable/no.ssb.fdb/59/ARBLONN_ARB_HOVEDARBEID
+//            ARBLONN_ARB_ARBKOMM (jobb, arbeidsstedskommune, månedlig siste dag)
+//            https://microdata.no/discovery/variable/no.ssb.fdb/59/ARBLONN_ARB_ARBKOMM
+//            ARBLONN_PERS_KOMMNR (person, bostedskommune, månedlig siste dag)
+//            https://microdata.no/discovery/variable/no.ssb.fdb/59/ARBLONN_PERS_KOMMNR
+// Lager:     datasettet jobb_sektor, som etter collapse har én rad per person (personid), med
+//            sektor – 1 stat, 2 kommune (inkl. fylkeskommune), 3 privat, 4 offentlig foretak,
+//                     8 ukjent sektor, 9 flere sektorer med like mye arbeidstid
+//            i_kommune – 1 hvis hovedarbeidsforholdet har arbeidssted i valgt kommune
+//            bosted – bostedskommune
+// Metode:    Sektoren med mest avtalt arbeidstid, summert over personens jobber.
+// Kontroll:  4. kvartal 2025 mot SSB tabell 13926 (lønnstakere etter sektor, region = arbeidssted):
+//            Hele landet 2 839 294 mot 2 839 039. Stat 344 081 mot 344 350, kommune og fylkeskommune
+//            577 957 mot 577 897, privat 1 791 576 mot 1 796 696, offentlig foretak 117 323 mot 120 096.
+//            Arbeidssted Bergen 182 609 mot 182 619 (stat 30 734 mot 30 769).
+// Fallgruver:
+//   - REGSYS_FRTK_SEKTOR_2014 (personnivå) er stoppet etter 2019 av personvernhensyn. Denne snutten
+//     erstatter den for lønnstakere. Selvstendige har ingen jobb i a-ordningen og kommer ikke med.
+//   - Populasjonen er alle jobber i a-ordningen, uansett alder og bosted (ikke-bosatte har bosted 2599).
+//     Det er samme populasjon som tabell 13926.
+//   - Region i 13926 er arbeidssted for hovedarbeidsforholdet, ikke bosted og ikke REGSYS_ARB_ARBKOMM
+//     (som bare har bosatte 15–74 år).
+//   - SSB fordeler ukjent sektor (-2, f.eks. Norges Bank, og manglende) på privat og offentlig foretak.
+//     Her står de som 8 (ca. 0,3 % nasjonalt). Offentlig foretak avviker ca. 2 % fordi SSB grupperer
+//     etter eierskap, ikke bare sektorkodene 1110, 1120, 1510 og 1520.
+//   - Bindingsnavn: tid_ ++ $i (ikke tid$i), og ikke funksjonsnavn som t (se fallgruver.md).
+// =====================================================================
+
+require no.ssb.fdb:59 as fdb
+
+// Jobber aktive i november 2025 (sektor og arbeidstid måles den 16., kommune siste dag i måneden)
+create-dataset jobb_sektor
+import fdb/ARBLONN_FRTK_SEKTOR_2014 2025-11-16 as sektorkode
+import fdb/ARBLONN_ARB_ARBEIDSTID 2025-11-16 as arbtid
+import fdb/ARBLONN_ARB_HOVEDARBEID 2025-11-16 as hoved
+import fdb/ARBLONN_ARB_ARBKOMM 2025-11-30 as arbkomm
+import fdb/ARBEIDSFORHOLD_PERSON as personid
+
+// Sektor per jobb: 1 stat, 2 kommune (inkl. fylkeskommune), 3 privat, 4 offentlig foretak, 8 ukjent
+generate s = 3
+replace s = 1 if sektorkode == '6100'
+replace s = 2 if sektorkode == '6500'
+replace s = 4 if sektorkode == '1110' | sektorkode == '1120' | sektorkode == '1510' | sektorkode == '1520'
+replace s = 8 if sysmiss(sektorkode) | sektorkode == '-2'
+replace arbtid = 0 if sysmiss(arbtid)
+
+// Arbeidstid per sektor (tid_1 ... tid_8)
+for i in 1 2 3 4 8
+  let tv = tid_ ++ $i
+  generate $tv = 0
+  replace $tv = arbtid if s == $i
+end
+
+// Hovedarbeidsforholdet har arbeidssted i valgt kommune (bytt 4601 Bergen)
+generate i_kommune = 0
+replace i_kommune = 1 if hoved == '1' & arbkomm == '4601'
+
+// Til person: summer arbeidstid per sektor
+collapse (sum) tid_1 tid_2 tid_3 tid_4 tid_8 (max) i_kommune, by(personid)
+
+// Sektoren med mest arbeidstid. Lik tid i flere sektorer gir 9.
+generate maks = tid_1
+for i in 2 3 4 8
+  let tv = tid_ ++ $i
+  replace maks = $tv if $tv > maks
+end
+generate antall_maks = 0
+generate sektor = 0
+for i in 1 2 3 4 8
+  let tv = tid_ ++ $i
+  replace antall_maks = antall_maks + 1 if $tv == maks
+  replace sektor = $i if $tv == maks
+end
+replace sektor = 9 if antall_maks > 1
+define-labels sektortxt 1 'Stat' 2 'Kommune' 3 'Privat' 4 'Offentlig foretak' 8 'Ukjent sektor' 9 'Flere sektorer (lik arbeidstid)'
+assign-labels sektor sektortxt
+
+// Personvariabler kan importeres rett inn i datasettet etter collapse (enhet = personid)
+import fdb/ARBLONN_PERS_KOMMNR 2025-11-30 as bosted
+
+textblock
+## Lønnstakere etter sektor, hele landet, november 2025
+Sektoren med mest avtalt arbeidstid summert over personens jobber. Alle med jobb i a-ordningen, også
+ikke-bosatte. Kan sammenlignes med SSB tabell 13926 (2025K4). Der er «ukjent sektor» fordelt på privat og
+offentlig foretak.
+endblock
+tabulate sektor
+
+textblock
+## Lønnstakere etter sektor, arbeidssted i kommunen
+Arbeidssted for hovedarbeidsforholdet. Samme regionbegrep som tabell 13926.
+endblock
+tabulate sektor if i_kommune == 1
+
+textblock
+## Lønnstakere etter sektor, bosatt i kommunen
+endblock
+tabulate sektor if bosted == '4601'

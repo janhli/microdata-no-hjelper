@@ -1,0 +1,25 @@
+name: Tester
+
+# Kjører tests/ (unittest, ingen avhengigheter) ved push og pull request. Testene for klass.py bruker
+# SSB Klass og hoppes over hvis Klass ikke svarer.
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  tester:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Kjør testene
+        run: python -m unittest discover -s tests -v

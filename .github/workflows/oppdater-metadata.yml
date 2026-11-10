@@ -2,6 +2,10 @@ name: Oppdater metadata og manual
 
 # Henter variabelkatalog og manual fra microdata.no hver uke og åpner en pull request hvis noe
 # er endret. main er beskyttet, så en vedlikeholder må godkjenne (som regel bare et blikk på diffen).
+# Hentescriptene kontrollerer uttrekket og avslutter med feilkode (uten å endre filer) ved nedlastingsfeil,
+# manglende variabler eller sider, eller sider som er blitt tomme. Da feiler jobben, og ingen pull request åpnes.
+# Datalagerversjonen leses fra microdata.no. Er den ny, hentes alle variabler på nytt. Testene i tests/ kjøres
+# mot de nye filene før pull requesten åpnes.
 # Krever: Settings → Actions → General → «Allow GitHub Actions to create and approve pull requests».
 
 on:
@@ -28,12 +32,15 @@ jobs:
       - name: Hent manual
         working-directory: skills/microdata-no
         run: python verktoy/hent_manual.py
+      - name: Kjør testene mot de nye filene
+        run: python -m unittest discover -s tests
       - name: Sett dato hvis noe er endret
         id: sjekk
         run: |
           if [ -n "$(git status --porcelain -- skills/microdata-no/metadata)" ]; then
             date -u +%Y-%m-%d > skills/microdata-no/metadata/HENTET
             echo "dato=$(cat skills/microdata-no/metadata/HENTET)" >> "$GITHUB_OUTPUT"
+            echo "versjon=$(python -c 'import json; print(json.load(open("skills/microdata-no/metadata/datalager.json", encoding="utf-8"))["versions"][0]["version"].split(".")[0])')" >> "$GITHUB_OUTPUT"
             git status --short -- skills/microdata-no/metadata | head -50
           else
             echo "Ingen endringer."
@@ -45,8 +52,8 @@ jobs:
           branch: automatisk/metadata
           delete-branch: true
           add-paths: skills/microdata-no/metadata
-          commit-message: "Oppdater metadata fra microdata.no (${{ steps.sjekk.outputs.dato }})"
-          title: "Oppdater metadata fra microdata.no (${{ steps.sjekk.outputs.dato }})"
+          commit-message: "Oppdater metadata fra microdata.no (versjon ${{ steps.sjekk.outputs.versjon }}, ${{ steps.sjekk.outputs.dato }})"
+          title: "Oppdater metadata fra microdata.no (versjon ${{ steps.sjekk.outputs.versjon }}, ${{ steps.sjekk.outputs.dato }})"
           body: |
             Automatisk ukentlig henting av variabelkatalog og manual.
 
