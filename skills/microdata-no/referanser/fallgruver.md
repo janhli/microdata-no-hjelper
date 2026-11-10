@@ -207,7 +207,9 @@ med pull request (se CONTRIBUTING.md). Tagg dem med datalagerversjon/dato hvis d
   - Landkoder: utgåtte land (Sovjetunionen 135, DDR 151), «uspesifisert»/«Resten av …» (194, 394, 594 osv.) og 989
     (uoppgitt utenlandsk statsborgerskap). Omkod dem for hånd, f.eks. til «Uoppgitt».
   - STYRK: `XXXX` (uoppgitt/ukjent).
-  - SN2007: sammenfattede koder som `01.000` og `00.000`, og koder som ikke finnes i SN2007 i Klass på datoen (f.eks. `10.100`, `55.100`). Sjekk dem mot kodelisten før du omkoder dem.
+  - SN2007: sammenfattede koder som `01.000` og `43.220`, og koder som ikke finnes i SN2007 i Klass på datoen. `grupper` plasserer
+    dem via nærmeste overordnede kode (43.220 → 43.22 → F) og lister dem i en kommentar. Bare `00.000` (uoppgitt) står uendret.
+    Det samme gjelder andre prefiksbaserte klassifikasjoner (STYRK, NUS), men ikke landkoder.
 - **Resultatet er en kopi av kodene i Klass akkurat nå.** Klassifikasjoner endres. Oppgi hentedato i skriptet (verktøyet
   skriver den i en kommentar).
 - **Koblingstabeller kan være mange-til-mange.** `kobling` utelater koder som går til flere mål, og koder uten

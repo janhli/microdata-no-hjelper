@@ -18,6 +18,16 @@ class TestKlass(unittest.TestCase):
                 self.assertTrue(recode_linjer_i(tekst))
                 self.assertEqual(avvik(tekst), [])
 
+    def test_grupper_koder_som_mangler_i_klass_via_prefiks(self):
+        # 43.220 finnes i REGSYS_NARING_SN2007, men ikke i Klass. 43.22 finnes og ligger under F (TESTLISTE 1.12).
+        tekst = kjor("klass.py", "grupper", "6", "--nivaa", "1", "--dato", "2009-01-01",
+                     "--variabel", "REGSYS_NARING_SN2007")
+        self.assertIn("43.220→43.22", tekst)
+        self.assertEqual(simuler(recode_linjer_i(tekst), ["43.220", "86.200", "00.000"]), ["F", "Q", "00.000"])
+        # Landkoder er ikke prefiksbasert, så der skal ingenting grupperes via prefiks
+        land = kjor("klass.py", "grupper", "545", "--nivaa", "2", "--variabel", "BEFOLKNING_LANDBAK3GEN")
+        self.assertNotIn("nærmeste overordnede kode", land)
+
     def test_styrk_til_hovedgruppe(self):
         tekst = kjor("klass.py", "grupper", "7", "--nivaa", "1", "--variabel", "REGSYS_ARB_YRKE_STYRK08")
         self.assertEqual(simuler(recode_linjer_i(tekst), ["2511", "XXXX"]), ["2", "XXXX"])

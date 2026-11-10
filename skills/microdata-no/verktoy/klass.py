@@ -128,14 +128,31 @@ def kommando_grupper(a):
                 return None
         return c["code"] if int(c["level"]) == a.nivaa else None
 
+    # Er hierarkiet bygd på prefiks (forelderkoden er starten av koden, som i SN, STYRK og NUS)?
+    # Da kan en kode som mangler i Klass (f.eks. 43.220) plasseres via nærmeste kode som finnes (43.22).
+    med_forelder = [c for c in koder.values() if c["parentCode"]]
+    prefiks = bool(med_forelder) and sum(c["code"].startswith(c["parentCode"]) for c in med_forelder) >= 0.8 * len(med_forelder)
+
+    def naermeste(kode):
+        k = kode
+        while len(k) > 1:
+            k = k[:-1].rstrip(".")
+            if k in koder:
+                return k
+        return None
+
     onsket = kodeliste(a.variabel) if a.variabel else sorted(koder)
     kart, merkelapper = {}, {}
-    mangler, hoyt = [], 0
+    mangler, via, hoyt = [], [], 0
     for k in onsket:
+        oppslag = k
         if k not in koder:
-            mangler.append(k)
-            continue
-        mal = forelder(k)
+            oppslag = naermeste(k) if prefiks else None
+            if oppslag is None:
+                mangler.append(k)
+                continue
+            via.append(f"{k}→{oppslag}")
+        mal = forelder(oppslag)
         if mal is None:
             hoyt += 1  # koden ligger over omkodingsnivået, står uendret
             continue
@@ -147,6 +164,9 @@ def kommando_grupper(a):
     print(f"// Klass {a.id} ({a.dato}): koder omkodet til nivå {a.nivaa}. Hentet {date.today().isoformat()}.")
     if a.variabel:
         print(f"// Begrenset til koder i kodelisten til {a.variabel}.")
+        if via:
+            vis = " ".join(via[:30]) + (" ..." if len(via) > 30 else "")
+            print(f"// {len(via)} koder finnes ikke i Klass på {a.dato}, men er gruppert via nærmeste overordnede kode: {vis}")
         if mangler:
             vis = " ".join(mangler[:30]) + (" ..." if len(mangler) > 30 else "")
             print(f"// {len(mangler)} koder i variabelen finnes ikke i Klass på {a.dato} og står uendret: {vis}")

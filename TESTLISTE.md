@@ -24,7 +24,7 @@ Bruk ett lite skript med `import fdb/BEFOLKNING_KOMMNR_FORMELL 2024-01-01 as kom
 | 1.8 | ~~Spesialtegn i merkelapp~~ **Avklart (versjon 59, 2026-11):** «Oslo/Bærum – æøå» vises riktig | | | ✓ |
 | 1.10 | ~~Detaljerte koblinger stoppes av 10-enhetsregelen~~ **Avklart (versjon 59, 2026-11):** `klass.py --utelat` virker. SN2002 → SN2007 gikk gjennom i runde 3, med 33 målkoder tatt ut (beregnet fra `tabulate` på kildekodene). Men 42 % av sysselsatte står igjen med SN2002-kode fordi kodene har flere mål. Se 1.11 | | | ✓ |
 | 1.11 | ~~`klass.py kobling --nivaa N`~~ **Avklart (versjon 59, 2026-11):** SN2002 → SN2007 for november 2007 omkoder 91,0 % på nivå 1 (seksjon) og 82,6 % på nivå 2 (divisjon). Nivå 1 gikk gjennom uten `--utelat`, nivå 2 trengte `--utelat 30`. Fordelingen på seksjon ligner ekte SN2007 (2008), med avvik på +0,1 til −1,7 prosentpoeng, størst for N og O | | | ✓ |
-| 1.12 | `klass.py grupper`: koder i variabelen som ikke finnes i Klass (f.eks. 43.220 i `REGSYS_NARING_SN2007`, 19 236 sysselsatte i 2008) blir ikke gruppert | Gå opp i hierarkiet ved å korte ned koden (43.220 → 43.22 → F). Kjør `grupper 6 --nivaa 1` på 2008-data på nytt | Under 0,1 % ugruppert (i dag 1,2 %) | P2 |
+| 1.12 | ~~`klass.py grupper` for koder som mangler i Klass~~ **Avklart (versjon 59, 2026-11):** `grupper` går nå opp i hierarkiet via prefiks (43.220 → 43.22 → F). `REGSYS_NARING_SN2007` for november 2008 ble gruppert fullt ut (før: 1,2 % ugruppert). Seksjon F +19 244 | | | ✓ |
 
 ## 2. Kommuneomkoding (`verktoy/kommuneomkoding.py`)
 
