@@ -7,107 +7,107 @@ Skriptet nedenfor kan benyttes som et utgangspunkt for å lage statistikk over s
 Merk at resultatene som skriptet genererer ikke kan regnes som offisiell statistikk uten videre kvalitetssjekk og bearbeiding av dataene.
 
 ```
- require no.ssb.fdb:34 as db
-
-create-dataset elhubdata
-
-for mnd, dag in 1:12, 31 28 31 30 31 30 31 31 30 31 30 31
-  import db/ELHUB_PERS_STROMFORBRUK date_fmt(2023, $mnd, $dag) as strømforbruk++$mnd, outer_join
-  import db/ELHUB_PERS_KRAFTPRODUKSJON date_fmt(2023, $mnd, $dag) as kraftproduksjon++$mnd, outer_join
-end
-
-textblock
-Årstall for hele befolkningen
------------------------------
-endblock
-
-textblock
-Gjennomsnittlig strømforbruk måned for måned
-endblock
-barchart (mean) strømforbruk1 strømforbruk2 strømforbruk3 strømforbruk4 strømforbruk5 \
-    strømforbruk6 strømforbruk7 strømforbruk8 strømforbruk9 strømforbruk10 strømforbruk11 strømforbruk12
-
-textblock
-Gjennomsnittlig strømproduksjon måned for måned
-endblock
-barchart (mean) kraftproduksjon1 kraftproduksjon2 kraftproduksjon3 kraftproduksjon4 kraftproduksjon5 \
-    kraftproduksjon6 kraftproduksjon7 kraftproduksjon8 kraftproduksjon9 kraftproduksjon10 kraftproduksjon11 kraftproduksjon12
-
-
-generate snittforbruk = rowmean(strømforbruk1, strømforbruk2, strømforbruk3, strømforbruk4, strømforbruk5, \
-    strømforbruk6, strømforbruk7, strømforbruk8, strømforbruk9, strømforbruk10, strømforbruk11, strømforbruk12)
-
-generate totalforbruk = rowtotal(strømforbruk1, strømforbruk2, strømforbruk3, strømforbruk4, strømforbruk5, \
-    strømforbruk6, strømforbruk7, strømforbruk8, strømforbruk9, strømforbruk10, strømforbruk11, strømforbruk12)
-
-
-generate snittproduksjon = rowmean(kraftproduksjon1, kraftproduksjon2, kraftproduksjon3, kraftproduksjon4, kraftproduksjon5, \
-    kraftproduksjon6, kraftproduksjon7, kraftproduksjon8, kraftproduksjon9, kraftproduksjon10, kraftproduksjon11, kraftproduksjon12)
-
-generate totalproduksjon = rowtotal(kraftproduksjon1, kraftproduksjon2, kraftproduksjon3, kraftproduksjon4, kraftproduksjon5, \
-    kraftproduksjon6, kraftproduksjon7, kraftproduksjon8, kraftproduksjon9, kraftproduksjon10, kraftproduksjon11, kraftproduksjon12)
-
-
-summarize snittforbruk totalforbruk snittproduksjon totalproduksjon
-
-
-textblock
-Statistikk for strømprodusenter i høysesongmåneden juni
--------------------------------------------------------
-endblock
-
-clone-dataset elhubdata strømprodusenter
-use strømprodusenter
-keep kraftproduksjon6 strømforbruk6
-
-generate strømprodusent6 = !sysmiss(kraftproduksjon6)
-
-generate nettoproduksjon6 = kraftproduksjon6 - strømforbruk6
-
-summarize kraftproduksjon6 strømforbruk6 nettoproduksjon6 if strømprodusent6
-
-import db/ELHUB_PERS_PRISOMRADE 2023-06-30 as prisområde6
-import db/ELHUB_PERS_MALEPUNKT_ADR_KOMMUNE 2023-06-30 as kommune6
-import db/ELHUB_PERS_MALEPUNKTID_FNR 2023-06-30 as personid6
-
-textblock
-Gjennomsnittlig kraftproduksjon, strømforbruk og nettoproduksjon for strømprodusenter i juni 2023
-endblock
-barchart (mean) kraftproduksjon6 strømforbruk6 nettoproduksjon6 if strømprodusent6
-
-textblock
-Gjennomsnittlig kraftproduksjon, strømforbruk og nettoproduksjon for strømprodusenter i juni 2023, fordelt på prisområde
-endblock
-barchart (mean) kraftproduksjon6 strømforbruk6 nettoproduksjon6 if strømprodusent6, over(prisområde6)
-
-textblock
-Gjennomsnittlig kraftproduksjon for strømprodusenter i juni 2023, fordelt på kommune
-endblock
-tabulate kommune6 if strømprodusent6, summarize(kraftproduksjon6) rowsort() bottom(10)
-
-textblock
-Gjennomsnittlig nettoproduksjon for strømprodusenter i juni 2023, fordelt på kommune
-endblock
-tabulate kommune6 if strømprodusent6, summarize(nettoproduksjon6) rowsort() bottom(10)
-
-
-textblock
-Statistikk på personnivå (personer kan eie flere boliger/målepunkter)
-endblock
-
-collapse (sum) kraftproduksjon6 strømforbruk6, by(personid6)
-
-generate nettoproduksjon6 = kraftproduksjon6 - strømforbruk6
-
-generate strømprodusent = kraftproduksjon6 > 0
-define-labels produsentlbl 0 "Ikke kraftprodusent" 1 "Kraftprodusent"
-assign-labels strømprodusent produsentlbl
-
-summarize if strømprodusent
-
-textblock
-Gjennomsnittlig kraftproduksjon, strømforbruk og nettoproduksjon for strømprodusenter i juni 2023 per person
-endblock
+ require no.ssb.fdb:34 as db
+
+create-dataset elhubdata
+
+for mnd, dag in 1:12, 31 28 31 30 31 30 31 31 30 31 30 31
+  import db/ELHUB_PERS_STROMFORBRUK date_fmt(2023, $mnd, $dag) as strømforbruk++$mnd, outer_join
+  import db/ELHUB_PERS_KRAFTPRODUKSJON date_fmt(2023, $mnd, $dag) as kraftproduksjon++$mnd, outer_join
+end
+
+textblock
+Årstall for hele befolkningen
+-----------------------------
+endblock
+
+textblock
+Gjennomsnittlig strømforbruk måned for måned
+endblock
+barchart (mean) strømforbruk1 strømforbruk2 strømforbruk3 strømforbruk4 strømforbruk5 \
+    strømforbruk6 strømforbruk7 strømforbruk8 strømforbruk9 strømforbruk10 strømforbruk11 strømforbruk12
+
+textblock
+Gjennomsnittlig strømproduksjon måned for måned
+endblock
+barchart (mean) kraftproduksjon1 kraftproduksjon2 kraftproduksjon3 kraftproduksjon4 kraftproduksjon5 \
+    kraftproduksjon6 kraftproduksjon7 kraftproduksjon8 kraftproduksjon9 kraftproduksjon10 kraftproduksjon11 kraftproduksjon12
+
+
+generate snittforbruk = rowmean(strømforbruk1, strømforbruk2, strømforbruk3, strømforbruk4, strømforbruk5, \
+    strømforbruk6, strømforbruk7, strømforbruk8, strømforbruk9, strømforbruk10, strømforbruk11, strømforbruk12)
+
+generate totalforbruk = rowtotal(strømforbruk1, strømforbruk2, strømforbruk3, strømforbruk4, strømforbruk5, \
+    strømforbruk6, strømforbruk7, strømforbruk8, strømforbruk9, strømforbruk10, strømforbruk11, strømforbruk12)
+
+
+generate snittproduksjon = rowmean(kraftproduksjon1, kraftproduksjon2, kraftproduksjon3, kraftproduksjon4, kraftproduksjon5, \
+    kraftproduksjon6, kraftproduksjon7, kraftproduksjon8, kraftproduksjon9, kraftproduksjon10, kraftproduksjon11, kraftproduksjon12)
+
+generate totalproduksjon = rowtotal(kraftproduksjon1, kraftproduksjon2, kraftproduksjon3, kraftproduksjon4, kraftproduksjon5, \
+    kraftproduksjon6, kraftproduksjon7, kraftproduksjon8, kraftproduksjon9, kraftproduksjon10, kraftproduksjon11, kraftproduksjon12)
+
+
+summarize snittforbruk totalforbruk snittproduksjon totalproduksjon
+
+
+textblock
+Statistikk for strømprodusenter i høysesongmåneden juni
+-------------------------------------------------------
+endblock
+
+clone-dataset elhubdata strømprodusenter
+use strømprodusenter
+keep kraftproduksjon6 strømforbruk6
+
+generate strømprodusent6 = !sysmiss(kraftproduksjon6)
+
+generate nettoproduksjon6 = kraftproduksjon6 - strømforbruk6
+
+summarize kraftproduksjon6 strømforbruk6 nettoproduksjon6 if strømprodusent6
+
+import db/ELHUB_PERS_PRISOMRADE 2023-06-30 as prisområde6
+import db/ELHUB_PERS_MALEPUNKT_ADR_KOMMUNE 2023-06-30 as kommune6
+import db/ELHUB_PERS_MALEPUNKTID_FNR 2023-06-30 as personid6
+
+textblock
+Gjennomsnittlig kraftproduksjon, strømforbruk og nettoproduksjon for strømprodusenter i juni 2023
+endblock
+barchart (mean) kraftproduksjon6 strømforbruk6 nettoproduksjon6 if strømprodusent6
+
+textblock
+Gjennomsnittlig kraftproduksjon, strømforbruk og nettoproduksjon for strømprodusenter i juni 2023, fordelt på prisområde
+endblock
+barchart (mean) kraftproduksjon6 strømforbruk6 nettoproduksjon6 if strømprodusent6, over(prisområde6)
+
+textblock
+Gjennomsnittlig kraftproduksjon for strømprodusenter i juni 2023, fordelt på kommune
+endblock
+tabulate kommune6 if strømprodusent6, summarize(kraftproduksjon6) rowsort() bottom(10)
+
+textblock
+Gjennomsnittlig nettoproduksjon for strømprodusenter i juni 2023, fordelt på kommune
+endblock
+tabulate kommune6 if strømprodusent6, summarize(nettoproduksjon6) rowsort() bottom(10)
+
+
+textblock
+Statistikk på personnivå (personer kan eie flere boliger/målepunkter)
+endblock
+
+collapse (sum) kraftproduksjon6 strømforbruk6, by(personid6)
+
+generate nettoproduksjon6 = kraftproduksjon6 - strømforbruk6
+
+generate strømprodusent = kraftproduksjon6 > 0
+define-labels produsentlbl 0 "Ikke kraftprodusent" 1 "Kraftprodusent"
+assign-labels strømprodusent produsentlbl
+
+summarize if strømprodusent
+
+textblock
+Gjennomsnittlig kraftproduksjon, strømforbruk og nettoproduksjon for strømprodusenter i juni 2023 per person
+endblock
 barchart (mean) kraftproduksjon6 strømforbruk6 nettoproduksjon6 if strømprodusent
 
 ```

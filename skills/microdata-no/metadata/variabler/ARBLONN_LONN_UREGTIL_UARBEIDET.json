@@ -13,7 +13,7 @@
  ],
  "temporalCoverage": {
   "start": 16436,
-  "stop": 20665
+  "stop": 20696
  },
  "measureVariable": {
   "name": "ARBLONN_LONN_UREGTIL_UARBEIDET",
@@ -26,7 +26,7 @@
     "description": "Variabelen viser Innrapportert uregelmessige tillegg for ikke-arbeidet, som omfatter tillegg som er uregelmessige og der den ansatte ikke er tilstede på arbeidsplassen, som vakttillegg og utkallingstillegg. Variabelen har kun gjennomgått noen automatiske kontroller og korreksjoner. \n \n Alle lønnsbegrepene er før skatt, altså bruttolønn. \n \n A-ordningen er en samordnet digital innsamling av opplysninger om arbeidsforhold, inntekt og skattetrekk til Skatteetaten, NAV og SSB. Ordningen innebærer at SSB får opplysninger om lønn og ansatte direkte fra a-meldingen, som er den elektroniske meldingen som inneholder alle opplysningene som samles inn. Data foreligger per måned og alle måneder inneholder en fullstendig situasjonsbeskrivelse om arbeid og lønn samlet. SSB innhenter data fra A-ordningen for å fremstille statistikk om sysselsetting, lønn, ledighet og arbeidsmarkedstiltak. \n \n Mer informasjon om A-ordningen og bruk av data i statistikk og for forskning og analyse: \n- [Om a-ordningen hos Skatteetaten](https://www.skatteetaten.no/bedrift-og-organisasjon/arbeidsgiver/a-meldingen/om-a-ordningen/om-a-ordningen/) \n - [Variabelområdet a-ordningen hos SSB](https://www.ssb.no/data-til-forskning/utlan-av-data-til-forskere/variabellister/a-ordningen) \n - [Registerbasert lønns- og sysselsettingsstatistikk basert på a-ordningen hos SSB](https://www.ssb.no/arbeid-og-lonn/sysselsetting/artikler/registerbasert-lonns-og-sysselsettingsstatistikk-basert-pa-a-ordningen)",
     "validPeriod": {
      "start": 16436,
-     "stop": 20665
+     "stop": 20696
     },
     "valueDomain": {
      "description": "Beløp.",
@@ -53,7 +53,7 @@
      "description": "Identifikator for jobb i microdata",
      "validPeriod": {
       "start": 16436,
-      "stop": 20665
+      "stop": 20696
      },
      "valueDomain": {
       "description": "Pseudonymisert kombinasjon av personnummer og organisasjonsnummer",
@@ -75,7 +75,7 @@
      "description": "Startdato/måletidspunktet for hendelsen",
      "validPeriod": {
       "start": 16436,
-      "stop": 20665
+      "stop": 20696
      },
      "valueDomain": {
       "description": "Dato oppgitt i dager siden 1970-01-01",
@@ -95,7 +95,7 @@
      "description": "Stoppdato/måletidspunktet for hendelsen",
      "validPeriod": {
       "start": 16436,
-      "stop": 20665
+      "stop": 20696
      },
      "valueDomain": {
       "description": "Dato oppgitt i dager siden 1970-01-01",
@@ -107,7 +107,7 @@
  ],
  "globalTemporalCoverage": {
   "start": -1096,
-  "stop": 20759
+  "stop": 20766
  },
- "updatedAt": 1790854458
+ "updatedAt": 1793790331
 }

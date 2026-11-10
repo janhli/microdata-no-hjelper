@@ -9,33 +9,33 @@ Skriptet demonstrerer også hvordan man kan sjekke andelen elever som tar ett vs
 Det er mulig å justere på skriptet og spesifisere nærmere når man begynner på videregående utdanning, f.eks. en gitt måned, vårsemester, høstsemester etc. Og man kan også velge andre datoer for måling av studium.
 
 ```
- require no.ssb.fdb:40 as db
-
-// Lager populasjon av personer som startet på videregående utdanning i 2022
-create-dataset elever
-import db/NUDB_AAR_NY_I_VID_UTD as regvgo
-generate regår = int(regvgo/100)
-keep if regår == 2022
-tabulate regår
-
-// Finner utdanningskode ved slutten av 2022 og kobler på populasjonsdatasettet
-create-dataset kursdata
-import db/NUDB_KURS_NUS 2022-12-31 as kurs2212
-import db/NUDB_KURS_FNR as personid
-destring kurs2212
-collapse (max) kurs2212 -> høyeste_kode2212 (min) kurs2212 -> laveste_kode2212, by(personid)
-merge høyeste_kode2212 laveste_kode2212 into elever
-
-// Finner elever som tar ett vs flere studium ved slutten av 2022
-use elever
-generate kun_ett_studium = høyeste_kode2212 == laveste_kode2212
-define-labels studiumlbl 0 'Tar flere studium' 1 'Tar ett studium'
-assign-labels kun_ett_studium studiumlbl
-piechart kun_ett_studium
-
-// Lager oversikt over alle studier som populasjonen tar ved slutten av 2022
-// Bruker en grovere inndeling pga. for mange koder med få observasjoner (2-sifret NUS-kode)
-replace høyeste_kode2212 = int(høyeste_kode2212/10000)
+ require no.ssb.fdb:40 as db
+
+// Lager populasjon av personer som startet på videregående utdanning i 2022
+create-dataset elever
+import db/NUDB_AAR_NY_I_VID_UTD as regvgo
+generate regår = int(regvgo/100)
+keep if regår == 2022
+tabulate regår
+
+// Finner utdanningskode ved slutten av 2022 og kobler på populasjonsdatasettet
+create-dataset kursdata
+import db/NUDB_KURS_NUS 2022-12-31 as kurs2212
+import db/NUDB_KURS_FNR as personid
+destring kurs2212
+collapse (max) kurs2212 -> høyeste_kode2212 (min) kurs2212 -> laveste_kode2212, by(personid)
+merge høyeste_kode2212 laveste_kode2212 into elever
+
+// Finner elever som tar ett vs flere studium ved slutten av 2022
+use elever
+generate kun_ett_studium = høyeste_kode2212 == laveste_kode2212
+define-labels studiumlbl 0 'Tar flere studium' 1 'Tar ett studium'
+assign-labels kun_ett_studium studiumlbl
+piechart kun_ett_studium
+
+// Lager oversikt over alle studier som populasjonen tar ved slutten av 2022
+// Bruker en grovere inndeling pga. for mange koder med få observasjoner (2-sifret NUS-kode)
+replace høyeste_kode2212 = int(høyeste_kode2212/10000)
 tabulate høyeste_kode2212
 
 ```

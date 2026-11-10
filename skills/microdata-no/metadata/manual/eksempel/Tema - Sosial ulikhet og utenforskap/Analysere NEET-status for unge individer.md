@@ -11,70 +11,70 @@ Også kursdata for 2022 importeres for å se hvem som tok en utdanning i løpet 
 Til slutt genererer vi variabelen «neet» basert på studiedeltakelse = 0, tiltaksdeltakelse = 0 og lønnsinntekt under en gitt grense (ikke i jobb).
 
 ```
- // Kobler til databank
-require no.ssb.fdb:32 as db
-
-//Oppretter datasett NEET
-create-dataset NEET
-
-//Inkluderer alle som var mellom 18 og 25 i 2022
-import db/BEFOLKNING_FOEDSELS_AAR_MND as alder
-replace alder = 2022 - int(alder/100)
-keep if inrange(alder,18,25)
-
-//Inkluderer lønn
-import db/INNTEKT_WLONN 2022-12-31 as lønn
-
-//Inkluderer tiltak for hele året
-import db/ARBEIDSSOKER_TILTAK 2022-01-31 as tiltak1
-import db/ARBEIDSSOKER_TILTAK 2022-02-28 as tiltak2
-import db/ARBEIDSSOKER_TILTAK 2022-03-31 as tiltak3
-import db/ARBEIDSSOKER_TILTAK 2022-04-30 as tiltak4
-import db/ARBEIDSSOKER_TILTAK 2022-05-31 as tiltak5
-import db/ARBEIDSSOKER_TILTAK 2022-06-30 as tiltak6
-import db/ARBEIDSSOKER_TILTAK 2022-07-31 as tiltak7
-import db/ARBEIDSSOKER_TILTAK 2022-08-31 as tiltak8
-import db/ARBEIDSSOKER_TILTAK 2022-09-30 as tiltak9
-import db/ARBEIDSSOKER_TILTAK 2022-10-31 as tiltak10
-import db/ARBEIDSSOKER_TILTAK 2022-11-30 as tiltak11
-import db/ARBEIDSSOKER_TILTAK 2022-12-31 as tiltak12
-
-destring tiltak1 tiltak2 tiltak3 tiltak4 tiltak5 tiltak6 tiltak7 tiltak8 tiltak9 tiltak10 tiltak11 tiltak12
-
-//Genererer en sammensatt tiltaksvariabel for 2022 (bruker NAV-kode for arbeidssøkere i tiltak)
-generate tiltak = (tiltak1 == 1 | tiltak2 == 1 | tiltak3 == 1 | tiltak4 == 1 | tiltak5 == 1 | tiltak6 == 1 \
-    | tiltak7 == 1 | tiltak8 == 1 | tiltak9 == 1 | tiltak10 == 1 | tiltak11 == 1 | tiltak12 == 1)
-
-//Importerer kursdata for 2022
-create-dataset utdanning
-import-event db/NUDB_KURS_NUS 2022-01-01 to 2022-12-31 as student
-
-//Slår sammen fødselsnummer med utdanning
-create-dataset lenke_utd_person
-import db/NUDB_KURS_FNR as fnr
-merge fnr into utdanning
-use utdanning
-
-//Aggregere de som har verdi over 0 i student etter fødselsnummer og til NEET-datasettet
-destring student
-keep if student > 0
-collapse (count) student, by(fnr)
-merge student into NEET
-
-use NEET
-//Setter missing på lønn til 0
-replace lønn = 0 if sysmiss(lønn)
-
-//Setter de som deltar i kurs til 1 og resten (inkludert missing) til 0.
-replace student = 1 if student > 0
-replace student = 0 if sysmiss(student)
-
-//Generer variabelen neet som er 1 hvis student er 0 (ikke deltatt i kurs), lønn er mindre enn 37820.5
-// (antatt å være grensen for en minimum lønn) og tiltak = 0 (ikke i tiltak). Dette indikerer at personen er NEET.
-generate neet = 1 if student == 0 & lønn < 37820.5 & tiltak == 0
-replace neet = 0 if sysmiss(neet)
-
-tabulate neet, cellpct
+ // Kobler til databank
+require no.ssb.fdb:32 as db
+
+//Oppretter datasett NEET
+create-dataset NEET
+
+//Inkluderer alle som var mellom 18 og 25 i 2022
+import db/BEFOLKNING_FOEDSELS_AAR_MND as alder
+replace alder = 2022 - int(alder/100)
+keep if inrange(alder,18,25)
+
+//Inkluderer lønn
+import db/INNTEKT_WLONN 2022-12-31 as lønn
+
+//Inkluderer tiltak for hele året
+import db/ARBEIDSSOKER_TILTAK 2022-01-31 as tiltak1
+import db/ARBEIDSSOKER_TILTAK 2022-02-28 as tiltak2
+import db/ARBEIDSSOKER_TILTAK 2022-03-31 as tiltak3
+import db/ARBEIDSSOKER_TILTAK 2022-04-30 as tiltak4
+import db/ARBEIDSSOKER_TILTAK 2022-05-31 as tiltak5
+import db/ARBEIDSSOKER_TILTAK 2022-06-30 as tiltak6
+import db/ARBEIDSSOKER_TILTAK 2022-07-31 as tiltak7
+import db/ARBEIDSSOKER_TILTAK 2022-08-31 as tiltak8
+import db/ARBEIDSSOKER_TILTAK 2022-09-30 as tiltak9
+import db/ARBEIDSSOKER_TILTAK 2022-10-31 as tiltak10
+import db/ARBEIDSSOKER_TILTAK 2022-11-30 as tiltak11
+import db/ARBEIDSSOKER_TILTAK 2022-12-31 as tiltak12
+
+destring tiltak1 tiltak2 tiltak3 tiltak4 tiltak5 tiltak6 tiltak7 tiltak8 tiltak9 tiltak10 tiltak11 tiltak12
+
+//Genererer en sammensatt tiltaksvariabel for 2022 (bruker NAV-kode for arbeidssøkere i tiltak)
+generate tiltak = (tiltak1 == 1 | tiltak2 == 1 | tiltak3 == 1 | tiltak4 == 1 | tiltak5 == 1 | tiltak6 == 1 \
+    | tiltak7 == 1 | tiltak8 == 1 | tiltak9 == 1 | tiltak10 == 1 | tiltak11 == 1 | tiltak12 == 1)
+
+//Importerer kursdata for 2022
+create-dataset utdanning
+import-event db/NUDB_KURS_NUS 2022-01-01 to 2022-12-31 as student
+
+//Slår sammen fødselsnummer med utdanning
+create-dataset lenke_utd_person
+import db/NUDB_KURS_FNR as fnr
+merge fnr into utdanning
+use utdanning
+
+//Aggregere de som har verdi over 0 i student etter fødselsnummer og til NEET-datasettet
+destring student
+keep if student > 0
+collapse (count) student, by(fnr)
+merge student into NEET
+
+use NEET
+//Setter missing på lønn til 0
+replace lønn = 0 if sysmiss(lønn)
+
+//Setter de som deltar i kurs til 1 og resten (inkludert missing) til 0.
+replace student = 1 if student > 0
+replace student = 0 if sysmiss(student)
+
+//Generer variabelen neet som er 1 hvis student er 0 (ikke deltatt i kurs), lønn er mindre enn 37820.5
+// (antatt å være grensen for en minimum lønn) og tiltak = 0 (ikke i tiltak). Dette indikerer at personen er NEET.
+generate neet = 1 if student == 0 & lønn < 37820.5 & tiltak == 0
+replace neet = 0 if sysmiss(neet)
+
+tabulate neet, cellpct
 tabulate neet alder, colpct freq
 
 ```

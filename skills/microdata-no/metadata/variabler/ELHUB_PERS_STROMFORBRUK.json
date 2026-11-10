@@ -10,7 +10,7 @@
  ],
  "temporalCoverage": {
   "start": 18262,
-  "stop": 20696
+  "stop": 20726
  },
  "measureVariable": {
   "name": "ELHUB_PERS_STROMFORBRUK",
@@ -23,7 +23,7 @@
     "description": "Variabelen viser forbruk i kWh registrert på målepunktet. Verdien er akummulert per måned.",
     "validPeriod": {
      "start": 18262,
-     "stop": 20696
+     "stop": 20726
     },
     "valueDomain": {
      "description": "Kilowattime.",
@@ -50,7 +50,7 @@
      "description": "Identifikator for målepunkt i microdata",
      "validPeriod": {
       "start": 18262,
-      "stop": 20696
+      "stop": 20726
      },
      "valueDomain": {
       "description": "Pseudonymisert kombinasjon av personnummer og målepunktsid nummer",
@@ -72,7 +72,7 @@
      "description": "Startdato/måletidspunktet for hendelsen",
      "validPeriod": {
       "start": 18262,
-      "stop": 20696
+      "stop": 20726
      },
      "valueDomain": {
       "description": "Dato oppgitt i dager siden 1970-01-01",
@@ -92,7 +92,7 @@
      "description": "Stoppdato/måletidspunktet for hendelsen",
      "validPeriod": {
       "start": 18262,
-      "stop": 20696
+      "stop": 20726
      },
      "valueDomain": {
       "description": "Dato oppgitt i dager siden 1970-01-01",
@@ -104,7 +104,7 @@
  ],
  "globalTemporalCoverage": {
   "start": -1096,
-  "stop": 20759
+  "stop": 20766
  },
- "updatedAt": 1790854458
+ "updatedAt": 1793790331
 }
