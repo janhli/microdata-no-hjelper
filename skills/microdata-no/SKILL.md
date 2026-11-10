@@ -57,6 +57,7 @@ Verktøyet krever nettilgang. Er den ikke der, si fra til brukeren og bruk det s
 | Land til EU/EFTA, Norden osv. | 546 (gruppering av land) | `grupper 546 --nivaa 2 --variabel ...` |
 | Næring (SN2007), `REGSYS_NARING_SN2007` | 6 | `grupper 6 --nivaa 1 --dato 2024-01-01 --variabel REGSYS_NARING_SN2007 --navn naring` |
 | Koblingstabeller (NUS til ISCED osv.) | 36, 6, 91 | `kobling 36` lister tabellene, `kobling 36 --tabell "ISCED 2011 Attainment" --navn nus` lager recode |
+| Næring over tid (SN2002 til SN2007) | 6 | `kobling 6 --dato 2005-01-01 --tabell "SN 2007" --nivaa 1 --navn naring` (seksjon, 91 % omkodet). Uten `--nivaa` står 42 % uendret |
 | Finne en annen klassifikasjon | | `sok yrke` |
 
 Nivåene i hierarkiene: STYRK 1–4 er ett til fire siffer. NUS 1 er utdanningsnivå (0–9), 2 er nivå og

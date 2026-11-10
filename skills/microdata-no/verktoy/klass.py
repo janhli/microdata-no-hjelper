@@ -9,7 +9,7 @@ Underkommandoer (fra prosjektmappen, python verktoy/klass.py <kommando> --help):
                                    recode fra detaljerte koder til overordnet kode på nivå N
                                    (STYRK 4-siffer -> hovedgruppe, SN 5-siffer -> divisjon/seksjon,
                                    NUS -> utdanningsnivå, land -> verdensdel).
-  kobling <id> [--dato D] [--tabell TEKST] [--navn X] [--utelat KODER]
+  kobling <id> [--dato D] [--tabell TEKST] [--navn X] [--nivaa N] [--utelat KODER]
                                    Uten --tabell: list koblingstabellene til versjonen som gjelder
                                    på datoen. Med --tabell: recode fra kodene i <id> til kodene i
                                    den andre klassifikasjonen.
@@ -174,15 +174,33 @@ def kommando_kobling(a):
     t = treff[0]
     tab = hent(t["_links"]["self"]["href"])
     forste = t["name"].strip().startswith(v["name"].strip())
+    # Med --nivaa løftes hvert mål til overordnet kode på nivå N i den andre klassifikasjonen. En kilde
+    # med flere detaljerte mål blir da entydig hvis alle målene ligger under samme overordnede kode.
+    opp, nivaanavn = (lambda kode: kode), {}
+    if a.nivaa:
+        lenke = tab["_links"]["target" if forste else "source"]["href"].split("{")[0]
+        items = {i["code"]: i for i in hent(f"{lenke}?language=nb")["classificationItems"]}
+        nivaaer = sorted({int(i["level"]) for i in items.values()})
+        if a.nivaa not in nivaaer:
+            sys.exit(f"Nivå {a.nivaa} finnes ikke i målklassifikasjonen. Nivåer: {nivaaer}")
+        nivaanavn = {k: i["name"] for k, i in items.items() if int(i["level"]) == a.nivaa}
+
+        def opp(kode):
+            i = items.get(kode)
+            while i is not None and int(i["level"]) > a.nivaa:
+                i = items.get(i["parentCode"])
+            return i["code"] if i is not None and int(i["level"]) == a.nivaa else None
     # Alle mål per kilde. Klass kan ha rader uten mål (targetCode er null): koden har ingen motpart.
     maal_per_kilde, navn_paa_maal = defaultdict(set), {}
     for m in tab["correspondenceMaps"]:
         kilde, mal, mnavn = (m["sourceCode"], m["targetCode"], m["targetName"]) if forste else (m["targetCode"], m["sourceCode"], m["sourceName"])
         if kilde is None:
             continue
+        if mal is not None and a.nivaa:
+            mal, mnavn = opp(mal), None
         maal_per_kilde[kilde].add(mal)
         if mal is not None:
-            navn_paa_maal[mal] = (mnavn or "").strip()
+            navn_paa_maal[mal] = (mnavn or nivaanavn.get(mal, "")).strip()
     kart, delt, uten_maal = {}, [], []
     for kilde, maal in maal_per_kilde.items():
         if maal == {None}:
@@ -193,12 +211,14 @@ def kommando_kobling(a):
             kart[kilde] = next(iter(maal))
     print(f"// {t['name'].strip()}. Hentet {date.today().isoformat()}.")
     print(f"// Retning: koder i {v['name'].strip()} -> den andre klassifikasjonen (velg versjon med --dato).")
+    if a.nivaa:
+        print(f"// Målene er løftet til nivå {a.nivaa} i den andre klassifikasjonen. {len(kart)} kildekoder får entydig mål.")
     if delt:
         print(f"// {len(delt)} koder kobles til flere mål og er utelatt (står uendret): " + " ".join(sorted(delt)[:30])
               + (" ..." if len(delt) > 30 else ""))
         print("// NB: Uendrede koder er fortsatt i den gamle klassifikasjonen, så resultatet blander to kodeverk.")
         print("//     SN2002 -> SN2007 lot 42 % av sysselsatte stå uendret (2006). Ikke grupper på kodens sifre")
-        print("//     uten å skille dem ut.")
+        print("//     uten å skille dem ut." + ("" if a.nivaa else " --nivaa 1 eller 2 gir langt færre uendrede koder."))
     if uten_maal:
         print(f"// {len(uten_maal)} koder har ingen motpart i tabellen og står uendret: " + " ".join(sorted(uten_maal)))
     print(f"generate {a.navn}_kobl = {a.navn}")
@@ -235,6 +255,8 @@ def main():
     s.add_argument("--dato", default=idag)
     s.add_argument("--tabell", help="del av tabellnavnet")
     s.add_argument("--navn", default="kode")
+    s.add_argument("--nivaa", type=int, help="omkod til overordnet kode på dette nivået i den andre klassifikasjonen "
+                   "(f.eks. 1 seksjon, 2 divisjon i SN). Gir færre koder med flere mål og færre små målkoder")
     s.add_argument("--utelat", default="", help=UTELAT_HJELP)
     s.set_defaults(f=kommando_kobling)
 

@@ -2,7 +2,7 @@
 
 import unittest
 
-from hjelp import avvik, har_nett, kjor, recode_linjer_i, simuler
+from hjelp import avvik, har_nett, kjor, recode_linjer_i, simuler, tiltenkt
 
 
 @unittest.skipUnless(har_nett(), "SSB Klass svarer ikke (eller UTEN_NETT er satt)")
@@ -38,6 +38,17 @@ class TestKlass(unittest.TestCase):
         self.assertIn("--utelat: 1 målkoder tatt ut (17.240)", med)
         self.assertIn("21.240", med.split("--utelat:")[1].splitlines()[0])  # kilden står uendret
         self.assertEqual(avvik(med), [])
+
+    def test_kobling_nivaa_gir_overordnede_maal(self):
+        args = ("kobling", "6", "--dato", "2005-01-01", "--tabell", "SN 2007", "--navn", "naring")
+        detalj, _ = tiltenkt(recode_linjer_i(kjor("klass.py", *args)))
+        tekst = kjor("klass.py", *args, "--nivaa", "1")
+        seksjon, _ = tiltenkt(recode_linjer_i(tekst))
+        self.assertIn("løftet til nivå 1", tekst)
+        self.assertTrue(all(len(m) == 1 and m.isalpha() for m in seksjon.values()))  # A–U
+        self.assertGreater(len(seksjon), len(detalj))  # flere kilder blir entydige
+        self.assertEqual(simuler(recode_linjer_i(tekst), ["15.110"]), ["C"])  # kjøtt -> industri
+        self.assertEqual(avvik(tekst), [])
 
     def test_kobling_sn2025_til_sn2007_med_tomme_maal(self):
         # Krasjet før: Klass har rader uten mål (targetCode null), f.eks. 46.890.

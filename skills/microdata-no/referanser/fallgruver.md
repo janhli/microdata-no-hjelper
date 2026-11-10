@@ -159,6 +159,13 @@ med pull request (se CONTRIBUTING.md). Tagg dem med datalagerversjon/dato hvis d
 - Koblinger med koder som har flere mål blander kodeverk: SN2002 → SN2007 lot 42 % av sysselsatte
   (november 2006) stå med SN2002-kode. Gruppering på de første sifrene blir da feil (f.eks. «85» er helse
   i SN2002 og undervisning i SN2007).
+- **Bruk `kobling --nivaa 1` (eller 2) for næring over tid.** Målene løftes til seksjon (A–U) eller
+  divisjon, så koder med flere detaljerte mål blir entydige: 91 % omkodet på nivå 1 og 83 % på nivå 2
+  (november 2007), mot 57 % på femsifret nivå. Omkodede og uendrede koder kan skilles på lengden (1 eller
+  2 tegn mot `xx.xxx`). Nivå 1 trengte ingen `--utelat`.
+- **`tabulate` ser ut til å skjule kategorier med svært få enheter.** Kildekoder som ikke var med i
+  tabellen (23.100, og 35.201/35.410/35.420), ga likevel «påvirker for få enheter» (versjon 59, november
+  2026). Behandle koder som mangler i tabellen som små, ikke som tomme.
 
 ## Geografi
 
