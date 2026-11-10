@@ -1,7 +1,7 @@
 name: Oppdater metadata og manual
 
 # Henter variabelkatalog og manual fra microdata.no hver uke og åpner en pull request hvis noe
-# er endret. main er beskyttet, så en vedlikeholder må godkjenne (som regel bare et blikk på diffen).
+# er endret. Workflowen pusher aldri til main. En vedlikeholder ser over diffen og fletter pull requesten.
 # Hentescriptene kontrollerer uttrekket og avslutter med feilkode (uten å endre filer) ved nedlastingsfeil,
 # manglende variabler eller sider, eller sider som er blitt tomme. Da feiler jobben, og ingen pull request åpnes.
 # Datalagerversjonen leses fra microdata.no. Er den ny, hentes alle variabler på nytt. Testene i tests/ kjøres
