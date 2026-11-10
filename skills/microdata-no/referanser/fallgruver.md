@@ -149,6 +149,12 @@ med pull request (se CONTRIBUTING.md). Tagg dem med datalagerversjon/dato hvis d
   (`(990 = 9)` for uoppgitt landbakgrunn, versjon 59, november 2026). Slå små koder sammen med en
   større gruppe i samme regel. Er de små til sammen også (`(980 989 990 = 8)` ble også stoppet), la
   dem stå uomkodet og gi dem navn med `define-labels`.
+- En regel som treffer **0** enheter stoppes ikke (TESTLISTE 1.7). Utskrift med koder som ikke finnes i
+  dataene (f.eks. gamle kommunenumre fra `kommuneomkoding.py`) er derfor trygg.
+- Detaljerte koblinger (f.eks. `klass.py kobling` mellom SN2002 og SN2007 på femsifret nivå) har ofte
+  målkoder med 1–9 personer, og stoppes. Feilmeldingen nevner bare én målkode om gangen («Omkodingen til
+  17.240 påvirker for få enheter»). Ta ut regelen for den koden og kjør på nytt, eller grupper til et
+  grovere nivå først.
 
 ## Geografi
 
@@ -171,8 +177,8 @@ med pull request (se CONTRIBUTING.md). Tagg dem med datalagerversjon/dato hvis d
   Kontroller med `tabulate`, eller bruk `--ukjent` (se neste punkt).
   - `recode (* = ...)` må stå som siste regel i samme kommando som de andre reglene. I en egen kommando
     treffer den alle verdier, også de som allerede er omkodet. Derfor lager `regionomkoding.py` ingen
-    sluttregel som standard. `--ukjent` gir én lang kommando, og det er ikke prøvd om microdata.no tåler
-    linjelengden.
+    sluttregel som standard. `--ukjent` gir én lang kommando. microdata.no har godtatt 2 789 tegn
+    (versjon 59, november 2026), og sluttregelen virker som forventet (TESTLISTE 1.1 og 1.2).
   - Regionene er dagens inndeling. Politidistrikt (2016), helseregioner (2007), barnevern (2004) og
     samiske valgkretser (2009) har eldre versjoner enn 2024, og tabellene viser dagens kobling.
   - Helseregionene har bare tabell mot Kommuneinndeling 2020 hos Klass. Kommunekodene er oversatt

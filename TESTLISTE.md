@@ -13,15 +13,16 @@ Bruk ett lite skript med `import fdb/BEFOLKNING_KOMMNR_FORMELL 2024-01-01 as kom
 
 | # | Hva | Hvordan | Forventet | Pri |
 |---|---|---|---|---|
-| 1.1 | En sluttregel i **egen** `recode`-kommando overskriver tidligere omkodinger | `recode x ('0301' = 'A')`, deretter `recode x (* = 'B')`, `tabulate x` | Alt blir `B`. Bekrefter feilen som ble rettet i `regionomkoding.py` | P1 |
-| 1.2 | Sluttregel som siste regel i **samme** kommando | `recode x ('0301' = 'A') (* = 'B')` | Oslo blir `A`, resten `B` | P1 |
-| 1.3 | Lange `recode`-linjer: standard (opptil ca. 600 tegn), konfliktkommandoen i `klass.py kobling` (ca. 2 200 tegn for SN2002 → SN2007) og `--ukjent` (2 800–4 700 tegn) | `python verktoy/regionomkoding.py helseregioner` og `... --ukjent`, og `python verktoy/klass.py kobling 6 --dato 2005-01-01 --tabell "SN 2007" --navn naring` på `REGSYS_NARING_SN2002` | Godtas. Ellers: finn grensen og still inn `MAKS_TEGN` i `recode_regler.py` (konfliktkommandoen kan ikke deles) | P2 |
-| 1.9 | Regler i samme kommando ser ikke hverandres resultat (grunnlaget for `recode_regler.py`) | `recode x ('0301' = '1103') ('1103' = '4601')`, `tabulate x` | Oslo blir `1103`, Stavanger `4601`. Blir Oslo `4601`, er verktøyenes antakelse feil | P1 |
-| 1.4 | Samme merkelapp på flere regler (merkelappen står bare på første bit) | `recode x ('0301' = 'A' 'Oslo') ('1103' = 'A')`, `tabulate x` | Begge får merkelappen `Oslo`. Ellers: sett merkelapp på alle biter | P2 |
+| 1.1 | ~~Sluttregel i egen `recode`-kommando~~ **Avklart (versjon 59, 2026-11):** overskriver alt, også det som er omkodet før | | | ✓ |
+| 1.2 | ~~Sluttregel sist i samme kommando~~ **Avklart (versjon 59, 2026-11):** Oslo A, resten B, som forventet | | | ✓ |
+| 1.3 | ~~Lange `recode`-linjer~~ **Avklart (versjon 59, 2026-11):** 2 789 tegn (`--ukjent`) og 2 161 tegn (SN-kobling) godtas. SN-koblingen ble stoppet av 10-enhetsregelen (målkode 17.240), ikke av lengden. Se 1.10 | | | ✓ |
+| 1.9 | ~~Regler i samme kommando ser ikke hverandres resultat~~ **Avklart (versjon 59, 2026-11):** Oslo → 1103, Stavanger → 4601, Bergen uendret. Antakelsen i `recode_regler.py` stemmer | | | ✓ |
+| 1.4 | ~~Samme merkelapp på flere regler~~ **Avklart (versjon 59, 2026-11):** merkelappen på første regel gjelder også de andre med samme mål | | | ✓ |
 | 1.5 | ~~Teller 10-enhetsregelen per kommando eller per regel?~~ **Avklart (versjon 59, 2026-11):** per målverdi. Én liten regel stopper hele kommandoen. Se `fallgruver.md` | | | ✓ |
-| 1.6 | `generate x = y` for en strengvariabel | `generate kommune_orig = kommune` | Kopi av strengen | P2 |
-| 1.7 | `recode` med verdier som ikke finnes i variabelens kodeliste | `recode x ('0101' = 'A')` på 2024-data | Feil, advarsel eller ingen virkning? Styrer om verktøyene må begrenses til kodelisten | P2 |
-| 1.8 | Merkelapper med spesialtegn (æøå, `/`, `-`) i strengrecode | `recode x ('0301' = 'A' 'Oslo/Bærum')` | Godtas | P3 |
+| 1.6 | ~~`generate x = y` for streng~~ **Avklart (versjon 59, 2026-11):** gir en kopi | | | ✓ |
+| 1.7 | ~~`recode` med koder som ikke finnes i dataene~~ **Avklart (versjon 59, 2026-11):** ingen virkning, ingen feil. Regler som treffer 0 enheter stoppes ikke | | | ✓ |
+| 1.8 | ~~Spesialtegn i merkelapp~~ **Avklart (versjon 59, 2026-11):** «Oslo/Bærum – æøå» vises riktig | | | ✓ |
+| 1.10 | Detaljerte koblinger stoppes av 10-enhetsregelen | Lag `klass.py kobling ... --utelat KODER` (eller gjenta uten regelen fra feilmeldingen) og kjør SN2002 → SN2007 til den går gjennom | Hvor mange runder trengs? Avgjør om verktøyet bør gruppere til grovere nivå i stedet | P2 |
 
 ## 2. Kommuneomkoding (`verktoy/kommuneomkoding.py`)
 
@@ -33,7 +34,7 @@ Bruk ett lite skript med `import fdb/BEFOLKNING_KOMMNR_FORMELL 2024-01-01 as kom
 | 2.4 | Ålesund-reverseringen | Folketall 1.1.2023 og 1.1.2024 for 1508 Ålesund og 1580 Haram | Ørskog, Skodje og Sandøy ligger i Ålesund etter omkoding, Haram i 1580 | P1 |
 | 2.5 | `--til 2026` (Indre Østfold 3118 deles i 2026) | Kjør og sjekk kommentarene | Kodene som får 3118 som «fortsettelse» er riktige. Ellers: skarpere regel | P2 |
 | 2.6 | Svalbard-kodene (2111, 2112, 2115, 2121, 2131) | `tabulate` på kodene i dataene | Finnes de, må de legges til for hånd | P3 |
-| 2.7 | Kode som er både kilde og mål | Håndteres nå i koden (`recode_regler.py`) og testes i `tests/`. I microdata.no avhenger det av 1.9 | Se 1.9 | P3 |
+| 2.7 | ~~Kode som er både kilde og mål~~ **Avklart (versjon 59, 2026-11):** håndteres i `recode_regler.py`, og 1.9 bekrefter at det virker i microdata.no | | | ✓ |
 
 ## 3. Regionomkoding (`verktoy/regionomkoding.py`)
 

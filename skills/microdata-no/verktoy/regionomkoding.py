@@ -15,7 +15,7 @@ som ikke står i tabellen (gamle kommunenumre, 9999) står uendret. Kontroller m
 Innen én recode-kommando kjører reglene i rekkefølge, og verdier som allerede er omkodet påvirkes ikke av
 senere regler. Det gjelder IKKE mellom kommandoer. Derfor kan oppdeling i flere kommandoer ikke kombineres
 med en sluttregel (* = ...). Med --ukjent legges sluttregelen som siste regel i én samlet kommando.
-Linjen blir da lang (flere tusen tegn), og det er ikke prøvd om microdata.no tåler det.
+Linjen blir da lang (2 800–4 700 tegn). microdata.no har godtatt 2 789 tegn (helseregioner, versjon 59).
 """
 
 import argparse
@@ -96,7 +96,7 @@ def main():
     if r["oversatt_fra_eldre_kommuneinndeling"] == "ja":
         print("// Tabellen er oversatt fra en eldre kommuneinndeling med Klass' kommuneendringer.")
     if a.ukjent:
-        print("// Alt som ikke står i tabellen får 'xxxx'. Alle regler står i én lang kommando (ikke prøvd mot lengdegrense).")
+        print("// Alt som ikke står i tabellen får 'xxxx'. Alle regler står i én lang kommando.")
     else:
         print("// Kommunekoder som ikke står i tabellen (gamle kommunenumre, 9999 osv.) står uendret. Kontroller med tabulate.")
     print(f"generate {til} = {a.fra}")

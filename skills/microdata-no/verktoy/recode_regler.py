@@ -13,13 +13,18 @@ Derfor:
   * Regler som ikke endrer noe (kode = samme kode) utelates.
 
 simuler() gjør det samme som microdata.no etter denne beskrivelsen, og brukes til å teste utskriften.
+Atferden er bekreftet i microdata.no (versjon 59, november 2026, TESTLISTE 1.1, 1.2 og 1.9).
+
+Avsløringskontrollen stopper en recode-kommando hvis én målverdi treffer 1–9 enheter (0 er greit).
+Det kan ikke sjekkes her, så detaljerte omkodinger kan måtte kjøres flere ganger med koden fra
+feilmeldingen tatt ut.
 """
 
 import re
 from collections import defaultdict
 
 MAKS_KODER = 25  # kildekoder per regel
-MAKS_TEGN = 600  # omtrentlig makslengde på en recode-linje (ikke prøvd mot en grense i microdata.no)
+MAKS_TEGN = 600  # omtrentlig makslengde på vanlige recode-linjer. microdata.no har godtatt 2 789 tegn (v59, 2026-11)
 
 
 def q(tekst):
