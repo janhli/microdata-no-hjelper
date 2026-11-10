@@ -1,0 +1,31 @@
+name: Nyheter fra microdata.no
+
+# Sjekker nyhetssiden (RSS) hver uke og oppretter én issue per nytt innlegg, med etiketten «nyhet».
+# Innleggene skal vurderes (fallgruve, kodesnutt, SKILL.md eller ingen handling), ikke kopieres inn i
+# skillen. Innlegg til og med 2026-11-04 er allerede vurdert, derfor FRA_DATO.
+
+on:
+  schedule:
+    - cron: "0 5 * * 1"   # hver mandag kl. 05 UTC, etter metadata-jobben
+  workflow_dispatch:
+
+permissions:
+  issues: write
+  contents: read
+
+env:
+  FRA_DATO: "2026-11-05"
+
+jobs:
+  nyheter:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Opprett issues for nye innlegg
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: python .github/scripts/nyheter.py --fra-dato "$FRA_DATO"
