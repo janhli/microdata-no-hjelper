@@ -193,7 +193,7 @@ def main():
         w.writerow(["inndeling", "beskrivelse", "kilde", "tabell", "oversatt_fra_eldre_kommuneinndeling",
                     "antall_regioner", "antall_kommuner"])
         w.writerows(indeks)
-    (UT / "HENTET").write_text(f"{date.today().isoformat()} (kommuneinndeling {a.aar})\n", encoding="utf-8")
+    (UT / "HENTET").write_text(f"{date.today().isoformat()} (kommuneinndeling {a.aar})\n", encoding="utf-8", newline="\n")
 
     for r in indeks:
         print(f"{r[0]:32} {r[5]:>4} regioner {r[6]:>4} kommuner  {r[3]}" + ("  [oversatt]" if r[4] == "ja" else ""))

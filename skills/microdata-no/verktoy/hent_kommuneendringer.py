@@ -44,7 +44,7 @@ def main():
             for c in sorted(endr, key=lambda c: (c["changeOccurred"], c["oldCode"], c["newCode"]))
         ],
     }
-    UT.write_text(json.dumps(ut, ensure_ascii=False, indent=1) + "\n", encoding="utf-8")
+    UT.write_text(json.dumps(ut, ensure_ascii=False, indent=1) + "\n", encoding="utf-8", newline="\n")
     siste = max(e["dato"] for e in ut["endringer"])
     print(f"Skrev {UT}: {len(ut['koder_ved_fra'])} koder ved {FRA}, {len(ut['endringer'])} endringer til og med {siste}.")
 

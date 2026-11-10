@@ -224,13 +224,13 @@ def main():
         print("--tving: skriver likevel.", file=sys.stderr)
 
     for n, ds in nye_json.items():
-        (UT / "variabler" / f"{n}.json").write_text(json.dumps(ds, ensure_ascii=False, indent=1), encoding="utf-8")
+        (UT / "variabler" / f"{n}.json").write_text(json.dumps(ds, ensure_ascii=False, indent=1), encoding="utf-8", newline="\n")
     if rader:
         skriv_csv(UT / "variabler.csv", list(rader[0]), rader)
         skriv_csv(UT / "kodelister.csv", ["navn", "kode", "kategori"], kodelinjer)
     if datalager:
         (UT / "datalager.json").write_text(
-            json.dumps(datalager, ensure_ascii=False, indent=1), encoding="utf-8")
+            json.dumps(datalager, ensure_ascii=False, indent=1), encoding="utf-8", newline="\n")
     # Slett bare når listen er komplett, ellers kan --tving med en avkortet liste slette gyldige filer.
     komplett = len(set(navn)) == totalt
     utgaatt = sorted(p for p in (UT / "variabler").glob("*.json") if komplett and p.stem not in set(navn))

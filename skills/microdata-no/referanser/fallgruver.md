@@ -100,6 +100,16 @@ med pull request (se CONTRIBUTING.md). Tagg dem med datalagerversjon/dato hvis d
   en liten gruppe.
 - **Løsning:** Grupper til få, store kategorier, og tabuler for hele datasettet uten `if`.
 
+### `collapse`/`aggregate` med `sum` winsoriseres når `by()` er en vanlig variabel
+- **Symptom:** Antall tilfeller per kommune (eller fylke, utdanningsnivå osv.) blir feil, særlig for små
+  grupper, når de telles med `collapse (sum) dummy, by(kommune)`.
+- **Årsak:** Anonymiseringstiltaket winsorisering slår inn når det aggregeres til en vanlig variabel. Det
+  gjelder ikke når `by()` er en pseudonymisert enhet (personid, familieid, husholdningsid, jobbid).
+  `count`, `median` og `percent` påvirkes ikke. (Manualen, 3.5 collapse, oppdatert i versjon 59.)
+- **Løsning:** Tell med `(count)`. `count` teller alle gyldige verdier, også 0, så sett dem som ikke skal
+  telles til missing først. Bruk `sum` bare til å summere verdier. Det går fint å summere per person
+  før man aggregerer videre, slik `kodesnutter/sektor_lonnstakere.txt` gjør.
+
 ### `replace`/`recode` må endre minst 10 enheter
 - En `replace` eller `recode` som treffer færre enn 10 enheter blir avvist. Slå sammen kategorier
   eller endre rekkefølgen på omkodingen.

@@ -225,7 +225,8 @@ def main():
 
     for fil, tekst in nye.items():
         fil.parent.mkdir(parents=True, exist_ok=True)
-        fil.write_text(tekst, encoding="utf-8")
+        # Alltid \n: på Windows gir ellers write_text \r\n, og løse \r får git til å regne filen som binær
+        fil.write_text(tekst.replace("\r\n", "\n").replace("\r", "\n"), encoding="utf-8", newline="\n")
     # Sider som ikke lenger står i sitemap, slettes. Ikke ved feil (--tving), da kan gyldige sider mangle i nye.
     utgaatt = [] if feil else sorted(set(UT.rglob("*.md")) - set(nye))
     for fil in utgaatt:

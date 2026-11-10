@@ -78,6 +78,15 @@ class TestHentManual(unittest.TestCase):
         self.assertTrue(tekst.startswith("<!-- Kilde: https://microdata.no/manual/side00/ -->"))
         self.assertIn("Innhold på side 0", tekst)
 
+    def test_skriver_bare_lf(self):
+        # Løse \r fikk git til å regne manualsider som binære, så linjeskift ikke ble normalisert
+        stub = Stub()
+        stub_html = stub.__call__
+        kode, err = self.kjor([], lambda u: stub_html(u).replace("<p>", "<pre>a\r\nb\rc</pre><p>"))
+        self.assertEqual(kode, 0, err)
+        for f in self.ut.glob("*.md"):
+            self.assertNotIn(b"\r", f.read_bytes(), f.name)
+
     def test_nedlastingsfeil_stopper_uten_endringer(self):
         h = self.hash()
         kode, err = self.kjor([], Stub(feil_paa={3, 4, 5}))
