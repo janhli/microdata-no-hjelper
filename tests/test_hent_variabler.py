@@ -91,8 +91,10 @@ class TestHentVariabler(unittest.TestCase):
     def test_vellykket_kjoring_gir_identiske_filer(self):
         kode, err = self.kjor(["--alle"], Stub())
         self.assertEqual(kode, 0, err[-500:])
+        # Linjeskift sammenlignes ikke: csv skriver \r\n, og git normaliserer til \n (.gitattributes).
         for f in ("variabler.csv", "kodelister.csv"):
-            self.assertEqual((self.ut / f).read_bytes(), (METADATA / f).read_bytes(), f)
+            self.assertEqual((self.ut / f).read_bytes().replace(b"\r\n", b"\n"),
+                             (METADATA / f).read_bytes().replace(b"\r\n", b"\n"), f)
         self.assertFalse(list(self.ut.glob("*.tmp")))
 
     def test_versjon_fra_listesiden_brukes_i_url(self):
