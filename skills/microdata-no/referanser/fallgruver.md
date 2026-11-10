@@ -153,8 +153,12 @@ med pull request (se CONTRIBUTING.md). Tagg dem med datalagerversjon/dato hvis d
   dataene (f.eks. gamle kommunenumre fra `kommuneomkoding.py`) er derfor trygg.
 - Detaljerte koblinger (f.eks. `klass.py kobling` mellom SN2002 og SN2007 på femsifret nivå) har ofte
   målkoder med 1–9 personer, og stoppes. Feilmeldingen nevner bare én målkode om gangen («Omkodingen til
-  17.240 påvirker for få enheter»). Ta ut regelen for den koden og kjør på nytt, eller grupper til et
-  grovere nivå først.
+  17.240 påvirker for få enheter»). Ta ut målkodene med `klass.py ... --utelat 17.240,...`. Raskest:
+  `tabulate` kildevariabelen først, og ta ut alle målkoder med under 20 personer eller uten synlige
+  kilder på én gang (SN2002 → SN2007 gikk gjennom i tredje runde, 33 av 410 målkoder tatt ut).
+- Koblinger med koder som har flere mål blander kodeverk: SN2002 → SN2007 lot 42 % av sysselsatte
+  (november 2006) stå med SN2002-kode. Gruppering på de første sifrene blir da feil (f.eks. «85» er helse
+  i SN2002 og undervisning i SN2007).
 
 ## Geografi
 

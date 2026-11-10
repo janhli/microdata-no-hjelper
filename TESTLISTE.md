@@ -22,7 +22,8 @@ Bruk ett lite skript med `import fdb/BEFOLKNING_KOMMNR_FORMELL 2024-01-01 as kom
 | 1.6 | ~~`generate x = y` for streng~~ **Avklart (versjon 59, 2026-11):** gir en kopi | | | ✓ |
 | 1.7 | ~~`recode` med koder som ikke finnes i dataene~~ **Avklart (versjon 59, 2026-11):** ingen virkning, ingen feil. Regler som treffer 0 enheter stoppes ikke | | | ✓ |
 | 1.8 | ~~Spesialtegn i merkelapp~~ **Avklart (versjon 59, 2026-11):** «Oslo/Bærum – æøå» vises riktig | | | ✓ |
-| 1.10 | Detaljerte koblinger stoppes av 10-enhetsregelen | Lag `klass.py kobling ... --utelat KODER` (eller gjenta uten regelen fra feilmeldingen) og kjør SN2002 → SN2007 til den går gjennom | Hvor mange runder trengs? Avgjør om verktøyet bør gruppere til grovere nivå i stedet | P2 |
+| 1.10 | ~~Detaljerte koblinger stoppes av 10-enhetsregelen~~ **Avklart (versjon 59, 2026-11):** `klass.py --utelat` virker. SN2002 → SN2007 gikk gjennom i runde 3, med 33 målkoder tatt ut (beregnet fra `tabulate` på kildekodene). Men 42 % av sysselsatte står igjen med SN2002-kode fordi kodene har flere mål. Se 1.11 | | | ✓ |
+| 1.11 | `klass.py kobling --nivaa N`: omkode til overordnet kode i målklassifikasjonen (seksjon/divisjon) | Kjør SN2002 → SN2007 på nivå 1 og 2 for november 2006 | Langt færre uendrede koder, ingen stopp av 10-enhetsregelen. Sammenlign med `REGSYS_NARING_SN2007` for 2008 | P2 |
 
 ## 2. Kommuneomkoding (`verktoy/kommuneomkoding.py`)
 

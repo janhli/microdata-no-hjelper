@@ -9,7 +9,7 @@ Underkommandoer (fra prosjektmappen, python verktoy/klass.py <kommando> --help):
                                    recode fra detaljerte koder til overordnet kode på nivå N
                                    (STYRK 4-siffer -> hovedgruppe, SN 5-siffer -> divisjon/seksjon,
                                    NUS -> utdanningsnivå, land -> verdensdel).
-  kobling <id> [--dato D] [--tabell TEKST] [--navn X]
+  kobling <id> [--dato D] [--tabell TEKST] [--navn X] [--utelat KODER]
                                    Uten --tabell: list koblingstabellene til versjonen som gjelder
                                    på datoen. Med --tabell: recode fra kodene i <id> til kodene i
                                    den andre klassifikasjonen.
@@ -41,6 +41,8 @@ from pathlib import Path
 
 KLASS = "https://data.ssb.no/api/klass/v1"
 KODELISTER = Path(__file__).resolve().parent.parent / "metadata" / "kodelister.csv"
+UTELAT_HJELP = ("kommaseparerte målkoder som tas ut, f.eks. 17.240 fra microdata.no-feilen «Omkodingen til "
+                "17.240 påvirker for få enheter». Legg til én kode per runde og kjør på nytt")
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 from recode_regler import konflikter, recode_linjer  # noqa: E402
@@ -70,8 +72,21 @@ def kodeliste(variabel):
     return koder
 
 
-def skriv_recode(variabel, kart, merkelapper):
-    """Skriver recode-linjene, og sier fra hvis noen regler måtte samles i én kommando."""
+def skriv_recode(variabel, kart, merkelapper, utelat=""):
+    """Skriver recode-linjene, og sier fra hvis noen regler måtte samles i én kommando.
+
+    utelat: kommaseparerte målkoder som tas ut. microdata.no stopper en recode der én målverdi treffer
+    1–9 enheter («Omkodingen til X påvirker for få enheter»). Kildekodene til X står da uendret.
+    """
+    ut = {m.strip() for m in utelat.split(",") if m.strip()}
+    if ut:
+        fjernet = sorted(k for k, m in kart.items() if m in ut)
+        ukjent = sorted(ut - set(kart.values()))
+        kart = {k: m for k, m in kart.items() if m not in ut}
+        print(f"// --utelat: {len(ut)} målkoder tatt ut ({' '.join(sorted(ut))}). Kildekoder som står uendret: "
+              + (" ".join(fjernet) or "ingen"))
+        if ukjent:
+            print(f"// --utelat: {' '.join(ukjent)} er ikke målkode i utskriften (sjekk koden fra feilmeldingen)")
     konf = konflikter({k: m for k, m in kart.items() if k != m})
     if konf:
         print(f"// {len(konf)} koder er både kilde og mål i ulike regler. De står samlet i første recode-kommando,")
@@ -138,7 +153,7 @@ def kommando_grupper(a):
     if hoyt:
         print(f"// {hoyt} koder ligger over nivå {a.nivaa} og står uendret.")
     print(f"generate {a.navn}_nivaa{a.nivaa} = {a.navn}")
-    skriv_recode(f"{a.navn}_nivaa{a.nivaa}", kart, merkelapper)
+    skriv_recode(f"{a.navn}_nivaa{a.nivaa}", kart, merkelapper, a.utelat)
 
 
 def kommando_kobling(a):
@@ -181,10 +196,13 @@ def kommando_kobling(a):
     if delt:
         print(f"// {len(delt)} koder kobles til flere mål og er utelatt (står uendret): " + " ".join(sorted(delt)[:30])
               + (" ..." if len(delt) > 30 else ""))
+        print("// NB: Uendrede koder er fortsatt i den gamle klassifikasjonen, så resultatet blander to kodeverk.")
+        print("//     SN2002 -> SN2007 lot 42 % av sysselsatte stå uendret (2006). Ikke grupper på kodens sifre")
+        print("//     uten å skille dem ut.")
     if uten_maal:
         print(f"// {len(uten_maal)} koder har ingen motpart i tabellen og står uendret: " + " ".join(sorted(uten_maal)))
     print(f"generate {a.navn}_kobl = {a.navn}")
-    skriv_recode(f"{a.navn}_kobl", kart, navn_paa_maal)
+    skriv_recode(f"{a.navn}_kobl", kart, navn_paa_maal, a.utelat)
 
 
 def main():
@@ -209,6 +227,7 @@ def main():
     s.add_argument("--dato", default=idag)
     s.add_argument("--variabel", help="microdata-variabel; begrenser til koder i kodelisten")
     s.add_argument("--navn", default="kode", help="variabelnavn i skriptet (standard kode)")
+    s.add_argument("--utelat", default="", help=UTELAT_HJELP)
     s.set_defaults(f=kommando_grupper)
 
     s = sub.add_parser("kobling", help="recode via koblingstabell")
@@ -216,6 +235,7 @@ def main():
     s.add_argument("--dato", default=idag)
     s.add_argument("--tabell", help="del av tabellnavnet")
     s.add_argument("--navn", default="kode")
+    s.add_argument("--utelat", default="", help=UTELAT_HJELP)
     s.set_defaults(f=kommando_kobling)
 
     a = ap.parse_args()

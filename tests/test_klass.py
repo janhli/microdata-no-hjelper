@@ -28,6 +28,17 @@ class TestKlass(unittest.TestCase):
         self.assertIn("både kilde og mål", tekst)
         self.assertEqual(avvik(tekst), [])
 
+    def test_kobling_utelat_tar_ut_maalkode(self):
+        # microdata.no stoppet SN2002 -> SN2007 på målkode 17.240 (TESTLISTE 1.10)
+        args = ("kobling", "6", "--dato", "2005-01-01", "--tabell", "SN 2007", "--navn", "naring")
+        uten = kjor("klass.py", *args)
+        med = kjor("klass.py", *args, "--utelat", "17.240")
+        self.assertIn("= '17.240'", uten)
+        self.assertNotIn("= '17.240'", med)
+        self.assertIn("--utelat: 1 målkoder tatt ut (17.240)", med)
+        self.assertIn("21.240", med.split("--utelat:")[1].splitlines()[0])  # kilden står uendret
+        self.assertEqual(avvik(med), [])
+
     def test_kobling_sn2025_til_sn2007_med_tomme_maal(self):
         # Krasjet før: Klass har rader uten mål (targetCode null), f.eks. 46.890.
         tekst = kjor("klass.py", "kobling", "6", "--dato", "2025-06-01", "--tabell", "SN 2007")
