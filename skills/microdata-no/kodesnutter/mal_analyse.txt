@@ -1,6 +1,6 @@
 // =====================================================================
 // MAL: analyseskript
-// Status:    testet i større skript (no.ssb.fdb:57, 2026-11)
+// Status:    testet (no.ssb.fdb:59, 2026-11)
 // Bruk:      Kopier og fyll inn. Strukturen er:
 //              1) toppseksjon med populasjon, år, geografi og variabler
 //              2) datasett og import
@@ -15,11 +15,11 @@
 // ---------------------------------------------------------------------
 // Tittel: <hva analysen viser>
 // Populasjon: <hvem, hvor, når>
-// Variabler: https://microdata.no/discovery/variable/no.ssb.fdb/58/<NAVN>
+// Variabler: https://microdata.no/discovery/variable/no.ssb.fdb/59/<NAVN>
 // ---------------------------------------------------------------------
 
 // Spør om versjonen som er tilgjengelig i analysemiljøet (kan ligge en bak metadatasidene)
-require no.ssb.fdb:57 as fdb
+require no.ssb.fdb:59 as fdb
 
 // --- 1. Populasjon ---
 create-dataset personer

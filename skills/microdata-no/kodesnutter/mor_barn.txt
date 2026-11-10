@@ -1,10 +1,10 @@
 // =====================================================================
 // Mor–barn-kobling: telle barn per mor og hente kjennetegn ved den andre forelderen
-// Status:    testet i større skript (no.ssb.fdb:57, 2026-11)
+// Status:    testet (no.ssb.fdb:59, 2026-11)
 // Variabler: BEFOLKNING_MOR_FNR, BEFOLKNING_FAR_FNR (pseudonymisert, fast)
-//            https://microdata.no/discovery/variable/no.ssb.fdb/58/BEFOLKNING_MOR_FNR
+//            https://microdata.no/discovery/variable/no.ssb.fdb/59/BEFOLKNING_MOR_FNR
 //            BEFOLKNING_PARITET
-//            https://microdata.no/discovery/variable/no.ssb.fdb/58/BEFOLKNING_PARITET
+//            https://microdata.no/discovery/variable/no.ssb.fdb/59/BEFOLKNING_PARITET
 // Lager:     mor.ant_barn       – antall barn født i perioden per kvinne
 //            barn.forelder2     – far, medmor eller ingen registrert
 // Fallgruver:
@@ -15,7 +15,7 @@
 //   - For barn av en avgrenset mødrepopulasjon: import ... BEFOLKNING_MOR_FNR, values_from(mor).
 // =====================================================================
 
-require no.ssb.fdb:57 as fdb
+require no.ssb.fdb:59 as fdb
 
 // --- Barn født 2021–2024 ---
 create-dataset barn

@@ -1,8 +1,8 @@
 // =====================================================================
 // Verdi av en variabel ved (eller året før) en hendelse
-// Status:    testet i større skript (no.ssb.fdb:57, 2026-11)
+// Status:    testet (no.ssb.fdb:59, 2026-11)
 // Variabler: BEFOLKNING_FOEDSELS_AAR_MND, BEFOLKNING_MOR_FNR, NUDB_BU
-//            https://microdata.no/discovery/variable/no.ssb.fdb/58/BEFOLKNING_MOR_FNR
+//            https://microdata.no/discovery/variable/no.ssb.fdb/59/BEFOLKNING_MOR_FNR
 // Lager:     På hendelsesdatasettet (her: barn født 2021–2024) får hver rad mors utdanning
 //            1.7. året før fødselsåret.
 // Mønster:
@@ -14,7 +14,7 @@
 //   - Startverdien ('0') må ha samme type som variabelen (tekst her).
 // =====================================================================
 
-require no.ssb.fdb:57 as fdb
+require no.ssb.fdb:59 as fdb
 
 // --- Hendelser: barn født 2021–2024 ---
 create-dataset barn

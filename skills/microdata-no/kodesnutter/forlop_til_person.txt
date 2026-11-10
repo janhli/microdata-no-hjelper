@@ -1,8 +1,8 @@
 // =====================================================================
 // Forløp til personnivå: første start og siste stopp
-// Status:    testet i større skript (no.ssb.fdb:57, 2026-11)
+// Status:    testet (no.ssb.fdb:59, 2026-11)
 // Variabler: INTROSTFDT_MOTTAK (hendelse, månedlig; 2005-01-01 til 2024-12-01)
-//            https://microdata.no/discovery/variable/no.ssb.fdb/58/INTROSTFDT_MOTTAK
+//            https://microdata.no/discovery/variable/no.ssb.fdb/59/INTROSTFDT_MOTTAK
 // Lager:     intro_start, intro_stopp (datoer) på datasettet 'personer'
 // Fallgruver:
 //   - import-event gir én rad per periode. Gjør det i et eget datasett og collapse til PERSONID_1
@@ -13,7 +13,7 @@
 //   - Manglende intro_stopp kan bety at personen fortsatt er i programmet.
 // =====================================================================
 
-require no.ssb.fdb:57 as fdb
+require no.ssb.fdb:59 as fdb
 
 create-dataset personer
 import fdb/BEFOLKNING_KOMMNR_FORMELL 2025-01-01 as kommune

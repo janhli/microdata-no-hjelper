@@ -1,8 +1,8 @@
 // =====================================================================
 // Høyeste fullførte utdanning (seks nivåer)
-// Status:    testet i større skript (no.ssb.fdb:57, 2026-11)
+// Status:    testet (no.ssb.fdb:59, 2026-11)
 // Variabler: NUDB_BU (forløp, NUS2000; siste dato 2024-08-01)
-//            https://microdata.no/discovery/variable/no.ssb.fdb/58/NUDB_BU
+//            https://microdata.no/discovery/variable/no.ssb.fdb/59/NUDB_BU
 // Lager:     utdniv – '1' uoppgitt/ingen, '2' grunnskole, '3' videregående, '4' fagskole,
 //            '5' UH kort (til og med 4 år), '6' UH lang og forsker
 // Fallgruver:
@@ -11,7 +11,7 @@
 //   - Første siffer i NUS-koden er nivået. Mange innvandrere har ingen registrert utdanning i Norge.
 // =====================================================================
 
-require no.ssb.fdb:57 as fdb
+require no.ssb.fdb:59 as fdb
 
 create-dataset personer
 import fdb/BEFOLKNING_KOMMNR_FORMELL 2024-01-01 as kommune

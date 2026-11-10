@@ -1,10 +1,10 @@
 // =====================================================================
 // Vedvarende lavinntekt (EU-60, treårsperiode)
-// Status:    utkast (ikke kjørt) – skrevet for no.ssb.fdb:57, 2026-11
+// Status:    testet (no.ssb.fdb:59, 2026-11)
 // Variabler: INNTEKT_HUSH_IES_EU (akkumulert, til 2024-12-31)
-//            https://microdata.no/discovery/variable/no.ssb.fdb/58/INNTEKT_HUSH_IES_EU
+//            https://microdata.no/discovery/variable/no.ssb.fdb/59/INNTEKT_HUSH_IES_EU
 //            INNTEKT_KODE_PRIVATHUSH2
-//            https://microdata.no/discovery/variable/no.ssb.fdb/58/INNTEKT_KODE_PRIVATHUSH2
+//            https://microdata.no/discovery/variable/no.ssb.fdb/59/INNTEKT_KODE_PRIVATHUSH2
 //            BEFOLKNING_FOEDSELS_AAR_MND, BEFOLKNING_KOMMNR_FORMELL
 // Lager:     snitt3 – gjennomsnittlig inntekt per forbruksenhet 2022–2024 i 2024-kroner
 //            vlav   – 1 = vedvarende lavinntekt (snitt3 under 60 % av medianen)
@@ -13,6 +13,8 @@
 //   Personer i husholdninger der gjennomsnittlig inntekt etter skatt per forbruksenhet (EU-skala)
 //   over en treårsperiode er under 60 % av medianen for treårsgjennomsnittene. Inntektene
 //   KPI-justeres til siste år. Bare personer som er med alle tre årene, inngår.
+// Kontroll:  Barn 0–17 år, 2022–2024: 9,97 %. SSB tabell 09571 (2021–2023): 9,9 %. Fylker innen 0,1–0,6
+//            prosentpoeng, unntatt Oslo (12,7 mot 13,8 %). Testet november 2026.
 // Fallgruver:
 //   - Medianen beregnes for hele landet (alle som er med i alle tre årene), ikke for din populasjon.
 //   - Kravet om privathusholdning i alle tre årene er litt strengere enn SSBs definisjon, så
@@ -23,7 +25,7 @@
 //   - Årlig lavinntekt (lavinntekt_eu60.txt) gir høyere andeler enn vedvarende lavinntekt.
 // =====================================================================
 
-require no.ssb.fdb:57 as fdb
+require no.ssb.fdb:59 as fdb
 
 // --- 1. Treårsgjennomsnitt og landsmedian ---
 create-dataset vedvarende
@@ -55,6 +57,8 @@ generate alder = 2024 - int(faarmnd/100)
 keep if alder >= 0 & alder <= 17
 generate fylke = substr(kommune, 1, 2)
 
+// merge kjøres fra datasettet variablene ligger i
+use vedvarende
 merge snitt3 vlav into barn
 delete-dataset vedvarende
 use barn

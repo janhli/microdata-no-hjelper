@@ -1,10 +1,10 @@
 // =====================================================================
 // Lavinntekt (EU-60), med egen medianberegning per år
-// Status:    testet i større skript (no.ssb.fdb:57, 2026-11)
+// Status:    testet (no.ssb.fdb:59, 2026-11)
 // Variabler: INNTEKT_HUSH_IES_EU (akkumulert, til 2024-12-31)
-//            https://microdata.no/discovery/variable/no.ssb.fdb/58/INNTEKT_HUSH_IES_EU
+//            https://microdata.no/discovery/variable/no.ssb.fdb/59/INNTEKT_HUSH_IES_EU
 //            INNTEKT_KODE_PRIVATHUSH2
-//            https://microdata.no/discovery/variable/no.ssb.fdb/58/INNTEKT_KODE_PRIVATHUSH2
+//            https://microdata.no/discovery/variable/no.ssb.fdb/59/INNTEKT_KODE_PRIVATHUSH2
 // Lager:     iesÅÅÅÅ (inntekt per forbruksenhet) og lavÅÅÅÅ (1 = under 60 % av medianen) på
 //            datasettet 'personer', ett par per år
 // Fallgruver:
@@ -15,7 +15,7 @@
 //   - Hjelpedatasettet slettes i løkken, så navnet kan brukes på nytt neste år.
 // =====================================================================
 
-require no.ssb.fdb:57 as fdb
+require no.ssb.fdb:59 as fdb
 
 create-dataset personer
 import fdb/BEFOLKNING_KOMMNR_FORMELL 2025-01-01 as kommune

@@ -18,24 +18,26 @@ testen er. Kjør snutten på nytt og oppdater linjen når du har gjort det.
 
 | Fil | Hva den gir | Status |
 |---|---|---|
-| [mal_analyse.txt](mal_analyse.txt) | Skjelett for et helt analyseskript med `textblock`-titler | testet i større skript |
-| [alder.txt](alder.txt) | Alder som i Statistikkbanken, og aldersgrupper | testet i større skript |
-| [innvandringskategori.txt](innvandringskategori.txt) | Innvandrer / norskfødt med innvandrerforeldre / øvrige | testet i større skript |
-| [landbakgrunn_region.txt](landbakgrunn_region.txt) | Landbakgrunn gruppert i verdensregioner | testet i større skript |
-| [utdanningsniva.txt](utdanningsniva.txt) | Høyeste fullførte utdanning, seks nivåer (NUS) | testet i større skript |
-| [arbeidsstyrkestatus.txt](arbeidsstyrkestatus.txt) | Prioritert arbeidsstyrkestatus i åtte grupper | testet i større skript |
+| [mal_analyse.txt](mal_analyse.txt) | Skjelett for et helt analyseskript med `textblock`-titler | testet |
+| [alder.txt](alder.txt) | Alder som i Statistikkbanken, og aldersgrupper | testet |
+| [innvandringskategori.txt](innvandringskategori.txt) | Innvandrer / norskfødt med innvandrerforeldre / øvrige | testet |
+| [landbakgrunn_region.txt](landbakgrunn_region.txt) | Landbakgrunn gruppert i verdensregioner | testet |
+| [utdanningsniva.txt](utdanningsniva.txt) | Høyeste fullførte utdanning, seks nivåer (NUS) | testet |
+| [arbeidsstyrkestatus.txt](arbeidsstyrkestatus.txt) | Prioritert arbeidsstyrkestatus i åtte grupper | testet |
 | [sektor_lonnstakere.txt](sektor_lonnstakere.txt) | Lønnstakere etter sektor (stat/kommune/privat/offentlig foretak) fra jobbnivå, med arbeidssted. Treffer SSB tabell 13926 | testet |
-| [samlivsstatus.txt](samlivsstatus.txt) | Gift / samboer / enslig / bor hos foreldre | testet i større skript |
-| [lavinntekt_eu60.txt](lavinntekt_eu60.txt) | Flagg for lavinntekt (EU-60) med egen medianberegning | testet i større skript |
-| [lavinntekt_vedvarende.txt](lavinntekt_vedvarende.txt) | Vedvarende lavinntekt (EU-60, treårsgjennomsnitt, KPI-justert), eksempel med barn per fylke | utkast |
-| [verdi_ved_hendelse.txt](verdi_ved_hendelse.txt) | Verdi av en variabel året før en hendelse (f.eks. fødsel) | testet i større skript |
-| [mor_barn.txt](mor_barn.txt) | Koble barn til mor, og telle barn per mor | testet i større skript |
-| [forlop_til_person.txt](forlop_til_person.txt) | Første start og siste stopp i et forløp, per person | testet i større skript |
+| [samlivsstatus.txt](samlivsstatus.txt) | Gift / samboer / enslig / bor hos foreldre | testet |
+| [lavinntekt_eu60.txt](lavinntekt_eu60.txt) | Flagg for lavinntekt (EU-60) med egen medianberegning | testet |
+| [lavinntekt_vedvarende.txt](lavinntekt_vedvarende.txt) | Vedvarende lavinntekt (EU-60, treårsgjennomsnitt, KPI-justert), eksempel med barn per fylke | testet |
+| [verdi_ved_hendelse.txt](verdi_ved_hendelse.txt) | Verdi av en variabel året før en hendelse (f.eks. fødsel) | testet |
+| [mor_barn.txt](mor_barn.txt) | Koble barn til mor, og telle barn per mor | testet |
+| [forlop_til_person.txt](forlop_til_person.txt) | Første start og siste stopp i et forløp, per person | testet |
+| [husholdning.txt](husholdning.txt) | Person og husholdning: husholdningsvariabler, én rad per husholdning, egne aggregater per husholdning | testet |
+| [bolig.txt](bolig.txt) | Person, husholdning og bolig: boligens egenskaper per person og per bebodd bolig | testet |
 
 ## Ønskeliste (bidra gjerne)
 
 - Fylke med navn (2024-inndeling)
-- Familietype og husholdningstype
+- Familietype
 - Pendling (bosted mot arbeidssted)
 - Tilknytning til arbeid, utdanning og velferd (NEET)
 - Sysselsetting fra a-ordningen med statsborgerskap

@@ -1,8 +1,8 @@
 // =====================================================================
 // Prioritert arbeidsstyrkestatus i åtte grupper
-// Status:    testet i større skript (no.ssb.fdb:57, 2026-11)
+// Status:    testet (no.ssb.fdb:59, 2026-11)
 // Variabler: ARBSTATUS_PERS_STATUS8 (status, 4. kvartal; 2008-11-16 til 2024-11-16)
-//            https://microdata.no/discovery/variable/no.ssb.fdb/58/ARBSTATUS_PERS_STATUS8
+//            https://microdata.no/discovery/variable/no.ssb.fdb/59/ARBSTATUS_PERS_STATUS8
 // Lager:     arbstatus – '1' sysselsatt, '2' registrert ledig, '3' tiltak, '4' utdanning,
 //            '5' AAP/uføre, '6' AFP/alderspensjon, '7' andre stønader, '8' ukjent/ikke bosatt
 // Fallgruver:
@@ -12,7 +12,7 @@
 //   - REGSYS_YRKSTAT gjelder bare til og med 2014.
 // =====================================================================
 
-require no.ssb.fdb:57 as fdb
+require no.ssb.fdb:59 as fdb
 
 create-dataset personer
 import fdb/BEFOLKNING_KOMMNR_FORMELL 2025-01-01 as kommune

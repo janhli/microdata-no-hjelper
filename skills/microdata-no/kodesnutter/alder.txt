@@ -1,8 +1,8 @@
 // =====================================================================
 // Alder og aldersgrupper
-// Status:    testet i større skript (no.ssb.fdb:57, 2026-11)
+// Status:    testet (no.ssb.fdb:59, 2026-11)
 // Variabler: BEFOLKNING_FOEDSELS_AAR_MND (fast, ÅÅÅÅMM)
-//            https://microdata.no/discovery/variable/no.ssb.fdb/58/BEFOLKNING_FOEDSELS_AAR_MND
+//            https://microdata.no/discovery/variable/no.ssb.fdb/59/BEFOLKNING_FOEDSELS_AAR_MND
 // Lager:     alder  – alder ved utgangen av året før (som i Statistikkbanken for 1.1.)
 //            aldgr  – grupper med 'ukjent'
 // Fallgruver:
@@ -10,7 +10,7 @@
 //   - Alder ved en hendelse samme år: hendelsesår - fødselsår (uten -1).
 // =====================================================================
 
-require no.ssb.fdb:57 as fdb
+require no.ssb.fdb:59 as fdb
 
 create-dataset personer
 import fdb/BEFOLKNING_KOMMNR_FORMELL 2025-01-01 as kommune

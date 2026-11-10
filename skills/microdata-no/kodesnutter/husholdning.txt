@@ -1,0 +1,90 @@
+// =====================================================================
+// Person og husholdning: husholdningsvariabler, én rad per husholdning, og egne aggregater
+// Status:    testet (no.ssb.fdb:59, 2026-11)
+// Variabler: BEFOLKNING_HUSHNR (status 1.1., 2005–2025; pseudonymisert husholdningsnøkkel)
+//            https://microdata.no/discovery/variable/no.ssb.fdb/59/BEFOLKNING_HUSHNR
+//            BEFOLKNING_KONTAKT_HUSHNR ('1' = kontaktperson, den eldste i husholdningen)
+//            https://microdata.no/discovery/variable/no.ssb.fdb/59/BEFOLKNING_KONTAKT_HUSHNR
+//            BEFOLKNING_PERS_I_HUSHNR (antall personer i husholdningen)
+//            https://microdata.no/discovery/variable/no.ssb.fdb/59/BEFOLKNING_PERS_I_HUSHNR
+//            BEFOLKNING_REGSTAT_HUSHTYP (husholdningstype, f.eks. 1.2.3)
+//            https://microdata.no/discovery/variable/no.ssb.fdb/59/BEFOLKNING_REGSTAT_HUSHTYP
+//            BEFOLKNING_FOEDSELS_AAR_MND, BEFOLKNING_KOMMNR_FORMELL
+// Lager:     personer – én rad per person med hushnr, hushstr, hushtype, og egne aggregater
+//            ant_pers og ant_barn (antall personer og barn 0–17 år i husholdningen)
+// Metode:    1. Mange husholdningsvariabler finnes ferdige på personen (BEFOLKNING_*_HUSHNR,
+//               BEFOLKNING_REGSTAT_HUSHTYP). Bruk dem før du aggregerer selv.
+//            2. Tabeller over husholdninger: tabuler med «if kontakt == '1'», som gir én rad per
+//               husholdning.
+//            3. Egne aggregater: collapse ..., by(hushnr) på en kopi, og merge tilbake on hushnr.
+// Fallgruver:
+//   - Husholdning her er bohusholdning (personer i samme privatbolig, faktisk adresse fra 2014).
+//     INNTEKT_HUSHNR er en annen husholdning (felles økonomi, f.eks. studenter flyttet ut), målt
+//     31.12. Ikke bland de to.
+//   - hushnr er pseudonymisert og kan bare brukes i by(), on og values_from(), ikke i if-uttrykk.
+//   - collapse med sum på hushnr (pseudonym) winsoriseres ikke. Det gjør det på vanlige variabler.
+//   - Personer utenfor privathusholdning (institusjoner, felleshusholdninger; ca. 39 000) har
+//     hushnr, men ikke husholdningsstørrelse og -type. Uten «drop if sysmiss(hushstr)» blir de
+//     egne «husholdninger» med f.eks. 38 barn. Kontaktpersonen deres teller også i «if kontakt == '1'»
+//     (32 822 i 2025), så ta med «missing» og trekk fra SYSMISS.
+//   - Tell personer med (sum) på en variabel som alltid er 1. (count) på en variabel med manglende
+//     verdier gir for lave tall (656 bosatte mangler fødselsår).
+// Kontroll:  1.1.2025, privathusholdninger etter størrelse 1/2/3/4/5+: 41,2/30,8/11,8/11,2/5,0 %,
+//            samme som SSB tabell 06079. Eget antall personer = BEFOLKNING_PERS_I_HUSHNR for alle
+//            (testet november 2026).
+// =====================================================================
+
+require no.ssb.fdb:59 as fdb
+
+create-dataset personer
+import fdb/BEFOLKNING_KOMMNR_FORMELL 2025-01-01 as kommune
+import fdb/BEFOLKNING_HUSHNR 2025-01-01 as hushnr
+import fdb/BEFOLKNING_KONTAKT_HUSHNR 2025-01-01 as kontakt
+import fdb/BEFOLKNING_PERS_I_HUSHNR 2025-01-01 as hushstr
+import fdb/BEFOLKNING_REGSTAT_HUSHTYP 2025-01-01 as hushtype
+import fdb/BEFOLKNING_FOEDSELS_AAR_MND as faarmnd
+generate alder = 2025 - 1 - int(faarmnd/100)
+generate barn = 0
+replace barn = 1 if alder < 18
+// Teller personer med en variabel som alltid har verdi (count på alder hopper over manglende fødselsår)
+generate en = 1
+
+// Egne aggregater per husholdning: kopier, behold privathusholdninger, aggreger til hushnr og koble tilbake
+clone-dataset personer husholdninger
+use husholdninger
+// hushnr finnes også for institusjoner og felleshusholdninger. De har ikke husholdningsstørrelse.
+drop if sysmiss(hushstr)
+collapse (sum) en -> ant_pers (sum) barn -> ant_barn, by(hushnr)
+merge ant_pers ant_barn into personer on hushnr
+delete-dataset husholdninger
+use personer
+
+// Kontroll: eget antall personer skal være lik den ferdige variabelen
+generate avvik_str = ant_pers - hushstr
+
+// Husholdningstype på øverste nivå (1.1 aleneboende, 1.2 par uten barn osv.)
+generate hushtype2 = substr(hushtype, 1, 3)
+
+textblock
+## Kontroll: eget antall personer i husholdningen minus BEFOLKNING_PERS_I_HUSHNR, 1.1.2025
+Skal være 0 for alle i privathusholdninger. Manglende verdi er personer utenfor privathusholdning.
+endblock
+tabulate avvik_str, missing
+
+textblock
+## Privathusholdninger etter antall personer, 1.1.2025
+Én rad per husholdning (kontaktpersonen). Kan sammenlignes med SSB tabell 06079.
+endblock
+tabulate hushstr if kontakt == '1', missing
+
+textblock
+## Privathusholdninger etter husholdningstype (øverste nivå), 1.1.2025
+Kan sammenlignes med SSB tabell 06070.
+endblock
+tabulate hushtype2 if kontakt == '1', missing
+
+textblock
+## Personer etter antall barn 0–17 år i husholdningen, 1.1.2025
+Manglende verdi er personer utenfor privathusholdning.
+endblock
+tabulate ant_barn, missing

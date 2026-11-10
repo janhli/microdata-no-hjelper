@@ -63,6 +63,9 @@ Brukeren kjører, du tolker. Lag ett skript som dekker flere punkter i testliste
   resten. Sett det mest usikre sist.
 - Oppgi datalagerversjon i `require` (gjeldende fra `datalager.json`, men spør om brukerens miljø er på
   samme versjon).
+- For kodesnuttene: `python .claude/skills/vedlikehold/samle_snutter.py > testskript.txt` setter alle
+  snutter som ikke er testet med gjeldende versjon sammen til ett skript (eller bare dem du nevner).
+  Snuttene tas med ordrett, og datasettene slettes mellom dem.
 
 ## 5. Etter arbeidet
 

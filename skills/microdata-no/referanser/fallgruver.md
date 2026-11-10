@@ -14,6 +14,12 @@ med pull request (se CONTRIBUTING.md). Tagg dem med datalagerversjon/dato hvis d
 - **Løsning:** Filtrer på en annen variabel, eller koble først og filtrer på resultatet. Se
   `metadata/manual/faq.md`.
 
+### `merge` kjøres fra datasettet variablene ligger i
+- **Symptom:** «Feil ved snitt3: Variabelen snitt3 eksisterer ikke» på `merge snitt3 vlav into barn`.
+- **Årsak:** `merge` henter variablene fra det **aktive** datasettet. `create-dataset barn` gjør `barn`
+  aktivt, så variablene fra forrige datasett finnes ikke der.
+- **Løsning:** `use <kildedatasett>` før `merge ... into <måldatasett>`, og `use <måldatasett>` etterpå.
+
 ### Datasett og variabler kan ikke ha samme navn
 - **Symptom:** «Navnet er allerede brukt som et datasett».
 - **Årsak:** f.eks. `create-dataset intro` etterfulgt av `import ... as intro`.
@@ -38,6 +44,31 @@ med pull request (se CONTRIBUTING.md). Tagg dem med datalagerversjon/dato hvis d
 ### `BEFOLKNING_PARITET` mangler for de siste fødselskullene
 - **Symptom:** 100 % ukjent paritet for barn født i 2025 (observert november 2026).
 - **Løsning:** Utled paritet av mors tidligere fødsler, eller hold det siste året utenfor.
+
+### `BOFORHOLD_EIE_LEIE` gir færre leiere enn Statistikkbanken
+- **Symptom:** 1.1.2024 gir 23,6 % leiere blant husholdninger koblet til bolig, mot 27,4 % i SSB tabell
+  14897. Antall husholdninger er det samme (2 584 506 mot 2 584 517), men ca. 98 000 er selveiere i
+  microdata.no og leiere i Statistikkbanken. SSB-tabellen ligger på 27–28 % leiere for hele 2015–2025.
+- **Årsak (bekreftet november 2026, versjon 59):** Husholdninger som er *statistisk koblet* til bolig
+  (`BOFORHOLD_KOBLNIVAA_HUSH_BOLIG = STAT`, 293 143 husholdninger) får anslått (imputert) eierstatus.
+  I microdata.no er 51,6 % av dem eiere, mens bare 13–15 % har registrert eierskap i Matrikkelen,
+  Grunnboken eller skattemeldingen. Med 13–15 % eiere i denne gruppen blir det 716 000–721 000 leiere,
+  mot 707 784 i tabell 14897. SSB har revidert eierstatus med tidsserier bakover, mens `BOFORHOLD_*`
+  i microdata.no (til 1.1.2024) bruker den gamle metoden. Direkte koblede husholdninger (DIR) har
+  20,4 % leiere, så de alene er heller ikke representative.
+  Kilde: [SSB, notat 2026/17](https://www.ssb.no/bygg-bolig-og-eiendom/bolig-og-boforhold/artikler/boforholdsregisteret-dokumentasjon-og-revisjon-av-eierstatus-variabel).
+- **Løsning:** Sammenlign ikke eierandeler direkte med Statistikkbanken. Vis statistisk koblede
+  husholdninger som egen gruppe, eller regn eierstatus for dem som usikker. Unge, aleneboende og
+  husholdninger med lav inntekt er overrepresentert blant dem, så feilen er størst for de gruppene.
+  Se `kodesnutter/bolig.txt`.
+
+### Bolig og husholdning er ikke egne enheter
+- Alle `BOFORHOLD_*`-variabler er boligens egenskaper lagt på hver beboer. Husholdningen finnes bare som
+  nøkkelen `BEFOLKNING_HUSHNR`. Én rad per husholdning (og per bebodd bolig) får du med
+  `if kontakt == '1'` (`BEFOLKNING_KONTAKT_HUSHNR`). Se `kodesnutter/husholdning.txt` og `bolig.txt`.
+- `hushnr` finnes også for institusjoner og felleshusholdninger (ca. 39 000 personer). De har ikke
+  husholdningsstørrelse. Ta dem ut med `drop if sysmiss(<BEFOLKNING_PERS_I_HUSHNR>)` før `collapse`, ellers
+  får du «husholdninger» med 30–40 barn.
 
 ## Datoer og import
 
@@ -113,6 +144,11 @@ med pull request (se CONTRIBUTING.md). Tagg dem med datalagerversjon/dato hvis d
 ### `replace`/`recode` må endre minst 10 enheter
 - En `replace` eller `recode` som treffer færre enn 10 enheter blir avvist. Slå sammen kategorier
   eller endre rekkefølgen på omkodingen.
+- I `recode` gjelder grensen **hver målverdi for seg**, ikke kommandoen samlet. Én liten regel stopper
+  hele kommandoen. Symptom: «Stoppet av avsløringskontroll. Omkodingen til 9 påvirker for få enheter»
+  (`(990 = 9)` for uoppgitt landbakgrunn, versjon 59, november 2026). Slå små koder sammen med en
+  større gruppe i samme regel. Er de små til sammen også (`(980 989 990 = 8)` ble også stoppet), la
+  dem stå uomkodet og gi dem navn med `define-labels`.
 
 ## Geografi
 

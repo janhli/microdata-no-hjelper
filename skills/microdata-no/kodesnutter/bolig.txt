@@ -1,0 +1,92 @@
+// =====================================================================
+// Person, husholdning og bolig: boligens egenskaper per person og per husholdning
+// Status:    testet (no.ssb.fdb:59, 2026-11). Eierstatus bruker SSBs gamle metode, se Kontroll
+// Variabler: BOFORHOLD_BOLIG_HUSH (koblingskode: HMB = husholdning koblet til bolig; 1.1., 2015–2024)
+//            https://microdata.no/discovery/variable/no.ssb.fdb/59/BOFORHOLD_BOLIG_HUSH
+//            BOFORHOLD_BYGNINGSTYPE_AGGR (01 enebolig … 06 andre)
+//            https://microdata.no/discovery/variable/no.ssb.fdb/59/BOFORHOLD_BYGNINGSTYPE_AGGR
+//            BOFORHOLD_EIE_LEIE (1 selveier, 2 andels-/aksjeeier, 3 leier)
+//            https://microdata.no/discovery/variable/no.ssb.fdb/59/BOFORHOLD_EIE_LEIE
+//            BOFORHOLD_ANTALL_ROM, BOFORHOLD_BRUKSAREAL, BOFORHOLD_TRANGBODD
+//            https://microdata.no/discovery/variable/no.ssb.fdb/59/BOFORHOLD_TRANGBODD
+//            BEFOLKNING_HUSHNR, BEFOLKNING_KONTAKT_HUSHNR, BEFOLKNING_PERS_I_HUSHNR
+// Lager:     personer – én rad per person med boligens egenskaper (bygntype, eieleie, rom, areal,
+//            trangbodd), og koblingskoden
+// Metode:    microdata.no har ingen enhetstype for bolig. BOFORHOLD_* er boligens egenskaper lagt på
+//            hver beboer. En bohusholdning er personene i samme bolig, så «husholdning koblet til
+//            bolig» (HMB) med én rad per husholdning (kontaktpersonen) gir i praksis én rad per
+//            bebodd bolig.
+// Fallgruver:
+//   - BOFORHOLD_* finnes bare til 1.1.2024. Bruk samme dato på husholdningsvariablene.
+//   - Bare bebodde boliger: populasjonen er bosatte, så tomme boliger (BUH) kommer ikke med.
+//   - Når flere husholdninger deler bolig (kilde FLER), telles boligen én gang per husholdning.
+//   - Boligvariablene mangler for personer utenfor privathusholdning og for ukoblede husholdninger
+//     (HUB). Ta med «missing» i tabellene, så dekningen synes.
+//   - Statistisk koblede husholdninger (BOFORHOLD_KOBLNIVAA_HUSH_BOLIG = STAT) har en beregnet bolig.
+// Kontroll:  1.1.2024: 2 584 506 husholdninger koblet til bolig, mot 2 584 517 i SSB tabell 14897.
+//            Eierstatus avviker: selveier/andel/leier 1 621 806 / 352 863 / 609 826 mot 1 530 670 /
+//            346 063 / 707 784 hos SSB (23,6 mot 27,4 % leiere). Samme husholdninger, men ca. 98 000
+//            er selveiere i BOFORHOLD_EIE_LEIE og leiere i Statistikkbanken. Årsak (bekreftet): statistisk
+//            koblede husholdninger (STAT, 293 143) har anslått eierstatus, 51,6 % eiere. SSB har revidert
+//            dette (notat 2026/17, 13–15 % eiere), og med det går avviket opp. Se fallgruver.md.
+// =====================================================================
+
+require no.ssb.fdb:59 as fdb
+
+create-dataset personer
+import fdb/BEFOLKNING_KOMMNR_FORMELL 2024-01-01 as kommune
+import fdb/BEFOLKNING_HUSHNR 2024-01-01 as hushnr
+import fdb/BEFOLKNING_KONTAKT_HUSHNR 2024-01-01 as kontakt
+import fdb/BEFOLKNING_PERS_I_HUSHNR 2024-01-01 as hushstr
+import fdb/BOFORHOLD_BOLIG_HUSH 2024-01-01 as koblet
+import fdb/BOFORHOLD_KOBLNIVAA_HUSH_BOLIG 2024-01-01 as koblniva
+import fdb/BOFORHOLD_BYGNINGSTYPE_AGGR 2024-01-01 as bygntype
+import fdb/BOFORHOLD_EIE_LEIE 2024-01-01 as eieleie
+import fdb/BOFORHOLD_ANTALL_ROM 2024-01-01 as rom
+import fdb/BOFORHOLD_BRUKSAREAL 2024-01-01 as areal
+import fdb/BOFORHOLD_TRANGBODD 2024-01-01 as trangbodd
+
+// Én rad per bebodd bolig: kontaktpersonen i en husholdning som er koblet til bolig
+generate bolig = 0
+replace bolig = 1 if kontakt == '1' & koblet == 'HMB'
+
+textblock
+## Bosatte etter kobling mellom husholdning og bolig, 1.1.2024
+HMB = husholdning koblet til bolig, HUB = ikke koblet, AND = ikke privathusholdning, UTL = utlandet.
+Boligvariablene finnes bare for HMB.
+endblock
+tabulate koblet, missing
+
+textblock
+## Bosatte etter bygningstype, 1.1.2024 (person)
+endblock
+tabulate bygntype, missing
+
+textblock
+## Kontroll: husholdninger etter eierstatus og koblingsnivå, 1.1.2024 (antall og radprosent)
+SSB tabell 14897 (2024): 2 584 517 i alt, selveier 1 530 670, andels-/aksjeeier 346 063, leier 707 784.
+microdata.no har samme antall husholdninger, men færre leiere. Statistisk koblede husholdninger (STAT)
+har anslått eierstatus (51,6 % eiere i 2024), mens SSB etter revisjonen (notat 2026/17) regner med
+13–15 %. Vis STAT som egen gruppe når eierstatus brukes.
+endblock
+tabulate koblniva eieleie if bolig == 1, missing
+tabulate koblniva eieleie if bolig == 1, missing rowpct
+
+textblock
+## Bebodde boliger etter bygningstype og eie/leie, 1.1.2024 (radprosent)
+Én rad per husholdning koblet til bolig. Kan sammenlignes med SSB tabell 14897 (eierstatus etter
+bygningstype, husholdninger).
+endblock
+tabulate bygntype eieleie if bolig == 1, missing rowpct
+
+textblock
+## Bebodde boliger etter bygningstype: gjennomsnittlig antall rom, bruksareal og personer, 1.1.2024
+endblock
+tabulate bygntype if bolig == 1, summarize(rom) mean
+tabulate bygntype if bolig == 1, summarize(areal) mean
+tabulate bygntype if bolig == 1, summarize(hushstr) mean
+
+textblock
+## Personer etter trangboddhet, 1.1.2024
+endblock
+tabulate trangbodd, missing

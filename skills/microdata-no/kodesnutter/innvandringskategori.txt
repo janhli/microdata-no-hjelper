@@ -1,16 +1,18 @@
 // =====================================================================
 // Innvandringskategori i tre grupper
-// Status:    testet i større skript (no.ssb.fdb:57, 2026-11)
+// Status:    testet (no.ssb.fdb:59, 2026-11)
 // Variabler: BEFOLKNING_INVKAT (fast)
-//            https://microdata.no/discovery/variable/no.ssb.fdb/58/BEFOLKNING_INVKAT
+//            https://microdata.no/discovery/variable/no.ssb.fdb/59/BEFOLKNING_INVKAT
 // Lager:     innvkat – '1' innvandrer, '2' norskfødt med innvandrerforeldre, '3' øvrige, '9' ukjent
+// Kontroll:  1.1.2025: innvandrere 964 834 (SSB 09817: 965 113), norskfødte med innvandrerforeldre
+//            230 180 (230 237). 656 bosatte mangler innvandringskategori (testet november 2026).
 // Fallgruver:
 //   - Koder: B = innvandrer, C = norskfødt med innvandrerforeldre. Øvrige koder (A, E, F, G)
 //     slås sammen til «øvrig befolkning». Sjekk metadata/kodelister.csv for full liste.
 //   - Statsborgerskap finnes ikke for hele befolkningen. Bruk denne og landbakgrunn i stedet.
 // =====================================================================
 
-require no.ssb.fdb:57 as fdb
+require no.ssb.fdb:59 as fdb
 
 create-dataset personer
 import fdb/BEFOLKNING_KOMMNR_FORMELL 2025-01-01 as kommune

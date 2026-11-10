@@ -18,7 +18,7 @@ Bruk ett lite skript med `import fdb/BEFOLKNING_KOMMNR_FORMELL 2024-01-01 as kom
 | 1.3 | Lange `recode`-linjer: standard (opptil ca. 600 tegn), konfliktkommandoen i `klass.py kobling` (ca. 2 200 tegn for SN2002 → SN2007) og `--ukjent` (2 800–4 700 tegn) | `python verktoy/regionomkoding.py helseregioner` og `... --ukjent`, og `python verktoy/klass.py kobling 6 --dato 2005-01-01 --tabell "SN 2007" --navn naring` på `REGSYS_NARING_SN2002` | Godtas. Ellers: finn grensen og still inn `MAKS_TEGN` i `recode_regler.py` (konfliktkommandoen kan ikke deles) | P2 |
 | 1.9 | Regler i samme kommando ser ikke hverandres resultat (grunnlaget for `recode_regler.py`) | `recode x ('0301' = '1103') ('1103' = '4601')`, `tabulate x` | Oslo blir `1103`, Stavanger `4601`. Blir Oslo `4601`, er verktøyenes antakelse feil | P1 |
 | 1.4 | Samme merkelapp på flere regler (merkelappen står bare på første bit) | `recode x ('0301' = 'A' 'Oslo') ('1103' = 'A')`, `tabulate x` | Begge får merkelappen `Oslo`. Ellers: sett merkelapp på alle biter | P2 |
-| 1.5 | Teller 10-enhetsregelen per kommando eller per regel? | Regel som treffer under 10 personer, alene og sammen med store regler | Avklar, og oppdater punktet i `fallgruver.md` | P2 |
+| 1.5 | ~~Teller 10-enhetsregelen per kommando eller per regel?~~ **Avklart (versjon 59, 2026-11):** per målverdi. Én liten regel stopper hele kommandoen. Se `fallgruver.md` | | | ✓ |
 | 1.6 | `generate x = y` for en strengvariabel | `generate kommune_orig = kommune` | Kopi av strengen | P2 |
 | 1.7 | `recode` med verdier som ikke finnes i variabelens kodeliste | `recode x ('0101' = 'A')` på 2024-data | Feil, advarsel eller ingen virkning? Styrer om verktøyene må begrenses til kodelisten | P2 |
 | 1.8 | Merkelapper med spesialtegn (æøå, `/`, `-`) i strengrecode | `recode x ('0301' = 'A' 'Oslo/Bærum')` | Godtas | P3 |
@@ -65,8 +65,9 @@ Bruk ett lite skript med `import fdb/BEFOLKNING_KOMMNR_FORMELL 2024-01-01 as kom
 
 | # | Hva | Pri |
 |---|---|---|
-| 5.1 | Kjør hver av snuttene med status «testet i større skript» frittstående (se [`kodesnutter/README.md`](skills/microdata-no/kodesnutter/README.md)), og endre status fra «testet i større skript» til «testet» | P2 |
+| 5.1 | **Gjort (versjon 59, 2026-11):** alle snuttene unntatt `lavinntekt_vedvarende.txt` kjørt frittstående med `samle_snutter.py`. Neste gang: kjør (se [`kodesnutter/README.md`](skills/microdata-no/kodesnutter/README.md)), og endre status fra «testet i større skript» til «testet» | P2 |
 | 5.2 | `lavinntekt_vedvarende.txt` (utkast): kjør og sammenlign med SSBs tall | P1 |
+| 5.4 | ~~Færre leiere i `bolig.txt` enn i SSB tabell 14897~~ **Avklart (versjon 59, 2026-11):** statistisk koblede husholdninger har anslått eierstatus med gammel metode (51,6 % eiere mot 13–15 % etter SSBs revisjon). Se `fallgruver.md` | ✓ |
 | 5.3 | Se om `landbakgrunn_region.txt` kan erstattes av `klass.py grupper 545`, og om resultatet blir likt | P3 |
 
 ## 6. Henting og vedlikehold
