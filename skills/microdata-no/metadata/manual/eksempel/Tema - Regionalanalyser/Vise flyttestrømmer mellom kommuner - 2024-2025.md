@@ -55,71 +55,71 @@ Vise flyttestrømmer mellom kommuner - 2016-2017
 Siden statistikkvisninger av bevegelser mellom kommuner fører til store og uoversiktlige tabeller/grafer, viser vi flyttinger mellom kommuner på fylkesnivå. Personer som flytter mellom to kommuner innen samme fylke, vises da med samme fylke før og etter flytting. Personer som ikke flytter holdes utenfor statistikken.
 
 ```
- require no.ssb.fdb:41 as db
-
-create-dataset flytting
-import db/BEFOLKNING_KOMMNR_FORMELL 2024-01-01 as kommune24
-import db/BEFOLKNING_KOMMNR_FORMELL 2025-01-01 as kommune25
-
-//Lager en dummy-variabel som viser om man flytter fra en kommune
-generate flytter = kommune25 != kommune24 & !sysmiss(kommune25) 
-
-define-labels flyttelbl 0 'Bor i samme kommune' 1 'Flyttet til ny kommune'
-assign-labels flytter flyttelbl
-
-textblock
-Andelen personer som flytter til ny kommune mellom 1/1 2024 og 1/1 2025:
-endblock
-piechart flytter
-tabulate flytter, cellpct freq
-
-//Lager en variabel som viser bostedsfylke (= de to første sifrene i kommunekoden)
-generate fylke24 = substr(kommune24,1,2)
-generate fylke25 = substr(kommune25,1,2)
-
-define-labels fylkelabel '03' Oslo \
-                         '11' Rogaland \
-                         '15' 'Møre og Romsdal' \
-                         '18' Nordland \
-                         '31' Østfold \
-                         '32' Akershus \
-                         '33' Buskerud \
-                         '34' Innlandet \
-                         '39' Vestfold \
-                         '40' Telemark \
-                         '42' Agder \
-                         '46' Vestland \
-                         '50' Trøndelag \
-                         '55' Troms \
-                         '56' Finnmark
-
-assign-labels fylke24 fylkelabel
-assign-labels fylke25 fylkelabel
-
-textblock
-Personer som flytter til ny kommune mellom 1/1 2024 og 1/1 2025, fordelt på bostedsfylke før/etter flytting:
-endblock
-tabulate fylke24 fylke25 if flytter
-tabulate fylke24 fylke25 if flytter, rowpct
-sankey fylke24 fylke25 if flytter
-barchart(percent) fylke25 if flytter, over(fylke24) stack
-
-textblock
-Personer som flytter til Oslo mellom 1/1 2024 og 1/1 2025, fordelt på bostedsfylke før flytting:
-endblock
-sankey fylke24 fylke25 if flytter & kommune25 == '0301'
-barchart(count) fylke25 if flytter & kommune25 == '0301', over(fylke24)
-
-textblock
-Personer som flytter fra en kommune i Nord-Norge mellom 1/1 2024 og 1/1 2025, fordelt på bostedsfylke før/etter flytting:
-endblock
-sankey fylke24 fylke25 if flytter & inlist(fylke24,'18','55','56')
-barchart(count) fylke25 if flytter & inlist(fylke24,'18','55','56'), over(fylke24)
-
-textblock
-Personer som flytter fra landsdelen Nord-Norge mellom 1/1 2024 og 1/1 2025, fordelt på bostedsfylke før/etter flytting:
-endblock
-sankey fylke24 fylke25 if flytter & inlist(fylke24,'18','55','56') & !inlist(fylke25,'18','55','56')
+ require no.ssb.fdb:41 as db
+
+create-dataset flytting
+import db/BEFOLKNING_KOMMNR_FORMELL 2024-01-01 as kommune24
+import db/BEFOLKNING_KOMMNR_FORMELL 2025-01-01 as kommune25
+
+//Lager en dummy-variabel som viser om man flytter fra en kommune
+generate flytter = kommune25 != kommune24 & !sysmiss(kommune25) 
+
+define-labels flyttelbl 0 'Bor i samme kommune' 1 'Flyttet til ny kommune'
+assign-labels flytter flyttelbl
+
+textblock
+Andelen personer som flytter til ny kommune mellom 1/1 2024 og 1/1 2025:
+endblock
+piechart flytter
+tabulate flytter, cellpct freq
+
+//Lager en variabel som viser bostedsfylke (= de to første sifrene i kommunekoden)
+generate fylke24 = substr(kommune24,1,2)
+generate fylke25 = substr(kommune25,1,2)
+
+define-labels fylkelabel '03' Oslo \
+                         '11' Rogaland \
+                         '15' 'Møre og Romsdal' \
+                         '18' Nordland \
+                         '31' Østfold \
+                         '32' Akershus \
+                         '33' Buskerud \
+                         '34' Innlandet \
+                         '39' Vestfold \
+                         '40' Telemark \
+                         '42' Agder \
+                         '46' Vestland \
+                         '50' Trøndelag \
+                         '55' Troms \
+                         '56' Finnmark
+
+assign-labels fylke24 fylkelabel
+assign-labels fylke25 fylkelabel
+
+textblock
+Personer som flytter til ny kommune mellom 1/1 2024 og 1/1 2025, fordelt på bostedsfylke før/etter flytting:
+endblock
+tabulate fylke24 fylke25 if flytter
+tabulate fylke24 fylke25 if flytter, rowpct
+sankey fylke24 fylke25 if flytter
+barchart(percent) fylke25 if flytter, over(fylke24) stack
+
+textblock
+Personer som flytter til Oslo mellom 1/1 2024 og 1/1 2025, fordelt på bostedsfylke før flytting:
+endblock
+sankey fylke24 fylke25 if flytter & kommune25 == '0301'
+barchart(count) fylke25 if flytter & kommune25 == '0301', over(fylke24)
+
+textblock
+Personer som flytter fra en kommune i Nord-Norge mellom 1/1 2024 og 1/1 2025, fordelt på bostedsfylke før/etter flytting:
+endblock
+sankey fylke24 fylke25 if flytter & inlist(fylke24,'18','55','56')
+barchart(count) fylke25 if flytter & inlist(fylke24,'18','55','56'), over(fylke24)
+
+textblock
+Personer som flytter fra landsdelen Nord-Norge mellom 1/1 2024 og 1/1 2025, fordelt på bostedsfylke før/etter flytting:
+endblock
+sankey fylke24 fylke25 if flytter & inlist(fylke24,'18','55','56') & !inlist(fylke25,'18','55','56')
 barchart(count) fylke25 if flytter & inlist(fylke24,'18','55','56') & !inlist(fylke25,'18','55','56'), over(fylke24)
 
 ```

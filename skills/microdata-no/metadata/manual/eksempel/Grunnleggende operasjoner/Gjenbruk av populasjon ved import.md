@@ -11,21 +11,21 @@ I eksempelet nedenfor brukes populasjonen fra datasettet `oslobosatte` når det 
 I eksempelet bestemmes populasjonen av datasettet `oslobosatte`. Ved hjelp av `values_from(oslobosatte)` importeres bare observasjoner som allerede finnes i det datasettet, i det nye datasettet `jobb`.
 
 ```
- //Kobler til databank
-require no.ssb.fdb:54 as db
-
-create-dataset oslobosatte
-import db/BEFOLKNING_KOMMNR_FORMELL 2025-01-01 as kommune25, values("0301")
-
-create-dataset jobb 
-//Importerer koblingsnøkkel med verdier fra oslo-datasettet
-import db/ARBEIDSFORHOLD_PERSON, values_from(oslobosatte)
-
-//Importerer yrkeskode
-import db/ARBLONN_ARB_YRKE_STYRK08 2025-12-16 as yrke25
-
-//Beholder kun yrkeskode "2223" Sykepleiere
-keep if yrke25 == "2223"
-tabulate yrke25
+ //Kobler til databank
+require no.ssb.fdb:54 as db
+
+create-dataset oslobosatte
+import db/BEFOLKNING_KOMMNR_FORMELL 2025-01-01 as kommune25, values("0301")
+
+create-dataset jobb 
+//Importerer koblingsnøkkel med verdier fra oslo-datasettet
+import db/ARBEIDSFORHOLD_PERSON, values_from(oslobosatte)
+
+//Importerer yrkeskode
+import db/ARBLONN_ARB_YRKE_STYRK08 2025-12-16 as yrke25
+
+//Beholder kun yrkeskode "2223" Sykepleiere
+keep if yrke25 == "2223"
+tabulate yrke25
 
 ```

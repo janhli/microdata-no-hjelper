@@ -11,7 +11,7 @@
  ],
  "temporalCoverage": {
   "start": 7335,
-  "stop": 20696
+  "stop": 20726
  },
  "measureVariable": {
   "name": "ARBEIDSSOKER_DAGDATO1",
@@ -25,7 +25,7 @@
     "description": "Variabelen angir oppdateringsdato fra statistikkdata.\n \n Informasjon om blant annet begreper, brudd og sammenlignbarhet over tid på [Navs nettsider](https://www.nav.no/no/nav-og-samfunn/statistikk/arbeidssokere-og-stillinger-statistikk/).",
     "validPeriod": {
      "start": 7335,
-     "stop": 20696
+     "stop": 20726
     },
     "valueDomain": {
      "description": "År og måned.",
@@ -52,7 +52,7 @@
      "description": "Identifikator for person i microdata",
      "validPeriod": {
       "start": 7335,
-      "stop": 20696
+      "stop": 20726
      },
      "valueDomain": {
       "description": "Pseudonymisert personnummer",
@@ -74,7 +74,7 @@
      "description": "Startdato/måletidspunktet for hendelsen",
      "validPeriod": {
       "start": 7335,
-      "stop": 20696
+      "stop": 20726
      },
      "valueDomain": {
       "description": "Dato oppgitt i dager siden 1970-01-01",
@@ -94,7 +94,7 @@
      "description": "Stoppdato/måletidspunktet for hendelsen",
      "validPeriod": {
       "start": 7335,
-      "stop": 20696
+      "stop": 20726
      },
      "valueDomain": {
       "description": "Dato oppgitt i dager siden 1970-01-01",
@@ -544,11 +544,12 @@
   20604,
   20634,
   20665,
-  20696
+  20696,
+  20726
  ],
  "globalTemporalCoverage": {
   "start": -1096,
-  "stop": 20759
+  "stop": 20766
  },
- "updatedAt": 1790854458
+ "updatedAt": 1793790331
 }

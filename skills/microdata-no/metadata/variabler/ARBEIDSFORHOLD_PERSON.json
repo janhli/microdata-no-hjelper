@@ -14,7 +14,7 @@
  ],
  "temporalCoverage": {
   "start": -25567,
-  "stop": 20721
+  "stop": 20756
  },
  "measureVariable": {
   "name": "ARBEIDSFORHOLD_PERSON",
@@ -33,7 +33,7 @@
     "description": "Variabelen er en nøkkel som gir deg muligheten å koble person og arbeidsforhold.\n \n En person kan ha flere arbeidsforhold i en periode, men ikke i samme virksomhet. Dersom en person har flere arbeidsforhold innenfor én virksomhet slås disse sammen.",
     "validPeriod": {
      "start": -25567,
-     "stop": 20721
+     "stop": 20756
     },
     "valueDomain": {
      "description": "Pseudonymisert personnummer",
@@ -60,7 +60,7 @@
      "description": "Identifikator for jobb i microdata",
      "validPeriod": {
       "start": -25567,
-      "stop": 20721
+      "stop": 20756
      },
      "valueDomain": {
       "description": "Pseudonymisert kombinasjon av personnummer og organisasjonsnummer",
@@ -82,7 +82,7 @@
      "description": "Startdato/måletidspunktet for hendelsen",
      "validPeriod": {
       "start": -25567,
-      "stop": 20721
+      "stop": 20756
      },
      "valueDomain": {
       "description": "Dato oppgitt i dager siden 1970-01-01",
@@ -102,7 +102,7 @@
      "description": "Stoppdato/måletidspunktet for hendelsen",
      "validPeriod": {
       "start": -25567,
-      "stop": 20721
+      "stop": 20756
      },
      "valueDomain": {
       "description": "Dato oppgitt i dager siden 1970-01-01",
@@ -114,7 +114,7 @@
  ],
  "globalTemporalCoverage": {
   "start": -1096,
-  "stop": 20759
+  "stop": 20766
  },
- "updatedAt": 1790854458
+ "updatedAt": 1793790331
 }

@@ -4,6 +4,441 @@
  "description": "Registerdata som inngår i SSBs statistikkproduksjon",
  "versions": [
   {
+   "version": "59.0.0.0",
+   "description": "Data om arbeidssøker, a-ordningen og elhub oppdatert til siste periode. ",
+   "releaseTime": 1793790331,
+   "languageCode": "no",
+   "updateType": "MAJOR",
+   "dataStructureUpdates": [
+    {
+     "name": "ARBEIDSSOKER_ARBEIDSSOKERSTATUS_FIN",
+     "description": "Nye perioder. Oppdatert beskrivelse",
+     "operation": "CHANGE",
+     "releaseStatus": "RELEASED"
+    },
+    {
+     "name": "ARBEIDSSOKER_ANT_D_AS",
+     "description": "Nye perioder.",
+     "operation": "CHANGE",
+     "releaseStatus": "RELEASED"
+    },
+    {
+     "name": "ARBEIDSSOKER_ALDER",
+     "description": "Nye perioder.",
+     "operation": "CHANGE",
+     "releaseStatus": "RELEASED"
+    },
+    {
+     "name": "ARBEIDSSOKER_ARBEIDSSOKERSTATUS_GROV",
+     "description": "Nye perioder.",
+     "operation": "CHANGE",
+     "releaseStatus": "RELEASED"
+    },
+    {
+     "name": "ARBEIDSSOKER_AS_HOVED",
+     "description": "Nye perioder.",
+     "operation": "CHANGE",
+     "releaseStatus": "RELEASED"
+    },
+    {
+     "name": "ARBEIDSSOKER_AS_YTELSE",
+     "description": "Nye perioder.",
+     "operation": "CHANGE",
+     "releaseStatus": "RELEASED"
+    },
+    {
+     "name": "ARBEIDSSOKER_MAXDP",
+     "description": "Nye perioder.",
+     "operation": "CHANGE",
+     "releaseStatus": "RELEASED"
+    },
+    {
+     "name": "ARBEIDSSOKER_TILTAK",
+     "description": "Nye perioder.",
+     "operation": "CHANGE",
+     "releaseStatus": "RELEASED"
+    },
+    {
+     "name": "ELHUB_PERS_KRAFTPRODUKSJON",
+     "description": "Nye perioder.",
+     "operation": "CHANGE",
+     "releaseStatus": "RELEASED"
+    },
+    {
+     "name": "ARBEIDSSOKER_DAGDATO1",
+     "description": "Nye perioder.",
+     "operation": "CHANGE",
+     "releaseStatus": "RELEASED"
+    },
+    {
+     "name": "ARBEIDSSOKER_KJOENN",
+     "description": "Nye perioder.",
+     "operation": "CHANGE",
+     "releaseStatus": "RELEASED"
+    },
+    {
+     "name": "ELHUB_PERS_MALEPUNKT_ADR_KOMMUNE",
+     "description": "Nye perioder.",
+     "operation": "CHANGE",
+     "releaseStatus": "RELEASED"
+    },
+    {
+     "name": "ELHUB_PERS_PRISOMRADE",
+     "description": "Nye perioder.",
+     "operation": "CHANGE",
+     "releaseStatus": "RELEASED"
+    },
+    {
+     "name": "ELHUB_PERS_MALEPUNKTID_FNR",
+     "description": "Nye perioder.",
+     "operation": "CHANGE",
+     "releaseStatus": "RELEASED"
+    },
+    {
+     "name": "ELHUB_PERS_TYPE_STROMFORBRUK",
+     "description": "Nye perioder.",
+     "operation": "CHANGE",
+     "releaseStatus": "RELEASED"
+    },
+    {
+     "name": "ELHUB_PERS_STROMFORBRUK",
+     "description": "Nye perioder.",
+     "operation": "CHANGE",
+     "releaseStatus": "RELEASED"
+    },
+    {
+     "name": "ARBEIDSFORHOLD_PERSON",
+     "description": "Oppdatert med nye observasjoner.",
+     "operation": "CHANGE",
+     "releaseStatus": "RELEASED"
+    },
+    {
+     "name": "ARBLONN_PERS_DNR",
+     "description": "Nye perioder.",
+     "operation": "CHANGE",
+     "releaseStatus": "RELEASED"
+    },
+    {
+     "name": "ARBLONN_PERS_STATSBORGERSKAP",
+     "description": "Nye perioder.",
+     "operation": "CHANGE",
+     "releaseStatus": "RELEASED"
+    },
+    {
+     "name": "ARBLONN_ARB_SLUTT",
+     "description": "Nye perioder.",
+     "operation": "CHANGE",
+     "releaseStatus": "RELEASED"
+    },
+    {
+     "name": "ARBLONN_ARB_SLUTTAARSAK",
+     "description": "Nye perioder.",
+     "operation": "CHANGE",
+     "releaseStatus": "RELEASED"
+    },
+    {
+     "name": "ARBLONN_LONN_ANNEN_BET",
+     "description": "Nye perioder.",
+     "operation": "CHANGE",
+     "releaseStatus": "RELEASED"
+    },
+    {
+     "name": "ARBLONN_LONN_BONUS",
+     "description": "Nye perioder.",
+     "operation": "CHANGE",
+     "releaseStatus": "RELEASED"
+    },
+    {
+     "name": "ARBLONN_LONN_FAST_TILLEGG",
+     "description": "Nye perioder.",
+     "operation": "CHANGE",
+     "releaseStatus": "RELEASED"
+    },
+    {
+     "name": "ARBLONN_LONN_FAST_TILLEGG_INNRAPP",
+     "description": "Nye perioder.",
+     "operation": "CHANGE",
+     "releaseStatus": "RELEASED"
+    },
+    {
+     "name": "ARBLONN_ARB_ANSETTELSESFORM",
+     "description": "Nye perioder.",
+     "operation": "CHANGE",
+     "releaseStatus": "RELEASED"
+    },
+    {
+     "name": "ARBLONN_LONN_FERIE",
+     "description": "Nye perioder.",
+     "operation": "CHANGE",
+     "releaseStatus": "RELEASED"
+    },
+    {
+     "name": "ARBLONN_LONN_FERIE_TREKK",
+     "description": "Nye perioder.",
+     "operation": "CHANGE",
+     "releaseStatus": "RELEASED"
+    },
+    {
+     "name": "ARBLONN_LONN_HELLIGDAGSTILLEGG",
+     "description": "Nye perioder.",
+     "operation": "CHANGE",
+     "releaseStatus": "RELEASED"
+    },
+    {
+     "name": "ARBLONN_LONN_SLUTTVEDERLAG",
+     "description": "Nye perioder.",
+     "operation": "CHANGE",
+     "releaseStatus": "RELEASED"
+    },
+    {
+     "name": "ARBLONN_LONN_UREGTIL_UARBEIDET",
+     "description": "Nye perioder.",
+     "operation": "CHANGE",
+     "releaseStatus": "RELEASED"
+    },
+    {
+     "name": "ARBLONN_ARB_ARBEIDSTID",
+     "description": "Nye perioder.",
+     "operation": "CHANGE",
+     "releaseStatus": "RELEASED"
+    },
+    {
+     "name": "ARBLONN_ARB_ARBMARK_STATUS",
+     "description": "Nye perioder.",
+     "operation": "CHANGE",
+     "releaseStatus": "RELEASED"
+    },
+    {
+     "name": "ARBLONN_ARB_ARBKOMM",
+     "description": "Nye perioder.",
+     "operation": "CHANGE",
+     "releaseStatus": "RELEASED"
+    },
+    {
+     "name": "ARBLONN_LONN_GODTGJORELSE",
+     "description": "Nye perioder.",
+     "operation": "CHANGE",
+     "releaseStatus": "RELEASED"
+    },
+    {
+     "name": "ARBLONN_LONN_OVERTID_INNRAPP",
+     "description": "Nye perioder.",
+     "operation": "CHANGE",
+     "releaseStatus": "RELEASED"
+    },
+    {
+     "name": "ARBLONN_ARB_H3LDELTID",
+     "description": "Nye perioder.",
+     "operation": "CHANGE",
+     "releaseStatus": "RELEASED"
+    },
+    {
+     "name": "ARBLONN_LONN_OVERTID_TIMER",
+     "description": "Nye perioder.",
+     "operation": "CHANGE",
+     "releaseStatus": "RELEASED"
+    },
+    {
+     "name": "ARBLONN_ARB_HOVEDARBEID",
+     "description": "Nye perioder.",
+     "operation": "CHANGE",
+     "releaseStatus": "RELEASED"
+    },
+    {
+     "name": "ARBLONN_ARB_STILLINGSPST_INNRAPP",
+     "description": "Nye perioder.",
+     "operation": "CHANGE",
+     "releaseStatus": "RELEASED"
+    },
+    {
+     "name": "ARBLONN_ARB_STILLINGSPST",
+     "description": "Nye perioder.",
+     "operation": "CHANGE",
+     "releaseStatus": "RELEASED"
+    },
+    {
+     "name": "ARBLONN_ARB_STILLINGSPST_KILDE",
+     "description": "Nye perioder.",
+     "operation": "CHANGE",
+     "releaseStatus": "RELEASED"
+    },
+    {
+     "name": "ARBLONN_LONN_UREGTIL_ARBEIDET",
+     "description": "Nye perioder.",
+     "operation": "CHANGE",
+     "releaseStatus": "RELEASED"
+    },
+    {
+     "name": "ARBLONN_ARB_START",
+     "description": "Nye perioder.",
+     "operation": "CHANGE",
+     "releaseStatus": "RELEASED"
+    },
+    {
+     "name": "ARBLONN_LONN_FAST",
+     "description": "Nye perioder.",
+     "operation": "CHANGE",
+     "releaseStatus": "RELEASED"
+    },
+    {
+     "name": "ARBLONN_LONN_FAST_INNRAPP",
+     "description": "Nye perioder.",
+     "operation": "CHANGE",
+     "releaseStatus": "RELEASED"
+    },
+    {
+     "name": "ARBLONN_ARB_KILDE",
+     "description": "Nye perioder.",
+     "operation": "CHANGE",
+     "releaseStatus": "RELEASED"
+    },
+    {
+     "name": "ARBLONN_LONN_IMP_STATUS",
+     "description": "Nye perioder.",
+     "operation": "CHANGE",
+     "releaseStatus": "RELEASED"
+    },
+    {
+     "name": "ARBLONN_ARB_SYSS",
+     "description": "Nye perioder.",
+     "operation": "CHANGE",
+     "releaseStatus": "RELEASED"
+    },
+    {
+     "name": "ARBLONN_LONN_TIME_ANTALL",
+     "description": "Nye perioder.",
+     "operation": "CHANGE",
+     "releaseStatus": "RELEASED"
+    },
+    {
+     "name": "ARBLONN_LONN_NATURAL",
+     "description": "Nye perioder.",
+     "operation": "CHANGE",
+     "releaseStatus": "RELEASED"
+    },
+    {
+     "name": "ARBLONN_LONN_TIME_ANTALL_INNRAPP",
+     "description": "Nye perioder.",
+     "operation": "CHANGE",
+     "releaseStatus": "RELEASED"
+    },
+    {
+     "name": "ARBLONN_ARB_TID_ORDNING",
+     "description": "Nye perioder.",
+     "operation": "CHANGE",
+     "releaseStatus": "RELEASED"
+    },
+    {
+     "name": "ARBLONN_LONN_TIME",
+     "description": "Nye perioder.",
+     "operation": "CHANGE",
+     "releaseStatus": "RELEASED"
+    },
+    {
+     "name": "ARBLONN_LONN_TIME_INNRAPP",
+     "description": "Nye perioder.",
+     "operation": "CHANGE",
+     "releaseStatus": "RELEASED"
+    },
+    {
+     "name": "ARBLONN_PERS_ALDER",
+     "description": "Nye perioder.",
+     "operation": "CHANGE",
+     "releaseStatus": "RELEASED"
+    },
+    {
+     "name": "ARBLONN_ARB_TIMEANT_FULLTID",
+     "description": "Nye perioder.",
+     "operation": "CHANGE",
+     "releaseStatus": "RELEASED"
+    },
+    {
+     "name": "ARBLONN_ARB_TIMEANT_FULLTID_INNRAPP",
+     "description": "Nye perioder.",
+     "operation": "CHANGE",
+     "releaseStatus": "RELEASED"
+    },
+    {
+     "name": "ARBLONN_ARB_TYPE",
+     "description": "Nye perioder.",
+     "operation": "CHANGE",
+     "releaseStatus": "RELEASED"
+    },
+    {
+     "name": "ARBLONN_ARB_YRKE_STYRK08",
+     "description": "Nye perioder.",
+     "operation": "CHANGE",
+     "releaseStatus": "RELEASED"
+    },
+    {
+     "name": "ARBLONN_FRTK_SEKTOR_2014",
+     "description": "Nye perioder.",
+     "operation": "CHANGE",
+     "releaseStatus": "RELEASED"
+    },
+    {
+     "name": "ARBLONN_LONN_KONTANT_IMP",
+     "description": "Nye perioder.",
+     "operation": "CHANGE",
+     "releaseStatus": "RELEASED"
+    },
+    {
+     "name": "ARBLONN_LONN_KONTANT_INNRAPP",
+     "description": "Nye perioder.",
+     "operation": "CHANGE",
+     "releaseStatus": "RELEASED"
+    },
+    {
+     "name": "ARBLONN_PERS_BOSETT_STATUS",
+     "description": "Nye perioder.",
+     "operation": "CHANGE",
+     "releaseStatus": "RELEASED"
+    },
+    {
+     "name": "ARBLONN_PERS_BOTID_FORST",
+     "description": "Nye perioder.",
+     "operation": "CHANGE",
+     "releaseStatus": "RELEASED"
+    },
+    {
+     "name": "ARBLONN_PERS_BOTID_SISTE",
+     "description": "Nye perioder.",
+     "operation": "CHANGE",
+     "releaseStatus": "RELEASED"
+    },
+    {
+     "name": "ARBLONN_PERS_KJOENN",
+     "description": "Nye perioder.",
+     "operation": "CHANGE",
+     "releaseStatus": "RELEASED"
+    },
+    {
+     "name": "ARBLONN_PERS_KOMMNR_KILDE",
+     "description": "Nye perioder.",
+     "operation": "CHANGE",
+     "releaseStatus": "RELEASED"
+    },
+    {
+     "name": "ARBLONN_PERS_KOMMNR",
+     "description": "Nye perioder.",
+     "operation": "CHANGE",
+     "releaseStatus": "RELEASED"
+    },
+    {
+     "name": "ARBLONN_PERS_SUM_ARBEIDSTID",
+     "description": "Nye perioder.",
+     "operation": "CHANGE",
+     "releaseStatus": "RELEASED"
+    },
+    {
+     "name": "ARBLONN_PERS_SUM_STILLINGSPST",
+     "description": "Nye perioder.",
+     "operation": "CHANGE",
+     "releaseStatus": "RELEASED"
+    }
+   ]
+  },
+  {
    "version": "58.0.0.0",
    "description": "Oppdaterte data i 2024-årgangen for INTRO",
    "releaseTime": 1792156648,

@@ -10,7 +10,7 @@
  ],
  "temporalCoverage": {
   "start": 18262,
-  "stop": 20666
+  "stop": 20697
  },
  "measureVariable": {
   "name": "ELHUB_PERS_MALEPUNKT_ADR_KOMMUNE",
@@ -2234,7 +2234,7 @@
      "description": "Identifikator for målepunkt i microdata",
      "validPeriod": {
       "start": 18262,
-      "stop": 20666
+      "stop": 20697
      },
      "valueDomain": {
       "description": "Pseudonymisert kombinasjon av personnummer og målepunktsid nummer",
@@ -2256,7 +2256,7 @@
      "description": "Startdato/måletidspunktet for hendelsen",
      "validPeriod": {
       "start": 18262,
-      "stop": 20666
+      "stop": 20697
      },
      "valueDomain": {
       "description": "Dato oppgitt i dager siden 1970-01-01",
@@ -2276,7 +2276,7 @@
      "description": "Stoppdato/måletidspunktet for hendelsen",
      "validPeriod": {
       "start": 18262,
-      "stop": 20666
+      "stop": 20697
      },
      "valueDomain": {
       "description": "Dato oppgitt i dager siden 1970-01-01",
@@ -2366,11 +2366,12 @@
   20574,
   20605,
   20635,
-  20666
+  20666,
+  20697
  ],
  "globalTemporalCoverage": {
   "start": -1096,
-  "stop": 20759
+  "stop": 20766
  },
- "updatedAt": 1790854458
+ "updatedAt": 1793790331
 }

@@ -160,20 +160,20 @@ Her brukes `barchart`-kommandoen for å lage et søylediagram per kommune, forde
 ### Hele skriptet
 
 ```
- require no.ssb.fdb:38 as db
-create-dataset persondata
-
-import db/INNTEKT_WLONN 2022-12-31 as lønn22
-import db/BEFOLKNING_KOMMNR_FORMELL 2023-01-01 as bostedskommune
-keep if bostedskommune == "0301" | bostedskommune == "4601" | bostedskommune==  "5001"
-
-//Gjennomsnittsinntekt for Oslo, Bergen og Trondheim
-barchart (mean) lønn22, over(bostedskommune) horizontal
-help barchart
-
-import db/BEFOLKNING_KJOENN as kjønn
-barchart (mean) lønn22 if inlist(bostedskommune, "0301"), over(kjønn) horizontal
-barchart (mean) lønn22 if inlist(bostedskommune, "4601"), over(kjønn) horizontal
+ require no.ssb.fdb:38 as db
+create-dataset persondata
+
+import db/INNTEKT_WLONN 2022-12-31 as lønn22
+import db/BEFOLKNING_KOMMNR_FORMELL 2023-01-01 as bostedskommune
+keep if bostedskommune == "0301" | bostedskommune == "4601" | bostedskommune==  "5001"
+
+//Gjennomsnittsinntekt for Oslo, Bergen og Trondheim
+barchart (mean) lønn22, over(bostedskommune) horizontal
+help barchart
+
+import db/BEFOLKNING_KJOENN as kjønn
+barchart (mean) lønn22 if inlist(bostedskommune, "0301"), over(kjønn) horizontal
+barchart (mean) lønn22 if inlist(bostedskommune, "4601"), over(kjønn) horizontal
 barchart (mean) lønn22 if inlist(bostedskommune, "5001"), over(kjønn) horizontal
 
 ```
