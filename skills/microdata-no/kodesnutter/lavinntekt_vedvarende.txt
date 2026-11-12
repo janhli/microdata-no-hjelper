@@ -13,12 +13,15 @@
 //   Personer i husholdninger der gjennomsnittlig inntekt etter skatt per forbruksenhet (EU-skala)
 //   over en treårsperiode er under 60 % av medianen for treårsgjennomsnittene. Inntektene
 //   KPI-justeres til siste år. Bare personer som er med alle tre årene, inngår.
-// Kontroll:  Barn 0–17 år, 2022–2024: 9,97 %. SSB tabell 09571 (2021–2023): 9,9 %. Fylker innen 0,1–0,6
-//            prosentpoeng, unntatt Oslo (12,7 mot 13,8 %). Testet november 2026.
+// Kontroll:  Samme metode for 2021–2023 mot SSB tabell 09571 (EU-60, barn under 18 år): 10,0 % mot 9,9 %.
+//            Fylker (2020-inndeling) innen 0,3 prosentpoeng, Oslo 13,6 mot 13,8. Testet november 2026,
+//            versjon 59 (TESTLISTE 5.2).
 // Fallgruver:
 //   - Medianen beregnes for hele landet (alle som er med i alle tre årene), ikke for din populasjon.
-//   - Kravet om privathusholdning i alle tre årene er litt strengere enn SSBs definisjon, så
-//     andelene kan avvike noe fra Statistikkbanken (tabell 08764) og Bufdirs barnetall.
+//   - Kravet om privathusholdning gjelder bare siste år. Det traff SSB best. Med krav alle tre årene
+//     ble landet 9,8 og Oslo 13,3, uten krav 10,1 og 13,9. Barn som var utenfor privathusholdning
+//     noen av årene (studenthusholdninger, institusjoner/mottak), er få (1,5 %), men 70–94 % av dem
+//     har vedvarende lavinntekt, og de er flere i Oslo. Avvik i tiendedeler er ventet mot 09571.
 //   - KPI-faktorene er årsgjennomsnitt (2015 = 100). Kontroller dem mot Statistikkbanken
 //     (tabell 03014) og oppdater dem når perioden flyttes. Rangeringen påvirkes lite, men
 //     medianen og grensen gjør det.
@@ -37,12 +40,12 @@ for aar in 2022 : 2024
   import fdb/INNTEKT_KODE_PRIVATHUSH2 $dato as $pvar
 end
 
-// Med alle tre årene, i privathusholdning (studenthusholdninger og institusjoner er utenfor)
-keep if ph2022 == '1' & ph2023 == '1' & ph2024 == '1'
+// Inntekt alle tre årene, og i privathusholdning siste år (studenthusholdninger og institusjoner er utenfor)
+keep if ph2024 == '1'
 drop if sysmiss(ies2022) | sysmiss(ies2023) | sysmiss(ies2024)
 
-// KPI, årsgjennomsnitt (2015 = 100): 2022 = 122.8, 2023 = 130.0, 2024 = 133.9
-generate snitt3 = (ies2022 * 133.9 / 122.8 + ies2023 * 133.9 / 130.0 + ies2024) / 3
+// KPI, årsgjennomsnitt (2015 = 100), SSB tabell 03014: 2022 = 122.8, 2023 = 129.6, 2024 = 133.6
+generate snitt3 = (ies2022 * 133.6 / 122.8 + ies2023 * 133.6 / 129.6 + ies2024) / 3
 
 generate alle = 1
 aggregate (median) snitt3 -> median3, by(alle)
