@@ -30,25 +30,26 @@ Bruk ett lite skript med `import fdb/BEFOLKNING_KOMMNR_FORMELL 2024-01-01 as kom
 
 | # | Hva | Hvordan | Forventet | Pri |
 |---|---|---|---|---|
-| 2.1 | Utskriften kjører uten feil | Standard (1989 til 2024) på `BEFOLKNING_KOMMNR_FORMELL 2010-01-01` | Ingen feil, ingen avvisning | P2 |
-| 2.2 | Ingen gamle koder igjen | `tabulate kommune` etter omkoding | Bare kommunenumre fra 2024, de delte kommunene som finnes i årgangen (0114, 0720, 1613, 1850, 5012) og spesialkodene, som står uendret: `-1`, `-2`, `0000`, `2100`–`2131` (Svalbard), `2500`, `9999`, `xxxx` og «ukjent kommune i fylket» (`xx00`, også gamle fylker som `3000` Viken, `3800` og `5400`). Andre koder er feil | P1 |
-| 2.3 | Folketall per kommune stemmer | Sammenlign 1.1.2024 med Statistikkbanken (tabell 07459), og 1.1.2010 summert til 2024-kommuner | Samme tall (innen støy) | P1 |
-| 2.4 | Ålesund-reverseringen | Folketall 1.1.2023 og 1.1.2024 for 1508 Ålesund og 1580 Haram | Ørskog, Skodje og Sandøy ligger i Ålesund etter omkoding, Haram i 1580 | P1 |
-| 2.5 | `--til 2026` (Indre Østfold 3118 deles i 2026) | Kjør og sjekk kommentarene | Kodene som får 3118 som «fortsettelse» er riktige. Ellers: skarpere regel | P2 |
-| 2.6 | Svalbard-kodene (2111, 2112, 2115, 2121, 2131) | `tabulate` på kodene i dataene | Finnes de, må de legges til for hånd | P3 |
+| 2.1 | ~~Utskriften kjører uten feil~~ **Avklart (versjon 59, 2026-11):** kjørt på 1.1. i 1995, 2010, 2019, 2023 og 2024 uten feil eller avvisning | | | ✓ |
+| 2.2 | ~~Ingen gamle koder igjen~~ **Avklart (versjon 59, 2026-11):** bare delte kommuner står igjen (1995: 0720, 1613, 1850. 2010: 0720, 1613, 1850. 2019: 1850, 5012) og 14 personer med 9999 i 1995. 2023 og 2024: alle i 2024-kommuner | | | ✓ |
+| 2.3 | ~~Folketall per kommune stemmer~~ **Avklart (versjon 59, 2026-11):** alle 357 kommuner innenfor ±5 av tabell 07459, både 1.1.2024 og 1.1.2010 summert til 2024-kommuner (det er støyen) | | | ✓ |
+| 2.4 | ~~Ålesund-reverseringen~~ **Avklart (versjon 59, 2026-11):** 2019-koder blir riktige (Haram 1534 → 1580, de andre → 1508). Men 1507 Ålesund (2020–2023) går helt til 1508, også Haram: 67 525 i 1508 for 2023 mot 58 511 + 9 358 i 2024. Verktøyet varsler nå om koder som selv ble delt. Se `fallgruver.md` | | | ✓ |
+| 2.5 | ~~`--til 2026` (Indre Østfold 3118)~~ **Avklart (versjon 59, 2026-11):** 2026-endringen er en grensejustering (små deler til Nordre Follo og Vestby). At 0122–0125, 0138 og 3014 får 3118 er riktig. Avklart fra Klass, uten kjøring | | | ✓ |
+| 2.6 | ~~Svalbard-kodene~~ **Avklart (versjon 59, 2026-11):** ingen personer har dem i 1995, 2010, 2019, 2023 eller 2024 | | | ✓ |
+| 2.8 | Merkelapper på omkodede koder | Gamle årganger etter omkoding (`tabulate kommune` 1.1.2010) | Nye koder (1108, 3101 osv.) står uten navn, fordi kodelisten på datoen ikke har dem. Vurder `--merkelapper` med 2024-navn i `kommuneomkoding.py` | P3 |
 | 2.7 | ~~Kode som er både kilde og mål~~ **Avklart (versjon 59, 2026-11):** håndteres i `recode_regler.py`, og 1.9 bekrefter at det virker i microdata.no | | | ✓ |
 
 ## 3. Regionomkoding (`verktoy/regionomkoding.py`)
 
 | # | Hva | Hvordan | Forventet | Pri |
 |---|---|---|---|---|
-| 3.1 | Standardutskrift (uten `--ukjent`) | `helseregioner`, `okonomiske_regioner`, `politidistrikt` på 2024-data | Alle 357 kommuner får region. Ellers står bare spesialkodene fra 2.2 igjen (og gamle kommunenumre hvis dataene ikke er omkodet først). Med `--ukjent` blir alt dette `xxxx` | P1 |
-| 3.7 | Regionkode lik en kommunekode (`barnevernsregioner`, kode `0300`) | Kjør uten `--ukjent` og se advarselen | Personer med kommunekode `0300` havner i regionen `0300`. Med `--ukjent` får de `xxxx` | P2 |
-| 3.2 | Merkelapper beholdes | `tabulate` av regionvariabelen | Regionnavn vises, ikke bare koder | P2 |
-| 3.3 | Regionene stemmer med offisielle tall | Folketall per region mot Statistikkbanken, for to-tre inndelinger | Samme tall | P2 |
-| 3.4 | Helseregioner oversatt fra Kommuneinndeling 2020 | Stikkprøve: Haram (1580), Indre Østfold (3118) | Haram i Helse Midt-Norge. Indre Østfold i Helse Sør-Øst | P3 |
+| 3.1 | ~~Standardutskrift (uten `--ukjent`)~~ **Avklart (versjon 59, 2026-11):** helseregioner, politidistrikt, barnevernsregioner og økonomiske regioner på 2024-data: alle personer fikk region, ingen koder står igjen | | | ✓ |
+| 3.7 | ~~Regionkode lik en kommunekode (`0300`)~~ **Avklart (versjon 59, 2026-11):** ingen personer har kommunekode 0300 i 2024, så regionen 0300 Oslo inneholder bare Oslo. Advarselen beholdes | | | ✓ |
+| 3.2 | ~~Merkelapper beholdes~~ **Avklart (versjon 59, 2026-11):** regionnavn vises for alle fire inndelinger | | | ✓ |
+| 3.3 | ~~Regionene stemmer med offisielle tall~~ **Avklart (versjon 59, 2026-11):** regionene er summer av kommuner, og kommunetallene stemmer med 07459 (2.3). Helseregioner, politidistrikt og barnevern summerer til samme total | | | ✓ |
+| 3.4 | ~~Helseregioner oversatt fra Kommuneinndeling 2020~~ **Avklart (versjon 59, 2026-11):** Haram og Ålesund i Midt-Norge, Indre Østfold i Sør-Øst (sjekket i tabellen) | | | ✓ |
 | 3.5 | Bo- og arbeidsmarkedsregioner (manuell fil) | Sammenlign 10 kommuner mot TØI-rapporten | Samme region | P3 |
-| 3.6 | Kommuner uten rad i tabellen | Sammenlign tabellens kommuner med 2024-listen | 357 kommuner dekket i hver tabell | P3 |
+| 3.6 | ~~Kommuner uten rad i tabellen~~ **Avklart (versjon 59, 2026-11):** alle elleve tabeller har de samme 357 kommunene | | | ✓ |
 
 ## 4. Klass-verktøyet (`verktoy/klass.py`)
 

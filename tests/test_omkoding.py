@@ -96,6 +96,15 @@ class TestKommuneomkoding(unittest.TestCase, LinjelengdeMixin):
             self.assertEqual(ut[kode], kode)
         self.assertIn("0114 Varteig", tekst)
 
+    def test_varsler_naar_koden_selv_ble_delt(self):
+        # 1507 Ålesund (2020–2023) omfatter Haram, som ble skilt ut i 2024 (TESTLISTE 2.4)
+        tekst = kjor("kommuneomkoding.py")
+        self.assertEqual(utfall(tekst, "1507")["1507"], "1508")
+        varsel = tekst.split("selv ble delt")[1].split("\nrecode")[0]
+        self.assertIn("1507 Ålesund: 2024 delt i 1508 Ålesund, 1580 Haram, satt til 1508", varsel)
+        self.assertIn("0412 Ringsaker: 1992 delt i 0403 Hamar, 0412 Ringsaker, satt til 3411", varsel)
+        self.assertNotIn("1504", varsel)  # gamle Ålesund lå bare i dagens 1508
+
     def test_splitt_forste_omkoder_delte(self):
         ut = utfall(kjor("kommuneomkoding.py", "--splitt", "forste"), "0720")
         self.assertNotEqual(ut["0720"], "0720")

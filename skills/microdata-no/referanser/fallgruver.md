@@ -180,6 +180,13 @@ med pull request (se CONTRIBUTING.md). Tagg dem med datalagerversjon/dato hvis d
     omkodes uten adresse. Verktøyet lar dem stå uendret, og de vises som gamle koder i tabellen.
   - Når Ålesund ble delt i 2024 (Haram ut igjen), kjedes de gamle kodene via navn. Haram 1534 blir 1580,
     og Ørskog, Skodje og Sandøy blir 1508. Verktøyet lister slike valg som «kontroller».
+  - **Ålesund 1507 (2020–2023) omkodes helt til 1508, også Haram.** 1.1.2023 fikk 1508 67 525 personer,
+    mot 58 511 i Ålesund og 9 358 i Haram 1.1.2024 (versjon 59, november 2026). Koden kan ikke deles uten
+    adresse. Verktøyet lister slike koder under «Koder som selv ble delt». Trenger du Haram for 2020–2023,
+    bruk kommunen personen bodde i 1.1.2019 eller 1.1.2024.
+  - Omkodingen er kontrollert mot SSB tabell 07459: alle kommuner innenfor ±5 (støy) for 1.1.2010 omkodet
+    til 2024 og for 1.1.2024 (versjon 59). Etter omkoding av eldre år står nye koder (f.eks. 1108, 3101)
+    uten navn i `tabulate`, fordi kodelisten på datoen ikke har dem.
   - Klass dekker ikke Svalbard-kodene 2111, 2112, 2115, 2121 og 2131 (i kodelisten til
     `BEFOLKNING_KOMMNR_FORMELL`). Legg dem til for hånd hvis de skal slås sammen til 2100.
   - Klass har endringer til 2026 (bl.a. Indre Østfold). Standard er `--til 2024`.

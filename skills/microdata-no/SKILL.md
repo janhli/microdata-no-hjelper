@@ -36,7 +36,8 @@ Kommuneendringene oppdateres med `python verktoy/hent_kommuneendringer.py`.
 Skal data fra flere år sammenlignes på kommune, må gamle kommunenumre omkodes til én inndeling.
 Ikke skriv reglene for hånd. Kjør `python verktoy/kommuneomkoding.py --fra <år> --til <år> --navn <variabel>`
 og lim `recode`-linjene inn i skriptet. Verktøyet lister kommuner som er delt i flere (f.eks. Tysfjord)
-og lar dem stå uendret. Si fra til brukeren om disse. Se også «Geografi» i `referanser/fallgruver.md`.
+og lar dem stå uendret. Si fra til brukeren om disse, og om «koder som selv ble delt» (Ålesund 1507 i
+2020–2023 omkodes til 1508, også Haram). Se også «Geografi» i `referanser/fallgruver.md`.
 
 For å gruppere kommuner i regioner (helseregion, politidistrikt, økonomisk region osv.): kjør
 `python verktoy/regionomkoding.py <inndeling> --fra <kommunevariabel> --til <ny variabel>`

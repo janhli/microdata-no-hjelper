@@ -62,7 +62,7 @@ def bygg(d, fra, til):
         per_dato[e["dato"]].append(e)
     datoer = sorted(per_dato)
 
-    kart, delt, antatt = {}, {}, {}
+    kart, delt, antatt, helt = {}, {}, {}, {}
     for kode, (opprett, startnavn) in kandidater.items():
         tilstand = {kode: startnavn}  # kode -> navn nå
         brukt_navn = {}
@@ -80,6 +80,10 @@ def bygg(d, fra, til):
                     # 1) kommunen som har samme navn som koden startet som
                     treff = [k for k, n in maal.items() if navnesett(n) & navnesett(startnavn)]
                     if len(treff) == 1:
+                        if s == kode:
+                            # Koden selv deles (f.eks. Ålesund 1507 i 2024): personer i de andre delene
+                            # (Haram) følger med. Riktig ved grensejusteringer, ellers ikke.
+                            helt[kode] = (dato, sorted(maal.items()), treff[0])
                         maal = {treff[0]: maal[treff[0]]}
                     else:
                         # 2) ellers kommunen som fortsetter med samme navn som den delte kommunen
@@ -98,8 +102,9 @@ def bygg(d, fra, til):
                 antatt.pop(kode)
         else:
             antatt.pop(kode, None)
+            helt.pop(kode, None)
             delt[kode] = (startnavn, [(k, tilstand[k]) for k in slutt])
-    return kart, delt, antatt, kandidater
+    return kart, delt, antatt, kandidater, helt
 
 
 def main():
@@ -120,7 +125,7 @@ def main():
     if a.til > int(siste[:4]):
         print(f"// Advarsel: Klass-uttrekket (hentet {d['hentet']}) har ingen endringer etter {siste}.", file=sys.stderr)
 
-    kart, delt, antatt, kand = bygg(d, fra, til)
+    kart, delt, antatt, kand, helt = bygg(d, fra, til)
     if a.splitt == "forste":
         for k, (_, mal) in delt.items():
             kart[k] = mal[0][0]
@@ -142,6 +147,13 @@ def main():
         for k in sorted(antatt):
             dato, kilde, m = antatt[k]
             out.append(f"//   {k} {kand[k][1]}: {dato[:4]} delt av {kilde}, satt til {m}")
+    if helt:
+        out.append("// Koder som selv ble delt, satt til delen med samme navn. Personer i de andre delene kommer")
+        out.append("// med (riktig ved grensejusteringer, ellers ikke). Bruk eldre koder eller adresse om det er viktig:")
+        for k in sorted(helt):
+            dato, deler, m = helt[k]
+            out.append(f"//   {k} {kand[k][1]}: {dato[:4]} delt i " + ", ".join(f"{x} {n}" for x, n in deler)
+                       + f", satt til {kart.get(k, m)}")
     out += recode_linjer(a.navn, kart)
     print("\n".join(out))
 
