@@ -7,8 +7,9 @@
 //            https://microdata.no/discovery/variable/no.ssb.fdb/59/INNTEKT_KODE_PRIVATHUSH2
 //            BEFOLKNING_FOEDSELS_AAR_MND, BEFOLKNING_KOMMNR_FORMELL
 // Lager:     snitt3 – gjennomsnittlig inntekt per forbruksenhet 2022–2024 i 2024-kroner
-//            vlav   – 1 = vedvarende lavinntekt (snitt3 under 60 % av medianen)
-//            vlavgr – tekstvariabel med kategori for ukjent
+//            vlav   – 1 = vedvarende lavinntekt, nasjonal median (snitt3 under 60 % av landsmedianen)
+//            vlavk  – 1 = vedvarende lavinntekt, kommunal median (under 60 % av medianen i bostedskommunen)
+//            vlavgr, vlavkgr – tekstvariabler med kategori for ukjent
 // Definisjon (SSB):
 //   Personer i husholdninger der gjennomsnittlig inntekt etter skatt per forbruksenhet (EU-skala)
 //   over en treårsperiode er under 60 % av medianen for treårsgjennomsnittene. Inntektene
@@ -16,8 +17,18 @@
 // Kontroll:  Samme metode for 2021–2023 mot SSB tabell 09571 (EU-60, barn under 18 år): 10,0 % mot 9,9 %.
 //            Fylker (2020-inndeling) innen 0,3 prosentpoeng, Oslo 13,6 mot 13,8. Testet november 2026,
 //            versjon 59 (TESTLISTE 5.2).
+//            Hele befolkningen mot SSB tabell 04204 («studenter er utelatt»): 9,6 % mot 9,5 % (2022–2024) og
+//            9,5 mot 9,2 (2021–2023). Antall personer innen 0,2 %. Uten krav om privathusholdning treffer
+//            «omfatter også studenter»: 10,6 mot 10,6 (2022–2024) og 10,5 mot 10,3 (2021–2023).
+//            Kommunal median, barn 2022–2024: landet 10,1 % (som nasjonal). Oslo 13,0 → 15,4, Bærum 6,1 → 11,0,
+//            Stavanger 8,7 → 11,6, Østfold 14,8 → 11,3. Kommunal median i Bærum 608 500, Oslo 528 000 kr.
 // Fallgruver:
-//   - Medianen beregnes for hele landet (alle som er med i alle tre årene), ikke for din populasjon.
+//   - Medianen beregnes for alle som er med i alle tre årene, ikke for din populasjon (f.eks. barna).
+//   - Nasjonal median er SSBs standard og den eneste som kan kontrolleres mot Statistikkbanken.
+//     Kommunal median måler lavinntekt i forhold til inntektsnivået der man bor: andelen blir høyere i
+//     kommuner med høy median (Oslo, Bærum) og lavere i kommuner med lav median. Kommunen er bosted
+//     1.1. etter perioden. I små kommuner bygger medianen på få husholdninger og blir ustabil. Bytt
+//     by(kommune_slutt) med fylke for fylkesmedian.
 //   - Kravet om privathusholdning gjelder bare siste år. Det traff SSB best. Med krav alle tre årene
 //     ble landet 9,8 og Oslo 13,3, uten krav 10,1 og 13,9. Barn som var utenfor privathusholdning
 //     noen av årene (studenthusholdninger, institusjoner/mottak), er få (1,5 %), men 70–94 % av dem
@@ -30,7 +41,7 @@
 
 require no.ssb.fdb:59 as fdb
 
-// --- 1. Treårsgjennomsnitt og landsmedian ---
+// --- 1. Treårsgjennomsnitt, nasjonal og kommunal median ---
 create-dataset vedvarende
 for aar in 2022 : 2024
   let dato = $aar ++ "-12-31"
@@ -47,10 +58,17 @@ drop if sysmiss(ies2022) | sysmiss(ies2023) | sysmiss(ies2024)
 // KPI, årsgjennomsnitt (2015 = 100), SSB tabell 03014: 2022 = 122.8, 2023 = 129.6, 2024 = 133.6
 generate snitt3 = (ies2022 * 133.6 / 122.8 + ies2023 * 133.6 / 129.6 + ies2024) / 3
 
+// Nasjonal median
 generate alle = 1
 aggregate (median) snitt3 -> median3, by(alle)
 generate vlav = 0
 replace vlav = 1 if snitt3 < 0.6 * median3
+
+// Kommunal median: medianen for alle med bosted i samme kommune ved utgangen av perioden
+import fdb/BEFOLKNING_KOMMNR_FORMELL 2025-01-01 as kommune_slutt
+aggregate (median) snitt3 -> median3k, by(kommune_slutt)
+generate vlavk = 0 if !sysmiss(kommune_slutt)
+replace vlavk = 1 if !sysmiss(kommune_slutt) & snitt3 < 0.6 * median3k
 
 // --- 2. Populasjon: barn 0–17 år bosatt ved utgangen av perioden ---
 create-dataset barn
@@ -62,15 +80,20 @@ generate fylke = substr(kommune, 1, 2)
 
 // merge kjøres fra datasettet variablene ligger i
 use vedvarende
-merge snitt3 vlav into barn
+merge snitt3 median3k vlav vlavk into barn
 delete-dataset vedvarende
 use barn
 
 generate vlavgr = '9'
 replace vlavgr = '0' if vlav == 0
 replace vlavgr = '1' if vlav == 1
-define-labels vlavgrtxt '0' 'Ikke vedvarende lavinntekt' '1' 'Vedvarende lavinntekt (EU-60, 2022–2024)' '9' 'Ikke med alle tre årene / ukjent'
+generate vlavkgr = '9'
+replace vlavkgr = '0' if vlavk == 0
+replace vlavkgr = '1' if vlavk == 1
+define-labels vlavgrtxt '0' 'Ikke vedvarende lavinntekt' '1' 'Vedvarende lavinntekt (EU-60, nasjonal median)' '9' 'Ikke med alle tre årene / ukjent'
+define-labels vlavkgrtxt '0' 'Ikke vedvarende lavinntekt' '1' 'Vedvarende lavinntekt (EU-60, kommunal median)' '9' 'Ikke med alle tre årene / ukjent'
 assign-labels vlavgr vlavgrtxt
+assign-labels vlavkgr vlavkgrtxt
 
 textblock
 ## Barn 0–17 år i husholdninger med vedvarende lavinntekt, 2022–2024
@@ -85,3 +108,17 @@ textblock
 Bare barn som er med alle tre årene.
 endblock
 tabulate fylke vlavgr if vlavgr != '9', rowpct
+
+textblock
+## Andel barn i vedvarende lavinntekt etter fylke, kommunal median, 2022–2024 (radprosent)
+Grensen er 60 % av medianen i barnets bostedskommune. Sammenlign med tabellen over (nasjonal median).
+endblock
+tabulate fylke vlavkgr if vlavkgr != '9', rowpct
+
+textblock
+## Kommunal median og andel barn i vedvarende lavinntekt, utvalgte kommuner
+Medianen er treårsgjennomsnittet per forbruksenhet i 2024-kroner.
+endblock
+tabulate kommune if inlist(kommune, '0301', '4601', '5001', '1103', '3201', '1804'), summarize(median3k) mean
+tabulate kommune vlavgr if inlist(kommune, '0301', '4601', '5001', '1103', '3201', '1804') & vlavgr != '9', rowpct
+tabulate kommune vlavkgr if inlist(kommune, '0301', '4601', '5001', '1103', '3201', '1804') & vlavkgr != '9', rowpct

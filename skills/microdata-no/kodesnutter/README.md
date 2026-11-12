@@ -27,7 +27,7 @@ testen er. Kjør snutten på nytt og oppdater linjen når du har gjort det.
 | [sektor_lonnstakere.txt](sektor_lonnstakere.txt) | Lønnstakere etter sektor (stat/kommune/privat/offentlig foretak) fra jobbnivå, med arbeidssted. Treffer SSB tabell 13926 | testet |
 | [samlivsstatus.txt](samlivsstatus.txt) | Gift / samboer / enslig / bor hos foreldre | testet |
 | [lavinntekt_eu60.txt](lavinntekt_eu60.txt) | Flagg for lavinntekt (EU-60) med egen medianberegning | testet |
-| [lavinntekt_vedvarende.txt](lavinntekt_vedvarende.txt) | Vedvarende lavinntekt (EU-60, treårsgjennomsnitt, KPI-justert), eksempel med barn per fylke | testet |
+| [lavinntekt_vedvarende.txt](lavinntekt_vedvarende.txt) | Vedvarende lavinntekt (EU-60, treårsgjennomsnitt, KPI-justert) med nasjonal og kommunal median, eksempel med barn per fylke og kommune | testet |
 | [verdi_ved_hendelse.txt](verdi_ved_hendelse.txt) | Verdi av en variabel året før en hendelse (f.eks. fødsel) | testet |
 | [mor_barn.txt](mor_barn.txt) | Koble barn til mor, og telle barn per mor | testet |
 | [forlop_til_person.txt](forlop_til_person.txt) | Første start og siste stopp i et forløp, per person | testet |
