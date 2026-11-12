@@ -142,6 +142,13 @@ def kommando_grupper(a):
         return None
 
     onsket = kodeliste(a.variabel) if a.variabel else sorted(koder)
+    ekstra = []
+    if a.variabel:
+        # Dataene kan ha nyere koder enn kodelisten (NUDB_BU 1.7.2024 hadde 8 NUS-koder som bare står i Klass).
+        # Ta med detaljkodene fra Klass. Regler som treffer 0 enheter er ufarlige i microdata.no.
+        dypest = max(nivaaer)
+        ekstra = sorted(k for k, c in koder.items() if int(c["level"]) == dypest and k not in set(onsket))
+        onsket = list(onsket) + ekstra
     kart, merkelapper = {}, {}
     mangler, via, hoyt = [], [], 0
     for k in onsket:
@@ -163,7 +170,8 @@ def kommando_grupper(a):
 
     print(f"// Klass {a.id} ({a.dato}): koder omkodet til nivå {a.nivaa}. Hentet {date.today().isoformat()}.")
     if a.variabel:
-        print(f"// Begrenset til koder i kodelisten til {a.variabel}.")
+        print(f"// Koder i kodelisten til {a.variabel}" + (f", pluss {len(ekstra)} detaljkoder fra Klass som ikke står"
+              " i kodelisten (dataene kan ha nyere koder)." if ekstra else "."))
         if via:
             vis = " ".join(via[:30]) + (" ..." if len(via) > 30 else "")
             print(f"// {len(via)} koder finnes ikke i Klass på {a.dato}, men er gruppert via nærmeste overordnede kode: {vis}")
@@ -197,9 +205,9 @@ def kommando_kobling(a):
     # Med --nivaa løftes hvert mål til overordnet kode på nivå N i den andre klassifikasjonen. En kilde
     # med flere detaljerte mål blir da entydig hvis alle målene ligger under samme overordnede kode.
     opp, nivaanavn = (lambda kode: kode), {}
+    lenke = tab["_links"]["target" if forste else "source"]["href"].split("{")[0]
+    items = {i["code"]: i for i in hent(f"{lenke}?language=nb")["classificationItems"]}
     if a.nivaa:
-        lenke = tab["_links"]["target" if forste else "source"]["href"].split("{")[0]
-        items = {i["code"]: i for i in hent(f"{lenke}?language=nb")["classificationItems"]}
         nivaaer = sorted({int(i["level"]) for i in items.values()})
         if a.nivaa not in nivaaer:
             sys.exit(f"Nivå {a.nivaa} finnes ikke i målklassifikasjonen. Nivåer: {nivaaer}")
@@ -221,6 +229,18 @@ def kommando_kobling(a):
         maal_per_kilde[kilde].add(mal)
         if mal is not None:
             navn_paa_maal[mal] = (mnavn or nivaanavn.get(mal, "")).strip()
+    # Like navn på ulike mål (ISCED: fem koder heter «Not further defined») får navnene over seg i hierarkiet
+    teller = defaultdict(int)
+    for n in navn_paa_maal.values():
+        teller[n] += 1
+    for mal, n in list(navn_paa_maal.items()):
+        if teller[n] > 1 and mal in items:
+            kjede, i = [], items[mal]
+            while i is not None:
+                if not kjede or i["name"].strip() != kjede[0]:
+                    kjede.insert(0, i["name"].strip())
+                i = items.get(i["parentCode"]) if i["parentCode"] else None
+            navn_paa_maal[mal] = " – ".join(kjede)
     kart, delt, uten_maal = {}, [], []
     for kilde, maal in maal_per_kilde.items():
         if maal == {None}:

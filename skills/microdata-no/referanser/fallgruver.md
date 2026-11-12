@@ -228,6 +228,15 @@ med pull request (se CONTRIBUTING.md). Tagg dem med datalagerversjon/dato hvis d
 - **`recode` på strenger.** Koder som `'01.110'` og `'0110'` må skrives som strenger. Landkodene i `BEFOLKNING_LANDBAK3GEN` er
   strenger. Snutten `landbakgrunn_region.txt` bruker `destring` og tallintervaller. Det går også, men verktøyets
   utskrift er strenger og skal ikke kombineres med `destring`.
+- **Statsløs og uoppgitt stoppes.** `grupper 545` gir egne målkoder for statsløs og uoppgitt (`V9`, eller `V91` og
+  `V92` på nivå 2). De har under 10 bosatte og stopper `recode`. Bruk `--utelat V9` (nivå 1) eller `--utelat V91,V92`.
+  Klass 545 er autoritet for verdensdel (Kypros i Europa, Bermuda og Saint-Pierre-et-Miquelon i Nord-Amerika).
+  `landbakgrunn_region.txt` følger Klass og skiller i tillegg EU/EØS fra resten av Europa, som Klass ikke gjør.
+- **Dataene kan ha nyere koder enn kodelisten.** `NUDB_BU` 1.7.2024 hadde NUS-koder (f.eks. 754144 Master, kunstig
+  intelligens) som verken står i kodelisten i microdata.no eller i Klass 2024-01, bare i nyere Klass-versjoner. Bruk
+  standarddatoen (i dag) for NUS. `grupper --variabel` tar med alle detaljkoder fra Klass på datoen.
+- **Koblinger gir målnavnene fra Klass.** Er flere navn like (ISCED 2011: fem «Not further defined»), får de navnene
+  over seg i hierarkiet («Bachelor’s or equivalent level – Academic – Not further defined»).
 - **Landkodene i microdata er SSB-3 (Klass 91).** Verdensinndeling (545) bruker samme landkoder som blader. Gruppering
   av land (546) skiller EU/EFTA fram til 2004 fra nye EU-land etter 2004. Det er ikke dagens EU/EØS-medlemskap.
 

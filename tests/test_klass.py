@@ -1,5 +1,6 @@
 """Tester klass.py mot SSB Klass (krever nett). Hoppes over uten nett eller med UTEN_NETT=1."""
 
+import re
 import unittest
 
 from hjelp import avvik, har_nett, kjor, recode_linjer_i, simuler, tiltenkt
@@ -70,7 +71,18 @@ class TestKlass(unittest.TestCase):
         self.assertEqual(avvik(kjor("klass.py", "kobling", "6", "--dato", "2024-01-01", "--tabell", "SN) 2025")), [])
 
     def test_kobling_nus_til_isced(self):
-        self.assertEqual(avvik(kjor("klass.py", "kobling", "36", "--tabell", "ISCED 2011 Attainment")), [])
+        tekst = kjor("klass.py", "kobling", "36", "--dato", "2024-01-01", "--tabell", "ISCED 2011 Attainment")
+        self.assertEqual(avvik(tekst), [])
+        # Fem mål heter «Not further defined» i Klass. Navnene over i hierarkiet gjør dem entydige (TESTLISTE 4.7)
+        navn = re.findall(r"= '\d+' '([^']*)'", tekst)
+        self.assertEqual(len(navn), len(set(navn)))
+        self.assertIn("'Bachelor’s or equivalent level – Academic – Not further defined'", tekst)
+
+    def test_grupper_tar_med_klass_koder_som_mangler_i_kodelisten(self):
+        # NUDB_BU 1.7.2024 hadde NUS-koder som bare finnes i nyere Klass-versjoner, f.eks. 754144 (TESTLISTE 4.6)
+        tekst = kjor("klass.py", "grupper", "36", "--nivaa", "1", "--dato", "2026-01-01", "--variabel", "NUDB_BU")
+        self.assertIn("detaljkoder fra Klass som ikke står i kodelisten", tekst)
+        self.assertEqual(simuler(recode_linjer_i(tekst), ["754144", "625106"]), ["7", "6"])
 
 
 if __name__ == "__main__":

@@ -55,15 +55,15 @@ Bruk ett lite skript med `import fdb/BEFOLKNING_KOMMNR_FORMELL 2024-01-01 as kom
 
 | # | Hva | Hvordan | Forventet | Pri |
 |---|---|---|---|---|
-| 4.1 | Land til verdensdel | `grupper 545 --nivaa 2 --variabel BEFOLKNING_LANDBAK3GEN --navn landbak` på `BEFOLKNING_LANDBAK3GEN` | Kjører. Sammenlign fordelingen med `landbakgrunn_region.txt` | P1 |
-| 4.2 | Landkodene er strenger | Kjør uten `destring` | Fungerer. Ellers: dokumenter | P2 |
-| 4.3 | Land: koder som ikke finnes i Klass | Tell hvor mange personer som har en av de 42 kodene | Få, ellers må de håndteres for hånd | P2 |
-| 4.4 | STYRK-08 til hovedgruppe | `grupper 7 --nivaa 1 --variabel REGSYS_ARB_YRKE_STYRK08` | `tabulate` viser hovedgruppene 0–9 og `XXXX` | P2 |
-| 4.5 | SN2007 til seksjon og divisjon | `grupper 6 --nivaa 1 --dato 2024-01-01 --variabel REGSYS_NARING_SN2007` | Seksjon A–U. De 25 kodene som mangler i Klass: hvor mange personer? | P1 |
-| 4.6 | NUS til nivå | `grupper 36 --nivaa 1 --variabel NUDB_BU` | Nivå 0–9. Sammenlign med `utdanningsniva.txt` | P1 |
-| 4.7 | Koblingstabell NUS til ISCED | `kobling 36 --tabell "ISCED 2011 Attainment"` | Kjører. Koder som går til flere mål utelatt og listet | P3 |
-| 4.8 | Historisk `--dato` mot gjeldende kodeliste | `--dato` før 2015 med `--variabel` | Mange koder «mangler». Avgjør om `klass.py` bør bruke kodelistehistorikken | P2 |
-| 4.9 | SN2002 til SN2007 med koblingstabell | `kobling 6 --dato 2005-01-01 --tabell "SN 2007" --navn naring` på `REGSYS_NARING_SN2002` | Kjører (se 1.3 for linjelengden). Koder med flere mål (262) står uendret. Sammenlign fordelingen på seksjon med `REGSYS_NARING_SN2007` for samme år | P2 |
+| 4.1 | ~~Land til verdensdel~~ **Avklart (versjon 59, 2026-11):** `grupper 545` nivå 1 og 2 kjører på 1.1.2025. Statsløs og uoppgitt (V9, V91, V92) må tas ut med `--utelat`, ellers stoppes de av 10-enhetsregelen. Mot snutten: samme tall, unntatt Kypros (Europa i Klass, Asia i snutten, 613) og Bermuda/Saint-Pierre (Nord-Amerika i Klass) | | | ✓ |
+| 4.2 | ~~Landkodene er strenger~~ **Avklart (versjon 59, 2026-11):** virker uten `destring` | | | ✓ |
+| 4.3 | ~~Land: koder som ikke finnes i Klass~~ **Avklart (versjon 59, 2026-11):** ingen synlige personer med de 42 kodene (bare 656 uten landbakgrunn) | | | ✓ |
+| 4.4 | ~~STYRK-08 til hovedgruppe~~ **Avklart (versjon 59, 2026-11):** 0–9 for 16.11.2024. `XXXX` forekommer ikke. Gruppe 0 (militære og uoppgitt) er 1,5 mill. | | | ✓ |
+| 4.5 | ~~SN2007 til seksjon~~ **Avklart (versjon 59, 2026-11):** A–U for 16.11.2014, alt gruppert via prefiks. Uoppgitt vises som `00` (784), ikke `00.000` | | | ✓ |
+| 4.6 | ~~NUS til nivå~~ **Avklart (versjon 59, 2026-11):** nivå = første siffer for alle. 8 NUS-koder (106 personer) fantes i dataene, men ikke i kodelisten eller i Klass 2024-01. `grupper` tar nå med detaljkoder fra Klass som mangler i kodelisten, og med standarddato (i dag) kommer de med. Kjørt på nytt: bare diagonalen | | | ✓ |
+| 4.7 | ~~Koblingstabell NUS til ISCED~~ **Avklart (versjon 59, 2026-11):** kjører uten stopp, ingen koder med flere mål. Målnavnene var tvetydige (fem «Not further defined»). `kobling` gir nå like navn navnene over i hierarkiet | | | ✓ |
+| 4.8 | ~~Historisk `--dato` mot gjeldende kodeliste~~ **Avklart (versjon 59, 2026-11):** løst med prefiks-oppslaget (1.12): NUS med dato 2010 grupperer 1 555 koder via overordnet kode, SN2007 med 2009 24 koder. Klass 545 har ingen koder i 2010 og gir tydelig feil. Avklart uten kjøring | | | ✓ |
+| 4.9 | ~~SN2002 til SN2007 med koblingstabell~~ **Avklart (versjon 59, 2026-11):** se 1.10 og 1.11 | | | ✓ |
 
 ## 5. Kodesnutter
 
@@ -72,7 +72,8 @@ Bruk ett lite skript med `import fdb/BEFOLKNING_KOMMNR_FORMELL 2024-01-01 as kom
 | 5.1 | **Gjort (versjon 59, 2026-11):** alle snuttene unntatt `lavinntekt_vedvarende.txt` kjørt frittstående med `samle_snutter.py`. Neste gang: kjør (se [`kodesnutter/README.md`](skills/microdata-no/kodesnutter/README.md)), og endre status fra «testet i større skript» til «testet» | P2 |
 | 5.2 | `lavinntekt_vedvarende.txt` (utkast): kjør og sammenlign med SSBs tall | P1 |
 | 5.4 | ~~Færre leiere i `bolig.txt` enn i SSB tabell 14897~~ **Avklart (versjon 59, 2026-11):** statistisk koblede husholdninger har anslått eierstatus med gammel metode (51,6 % eiere mot 13–15 % etter SSBs revisjon). Se `fallgruver.md` | ✓ |
-| 5.3 | Se om `landbakgrunn_region.txt` kan erstattes av `klass.py grupper 545`, og om resultatet blir likt | P3 |
+| 5.3 | ~~Kan `landbakgrunn_region.txt` erstattes av `klass.py grupper 545`?~~ **Avklart (versjon 59, 2026-11):** nei. Snutten skiller EU/EØS fra resten av Europa, det gjør ikke Klass 545. Snutten følger nå Klass for verdensdel (Kypros, Bermuda, Saint-Pierre), og EU/EØS-listen er rettet (Sveits, Grønland, Færøyene, Gibraltar og småstatene var med, Kypros manglet). Kontrollert mot Klass uten avvik. Må kjøres på nytt (5.5) | ✓ |
+| 5.5 | ~~Kjør `landbakgrunn_region.txt` etter endringen av EU/EØS-listen~~ **Avklart (versjon 59, 2026-11):** hver gruppe ligger innenfor sin Klass-region (Grønland og Færøyene, 4 367, er Norden i Klass og Europa utenom EU/EØS i snutten). EU/EØS 710 473 | ✓ |
 
 ## 6. Henting og vedlikehold
 
