@@ -185,8 +185,9 @@ med pull request (se CONTRIBUTING.md). Tagg dem med datalagerversjon/dato hvis d
     adresse. Verktøyet lister slike koder under «Koder som selv ble delt». Trenger du Haram for 2020–2023,
     bruk kommunen personen bodde i 1.1.2019 eller 1.1.2024.
   - Omkodingen er kontrollert mot SSB tabell 07459: alle kommuner innenfor ±5 (støy) for 1.1.2010 omkodet
-    til 2024 og for 1.1.2024 (versjon 59). Etter omkoding av eldre år står nye koder (f.eks. 1108, 3101)
-    uten navn i `tabulate`, fordi kodelisten på datoen ikke har dem.
+    til 2024 og for 1.1.2024 (versjon 59). Verktøyet gir kommunene det omkoder til navnet i den nye
+    inndelingen, så nye koder (1108 Sandnes, 3101 Halden) får navn også i gamle årganger. Koder som ikke
+    omkodes, beholder navnet fra kodelisten på datoen (1826 Hattfjelldal, ikke Aarborte - Hattfjelldal).
   - Klass dekker ikke Svalbard-kodene 2111, 2112, 2115, 2121 og 2131 (i kodelisten til
     `BEFOLKNING_KOMMNR_FORMELL`). Legg dem til for hånd hvis de skal slås sammen til 2100.
   - Klass har endringer til 2026 (bl.a. Indre Østfold). Standard er `--til 2024`.

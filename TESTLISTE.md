@@ -36,7 +36,7 @@ Bruk ett lite skript med `import fdb/BEFOLKNING_KOMMNR_FORMELL 2024-01-01 as kom
 | 2.4 | ~~Ålesund-reverseringen~~ **Avklart (versjon 59, 2026-11):** 2019-koder blir riktige (Haram 1534 → 1580, de andre → 1508). Men 1507 Ålesund (2020–2023) går helt til 1508, også Haram: 67 525 i 1508 for 2023 mot 58 511 + 9 358 i 2024. Verktøyet varsler nå om koder som selv ble delt. Se `fallgruver.md` | | | ✓ |
 | 2.5 | ~~`--til 2026` (Indre Østfold 3118)~~ **Avklart (versjon 59, 2026-11):** 2026-endringen er en grensejustering (små deler til Nordre Follo og Vestby). At 0122–0125, 0138 og 3014 får 3118 er riktig. Avklart fra Klass, uten kjøring | | | ✓ |
 | 2.6 | ~~Svalbard-kodene~~ **Avklart (versjon 59, 2026-11):** ingen personer har dem i 1995, 2010, 2019, 2023 eller 2024 | | | ✓ |
-| 2.8 | Merkelapper på omkodede koder | Gamle årganger etter omkoding (`tabulate kommune` 1.1.2010) | Nye koder (1108, 3101 osv.) står uten navn, fordi kodelisten på datoen ikke har dem. Vurder `--merkelapper` med 2024-navn i `kommuneomkoding.py` | P3 |
+| 2.8 | ~~Merkelapper på omkodede koder~~ **Avklart (versjon 59, 2026-11):** `kommuneomkoding.py` gir målkodene navnet i inndelingen det omkodes til. 1.1.2010 omkodet: alle rader har navn (1108 Sandnes, 3101 Halden, 5055 Heim), samme tall som før. Koder som ikke omkodes, beholder navnet fra datoen (1826 Hattfjelldal) | | | ✓ |
 | 2.7 | ~~Kode som er både kilde og mål~~ **Avklart (versjon 59, 2026-11):** håndteres i `recode_regler.py`, og 1.9 bekrefter at det virker i microdata.no | | | ✓ |
 
 ## 3. Regionomkoding (`verktoy/regionomkoding.py`)
@@ -48,7 +48,7 @@ Bruk ett lite skript med `import fdb/BEFOLKNING_KOMMNR_FORMELL 2024-01-01 as kom
 | 3.2 | ~~Merkelapper beholdes~~ **Avklart (versjon 59, 2026-11):** regionnavn vises for alle fire inndelinger | | | ✓ |
 | 3.3 | ~~Regionene stemmer med offisielle tall~~ **Avklart (versjon 59, 2026-11):** regionene er summer av kommuner, og kommunetallene stemmer med 07459 (2.3). Helseregioner, politidistrikt og barnevern summerer til samme total | | | ✓ |
 | 3.4 | ~~Helseregioner oversatt fra Kommuneinndeling 2020~~ **Avklart (versjon 59, 2026-11):** Haram og Ålesund i Midt-Norge, Indre Østfold i Sør-Øst (sjekket i tabellen) | | | ✓ |
-| 3.5 | Bo- og arbeidsmarkedsregioner (manuell fil) | Sammenlign 10 kommuner mot TØI-rapporten | Samme region | P3 |
+| 3.5 | ~~Bo- og arbeidsmarkedsregioner (manuell fil)~~ **Avklart (2026-11):** alle 357 kommuner sammenlignet med regnearket `baregioner_2020.xlsx` fra regjeringen.no (omkodet 2020 → 2024, Haram i Ålesund-regionen). Samme region for alle. Avklart uten microdata.no | | | ✓ |
 | 3.6 | ~~Kommuner uten rad i tabellen~~ **Avklart (versjon 59, 2026-11):** alle elleve tabeller har de samme 357 kommunene | | | ✓ |
 
 ## 4. Klass-verktøyet (`verktoy/klass.py`)

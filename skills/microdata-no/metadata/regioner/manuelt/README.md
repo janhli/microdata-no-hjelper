@@ -12,6 +12,8 @@ Filer her finnes ikke i SSB Klass og er lagt inn for hånd. De leses av `verktoy
   i 2024, er lagt til i regionen «79 Ålesund» (se kolonnen `Inkluderingsgrunnlag`).
 - **Hentet fra** `data-pipeline/source/bo_og_arbeidsmarkedsregioner_2024.csv` i
   https://github.com/jahili/norge-administrative-grenser (2026-11-09), uendret kopi.
+- **Kontrollert** 2026-11-12 mot originalen (`baregioner_2020.xlsx` på rapportsiden): alle 357 kommuner har
+  samme region etter omkoding fra 2020 til 2024 (Rindal, Lunner og Jevnaker byttet nummer 1.1.2020).
 - **Kolonnene** `Reisetid`, `Ut-pendling`, `Inn-pendling` og `Inkluderingsgrunnlag` brukes ikke av verktøyet.
 - **Gjengangere:** Filen har 366 rader for 357 kommuner. Duplikatene må være identiske. Regionnummeret
   skrives både «05» og «5» for Oslo/Bærum, og normaliseres til tre sifre (`005`).

@@ -96,6 +96,22 @@ class TestKommuneomkoding(unittest.TestCase, LinjelengdeMixin):
             self.assertEqual(ut[kode], kode)
         self.assertIn("0114 Varteig", tekst)
 
+    def test_maalkodene_faar_navn_fra_inndelingen(self):
+        # Nye koder står ellers uten navn i gamle årganger (TESTLISTE 2.8)
+        tekst = kjor("kommuneomkoding.py")
+        for regel in ("= '1108' 'Sandnes')", "= '1580' 'Haram')", "= '3101' 'Halden')", "= '1508' 'Ålesund')"):
+            self.assertIn(regel, tekst)
+        self.assertIn("= '3905' 'Tønsberg')", kjor("kommuneomkoding.py", "--splitt", "forste"))
+
+    def test_norske_navn_uten_samiske_og_kvenske(self):
+        tekst = kjor("kommuneomkoding.py", "--norske-navn")
+        recode = "\n".join(l for l in tekst.splitlines() if l.startswith("recode"))
+        self.assertNotIn(" - ", recode)
+        for regel in ("= '1875' 'Hamarøy')", "= '5001' 'Trondheim')", "= '5540' 'Kåfjord')",
+                      "= '5612' 'Kautokeino')", "= '5636' 'Nesseby')"):
+            self.assertIn(regel, recode)
+        self.assertIn("= '1875' 'Hábmer - Hamarøy')", kjor("kommuneomkoding.py"))  # standard: Klass-navnet
+
     def test_varsler_naar_koden_selv_ble_delt(self):
         # 1507 Ålesund (2020–2023) omfatter Haram, som ble skilt ut i 2024 (TESTLISTE 2.4)
         tekst = kjor("kommuneomkoding.py")
