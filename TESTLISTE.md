@@ -69,7 +69,7 @@ Bruk ett lite skript med `import fdb/BEFOLKNING_KOMMNR_FORMELL 2024-01-01 as kom
 
 | # | Hva | Pri |
 |---|---|---|
-| 5.1 | **Gjort (versjon 59, 2026-11):** alle snuttene unntatt `lavinntekt_vedvarende.txt` kjørt frittstående med `samle_snutter.py`. Neste gang: kjør (se [`kodesnutter/README.md`](skills/microdata-no/kodesnutter/README.md)), og endre status fra «testet i større skript» til «testet» | P2 |
+| 5.1 | ~~Kjør alle snuttene frittstående~~ **Avklart (versjon 59, 2026-11):** alle 15 er kjørt frittstående med `samle_snutter.py`, `lavinntekt_vedvarende.txt` for seg (5.2). Alle har status «testet». Resultatene står i [`kodesnutter/TESTRESULTATER.md`](skills/microdata-no/kodesnutter/TESTRESULTATER.md) | ✓ |
 | 5.2 | ~~`lavinntekt_vedvarende.txt`: sammenlign med SSBs tall~~ **Avklart (versjon 59, 2026-11):** 2021–2023 mot tabell 09571. Krav om privathusholdning bare siste år traff best: 10,0 % mot 9,9 % for barn under 18, Oslo 13,6 mot 13,8, alle fylker innen 0,3 prosentpoeng. Alle tre år: 9,8 (Oslo 13,3). Uten krav: 10,1 (Oslo 13,9). Snutten bruker nå siste år. Hele befolkningen mot 04204 («studenter er utelatt»): 9,6 mot 9,5 % (2022–2024) og 9,5 mot 9,2 (2021–2023), antall personer innen 0,2 %. Kommunal median lagt til og kjørt. KPI-tallene for 2023 og 2024 var feil, og er rettet | ✓ |
 | 5.4 | ~~Færre leiere i `bolig.txt` enn i SSB tabell 14897~~ **Avklart (versjon 59, 2026-11):** statistisk koblede husholdninger har anslått eierstatus med gammel metode (51,6 % eiere mot 13–15 % etter SSBs revisjon). Se `fallgruver.md` | ✓ |
 | 5.3 | ~~Kan `landbakgrunn_region.txt` erstattes av `klass.py grupper 545`?~~ **Avklart (versjon 59, 2026-11):** nei. Snutten skiller EU/EØS fra resten av Europa, det gjør ikke Klass 545. Snutten følger nå Klass for verdensdel (Kypros, Bermuda, Saint-Pierre), og EU/EØS-listen er rettet (Sveits, Grønland, Færøyene, Gibraltar og småstatene var med, Kypros manglet). Kontrollert mot Klass uten avvik. Må kjøres på nytt (5.5) | ✓ |
@@ -83,7 +83,7 @@ Bruk ett lite skript med `import fdb/BEFOLKNING_KOMMNR_FORMELL 2024-01-01 as kom
 | 6.2 | Delvis feilet henting | Simulert i `tests/test_hent_variabler.py` og `tests/test_hent_manual.py`. Se første gang det skjer i workflowen | Jobben feiler, og ingen PR åpnes | P3 |
 | 6.3 | Ny datalagerversjon | Første ukentlige kjøring etter at microdata.no har fått ny versjon | Alle variabler hentes på nytt, `datalager.json` viser den nye versjonen, og PR-tittelen nevner den | P2 |
 | 6.4 | `hent_kommuneendringer.py`, `hent_regioninndelinger.py` | Kjør på nytt på en annen maskin | Identiske filer (bortsett fra datoer) | P3 |
-| 6.5 | `python -I` på macOS/Linux | Workflowen «Tester» kjører verktøyene på Ubuntu | Grønn kjøring (utviklet på Windows) | P3 |
+| 6.5 | ~~`python -I` på macOS/Linux~~ **Avklart for Linux (2026-11):** «Tester» kjører verktøyene med `python -I` (`tests/hjelp.py`) på `ubuntu-latest`, grønt på `main` siden 2026-11-10. macOS er ikke testet | | | ✓ |
 
 ## 7. Agentatferd (evaluering)
 
@@ -99,3 +99,23 @@ Sammenlign agentens svar med og uten skillen på disse oppgavene.
 | 7.6 | Region fra kommune | Bruker `regionomkoding.py` uten sluttregel i egen kommando |
 | 7.7 | Næring/yrke til grupper | Bruker `klass.py` og setter riktig `--dato` |
 | 7.8 | Usikkerhet | Skiller mellom det som er kontrollert mot kildene, det som bygger på testet snutt, og det som må kjøres |
+| 7.9 | Ja/nei-utfall | Velger `logit`/`probit`, lager utfallet som 0/1 med eksplisitt håndtering av `sysmiss`, og bruker `mfx(dydx)` eller `or` når effekten skal tolkes |
+| 7.10 | Faktorvariabler og standardfeil | Bruker `i.` for kategorier, `cluster()` når enhetene er gruppert (ikke sammen med `robust`), og forklarer valget |
+| 7.11 | Tid til hendelse | Lager populasjonen av alle i risiko, sensurerer ved død og utvandring, og tolker `cox` som hazard |
+| 7.12 | Diff-in-diff | Lager etter-dummyen for alle enheter, ikke bare behandlingsgruppen, og nevner forutsetningen om parallelle trender |
+| 7.13 | Instrumentvariabel | Skriver `( endogen = instrument )` riktig vei og drøfter om instrumentet er gyldig |
+
+## 8. Analyse (fra manualen, ikke kjørt)
+
+Antakelser i «Analyse» i [`fallgruver.md`](skills/microdata-no/referanser/fallgruver.md). Kan samles i ett skript
+på en populasjon over 100 000 (f.eks. bosatte 30–60 år).
+
+| # | Hva | Hvordan | Forventet | Pri |
+|---|---|---|---|---|
+| 8.1 | Manglende verdier i regresjoner | `regress y x` der x mangler for en kjent andel, og sammenlign N i utskriften med `summarize` | Enheter med manglende verdi utelates (listevis). Står ikke i manualen | P1 |
+| 8.2 | Dummy fra sammenligning med `sysmiss` | `generate h = inntekt > 500000` der inntekt mangler for noen, og `tabulate h, missing` | Uavklart: 0, 1 eller missing for de som mangler. Påvirker utfallet i `logit` | P1 |
+| 8.3 | Regresjon mot winsorisert gjennomsnitt | `regress inntekt` (bare konstantledd) mot `summarize inntekt` | Konstantleddet er høyere enn det winsoriserte gjennomsnittet | P3 |
+| 8.4 | Konstantledd skjules (tiltak 9) | `regress y i.kommune#i.kjonn#i.alder5` på en liten populasjon | Konstantleddet mangler, koeffisientene vises | P3 |
+| 8.5 | `regress-panel-diff` mot `regress-panel ... gruppe##etter, pooled` | Begge på samme panel | Samme ATET (manualen sier det) | P2 |
+| 8.6 | Sensurering i overlevelsesanalyse | Tid til død for bosatte 70+ med og uten sensurering ved utvandring (`BEFOLKNING_STATUSKODE` `'3'`) | Liten forskjell for hele gruppen, større for innvandrere | P2 |
+| 8.7 | `mfx(dydx)` for en 0/1-variabel | `logit` med en dummy, og sammenlign med forskjellen mellom de to verdiene i `margins(dummy)` (målt ved gjennomsnittet, så bare omtrent lik) | Uavklart om dummyen gir diskret endring eller derivert | P3 |

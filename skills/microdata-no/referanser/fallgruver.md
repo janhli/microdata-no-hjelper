@@ -167,6 +167,100 @@ med pull request (se CONTRIBUTING.md). Tagg dem med datalagerversjon/dato hvis d
   tabellen (23.100, og 35.201/35.410/35.420), ga likevel «påvirker for få enheter» (versjon 59, november
   2026). Behandle koder som mangler i tabellen som små, ikke som tomme.
 
+## Analyse
+
+Kartlagt fra manualen (`metadata/manual/konfidensialitet.md`, `kommandoer_og_funksjoner/kommandoer.md` og
+`eksempel/Regresjonsanalyser/`, versjon 59, november 2026). Punktene er **ikke kjørt** i microdata.no før det
+står. Det som må testes, står i TESTLISTE del 8.
+
+### Regresjoner bruker andre data enn tabellene
+- **Symptom:** Et gjennomsnitt fra `regress y` (bare konstantledd) eller `margins()` stemmer ikke med
+  `summarize y` eller `tabulate ..., summarize(y)`.
+- **Årsak:** Deskriptiv statistikk winsoriseres (1 % i hver ende settes til 1- og 99-prosentilen) og
+  tellinger støylegges (±5). Regresjoner bruker de underliggende, ikke-winsoriserte dataene (tiltak 2).
+  Prosentiler mikroaggregeres og glattes (tiltak 10).
+- **Løsning:** Ikke bruk tabellene til å kontrollere regresjonen mot, eller omvendt. Skriv i `textblock`
+  at gjennomsnitt i tabeller av skjeve variabler (inntekt, formue) er winsorisert og blir litt for lave.
+
+### Konstantleddet skjules ved små kombinasjoner av kategorier
+- **Symptom:** Regresjonsresultatet mangler konstantledd, men resten vises.
+- **Årsak:** Tiltak 9: har en kombinasjon av de kategoriske forklaringsvariablene færre enn 5 enheter i
+  analysepopulasjonen, skjules konstantleddet. Kontinuerlige variabler teller ikke. Estimeringen er den samme.
+- **Løsning:** Grovere kategorier, færre kategoriske variabler eller større populasjon. Faktorledd med
+  mange nivåer (`i.kommune`, interaksjoner som `i.kjonn#i.utdniv#i.fylke`) gir lett små kombinasjoner.
+  Trenger du ikke konstantleddet, kan du la det være.
+
+### Overlevelsesanalyse: populasjonen må være alle i risiko
+- **Symptom:** Nesten alle har `hendelse = 1`, og overlevelseskurven faller til 0.
+- **Årsak:** Manualens eksempel A lager datasettet fra `import-event` (`keep if astatus == '1'` og
+  `collapse (min) START@...`). Da består populasjonen bare av personer som *fikk* hendelsen, og ingen er
+  sensurert. Kurven viser tid til hendelsen blant dem som fikk den, ikke risikoen i befolkningen.
+- **Løsning:** Lag populasjonen først (f.eks. bosatte 16–60 år 1.1. startåret), finn første hendelsesdato
+  i et eget datasett (`import-event`, `keep`, `collapse (min) START@... by(PERSONID_1)`), og `merge` den
+  inn. De uten dato får `hendelse = 0` og tiden satt til slutten av perioden. Se også
+  `kodesnutter/forlop_til_person.txt`.
+
+### Overlevelsesanalyse: død og utvandring er ikke sensurert
+- **Symptom:** For lang overlevelsestid, særlig for eldre og innvandrere.
+- **Årsak:** Manualen setter tiden til maksverdi for alle uten hendelse. Den som dør eller utvandrer i
+  perioden, regnes da som i risiko helt til slutt. Det finnes ingen hendelsesvariabel for utvandring.
+- **Løsning:** Sett sensureringstid ved død (`BEFOLKNING_DOEDS_DATO`) og ved første 1.1. med
+  `BEFOLKNING_STATUSKODE` = `'3'` (utvandret, bare årlig). Hendelse etter sensurering skal ikke telle.
+  Er hendelsen selv død, er utvandring den viktigste sensureringen. Si fra om at utvandring bare er kjent
+  per 1.1.
+
+### Overlevelsesanalyse: tolkning av `cox`
+- Koeffisientene gjelder hazard (risikoen for hendelsen per tidsenhet), ikke overlevelsestiden, selv om
+  manualen kaller tiden «avhengig variabel». Positiv koeffisient (hazardrate over 1) betyr høyere risiko
+  og kortere tid til hendelsen.
+- Med `hazard` vises ingen standardfeil. Kjør uten `hazard` for å se usikkerheten, og regn om med `exp()`.
+- Tid i hele år (`int(dager/365.24)`, som i manualen) gir mange like tider. Bruk dager eller måneder i
+  `cox`, år bare i grafer.
+
+### `regress-panel-diff`: behandlingsvariabelen er etter-perioden for alle
+- **Symptom:** Diff-in-diff-estimatet (ATET) blir feil eller lik null.
+- **Årsak:** Manualen kaller variabel 3 «behandlingsvariabel», men den skal være 1 for **alle enheter** fra
+  og med behandlingstidspunktet, også kontrollgruppen (eksempelet: `replace behandling = 1 if
+  year(date@panel) >= 2020`). Settes den bare for behandlingsgruppen, er den lik interaksjonsleddet.
+- **Løsning:** `gruppe` = 1 for behandlingsgruppen, `etter` = 1 for alle fra behandlingsåret. Samme
+  resultat: `regress-panel y gruppe##etter ..., pooled`.
+
+### `ivregress`: endogen variabel til venstre for `=`, instrumentene til høyre
+- **Årsak:** Teksten i manualen bytter om begrepene («instrumentvariabel på venstre side»), og eksempelsiden
+  sier at IV er for multikollinearitet. Syntaksen i eksemplene er
+  `ivregress y x1 x2 ( endogen = instrument1 instrument2 )`.
+- **Løsning:** Skriv det slik, og forklar valget av instrument: det må påvirke `endogen`, men ikke `y` på
+  annen måte. Alder som instrument for formue i lønnsregresjonen (manualens eksempel) oppfyller ikke det.
+  IV er for endogenitet (utelatte variabler, omvendt kausalitet, målefeil), ikke multikollinearitet.
+
+### `poisson` eller `negative-binomial`
+- Teksten for `negative-binomial` sier «forventet verdi større enn variansen». Det er omvendt:
+  overdispersjon er når variansen er større enn forventningen, og da passer `negative-binomial`. Teksten for
+  `poisson` er riktig. Sjekk med `summarize` (varians = std²) og se om `alpha` i `negative-binomial` er
+  tydelig større enn 0.
+
+### Paneldata
+- `import-panel` virker bare i et tomt datasett. Lag populasjonen først, og bruk
+  `clone-units <populasjon> <panel>` og `use <panel>` før `import-panel`.
+- Datasettet får én rad per enhet og tidspunkt. Hold populasjonen under ca. 1 million enheter (manualen).
+- Akkumulerte variabler (inntekt) gir årsverdien uansett dato i året. Med `2018-01-01` får du inntekt for
+  2018, men status (sivstand, bosted) per 1.1.2018. Si fra om rekkefølgen er viktig for tolkningen.
+- `robust` i `regress-panel` og `regress-panel-diff` er cluster på panel-ID. `cluster()` kan ikke brukes samtidig.
+- `hausman`: p < 0,05 betyr at fixed effects bør brukes.
+
+### Standardfeil, faktorvariabler og prediksjon
+- `cluster()` må være en numerisk variabel som ikke er med i modellen, og kan ikke kombineres med `robust`.
+  Bruk cluster når enhetene er gruppert (f.eks. elever i skoler, personer i kommuner).
+- Kategoriske variabler skrives som `i.var`. Uten `i.` tolkes en numerisk kode som kontinuerlig. Interaksjon:
+  `i.a#i.b` (bare interaksjonen) eller `i.a##i.b` (hovedeffekter og interaksjon). `control(i.kommune)` tar
+  med faste effekter uten å vise dem.
+- `logit`/`probit` krever et utfall som er 0/1. `mfx(dydx)` gir gjennomsnittlige marginaleffekter
+  (`overall`). `or` gir oddsratio. `margins()` gir predikert verdi ved gjennomsnittet av
+  forklaringsvariablene, ikke gjennomsnittet av predikerte verdier.
+- `regress-mml`: gruppevariabelen kan ikke også være forklaringsvariabel. Like variansestimater for to
+  nivåer (f.eks. fylke og landsdel) betyr at nivåene fanger opp det samme. Bruk ett av dem.
+- Spredningsplott finnes ikke. Bruk `hexbin` (celler med under 5 enheter vises ikke).
+
 ## Geografi
 
 ### Kommune- og fylkesnummer endres med regionreformene
