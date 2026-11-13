@@ -70,6 +70,33 @@ Verdensinndeling 1 er verdensdel, 2 er region (f.eks. Norden, Subsaharisk Afrika
 Fallgruver står i «Klass» i `referanser/fallgruver.md`. Les dem før du leverer skriptet. Resultatene er
 ikke kjørt i microdata.no før brukeren har kjørt dem.
 
+## Statistiske analyser: velg kommando etter utfallet
+
+Syntaks og opsjoner står i `metadata/manual/kommandoer_og_funksjoner/kommandoer.md` (avsnittene
+«Regresjon», «Statistikk» og «Overlevelsesanalyse»), og eksempler i `metadata/manual/eksempel/Regresjonsanalyser/`.
+Eksemplene bruker gamle datalagerversjoner (23–45), så sjekk variabelnavnene.
+
+| Problem | Kommando | Merk |
+|---|---|---|
+| Kontinuerlig utfall (lønn, inntekt) | `regress` | `robust` eller `cluster()`. Diagnostikk med `ov vif het_bp` |
+| Ja/nei-utfall | `logit` / `probit` | Utfallet må være 0/1. `mfx(dydx)` for marginaleffekter, `or` for oddsratio |
+| Utfall med flere kategorier uten rekkefølge | `mlogit` | |
+| Antall (sykemeldinger, fødsler) | `poisson`, `negative-binomial` ved overdispersjon | `exposure()` for rater, `irr` |
+| Forskjell mellom to grupper, forklart og uforklart | `oaxaca ... by gruppe` | |
+| Samme enheter over tid | `import-panel` + `regress-panel` (`fe`/`re`), `hausman` | Bare i tomt datasett. Eksempel: `Paneldata-analyse.md` |
+| Effekt av et tiltak før/etter, med kontrollgruppe | `regress-panel-diff` | Variabel 3 er etter-perioden for alle. Eksempel: `Diff-in-diff-analyse.md` |
+| Terskel i en kontinuerlig variabel | `rdd` (`cutoff()`, `fuzzy()`) | Eksempel: `RDD-analyse.md` |
+| Endogen forklaringsvariabel | `ivregress y x ( endogen = instrument )` | Instrumentet til høyre for `=` |
+| Personer i grupper (skoler, kommuner) | `regress-mml ... by gruppe` | Eksempel: `Flernivåanalyse.md` |
+| Tid til hendelse | `kaplan-meier`, `cox`, `weibull` | Populasjonen er alle i risiko, med sensurering. Eksempel: `Hvordan tilrettelegge data for overlevelsesanalyse.md` |
+| Predikerte verdier og residualer | `*-predict`, `margins()` | |
+| Sammenheng mellom to numeriske variabler | `correlate`, `hexbin` | Ingen spredningsplott |
+
+Les «Analyse» i `referanser/fallgruver.md` før du leverer en analyse. Der står konfidensialitetstiltakene som
+påvirker analyser (konstantledd som skjules, winsorisering i tabeller men ikke i regresjoner) og feil i
+manualens eksempler (overlevelsesanalyse, diff-in-diff, `ivregress`). Velg modell etter utfallet og designet,
+og si fra om forutsetningene (f.eks. parallelle trender i diff-in-diff, instrumentets gyldighet).
+
 ## Arbeidsflyt
 
 1. Avklar tema, populasjon, år og geografi med brukeren.

@@ -99,3 +99,23 @@ Sammenlign agentens svar med og uten skillen på disse oppgavene.
 | 7.6 | Region fra kommune | Bruker `regionomkoding.py` uten sluttregel i egen kommando |
 | 7.7 | Næring/yrke til grupper | Bruker `klass.py` og setter riktig `--dato` |
 | 7.8 | Usikkerhet | Skiller mellom det som er kontrollert mot kildene, det som bygger på testet snutt, og det som må kjøres |
+| 7.9 | Ja/nei-utfall | Velger `logit`/`probit`, lager utfallet som 0/1 med eksplisitt håndtering av `sysmiss`, og bruker `mfx(dydx)` eller `or` når effekten skal tolkes |
+| 7.10 | Faktorvariabler og standardfeil | Bruker `i.` for kategorier, `cluster()` når enhetene er gruppert (ikke sammen med `robust`), og forklarer valget |
+| 7.11 | Tid til hendelse | Lager populasjonen av alle i risiko, sensurerer ved død og utvandring, og tolker `cox` som hazard |
+| 7.12 | Diff-in-diff | Lager etter-dummyen for alle enheter, ikke bare behandlingsgruppen, og nevner forutsetningen om parallelle trender |
+| 7.13 | Instrumentvariabel | Skriver `( endogen = instrument )` riktig vei og drøfter om instrumentet er gyldig |
+
+## 8. Analyse (fra manualen, ikke kjørt)
+
+Antakelser i «Analyse» i [`fallgruver.md`](skills/microdata-no/referanser/fallgruver.md). Kan samles i ett skript
+på en populasjon over 100 000 (f.eks. bosatte 30–60 år).
+
+| # | Hva | Hvordan | Forventet | Pri |
+|---|---|---|---|---|
+| 8.1 | Manglende verdier i regresjoner | `regress y x` der x mangler for en kjent andel, og sammenlign N i utskriften med `summarize` | Enheter med manglende verdi utelates (listevis). Står ikke i manualen | P1 |
+| 8.2 | Dummy fra sammenligning med `sysmiss` | `generate h = inntekt > 500000` der inntekt mangler for noen, og `tabulate h, missing` | Uavklart: 0, 1 eller missing for de som mangler. Påvirker utfallet i `logit` | P1 |
+| 8.3 | Regresjon mot winsorisert gjennomsnitt | `regress inntekt` (bare konstantledd) mot `summarize inntekt` | Konstantleddet er høyere enn det winsoriserte gjennomsnittet | P3 |
+| 8.4 | Konstantledd skjules (tiltak 9) | `regress y i.kommune#i.kjonn#i.alder5` på en liten populasjon | Konstantleddet mangler, koeffisientene vises | P3 |
+| 8.5 | `regress-panel-diff` mot `regress-panel ... gruppe##etter, pooled` | Begge på samme panel | Samme ATET (manualen sier det) | P2 |
+| 8.6 | Sensurering i overlevelsesanalyse | Tid til død for bosatte 70+ med og uten sensurering ved utvandring (`BEFOLKNING_STATUSKODE` `'3'`) | Liten forskjell for hele gruppen, større for innvandrere | P2 |
+| 8.7 | `mfx(dydx)` for en 0/1-variabel | `logit` med en dummy, og sammenlign med forskjellen mellom de to verdiene i `margins(dummy)` (målt ved gjennomsnittet, så bare omtrent lik) | Uavklart om dummyen gir diskret endring eller derivert | P3 |
