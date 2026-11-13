@@ -1,0 +1,158 @@
+// =====================================================================
+// Testskript: TESTLISTE del 8 (analyse), punkt 8.1, 8.2, 8.3, 8.7, 8.5 og 8.4
+// Laget:      2026-11, ikke kjørt ennå
+// Versjon:    no.ssb.fdb:59. Spør om analysemiljøet er på samme versjon før kjøring.
+// Populasjon: bosatte 30–60 år (alder ved utgangen av 2023) per 1.1.2024
+// Variabler:  https://microdata.no/discovery/variable/no.ssb.fdb/59/BEFOLKNING_STATUSKODE
+//             https://microdata.no/discovery/variable/no.ssb.fdb/59/BEFOLKNING_FOEDSELS_AAR_MND
+//             https://microdata.no/discovery/variable/no.ssb.fdb/59/BEFOLKNING_KJOENN
+//             https://microdata.no/discovery/variable/no.ssb.fdb/59/BEFOLKNING_KOMMNR_FORMELL
+//             https://microdata.no/discovery/variable/no.ssb.fdb/59/INNTEKT_WLONN
+//             https://microdata.no/discovery/variable/no.ssb.fdb/59/NUDB_BU
+// Rekkefølge: det sikreste først. 8.5 (panel) og 8.4 (som kan stoppes) står sist.
+// 8.6 (sensurering i overlevelsesanalyse) får et eget skript.
+// =====================================================================
+
+require no.ssb.fdb:59 as fdb
+
+// --- Populasjon ---
+create-dataset personer
+import fdb/BEFOLKNING_STATUSKODE 2024-01-01 as regstat
+keep if regstat == '1'
+import fdb/BEFOLKNING_FOEDSELS_AAR_MND as faarmnd
+generate alder = 2023 - int(faarmnd/100)
+keep if alder >= 30 & alder <= 60
+
+import fdb/BEFOLKNING_KJOENN as kjonn
+generate mann = 0
+replace mann = 1 if kjonn == '1'
+
+// Lønn 2023 (akkumulert, årsverdi) og utdanning 1.7.2023
+import fdb/INNTEKT_WLONN 2023-12-31 as lonn
+import fdb/NUDB_BU 2023-07-01 as utd
+generate utd1 = substr(utd, 1, 1)
+destring utd1
+
+generate mangler_utd = sysmiss(utd1)
+generate mangler_lonn = sysmiss(lonn)
+
+textblock
+# Test av antakelser i «Analyse» (TESTLISTE del 8)
+
+Populasjon: bosatte 30–60 år per 1.1.2024. `utd1` er første siffer i NUS-koden (utdanningsnivå 0–9),
+`lonn` er lønnsinntekt 2023.
+
+## Oversikt over manglende verdier
+Rader: mangler utdanning (1 = ja). Kolonner: mangler lønn (1 = ja). Brukes i Test 8.1.
+endblock
+tabulate mangler_utd mangler_lonn, missing
+
+// ---------------------------------------------------------------------
+textblock
+## Test 8.1: Manglende verdier i regresjoner
+Hva testes: om `regress` utelater enheter som mangler en av variablene (listevis utelatelse).
+
+**Forventet hvis antakelsen stemmer:** Antall observasjoner i regresjonen er omtrent lik cellen
+«mangler_utd = 0, mangler_lonn = 0» i tabellen over (±5 for støy). Er N lik hele populasjonen, er
+manglende verdier fylt inn eller satt til 0, og det må inn i fallgruver.md.
+endblock
+regress lonn mann utd1
+
+// ---------------------------------------------------------------------
+textblock
+## Test 8.2: Sammenligning med manglende verdi
+Hva testes: hva `utd1 > 5`, `utd1 != 2` og `replace ... if utd1 > 5` gir når `utd1` mangler.
+
+**Forventet hvis antakelsen stemmer:** Uavklart. I Stata regnes manglende som uendelig stor, så
+`utd1 > 5` blir 1 og `utd1 != 2` blir 1. Se på raden der mangler_utd = 1 i hver tabell:
+- Står de under 1: manglende teller som sant (som Stata). Dummyer fra sammenligninger blir feil uten
+  `if sysmiss(...) == 0`.
+- Står de under 0: manglende teller som usant.
+- Står de som missing: sammenligningen gir missing, og enhetene faller ut av regresjoner.
+endblock
+generate h_gt = utd1 > 5
+generate h_ne = utd1 != 2
+generate h_if = 0
+replace h_if = 1 if utd1 > 5
+tabulate mangler_utd h_gt, missing
+tabulate mangler_utd h_ne, missing
+tabulate mangler_utd h_if, missing
+
+// ---------------------------------------------------------------------
+textblock
+## Test 8.3: Regresjon mot winsorisert gjennomsnitt
+Hva testes: om regresjoner bruker data uten winsorisering (tiltak 2), mens tabeller winsoriseres.
+
+**Forventet hvis antakelsen stemmer:** Konstantleddet (kvinner) og konstantledd + koeffisienten for mann
+(menn) er litt **høyere** enn gjennomsnittene i tabellen, fordi de høyeste lønningene ikke er kuttet.
+Er de like, winsoriseres også regresjonen.
+endblock
+tabulate mann if mangler_lonn == 0, summarize(lonn) mean
+regress lonn mann if mangler_lonn == 0
+
+// ---------------------------------------------------------------------
+textblock
+## Test 8.7: Marginaleffekt for en 0/1-variabel i logit
+Hva testes: om `mfx(dydx)` for dummyen `mann` er en diskret endring (fra 0 til 1) eller en derivert.
+
+**Forventet:** Uavklart. Sammenlign dy/dx for `mann` i første utskrift med forskjellen mellom de to
+predikerte verdiene i andre utskrift (`margins(mann)`). Er de nesten like, er det trolig diskret
+endring. Merk: `margins()` måles ved gjennomsnittet av alder, `mfx` er gjennomsnitt over alle, så
+de blir ikke helt like.
+endblock
+generate hoy = 0 if mangler_lonn == 0
+replace hoy = 1 if lonn > 600000 & mangler_lonn == 0
+tabulate hoy, missing
+logit hoy mann alder, mfx(dydx)
+logit hoy mann alder, margins(mann)
+
+// ---------------------------------------------------------------------
+textblock
+## Test 8.5: `regress-panel-diff` mot pooled panelregresjon med interaksjon
+Hva testes: om variabel 3 i `regress-panel-diff` er etter-perioden for alle enheter, og om resultatet er
+det samme som `regress-panel ... gruppe##etter, pooled` (manualen sier det). Gruppe = kvinner,
+etter = 2020 og 2021. Dette er bare en test av syntaksen, ikke en meningsfull effekt.
+
+**Forventet hvis antakelsen stemmer:** ATET i første utskrift er lik koeffisienten for
+interaksjonsleddet `gruppe#etter` i andre utskrift.
+endblock
+use personer
+clone-units personer utvalg
+use utvalg
+// En variabel først, så sample ikke kjøres på et tomt datasett
+import fdb/BEFOLKNING_KJOENN as ukjonn
+sample 100000 2611
+clone-units utvalg paneldata
+use paneldata
+import-panel fdb/INNTEKT_WLONN fdb/BEFOLKNING_KJOENN 2018-01-01 2019-01-01 2020-01-01 2021-01-01
+rename INNTEKT_WLONN plonn
+rename BEFOLKNING_KJOENN pkjonn
+drop if sysmiss(plonn)
+generate gruppe = 0
+replace gruppe = 1 if pkjonn == '2'
+generate etter = 0
+replace etter = 1 if year(date@panel) >= 2020
+tabulate-panel etter
+regress-panel-diff plonn gruppe etter
+regress-panel plonn gruppe##etter, pooled
+
+// ---------------------------------------------------------------------
+textblock
+## Test 8.4: Konstantleddet skjules ved små kombinasjoner (tiltak 9)
+Hva testes: om konstantleddet forsvinner når en kategorisk variabel har mange små grupper. Utvalg på
+20 000 personer, og kommune som faktor (357 kommuner, mange med under 5 personer i utvalget).
+
+**Forventet hvis antakelsen stemmer:** Koeffisientene vises, men konstantleddet mangler. Kan bli stoppet
+eller gå tregt. Da er det ikke en feil i resten av skriptet.
+endblock
+use personer
+clone-units personer liten
+use liten
+import fdb/BEFOLKNING_KOMMNR_FORMELL 2024-01-01 as kommune
+import fdb/INNTEKT_WLONN 2023-12-31 as llonn
+import fdb/BEFOLKNING_KJOENN as lkjonn
+sample 20000 4711
+generate lmann = 0
+replace lmann = 1 if lkjonn == '1'
+destring kommune
+regress llonn lmann i.kommune

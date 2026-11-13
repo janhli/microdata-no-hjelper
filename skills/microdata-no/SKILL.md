@@ -90,7 +90,11 @@ Eksemplene bruker gamle datalagerversjoner (23–45), så sjekk variabelnavnene.
 | Personer i grupper (skoler, kommuner) | `regress-mml ... by gruppe` | Eksempel: `Flernivåanalyse.md` |
 | Tid til hendelse | `kaplan-meier`, `cox`, `weibull` | Populasjonen er alle i risiko, med sensurering. Eksempel: `Hvordan tilrettelegge data for overlevelsesanalyse.md` |
 | Predikerte verdier og residualer | `*-predict`, `margins()` | |
-| Sammenheng mellom to numeriske variabler | `correlate`, `hexbin` | Ingen spredningsplott |
+| Sammenheng mellom to numeriske variabler | `correlate`, `hexbin` | Ingen spredningsplott. `correlate` utelater manglende verdier listevis, `pairwise` parvis |
+| Konfidensintervall for et gjennomsnitt | `ci` | `level()` |
+| Forskjell i gjennomsnitt mellom grupper | `anova` (ANCOVA med en metrisk kovariat) | Forklaringsvariablene er faktorer. `posthoc` gir Tukey HSD |
+| Er variabelen normalfordelt? | `normaltest` | Skjevhet, kurtose, Jarque-Bera, Shapiro-Wilk |
+| Overganger mellom kategorier over tid | `transitions-panel` | På paneldata. Overganger til og fra missing er utelatt |
 
 Les «Analyse» i `referanser/fallgruver.md` før du leverer en analyse. Der står konfidensialitetstiltakene som
 påvirker analyser (konstantledd som skjules, winsorisering i tabeller men ikke i regresjoner) og feil i
