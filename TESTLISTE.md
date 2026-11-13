@@ -108,7 +108,8 @@ Sammenlign agentens svar med og uten skillen på disse oppgavene.
 ## 8. Analyse (fra manualen, ikke kjørt)
 
 Antakelser i «Analyse» i [`fallgruver.md`](skills/microdata-no/referanser/fallgruver.md). Kan samles i ett skript
-på en populasjon over 100 000 (f.eks. bosatte 30–60 år).
+på en populasjon over 100 000 (f.eks. bosatte 30–60 år). Skriptet for 8.1–8.5 og 8.7 ligger i
+[`.claude/skills/vedlikehold/testskript/del8_analyse.txt`](.claude/skills/vedlikehold/testskript/del8_analyse.txt) (ikke kjørt ennå).
 
 | # | Hva | Hvordan | Forventet | Pri |
 |---|---|---|---|---|
