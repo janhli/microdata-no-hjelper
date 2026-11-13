@@ -14,6 +14,8 @@ Gjenbrukbare biter med fast format og kjent teststatus. Hver snutt er **frittst�
 Når datalageret får ny versjon, blir status stående, men versjonen i toppseksjonen viser hvor gammel
 testen er. Kjør snutten på nytt og oppdater linjen når du har gjort det.
 
+Hva testene viste, og hvilke tall snuttene er kontrollert mot, står i [TESTRESULTATER.md](TESTRESULTATER.md).
+
 ## Oversikt
 
 | Fil | Hva den gir | Status |
