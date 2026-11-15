@@ -120,3 +120,14 @@ på en populasjon over 100 000 (f.eks. bosatte 30–60 år). Skriptet for 8.1–
 | 8.5 | `regress-panel-diff` mot `regress-panel ... gruppe##etter, pooled` | Begge på samme panel | Samme ATET (manualen sier det) | P2 |
 | 8.6 | Sensurering i overlevelsesanalyse | Tid til død for bosatte 70+ med og uten sensurering ved utvandring (`BEFOLKNING_STATUSKODE` `'3'`) | Liten forskjell for hele gruppen, større for innvandrere | P2 |
 | 8.7 | `mfx(dydx)` for en 0/1-variabel | `logit` med en dummy, og sammenlign med forskjellen mellom de to verdiene i `margins(dummy)` (målt ved gjennomsnittet, så bare omtrent lik) | Uavklart om dummyen gir diskret endring eller derivert | P3 |
+
+## 9. Eksport av figurer (Vega), issue #3
+
+Manualen nevner Vega-editoren bare i [`1.6 Eksport av resultater`](skills/microdata-no/metadata/manual/brukermanual/Om%20brukergrensesnittet/1.6%20Eksport%20av%20resultater.md), uten kodeeksempler. Ingen kjøring trengs utover én figur.
+
+| # | Hva | Hvordan | Forventet | Pri |
+|---|---|---|---|---|
+| 9.1 | Vega eller Vega-Lite? | Lag en `barchart` (f.eks. bosatte etter fylke), velg «Åpne i Vega-editor» og se på første linje i spesifikasjonen | `$schema` viser `vega-lite` eller `vega`, med versjon | P3 |
+| 9.2 | Ligger dataene i spesifikasjonen? | Se etter `data` → `values` i samme spesifikasjon | De aggregerte (støylagte) tallene står der. Manualens «får ikke de underliggende tallene» gjelder da bare .png/.svg | P3 |
+| 9.3 | Hvilken editor? | Noter adressen editoren åpnes på | Trolig vega.github.io/editor, utenfor microdata.no. Avgjør om spesifikasjonen sendes ut av tjenesten | P3 |
+| 9.4 | `tabulate ..., flatten` | Kjør på samme tabell og kopier ut | Rutenett som kan limes inn som CSV og brukes som data i en egen Vega-Lite-spesifikasjon | P3 |
