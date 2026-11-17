@@ -334,6 +334,37 @@ står. Det som må testes, står i TESTLISTE del 8.
 - **Landkodene i microdata er SSB-3 (Klass 91).** Verdensinndeling (545) bruker samme landkoder som blader. Gruppering
   av land (546) skiller EU/EFTA fram til 2004 fra nye EU-land etter 2004. Det er ikke dagens EU/EØS-medlemskap.
 
+## FHI-data (Kreftregisteret og Norsk pasientregister)
+
+Fra 2026-11 har microdata.no to datalagre fra FHI: `no.fhi.kreftregisteret` (versjon 1) og `no.fhi.npr` (versjon 1).
+Kolonnen `datalager` i `metadata/variabler.csv` sier hvor variabelen ligger. Det meste her er lest ut av
+metadataene og ELVIS, og er **ikke testet i microdata.no** (TESTLISTE del 10).
+
+- **Enheten er ikke person.** Kreftregisteret har krefttilfelle (`KRG_TILFELLEID`), NPR har episode (`NPR_EPISODEID`)
+  og prosedyre (`NPR_PROSEDYREID`). En person kan ha flere tilfeller og mange episoder. Personen står som en vanlig
+  variabel: `P_PERSONIDMICRODATA` (Kreftregisteret), `SOM_EP_PERSONID` og `SOM_PROS_PERSONID` (NPR).
+  Personopplysninger kobles inn i tilfellene med `merge kjonn into kreft on personid` (fra persondatasettet).
+  Motsatt vei må tilfellene aggregeres med `collapse ..., by(personid)` først. Om resultatet kan kobles inn i et
+  persondatasett, og om nøkkelen er samme pseudonym som hos SSB, er ikke testet (10.4, 10.5).
+- **Hvert datalager har sin egen `require` og versjon.** `require no.fhi.kreftregisteret:1 as krg` og
+  `import krg/S_TOPOGRAFIICD10 as topo`. Versjonene står i `metadata/datalagre.json`. Variablene er `FIXED` og
+  importeres uten dato.
+- **ICD-10-kodene er uten punktum**, med tre eller fire tegn (`C18`, `C187`). Kreftform: bruk
+  `verktoy/kreftregisteret.py grupper` (nivå 1: 14 hovedgrupper, nivå 2: tresifret kode). Grupperingen er
+  Kreftregisterets egen (ELVIS), ikke Klass. C77–C79 (spredning) og C97 er ikke kreftform og står uendret.
+  `S_LOKICD7` er Kreftregisterets egen ICD-7 og passer ikke til grupperingen.
+- **TNM-verdiene gjelder ulike kreftformer.** `4c`, `4d` og `is(DCIS)` i `S_PT` brukes bare for bryst (C50), `1a1` bare
+  for livmor (C55). Tabeller over TNM på tvers av kreftformer blander verdisett. Se
+  `kreftregisteret.py verdier --variabel S_PT --kreftform C50`.
+- **Kodelistene i microdata.no er et utvalg av ELVIS.** Alle kodene i microdata.no finnes i ELVIS, men ELVIS har flere.
+  `S_STRALEBEH` har bare `1` (mottatt strålebehandling) i microdata.no, mens ELVIS også har `0` (ikke behandlet) og
+  `9` (ukjent). Manglende verdi er da trolig «ikke registrert», ikke «ukjent» (uavklart, 10.3). Det samme kan gjelde
+  `S_HORMONBEH` (4 av 8 verdier).
+- **Godartede svulster og forstadier er med.** `S_TUMORATFERD` skiller benign (0), usikker (1), in situ (2) og ondartet
+  (3). Kreftregisterets publiserte tall for nye krefttilfeller gjelder ondartede.
+- **Beskrivelser og verdier står i ELVIS.** Lenken til detaljsiden står i kolonnen `ekstern_metadata` i `variabler.csv`.
+  Verdiene er hentet til `metadata/fhi/kreftregisteret/verdier.csv` med `kreftregisteret.py hent`.
+
 ## Alder
 
 - For å treffe Statistikkbanken beregnes alder ved utgangen av året før:

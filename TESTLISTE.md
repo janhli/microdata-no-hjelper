@@ -132,3 +132,20 @@ Manualen nevner Vega-editoren bare i [`1.6 Eksport av resultater`](skills/microd
 | 9.2 | Ligger dataene i spesifikasjonen? | Se etter `data` → `values` i samme spesifikasjon | De aggregerte (støylagte) tallene står der. Manualens «får ikke de underliggende tallene» gjelder da bare .png/.svg | P3 |
 | 9.3 | Hvilken editor? | Noter adressen editoren åpnes på | Trolig vega.github.io/editor, utenfor microdata.no. Avgjør om spesifikasjonen sendes ut av tjenesten | P3 |
 | 9.4 | `tabulate ..., flatten` | Kjør på samme tabell og kopier ut | Rutenett som kan limes inn som CSV og brukes som data i en egen Vega-Lite-spesifikasjon | P3 |
+
+## 10. FHI-datalagrene (Kreftregisteret og NPR), issue #11
+
+Antakelser i «FHI-data» i [`fallgruver.md`](skills/microdata-no/referanser/fallgruver.md). Skriptet ligger i
+[`.claude/skills/vedlikehold/testskript/del10_fhi.txt`](.claude/skills/vedlikehold/testskript/del10_fhi.txt) (ikke kjørt ennå),
+med 8.8 (`citation`) for flere kilder.
+
+| # | Hva | Hvordan | Forventet | Pri |
+|---|---|---|---|---|
+| 10.1 | Tre `require` i samme skript, import fra Kreftregisteret | `require no.fhi.kreftregisteret:1 as krg`, `import krg/...` uten dato | Kjører. Rundt 40 000 tilfeller med diagnoseår 2023 | P2 |
+| 10.2 | Kreftform fra `kreftregisteret.py grupper` | Nivå 1 på `S_TOPOGRAFIICD10`, bare ondartede | Ingen stopp. Fordeling som i Kreftregisterets statistikkbank for 2023 | P1 |
+| 10.3 | Manglende verdi i `S_STRALEBEH` | `tabulate, missing` | Bare `1` og manglende: manglende = ikke registrert | P1 |
+| 10.4 | Personnøkkelen er samme pseudonym som hos SSB | `merge kjonn into kreft on personid` | Nesten alle får kjønn. Prostata 100 % menn | P1 |
+| 10.5 | `collapse ... by(personid)` kobles inn i persondatasett | `merge antall into personer` | Går uten feil | P2 |
+| 10.6 | NPR-episoder, filtrert med `values()` | `import npr/SOM_EP_AAR as aar, values("2024")` | Millioner av episoder, kreft som liten andel | P2 |
+| 10.7 | Samme person i NPR og Kreftregisteret | Kreft i 2023 koblet inn i episodene | Episoder med C-diagnose har oftere krefttilfelle | P2 |
+| 10.8 | `recode` til samme verdi for å sette merkelapp (`('C50' = 'C50' 'Bryst')`) | Sist i `del10_fhi.txt` | Godtas, og C50 vises som «Bryst». Ellers stoppes den av 10-enhetsregelen | P3 |

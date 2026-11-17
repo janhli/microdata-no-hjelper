@@ -71,6 +71,23 @@ Verdensinndeling 1 er verdensdel, 2 er region (f.eks. Norden, Subsaharisk Afrika
 Fallgruver står i «Klass» i `referanser/fallgruver.md`. Les dem før du leverer skriptet. Resultatene er
 ikke kjørt i microdata.no før brukeren har kjørt dem.
 
+## FHI-data: Kreftregisteret og Norsk pasientregister
+
+Microdata.no har fra 2026-11 også `no.fhi.kreftregisteret` og `no.fhi.npr` (versjon 1, se `metadata/datalagre.json`).
+Hvert datalager trenger sin egen `require`. Enhetene er krefttilfelle, episode og prosedyre, ikke person. Les
+«FHI-data» i `referanser/fallgruver.md` før du skriver skriptet. Ingenting av dette er testet i microdata.no ennå.
+
+| Behov | Kommando |
+|---|---|
+| ICD-10 til kreftform (14 hovedgrupper) | `python verktoy/kreftregisteret.py grupper --variabel S_TOPOGRAFIICD10 --nivaa 1 --var topo` |
+| Tresifret kreftform med navn (C18 Tykktarm) | `... grupper --variabel S_TOPOGRAFIICD10 --nivaa 2 --navn kreft3 --var topo` |
+| Diagnoser i NPR, resten som «annet» | `... grupper --variabel SOM_EP_HOVEDTILSTAND1 --nivaa 1 --var diag --ukjent` |
+| Hvilke verdier gjelder for en kreftform (TNM) | `... verdier --variabel S_PT --kreftform C50` |
+| Oppdatere kreftformer og verdier fra ELVIS | `... hent` |
+
+Kodelistene står i `metadata/kodelister.csv`, beskrivelsene i Kreftregisterets metadatabase (lenken står i
+`ekstern_metadata` i `variabler.csv`). Gi brukeren lenken i stedet for å gjette hva en kode betyr.
+
 ## Statistiske analyser: velg kommando etter utfallet
 
 Syntaks og opsjoner står i `metadata/manual/kommandoer_og_funksjoner/kommandoer.md` (avsnittene

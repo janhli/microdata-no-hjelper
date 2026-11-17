@@ -1,0 +1,162 @@
+// =====================================================================
+// Testskript: TESTLISTE del 10 (FHI-datalagrene, issue #11), punkt 10.1–10.7, og 8.8 med to kilder
+// Laget:      2026-11, ikke kjørt ennå
+// Versjoner:  no.ssb.fdb:59, no.fhi.kreftregisteret:1, no.fhi.npr:1. Spør om analysemiljøet har de samme.
+// Populasjon: krefttilfeller med diagnoseår 2023 (Kreftregisteret), episoder rapportert 2024 (NPR)
+// Variabler:  https://microdata.no/discovery/variable/no.fhi.kreftregisteret/1/S_DIAGNOSEAR
+//             https://microdata.no/discovery/variable/no.fhi.kreftregisteret/1/S_TOPOGRAFIICD10
+//             https://microdata.no/discovery/variable/no.fhi.kreftregisteret/1/S_TUMORATFERD
+//             https://microdata.no/discovery/variable/no.fhi.kreftregisteret/1/S_STRALEBEH
+//             https://microdata.no/discovery/variable/no.fhi.kreftregisteret/1/P_PERSONIDMICRODATA
+//             https://microdata.no/discovery/variable/no.fhi.npr/1/SOM_EP_AAR
+//             https://microdata.no/discovery/variable/no.fhi.npr/1/SOM_EP_HOVEDTILSTAND1
+//             https://microdata.no/discovery/variable/no.fhi.npr/1/SOM_EP_PERSONID
+//             https://microdata.no/discovery/variable/no.ssb.fdb/59/BEFOLKNING_KJOENN
+// Kodelister: kreftregisteret.py verdier --variabel <NAVN> (ELVIS)
+// Rekkefølge: det sikreste først. collapse til person (10.6) og NPR (10.7) står sist.
+//             citation (8.8 med to kilder) står før dem, så den blir kjørt.
+// =====================================================================
+
+require no.ssb.fdb:59 as fdb
+require no.fhi.kreftregisteret:1 as krg
+require no.fhi.npr:1 as npr
+
+textblock
+# Test av FHI-datalagrene (TESTLISTE del 10)
+Krefttilfeller med diagnoseår 2023 fra Kreftregisteret, koblet til SSB-data, og sykehusepisoder fra
+Norsk pasientregister. Hver test sier hva resultatet skal vise hvis antakelsen stemmer.
+endblock
+
+// ---------------------------------------------------------------------
+textblock
+## Test 10.1: Tre datalagre i samme skript, og import fra Kreftregisteret
+De tre `require`-linjene øverst og importene under kjører uten feil. Enheten er krefttilfelle, ikke person.
+
+**Forventet:** Rundt 40 000 krefttilfeller i 2023 (alle svulster, også godartede og forstadier). Kreftregisteret
+oppgir om lag 38 000 nye krefttilfeller (ondartede) i 2023.
+endblock
+create-dataset kreft
+import krg/S_DIAGNOSEAR as diagar
+keep if diagar == 2023
+import krg/S_TOPOGRAFIICD10 as topo
+import krg/S_TUMORATFERD as atferd
+import krg/S_STRALEBEH as straale
+import krg/P_PERSONIDMICRODATA as personid
+summarize diagar
+tabulate atferd, missing
+
+// ---------------------------------------------------------------------
+textblock
+## Test 10.2: Kodeformat og kreftform (nivå 1, laget med kreftregisteret.py)
+Kodene er uten punktum (C18, C187). De tre første tegnene gir kreftformen, og hovedgruppene er ELVIS sine.
+
+**Forventet:** Ingen feil fra `recode` (10-enhetsregelen). Bare ondartede (atferd 3). Størst: mannlige
+kjønnsorganer (prostata), fordøyelsesorganer, bryst, hud og lunge. C77–C79 (spredning) og D-koder står
+uendret. Sammenlign med Kreftregisterets statistikkbank (https://sb.kreftregisteret.no/) for 2023.
+endblock
+// S_TOPOGRAFIICD10 -> kreftform nivå 1 (Kreftregisterets metadatabase ELVIS, hentet 2026-11-17)
+// Ikke kreftform i ELVIS, står uendret: C77 C78 C79 C97 (C77-C79 er spredning, C97 flere svulster)
+generate kreftform = substr(topo, 1, 3)
+recode kreftform ('C00' 'C01' 'C02' 'C03' 'C04' 'C05' 'C06' 'C07' 'C08' 'C09' 'C10' 'C11' 'C12' 'C13' 'C14' = 'C00-C14' 'Leppe, munnhule og svelg') ('C15' 'C16' 'C17' 'C18' 'C19' 'C20' 'C21' 'C22' 'C23' 'C24' 'C25' 'C26' = 'C15-C26' 'Fordøyelsesorganer') ('C30' 'C31' 'C32' 'C33' 'C34' 'C37' 'C38' 'C39' = 'C30-C39' 'Åndedrettsorganer og intratorakale organer') ('C40' 'C41' = 'C40-C41' 'Knokler og leddbrusk') ('C43' 'C44' = 'C43-C44' 'Malignt melanom og hud') ('C45' 'C46' 'C47' 'C48' 'C49' = 'C45-C49' 'Mesotel og bløtvev') ('C51' 'C52' 'C53' 'C54' 'C55' 'C56' 'C57' 'C58' = 'C51-C58' 'Kvinnelige kjønnsorganer')
+recode kreftform ('C60' 'C61' 'C62' 'C63' = 'C60-C63' 'Mannlige kjønnsorganer') ('C64' 'C65' 'C66' 'C67' 'C68' = 'C64-C68' 'Urinveier') ('C69' 'C70' 'C71' 'C72' = 'C69-C72' 'Øye, hjerne og sentralnervesystem') ('C73' 'C74' 'C75' = 'C73-C75' 'Skjoldbruskkjertel og andre enodkrine kjertler') ('C76' 'C80' = 'C76-C80' 'Ufullstendig angitt og ukjent utgangspunkt') ('C81' 'C82' 'C83' 'C84' 'C85' 'C86' 'C88' 'C90' 'C91' 'C92' 'C93' 'C94' 'C95' 'C96' 'D47' = 'C81-C96' 'Lymfoid, hematopoetisk eller beslektet vev')
+tabulate kreftform if atferd == 3
+
+// ---------------------------------------------------------------------
+textblock
+## Test 10.3: Strålebehandling (`S_STRALEBEH`)
+Kodelisten i microdata.no har bare `1` (mottatt strålebehandling). ELVIS har også 0 (ikke behandlet), 2–5 og 9.
+
+**Forventet:** Bare `1` og manglende verdi. Da betyr manglende verdi «ikke registrert med strålebehandling»,
+ikke «ukjent», og en 0/1-variabel må lages med `sysmiss`. Samme sjekk bør gjøres for `S_HORMONBEH`.
+endblock
+tabulate straale, missing
+
+// ---------------------------------------------------------------------
+textblock
+## Test 10.4: Personkobling, SSB-data inn i krefttilfellene
+`P_PERSONIDMICRODATA` skal være samme pseudonym som personene i SSB-dataene. Kjønn hentes fra SSB og kobles
+inn med `merge ... on personid`.
+
+**Forventet:** Nesten alle tilfeller får kjønn. Mannlige kjønnsorganer er 100 % menn og kvinnelige 100 %
+kvinner. Hvis nøkkelen ikke stemmer, blir andelen med kjønn lav, eller kjønn fordeler seg tilfeldig.
+endblock
+create-dataset personer
+import fdb/BEFOLKNING_KJOENN as kjonn
+merge kjonn into kreft on personid
+use kreft
+generate harkjonn = 0
+replace harkjonn = 1 if !sysmiss(kjonn)
+tabulate harkjonn
+tabulate kreftform kjonn if atferd == 3 & inlist(kreftform, 'C51-C58', 'C60-C63', 'C50', 'C15-C26'), rowpct
+
+// ---------------------------------------------------------------------
+textblock
+## Test 8.8 (med to kilder): `citation`
+**Forventet:** Kildehenvisningen nevner både SSB og FHI (Kreftregisteret), og helst NPR, siden alle tre er
+koblet til med `require`. Noter om bare datalagrene som er brukt i import, kommer med. NPR er ikke importert ennå.
+endblock
+citation
+
+// ---------------------------------------------------------------------
+textblock
+## Test 10.5: Antall krefttilfeller per person (`collapse` til personnivå)
+`collapse ... by(personid)` gir et datasett med én rad per personid. Spørsmålet er om microdata.no ser det
+som personer, slik at det kan kobles inn i persondatasettet.
+
+**Forventet:** `merge` går uten feil, og de fleste har ett tilfelle i 2023. Feiler `merge`, må koblingen
+gjøres motsatt vei (personopplysninger inn i tilfellene, som i 10.4).
+endblock
+clone-dataset kreft kreftp
+use kreftp
+collapse (count) topo -> antall, by(personid)
+summarize antall
+merge antall into personer
+use personer
+tabulate antall
+
+// ---------------------------------------------------------------------
+textblock
+## Test 10.6: Norsk pasientregister, episoder i 2024, filtrert ved import
+Episoder ved somatiske sykehus rapportert for 2024. `values()` begrenser importen til ett år.
+
+**Forventet:** Flere millioner episoder. Kreftform med `--ukjent` (nivå 1) gir en stor andel `annet` (ikke kreft).
+endblock
+create-dataset episoder
+import npr/SOM_EP_AAR as aar, values("2024")
+import npr/SOM_EP_HOVEDTILSTAND1 as diag
+import npr/SOM_EP_PERSONID as personid
+summarize personid
+generate kreftdiag = 'annet' if !sysmiss(diag)
+replace kreftdiag = 'kreft' if (substr(diag, 1, 1) == 'C' & !inlist(substr(diag, 1, 3), 'C77', 'C78', 'C79', 'C97')) | inlist(substr(diag, 1, 3), 'D45', 'D46', 'D47')
+tabulate kreftdiag, missing
+
+// ---------------------------------------------------------------------
+textblock
+## Test 10.7: Samme person i NPR og Kreftregisteret
+`SOM_EP_PERSONID` og `P_PERSONIDMICRODATA` skal være samme pseudonym. Kreftform fra Kreftregisteret kobles
+inn i episodene via persondatasettet.
+
+**Forventet:** Episoder med kreftdiagnose (C) har oftere et krefttilfelle i 2023 enn andre episoder.
+endblock
+use kreft
+generate kreft23 = 1
+collapse (max) kreft23, by(personid)
+merge kreft23 into episoder on personid
+use episoder
+generate harkreft23 = 0
+replace harkreft23 = 1 if kreft23 == 1
+tabulate kreftdiag harkreft23, rowpct
+
+// ---------------------------------------------------------------------
+textblock
+## Test 10.8: Merkelapp med en regel til samme verdi
+Brystkreft er både hovedgruppe og tresifret kode (`C50`). `kreftregisteret.py grupper --nivaa 1` setter
+navnet med `('C50' = 'C50' 'Bryst')`. Regelen endrer ingen verdier, og kan bli stoppet av regelen om at
+`recode` må påvirke minst 10 enheter. Står sist, så den ikke stopper resten.
+
+**Forventet:** `C50` vises som «Bryst» i tabellen. Blir kommandoen stoppet, må merkelappen settes på
+en annen måte (fallgruve).
+endblock
+use kreft
+recode kreftform ('C50' = 'C50' 'Bryst')
+tabulate kreftform if atferd == 3

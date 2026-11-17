@@ -1,0 +1,103 @@
+nivaa;icd;navn;navn_en;gruppe_icd;gruppe_navn
+1;C00-C14;Leppe, munnhule og svelg;Lip, oral cavity and pharynx;;
+1;C15-C26;Fordøyelsesorganer;Digestive organs;;
+1;C30-C39;Åndedrettsorganer og intratorakale organer;Respiratory and intrathoracic organs;;
+1;C40-C41;Knokler og leddbrusk;Bone and articular cartilage;;
+1;C43-C44;Malignt melanom og hud;Melanoma and skin;;
+1;C45-C49;Mesotel og bløtvev;Mesothelial and soft tissue;;
+1;C50;Bryst;Breast;;
+1;C51-C58;Kvinnelige kjønnsorganer;Female genital organs;;
+1;C60-C63;Mannlige kjønnsorganer;Male genital organs;;
+1;C64-C68;Urinveier;Urinary tract;;
+1;C69-C72;Øye, hjerne og sentralnervesystem;Eye, brain and central nervous system;;
+1;C73-C75;Skjoldbruskkjertel og andre enodkrine kjertler;Thyroid and other endocrine glands;;
+1;C76-C80;Ufullstendig angitt og ukjent utgangspunkt;Ill-defined and unknown;;
+1;C81-C96;Lymfoid, hematopoetisk eller beslektet vev;Lymphoid, haematopoietic and related tissue;;
+2;C00;Leppe;Lip;C00-C14;Leppe, munnhule og svelg
+2;C01;Tungerot;Base of tongue;C00-C14;Leppe, munnhule og svelg
+2;C02;Andre og uspesifiserte deler av tunge;Other and unspecified parts of tongue;C00-C14;Leppe, munnhule og svelg
+2;C03;Tannkjøtt;Gum;C00-C14;Leppe, munnhule og svelg
+2;C04;Munngulv;Floor of mouth;C00-C14;Leppe, munnhule og svelg
+2;C05;Gane;Palate;C00-C14;Leppe, munnhule og svelg
+2;C06;Andre og uspesifiserte deler av munn;Other and unspecified parts of mouth;C00-C14;Leppe, munnhule og svelg
+2;C07;Ørespyttkjertel;Parotid gland;C00-C14;Leppe, munnhule og svelg
+2;C08;Andre og uspesifiserte store spyttkjertler;Other and unspecified major salivary glands;C00-C14;Leppe, munnhule og svelg
+2;C09;Mandel;Tonsil;C00-C14;Leppe, munnhule og svelg
+2;C10;Oropharynx;Oropharynx;C00-C14;Leppe, munnhule og svelg
+2;C11;Nasopharynx;Nasopharynx;C00-C14;Leppe, munnhule og svelg
+2;C12;Sinus piriformis;Piriform sinus;C00-C14;Leppe, munnhule og svelg
+2;C13;Hypopharynx;Hypopharynx;C00-C14;Leppe, munnhule og svelg
+2;C14;Andre og ufullstendig angitte lokalisasjoner i leppe, munnhule og svelg;Other and ill-defined sites in the lip, oral cavity and pharynx;C00-C14;Leppe, munnhule og svelg
+2;C15;Spiserør;Oesophagus;C15-C26;Fordøyelsesorganer
+2;C16;Magesekk;Stomach;C15-C26;Fordøyelsesorganer
+2;C17;Tynntarm;Small intestine;C15-C26;Fordøyelsesorganer
+2;C18;Tykktarm;Colon;C15-C26;Fordøyelsesorganer
+2;C19;Overgang mellom sigmoideum og endetarm;Rectosigmoid junction;C15-C26;Fordøyelsesorganer
+2;C20;Endetarm;Rectum;C15-C26;Fordøyelsesorganer
+2;C21;Endetarmsåpning og analkanal;Anus and anal canal;C15-C26;Fordøyelsesorganer
+2;C22;Lever og intrahepatiske galleganger;Liver and intrahepatic bile ducts;C15-C26;Fordøyelsesorganer
+2;C23;Galleblære;Gallbladder;C15-C26;Fordøyelsesorganer
+2;C24;Andre og uspesifiserte deler av galleveier;Other and unspecified parts of biliary tract;C15-C26;Fordøyelsesorganer
+2;C25;Bukspyttkjertel;Pancreas;C15-C26;Fordøyelsesorganer
+2;C26;Andre og ufullstendig angitte fordøyelsesorganer;Other and ill-defined digestive organs;C15-C26;Fordøyelsesorganer
+2;C30;Nesehule, mellomøre og indre øre;Nasal cavity and middle ear;C30-C39;Åndedrettsorganer og intratorakale organer
+2;C31;Bihuler;Accessory sinuses;C30-C39;Åndedrettsorganer og intratorakale organer
+2;C32;Strupe;Larynx;C30-C39;Åndedrettsorganer og intratorakale organer
+2;C33;Luftrør;Trachea;C30-C39;Åndedrettsorganer og intratorakale organer
+2;C34;Bronkie og lunge;Broncus and lung;C30-C39;Åndedrettsorganer og intratorakale organer
+2;C37;Thymus;Thymus;C30-C39;Åndedrettsorganer og intratorakale organer
+2;C38;Hjerte, mediastinum og brysthinne;Heart, mediastinum and pleura;C30-C39;Åndedrettsorganer og intratorakale organer
+2;C39;Annen og ufullstendig angitt lokalisasjon i åndedrettsorganer og intratorakale organer;Other and ill-defined sites in the respiratory system and intrathoracic organs;C30-C39;Åndedrettsorganer og intratorakale organer
+2;C40;Knokler og leddbrusk i ekstremiteter;Bone and articular cartilage of limbs;C40-C41;Knokler og leddbrusk
+2;C41;Knokler og leddbrusk med annen og uspesifisert lokalisasjon;Bone and articular cartilage of other and unspecified sites;C40-C41;Knokler og leddbrusk
+2;C43;Malignt melanom i hud;Malignant melanoma of skin;C43-C44;Malignt melanom og hud
+2;C44;Andre ondartede svulster i hud;Other malignant neoplasms of skin;C43-C44;Malignt melanom og hud
+2;C45;Mesoteliom;Mesothelioma;C45-C49;Mesotel og bløtvev
+2;C46;Kaposis sarkom;Kaposi sarcoma;C45-C49;Mesotel og bløtvev
+2;C47;Perifere nerver og det autonome nervesystem;Peripheral nerves and autonomic nervous system;C45-C49;Mesotel og bløtvev
+2;C48;Retroperitoneum og bukhinne;Retroperitoneum and peritoneum;C45-C49;Mesotel og bløtvev
+2;C49;Annet bindevev og bløtvev;Other connective and soft tissue;C45-C49;Mesotel og bløtvev
+2;C50;Bryst;Breast;C50;Bryst
+2;C51;Ytre kvinnelige kjønnsorganer;Vulva;C51-C58;Kvinnelige kjønnsorganer
+2;C52;Skjede;Vagina;C51-C58;Kvinnelige kjønnsorganer
+2;C53;Livmorhals;Cervix uteri;C51-C58;Kvinnelige kjønnsorganer
+2;C54;Livmorlegeme;Corpus uteri;C51-C58;Kvinnelige kjønnsorganer
+2;C55;Livmor, uspesifisert del;Uterus, part unspecified;C51-C58;Kvinnelige kjønnsorganer
+2;C56;Eggstokk;Ovary;C51-C58;Kvinnelige kjønnsorganer
+2;C57;Andre og uspesifiserte kvinnelige kjønnsorganer;Other and unspecified female genital organs;C51-C58;Kvinnelige kjønnsorganer
+2;C58;Morkake;Placenta;C51-C58;Kvinnelige kjønnsorganer
+2;C60;Penis;Penis;C60-C63;Mannlige kjønnsorganer
+2;C61;Prostata;Prostate;C60-C63;Mannlige kjønnsorganer
+2;C62;Testikkel;Testis;C60-C63;Mannlige kjønnsorganer
+2;C63;Andre og uspesifiserte mannlige kjønnsorganer;Other and unspecified male genital organs;C60-C63;Mannlige kjønnsorganer
+2;C64;Nyre, unntatt nyrebekken;Kidney, except renal pelvis;C64-C68;Urinveier
+2;C65;Nyrebekken;Renal pelvis;C64-C68;Urinveier
+2;C66;Urinleder;Ureter;C64-C68;Urinveier
+2;C67;Urinblære;Bladder;C64-C68;Urinveier
+2;C68;Andre og uspesifiserte urinveisorganer;Other and unspecified urinary organs;C64-C68;Urinveier
+2;C69;Øye og øyets adneksstrukturer;Eye and adnexa;C69-C72;Øye, hjerne og sentralnervesystem
+2;C70;Sentralnervesystemets hinner;Meninges;C69-C72;Øye, hjerne og sentralnervesystem
+2;C71;Hjerne;Brain;C69-C72;Øye, hjerne og sentralnervesystem
+2;C72;Ryggmarg, hjernenerver og andre deler av sentralnervesystemet;Spinal cord, cranial nerves and other parts of central nervous system;C69-C72;Øye, hjerne og sentralnervesystem
+2;C73;Skjoldbrukskjertel;Thyroid gland;C73-C75;Skjoldbruskkjertel og andre enodkrine kjertler
+2;C74;Binyre;Adrenal gland;C73-C75;Skjoldbruskkjertel og andre enodkrine kjertler
+2;C75;Endokrine kjertler og beslektede strukturer;Other endocrine glands and related structures;C73-C75;Skjoldbruskkjertel og andre enodkrine kjertler
+2;C76;Annet og ufullstendig angitt utgangspunkt;Other and ill-defined sites;C76-C80;Ufullstendig angitt og ukjent utgangspunkt
+2;C80;Uten spesifisert lokalisasjon;Without specification of site;C76-C80;Ufullstendig angitt og ukjent utgangspunkt
+2;C81;Hodgkin lymfom;Hodgkin lymphoma;C81-C96;Lymfoid, hematopoetisk eller beslektet vev
+2;C82;Follikulært lymfom;Follicular lymphoma;C81-C96;Lymfoid, hematopoetisk eller beslektet vev
+2;C83;Ikke-follikulært lymfom;Non-follicular lymphoma;C81-C96;Lymfoid, hematopoetisk eller beslektet vev
+2;C84;Modne T/NK-cellelymfomer;Mature T/NK-cell lymphomas;C81-C96;Lymfoid, hematopoetisk eller beslektet vev
+2;C85;Andre og uspesifiserte typer av non-Hodgkin lymfom;Other and unspecified types of non-Hodgkin lymphoma;C81-C96;Lymfoid, hematopoetisk eller beslektet vev
+2;C86;Andre spesifiserte typer T/NK-cellelymfomer;Other specified types of T/NK-cell lymphoma;C81-C96;Lymfoid, hematopoetisk eller beslektet vev
+2;C88;Immunproliferative sykdommer;Immunoproliferative diseases;C81-C96;Lymfoid, hematopoetisk eller beslektet vev
+2;C90;Myelomatose og ondartede plasmacellesykdommer;Mutliple myeloma and malignant plasma cell neoplasms;C81-C96;Lymfoid, hematopoetisk eller beslektet vev
+2;C91;Lymfatisk leukemi;Lymphoid leukaemia;C81-C96;Lymfoid, hematopoetisk eller beslektet vev
+2;C92;Myelogen leukemi;Myeloid leukaemia;C81-C96;Lymfoid, hematopoetisk eller beslektet vev
+2;C93;Monocyttleukemi;Monocytic leukaemia;C81-C96;Lymfoid, hematopoetisk eller beslektet vev
+2;C94;Andre leukemier med spesifisert celletype;Other leukaemia of specified cell type;C81-C96;Lymfoid, hematopoetisk eller beslektet vev
+2;C95;Leukemier med uspesifisert celletype;Leukaemia of unspecified cell type;C81-C96;Lymfoid, hematopoetisk eller beslektet vev
+2;C96;Andre og upesifiserte ondartede svulster utgått fra lymfoid, hematopoetisk eller beslektet vev;Other and unspecified malignant neoplasms of lymphoid, heamatopoietic and related tissue;C81-C96;Lymfoid, hematopoetisk eller beslektet vev
+2;D45;Polycythemia vera;Polycythaemia vera;C81-C96;Lymfoid, hematopoetisk eller beslektet vev
+2;D46;Myelodysplastisk syndrom;Myelodysplastic syndromes;C81-C96;Lymfoid, hematopoetisk eller beslektet vev
+2;D47;Andre svulster med usikkert eller ukjent malignitetspotensial i lymfoid, hematopoetisk eller beslektet vev;Other neoplasms of uncertain or unknown behaviour of lymphoid, haematopoietic and related tissue;C81-C96;Lymfoid, hematopoetisk eller beslektet vev
