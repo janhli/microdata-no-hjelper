@@ -1,0 +1,4033 @@
+{
+ "name": "S_TOPOGRAFIICD10",
+ "temporality": "FIXED",
+ "languageCode": "no",
+ "sensitivityLevel": "PERSON_SPECIAL",
+ "populationDescription": "Primærtumors utgangspunkt etter ICD10.",
+ "subjectFields": [
+  "Helse",
+  "Helsetjenester"
+ ],
+ "temporalCoverage": {
+  "start": -25567,
+  "stop": 20773
+ },
+ "measureVariable": {
+  "name": "S_TOPOGRAFIICD10",
+  "label": "Topografi ICD10",
+  "notPseudonym": true,
+  "dataType": "String",
+  "variableRole": "Measure",
+  "representedVariables": [
+   {
+    "description": "Primærtumors utgangspunkt etter ICD10.\n\nFor mer informasjon om variabelen, besøk Kreftregisterets [metadatabase](https://metadata.kreftregisteret.no/variables/detail/24)",
+    "validPeriod": {
+     "start": -6209,
+     "stop": 18992
+    },
+    "valueDomain": {
+     "codeList": [
+      {
+       "category": "Ondartet svulst på leppe",
+       "code": "C00"
+      },
+      {
+       "category": "Ondartet svulst utside av overleppe",
+       "code": "C000"
+      },
+      {
+       "category": "Ondartet svulst utside av underleppe",
+       "code": "C001"
+      },
+      {
+       "category": "Ondartet svulst utside av leppe",
+       "code": "C002"
+      },
+      {
+       "category": "Ondartet svulst innside av overleppe",
+       "code": "C003"
+      },
+      {
+       "category": "Ondartet svulst innside av underleppe",
+       "code": "C004"
+      },
+      {
+       "category": "Ondartet svulst innside av leppe",
+       "code": "C005"
+      },
+      {
+       "category": "Ondartet svulst munnvik",
+       "code": "C006"
+      },
+      {
+       "category": "Overlappende svulst i leppe",
+       "code": "C008"
+      },
+      {
+       "category": "Ondartet svulst leppe, uspesifisert",
+       "code": "C009"
+      },
+      {
+       "category": "Ondartet svulst i tungerot",
+       "code": "C01"
+      },
+      {
+       "category": "Overlappende svulst i leppe",
+       "code": "C019"
+      },
+      {
+       "category": "Ondartet svulst i andre og uspesifiserte deler av tunge",
+       "code": "C02"
+      },
+      {
+       "category": "Ondartet svulst overside av tunge",
+       "code": "C020"
+      },
+      {
+       "category": "Ondartet svulst tungerand ",
+       "code": "C021"
+      },
+      {
+       "category": "Ondartet svulst underside av tunge",
+       "code": "C022"
+      },
+      {
+       "category": "Ondartet svulst fremre to tredjedeler av tunge, uspesifisert del",
+       "code": "C023"
+      },
+      {
+       "category": "Ondartet svulst tungemandel ",
+       "code": "C024"
+      },
+      {
+       "category": "Overlappende svulst i tunge",
+       "code": "C028"
+      },
+      {
+       "category": "Ondartet svulst tunge, uspesifisert",
+       "code": "C029"
+      },
+      {
+       "category": "Ondartet svulst i tannkjøtt",
+       "code": "C03"
+      },
+      {
+       "category": "Ondartet svulst tannkjøtt i overkjeve",
+       "code": "C030"
+      },
+      {
+       "category": "Ondartet svulst tannkjøtt i underkjeve",
+       "code": "C031"
+      },
+      {
+       "category": "Ondartet svulst tannkjøtt, uspesifisert",
+       "code": "C039"
+      },
+      {
+       "category": "Ondartet svulst i munngulv",
+       "code": "C04"
+      },
+      {
+       "category": "Ondartet svulst fremre del av munngulv",
+       "code": "C040"
+      },
+      {
+       "category": "Ondartet svulst lateral del av munngulv ",
+       "code": "C041"
+      },
+      {
+       "category": "Overlappende svulst i munngulv",
+       "code": "C048"
+      },
+      {
+       "category": "Ondartet svulst munngulv, uspesifisert",
+       "code": "C049"
+      },
+      {
+       "category": "Ondartet svulst i gane",
+       "code": "C05"
+      },
+      {
+       "category": "Ondartet svulst hard gane",
+       "code": "C050"
+      },
+      {
+       "category": "Ondartet svulst bløt gane",
+       "code": "C051"
+      },
+      {
+       "category": "Ondartet svulst drøvel",
+       "code": "C052"
+      },
+      {
+       "category": "Overlappende svulst i gane",
+       "code": "C058"
+      },
+      {
+       "category": "Ondartet svulst gane, uspesifisert",
+       "code": "C059"
+      },
+      {
+       "category": "Ondartet svulst i andre og uspesifiserte deler av munn",
+       "code": "C06"
+      },
+      {
+       "category": "Ondartet svulst kinnslimhinne",
+       "code": "C060"
+      },
+      {
+       "category": "Ondartet svulst vestibulum oris",
+       "code": "C061"
+      },
+      {
+       "category": "Ondartet svulst retromolært område",
+       "code": "C062"
+      },
+      {
+       "category": "Overlappende svulst i andre og uspesifiserte deler av munn",
+       "code": "C068"
+      },
+      {
+       "category": "Ondartet svulst munn, uspesifisert",
+       "code": "C069"
+      },
+      {
+       "category": "Ondartet svulst i ørespyttkjertel",
+       "code": "C07"
+      },
+      {
+       "category": "Ondartet svulst ørespyttkjertel",
+       "code": "C079"
+      },
+      {
+       "category": "Ondartet svulst i andre og uspesifiserte store spyttkjertler",
+       "code": "C08"
+      },
+      {
+       "category": "Ondartet svulst submandibularspyttkjertel",
+       "code": "C080"
+      },
+      {
+       "category": "Ondartet svulst sublingvalspyttkjertel",
+       "code": "C081"
+      },
+      {
+       "category": "Overlappende svulst i store spyttkjertler",
+       "code": "C088"
+      },
+      {
+       "category": "Ondartet svulst stor spyttkjertel, uspesifisert",
+       "code": "C089"
+      },
+      {
+       "category": "Ondartet svulst i mandel",
+       "code": "C09"
+      },
+      {
+       "category": "Ondartet svulst tonsilleseng",
+       "code": "C090"
+      },
+      {
+       "category": "Ondartet svulst ganebuer (fremre/bakre)",
+       "code": "C091"
+      },
+      {
+       "category": "Overlappende svulst i mandel",
+       "code": "C098"
+      },
+      {
+       "category": "Ondartet svulst mandel, uspesifisert",
+       "code": "C099"
+      },
+      {
+       "category": "Ondartet svulst i oropharynx",
+       "code": "C10"
+      },
+      {
+       "category": "Ondartet svulst vallecula epiglottica",
+       "code": "C100"
+      },
+      {
+       "category": "Ondartet svulst fremre overflate av strupelokk",
+       "code": "C101"
+      },
+      {
+       "category": "Ondartet svulst sidevegg i oropharynx",
+       "code": "C102"
+      },
+      {
+       "category": "Ondartet svulst bakvegg i oropharynx",
+       "code": "C103"
+      },
+      {
+       "category": "Ondartet svulst gjellebuespalte",
+       "code": "C104"
+      },
+      {
+       "category": "Overlappende svulst i oropharynx",
+       "code": "C108"
+      },
+      {
+       "category": "Ondartet svulst oropharynx, uspesifisert",
+       "code": "C109"
+      },
+      {
+       "category": "Ondartet svulst i nasopharynx",
+       "code": "C11"
+      },
+      {
+       "category": "Ondartet svulst øvre vegg i nasopharynx",
+       "code": "C110"
+      },
+      {
+       "category": "Ondartet svulst bakre vegg i nasopharynx",
+       "code": "C111"
+      },
+      {
+       "category": "Ondartet svulst sidevegg i nasopharynx",
+       "code": "C112"
+      },
+      {
+       "category": "Ondartet svulst fremre vegg i nasopharynx",
+       "code": "C113"
+      },
+      {
+       "category": "Overlappende svulst i nasopharynx",
+       "code": "C118"
+      },
+      {
+       "category": "Ondartet svulst nasopharynx, uspesifisert",
+       "code": "C119"
+      },
+      {
+       "category": "Ondartet svulst i sinus piriformis",
+       "code": "C12"
+      },
+      {
+       "category": "Ondartet svulst sinus piriformis",
+       "code": "C129"
+      },
+      {
+       "category": "Ondartet svulst i hypopharynx",
+       "code": "C13"
+      },
+      {
+       "category": "Ondartet svulst postkrikoidalt område",
+       "code": "C130"
+      },
+      {
+       "category": "Ondartet svulst plica aryepiglottica, hypofarygeal side",
+       "code": "C131"
+      },
+      {
+       "category": "Ondartet svulst bakre vegg i hypopharynx",
+       "code": "C132"
+      },
+      {
+       "category": "Overlappende svulst i hypopharynx",
+       "code": "C138"
+      },
+      {
+       "category": "Ondartet svulst hypopharynx, uspesifisert",
+       "code": "C139"
+      },
+      {
+       "category": "Ondartet svulst i andre og ufullstendig angitte lokalisasjoner i leppe, munnhule og svelg",
+       "code": "C14"
+      },
+      {
+       "category": "Ondartet svulst svelg , uspesifisert",
+       "code": "C140"
+      },
+      {
+       "category": "Ondartet svulst waldeyers ring",
+       "code": "C142"
+      },
+      {
+       "category": "Overlappende svulst i leppe, munnhule og svelg",
+       "code": "C148"
+      },
+      {
+       "category": "Ondartet svulst i spiserør",
+       "code": "C15"
+      },
+      {
+       "category": "Ondartet svulst cervikaldel av spiserør (brukes ikke i norge)",
+       "code": "C150"
+      },
+      {
+       "category": "Ondartet svulst torakaldel av spiserør (brukes ikke i norge)",
+       "code": "C151"
+      },
+      {
+       "category": "Ondartet svulst abdominaldel av spiserør (brukes ikke i norge)",
+       "code": "C152"
+      },
+      {
+       "category": "Ondartet svulst øvre tredjedel av spiserør",
+       "code": "C153"
+      },
+      {
+       "category": "Ondartet svulst midtre tredjedel av spiserør",
+       "code": "C154"
+      },
+      {
+       "category": "Ondartet svulst nedre tredjedel av spiserør",
+       "code": "C155"
+      },
+      {
+       "category": "Overlappende svulst i spiserør",
+       "code": "C158"
+      },
+      {
+       "category": "Ondartet svulst spiserør, uspesifisert",
+       "code": "C159"
+      },
+      {
+       "category": "Ondartet svulst i magesekk",
+       "code": "C16"
+      },
+      {
+       "category": "Ondartet svulst cardia ventriculi",
+       "code": "C160"
+      },
+      {
+       "category": "Ondartet svulst fundus ventriculi",
+       "code": "C161"
+      },
+      {
+       "category": "Ondartet svulst corpus ventriculi",
+       "code": "C162"
+      },
+      {
+       "category": "Ondartet svulst antrum pyloricum",
+       "code": "C163"
+      },
+      {
+       "category": "Ondartet svulst pylorus",
+       "code": "C164"
+      },
+      {
+       "category": "Ondartet svulst curvatura minor ventriculi , uspesifisert",
+       "code": "C165"
+      },
+      {
+       "category": "Ondartet svulst curvatura major ventriculi , uspesifisert",
+       "code": "C166"
+      },
+      {
+       "category": "Overlappende svulst i magesekk",
+       "code": "C168"
+      },
+      {
+       "category": "Ondartet svulst magesekk (ventriculus) , uspesifisert",
+       "code": "C169"
+      },
+      {
+       "category": "Ondartet svulst i tynntarm",
+       "code": "C17"
+      },
+      {
+       "category": "Ondartet svulst tolvfingertarm",
+       "code": "C170"
+      },
+      {
+       "category": "Ondartet svulst jejunum",
+       "code": "C171"
+      },
+      {
+       "category": "Ondartet svulst ileum",
+       "code": "C172"
+      },
+      {
+       "category": "Ondartet svulst meckels divertikkel ",
+       "code": "C173"
+      },
+      {
+       "category": "Overlappende svulst i tynntarm",
+       "code": "C178"
+      },
+      {
+       "category": "Ondartet svulst tynntarm, uspesifisert",
+       "code": "C179"
+      },
+      {
+       "category": "Ondartet svulst i tykktarm",
+       "code": "C18"
+      },
+      {
+       "category": "Ondartet svulst blindtarm",
+       "code": "C180"
+      },
+      {
+       "category": "Ondartet svulst blindtarmsvedheng",
+       "code": "C181"
+      },
+      {
+       "category": "Ondartet svulst tykktarm, oppadstigende del",
+       "code": "C182"
+      },
+      {
+       "category": "Ondartet svulst leverfleksur ",
+       "code": "C183"
+      },
+      {
+       "category": "Ondartet svulst tverrcolon",
+       "code": "C184"
+      },
+      {
+       "category": "Ondartet svulst miltfleksur",
+       "code": "C185"
+      },
+      {
+       "category": "Ondartet svulst tykktarm, nedadstigende del",
+       "code": "C186"
+      },
+      {
+       "category": "Ondartet svulst sigmoideum",
+       "code": "C187"
+      },
+      {
+       "category": "Overlappende svulst i tykktarm",
+       "code": "C188"
+      },
+      {
+       "category": "Ondartet svulst tykktarm, uspesifisert",
+       "code": "C189"
+      },
+      {
+       "category": "Ondartet svulst i overgang mellom sigmoideum og endetarm",
+       "code": "C19"
+      },
+      {
+       "category": "Ondartet svulst i overgang mellom sigmoideum og endetarm",
+       "code": "C199"
+      },
+      {
+       "category": "Ondartet svulst i endetarm",
+       "code": "C20"
+      },
+      {
+       "category": "Ondartet svulst i endetarm",
+       "code": "C209"
+      },
+      {
+       "category": "Ondartet svulst i endetarmsåpning og analkanal",
+       "code": "C21"
+      },
+      {
+       "category": "Ondartet svulst endetarmsåpning, uspesifisert",
+       "code": "C210"
+      },
+      {
+       "category": "Ondartet svulst analkanal",
+       "code": "C211"
+      },
+      {
+       "category": "Ondartet svulst kloakkogen sone",
+       "code": "C212"
+      },
+      {
+       "category": "Overlappende svulst i endetarm, endetarmsåpning og analkanal",
+       "code": "C218"
+      },
+      {
+       "category": "Ondartet svulst i lever og intrahepatiske galleganger",
+       "code": "C22"
+      },
+      {
+       "category": "Levercellekarsinom",
+       "code": "C220"
+      },
+      {
+       "category": "Karsinom i intrahepatisk gallegang",
+       "code": "C221"
+      },
+      {
+       "category": "Hepatoblastom",
+       "code": "C222"
+      },
+      {
+       "category": "Angiosarkom i lever",
+       "code": "C223"
+      },
+      {
+       "category": "Andre sarkom i lever",
+       "code": "C224"
+      },
+      {
+       "category": "Andre spesifiserte karsinom i lever",
+       "code": "C227"
+      },
+      {
+       "category": "Ondartet svulst lever uspesifisert",
+       "code": "C229"
+      },
+      {
+       "category": "Ondartet svulst i galleblære",
+       "code": "C23"
+      },
+      {
+       "category": "Ondartet svulst i galleblære",
+       "code": "C239"
+      },
+      {
+       "category": "Ondartet svulst i andre og uspesifiserte deler av galleveier",
+       "code": "C24"
+      },
+      {
+       "category": "Ondartet svulst ekstrahepatisk gallegang",
+       "code": "C240"
+      },
+      {
+       "category": "Ondartet svulst vaters ampulle",
+       "code": "C241"
+      },
+      {
+       "category": "Overlappende svulst i galleveier",
+       "code": "C248"
+      },
+      {
+       "category": "Ondartet svulst galleveier, uspesifisert",
+       "code": "C249"
+      },
+      {
+       "category": "Ondartet svulst i bukspyttkjertel",
+       "code": "C25"
+      },
+      {
+       "category": "Ondartet svulst bukspyttkjertelhode",
+       "code": "C250"
+      },
+      {
+       "category": "Ondartet svulst bukspyttkjertelkropp",
+       "code": "C251"
+      },
+      {
+       "category": "Ondartet svulst bukspyttkjertelhale",
+       "code": "C252"
+      },
+      {
+       "category": "Ondartet svulst utførselsgang",
+       "code": "C253"
+      },
+      {
+       "category": "Ondartet svulst endokrin bukspyttkjertel",
+       "code": "C254"
+      },
+      {
+       "category": "Ondartet svulst andre spesifiserte deler av bukspyttkjertel",
+       "code": "C257"
+      },
+      {
+       "category": "Overlappende svulst i bukspyttkjertel",
+       "code": "C258"
+      },
+      {
+       "category": "Ondartet svulst bukspyttkjertel, uspesifisert",
+       "code": "C259"
+      },
+      {
+       "category": "Ondartet svulst i andre og ufullstendig angitte fordøyelsesorganer",
+       "code": "C26"
+      },
+      {
+       "category": "Ondartet svulst tarmkanal, uspesifisert del",
+       "code": "C260"
+      },
+      {
+       "category": "Ondartet svulst milt",
+       "code": "C261"
+      },
+      {
+       "category": "Overlappende svulst i fordøyelsessystemet",
+       "code": "C268"
+      },
+      {
+       "category": "Ondartet svulst ufullstendig angitte lokalisasjoner innen fordøyelsessystemet",
+       "code": "C269"
+      },
+      {
+       "category": "Ondartet svulst i nesehule, mellomøre og indre øre",
+       "code": "C30"
+      },
+      {
+       "category": "Ondartet svulst nesehule",
+       "code": "C300"
+      },
+      {
+       "category": "Ondartet svulst mellomøre og indre øre",
+       "code": "C301"
+      },
+      {
+       "category": "Ondartet svulst i bihuler",
+       "code": "C31"
+      },
+      {
+       "category": "Ondartet svulst kjevebihule",
+       "code": "C310"
+      },
+      {
+       "category": "Ondartet svulst silbensbihule",
+       "code": "C311"
+      },
+      {
+       "category": "Ondartet svulst pannebihule",
+       "code": "C312"
+      },
+      {
+       "category": "Ondartet svulst kilebensbihule",
+       "code": "C313"
+      },
+      {
+       "category": "Overlappende svulst i bihuler",
+       "code": "C318"
+      },
+      {
+       "category": "Ondartet svulst bihule, uspesifisert",
+       "code": "C319"
+      },
+      {
+       "category": "Ondartet svulst i strupe",
+       "code": "C32"
+      },
+      {
+       "category": "Ondartet svulst glottis",
+       "code": "C320"
+      },
+      {
+       "category": "Ondartet svulst supraglottis",
+       "code": "C321"
+      },
+      {
+       "category": "Ondartet svulst subglottis",
+       "code": "C322"
+      },
+      {
+       "category": "Ondartet svulst strupebrusk",
+       "code": "C323"
+      },
+      {
+       "category": "Overlappende svulst i strupe",
+       "code": "C328"
+      },
+      {
+       "category": "Ondartet svulst strupe, uspesifisert",
+       "code": "C329"
+      },
+      {
+       "category": "Ondartet svulst i luftrør",
+       "code": "C33"
+      },
+      {
+       "category": "Ondartet svulst i luftrør",
+       "code": "C339"
+      },
+      {
+       "category": "Ondartet svulst i bronkie og lunge",
+       "code": "C34"
+      },
+      {
+       "category": "Ondartet svulst hovedbronkie",
+       "code": "C340"
+      },
+      {
+       "category": "Ondartet svulst overlapp, bronkie eller lunge",
+       "code": "C341"
+      },
+      {
+       "category": "Ondartet svulst midtlapp, bronkie eller lunge",
+       "code": "C342"
+      },
+      {
+       "category": "Ondartet svulst underlapp, bronkie eller lunge",
+       "code": "C343"
+      },
+      {
+       "category": "Overlappende svulst i bronkie eller lunge",
+       "code": "C348"
+      },
+      {
+       "category": "Ondartet svulst bronkie eller lunge, uspesifisert",
+       "code": "C349"
+      },
+      {
+       "category": "Ondartet svulst i thymus",
+       "code": "C37"
+      },
+      {
+       "category": "Ondartet svulst i thymus",
+       "code": "C379"
+      },
+      {
+       "category": "Ondartet svulst i hjerte, mediastinum og brysthinne",
+       "code": "C38"
+      },
+      {
+       "category": "Ondartet svulst hjerte",
+       "code": "C380"
+      },
+      {
+       "category": "Ondartet svulst fremre mediastinum",
+       "code": "C381"
+      },
+      {
+       "category": "Ondartet svulst bakre mediastinum",
+       "code": "C382"
+      },
+      {
+       "category": "Ondartet svulst mediastinum, uspesifisert",
+       "code": "C383"
+      },
+      {
+       "category": "Ondartet svulst brysthinne",
+       "code": "C384"
+      },
+      {
+       "category": "Overlappende svulst i hjerte, mediastinum og brysthinne",
+       "code": "C388"
+      },
+      {
+       "category": "Ondartet svulst med annen og ufullstendig angitt lokalisasjon i åndedrettsorganer og intratorakale organer",
+       "code": "C39"
+      },
+      {
+       "category": "Ondartet svulst øvre luftveier, uspesifisert",
+       "code": "C390"
+      },
+      {
+       "category": "Overlappende svulst i åndedrettsorganer og intratorakale organer",
+       "code": "C398"
+      },
+      {
+       "category": "Ondartet svulst ufullstendig angitte lokalisasjoner i åndedrettsorganer",
+       "code": "C399"
+      },
+      {
+       "category": "Ondartet svulst i knokler og leddbrusk i ekstremiteter",
+       "code": "C40"
+      },
+      {
+       "category": "Ondartet svulst skulderblad og lange knokler i overekstremitet",
+       "code": "C400"
+      },
+      {
+       "category": "Ondartet svulst korte knokler i overekstremitet",
+       "code": "C401"
+      },
+      {
+       "category": "Ondartet svulst lange knokler i underekstremitet",
+       "code": "C402"
+      },
+      {
+       "category": "Ondartet svulst korte knokler i underekstremitet",
+       "code": "C403"
+      },
+      {
+       "category": "Overlappende svulst i knokler og leddbrusk i ekstremiteter",
+       "code": "C408"
+      },
+      {
+       "category": "Ondartet svulst knokler og leddbrusk i ekstremiteter, uspesifisert",
+       "code": "C409"
+      },
+      {
+       "category": "Ondartet svulst i knokler og leddbrusk med annen og uspesifisert lokalisasjon",
+       "code": "C41"
+      },
+      {
+       "category": "Ondartet svulst knokler i skalle og ansikt",
+       "code": "C410"
+      },
+      {
+       "category": "Ondartet svulst underkjeve",
+       "code": "C411"
+      },
+      {
+       "category": "Ondartet svulst ryggsøyle",
+       "code": "C412"
+      },
+      {
+       "category": "Ondartet svulst ribben, brystben og krageben",
+       "code": "C413"
+      },
+      {
+       "category": "Ondartet svulst bekkenben , korsben og haleben",
+       "code": "C414"
+      },
+      {
+       "category": "Overlappende svulst i knokler og leddbrusk",
+       "code": "C418"
+      },
+      {
+       "category": "Ondartet svulst knokler og leddbrusk, uspesifisert",
+       "code": "C419"
+      },
+      {
+       "category": "Malignt melanom i hud",
+       "code": "C43"
+      },
+      {
+       "category": "Malignt melanom på leppe",
+       "code": "C430"
+      },
+      {
+       "category": "Malignt melanom på øyelokk, inklusive øyevinkel",
+       "code": "C431"
+      },
+      {
+       "category": "Malignt melanom på øre og i ytre øregang",
+       "code": "C432"
+      },
+      {
+       "category": "Malignt melanom i andre og uspesifiserte deler av ansikt",
+       "code": "C433"
+      },
+      {
+       "category": "Malignt melanom i hodebunn og på hals",
+       "code": "C434"
+      },
+      {
+       "category": "Malignt melanom på trunkus",
+       "code": "C435"
+      },
+      {
+       "category": "Malignt melanom på overekstremitet, inklusive skulder",
+       "code": "C436"
+      },
+      {
+       "category": "Malignt melanom på underekstremitet, inklusive hofte",
+       "code": "C437"
+      },
+      {
+       "category": "Overlappende malignt melanom i hud",
+       "code": "C438"
+      },
+      {
+       "category": "Malignt melanom i hud, uspesifisert",
+       "code": "C439"
+      },
+      {
+       "category": "Andre ondartede svulster i hud",
+       "code": "C44"
+      },
+      {
+       "category": "Ondartet svulst hud på leppe",
+       "code": "C440"
+      },
+      {
+       "category": "Ondartet svulst hud på øyelokk, inklusive øyevinkel",
+       "code": "C441"
+      },
+      {
+       "category": "Ondartet svulst hud på øre og i ytre øregang",
+       "code": "C442"
+      },
+      {
+       "category": "Ondartet svulst hud i andre og uspesifiserte deler av ansikt",
+       "code": "C443"
+      },
+      {
+       "category": "Ondartet svulst hud i hodebunn og på hals",
+       "code": "C444"
+      },
+      {
+       "category": "Ondartet svulst hud på trunkus",
+       "code": "C445"
+      },
+      {
+       "category": "Ondartet svulst hud på overekstremitet, inklusive skulder",
+       "code": "C446"
+      },
+      {
+       "category": "Ondartet svulst hud på underekstremitet, inklusive hofte",
+       "code": "C447"
+      },
+      {
+       "category": "Ondartet svulst overlappende svulst i hud",
+       "code": "C448"
+      },
+      {
+       "category": "Ondartet svulst ondartet svulst i hud, uspesifisert",
+       "code": "C449"
+      },
+      {
+       "category": "Mesoteliom",
+       "code": "C45"
+      },
+      {
+       "category": "Mesoteliom i brysthinne",
+       "code": "C450"
+      },
+      {
+       "category": "Mesoteliom i bukhinne",
+       "code": "C451"
+      },
+      {
+       "category": "Mesoteliom i perikard",
+       "code": "C452"
+      },
+      {
+       "category": "Mesoteliom med andre spesifiserte utgangspunkter",
+       "code": "C457"
+      },
+      {
+       "category": "Mesoteliom, uspesifisert",
+       "code": "C459"
+      },
+      {
+       "category": "Kaposis sarkom",
+       "code": "C46"
+      },
+      {
+       "category": "Kaposis sarkom i hud",
+       "code": "C460"
+      },
+      {
+       "category": "Kaposis sarkom i bløtvev",
+       "code": "C461"
+      },
+      {
+       "category": "Kaposis sarkom i gane",
+       "code": "C462"
+      },
+      {
+       "category": "Kaposis sarkom i lymfeknuter",
+       "code": "C463"
+      },
+      {
+       "category": "Kaposis sarkom med andre spesifiserte utgangspunkter",
+       "code": "C467"
+      },
+      {
+       "category": "Kaposis sarkom i flere organer",
+       "code": "C468"
+      },
+      {
+       "category": "Kaposis sarkom, uspesifisert",
+       "code": "C469"
+      },
+      {
+       "category": "Ondartet svulst i perifere nerver og det autonome nervesystem",
+       "code": "C47"
+      },
+      {
+       "category": "Ondartet svulst perifere nerver i hode, ansikt og på hals",
+       "code": "C470"
+      },
+      {
+       "category": "Ondartet svulst perifere nerver i overekstremitet, inklusive skulder",
+       "code": "C471"
+      },
+      {
+       "category": "Ondartet svulst perifere nerver i underekstremitet, inklusive hofte",
+       "code": "C472"
+      },
+      {
+       "category": "Ondartet svulst perifere nerver i toraks",
+       "code": "C473"
+      },
+      {
+       "category": "Ondartet svulst perifere nerver i buken",
+       "code": "C474"
+      },
+      {
+       "category": "Ondartet svulst perifere nerver i bekken ",
+       "code": "C475"
+      },
+      {
+       "category": "Ondartet svulst perifere nerver i trunkus, uspesifisert",
+       "code": "C476"
+      },
+      {
+       "category": "Overlappende svulst i perifere nerver og det autonome nervesystem",
+       "code": "C478"
+      },
+      {
+       "category": "Ondartet svulst perifere nerver og det autonome nervesystem, uspesifisert",
+       "code": "C479"
+      },
+      {
+       "category": "Ondartet svulst i retroperitoneum og bukhinne",
+       "code": "C48"
+      },
+      {
+       "category": "Ondartet svulst retroperitoneum",
+       "code": "C480"
+      },
+      {
+       "category": "Ondartet svulst spesifiserte deler av bukhinne",
+       "code": "C481"
+      },
+      {
+       "category": "Ondartet svulst bukhinne, uspesifisert",
+       "code": "C482"
+      },
+      {
+       "category": "Overlappende svulst i retroperitoneum og bukhinne",
+       "code": "C488"
+      },
+      {
+       "category": "Ondartet svulst i annet bindevev og bløtvev",
+       "code": "C49"
+      },
+      {
+       "category": "Ondartet svulst bindevev og bløtvev i hode, ansikt og på hals",
+       "code": "C490"
+      },
+      {
+       "category": "Ondartet svulst bindevev og bløtvev i overekstremitet, inklusive skulder",
+       "code": "C491"
+      },
+      {
+       "category": "Ondartet svulst bindevev og bløtvev i underekstremitet, inklusive hofte",
+       "code": "C492"
+      },
+      {
+       "category": "Ondartet svulst bindevev og bløtvev i toraks",
+       "code": "C493"
+      },
+      {
+       "category": "Ondartet svulst bindevev og bløtvev i buken",
+       "code": "C494"
+      },
+      {
+       "category": "Ondartet svulst bindevev og bløtvev i bekken",
+       "code": "C495"
+      },
+      {
+       "category": "Ondartet svulst bindevev og bløtvev i trunkus, uspesifisert",
+       "code": "C496"
+      },
+      {
+       "category": "Overlappende svulst i bindevev og bløtvev",
+       "code": "C498"
+      },
+      {
+       "category": "Ondartet svulst bindevev og bløtvev, uspesifisert",
+       "code": "C499"
+      },
+      {
+       "category": "Ondartet svulst i bryst",
+       "code": "C50"
+      },
+      {
+       "category": "Ondartet svulst brystvorte og areola mammae ",
+       "code": "C500"
+      },
+      {
+       "category": "Ondartet svulst sentral del av bryst",
+       "code": "C501"
+      },
+      {
+       "category": "Ondartet svulst øvre indre kvadrant av bryst",
+       "code": "C502"
+      },
+      {
+       "category": "Ondartet svulst nedre indre kvadrant av bryst",
+       "code": "C503"
+      },
+      {
+       "category": "Ondartet svulst øvre ytre kvadrant av bryst",
+       "code": "C504"
+      },
+      {
+       "category": "Ondartet svulst nedre ytre kvadrant av bryst",
+       "code": "C505"
+      },
+      {
+       "category": "Ondartet svulst aksillær del av bryst",
+       "code": "C506"
+      },
+      {
+       "category": "Overlappende svulst i bryst",
+       "code": "C508"
+      },
+      {
+       "category": "Ondartet svulst bryst, uspesifisert",
+       "code": "C509"
+      },
+      {
+       "category": "Ondartet svulst i ytre kvinnelige kjønnsorganer",
+       "code": "C51"
+      },
+      {
+       "category": "Ondartet svulst stor kjønnsleppe",
+       "code": "C510"
+      },
+      {
+       "category": "Ondartet svulst liten kjønnsleppe",
+       "code": "C511"
+      },
+      {
+       "category": "Ondartet svulst klitoris",
+       "code": "C512"
+      },
+      {
+       "category": "Overlappende svulst i ytre kvinnelige kjønnsorganer",
+       "code": "C518"
+      },
+      {
+       "category": "Ondartet svulst ytre kvinnelige kjønnsorganer, uspesifisert",
+       "code": "C519"
+      },
+      {
+       "category": "Ondartet svulst i skjede",
+       "code": "C52"
+      },
+      {
+       "category": "Ondartet svulst i skjede",
+       "code": "C529"
+      },
+      {
+       "category": "Ondartet svulst i livmorhals",
+       "code": "C53"
+      },
+      {
+       "category": "Ondartet svulst endocervix",
+       "code": "C530"
+      },
+      {
+       "category": "Ondartet svulst ectocervix",
+       "code": "C531"
+      },
+      {
+       "category": "Overlappende svulst i livmorhals",
+       "code": "C538"
+      },
+      {
+       "category": "Ondartet svulst livmorhals, uspesifisert",
+       "code": "C539"
+      },
+      {
+       "category": "Ondartet svulst i livmorlegeme",
+       "code": "C54"
+      },
+      {
+       "category": "Ondartet svulst isthmus uteri",
+       "code": "C540"
+      },
+      {
+       "category": "Ondartet svulst livmorslimhinne",
+       "code": "C541"
+      },
+      {
+       "category": "Ondartet svulst muskulatur i livmorvegg",
+       "code": "C542"
+      },
+      {
+       "category": "Ondartet svulst fundus uteri",
+       "code": "C543"
+      },
+      {
+       "category": "Overlappende svulst i livmorlegeme",
+       "code": "C548"
+      },
+      {
+       "category": "Ondartet svulst livmorlegeme, uspesifisert",
+       "code": "C549"
+      },
+      {
+       "category": "Ondartet svulst livmor, uspesifisert del",
+       "code": "C55"
+      },
+      {
+       "category": "Ondartet svulst livmor, uspesifisert del",
+       "code": "C559"
+      },
+      {
+       "category": "Ondartet svulst eggstokk",
+       "code": "C56"
+      },
+      {
+       "category": "Ondartet svulst eggstokk",
+       "code": "C569"
+      },
+      {
+       "category": "Ondartet svulst i andre og uspesifiserte kvinnelige kjønnsorganer",
+       "code": "C57"
+      },
+      {
+       "category": "Ondartet svulst eggleder ",
+       "code": "C570"
+      },
+      {
+       "category": "Ondartet svulst ligamentum latum uteri",
+       "code": "C571"
+      },
+      {
+       "category": "Ondartet svulst ligamentum rotundum uteri",
+       "code": "C572"
+      },
+      {
+       "category": "Ondartet svulst parametrium",
+       "code": "C573"
+      },
+      {
+       "category": "Ondartet svulst adnexa uteri, uspesifisert",
+       "code": "C574"
+      },
+      {
+       "category": "Ondartet svulst andre spesifiserte kvinnelige kjønnsorganer",
+       "code": "C577"
+      },
+      {
+       "category": "Overlappende svulst i kvinnelige kjønnsorganer",
+       "code": "C578"
+      },
+      {
+       "category": "Ondartet svulst kvinnelige kjønnsorganer, uspesifisert",
+       "code": "C579"
+      },
+      {
+       "category": "Ondartet svulst i morkake",
+       "code": "C58"
+      },
+      {
+       "category": "Ondartet svulst i morkake",
+       "code": "C589"
+      },
+      {
+       "category": "Ondartet svulst i penis",
+       "code": "C60"
+      },
+      {
+       "category": "Ondartet svulst forhud",
+       "code": "C600"
+      },
+      {
+       "category": "Ondartet svulst penishode ",
+       "code": "C601"
+      },
+      {
+       "category": "Ondartet svulst penisskaft",
+       "code": "C602"
+      },
+      {
+       "category": "Overlappende svulst i penis",
+       "code": "C608"
+      },
+      {
+       "category": "Ondartet svulst penis, uspesifisert",
+       "code": "C609"
+      },
+      {
+       "category": "Ondartet svulst i blærehalskjertel",
+       "code": "C61"
+      },
+      {
+       "category": "Ondartet svulst i blærehalskjertel",
+       "code": "C619"
+      },
+      {
+       "category": "Ondartet svulst i testikkel",
+       "code": "C62"
+      },
+      {
+       "category": "Ondartet svulst ikke-descendert testikkel",
+       "code": "C620"
+      },
+      {
+       "category": "Ondartet svulst descendert testikkel",
+       "code": "C621"
+      },
+      {
+       "category": "Ondartet svulst testikkel, uspesifisert",
+       "code": "C629"
+      },
+      {
+       "category": "Ondartet svulst i andre og uspesifiserte mannlige kjønnsorganer",
+       "code": "C63"
+      },
+      {
+       "category": "Ondartet svulst bitestikkel ",
+       "code": "C630"
+      },
+      {
+       "category": "Ondartet svulst sædleder ",
+       "code": "C631"
+      },
+      {
+       "category": "Ondartet svulst pung",
+       "code": "C632"
+      },
+      {
+       "category": "Ondartet svulst andre spesifiserte mannlige kjønnsorganer",
+       "code": "C637"
+      },
+      {
+       "category": "Overlappende svulst i mannlige kjønnsorganer",
+       "code": "C638"
+      },
+      {
+       "category": "Ondartet svulst mannlig kjønnsorgan, uspesifisert",
+       "code": "C639"
+      },
+      {
+       "category": "Ondartet svulst i nyre, unntatt nyrebekken",
+       "code": "C64"
+      },
+      {
+       "category": "Ondartet svulst i nyre, unntatt nyrebekken",
+       "code": "C649"
+      },
+      {
+       "category": "Ondartet svulst i nyrebekken",
+       "code": "C65"
+      },
+      {
+       "category": "Ondartet svulst i nyrebekken",
+       "code": "C659"
+      },
+      {
+       "category": "Ondartet svulst i urinleder",
+       "code": "C66"
+      },
+      {
+       "category": "Ondartet svulst i urinleder",
+       "code": "C669"
+      },
+      {
+       "category": "Ondartet svulst i urinblære",
+       "code": "C67"
+      },
+      {
+       "category": "Ondartet svulst blæretrekant",
+       "code": "C670"
+      },
+      {
+       "category": "Ondartet svulst blæretak",
+       "code": "C671"
+      },
+      {
+       "category": "Ondartet svulst sidevegg i urinblære",
+       "code": "C672"
+      },
+      {
+       "category": "Ondartet svulst fremre vegg i urinblære",
+       "code": "C673"
+      },
+      {
+       "category": "Ondartet svulst bakre vegg i urinblære",
+       "code": "C674"
+      },
+      {
+       "category": "Ondartet svulst blærehals",
+       "code": "C675"
+      },
+      {
+       "category": "Ondartet svulst urinlederåpning",
+       "code": "C676"
+      },
+      {
+       "category": "Ondartet svulst urachus",
+       "code": "C677"
+      },
+      {
+       "category": "Overlappende svulst i urinblære",
+       "code": "C678"
+      },
+      {
+       "category": "Ondartet svulst urinblære, uspesifisert",
+       "code": "C679"
+      },
+      {
+       "category": "Ondartet svulst i andre og uspesifiserte urinveisorganer",
+       "code": "C68"
+      },
+      {
+       "category": "Ondartet svulst urinrør ",
+       "code": "C680"
+      },
+      {
+       "category": "Ondartet svulst parauretral kjertel",
+       "code": "C681"
+      },
+      {
+       "category": "Overlappende svulst i urinveisorganer",
+       "code": "C688"
+      },
+      {
+       "category": "Ondartet svulst urinveisorgan, uspesifisert",
+       "code": "C689"
+      },
+      {
+       "category": "Ondartet svulst i øyet og øyets adneksstrukturer",
+       "code": "C69"
+      },
+      {
+       "category": "Ondartet svulst conjunctiva",
+       "code": "C690"
+      },
+      {
+       "category": "Ondartet svulst hornhinne",
+       "code": "C691"
+      },
+      {
+       "category": "Ondartet svulst netthinne",
+       "code": "C692"
+      },
+      {
+       "category": "Ondartet svulst årehinne",
+       "code": "C693"
+      },
+      {
+       "category": "Ondartet svulst strålelegeme",
+       "code": "C694"
+      },
+      {
+       "category": "Ondartet svulst tårekjertel og tårekanal",
+       "code": "C695"
+      },
+      {
+       "category": "Ondartet svulst øyehule",
+       "code": "C696"
+      },
+      {
+       "category": "Overlappende svulst i øyet og øyets adneksstrukturer",
+       "code": "C698"
+      },
+      {
+       "category": "Ondartet svulst øye, uspesifisert",
+       "code": "C699"
+      },
+      {
+       "category": "Ondartet svulst i sentralnervesystemets hinner",
+       "code": "C70"
+      },
+      {
+       "category": "Ondartet svulst hjernehinner",
+       "code": "C700"
+      },
+      {
+       "category": "Ondartet svulst ryggmargshinner",
+       "code": "C701"
+      },
+      {
+       "category": "Ondartet svulst hjerne- og ryggmargshinner, uspesifisert",
+       "code": "C709"
+      },
+      {
+       "category": "Ondartet svulst i hjerne",
+       "code": "C71"
+      },
+      {
+       "category": "Ondartet svulst storehjerne, unntatt lapper og ventrikler",
+       "code": "C710"
+      },
+      {
+       "category": "Ondartet svulst pannelapp",
+       "code": "C711"
+      },
+      {
+       "category": "Ondartet svulst tinninglapp",
+       "code": "C712"
+      },
+      {
+       "category": "Ondartet svulst isselapp ",
+       "code": "C713"
+      },
+      {
+       "category": "Ondartet svulst bakhodelapp",
+       "code": "C714"
+      },
+      {
+       "category": "Ondartet svulst hjerneventrikkel",
+       "code": "C715"
+      },
+      {
+       "category": "Ondartet svulst lillehjerne",
+       "code": "C716"
+      },
+      {
+       "category": "Ondartet svulst hjernestamme",
+       "code": "C717"
+      },
+      {
+       "category": "Overlappende svulst i hjerne",
+       "code": "C718"
+      },
+      {
+       "category": "Ondartet svulst hjerne, uspesifisert",
+       "code": "C719"
+      },
+      {
+       "category": "Ondartet svulst i ryggmarg, hjernenerver og andre deler av sentralnervesystemet",
+       "code": "C72"
+      },
+      {
+       "category": "Ondartet svulst ryggmarg ",
+       "code": "C720"
+      },
+      {
+       "category": "Ondartet svulst cauda equina",
+       "code": "C721"
+      },
+      {
+       "category": "Ondartet svulst nervus olfactorius[1. hjernenerve]",
+       "code": "C722"
+      },
+      {
+       "category": "Ondartet svulst nervus opticus[2. hjernenerve]",
+       "code": "C723"
+      },
+      {
+       "category": "Ondartet svulst nervus vestibulocochlearis[8. hjernenerve]",
+       "code": "C724"
+      },
+      {
+       "category": "Ondartet svulst andre og uspesifiserte hjernenerver",
+       "code": "C725"
+      },
+      {
+       "category": "Overlappende svulst i hjerne og andre deler av sentralnervesystemet",
+       "code": "C728"
+      },
+      {
+       "category": "Ondartet svulst sentralnervesystemet, uspesifisert",
+       "code": "C729"
+      },
+      {
+       "category": "Ondartet svulst i skjoldbruskkjertel",
+       "code": "C73"
+      },
+      {
+       "category": "Ondartet svulst i skjoldbruskkjertel",
+       "code": "C739"
+      },
+      {
+       "category": "Ondartet svulst i binyre",
+       "code": "C74"
+      },
+      {
+       "category": "Ondartet svulst binyrebark",
+       "code": "C740"
+      },
+      {
+       "category": "Ondartet svulst binyremarg",
+       "code": "C741"
+      },
+      {
+       "category": "Ondartet svulst binyre, uspesifisert",
+       "code": "C749"
+      },
+      {
+       "category": "Ondartet svulst i andre endokrine kjertler og beslektede strukturer",
+       "code": "C75"
+      },
+      {
+       "category": "Ondartet svulst biskjoldbruskkjertel",
+       "code": "C750"
+      },
+      {
+       "category": "Ondartet svulst hypofyse",
+       "code": "C751"
+      },
+      {
+       "category": "Ondartet svulst ductus craniopharyngealis",
+       "code": "C752"
+      },
+      {
+       "category": "Ondartet svulst corpus pineale",
+       "code": "C753"
+      },
+      {
+       "category": "Ondartet svulst glomus caroticum",
+       "code": "C754"
+      },
+      {
+       "category": "Ondartet svulst aortalegeme og andre paraganglier",
+       "code": "C755"
+      },
+      {
+       "category": "Ondartet svulst affeksjon av multiple endokrine kjertler, uspesifisert",
+       "code": "C758"
+      },
+      {
+       "category": "Ondartet svulst endokrin kjertel, uspesifisert",
+       "code": "C759"
+      },
+      {
+       "category": "Ondartet svulst med annet og ufullstendig angitt utgangspunkt",
+       "code": "C76"
+      },
+      {
+       "category": "Ondartet svulst hode, ansikt og hals",
+       "code": "C760"
+      },
+      {
+       "category": "Ondartet svulst toraks",
+       "code": "C761"
+      },
+      {
+       "category": "Ondartet svulst buken",
+       "code": "C762"
+      },
+      {
+       "category": "Ondartet svulst bekken",
+       "code": "C763"
+      },
+      {
+       "category": "Ondartet svulst overekstremitet",
+       "code": "C764"
+      },
+      {
+       "category": "Ondartet svulst underekstremitet",
+       "code": "C765"
+      },
+      {
+       "category": "Ondartet svulst andre ufullstendig angitte utgangspunkter",
+       "code": "C767"
+      },
+      {
+       "category": "Overlappende svulst med annet og ufullstendig angitt utgangspunkt",
+       "code": "C768"
+      },
+      {
+       "category": "Metastase og uspesifisert ondartet svulst i lymfeknuter",
+       "code": "C77"
+      },
+      {
+       "category": "Metastase og uspesifisert ondartet svulst i lymfeknuter i hode, ansikt og på hals",
+       "code": "C770"
+      },
+      {
+       "category": "Metastase og uspesifisert ondartet svulst i intratorakale lymfeknuter",
+       "code": "C771"
+      },
+      {
+       "category": "Metastase og uspesifisert ondartet svulst i intratorakale lymfeknuter",
+       "code": "C772"
+      },
+      {
+       "category": "Metastase og uspesifisert ondartet svulst i lymfeknuter i aksille og overekstremitet",
+       "code": "C773"
+      },
+      {
+       "category": "Metastase og uspesifisert ondartet svulst i lymfeknuter i lyske og underekstremitet",
+       "code": "C774"
+      },
+      {
+       "category": "Metastase og uspesifisert ondartet svulst i lymfeknuter i bekken",
+       "code": "C775"
+      },
+      {
+       "category": "Metastase og uspesifisert ondartet svulst i lymfeknuter i flere kroppsregioner",
+       "code": "C778"
+      },
+      {
+       "category": "Metastase og uspesifisert ondartet svulst i lymfeknute, uspesifisert",
+       "code": "C779"
+      },
+      {
+       "category": "Metastase i åndedrettsorganer og fordøyelsesorganer",
+       "code": "C78"
+      },
+      {
+       "category": "Metastase i lunge",
+       "code": "C780"
+      },
+      {
+       "category": "Metastase i mediastinum",
+       "code": "C781"
+      },
+      {
+       "category": "Metastase i brysthinne",
+       "code": "C782"
+      },
+      {
+       "category": "Metastase i andre og uspesifiserte åndedrettsorganer",
+       "code": "C783"
+      },
+      {
+       "category": "Metastase i tynntarm",
+       "code": "C784"
+      },
+      {
+       "category": "Metastase i tykktarm, endetarm, analkanal og endetarmsåpning",
+       "code": "C785"
+      },
+      {
+       "category": "Metastase i retroperitoneum og bukhinne",
+       "code": "C786"
+      },
+      {
+       "category": "Metastase i lever og intrahepatiske galleganger",
+       "code": "C787"
+      },
+      {
+       "category": "Metastase i andre og uspesifiserte fordøyelsesorganer",
+       "code": "C788"
+      },
+      {
+       "category": "Metastase med annen og uspesifisert lokalisasjon",
+       "code": "C79"
+      },
+      {
+       "category": "Metastase i nyre og nyrebekken",
+       "code": "C790"
+      },
+      {
+       "category": "Metastase i urinblære og andre og uspesifiserte urinveier",
+       "code": "C791"
+      },
+      {
+       "category": "Metastase i hud",
+       "code": "C792"
+      },
+      {
+       "category": "Metastase i hjerne og hjernehinner",
+       "code": "C793"
+      },
+      {
+       "category": "Metastase i andre og uspesifiserte deler av nervesystemet",
+       "code": "C794"
+      },
+      {
+       "category": "Metastase i knokler og benmarg",
+       "code": "C795"
+      },
+      {
+       "category": "Metastase i eggstokk",
+       "code": "C796"
+      },
+      {
+       "category": "Metastase i binyre",
+       "code": "C797"
+      },
+      {
+       "category": "Metastase med annen spesifisert lokalisasjon",
+       "code": "C798"
+      },
+      {
+       "category": "Metastase med uspesifisert lokalisasjon",
+       "code": "C799"
+      },
+      {
+       "category": "Ondartet svulst uten spesifisert lokalisasjon",
+       "code": "C80"
+      },
+      {
+       "category": "Ondartet svulst med utgangspunkt angitt som ukjent",
+       "code": "C800"
+      },
+      {
+       "category": "Ondartet svulst med uspesifisert utgangspunkt",
+       "code": "C809"
+      },
+      {
+       "category": "Hodgkin lymfom",
+       "code": "C81"
+      },
+      {
+       "category": "Nodulært lymfocyttrikt Hodgkin lymfom",
+       "code": "C810"
+      },
+      {
+       "category": "(Klassisk) Hodgkin lymfom, nodulær sklerose",
+       "code": "C811"
+      },
+      {
+       "category": "(Klassisk) Hodgkin lymfom, blandingstype",
+       "code": "C812"
+      },
+      {
+       "category": "Lymfocyttfattig (klassisk) Hodgkin lymfom",
+       "code": "C813"
+      },
+      {
+       "category": "(Klassisk) Hodgkin lymfom, lymfocyttrikt",
+       "code": "C814"
+      },
+      {
+       "category": "Andre typer av (klassisk) Hodgkin lymfom",
+       "code": "C817"
+      },
+      {
+       "category": "Uspesifisert Hodgkin lymfom",
+       "code": "C819"
+      },
+      {
+       "category": "Follikulært lymfom",
+       "code": "C82"
+      },
+      {
+       "category": "Follikulært lymfom grad 1",
+       "code": "C820"
+      },
+      {
+       "category": "Follikulært lymfom grad 2",
+       "code": "C821"
+      },
+      {
+       "category": "Follikulært lymfom grad 3, uspesifisert",
+       "code": "C822"
+      },
+      {
+       "category": "Follikulært lymfom grad 3a",
+       "code": "C823"
+      },
+      {
+       "category": "Follikulært lymfom grad 3b",
+       "code": "C824"
+      },
+      {
+       "category": "Diffust follikkelsenterlymfom",
+       "code": "C825"
+      },
+      {
+       "category": "Kutant follikkelsenterlymfom",
+       "code": "C826"
+      },
+      {
+       "category": "Andre typer av follikulært lymfom",
+       "code": "C827"
+      },
+      {
+       "category": "Uspesifisert follikulært lymfom",
+       "code": "C829"
+      },
+      {
+       "category": "Ikke-follikulært lymfom",
+       "code": "C83"
+      },
+      {
+       "category": "Småcellet B-cellelymfom",
+       "code": "C830"
+      },
+      {
+       "category": "Mantelcellelymfom",
+       "code": "C831"
+      },
+      {
+       "category": "Diffust storcellet B-celle lymfom (DLBCL)",
+       "code": "C833"
+      },
+      {
+       "category": "Lymfoblastisk (diffust) lymfom",
+       "code": "C835"
+      },
+      {
+       "category": "Burkitt lymfom",
+       "code": "C837"
+      },
+      {
+       "category": "Andre typer ikke-follikulært lymfom",
+       "code": "C838"
+      },
+      {
+       "category": "Ikke-follikulært (diffust) lymfom, uspesifisert",
+       "code": "C839"
+      },
+      {
+       "category": "Modne T/NK-cellelymfomer",
+       "code": "C84"
+      },
+      {
+       "category": "Mycosis fungoides",
+       "code": "C840"
+      },
+      {
+       "category": "Sézary syndrom",
+       "code": "C841"
+      },
+      {
+       "category": "Perifert T-cellelymfom, ikke klassifisert annet sted",
+       "code": "C844"
+      },
+      {
+       "category": "Andre modne T/NK-cellelymfomer",
+       "code": "C845"
+      },
+      {
+       "category": "Anaplastisk storcellet ALK-positivt lymfom",
+       "code": "C846"
+      },
+      {
+       "category": "Anaplastisk storcellet ALK-negativt lymfom",
+       "code": "C847"
+      },
+      {
+       "category": "Uspesifisert kutant T-cellelymfom",
+       "code": "C848"
+      },
+      {
+       "category": "Uspesifisert modent T/NK-cellelymfom",
+       "code": "C849"
+      },
+      {
+       "category": "Andre og uspesifiserte typer av non-Hodgkin lymfom",
+       "code": "C85"
+      },
+      {
+       "category": "B-cellelymfom, uspesifisert",
+       "code": "C851"
+      },
+      {
+       "category": "Mediastinalt (thymisk) storcellet B-cellelymfom",
+       "code": "C852"
+      },
+      {
+       "category": "Andre spesifiserte typer non-Hodgkin lymfomer",
+       "code": "C857"
+      },
+      {
+       "category": "Non-Hodgkin lymfom, uspesifisert",
+       "code": "C859"
+      },
+      {
+       "category": "Andre spesifiserte typer T/NK-cellelymfomer",
+       "code": "C86"
+      },
+      {
+       "category": "Ekstranodalt NK/T nasal type T-cellelymfom",
+       "code": "C860"
+      },
+      {
+       "category": "Hepatosplenisk T-celle lymfom",
+       "code": "C861"
+      },
+      {
+       "category": "Enteropati-type (intestinalt) T-cellelymfom",
+       "code": "C862"
+      },
+      {
+       "category": "Subkutant pannikulitt-liknende T-cellelymfom",
+       "code": "C863"
+      },
+      {
+       "category": "Blastisk NK-cellelymfom",
+       "code": "C864"
+      },
+      {
+       "category": "Angioimmunoblastisk T-cellelymfom",
+       "code": "C865"
+      },
+      {
+       "category": "Primære kutane CD30-positive T-celleproliferasjoner",
+       "code": "C866"
+      },
+      {
+       "category": "Ondartede immunoproliferative sykdommer",
+       "code": "C88"
+      },
+      {
+       "category": "Waldenströms makroglobulinemi",
+       "code": "C880"
+      },
+      {
+       "category": "Annen sykdom med tunge kjeder",
+       "code": "C882"
+      },
+      {
+       "category": "Immunoproliferativ tynntarmssykdom",
+       "code": "C883"
+      },
+      {
+       "category": "Ekstranodalt marginalsone B-cellelymfom i mukosaassosiert lymfoid vev (MALT-lymfom)",
+       "code": "C884"
+      },
+      {
+       "category": "Andre ondartede immunoproliferative sykdommer",
+       "code": "C887"
+      },
+      {
+       "category": "Ondartet immunoproliferativ sykdom, uspesifisert",
+       "code": "C889"
+      },
+      {
+       "category": "Myelomatose og ondartede plasmacellesykdommer",
+       "code": "C90"
+      },
+      {
+       "category": "Myelomatose",
+       "code": "C900"
+      },
+      {
+       "category": "Plasmacelleleukemi",
+       "code": "C901"
+      },
+      {
+       "category": "Ekstramedullært plasmocytom",
+       "code": "C902"
+      },
+      {
+       "category": "Solitært plasmocytom",
+       "code": "C903"
+      },
+      {
+       "category": "Lymfatisk leukemi",
+       "code": "C91"
+      },
+      {
+       "category": "Akutt lymfatisk leukemi(ALL)",
+       "code": "C910"
+      },
+      {
+       "category": "Kronisk lymfatisk leukem",
+       "code": "C911"
+      },
+      {
+       "category": "Prolymfocyttleukemi av B-celletype",
+       "code": "C913"
+      },
+      {
+       "category": "Hårcelleleukemi",
+       "code": "C914"
+      },
+      {
+       "category": "Adult T-celleleukemi/lymfom [HTLV-1-assosiert]",
+       "code": "C915"
+      },
+      {
+       "category": "Prolymfocyttleukemi av T-celletype",
+       "code": "C916"
+      },
+      {
+       "category": "Andre lymfatiske leukemier",
+       "code": "C917"
+      },
+      {
+       "category": "Burkitt leukemi (moden B-celle ALL)",
+       "code": "C918"
+      },
+      {
+       "category": "Lymfatisk leukemi, uspesifisert",
+       "code": "C919"
+      },
+      {
+       "category": "Myelogen leukemi",
+       "code": "C92"
+      },
+      {
+       "category": "Akutt myelogen leukemi [AML]",
+       "code": "C920"
+      },
+      {
+       "category": "Kronisk myelogen leukemi [KML], BCR/ABL-positiv",
+       "code": "C921"
+      },
+      {
+       "category": "Atypisk kronisk myelogen leukemi, BCR/ABL-negativ",
+       "code": "C922"
+      },
+      {
+       "category": "Myeloid sarkom",
+       "code": "C923"
+      },
+      {
+       "category": "Akutt promyelocyttleukemi [PML]",
+       "code": "C924"
+      },
+      {
+       "category": "Akutt myelomonocyttleukemi",
+       "code": "C925"
+      },
+      {
+       "category": "Akutt myelogen leukemi med 11q23-aberrasjon",
+       "code": "C926"
+      },
+      {
+       "category": "Andre myelogene leukemier",
+       "code": "C927"
+      },
+      {
+       "category": "Akutt myelogen leukemi med multilineær dysplasi",
+       "code": "C928"
+      },
+      {
+       "category": "Myelogen leukemi, uspesifisert",
+       "code": "C929"
+      },
+      {
+       "category": "Monocyttleukemi",
+       "code": "C93"
+      },
+      {
+       "category": "Akutt monoblast/monocyttleukemi",
+       "code": "C930"
+      },
+      {
+       "category": "Kronisk myelomonocyttleukemi",
+       "code": "C931"
+      },
+      {
+       "category": "Juvenil myelomonocyttleukemi",
+       "code": "C933"
+      },
+      {
+       "category": "Andre monocyttleukemier",
+       "code": "C937"
+      },
+      {
+       "category": "Monocyttleukemi, uspesifisert",
+       "code": "C939"
+      },
+      {
+       "category": "Andre leukemier med spesifisert celletype",
+       "code": "C94"
+      },
+      {
+       "category": "Akutt erytroid leukemi",
+       "code": "C940"
+      },
+      {
+       "category": "Akutt megakaryoblastleukemi",
+       "code": "C942"
+      },
+      {
+       "category": "Mastcelleleukemi",
+       "code": "C943"
+      },
+      {
+       "category": "Akutt panmyelose med myelofibrose",
+       "code": "C944"
+      },
+      {
+       "category": "Myelodysplastisk og myeloproliferativ sykdom, ikke klassifiserbar",
+       "code": "C946"
+      },
+      {
+       "category": "Andre spesifiserte leukemier",
+       "code": "C947"
+      },
+      {
+       "category": "Leukemier med uspesifisert celletype",
+       "code": "C95"
+      },
+      {
+       "category": "Akutt leukemi med uspesifisert celletype",
+       "code": "C950"
+      },
+      {
+       "category": "Kronisk leukemi med uspesifisert celletype",
+       "code": "C951"
+      },
+      {
+       "category": "Annen leukemi med uspesifisert celletype",
+       "code": "C957"
+      },
+      {
+       "category": "Leukemi, uspesifisert",
+       "code": "C959"
+      },
+      {
+       "category": "Andre og uspesifiserte ondartede svulster utgått fra lymfoid, hematopoetisk eller beslektet vev",
+       "code": "C96"
+      },
+      {
+       "category": "Multifokal og multisystemisk (disseminert) Langerhanscellehistiocytose [Letterer-Siwes sykdom]",
+       "code": "C960"
+      },
+      {
+       "category": "Malign mastcelletumor",
+       "code": "C962"
+      },
+      {
+       "category": "Sarkom med dendrittiske celler (aksessoriske celler)",
+       "code": "C964"
+      },
+      {
+       "category": "Multifokal og unisystemisk Langerhanscellehistiocytose",
+       "code": "C965"
+      },
+      {
+       "category": "Unifokal Langerhanscellehistiocytose",
+       "code": "C966"
+      },
+      {
+       "category": "Andre spesifiserte ondartede svulster utgått fra lymfoid, hematopoetisk eller beslektet vev",
+       "code": "C967"
+      },
+      {
+       "category": "Histiocytært sarkom",
+       "code": "C968"
+      },
+      {
+       "category": "Uspesifisert ondartet svulst utgått fra lymfoid, hematopoetisk eller beslektet vev",
+       "code": "C969"
+      },
+      {
+       "category": "Multiple primære ondartede svulster med forskjellige utgangspunkter",
+       "code": "C97"
+      },
+      {
+       "category": "Multiple primære ondartede svulster med forskjellige utgangspunkter",
+       "code": "C979"
+      },
+      {
+       "category": "Carcinoma in situ leppe, munnhule og svelg",
+       "code": "D000"
+      },
+      {
+       "category": "Carcinoma in situ spiserør",
+       "code": "D001"
+      },
+      {
+       "category": "Carcinoma in situ magesekk",
+       "code": "D002"
+      },
+      {
+       "category": "Carcinoma in situ tykktarm ",
+       "code": "D010"
+      },
+      {
+       "category": "Carcinoma in situ overgang mellom sigmoideum og endetarm",
+       "code": "D011"
+      },
+      {
+       "category": "Carcinoma in situ endetarm",
+       "code": "D012"
+      },
+      {
+       "category": "Carcinoma in situ endetarmsåpning og analkanal",
+       "code": "D013"
+      },
+      {
+       "category": "Carcinoma in situ andre og uspesifiserte deler av tarm",
+       "code": "D014"
+      },
+      {
+       "category": "Carcinoma in situ lever, galleblære og galleganger",
+       "code": "D015"
+      },
+      {
+       "category": "Carcinoma in situ andre spesifiserte fordøyelsesorganer",
+       "code": "D017"
+      },
+      {
+       "category": "Carcinoma in situ fordøyelsesorgan, uspesifisert",
+       "code": "D019"
+      },
+      {
+       "category": "Carcinoma in situ strupe",
+       "code": "D020"
+      },
+      {
+       "category": "Carcinoma in situ luftrør ",
+       "code": "D021"
+      },
+      {
+       "category": "Carcinoma in situ bronkie og lunge",
+       "code": "D022"
+      },
+      {
+       "category": "Carcinoma in situ andre spesifiserte åndedrettsorganer",
+       "code": "D023"
+      },
+      {
+       "category": "Carcinoma in situ åndedrettsorgan, uspesifisert",
+       "code": "D024"
+      },
+      {
+       "category": "Melanom in situ leppe ",
+       "code": "D030"
+      },
+      {
+       "category": "Melanom in situ øyelokk, inklusive øyevinkel",
+       "code": "D031"
+      },
+      {
+       "category": "Melanom in situ øre og ytre øregang",
+       "code": "D032"
+      },
+      {
+       "category": "Melanom in situ andre og uspesifiserte deler av ansikt",
+       "code": "D033"
+      },
+      {
+       "category": "Melanom in situ hodebunn og hals",
+       "code": "D034"
+      },
+      {
+       "category": "Melanom in situ trunkus",
+       "code": "D035"
+      },
+      {
+       "category": "Melanom in situ overekstremitet, inklusive skulder",
+       "code": "D036"
+      },
+      {
+       "category": "Melanom in situ underekstremitet, inklusive hofte",
+       "code": "D037"
+      },
+      {
+       "category": "Melanom in situ andre lokalisasjoner",
+       "code": "D038"
+      },
+      {
+       "category": "Melanoma in situ, uspesifisert",
+       "code": "D039"
+      },
+      {
+       "category": "Carcinoma in situ hud på leppe",
+       "code": "D040"
+      },
+      {
+       "category": "Carcinoma in situ hud på øyelokk, inklusive øyevinkel",
+       "code": "D041"
+      },
+      {
+       "category": "Carcinoma in situ hud på øre og i ytre øregang",
+       "code": "D042"
+      },
+      {
+       "category": "Carcinoma in situ hud i andre og uspesifiserte deler av ansikt",
+       "code": "D043"
+      },
+      {
+       "category": "Carcinoma in situ hud i hodebunn og på hals",
+       "code": "D044"
+      },
+      {
+       "category": "Carcinoma in situ hud på trunkus",
+       "code": "D045"
+      },
+      {
+       "category": "Carcinoma in situ hud på overekstremitet, inklusive skulder",
+       "code": "D046"
+      },
+      {
+       "category": "Carcinoma in situ hud på underekstremitet, inklusive hofte",
+       "code": "D047"
+      },
+      {
+       "category": "Carcinoma in situ hud med andre lokalisasjoner",
+       "code": "D048"
+      },
+      {
+       "category": "Carcinoma in situ hud, uspesifisert",
+       "code": "D049"
+      },
+      {
+       "category": "Lobulært carcinoma in situ",
+       "code": "D050"
+      },
+      {
+       "category": "Intraduktalt carcinoma in situ",
+       "code": "D051"
+      },
+      {
+       "category": "Annet spesifisert carcinoma in situ i bryst",
+       "code": "D057"
+      },
+      {
+       "category": "Carcinoma in situ i bryst, uspesifisert",
+       "code": "D059"
+      },
+      {
+       "category": "Carcinoma in situ i livmorhals",
+       "code": "D06"
+      },
+      {
+       "category": "Carcinoma in situ endocervix",
+       "code": "D060"
+      },
+      {
+       "category": "Carcinoma in situ ectocervix",
+       "code": "D061"
+      },
+      {
+       "category": "Carcinoma in situ andre spesifiserte deler av livmorhals",
+       "code": "D067"
+      },
+      {
+       "category": "Carcinoma in situ livmorhals, uspesifisert",
+       "code": "D069"
+      },
+      {
+       "category": "Carcinoma in situ livmorslimhinne",
+       "code": "D070"
+      },
+      {
+       "category": "Carcinoma in situ ytre kvinnelige kjønnsorganer ",
+       "code": "D071"
+      },
+      {
+       "category": "Carcinoma in situ skjede ",
+       "code": "D072"
+      },
+      {
+       "category": "Carcinoma in situ andre og uspesifiserte kvinnelige kjønnsorganer",
+       "code": "D073"
+      },
+      {
+       "category": "Carcinoma in situ penis",
+       "code": "D074"
+      },
+      {
+       "category": "Carcinoma in situ blærehalskjertel ",
+       "code": "D075"
+      },
+      {
+       "category": "Carcinoma in situ andre og uspesifiserte mannlige kjønnsorganer",
+       "code": "D076"
+      },
+      {
+       "category": "Carcinoma in situ urinblære",
+       "code": "D090"
+      },
+      {
+       "category": "Carcinoma in situ andre og uspesifiserte urinveisorganer",
+       "code": "D091"
+      },
+      {
+       "category": "Carcinoma in situ øye ",
+       "code": "D092"
+      },
+      {
+       "category": "Carcinoma in situ skjoldbruskkjertel og andre endokrine kjertler",
+       "code": "D093"
+      },
+      {
+       "category": "Carcinoma in situ andre spesifiserte lokalisasjoner",
+       "code": "D097"
+      },
+      {
+       "category": "Carcinoma in situ, uspesifisert",
+       "code": "D099"
+      },
+      {
+       "category": "Godartet svulst leppe",
+       "code": "D100"
+      },
+      {
+       "category": "Godartet svulst tunge",
+       "code": "D101"
+      },
+      {
+       "category": "Godartet svulst munngulv",
+       "code": "D102"
+      },
+      {
+       "category": "Godartet svulst andre og uspesifiserte deler av munn",
+       "code": "D103"
+      },
+      {
+       "category": "Godartet svulst mandel",
+       "code": "D104"
+      },
+      {
+       "category": "Godartet svulst andre deler av oropharynx",
+       "code": "D105"
+      },
+      {
+       "category": "Godartet svulst nasopharynx",
+       "code": "D106"
+      },
+      {
+       "category": "Godartet svulst hypopharynx",
+       "code": "D107"
+      },
+      {
+       "category": "Godartet svulst svelg, uspesifisert",
+       "code": "D109"
+      },
+      {
+       "category": "Godartet svulst ørespyttkjertel",
+       "code": "D110"
+      },
+      {
+       "category": "Godartet svulst andre store spyttkjertler",
+       "code": "D117"
+      },
+      {
+       "category": "Godartet svulst stor spyttkjertel, uspesifisert",
+       "code": "D119"
+      },
+      {
+       "category": "Godartet svulst blindtarm",
+       "code": "D120"
+      },
+      {
+       "category": "Godartet svulst blindtarmsvedheng",
+       "code": "D121"
+      },
+      {
+       "category": "Godartet svulst tykktarm, oppadstigende del ",
+       "code": "D122"
+      },
+      {
+       "category": "Godartet svulst tverrcolon",
+       "code": "D123"
+      },
+      {
+       "category": "Godartet svulst tykktarm, nedadstigende del",
+       "code": "D124"
+      },
+      {
+       "category": "Godartet svulst sigmoideum",
+       "code": "D125"
+      },
+      {
+       "category": "Godartet svulst tykktarm, uspesifisert",
+       "code": "D126"
+      },
+      {
+       "category": "Godartet svulst overgang mellom sigmoideum og endetarm",
+       "code": "D127"
+      },
+      {
+       "category": "Godartet svulst endetarm",
+       "code": "D128"
+      },
+      {
+       "category": "Godartet svulst endetarmsåpning og analkanal",
+       "code": "D129"
+      },
+      {
+       "category": "Godartet svulst spiserør",
+       "code": "D130"
+      },
+      {
+       "category": "Godartet svulst magesekk ",
+       "code": "D131"
+      },
+      {
+       "category": "Godartet svulst tolvfingertarm",
+       "code": "D132"
+      },
+      {
+       "category": "Godartet svulst andre og uspesifiserte deler av tynntarm",
+       "code": "D133"
+      },
+      {
+       "category": "Godartet svulst lever",
+       "code": "D134"
+      },
+      {
+       "category": "Godartet svulst ekstrahepatiske galleganger",
+       "code": "D135"
+      },
+      {
+       "category": "Godartet svulst bukspyttkjertel",
+       "code": "D136"
+      },
+      {
+       "category": "Godartet svulst endokrin bukspyttkjertel",
+       "code": "D137"
+      },
+      {
+       "category": "Godartet svulst ufullstendig angitte lokalisasjoner innen fordøyelsessystemet",
+       "code": "D139"
+      },
+      {
+       "category": "Godartet svulst mellomøre, nesehule og bihuler ",
+       "code": "D140"
+      },
+      {
+       "category": "Godartet svulst strupe",
+       "code": "D141"
+      },
+      {
+       "category": "Godartet svulst luftrør",
+       "code": "D142"
+      },
+      {
+       "category": "Godartet svulst bronkie og lunge",
+       "code": "D143"
+      },
+      {
+       "category": "Godartet svulst åndedrettsorgan, uspesifisert",
+       "code": "D144"
+      },
+      {
+       "category": "Godartet svulst thymus",
+       "code": "D150"
+      },
+      {
+       "category": "Godartet svulst hjerte",
+       "code": "D151"
+      },
+      {
+       "category": "Godartet svulst mediastinum",
+       "code": "D152"
+      },
+      {
+       "category": "Godartet svulst andre spesifiserte intratorakale organer",
+       "code": "D157"
+      },
+      {
+       "category": "Godartet svulst intratorakalt organ, uspesifisert",
+       "code": "D159"
+      },
+      {
+       "category": "Godartet svulst skulderblad og lange knokler i overekstremitet",
+       "code": "D160"
+      },
+      {
+       "category": "Godartet svulst korte knokler i overekstremitet",
+       "code": "D161"
+      },
+      {
+       "category": "Godartet svulst lange knokler i underekstremitet",
+       "code": "D162"
+      },
+      {
+       "category": "Godartet svulst korte knokler i underekstremitet",
+       "code": "D163"
+      },
+      {
+       "category": "Godartet svulst knokler i skalle og ansikt",
+       "code": "D164"
+      },
+      {
+       "category": "Godartet svulst underkjeve ",
+       "code": "D165"
+      },
+      {
+       "category": "Godartet svulst ryggsøyle ",
+       "code": "D166"
+      },
+      {
+       "category": "Godartet svulst ribben, brystben og krageben",
+       "code": "D167"
+      },
+      {
+       "category": "Godartet svulst bekkenben, korsben og haleben",
+       "code": "D168"
+      },
+      {
+       "category": "Godartet svulst knokler og leddbrusk, uspesifisert",
+       "code": "D169"
+      },
+      {
+       "category": "Lipom i hud og subkutant vev i hode, ansikt og på hals",
+       "code": "D170"
+      },
+      {
+       "category": "Lipom i hud og subkutant vev på trunkus",
+       "code": "D171"
+      },
+      {
+       "category": "Lipom i hud og subkutant vev på ekstremiteter",
+       "code": "D172"
+      },
+      {
+       "category": "Lipom i hud og subkutant vev med annen og uspesifisert lokalisasjon",
+       "code": "D173"
+      },
+      {
+       "category": "Lipom i intratorakale organer",
+       "code": "D174"
+      },
+      {
+       "category": "Lipom i intraabdominale organer",
+       "code": "D175"
+      },
+      {
+       "category": "Lipom i sædleder",
+       "code": "D176"
+      },
+      {
+       "category": "Lipom med annen spesifisert lokalisasjon",
+       "code": "D177"
+      },
+      {
+       "category": "Lipom, uspesifisert",
+       "code": "D179"
+      },
+      {
+       "category": "Hemangiom, alle lokalisasjoner",
+       "code": "D180"
+      },
+      {
+       "category": "Lymfangiom, alle lokalisasjoner",
+       "code": "D181"
+      },
+      {
+       "category": "Godartet svulst mesotel i brysthinne",
+       "code": "D190"
+      },
+      {
+       "category": "Godartet svulst mesotel i bukhinne",
+       "code": "D191"
+      },
+      {
+       "category": "Godartet svulst mesotel med andre spesifiserte lokalisasjoner",
+       "code": "D197"
+      },
+      {
+       "category": "Godartet svulst mesotel, uspesifisert",
+       "code": "D199"
+      },
+      {
+       "category": "Godartet svulst retroperitoneum",
+       "code": "D200"
+      },
+      {
+       "category": "Godartet svulst bukhinne ",
+       "code": "D201"
+      },
+      {
+       "category": "Godartet svulst bindevev og annet bløtvev i hode, ansikt og på hals",
+       "code": "D210"
+      },
+      {
+       "category": "Godartet svulst bindevev og annet bløtvev i overekstremitet, inklusive skulder",
+       "code": "D211"
+      },
+      {
+       "category": "Godartet svulst bindevev og annet bløtvev i underekstremitet, inklusive hofte",
+       "code": "D212"
+      },
+      {
+       "category": "Godartet svulst bindevev og annet bløtvev i toraks",
+       "code": "D213"
+      },
+      {
+       "category": "Godartet svulst bindevev og annet bløtvev i buken",
+       "code": "D214"
+      },
+      {
+       "category": "Godartet svulst bindevev og annet bløtvev i bekken",
+       "code": "D215"
+      },
+      {
+       "category": "Godartet svulst bindevev og annet bløtvev i trunkus, uspesifisert",
+       "code": "D216"
+      },
+      {
+       "category": "Godartet svulst bindevev og annet bløtvev, uspesifisert",
+       "code": "D219"
+      },
+      {
+       "category": "Melanocyttnevus på leppe",
+       "code": "D220"
+      },
+      {
+       "category": "Melanocyttnevus på øyelokk, inklusive øyevinkel",
+       "code": "D221"
+      },
+      {
+       "category": "Melanocyttnevus på øre og i ytre øregang",
+       "code": "D222"
+      },
+      {
+       "category": "Melanocyttnevus i andre og uspesifiserte deler av ansikt",
+       "code": "D223"
+      },
+      {
+       "category": "Melanocyttnevus i hodebunn og på hals",
+       "code": "D224"
+      },
+      {
+       "category": "Melanocyttnevus på trunkus",
+       "code": "D225"
+      },
+      {
+       "category": "Melanocyttnevus på overekstremitet, inklusive skulder",
+       "code": "D226"
+      },
+      {
+       "category": "Melanocyttnevus på underekstremitet, inklusive hofte",
+       "code": "D227"
+      },
+      {
+       "category": "Melanocyttnevus, uspesifisert",
+       "code": "D229"
+      },
+      {
+       "category": "Godartet svulst hud på leppe",
+       "code": "D230"
+      },
+      {
+       "category": "Godartet svulst hud på øyelokk, inklusive øyevinkel",
+       "code": "D231"
+      },
+      {
+       "category": "Godartet svulst hud på øre og i ytre øregang",
+       "code": "D232"
+      },
+      {
+       "category": "Godartet svulst hud i andre og uspesifiserte deler av ansikt",
+       "code": "D233"
+      },
+      {
+       "category": "Godartet svulst hud i hodebunn og på hals",
+       "code": "D234"
+      },
+      {
+       "category": "Godartet svulst hud på trunkus",
+       "code": "D235"
+      },
+      {
+       "category": "Godartet svulst hud på overekstremitet, inklusive skulder",
+       "code": "D236"
+      },
+      {
+       "category": "Godartet svulst hud på underekstremitet, inklusive hofte",
+       "code": "D237"
+      },
+      {
+       "category": "Godartet svulst hud, uspesifisert",
+       "code": "D239"
+      },
+      {
+       "category": "Godartet svulst i bryst",
+       "code": "D249"
+      },
+      {
+       "category": "Submukøst leiomyom i livmor",
+       "code": "D250"
+      },
+      {
+       "category": "Intramuralt leiomyom i livmor",
+       "code": "D251"
+      },
+      {
+       "category": "Subserøst leiomyom i livmor",
+       "code": "D252"
+      },
+      {
+       "category": "Leiomyom i livmor, uspesifisert",
+       "code": "D259"
+      },
+      {
+       "category": "Godartet svulst livmorhals",
+       "code": "D260"
+      },
+      {
+       "category": "Godartet svulst livmorlegeme",
+       "code": "D261"
+      },
+      {
+       "category": "Godartet svulst andre spesifiserte deler av livmor",
+       "code": "D267"
+      },
+      {
+       "category": "Godartet svulst livmor, uspesifisert",
+       "code": "D269"
+      },
+      {
+       "category": "Godartet svulst i eggstokk",
+       "code": "D279"
+      },
+      {
+       "category": "Godartet svulst ytre kvinnelige kjønnsorganer ",
+       "code": "D280"
+      },
+      {
+       "category": "Godartet svulst skjede ",
+       "code": "D281"
+      },
+      {
+       "category": "Godartet svulst eggleder og uterinligament",
+       "code": "D282"
+      },
+      {
+       "category": "Godartet svulst andre spesifiserte kvinnelige kjønnsorganer",
+       "code": "D287"
+      },
+      {
+       "category": "Godartet svulst kvinnelig kjønnsorgan, uspesifisert",
+       "code": "D289"
+      },
+      {
+       "category": "Godartet svulst penis",
+       "code": "D290"
+      },
+      {
+       "category": "Godartet svulst blærehalskjertel ",
+       "code": "D291"
+      },
+      {
+       "category": "Godartet svulst testikkel ",
+       "code": "D292"
+      },
+      {
+       "category": "Godartet svulst bitestikkel",
+       "code": "D293"
+      },
+      {
+       "category": "Godartet svulst pung",
+       "code": "D294"
+      },
+      {
+       "category": "Godartet svulst andre spesifiserte mannlige kjønnsorganer",
+       "code": "D297"
+      },
+      {
+       "category": "Godartet svulst mannlig kjønnsorgan, uspesifisert",
+       "code": "D299"
+      },
+      {
+       "category": "Godartet svulst nyre",
+       "code": "D300"
+      },
+      {
+       "category": "Godartet svulst nyrebekken ",
+       "code": "D301"
+      },
+      {
+       "category": "Godartet svulst urinleder",
+       "code": "D302"
+      },
+      {
+       "category": "Godartet svulst urinblære",
+       "code": "D303"
+      },
+      {
+       "category": "Godartet svulst urinrør",
+       "code": "D304"
+      },
+      {
+       "category": "Godartet svulst andre spesifiserte urinveisorganer",
+       "code": "D307"
+      },
+      {
+       "category": "Godartet svulst urinveisorgan, uspesifisert",
+       "code": "D309"
+      },
+      {
+       "category": "Godartet svulst conjunctiva",
+       "code": "D310"
+      },
+      {
+       "category": "Godartet svulst hornhinne",
+       "code": "D311"
+      },
+      {
+       "category": "Godartet svulst netthinne",
+       "code": "D312"
+      },
+      {
+       "category": "Godartet svulst årehinne",
+       "code": "D313"
+      },
+      {
+       "category": "Godartet svulst strålelegeme",
+       "code": "D314"
+      },
+      {
+       "category": "Godartet svulst tårekjertel",
+       "code": "D315"
+      },
+      {
+       "category": "Godartet svulst øyehule",
+       "code": "D316"
+      },
+      {
+       "category": "Godartet svulst øye, uspesifisert",
+       "code": "D319"
+      },
+      {
+       "category": "Godartet svulst sentralnervesystemets hinner",
+       "code": "D32"
+      },
+      {
+       "category": "Godartet svulst hjernehinner",
+       "code": "D320"
+      },
+      {
+       "category": "Godartet svulst ryggmargshinner",
+       "code": "D321"
+      },
+      {
+       "category": "Godartet svulst hjerne- og ryggmargshinner, uspesifisert",
+       "code": "D329"
+      },
+      {
+       "category": "Godartet svulst hjerne og andre deler av sentralnervesystemet",
+       "code": "D33"
+      },
+      {
+       "category": "Godartet svulst hjerne, supratentoriell lokalisasjon",
+       "code": "D330"
+      },
+      {
+       "category": "Godartet svulst hjerne, infratentoriell lokalisasjon",
+       "code": "D331"
+      },
+      {
+       "category": "Godartet svulst hjerne, uspesifisert",
+       "code": "D332"
+      },
+      {
+       "category": "Godartet svulst hjernenerver",
+       "code": "D333"
+      },
+      {
+       "category": "Godartet svulst ryggmarg ",
+       "code": "D334"
+      },
+      {
+       "category": "Godartet svulst andre spesifiserte deler av sentralnervesystemet",
+       "code": "D337"
+      },
+      {
+       "category": "Godartet svulst sentralnervesystemet, uspesifisert",
+       "code": "D339"
+      },
+      {
+       "category": "Godartet svulst i skjoldbruskkjertel",
+       "code": "D349"
+      },
+      {
+       "category": "Godartet svulst binyre",
+       "code": "D350"
+      },
+      {
+       "category": "Godartet svulst biskjoldkjertel",
+       "code": "D351"
+      },
+      {
+       "category": "Godartet svulst hypofyse",
+       "code": "D352"
+      },
+      {
+       "category": "Godartet svulst ductus craniopharyngealis",
+       "code": "D353"
+      },
+      {
+       "category": "Godartet svulst corpus pineale",
+       "code": "D354"
+      },
+      {
+       "category": "Godartet svulst glomus caroticum",
+       "code": "D355"
+      },
+      {
+       "category": "Godartet svulst aortalegeme og andre paraganglier",
+       "code": "D356"
+      },
+      {
+       "category": "Godartet svulst andre spesifiserte endokrine kjertler",
+       "code": "D357"
+      },
+      {
+       "category": "Godartet svulst affeksjon av multiple endokrine kjertler",
+       "code": "D358"
+      },
+      {
+       "category": "Godartet svulst endokrin kjertel, uspesifisert",
+       "code": "D359"
+      },
+      {
+       "category": "Godartet svulst lymfeknuter",
+       "code": "D360"
+      },
+      {
+       "category": "Godartet svulst perifere nerver og det autonome nervesystem",
+       "code": "D361"
+      },
+      {
+       "category": "Godartet svulst andre spesifiserte lokalisasjoner",
+       "code": "D367"
+      },
+      {
+       "category": "Godartet svulst godartet svulst med uspesifisert lokalisasjon",
+       "code": "D369"
+      },
+      {
+       "category": "Svulst med usikkert eller ukjent malignitetspotensial leppe, munnhule og svelg",
+       "code": "D370"
+      },
+      {
+       "category": "Svulst med usikkert eller ukjent malignitetspotensial magesekk",
+       "code": "D371"
+      },
+      {
+       "category": "Svulst med usikkert eller ukjent malignitetspotensial tynntarm",
+       "code": "D372"
+      },
+      {
+       "category": "Svulst med usikkert eller ukjent malignitetspotensial blindtarmsvedheng",
+       "code": "D373"
+      },
+      {
+       "category": "Svulst med usikkert eller ukjent malignitetspotensial tykktarm",
+       "code": "D374"
+      },
+      {
+       "category": "Svulst med usikkert eller ukjent malignitetspotensial endetarm",
+       "code": "D375"
+      },
+      {
+       "category": "Svulst med usikkert eller ukjent malignitetspotensial lever, galleblære og galleganger",
+       "code": "D376"
+      },
+      {
+       "category": "Svulst med usikkert eller ukjent malignitetspotensial andre spesifiserte fordøyelsesorganer",
+       "code": "D377"
+      },
+      {
+       "category": "Svulst med usikkert eller ukjent malignitetspotensial fordøyelsesorgan, uspesifisert",
+       "code": "D379"
+      },
+      {
+       "category": "Svulst med usikkert eller ukjent malignitetspotensial strupe",
+       "code": "D380"
+      },
+      {
+       "category": "Svulst med usikkert eller ukjent malignitetspotensial luftrør, bronkie og lunge",
+       "code": "D381"
+      },
+      {
+       "category": "Svulst med usikkert eller ukjent malignitetspotensial brysthinne ",
+       "code": "D382"
+      },
+      {
+       "category": "Svulst med usikkert eller ukjent malignitetspotensial mediastinum",
+       "code": "D383"
+      },
+      {
+       "category": "Svulst med usikkert eller ukjent malignitetspotensial thymus",
+       "code": "D384"
+      },
+      {
+       "category": "Svulst med usikkert eller ukjent malignitetspotensial andre spesifiserte åndedrettsorganer",
+       "code": "D385"
+      },
+      {
+       "category": "Svulst med usikkert eller ukjent malignitetspotensial åndedrettsorgan, uspesifisert",
+       "code": "D386"
+      },
+      {
+       "category": "Svulst med usikkert eller ukjent malignitetspotensial livmor",
+       "code": "D390"
+      },
+      {
+       "category": "Svulst med usikkert eller ukjent malignitetspotensial eggstokk",
+       "code": "D391"
+      },
+      {
+       "category": "Svulst med usikkert eller ukjent malignitetspotensial morkake",
+       "code": "D392"
+      },
+      {
+       "category": "Svulst med usikkert eller ukjent malignitetspotensial andre spesifiserte kvinnelige kjønnsorganer",
+       "code": "D397"
+      },
+      {
+       "category": "Svulst med usikkert eller ukjent malignitetspotensial kvinnelig kjønnsorgan, uspesifisert",
+       "code": "D399"
+      },
+      {
+       "category": "Svulst med usikkert eller ukjent malignitetspotensial blærehalskjertel",
+       "code": "D400"
+      },
+      {
+       "category": "Svulst med usikkert eller ukjent malignitetspotensial testikkel ",
+       "code": "D401"
+      },
+      {
+       "category": "Svulst med usikkert eller ukjent malignitetspotensial andre spesifiserte mannlige kjønnsorganer",
+       "code": "D407"
+      },
+      {
+       "category": "Svulst med usikkert eller ukjent malignitetspotensial mannlig kjønnsorgan, uspesifisert",
+       "code": "D409"
+      },
+      {
+       "category": "Svulst med usikkert eller ukjent malignitetspotensial nyre",
+       "code": "D410"
+      },
+      {
+       "category": "Svulst med usikkert eller ukjent malignitetspotensial nyrebekken",
+       "code": "D411"
+      },
+      {
+       "category": "Svulst med usikkert eller ukjent malignitetspotensial urinleder ",
+       "code": "D412"
+      },
+      {
+       "category": "Svulst med usikkert eller ukjent malignitetspotensial urinrør",
+       "code": "D413"
+      },
+      {
+       "category": "Svulst med usikkert eller ukjent malignitetspotensial urinblære",
+       "code": "D414"
+      },
+      {
+       "category": "Svulst med usikkert eller ukjent malignitetspotensial andre spesifiserte urinveisorganer",
+       "code": "D417"
+      },
+      {
+       "category": "Svulst med usikkert eller ukjent malignitetspotensial urinveisorgan, uspesifisert",
+       "code": "D419"
+      },
+      {
+       "category": "Svulst med usikkert eller ukjent malignitetspotensial sentralnervesystemets hinner",
+       "code": "D42"
+      },
+      {
+       "category": "Svulst med usikkert eller ukjent malignitetspotensial hjernehinner",
+       "code": "D420"
+      },
+      {
+       "category": "Svulst med usikkert eller ukjent malignitetspotensial ryggmargshinner",
+       "code": "D421"
+      },
+      {
+       "category": "Svulst med usikkert eller ukjent malignitetspotensial hjerne- og ryggmargshinner, uspesifisert",
+       "code": "D429"
+      },
+      {
+       "category": "Svulst med usikkert eller ukjent malignitetspotensial hjernen og sentralnervesystemet",
+       "code": "D43"
+      },
+      {
+       "category": "Svulst med usikkert eller ukjent malignitetspotensial hjerne, supratentoriell lokalisasjon",
+       "code": "D430"
+      },
+      {
+       "category": "Svulst med usikkert eller ukjent malignitetspotensial hjerne, infratentoriell lokalisasjon",
+       "code": "D431"
+      },
+      {
+       "category": "Svulst med usikkert eller ukjent malignitetspotensial hjerne, uspesifisert",
+       "code": "D432"
+      },
+      {
+       "category": "Svulst med usikkert eller ukjent malignitetspotensial hjernenerver",
+       "code": "D433"
+      },
+      {
+       "category": "Svulst med usikkert eller ukjent malignitetspotensial ryggmarg ",
+       "code": "D434"
+      },
+      {
+       "category": "Svulst med usikkert eller ukjent malignitetspotensial andre spesifiserte deler av sentralnervesystemet",
+       "code": "D437"
+      },
+      {
+       "category": "Svulst med usikkert eller ukjent malignitetspotensial sentralnervesystemet, uspesifisert",
+       "code": "D439"
+      },
+      {
+       "category": "Svulst med usikkert eller ukjent malignitetspotensial skjoldbruskkjertel",
+       "code": "D440"
+      },
+      {
+       "category": "Svulst med usikkert eller ukjent malignitetspotensial binyre",
+       "code": "D441"
+      },
+      {
+       "category": "Svulst med usikkert eller ukjent malignitetspotensial biskjoldkjertel",
+       "code": "D442"
+      },
+      {
+       "category": "Svulst med usikkert eller ukjent malignitetspotensial hypofyse ",
+       "code": "D443"
+      },
+      {
+       "category": "Svulst med usikkert eller ukjent malignitetspotensial ductus craniopharyngealis",
+       "code": "D444"
+      },
+      {
+       "category": "Svulst med usikkert eller ukjent malignitetspotensial corpus pineale",
+       "code": "D445"
+      },
+      {
+       "category": "Svulst med usikkert eller ukjent malignitetspotensial glomus caroticum",
+       "code": "D446"
+      },
+      {
+       "category": "Svulst med usikkert eller ukjent malignitetspotensial aortalegeme og andre paraganglier",
+       "code": "D447"
+      },
+      {
+       "category": "Svulst med usikkert eller ukjent malignitetspotensial affeksjon av multiple endokrine kjertler",
+       "code": "D448"
+      },
+      {
+       "category": "Svulst med usikkert eller ukjent malignitetspotensial endokrin kjertel, uspesifisert",
+       "code": "D449"
+      },
+      {
+       "category": "Polycythamia vera",
+       "code": "D45"
+      },
+      {
+       "category": "Polycythamia vera",
+       "code": "D459"
+      },
+      {
+       "category": "Myelodysplastisk syndrom",
+       "code": "D46"
+      },
+      {
+       "category": "Refraktær anemi angitt som uten ringsideroblaster",
+       "code": "D460"
+      },
+      {
+       "category": "Refraktær anemi med ringsideroblaster",
+       "code": "D461"
+      },
+      {
+       "category": "Refraktær anemi med økning av blaster [RAEB]",
+       "code": "D462"
+      },
+      {
+       "category": "Refraktær anemi, uspesifisert",
+       "code": "D464"
+      },
+      {
+       "category": "Refraktær anemi med dysplasi i flere linjer",
+       "code": "D465"
+      },
+      {
+       "category": "Myelodysplastisk syndrom med isolert del(5q) kromosomdefekt",
+       "code": "D466"
+      },
+      {
+       "category": "Annet spesifisert myelodysplastisk syndrom",
+       "code": "D467"
+      },
+      {
+       "category": "Myelodysplastisk syndrom, uspesifisert",
+       "code": "D469"
+      },
+      {
+       "category": "Andre svulster med usikkert eller ukjent malignitetspotensial i lymfoid, hematopoetisk eller beslektet vev",
+       "code": "D47"
+      },
+      {
+       "category": "Histiocyttære svulster og mastcellesvulster med usikkert og ukjent malignitetspotensial",
+       "code": "D470"
+      },
+      {
+       "category": "Kronisk myeloproliferativ sykdom",
+       "code": "D471"
+      },
+      {
+       "category": "Monoklonal gammopati av usikker betydning (MGUS)",
+       "code": "D472"
+      },
+      {
+       "category": "Essensiell (hemoragisk) trombocytemi",
+       "code": "D473"
+      },
+      {
+       "category": "Osteomyelofibrose",
+       "code": "D474"
+      },
+      {
+       "category": "Kronisk eosinofil leukemi [hypereosinofilt syndrom]",
+       "code": "D475"
+      },
+      {
+       "category": "Andre spesifiserte svulster med usikkert eller ukjent malignitetspotensial i lymfoid, hematopoetisk eller beslektet vev",
+       "code": "D477"
+      },
+      {
+       "category": "Svulst med usikkert eller ukjent malignitetspotensial i lymfoid, hematopoetisk eller beslektet vev, uspesifisert",
+       "code": "D479"
+      },
+      {
+       "category": "Svulst med usikkert eller ukjent malignitetspotensial knokler og leddbrusk",
+       "code": "D480"
+      },
+      {
+       "category": "Svulst med usikkert eller ukjent malignitetspotensial bindevev og annet bløtvev",
+       "code": "D481"
+      },
+      {
+       "category": "Svulst med usikkert eller ukjent malignitetspotensial perifere nerver og det autonome nervesystem",
+       "code": "D482"
+      },
+      {
+       "category": "Svulst med usikkert eller ukjent malignitetspotensial retroperitoneum",
+       "code": "D483"
+      },
+      {
+       "category": "Svulst med usikkert eller ukjent malignitetspotensial bukhinne ",
+       "code": "D484"
+      },
+      {
+       "category": "Svulst med usikkert eller ukjent malignitetspotensial hud",
+       "code": "D485"
+      },
+      {
+       "category": "Svulst med usikkert eller ukjent malignitetspotensial bryst",
+       "code": "D486"
+      },
+      {
+       "category": "Svulst med usikkert eller ukjent malignitetspotensial andre spesifiserte lokalisasjoner",
+       "code": "D487"
+      },
+      {
+       "category": "Svulst med usikkert eller ukjent malignitetspotensial, uspesifisert",
+       "code": "D489"
+      },
+      {
+       "category": "Anemi ved neoplastisk sykdom",
+       "code": "D630"
+      },
+      {
+       "category": "Mastocytose",
+       "code": "Q822"
+      }
+     ],
+     "missingValues": []
+    }
+   },
+   {
+    "description": "Primærtumors utgangspunkt etter ICD10.\n\nFor mer informasjon om variabelen, besøk Kreftregisterets [metadatabase](https://metadata.kreftregisteret.no/variables/detail/24)",
+    "validPeriod": {
+     "start": 18993
+    },
+    "valueDomain": {
+     "missingValues": [],
+     "delta": {
+      "remove": [
+       773,
+       774,
+       775,
+       776,
+       777,
+       778,
+       779,
+       780,
+       781,
+       782,
+       783,
+       784,
+       785,
+       786,
+       787,
+       788,
+       789,
+       790,
+       791,
+       792,
+       793,
+       794,
+       795,
+       796,
+       798,
+       799,
+       800,
+       801,
+       802,
+       803,
+       806,
+       807,
+       810,
+       811,
+       813,
+       814,
+       815,
+       817,
+       818,
+       819,
+       820,
+       821,
+       822,
+       823,
+       824,
+       825,
+       827,
+       828,
+       829,
+       830,
+       831,
+       832,
+       833,
+       834,
+       835,
+       836,
+       837,
+       847,
+       848,
+       849,
+       850,
+       851,
+       852,
+       853,
+       854
+      ],
+      "reorder": [],
+      "replace": {},
+      "insert": {
+       "773": {
+        "category": "Svulst med patologisk anatomisk påvist usikkert malignitetspotensial i leppe, munnhule eller svelg",
+        "code": "D3700"
+       },
+       "774": {
+        "category": "Svulst med klinisk usikkert malignitetspotensial i leppe, munnhule eller svelg",
+        "code": "D3701"
+       },
+       "775": {
+        "category": "Svulst med patologisk anatomisk påvist usikkert malignitetspotensial i magesekk",
+        "code": "D3710"
+       },
+       "776": {
+        "category": "Svulst med klinisk usikkert malignitetspotensial i magesekk",
+        "code": "D3711"
+       },
+       "777": {
+        "category": "Svulst med patologisk anatomisk påvist usikkert malignitetspotensial i tynntarm",
+        "code": "D3720"
+       },
+       "778": {
+        "category": "Svulst med klinisk usikkert malignitetspotensial i tynntarm",
+        "code": "D3721"
+       },
+       "779": {
+        "category": "Svulst med patologisk anatomisk påvist usikkert malignitetspotensial i blindtarmsvedheng",
+        "code": "D3730"
+       },
+       "780": {
+        "category": "Svulst med klinisk usikkert malignitetspotensial i blindtarmsvedheng",
+        "code": "D3731"
+       },
+       "781": {
+        "category": "Svulst med patologisk anatomisk påvist usikkert malignitetspotensial i tykktarm",
+        "code": "D3740"
+       },
+       "782": {
+        "category": "Svulst med klinisk usikkert malignitetspotensial i tykktarm",
+        "code": "D3741"
+       },
+       "783": {
+        "category": "Svulst med patologisk anatomisk påvist usikkert malignitetspotensial i endetarm",
+        "code": "D3750"
+       },
+       "784": {
+        "category": "Svulst med klinisk usikkert malignitetspotensial i endetarm",
+        "code": "D3751"
+       },
+       "785": {
+        "category": "Svulst med patologisk anatomisk påvist usikkert malignitetspotensial i lever, galleblære eller gallegang",
+        "code": "D3760"
+       },
+       "786": {
+        "category": "Svulst med klinisk usikkert malignitetspotensial i lever, galleblære eller gallegang",
+        "code": "D3761"
+       },
+       "787": {
+        "category": "Svulst med patologisk anatomisk påvist usikkert malignitetspotensial i annet spesifisert fordøyelsesorgan",
+        "code": "D3770"
+       },
+       "788": {
+        "category": "Svulst med klinisk usikkert malignitetspotensial i annet spesifisert fordøyelsesorgan",
+        "code": "D3771"
+       },
+       "789": {
+        "category": "Svulst med patologisk anatomisk påvist usikkert malignitetspotensial i strupe",
+        "code": "D3800"
+       },
+       "790": {
+        "category": "Svulst med klinisk usikkert malignitetspotensial i strupe",
+        "code": "D3801"
+       },
+       "791": {
+        "category": "Svulst med patologisk anatomisk påvist usikkert malignitetspotensial i luftrør, bronkie eller lunge",
+        "code": "D3810"
+       },
+       "792": {
+        "category": "Svulst med klinisk usikkert malignitetspotensial i luftrør, bronkie eller lunge",
+        "code": "D3811"
+       },
+       "793": {
+        "category": "Svulst med patologisk anatomisk påvist usikkert malignitetspotensial i brysthinne",
+        "code": "D3820"
+       },
+       "794": {
+        "category": "Svulst med klinisk usikkert malignitetspotensial i brysthinne",
+        "code": "D3821"
+       },
+       "795": {
+        "category": "Svulst med patologisk anatomisk påvist usikkert malignitetspotensial i mediastinum",
+        "code": "D3830"
+       },
+       "796": {
+        "category": "Svulst med klinisk usikkert malignitetspotensial i mediastinum",
+        "code": "D3831"
+       },
+       "797": {
+        "category": "Svulst med patologisk anatomisk påvist usikkert malignitetspotensial i thymus",
+        "code": "D3840"
+       },
+       "798": {
+        "category": "Svulst med klinisk usikkert malignitetspotensial i thymus",
+        "code": "D3841"
+       },
+       "799": {
+        "category": "Svulst med patologisk anatomisk påvist usikkert malignitetspotensial i annet spesifisert åndedrettsorgan",
+        "code": "D3850"
+       },
+       "800": {
+        "category": "Svulst med klinisk usikkert malignitetspotensial i annet spesifisert åndedrettsorgan",
+        "code": "D3851"
+       },
+       "801": {
+        "category": "Svulst med patologisk anatomisk påvist usikkert malignitetspotensial i livmor",
+        "code": "D3900"
+       },
+       "802": {
+        "category": "Svulst med klinisk usikkert malignitetspotensial i livmor",
+        "code": "D3901"
+       },
+       "803": {
+        "category": "Svulst med patologisk anatomisk påvist usikkert malignitetspotensial i eggstokk",
+        "code": "D3910"
+       },
+       "804": {
+        "category": "Svulst med klinisk usikkert malignitetspotensial i eggstokk",
+        "code": "D3911"
+       },
+       "805": {
+        "category": "Svulst med patologisk anatomisk påvist usikkert malignitetspotensial i morkake",
+        "code": "D3920"
+       },
+       "806": {
+        "category": "Svulst med klinisk usikkert malignitetspotensial i morkake",
+        "code": "D3921"
+       },
+       "807": {
+        "category": "Svulst med patologisk anatomisk påvist usikkert malignitetspotensial i annet spesifisert kvinnelig kjønnsorgan",
+        "code": "D3970"
+       },
+       "808": {
+        "category": "Svulst med klinisk usikkert malignitetspotensial i annet spesifisert kvinnelig kjønnsorgan",
+        "code": "D3971"
+       },
+       "809": {
+        "category": "Svulst med patologisk anatomisk påvist usikkert malignitetspotensial i blærehalskjertel",
+        "code": "D4000"
+       },
+       "810": {
+        "category": "Svulst med klinisk usikkert malignitetspotensial i blærehalskjertel",
+        "code": "D4001"
+       },
+       "811": {
+        "category": "Svulst med patologisk anatomisk påvist usikkert malignitetspotensial i testikkel",
+        "code": "D4010"
+       },
+       "812": {
+        "category": "Svulst med klinisk usikkert malignitetspotensial i testikkel",
+        "code": "D4011"
+       },
+       "813": {
+        "category": "Svulst med patologisk anatomisk påvist usikkert malignitetspotensial i annet spesifisert mannlig kjønnsorgan",
+        "code": "D4070"
+       },
+       "814": {
+        "category": "Svulst med klinisk usikkert malignitetspotensial i annet spesifisert mannlig kjønnsorgan",
+        "code": "D4071"
+       },
+       "816": {
+        "category": "Svulst med patologisk anatomisk påvist usikkert malignitetspotensial i nyre",
+        "code": "D4100"
+       },
+       "817": {
+        "category": "Svulst med klinisk usikkert malignitetspotensial i nyre",
+        "code": "D4101"
+       },
+       "818": {
+        "category": "Svulst med patologisk anatomisk påvist usikkert malignitetspotensial i nyrebekken",
+        "code": "D4110"
+       },
+       "819": {
+        "category": "Svulst med klinisk usikkert malignitetspotensial i nyrebekken",
+        "code": "D4111"
+       },
+       "820": {
+        "category": "Svulst med patologisk anatomisk påvist usikkert malignitetspotensial i urinleder",
+        "code": "D4120"
+       },
+       "821": {
+        "category": "Svulst med klinisk usikkert malignitetspotensial i urinleder",
+        "code": "D4121"
+       },
+       "822": {
+        "category": "Svulst med patologisk anatomisk påvist usikkert malignitetspotensial i urinrør",
+        "code": "D4130"
+       },
+       "823": {
+        "category": "Svulst med klinisk usikkert malignitetspotensial i urinrør",
+        "code": "D4131"
+       },
+       "824": {
+        "category": "Svulst med patologisk anatomisk påvist usikkert malignitetspotensial i urinblære",
+        "code": "D4140"
+       },
+       "825": {
+        "category": "Svulst med klinisk usikkert malignitetspotensial i urinblære",
+        "code": "D4141"
+       },
+       "826": {
+        "category": "Svulst med patologisk anatomisk påvist usikkert malignitetspotensial i annet spesifisert urinveisorgan",
+        "code": "D4170"
+       },
+       "827": {
+        "category": "Svulst med klinisk usikkert malignitetspotensial i annet spesifisert urinveisorgan",
+        "code": "D4171"
+       },
+       "830": {
+        "category": "Svulst med patologisk anatomisk påvist usikkert malignitetspotensial i hjernehinne",
+        "code": "D4200"
+       },
+       "831": {
+        "category": "Svulst med klinisk usikkert malignitetspotensial i hjernehinne",
+        "code": "D4201"
+       },
+       "832": {
+        "category": "Svulst med patologisk anatomisk påvist usikkert malignitetspotensial i ryggmargshinne",
+        "code": "D4210"
+       },
+       "833": {
+        "category": "Svulst med klinisk usikkert malignitetspotensial i ryggmargshinne",
+        "code": "D4211"
+       },
+       "836": {
+        "category": "Svulst med patologisk anatomisk påvist usikkert malignitetspotensial med supratentoriell lokalisasjon i hjerne",
+        "code": "D4300"
+       },
+       "837": {
+        "category": "Svulst med klinisk usikkert malignitetspotensial med supratentoriell lokalisasjon i hjerne",
+        "code": "D4301"
+       },
+       "838": {
+        "category": "Svulst med patologisk anatomisk påvist usikkert malignitetspotensial med infratentoriell lokalisasjon i hjerne",
+        "code": "D4310"
+       },
+       "839": {
+        "category": "Svulst med klinisk usikkert malignitetspotensial med infratentoriell lokalisasjon i hjerne",
+        "code": "D4311"
+       },
+       "841": {
+        "category": "Svulst med patologisk anatomisk påvist usikkert malignitetspotensial i hjernenerve",
+        "code": "D4330"
+       },
+       "842": {
+        "category": "Svulst med klinisk usikkert malignitetspotensial i hjernenerve",
+        "code": "D4331"
+       },
+       "843": {
+        "category": "Svulst med patologisk anatomisk påvist usikkert malignitetspotensial i ryggmarg",
+        "code": "D4340"
+       },
+       "844": {
+        "category": "Svulst med klinisk usikkert malignitetspotensial i ryggmarg",
+        "code": "D4341"
+       },
+       "845": {
+        "category": "Svulst med patologisk anatomisk påvist usikkert malignitetspotensial i annen spesifisert del av sentralnervesystemet",
+        "code": "D4370"
+       },
+       "846": {
+        "category": "Svulst med klinisk usikkert malignitetspotensial i annen spesifisert del av sentralnervesystemet",
+        "code": "D4371"
+       },
+       "848": {
+        "category": "Svulst med patologisk anatomisk påvist usikkert malignitetspotensial i skjoldbruskkjerte",
+        "code": "D4400"
+       },
+       "849": {
+        "category": "Svulst med klinisk usikkert malignitetspotensial i skjoldbruskkjertel",
+        "code": "D4401"
+       },
+       "850": {
+        "category": "Svulst med patologisk anatomisk påvist usikkert malignitetspotensial i binyre",
+        "code": "D4410"
+       },
+       "851": {
+        "category": "Svulst med klinisk usikkert malignitetspotensial i binyre",
+        "code": "D4411"
+       },
+       "852": {
+        "category": "Svulst med patologisk anatomisk påvist usikkert malignitetspotensial i biskjoldbruskkjertel",
+        "code": "D4420"
+       },
+       "853": {
+        "category": "Svulst med klinisk usikkert malignitetspotensial i biskjoldbruskkjertel",
+        "code": "D4421"
+       },
+       "854": {
+        "category": "Svulst med patologisk anatomisk påvist usikkert malignitetspotensial i hypofyse",
+        "code": "D4430"
+       },
+       "855": {
+        "category": "Svulst med klinisk usikkert malignitetspotensial i hypofyse",
+        "code": "D4431"
+       },
+       "856": {
+        "category": "Svulst med patologisk anatomisk påvist usikkert malignitetspotensial i ductus craniopharyngealis",
+        "code": "D4440"
+       },
+       "857": {
+        "category": "Svulst med klinisk usikkert malignitetspotensial i ductus craniopharyngealis",
+        "code": "D4441"
+       },
+       "858": {
+        "category": "Svulst med patologisk anatomisk påvist usikkert malignitetspotensial i corpus pineale",
+        "code": "D4450"
+       },
+       "859": {
+        "category": "Svulst med klinisk usikkert malignitetspotensial i corpus pineale",
+        "code": "D4451"
+       },
+       "860": {
+        "category": "Svulst med patologisk anatomisk påvist usikkert malignitetspotensial i glomus caroticum",
+        "code": "D4460"
+       },
+       "861": {
+        "category": "Svulst med klinisk usikkert malignitetspotensial i glomus caroticum",
+        "code": "D4461"
+       },
+       "862": {
+        "category": "Svulst med patologisk anatomisk påvist usikkert malignitetspotensial i aortalegeme eller annet paraganglie",
+        "code": "D4470"
+       },
+       "863": {
+        "category": "Svulst med klinisk usikkert malignitetspotensial i aortalegeme eller annet paraganglie",
+        "code": "D4471"
+       },
+       "864": {
+        "category": "Svulst med patologisk anatomisk påvist usikkert malignitetspotensial med affeksjon av multiple endokrine kjertler",
+        "code": "D4480"
+       },
+       "865": {
+        "category": "Svulst med klinisk usikkert malignitetspotensial med affeksjon av multiple endokrine kjertler",
+        "code": "D4481"
+       },
+       "876": {
+        "category": "Svulst med patologisk anatomisk påvist usikkert malignitetspotensial i knokkel eller leddbrusk",
+        "code": "D4800"
+       },
+       "877": {
+        "category": "Svulst med klinisk usikkert malignitetspotensial i knokkel eller leddbrusk",
+        "code": "D4801"
+       },
+       "878": {
+        "category": "Svulst med patologisk anatomisk påvist usikkert malignitetspotensial i bindevev eller annet bløtvev",
+        "code": "D4810"
+       },
+       "879": {
+        "category": "Svulst med klinisk usikkert malignitetspotensial i bindevev eller annet bløtvev",
+        "code": "D4811"
+       },
+       "880": {
+        "category": "Svulst med patologisk anatomisk påvist usikkert malignitetspotensial i perifer nerve eller det autonome nervesystem",
+        "code": "D4820"
+       },
+       "881": {
+        "category": "Svulst med klinisk usikkert malignitetspotensial i perifer nerve eller det autonome nervesystem",
+        "code": "D4821"
+       },
+       "882": {
+        "category": "Svulst med patologisk anatomisk påvist usikkert malignitetspotensial i retroperitoneum",
+        "code": "D4830"
+       },
+       "883": {
+        "category": "Svulst med klinisk usikkert malignitetspotensial i retroperitoneum",
+        "code": "D4831"
+       },
+       "884": {
+        "category": "Svulst med patologisk anatomisk påvist usikkert malignitetspotensial i bukhinne",
+        "code": "D4840"
+       },
+       "885": {
+        "category": "Svulst med klinisk usikkert malignitetspotensial i bukhinne",
+        "code": "D4841"
+       },
+       "886": {
+        "category": "Svulst med patologisk anatomisk påvist usikkert malignitetspotensial i hud",
+        "code": "D4850"
+       },
+       "887": {
+        "category": "Svulst med klinisk usikkert malignitetspotensial i hud",
+        "code": "D4851"
+       },
+       "888": {
+        "category": "Svulst med patologisk anatomisk påvist usikkert malignitetspotensial i bryst",
+        "code": "D4860"
+       },
+       "889": {
+        "category": "Svulst med klinisk usikkert malignitetspotensial i bryst",
+        "code": "D4861"
+       },
+       "890": {
+        "category": "Svulst med patologisk anatomisk påvist usikkert malignitetspotensial med annen spesifisert lokalisasjon",
+        "code": "D4870"
+       },
+       "891": {
+        "category": "Svulst med klinisk usikkert malignitetspotensial med annen spesifisert lokalisasjon",
+        "code": "D4871"
+       }
+      }
+     }
+    }
+   }
+  ]
+ },
+ "identifierVariables": [
+  {
+   "name": "KRG_TILFELLEID",
+   "label": "Krefttilfelle-indentifikator",
+   "notPseudonym": false,
+   "dataType": "Long",
+   "format": "RandomUInt48",
+   "variableRole": "Identifier",
+   "keyType": {
+    "name": "KRG_KREFTTILFELLE",
+    "label": "Krefttilfelle",
+    "description": "En enkelt kreftsykdom hos en pasient, inkludert spredning, tilbakefall og progresjon av den samme kreftsykdommen. En pasient kan ha flere krefttilfeller."
+   },
+   "representedVariables": [
+    {
+     "description": "Identifikator for krefttilfelle i microdata",
+     "validPeriod": {
+      "start": -25567,
+      "stop": 20773
+     },
+     "valueDomain": {
+      "description": "Pseudonymisert løpenummer",
+      "unitOfMeasure": "N/A"
+     }
+    }
+   ]
+  }
+ ],
+ "attributeVariables": [
+  {
+   "name": "START",
+   "label": "Startdato",
+   "notPseudonym": true,
+   "dataType": "Instant",
+   "variableRole": "Start",
+   "representedVariables": [
+    {
+     "description": "Startdato/måletidspunktet for hendelsen",
+     "validPeriod": {
+      "start": -25567,
+      "stop": 20773
+     },
+     "valueDomain": {
+      "description": "Dato oppgitt i dager siden 1970-01-01",
+      "unitOfMeasure": "N/A"
+     }
+    }
+   ]
+  },
+  {
+   "name": "STOP",
+   "label": "Stoppdato",
+   "notPseudonym": true,
+   "dataType": "Instant",
+   "variableRole": "Stop",
+   "representedVariables": [
+    {
+     "description": "Stoppdato/måletidspunktet for hendelsen",
+     "validPeriod": {
+      "start": -25567,
+      "stop": 20773
+     },
+     "valueDomain": {
+      "description": "Dato oppgitt i dager siden 1970-01-01",
+      "unitOfMeasure": "N/A"
+     }
+    }
+   ]
+  }
+ ],
+ "globalTemporalCoverage": {
+  "start": -1096,
+  "stop": 20774
+ },
+ "updatedAt": 1794909969
+}

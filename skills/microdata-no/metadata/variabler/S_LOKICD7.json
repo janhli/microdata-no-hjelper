@@ -1,0 +1,1400 @@
+{
+ "name": "S_LOKICD7",
+ "temporality": "FIXED",
+ "languageCode": "no",
+ "sensitivityLevel": "PERSON_SPECIAL",
+ "populationDescription": "Primærtumors utgangspunkt kodet etter en Kreftregister-spesifikk versjon av ICD-7. Regler bestemmer hvilken lokalisasjon som genereres i krefttilfellet dersom meldingene har ulik lokalisasjon.",
+ "subjectFields": [
+  "Helse",
+  "Helsetjenester"
+ ],
+ "temporalCoverage": {
+  "start": -25567,
+  "stop": 20773
+ },
+ "measureVariable": {
+  "name": "S_LOKICD7",
+  "label": "Lokalisasjon",
+  "notPseudonym": true,
+  "dataType": "String",
+  "variableRole": "Measure",
+  "representedVariables": [
+   {
+    "description": "Primærtumors utgangspunkt kodet etter en Kreftregister-spesifikk versjon av ICD-7. Regler bestemmer hvilken lokalisasjon som genereres i krefttilfellet dersom meldingene har ulik lokalisasjon.\n\nFor mer informasjon om variabelen, besøk Kreftregisterets [metadatabase](https://metadata.kreftregisteret.no/variables/detail/12)",
+    "validPeriod": {
+     "start": -6209,
+     "stop": 3651
+    },
+    "valueDomain": {
+     "codeList": [
+      {
+       "category": "Leppe",
+       "code": "140"
+      },
+      {
+       "category": "Overleppe",
+       "code": "1400"
+      },
+      {
+       "category": "Underleppe",
+       "code": "1401"
+      },
+      {
+       "category": "Begge lepper",
+       "code": "1402"
+      },
+      {
+       "category": "Leppe, andre spesifiserte lokalisasjoner",
+       "code": "1408"
+      },
+      {
+       "category": "Leppe ins",
+       "code": "1409"
+      },
+      {
+       "category": "Tunge",
+       "code": "141"
+      },
+      {
+       "category": "Tungebasis, -rot, -mandel",
+       "code": "1410"
+      },
+      {
+       "category": "Tungens overside ",
+       "code": "1411"
+      },
+      {
+       "category": "Tungespiss eller tungerand ",
+       "code": "1412"
+      },
+      {
+       "category": "Tungens underside ",
+       "code": "1413"
+      },
+      {
+       "category": "Tunge, overlappende",
+       "code": "1418"
+      },
+      {
+       "category": "Tunge ins ",
+       "code": "1419"
+      },
+      {
+       "category": "Spyttkjertler",
+       "code": "142"
+      },
+      {
+       "category": "Glandula parotis ",
+       "code": "1420"
+      },
+      {
+       "category": "Glandula submandibularis ",
+       "code": "1421"
+      },
+      {
+       "category": "Glandula sublingualis",
+       "code": "1422"
+      },
+      {
+       "category": "Samlekode for glandula submandibularis",
+       "code": "1427"
+      },
+      {
+       "category": "Stor spyttkjertel ins ",
+       "code": "1429"
+      },
+      {
+       "category": "Munngulv",
+       "code": "143"
+      },
+      {
+       "category": "Gingiva inferior ",
+       "code": "1430"
+      },
+      {
+       "category": "Regio sublingualis",
+       "code": "1431"
+      },
+      {
+       "category": "Munngulv",
+       "code": "1438"
+      },
+      {
+       "category": "Munngulv ins ",
+       "code": "1439"
+      },
+      {
+       "category": "Munnhule",
+       "code": "144"
+      },
+      {
+       "category": "Bløte/harde gane, Drøvelen ",
+       "code": "1440"
+      },
+      {
+       "category": "Gingiva superior ",
+       "code": "1441"
+      },
+      {
+       "category": "Kinnslimhinne ",
+       "code": "1442"
+      },
+      {
+       "category": "Andre spesifiserte lok i munnhule",
+       "code": "1448"
+      },
+      {
+       "category": "Munnhule ins  ",
+       "code": "1449"
+      },
+      {
+       "category": "Svelget",
+       "code": "145"
+      },
+      {
+       "category": "Tonsille",
+       "code": "1450"
+      },
+      {
+       "category": "Vallecula epiglottica ",
+       "code": "1451"
+      },
+      {
+       "category": "Overside av epiglottis ",
+       "code": "1452"
+      },
+      {
+       "category": "Mesopharynx, andre lokalisasjoner",
+       "code": "1457"
+      },
+      {
+       "category": "Mesopharynx ins ",
+       "code": "1459"
+      },
+      {
+       "category": "Nesesvelget",
+       "code": "146"
+      },
+      {
+       "category": "Epipharynx",
+       "code": "1460"
+      },
+      {
+       "category": "Svelget (nedre del)  ",
+       "code": "147"
+      },
+      {
+       "category": "Hypopharynx, nederste del av svelget ",
+       "code": "1470"
+      },
+      {
+       "category": "Svelg ins",
+       "code": "148"
+      },
+      {
+       "category": "Svelg ins ",
+       "code": "1480"
+      },
+      {
+       "category": "Bronchiogen halscyste ",
+       "code": "1481"
+      },
+      {
+       "category": "Spiserør",
+       "code": "150"
+      },
+      {
+       "category": "Spiserør, 15-23 cm fra tannrekken,    ",
+       "code": "1500"
+      },
+      {
+       "category": "Spiserør, 24-32 cm fra tannrekken,    ",
+       "code": "1501"
+      },
+      {
+       "category": "Spiserør, 33-44 cm fra tannrekken,    ",
+       "code": "1502"
+      },
+      {
+       "category": "Spiserør, Utbredt over flere sub-lok ",
+       "code": "1508"
+      },
+      {
+       "category": "Oesophagus ins ",
+       "code": "1509"
+      },
+      {
+       "category": "Magesekk",
+       "code": "151"
+      },
+      {
+       "category": "Pylorus",
+       "code": "1510"
+      },
+      {
+       "category": "Corpus ",
+       "code": "1511"
+      },
+      {
+       "category": "Cardia",
+       "code": "1512"
+      },
+      {
+       "category": "Utbredt ventrikkelcancer",
+       "code": "1513"
+      },
+      {
+       "category": "Tidligere ventrikkel-recessert    ",
+       "code": "1514"
+      },
+      {
+       "category": "Curvatura minor ",
+       "code": "1515"
+      },
+      {
+       "category": "Curvatura major ",
+       "code": "1516"
+      },
+      {
+       "category": "Magesekk, utbredt over flere sub-lok",
+       "code": "1518"
+      },
+      {
+       "category": "Magesekk ins ",
+       "code": "1519"
+      },
+      {
+       "category": "Tynntarm",
+       "code": "152"
+      },
+      {
+       "category": "Duodenum ",
+       "code": "1520"
+      },
+      {
+       "category": "Jejunum ",
+       "code": "1521"
+      },
+      {
+       "category": "Ileum ",
+       "code": "1522"
+      },
+      {
+       "category": "Meckels divertikkel ",
+       "code": "1523"
+      },
+      {
+       "category": "Multiple premaligne svulster i tynntarm",
+       "code": "1525"
+      },
+      {
+       "category": "Jejunum og ileum",
+       "code": "1527"
+      },
+      {
+       "category": "Tynntarm, utbredt over flere sub-lok ",
+       "code": "1528"
+      },
+      {
+       "category": "Tynntarm ins ",
+       "code": "1529"
+      },
+      {
+       "category": "Tykktarm",
+       "code": "153"
+      },
+      {
+       "category": "Caecum og colon ascendens",
+       "code": "1530"
+      },
+      {
+       "category": "Colon transversum med flexura hepatica    ",
+       "code": "1531"
+      },
+      {
+       "category": "Colon descendens ",
+       "code": "1532"
+      },
+      {
+       "category": "Colon sigmoideum    ",
+       "code": "1533"
+      },
+      {
+       "category": "Recto-sigmoideum    ",
+       "code": "1534"
+      },
+      {
+       "category": "Polypper i tykktarm",
+       "code": "1535"
+      },
+      {
+       "category": "Appendix ",
+       "code": "1536"
+      },
+      {
+       "category": "Colon ins, eksklusive rectum ins ",
+       "code": "1539"
+      },
+      {
+       "category": "Rectum og anus ",
+       "code": "154"
+      },
+      {
+       "category": "Rectum",
+       "code": "1540"
+      },
+      {
+       "category": "Analkanal",
+       "code": "1541"
+      },
+      {
+       "category": "Polypper i endetarm og anus",
+       "code": "1545"
+      },
+      {
+       "category": "Lever",
+       "code": "155"
+      },
+      {
+       "category": "Leverparenchym ",
+       "code": "1550"
+      },
+      {
+       "category": "Intrahepatiske galleganger ",
+       "code": "1551"
+      },
+      {
+       "category": "Lever ins ",
+       "code": "1559"
+      },
+      {
+       "category": "Galleblære ",
+       "code": "156"
+      },
+      {
+       "category": "Galleblære ",
+       "code": "1560"
+      },
+      {
+       "category": "Ekstrahepatiske galleganger",
+       "code": "1561"
+      },
+      {
+       "category": "Papilla Vateri",
+       "code": "1562"
+      },
+      {
+       "category": "Galleblære, utbredt over flere sub-lok ",
+       "code": "1568"
+      },
+      {
+       "category": "Ekstrahepatiske galleganger ins ",
+       "code": "1569"
+      },
+      {
+       "category": "Bukspyttkjertel",
+       "code": "157"
+      },
+      {
+       "category": "Bukspyttkjertel, Caput ",
+       "code": "1570"
+      },
+      {
+       "category": "Bukspyttkjertel, Corpus ",
+       "code": "1571"
+      },
+      {
+       "category": "Bukspyttkjertel, Cauda ",
+       "code": "1572"
+      },
+      {
+       "category": "Svulster utgått fra de Langerhanske øyer",
+       "code": "1573"
+      },
+      {
+       "category": "Andre spesifiserte lokalisasjoner i pancreas",
+       "code": "1577"
+      },
+      {
+       "category": "Bukspyttkjertel, overlappende",
+       "code": "1578"
+      },
+      {
+       "category": "Pancreas ins ",
+       "code": "1579"
+      },
+      {
+       "category": "Peritoneum og retroperitoneum",
+       "code": "158"
+      },
+      {
+       "category": "Peritoneum ",
+       "code": "1580"
+      },
+      {
+       "category": "Retroperitoneum ",
+       "code": "1581"
+      },
+      {
+       "category": "Andre spesifiserte lok, f.eks.  oment",
+       "code": "1588"
+      },
+      {
+       "category": "Peritoneum/Retroperitoneum ins ",
+       "code": "1589"
+      },
+      {
+       "category": "Tarm ins ",
+       "code": "1590"
+      },
+      {
+       "category": "Milt ",
+       "code": "1591"
+      },
+      {
+       "category": "Lever/pancreas/galleveier/gallegang ins ",
+       "code": "1592"
+      },
+      {
+       "category": "Nese/bihule",
+       "code": "160"
+      },
+      {
+       "category": "Nesehule (ikke ytre hud)",
+       "code": "1600"
+      },
+      {
+       "category": "Sinus maxillaris",
+       "code": "1601"
+      },
+      {
+       "category": "Sinus ethmoidalis  ",
+       "code": "1602"
+      },
+      {
+       "category": "Bihuler ins ",
+       "code": "1603"
+      },
+      {
+       "category": "Tubae Eustachii, mellomøret, indre øre ",
+       "code": "1604"
+      },
+      {
+       "category": "Nese/bihule, utbredt over flere sub-lokalisasjoner ",
+       "code": "1608"
+      },
+      {
+       "category": "Nese/bihule ins ",
+       "code": "1609"
+      },
+      {
+       "category": "Larynx ",
+       "code": "161"
+      },
+      {
+       "category": "Supraglottis, strupelokk, mm",
+       "code": "1610"
+      },
+      {
+       "category": "Glottis inkl  de ekte stemmebånd ",
+       "code": "1611"
+      },
+      {
+       "category": "Subglottis, cricoidbrusken ",
+       "code": "1612"
+      },
+      {
+       "category": "Utbredt cancer i larynx",
+       "code": "1613"
+      },
+      {
+       "category": "Larynx, utbredt over flere sub-lok ",
+       "code": "1618"
+      },
+      {
+       "category": "Larynx ins ; omfatter brusk i larynx ",
+       "code": "1619"
+      },
+      {
+       "category": "Lunger, luftrør",
+       "code": "162"
+      },
+      {
+       "category": "Trachea, luftrør ",
+       "code": "1620"
+      },
+      {
+       "category": "Bronchier, lunger ",
+       "code": "1621"
+      },
+      {
+       "category": "Luftrør, lunge og bronkier, multiple lokalisasjoner",
+       "code": "1623"
+      },
+      {
+       "category": "Neopl.mal. bronchi, pulmonis et pleurae primarium sive secundarium non descriptum",
+       "code": "1627"
+      },
+      {
+       "category": "Nedre luftveier ins ",
+       "code": "1629"
+      },
+      {
+       "category": "Brysthinne",
+       "code": "163"
+      },
+      {
+       "category": "Brysthinne",
+       "code": "1630"
+      },
+      {
+       "category": "Thymus, hjerte og mediastinum",
+       "code": "164"
+      },
+      {
+       "category": "Mediastinum ",
+       "code": "1640"
+      },
+      {
+       "category": "Hjerte",
+       "code": "1641"
+      },
+      {
+       "category": "Hjerteposen",
+       "code": "1642"
+      },
+      {
+       "category": "Thymus ",
+       "code": "1643"
+      },
+      {
+       "category": "Bryst",
+       "code": "170"
+      },
+      {
+       "category": "Bryst, vesentlig medialt",
+       "code": "1700"
+      },
+      {
+       "category": "Bryst, vesentlig lateralt",
+       "code": "1701"
+      },
+      {
+       "category": "Bryst, vesentlig sentralt",
+       "code": "1702"
+      },
+      {
+       "category": "Bryst, utbredt tumor",
+       "code": "1703"
+      },
+      {
+       "category": "Samtidig tumor i begge bryst",
+       "code": "1704"
+      },
+      {
+       "category": "Bryst, brystkjertel, inkl. papillen ",
+       "code": "1705"
+      },
+      {
+       "category": "Andre spesifikke lokalisasjoner i bryst",
+       "code": "1708"
+      },
+      {
+       "category": "Bryst ins",
+       "code": "1709"
+      },
+      {
+       "category": "Livmorhals",
+       "code": "171"
+      },
+      {
+       "category": "Livmorhalsen",
+       "code": "1710"
+      },
+      {
+       "category": "Livmor",
+       "code": "172"
+      },
+      {
+       "category": "Livmorlegemet",
+       "code": "1720"
+      },
+      {
+       "category": "Malign tumor oppstått i endometriosefoci",
+       "code": "1721"
+      },
+      {
+       "category": "Morkake",
+       "code": "173"
+      },
+      {
+       "category": "Morkake",
+       "code": "1730"
+      },
+      {
+       "category": "Livmor ins",
+       "code": "174"
+      },
+      {
+       "category": "Ca. cervicis et corporis uteri",
+       "code": "1740"
+      },
+      {
+       "category": "Livmor/livmorhals ins ",
+       "code": "1749"
+      },
+      {
+       "category": "Eggstokk",
+       "code": "175"
+      },
+      {
+       "category": "Eggstokk",
+       "code": "1750"
+      },
+      {
+       "category": "Eggstokk, bilateral",
+       "code": "1751"
+      },
+      {
+       "category": "Eggleder ",
+       "code": "1752"
+      },
+      {
+       "category": "Ekstragonadal germinalcellesvulst (kvinner)",
+       "code": "1753"
+      },
+      {
+       "category": "Andre spesifiserte lok i adnex",
+       "code": "1758"
+      },
+      {
+       "category": "Eggstokk, eggleder, adnexstruktur ins ",
+       "code": "1759"
+      },
+      {
+       "category": "Vulva og vagina",
+       "code": "176"
+      },
+      {
+       "category": "Vulva, ytre genitalia",
+       "code": "1760"
+      },
+      {
+       "category": "Vagina",
+       "code": "1761"
+      },
+      {
+       "category": "Uterus og ovarie",
+       "code": "1762"
+      },
+      {
+       "category": "Utbredt i ytre genitalia eller vagina ",
+       "code": "1768"
+      },
+      {
+       "category": "Kvinnelige (ytre og indre) genitalia ins",
+       "code": "1769"
+      },
+      {
+       "category": "Prostata",
+       "code": "177"
+      },
+      {
+       "category": "Prostata",
+       "code": "1770"
+      },
+      {
+       "category": "Vesiculae seminales ",
+       "code": "1771"
+      },
+      {
+       "category": "Prostata",
+       "code": "1779"
+      },
+      {
+       "category": "Testikkel",
+       "code": "178"
+      },
+      {
+       "category": "Testikkel",
+       "code": "1780"
+      },
+      {
+       "category": "Retinert testikkel",
+       "code": "1781"
+      },
+      {
+       "category": "Epididymis ",
+       "code": "1782"
+      },
+      {
+       "category": "Ductus deferens, funiculus spermaticus ",
+       "code": "1783"
+      },
+      {
+       "category": "Ekstragonadal germinalcellesvulst (menn)",
+       "code": "1784"
+      },
+      {
+       "category": "Penis",
+       "code": "179"
+      },
+      {
+       "category": "Glans penis, inkl  sulcus coronarius ",
+       "code": "1790"
+      },
+      {
+       "category": "Forhud ",
+       "code": "1791"
+      },
+      {
+       "category": "Scrotum ",
+       "code": "1792"
+      },
+      {
+       "category": "Corpus penis ",
+       "code": "1793"
+      },
+      {
+       "category": "Penis uspesifisert ",
+       "code": "1794"
+      },
+      {
+       "category": "Penis, utbredt over flere sub-lok ",
+       "code": "1798"
+      },
+      {
+       "category": "Mannlig genitalorgan uns, mannlig urogenitalorgan uns, sædblære (vesicula seminalis)",
+       "code": "1799"
+      },
+      {
+       "category": "Nyre",
+       "code": "180"
+      },
+      {
+       "category": "Nyre ",
+       "code": "1800"
+      },
+      {
+       "category": "Nyrebekken",
+       "code": "1801"
+      },
+      {
+       "category": "Ureter ",
+       "code": "1802"
+      },
+      {
+       "category": "Utbredt over flere sublokalisasjoner i nyre",
+       "code": "1808"
+      },
+      {
+       "category": "Øvre urinveier ins ",
+       "code": "1809"
+      },
+      {
+       "category": "Blære",
+       "code": "181"
+      },
+      {
+       "category": "Blære ",
+       "code": "1810"
+      },
+      {
+       "category": "Urethra ",
+       "code": "1811"
+      },
+      {
+       "category": "Paraurethrale kjertler",
+       "code": "1813"
+      },
+      {
+       "category": "Urachus rest ",
+       "code": "1814"
+      },
+      {
+       "category": "Blære, utbredt over flere sub-lok ",
+       "code": "1818"
+      },
+      {
+       "category": "Nedre urinveier ins ",
+       "code": "1819"
+      },
+      {
+       "category": "Basalcellecarcinom",
+       "code": "189"
+      },
+      {
+       "category": "Baso i hud: ytre øre ",
+       "code": "1890"
+      },
+      {
+       "category": "Baso i hud: øyelokk",
+       "code": "1891"
+      },
+      {
+       "category": "Baso i hud: leppe, ansikt, hodebunn",
+       "code": "1892"
+      },
+      {
+       "category": "Baso i hud: hals, nakke, bak øret, skulder, bol, hofte",
+       "code": "1893"
+      },
+      {
+       "category": "Baso i hud: anus og perineum",
+       "code": "1894"
+      },
+      {
+       "category": "Baso i hud: overekstremiteter ",
+       "code": "1895"
+      },
+      {
+       "category": "Baso i hud: underekstremiteter ",
+       "code": "1896"
+      },
+      {
+       "category": "Baso i hud: multiple lokalisasjoner ",
+       "code": "1898"
+      },
+      {
+       "category": "Baso i hud ins ",
+       "code": "1899"
+      },
+      {
+       "category": "Malignt melanom",
+       "code": "190"
+      },
+      {
+       "category": "Melanom i hud: leppe, øyelokk, ytre øre, ansikt, hodebunn, hals, nakke, bak øret",
+       "code": "1900"
+      },
+      {
+       "category": "Melanom i hud: bol, skulder, hofte, lyske    ",
+       "code": "1901"
+      },
+      {
+       "category": "Melanom i hud; overekstremiteter ",
+       "code": "1902"
+      },
+      {
+       "category": "Melanom i hud: fot nedenfor ankel ",
+       "code": "1903"
+      },
+      {
+       "category": "Melanom i hud: underekstremitet på eller over ankel",
+       "code": "1904"
+      },
+      {
+       "category": "Melanom i hud: perianalt ",
+       "code": "1905"
+      },
+      {
+       "category": "Melanom i hud: scrotum ",
+       "code": "1906"
+      },
+      {
+       "category": "Melanom i hud: bryst (kvinner), aerola (menn)",
+       "code": "1907"
+      },
+      {
+       "category": "Melanom i hud: subunguinalt, under negl",
+       "code": "1908"
+      },
+      {
+       "category": "Melanom i hud ins ",
+       "code": "1909"
+      },
+      {
+       "category": "Annen hudkreft (ekskl  melanom, basalcellecarc )",
+       "code": "191"
+      },
+      {
+       "category": "Annen hudkreft: ytre øre ",
+       "code": "1910"
+      },
+      {
+       "category": "Annen hudkreft: øyelokk",
+       "code": "1911"
+      },
+      {
+       "category": "Annen hudkreft: leppe, ansikt, hodebunn  ",
+       "code": "1912"
+      },
+      {
+       "category": "Annen hudkreft: hals, nakke, bak øret, skulder, bol, hofte    ",
+       "code": "1913"
+      },
+      {
+       "category": "Annen hudkreft: anus og perineum",
+       "code": "1914"
+      },
+      {
+       "category": "Annen hudkreft; overekstremiteter ",
+       "code": "1915"
+      },
+      {
+       "category": "Annen hudkreft: underekstremiteter ",
+       "code": "1916"
+      },
+      {
+       "category": "Annen hudkreft: multiple lokalisasjoner ",
+       "code": "1918"
+      },
+      {
+       "category": "Annen hudkreft ins ",
+       "code": "1919"
+      },
+      {
+       "category": "Øye",
+       "code": "192"
+      },
+      {
+       "category": "Øyet, bulbus oculi, unntatt øyelokk ",
+       "code": "1920"
+      },
+      {
+       "category": "Øyet, orbita; dvs  bløtdeler ",
+       "code": "1921"
+      },
+      {
+       "category": "Tårekjertler, tåresekk ",
+       "code": "1922"
+      },
+      {
+       "category": "Tårekanal ",
+       "code": "1923"
+      },
+      {
+       "category": "Conjunctiva",
+       "code": "1924"
+      },
+      {
+       "category": "Andre spesifiserte lokalisasjoner i øyet",
+       "code": "1925"
+      },
+      {
+       "category": "Øye og orbita (ekskl. øyelokk)",
+       "code": "1927"
+      },
+      {
+       "category": "Øyet, utbredt over flere sub-lok ",
+       "code": "1928"
+      },
+      {
+       "category": "Øyet, ins ",
+       "code": "1929"
+      },
+      {
+       "category": "Sentrale og perifere nervesystem",
+       "code": "193"
+      },
+      {
+       "category": "Hjerne og medulla oblongata ",
+       "code": "1930"
+      },
+      {
+       "category": "Hjernenerver, intrakranielt forløp ",
+       "code": "1931"
+      },
+      {
+       "category": "Hjernehinner, meninger ",
+       "code": "1932"
+      },
+      {
+       "category": "Medulla spinalis, ryggmargen ",
+       "code": "1933"
+      },
+      {
+       "category": "Ryggmargens hinner ",
+       "code": "1934"
+      },
+      {
+       "category": "Perifere nerver",
+       "code": "1935"
+      },
+      {
+       "category": "Sympatiske nervesystem ",
+       "code": "1936"
+      },
+      {
+       "category": "Andre spesifiserte lokalisasjoner i CNS",
+       "code": "1937"
+      },
+      {
+       "category": "CNS og PMS, utbredt over flere sub-lok ",
+       "code": "1938"
+      },
+      {
+       "category": "Nervesystem ins ",
+       "code": "1939"
+      },
+      {
+       "category": "Skjoldbruskkjertel",
+       "code": "194"
+      },
+      {
+       "category": "Skjoldbruskkjertelen ",
+       "code": "1940"
+      },
+      {
+       "category": "Ektopisk skjoldbruskkjertel ",
+       "code": "1941"
+      },
+      {
+       "category": "Endokrine organer",
+       "code": "195"
+      },
+      {
+       "category": "Binyre",
+       "code": "1950"
+      },
+      {
+       "category": "Biskjoldbruskkjertelen ",
+       "code": "1951"
+      },
+      {
+       "category": "Hypofyse ",
+       "code": "1953"
+      },
+      {
+       "category": "Corpus pineale ",
+       "code": "1954"
+      },
+      {
+       "category": "Craniopharyngealkanal ",
+       "code": "1955"
+      },
+      {
+       "category": "Endokrine organer, flere sub-lok",
+       "code": "1956"
+      },
+      {
+       "category": "Andre uspesfiserte lokalisasjoner i endokrine organer",
+       "code": "1958"
+      },
+      {
+       "category": "Endokrine organer ins ",
+       "code": "1959"
+      },
+      {
+       "category": "Ben, inklusive brusk, periost ",
+       "code": "196"
+      },
+      {
+       "category": "Hode, unntatt underkjeve ",
+       "code": "1960"
+      },
+      {
+       "category": "Underkjeve",
+       "code": "1961"
+      },
+      {
+       "category": "Ryggrad",
+       "code": "1962"
+      },
+      {
+       "category": "Ribben, brystben, kragebein",
+       "code": "1963"
+      },
+      {
+       "category": "Skulderblad, over- og underarm",
+       "code": "1964"
+      },
+      {
+       "category": "Hånd, fingre, fot, tær ",
+       "code": "1965"
+      },
+      {
+       "category": "Bekkenben, sakrum, os coecygis    ",
+       "code": "1966"
+      },
+      {
+       "category": "Lår, legg over ankelen ",
+       "code": "1967"
+      },
+      {
+       "category": "Ben, brusk: andre spesifiserte lok ",
+       "code": "1968"
+      },
+      {
+       "category": "Knokler ins ",
+       "code": "1969"
+      },
+      {
+       "category": "Bløtvev",
+       "code": "197"
+      },
+      {
+       "category": "Bløtdeltumores; hode, ansikt, hals ",
+       "code": "1970"
+      },
+      {
+       "category": "Bløtdeltumores; kropp, inkl  nates,    ",
+       "code": "1971"
+      },
+      {
+       "category": "Bløtdeltumores; Skulder, overekstrem ",
+       "code": "1972"
+      },
+      {
+       "category": "Bløtdeltumores; Hofte, underekstrem ",
+       "code": "1973"
+      },
+      {
+       "category": "Andre spesifiserte lok  i bløtdeler",
+       "code": "1978"
+      },
+      {
+       "category": "Bløtdeler ins ",
+       "code": "1979"
+      },
+      {
+       "category": "Andre og uspesifiserte organer",
+       "code": "199"
+      },
+      {
+       "category": "Utilstrekkelig spesifiserte lokalisasjon i hode, ansikt og hals",
+       "code": "1991"
+      },
+      {
+       "category": "Utilstrekkelig spesifiserte lokalisasjon i bryst",
+       "code": "1992"
+      },
+      {
+       "category": "Utilstrekkelig spesifiserte lokalisasjon i buk",
+       "code": "1993"
+      },
+      {
+       "category": "Utilstrekkelig spesifiserte lokalisasjon i bekken",
+       "code": "1994"
+      },
+      {
+       "category": "Utilstrekkelig spesifiserte lokalisasjon i over- og underekstremitet",
+       "code": "1995"
+      },
+      {
+       "category": "Generalisert carcinomatose ",
+       "code": "1996"
+      },
+      {
+       "category": "Andre utilstrekkelig spesifiserte lokalisasjoner",
+       "code": "1998"
+      },
+      {
+       "category": "Helt uten opplysninger om lokalisasjon ",
+       "code": "1999"
+      },
+      {
+       "category": "Lymfeknuter",
+       "code": "206"
+      },
+      {
+       "category": "Lymfeknuter; hals ",
+       "code": "2060"
+      },
+      {
+       "category": "Lymfeknuter; intrathorakalt ",
+       "code": "2061"
+      },
+      {
+       "category": "Lymfeknuter; intraabdominalt ",
+       "code": "2062"
+      },
+      {
+       "category": "Lymfeknuter; axiller, overekstremiteter ",
+       "code": "2063"
+      },
+      {
+       "category": "Lymfeknuter; lysker, underesktremiteter ",
+       "code": "2064"
+      },
+      {
+       "category": "Lymfoid sykdom utgått fra organ utenfor lymfeknute",
+       "code": "2065"
+      },
+      {
+       "category": "Hud (mycosis fungoides)",
+       "code": "2066"
+      },
+      {
+       "category": "Lymfeknuter: Multiple lokalisasjoner",
+       "code": "2068"
+      },
+      {
+       "category": "Lymfeknuter ins ",
+       "code": "2069"
+      },
+      {
+       "category": "Benmarg",
+       "code": "207"
+      },
+      {
+       "category": "Benmarg",
+       "code": "2070"
+      }
+     ],
+     "missingValues": []
+    }
+   },
+   {
+    "description": "Primærtumors utgangspunkt kodet etter en Kreftregister-spesifikk versjon av ICD-7. Regler bestemmer hvilken lokalisasjon som genereres i krefttilfellet dersom meldingene har ulik lokalisasjon.\n\nFor mer informasjon om variabelen, besøk Kreftregisterets [metadatabase](https://metadata.kreftregisteret.no/variables/detail/12)",
+    "validPeriod": {
+     "start": 3652,
+     "stop": 4747
+    },
+    "valueDomain": {
+     "missingValues": [],
+     "delta": {
+      "remove": [
+       170
+      ],
+      "reorder": [],
+      "replace": {},
+      "insert": {}
+     }
+    }
+   },
+   {
+    "description": "Primærtumors utgangspunkt kodet etter en Kreftregister-spesifikk versjon av ICD-7. Regler bestemmer hvilken lokalisasjon som genereres i krefttilfellet dersom meldingene har ulik lokalisasjon.\n\nFor mer informasjon om variabelen, besøk Kreftregisterets [metadatabase](https://metadata.kreftregisteret.no/variables/detail/12)",
+    "validPeriod": {
+     "start": 4748,
+     "stop": 5843
+    },
+    "valueDomain": {
+     "missingValues": [],
+     "delta": {
+      "remove": [
+       17,
+       34,
+       65,
+       96,
+       119,
+       125,
+       126,
+       156,
+       164,
+       235
+      ],
+      "reorder": [],
+      "replace": {},
+      "insert": {}
+     }
+    }
+   },
+   {
+    "description": "Primærtumors utgangspunkt kodet etter en Kreftregister-spesifikk versjon av ICD-7. Regler bestemmer hvilken lokalisasjon som genereres i krefttilfellet dersom meldingene har ulik lokalisasjon.\n\nFor mer informasjon om variabelen, besøk Kreftregisterets [metadatabase](https://metadata.kreftregisteret.no/variables/detail/12)",
+    "validPeriod": {
+     "start": 5844,
+     "stop": 8400
+    },
+    "valueDomain": {
+     "missingValues": [],
+     "delta": {
+      "remove": [
+       249,
+       285
+      ],
+      "reorder": [],
+      "replace": {},
+      "insert": {}
+     }
+    }
+   },
+   {
+    "description": "Primærtumors utgangspunkt kodet etter en Kreftregister-spesifikk versjon av ICD-7. Regler bestemmer hvilken lokalisasjon som genereres i krefttilfellet dersom meldingene har ulik lokalisasjon.\n\nFor mer informasjon om variabelen, besøk Kreftregisterets [metadatabase](https://metadata.kreftregisteret.no/variables/detail/12)",
+    "validPeriod": {
+     "start": 8401
+    },
+    "valueDomain": {
+     "missingValues": [],
+     "delta": {
+      "remove": [
+       51,
+       145,
+       150,
+       166,
+       284
+      ],
+      "reorder": [],
+      "replace": {},
+      "insert": {}
+     }
+    }
+   }
+  ]
+ },
+ "identifierVariables": [
+  {
+   "name": "KRG_TILFELLEID",
+   "label": "Krefttilfelle-indentifikator",
+   "notPseudonym": false,
+   "dataType": "Long",
+   "format": "RandomUInt48",
+   "variableRole": "Identifier",
+   "keyType": {
+    "name": "KRG_KREFTTILFELLE",
+    "label": "Krefttilfelle",
+    "description": "En enkelt kreftsykdom hos en pasient, inkludert spredning, tilbakefall og progresjon av den samme kreftsykdommen. En pasient kan ha flere krefttilfeller."
+   },
+   "representedVariables": [
+    {
+     "description": "Identifikator for krefttilfelle i microdata",
+     "validPeriod": {
+      "start": -25567,
+      "stop": 20773
+     },
+     "valueDomain": {
+      "description": "Pseudonymisert løpenummer",
+      "unitOfMeasure": "N/A"
+     }
+    }
+   ]
+  }
+ ],
+ "attributeVariables": [
+  {
+   "name": "START",
+   "label": "Startdato",
+   "notPseudonym": true,
+   "dataType": "Instant",
+   "variableRole": "Start",
+   "representedVariables": [
+    {
+     "description": "Startdato/måletidspunktet for hendelsen",
+     "validPeriod": {
+      "start": -25567,
+      "stop": 20773
+     },
+     "valueDomain": {
+      "description": "Dato oppgitt i dager siden 1970-01-01",
+      "unitOfMeasure": "N/A"
+     }
+    }
+   ]
+  },
+  {
+   "name": "STOP",
+   "label": "Stoppdato",
+   "notPseudonym": true,
+   "dataType": "Instant",
+   "variableRole": "Stop",
+   "representedVariables": [
+    {
+     "description": "Stoppdato/måletidspunktet for hendelsen",
+     "validPeriod": {
+      "start": -25567,
+      "stop": 20773
+     },
+     "valueDomain": {
+      "description": "Dato oppgitt i dager siden 1970-01-01",
+      "unitOfMeasure": "N/A"
+     }
+    }
+   ]
+  }
+ ],
+ "globalTemporalCoverage": {
+  "start": -1096,
+  "stop": 20774
+ },
+ "updatedAt": 1794909969
+}

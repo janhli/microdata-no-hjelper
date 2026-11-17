@@ -1,0 +1,1426 @@
+{
+ "name": "S_TOPOGRAFIICDO3",
+ "temporality": "FIXED",
+ "languageCode": "no",
+ "sensitivityLevel": "PERSON_SPECIAL",
+ "populationDescription": "Primærtumors utgangspunkt etter ICD-O-3.",
+ "subjectFields": [
+  "Helse",
+  "Helsetjenester"
+ ],
+ "temporalCoverage": {
+  "start": -25567,
+  "stop": 20773
+ },
+ "measureVariable": {
+  "name": "S_TOPOGRAFIICDO3",
+  "label": "Topografi ICDO3",
+  "notPseudonym": true,
+  "dataType": "String",
+  "variableRole": "Measure",
+  "representedVariables": [
+   {
+    "description": "Primærtumors utgangspunkt etter ICD-O-3.\n\nFor mer informasjon om variabelen, besøk Kreftregisterets [metadatabase](https://metadata.kreftregisteret.no/variables/detail/21)",
+    "validPeriod": {
+     "start": -6209
+    },
+    "valueDomain": {
+     "codeList": [
+      {
+       "category": "Lepperødt på overleppe",
+       "code": "000"
+      },
+      {
+       "category": "Lepperødt på underleppe",
+       "code": "001"
+      },
+      {
+       "category": "Lepperødt uns",
+       "code": "002"
+      },
+      {
+       "category": "Slimhinne på overleppe",
+       "code": "003"
+      },
+      {
+       "category": "Slimhinne på underleppe",
+       "code": "004"
+      },
+      {
+       "category": "Leppeslimhinne uns",
+       "code": "005"
+      },
+      {
+       "category": "Munnvik ",
+       "code": "006"
+      },
+      {
+       "category": "Svulst utbredt i leppe innen C00.0 - C00.6 og utgangspunktet kan ikke\nBestemmes",
+       "code": "008"
+      },
+      {
+       "category": "Leppe uns",
+       "code": "009"
+      },
+      {
+       "category": "Tungebasis uns",
+       "code": "019"
+      },
+      {
+       "category": "Tungens dorsalside",
+       "code": "020"
+      },
+      {
+       "category": "Tungerand ",
+       "code": "021"
+      },
+      {
+       "category": "Tungens ventrale side",
+       "code": "022"
+      },
+      {
+       "category": "Fremre 2/3 av tunge uns",
+       "code": "023"
+      },
+      {
+       "category": "Tungemandel",
+       "code": "024"
+      },
+      {
+       "category": "Svulst utbredt i tunge C02.0 - C02.4 og utgangspunktet kan ikke bestemmes",
+       "code": "028"
+      },
+      {
+       "category": "Tunge uns",
+       "code": "029"
+      },
+      {
+       "category": "Gingiva superior",
+       "code": "030"
+      },
+      {
+       "category": "Gingiva inferior",
+       "code": "031"
+      },
+      {
+       "category": "Gingiva uns",
+       "code": "039"
+      },
+      {
+       "category": "Fremre munngulv",
+       "code": "040"
+      },
+      {
+       "category": "Bakre munngulv",
+       "code": "041"
+      },
+      {
+       "category": "Svulst utbredt i munngulv innen C04.0 - C04.1 og utgangspunktet kan ikke bestemmes ",
+       "code": "048"
+      },
+      {
+       "category": "Munngulv uns",
+       "code": "049"
+      },
+      {
+       "category": "Hard gane",
+       "code": "050"
+      },
+      {
+       "category": "Bløt gane uns",
+       "code": "051"
+      },
+      {
+       "category": "Drøvel",
+       "code": "052"
+      },
+      {
+       "category": "Svulst utbredt i gane innen C05.0 - C05.2 og utgangspunktet kan ikke\nBestemmes",
+       "code": "058"
+      },
+      {
+       "category": "Gane uns",
+       "code": "059"
+      },
+      {
+       "category": "Kinnslimhinne",
+       "code": "060"
+      },
+      {
+       "category": "Vestibulum oris",
+       "code": "061"
+      },
+      {
+       "category": "Retromolar-området",
+       "code": "062"
+      },
+      {
+       "category": "Svulst utbredt i munnhule innen C06.0 - C06.2 og utgangspunktet kan ikke bestemmes",
+       "code": "068"
+      },
+      {
+       "category": "Munnhule uns",
+       "code": "069"
+      },
+      {
+       "category": "Ørespyttkjertel ",
+       "code": "079"
+      },
+      {
+       "category": "Glandula submandibularis ",
+       "code": "080"
+      },
+      {
+       "category": "Glandula sublingualis ",
+       "code": "081"
+      },
+      {
+       "category": "Svulst utbredt i store spyttkjertler (inkl.glandula parotis) innen C07.9 – C08.1 og utgangspunktet kan ikke bestemmes",
+       "code": "088"
+      },
+      {
+       "category": "Stor spyttkjertel uns ",
+       "code": "089"
+      },
+      {
+       "category": "Tonsilleseng",
+       "code": "090"
+      },
+      {
+       "category": "Ganebue",
+       "code": "091"
+      },
+      {
+       "category": "Svulst utbredt i ganetonsille-området innen C09.0 - C09.1 og utgangspunktet\nkan ikke bestemmes",
+       "code": "098"
+      },
+      {
+       "category": "Tonsille uns",
+       "code": "099"
+      },
+      {
+       "category": "Vallecula epiglottica",
+       "code": "100"
+      },
+      {
+       "category": "Fremre flate av strupelokk",
+       "code": "101"
+      },
+      {
+       "category": "Laterale vegg i oropharynx ",
+       "code": "102"
+      },
+      {
+       "category": "Bakre vegg i oropharynx",
+       "code": "103"
+      },
+      {
+       "category": "Gjellebuespalte",
+       "code": "104"
+      },
+      {
+       "category": "Svulst utbredt i oropharynx innen C10.0 - C10.4 og utgangspunktet kan ikke\nBestemmes",
+       "code": "108"
+      },
+      {
+       "category": "Oropharynx uns ",
+       "code": "109"
+      },
+      {
+       "category": "Tak i nesesvelg",
+       "code": "110"
+      },
+      {
+       "category": "Bakre vegg i nesesvelg",
+       "code": "111"
+      },
+      {
+       "category": "Sidevegg i nesesvelg\n",
+       "code": "112"
+      },
+      {
+       "category": "Fremre vegg i nesesvelg",
+       "code": "113"
+      },
+      {
+       "category": "Svulst utbredt i nesesvelg innen C11.0 - C11.3 og utgangspunktet kan ikke bestemmes ",
+       "code": "118"
+      },
+      {
+       "category": "Nesesvelg uns",
+       "code": "119"
+      },
+      {
+       "category": "Sinus piriformis ",
+       "code": "129"
+      },
+      {
+       "category": "Postkrikoidalt område",
+       "code": "130"
+      },
+      {
+       "category": "Aryepiglottisfold, hypofaryngeal side",
+       "code": "131"
+      },
+      {
+       "category": "Bakre vegg i hypopharynx",
+       "code": "132"
+      },
+      {
+       "category": "Svulst utbredt i hypopharynx innen C13.0 - C13.2 og utgangspunktet kan ikke bestemmes",
+       "code": "138"
+      },
+      {
+       "category": "Hypopharynx uns",
+       "code": "139"
+      },
+      {
+       "category": "Pharynx uns",
+       "code": "140"
+      },
+      {
+       "category": "Waldeyers ring ",
+       "code": "142"
+      },
+      {
+       "category": "Svulst utbredt innen leppe, munnhule og/eller pharynx innen C00 - C14.2 og\nutgangspunktet kan ikke bestemmes",
+       "code": "148"
+      },
+      {
+       "category": "Cervikaldel av spiserør",
+       "code": "150"
+      },
+      {
+       "category": "Torakaldel av spiserør",
+       "code": "151"
+      },
+      {
+       "category": "Abdominaldel av spiserør",
+       "code": "152"
+      },
+      {
+       "category": "Øvre tredel av spiserør",
+       "code": "153"
+      },
+      {
+       "category": "Midtre tredel av spiserør",
+       "code": "154"
+      },
+      {
+       "category": "Nedre tredel av spiserør",
+       "code": "155"
+      },
+      {
+       "category": "Svulst utbredt i spiserør innen C15.3 - C15.5 og utgangspunktet kan ikke\nBestemmes",
+       "code": "158"
+      },
+      {
+       "category": "Spiserør uns ",
+       "code": "159"
+      },
+      {
+       "category": "Cardia uns",
+       "code": "160"
+      },
+      {
+       "category": "Fundus \n",
+       "code": "161"
+      },
+      {
+       "category": "Corpus",
+       "code": "162"
+      },
+      {
+       "category": "Antrum ",
+       "code": "163"
+      },
+      {
+       "category": "Pylorus",
+       "code": "164"
+      },
+      {
+       "category": "Curvatura minor uns",
+       "code": "165"
+      },
+      {
+       "category": "Curvatura major uns",
+       "code": "166"
+      },
+      {
+       "category": "Svulst utbredt i magesekk innen C16.0 - C16.6 og utgangspunktet kan ikke\nBestemmes",
+       "code": "168"
+      },
+      {
+       "category": "Magesekk uns",
+       "code": "169"
+      },
+      {
+       "category": "Tolvfingertarm",
+       "code": "170"
+      },
+      {
+       "category": "Jejunum",
+       "code": "171"
+      },
+      {
+       "category": "Ileum",
+       "code": "172"
+      },
+      {
+       "category": "Meckels divertikkel ",
+       "code": "173"
+      },
+      {
+       "category": "Svulst utbredt i tynntarm innen C17.0 - C17.3 og utgangspunktet kan ikke\nbestemmes\n",
+       "code": "178"
+      },
+      {
+       "category": "Tynntarm uns",
+       "code": "179"
+      },
+      {
+       "category": "Coecum",
+       "code": "180"
+      },
+      {
+       "category": "Blindtarmsvedheng",
+       "code": "181"
+      },
+      {
+       "category": "Colon ascendens",
+       "code": "182"
+      },
+      {
+       "category": "Høyre fleksur",
+       "code": "183"
+      },
+      {
+       "category": "Colon transversum",
+       "code": "184"
+      },
+      {
+       "category": "Venstre fleksur",
+       "code": "185"
+      },
+      {
+       "category": "Colon descendens",
+       "code": "186"
+      },
+      {
+       "category": "Colon sigmoideum",
+       "code": "187"
+      },
+      {
+       "category": "Svulst utbredt i tykktarm innen C18.0 - C18.7 og utgangspunktet kan ikke\nBestemmes",
+       "code": "188"
+      },
+      {
+       "category": "Tykktarm uns ",
+       "code": "189"
+      },
+      {
+       "category": "Rektosigmoid-overgang",
+       "code": "199"
+      },
+      {
+       "category": "Endetarm uns",
+       "code": "209"
+      },
+      {
+       "category": "Anus uns",
+       "code": "210"
+      },
+      {
+       "category": "Analkanal",
+       "code": "211"
+      },
+      {
+       "category": "Kloakogen sone ",
+       "code": "212"
+      },
+      {
+       "category": "Svulst utbredt i endetarm, anus og analkanal innen C20 - C21.2 og\nutgangspunktet kan ikke bestemmes",
+       "code": "218"
+      },
+      {
+       "category": "Lever",
+       "code": "220"
+      },
+      {
+       "category": "Intrahepatiske galleganger",
+       "code": "221"
+      },
+      {
+       "category": "Galleblære",
+       "code": "239"
+      },
+      {
+       "category": "Ekstrahepatiske galleganger ",
+       "code": "240"
+      },
+      {
+       "category": "Ampulla Vateri",
+       "code": "241"
+      },
+      {
+       "category": "Svulst utbredt i lever og galleveier innen C22.0 - C24.1 og utgangspunktet\nkan ikke bestemmes",
+       "code": "248"
+      },
+      {
+       "category": "Galleveier uns",
+       "code": "249"
+      },
+      {
+       "category": "Bukspyttkjertelhode",
+       "code": "250"
+      },
+      {
+       "category": "Bukspyttkjertelkropp",
+       "code": "251"
+      },
+      {
+       "category": "Bukspyttkjertelhale",
+       "code": "252"
+      },
+      {
+       "category": "Bukspyttkjertelgang",
+       "code": "253"
+      },
+      {
+       "category": "Endokrin bukspyttkjertel",
+       "code": "254"
+      },
+      {
+       "category": "Bukspyttkjertelhals",
+       "code": "257"
+      },
+      {
+       "category": "Svulst utbredt i bukspyttkjertel innen C25.0 - C25.7 og utgangspunktet kan\nikke bestemmes",
+       "code": "258"
+      },
+      {
+       "category": "Bukspyttkjertel uns",
+       "code": "259"
+      },
+      {
+       "category": "Intestinaltractus uns",
+       "code": "260"
+      },
+      {
+       "category": "Svulst utbredt i fordøyelsessystemet innen C15 - C26.0 og utgangspunktet kan\nikke bestemmes\n",
+       "code": "268"
+      },
+      {
+       "category": "Gastrointestinaltractus uns",
+       "code": "269"
+      },
+      {
+       "category": "Nesehule",
+       "code": "300"
+      },
+      {
+       "category": "Mellomøre",
+       "code": "301"
+      },
+      {
+       "category": "Kjevebihule",
+       "code": "310"
+      },
+      {
+       "category": "Silbensbihule",
+       "code": "311"
+      },
+      {
+       "category": "Pannebihule",
+       "code": "312"
+      },
+      {
+       "category": "Kilebensbihule",
+       "code": "313"
+      },
+      {
+       "category": "Svulst utbredt i bihuler innen C31.0 - C31.3 og utgangspunktet kan ikke\nBestemmes",
+       "code": "318"
+      },
+      {
+       "category": "Bihule uns",
+       "code": "319"
+      },
+      {
+       "category": "Glottis",
+       "code": "320"
+      },
+      {
+       "category": "Supraglottis",
+       "code": "321"
+      },
+      {
+       "category": "Subglottis",
+       "code": "322"
+      },
+      {
+       "category": "Strupebrusk",
+       "code": "323"
+      },
+      {
+       "category": "Svulst utbredt i supraglottis og strupebrusk innen C32.1 og C32.3 og utgangspunktet kan ikke\nBestemmes",
+       "code": "328"
+      },
+      {
+       "category": "Strupe uns",
+       "code": "329"
+      },
+      {
+       "category": "Luftrør uns",
+       "code": "339"
+      },
+      {
+       "category": "Hovedbronkie",
+       "code": "340"
+      },
+      {
+       "category": "Overlapp lunge",
+       "code": "341"
+      },
+      {
+       "category": "Midtlapp lunge",
+       "code": "342"
+      },
+      {
+       "category": "Underlapp lunge",
+       "code": "343"
+      },
+      {
+       "category": "Svulst utbredt i bronkie eller lunge innen C34.0 - C34.3 og utgangspunktet\nkan ikke bestemmes",
+       "code": "348"
+      },
+      {
+       "category": "Lunge uns",
+       "code": "349"
+      },
+      {
+       "category": "Brissel uns",
+       "code": "379"
+      },
+      {
+       "category": "Hjerte",
+       "code": "380"
+      },
+      {
+       "category": "Fremre mediastinum",
+       "code": "381"
+      },
+      {
+       "category": "Bakre mediastinum",
+       "code": "382"
+      },
+      {
+       "category": "Mediastinum uns",
+       "code": "383"
+      },
+      {
+       "category": "Brysthinne uns",
+       "code": "384"
+      },
+      {
+       "category": "Svulst utbredt innen hjerte, mediastinum og/eller brysthinne C38.0 - C38.4\nog utgangspunktet kan ikke bestemmes",
+       "code": "388"
+      },
+      {
+       "category": "Øvre luftveier uns",
+       "code": "390"
+      },
+      {
+       "category": "Svulst utbredt i luftveier og intratorakale organer C30 - C39.0 og\nutgangspunktet kan ikke bestemmes",
+       "code": "398"
+      },
+      {
+       "category": "Luftveier uns",
+       "code": "399"
+      },
+      {
+       "category": "Lange knokler i overekstremitet og assosierte ledd",
+       "code": "400"
+      },
+      {
+       "category": "Korte knokler i overekstremitetene og assosierte ledd",
+       "code": "401"
+      },
+      {
+       "category": "Lange knokler i underekstremitetene og assosierte ledd",
+       "code": "402"
+      },
+      {
+       "category": "Lange knokler i underekstremitetene og assosierte ledd",
+       "code": "403"
+      },
+      {
+       "category": "Svulst utbredt i ekstremitetsknokler og -ledd innen C40.0 - C40.3 og\nutgangspunktet kan ikke bestemmes",
+       "code": "408"
+      },
+      {
+       "category": "Ekstremitetsknokler og -ledd uns",
+       "code": "409"
+      },
+      {
+       "category": "Knokler i skalle og ansikt",
+       "code": "410"
+      },
+      {
+       "category": "Underkjeve",
+       "code": "411"
+      },
+      {
+       "category": "Ryggsøyle",
+       "code": "412"
+      },
+      {
+       "category": "Ribben, brystben og krageben",
+       "code": "413"
+      },
+      {
+       "category": "Bekkenben",
+       "code": "414"
+      },
+      {
+       "category": "Svulst utbredet i knokler, ledd og leddbrusk innen C40 - C41.4 og\nutgangspunktet kan ikke bestemmes",
+       "code": "418"
+      },
+      {
+       "category": "Ben uns",
+       "code": "419"
+      },
+      {
+       "category": "Blod",
+       "code": "420"
+      },
+      {
+       "category": "Benmarg",
+       "code": "421"
+      },
+      {
+       "category": "Milt",
+       "code": "422"
+      },
+      {
+       "category": "Retikuloendoteliale system uns",
+       "code": "423"
+      },
+      {
+       "category": "Hematopoetiske system uns",
+       "code": "424"
+      },
+      {
+       "category": "Hud på leppe uns",
+       "code": "440"
+      },
+      {
+       "category": "Øyelokk uns",
+       "code": "441"
+      },
+      {
+       "category": "Ytre øre",
+       "code": "442"
+      },
+      {
+       "category": "Hud i ansikt",
+       "code": "443"
+      },
+      {
+       "category": "Hud i hodebunn og på hals",
+       "code": "444"
+      },
+      {
+       "category": "Hud på bol",
+       "code": "445"
+      },
+      {
+       "category": "Hud på overekstremitet",
+       "code": "446"
+      },
+      {
+       "category": "Hud på underekstremitet\n",
+       "code": "447"
+      },
+      {
+       "category": "Overlappende lesjoner i hud",
+       "code": "448"
+      },
+      {
+       "category": "Hud, ikke nærmere spesifisert",
+       "code": "449"
+      },
+      {
+       "category": "Perifere nerver i hode, ansikt og hals",
+       "code": "470"
+      },
+      {
+       "category": "Perifere nerver i overekstremitet og skulder",
+       "code": "471"
+      },
+      {
+       "category": "Perifere nerver i underekstremitet",
+       "code": "472"
+      },
+      {
+       "category": "Perifere nerver i bryst",
+       "code": "473"
+      },
+      {
+       "category": "Perifere nerver i buk",
+       "code": "474"
+      },
+      {
+       "category": "Perifere nerver i bekken",
+       "code": "475"
+      },
+      {
+       "category": "Perifere nerver i bol",
+       "code": "476"
+      },
+      {
+       "category": "Svulst utbredt i perifere nerver C47.0-C47.6 og utgangspunktet kan ikke bestemmes",
+       "code": "478"
+      },
+      {
+       "category": "Autonomt nervesystem uns",
+       "code": "479"
+      },
+      {
+       "category": "Retroperitoneum",
+       "code": "480"
+      },
+      {
+       "category": "Bukhinne",
+       "code": "481"
+      },
+      {
+       "category": "Bukhinne uns",
+       "code": "482"
+      },
+      {
+       "category": "Svulst utbredt i retroperitoneum og bukhinne innen C48.0 - C48.2 og\nutgangspunktet kan ikke bestemmes",
+       "code": "488"
+      },
+      {
+       "category": "Underhud i hode",
+       "code": "490"
+      },
+      {
+       "category": "Underhud i overekstremitet",
+       "code": "491"
+      },
+      {
+       "category": "Underhud i underekstremitet",
+       "code": "492"
+      },
+      {
+       "category": "Underhud på thorax",
+       "code": "493"
+      },
+      {
+       "category": "Underhud på abdomen ",
+       "code": "494"
+      },
+      {
+       "category": "Underhud i bekken",
+       "code": "495"
+      },
+      {
+       "category": "Underhud i bol uns",
+       "code": "496"
+      },
+      {
+       "category": "Svulst utbredt i underhud innen C49.0 - C49.6 og utgangspunktet kan ikke\nBestemmes",
+       "code": "498"
+      },
+      {
+       "category": "Underhud uns",
+       "code": "499"
+      },
+      {
+       "category": "Brystvorte",
+       "code": "500"
+      },
+      {
+       "category": "Sentral del av bryst",
+       "code": "501"
+      },
+      {
+       "category": "Øvre indre kvadrant av bryst",
+       "code": "502"
+      },
+      {
+       "category": "Nedre indre kvadrant av bryst",
+       "code": "503"
+      },
+      {
+       "category": "Øvre ytre kvadrant av bryst",
+       "code": "504"
+      },
+      {
+       "category": "Nedre ytre kvadrant av bryst",
+       "code": "505"
+      },
+      {
+       "category": "Aksillær del av bryst",
+       "code": "506"
+      },
+      {
+       "category": "Svulst utbredt i bryst innen C50.0 - C50.6 og utgangspunktet kan ikke\nBestemmes",
+       "code": "508"
+      },
+      {
+       "category": "Bryst uns",
+       "code": "509"
+      },
+      {
+       "category": "Stor kjønnsleppe",
+       "code": "510"
+      },
+      {
+       "category": "Liten kjønnsleppe",
+       "code": "511"
+      },
+      {
+       "category": "Klitoris",
+       "code": "512"
+      },
+      {
+       "category": "Svulst utbredt i ytre kvinnelige genitalia innen C51.0 - C51.2 og\nutgangspunktet kan ikke bestemmes",
+       "code": "518"
+      },
+      {
+       "category": "Ytre kvinnelige genitalia uns",
+       "code": "519"
+      },
+      {
+       "category": "Skjede uns",
+       "code": "529"
+      },
+      {
+       "category": "Endocervix",
+       "code": "530"
+      },
+      {
+       "category": "Ektocervix",
+       "code": "531"
+      },
+      {
+       "category": "Svulst utbredt i cervix uteri innen C53.0 - C53.1 og utgangspunktet kan ikke\nBestemmes",
+       "code": "538"
+      },
+      {
+       "category": "Cervix uteri",
+       "code": "539"
+      },
+      {
+       "category": "Isthmus uteri",
+       "code": "540"
+      },
+      {
+       "category": "Endometrium",
+       "code": "541"
+      },
+      {
+       "category": "Myometrium",
+       "code": "542"
+      },
+      {
+       "category": "Fundus uteri",
+       "code": "543"
+      },
+      {
+       "category": "Svulst utbredt i livmorkropp innen C54.0 - C54.3 og utgangspunktet kan\nikke bestemmes",
+       "code": "548"
+      },
+      {
+       "category": "Livmorkropp",
+       "code": "549"
+      },
+      {
+       "category": "Livmor uns",
+       "code": "559"
+      },
+      {
+       "category": "Eggstokk",
+       "code": "569"
+      },
+      {
+       "category": "Eggleder",
+       "code": "570"
+      },
+      {
+       "category": "Ligamentum latum",
+       "code": "571"
+      },
+      {
+       "category": "Ligamentum teres uteri",
+       "code": "572"
+      },
+      {
+       "category": "Parametrium",
+       "code": "573"
+      },
+      {
+       "category": "Adneks",
+       "code": "574"
+      },
+      {
+       "category": "Wolffske legeme",
+       "code": "577"
+      },
+      {
+       "category": "Svulst utbredt i kvinnelige genitalia innen C51 - C57.7 eller C58 og\nutgangspunktet kan ikke bestemmes",
+       "code": "578"
+      },
+      {
+       "category": "Kvinnelige genitalia uns",
+       "code": "579"
+      },
+      {
+       "category": "Morkake",
+       "code": "589"
+      },
+      {
+       "category": "Forhud",
+       "code": "600"
+      },
+      {
+       "category": "Penishode",
+       "code": "601"
+      },
+      {
+       "category": "Penisskaft",
+       "code": "602"
+      },
+      {
+       "category": "Svulst utbredt i penis innen C60.0 - C60.2 og utgangspunktet kan ikke\nBestemmes",
+       "code": "608"
+      },
+      {
+       "category": "Penis uns",
+       "code": "609"
+      },
+      {
+       "category": "Prostata",
+       "code": "619"
+      },
+      {
+       "category": "Retinert testikkel",
+       "code": "620"
+      },
+      {
+       "category": "Skrotal testikkel",
+       "code": "621"
+      },
+      {
+       "category": "Testikkel uns",
+       "code": "629"
+      },
+      {
+       "category": "Bitestikkel",
+       "code": "630"
+      },
+      {
+       "category": "Sædleder",
+       "code": "631"
+      },
+      {
+       "category": "Pung uns",
+       "code": "632"
+      },
+      {
+       "category": "Tunica vaginalis",
+       "code": "637"
+      },
+      {
+       "category": "Svulst utbredt i mannlige genitalia innen C60.0 - C63.7 og utgangspunktet\nkan ikke bestemmes",
+       "code": "638"
+      },
+      {
+       "category": "Mannlig genitalorgan uns",
+       "code": "639"
+      },
+      {
+       "category": "Nyre uns",
+       "code": "649"
+      },
+      {
+       "category": "Nyrebekken",
+       "code": "659"
+      },
+      {
+       "category": "Ureter",
+       "code": "669"
+      },
+      {
+       "category": "Blæretrekant",
+       "code": "670"
+      },
+      {
+       "category": "Blæretak",
+       "code": "671"
+      },
+      {
+       "category": "Sidevegg i urinblære",
+       "code": "672"
+      },
+      {
+       "category": "Bakre vegg i urinblære",
+       "code": "674"
+      },
+      {
+       "category": "Blærehals",
+       "code": "675"
+      },
+      {
+       "category": "Urinlederåpning",
+       "code": "676"
+      },
+      {
+       "category": "Urachus",
+       "code": "677"
+      },
+      {
+       "category": "Svulst utbredt i urinblære og utgangspunktet\nkan ikke bestemmes",
+       "code": "678"
+      },
+      {
+       "category": "Urinblære uns",
+       "code": "679"
+      },
+      {
+       "category": "Urinrør\n",
+       "code": "680"
+      },
+      {
+       "category": "Paraurethrale kjertler",
+       "code": "681"
+      },
+      {
+       "category": "Svulst utbredt innen urinveier C64 - C68.1 og utgangspunktet kan ikke\nBestemmes",
+       "code": "688"
+      },
+      {
+       "category": "Urinorgan uns",
+       "code": "689"
+      },
+      {
+       "category": "Bindehinne",
+       "code": "690"
+      },
+      {
+       "category": "Hornhinne uns",
+       "code": "691"
+      },
+      {
+       "category": "Retina",
+       "code": "692"
+      },
+      {
+       "category": "Årehinne",
+       "code": "693"
+      },
+      {
+       "category": "Corpus ciliare",
+       "code": "694"
+      },
+      {
+       "category": "Tårekjertel",
+       "code": "695"
+      },
+      {
+       "category": "Øyehule uns",
+       "code": "696"
+      },
+      {
+       "category": "Svulst utbredt i øye/orbita  innen C69.0 - C69.6 og utgangspunktet kan ikke\nbestemmes\n",
+       "code": "698"
+      },
+      {
+       "category": "Øye uns",
+       "code": "699"
+      },
+      {
+       "category": "Hjernehinner",
+       "code": "700"
+      },
+      {
+       "category": "Ryggmargshinner",
+       "code": "701"
+      },
+      {
+       "category": "Hinner uns",
+       "code": "709"
+      },
+      {
+       "category": "Cerebrum",
+       "code": "710"
+      },
+      {
+       "category": "Pannelapp",
+       "code": "711"
+      },
+      {
+       "category": "Tinninglapp",
+       "code": "712"
+      },
+      {
+       "category": "Isselapp ",
+       "code": "713"
+      },
+      {
+       "category": "Bakhodelapp",
+       "code": "714"
+      },
+      {
+       "category": "Ventrikkel uns",
+       "code": "715"
+      },
+      {
+       "category": "Cerebellum uns",
+       "code": "716"
+      },
+      {
+       "category": "Hjernestamme",
+       "code": "717"
+      },
+      {
+       "category": "Svulst utbredt i hjerne innen C71.0 - C71.7 og utgangspunktet kan ikke\nBestemmes",
+       "code": "718"
+      },
+      {
+       "category": "Hjerne uns",
+       "code": "719"
+      },
+      {
+       "category": "Ryggmarg",
+       "code": "720"
+      },
+      {
+       "category": "Hestehale",
+       "code": "721"
+      },
+      {
+       "category": "Nervus olfactorius",
+       "code": "722"
+      },
+      {
+       "category": "Nervus opticus",
+       "code": "723"
+      },
+      {
+       "category": "Nervus acusticus",
+       "code": "724"
+      },
+      {
+       "category": "Hjernenerver uns",
+       "code": "725"
+      },
+      {
+       "category": "Svulst utbredt i sentralnervesystem og hinner innen C70 - C72.5 og\nutgangspunktet kan ikke bestemmes",
+       "code": "728"
+      },
+      {
+       "category": "Nervesystem uns",
+       "code": "729"
+      },
+      {
+       "category": "Skjoldbruskkjertel",
+       "code": "739"
+      },
+      {
+       "category": "Binyrebark ",
+       "code": "740"
+      },
+      {
+       "category": "Binyremarg",
+       "code": "741"
+      },
+      {
+       "category": "Binyre uns",
+       "code": "749"
+      },
+      {
+       "category": "Glandula paratyroidea",
+       "code": "750"
+      },
+      {
+       "category": "Hypofyse",
+       "code": "751"
+      },
+      {
+       "category": "Kraniofaryngeal-kanal",
+       "code": "752"
+      },
+      {
+       "category": "Corpus pineale",
+       "code": "753"
+      },
+      {
+       "category": "Glomus caroticum",
+       "code": "754"
+      },
+      {
+       "category": "Glomus aortae",
+       "code": "755"
+      },
+      {
+       "category": "Svulst overlapper C75.0 - C75.5 og utgangspunktet kan ikke bestemmes",
+       "code": "758"
+      },
+      {
+       "category": "Endokrint organ uns",
+       "code": "759"
+      },
+      {
+       "category": "Hode, ansikt og hals uns",
+       "code": "760"
+      },
+      {
+       "category": "Thorax uns",
+       "code": "761"
+      },
+      {
+       "category": "Buk uns",
+       "code": "762"
+      },
+      {
+       "category": "Bekken uns",
+       "code": "763"
+      },
+      {
+       "category": "Overekstremitet uns",
+       "code": "764"
+      },
+      {
+       "category": "Underekstremitet uns",
+       "code": "765"
+      },
+      {
+       "category": "Andre ufullstendig angitte topografier",
+       "code": "767"
+      },
+      {
+       "category": "Svulst utbredt innen C76.0 - C76.7 og utgangspunktet kan ikke bestemmes",
+       "code": "768"
+      },
+      {
+       "category": "Lymfeknute i hode, ansikt og hals ",
+       "code": "770"
+      },
+      {
+       "category": "Lymfeknute i brysthule ",
+       "code": "771"
+      },
+      {
+       "category": "Lymfeknute i bukhule",
+       "code": "772"
+      },
+      {
+       "category": "Lymfeknute i aksille og arm",
+       "code": "773"
+      },
+      {
+       "category": "Lymfeknute i lyske og underekstremitet",
+       "code": "774"
+      },
+      {
+       "category": "Lymfeknute i bekken",
+       "code": "775"
+      },
+      {
+       "category": "Svulst utbredt over to eller flere lymfeknuteregioner (og evt. andre organer)\nog utgangspunktet kan ikke bestemmes",
+       "code": "778"
+      },
+      {
+       "category": "Lymfeknute uns",
+       "code": "779"
+      },
+      {
+       "category": "Ukjent utgangspunkt",
+       "code": "809"
+      }
+     ],
+     "missingValues": []
+    }
+   }
+  ]
+ },
+ "identifierVariables": [
+  {
+   "name": "KRG_TILFELLEID",
+   "label": "Krefttilfelle-indentifikator",
+   "notPseudonym": false,
+   "dataType": "Long",
+   "format": "RandomUInt48",
+   "variableRole": "Identifier",
+   "keyType": {
+    "name": "KRG_KREFTTILFELLE",
+    "label": "Krefttilfelle",
+    "description": "En enkelt kreftsykdom hos en pasient, inkludert spredning, tilbakefall og progresjon av den samme kreftsykdommen. En pasient kan ha flere krefttilfeller."
+   },
+   "representedVariables": [
+    {
+     "description": "Identifikator for krefttilfelle i microdata",
+     "validPeriod": {
+      "start": -25567,
+      "stop": 20773
+     },
+     "valueDomain": {
+      "description": "Pseudonymisert løpenummer",
+      "unitOfMeasure": "N/A"
+     }
+    }
+   ]
+  }
+ ],
+ "attributeVariables": [
+  {
+   "name": "START",
+   "label": "Startdato",
+   "notPseudonym": true,
+   "dataType": "Instant",
+   "variableRole": "Start",
+   "representedVariables": [
+    {
+     "description": "Startdato/måletidspunktet for hendelsen",
+     "validPeriod": {
+      "start": -25567,
+      "stop": 20773
+     },
+     "valueDomain": {
+      "description": "Dato oppgitt i dager siden 1970-01-01",
+      "unitOfMeasure": "N/A"
+     }
+    }
+   ]
+  },
+  {
+   "name": "STOP",
+   "label": "Stoppdato",
+   "notPseudonym": true,
+   "dataType": "Instant",
+   "variableRole": "Stop",
+   "representedVariables": [
+    {
+     "description": "Stoppdato/måletidspunktet for hendelsen",
+     "validPeriod": {
+      "start": -25567,
+      "stop": 20773
+     },
+     "valueDomain": {
+      "description": "Dato oppgitt i dager siden 1970-01-01",
+      "unitOfMeasure": "N/A"
+     }
+    }
+   ]
+  }
+ ],
+ "globalTemporalCoverage": {
+  "start": -1096,
+  "stop": 20774
+ },
+ "updatedAt": 1794909969
+}

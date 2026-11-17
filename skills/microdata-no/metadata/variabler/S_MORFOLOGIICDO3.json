@@ -1,0 +1,4956 @@
+{
+ "name": "S_MORFOLOGIICDO3",
+ "temporality": "FIXED",
+ "languageCode": "no",
+ "sensitivityLevel": "PERSON_SPECIAL",
+ "populationDescription": "Svulsttype, tumors histopatologiske klassifisering angitt på det aktuelle tilfelle. Generert fra histologi og morfologi for alle tilfeller. Svulsttype angis i de fire første sifrene og tumoratferd i femte siffer. Tumors differensieringsgrad er sjette siffer.",
+ "subjectFields": [
+  "Helse",
+  "Helsetjenester"
+ ],
+ "temporalCoverage": {
+  "start": -25567,
+  "stop": 20773
+ },
+ "measureVariable": {
+  "name": "S_MORFOLOGIICDO3",
+  "label": "Morfologi ICDO3",
+  "notPseudonym": true,
+  "dataType": "String",
+  "variableRole": "Measure",
+  "representedVariables": [
+   {
+    "description": "Svulsttype, tumors histopatologiske klassifisering angitt på det aktuelle tilfelle. Generert fra histologi og morfologi for alle tilfeller. Svulsttype angis i de fire første sifrene og tumoratferd i femte siffer. Tumors differensieringsgrad er sjette siffer.\n\nFor mer informasjon om variabelen, besøk Kreftregisterets [metadatabase](https://metadata.kreftregisteret.no/variables/detail/23)",
+    "validPeriod": {
+     "start": -6209,
+     "stop": 8400
+    },
+    "valueDomain": {
+     "codeList": [
+      {
+       "category": "Neoplasme, benign",
+       "code": "80000"
+      },
+      {
+       "category": "Neoplasme, usikker benign/malign",
+       "code": "80001"
+      },
+      {
+       "category": "Neoplasme, malign",
+       "code": "80003"
+      },
+      {
+       "category": "Neoplasme, metastase",
+       "code": "80006"
+      },
+      {
+       "category": "Neoplasme, usikker primær/metastase",
+       "code": "80009"
+      },
+      {
+       "category": "Tumorceller, benigne",
+       "code": "80010"
+      },
+      {
+       "category": "Tumorceller, usikkert benigne/maligne",
+       "code": "80011"
+      },
+      {
+       "category": "Tumorceller, maligne",
+       "code": "80013"
+      },
+      {
+       "category": "Malign tumor, småcellet type",
+       "code": "80023"
+      },
+      {
+       "category": "Malign tumor, kjempecelletype",
+       "code": "80033"
+      },
+      {
+       "category": "Malign tumor, spolcellet type",
+       "code": "80043"
+      },
+      {
+       "category": "Klarcellet tumor UNS",
+       "code": "80050"
+      },
+      {
+       "category": "Malign tumor, klarcellet type ",
+       "code": "80053"
+      },
+      {
+       "category": "Epitelial tumor, benign",
+       "code": "80100"
+      },
+      {
+       "category": "Karsinom in situ UNS",
+       "code": "80102"
+      },
+      {
+       "category": "Karsinom UNS",
+       "code": "80103"
+      },
+      {
+       "category": "Karsinommetastase UNS",
+       "code": "80106"
+      },
+      {
+       "category": "Karsinomatose",
+       "code": "80109"
+      },
+      {
+       "category": "Epiteliom, benign",
+       "code": "80110"
+      },
+      {
+       "category": "Epiteliom, malign",
+       "code": "80113"
+      },
+      {
+       "category": "Storcellet karsinom UNS",
+       "code": "80123"
+      },
+      {
+       "category": "Storcellet nevroendokrint karsinom",
+       "code": "80133"
+      },
+      {
+       "category": "Storcellet karsinom med rabdoid fenotype",
+       "code": "80143"
+      },
+      {
+       "category": "\"Glassy cell\" karsinom",
+       "code": "80153"
+      },
+      {
+       "category": "Udifferensiert karsinom UNS",
+       "code": "80203"
+      },
+      {
+       "category": "Anaplastisk karsinom UNS",
+       "code": "80213"
+      },
+      {
+       "category": "Pleomorft karsinom",
+       "code": "80223"
+      },
+      {
+       "category": "Nuclear protein in testis-assosiert karsinom",
+       "code": "80233"
+      },
+      {
+       "category": "Kjempecelle- og spolcellet karsinom",
+       "code": "80303"
+      },
+      {
+       "category": "Kjempecellekarsinom",
+       "code": "80313"
+      },
+      {
+       "category": "Spolcellet karsinom UNS",
+       "code": "80323"
+      },
+      {
+       "category": "Karsinom med sarkomatoid komponent",
+       "code": "80333"
+      },
+      {
+       "category": "Polygonalcellekarsinom",
+       "code": "80343"
+      },
+      {
+       "category": "Karsinom med osteoklastlignende kjempeceller",
+       "code": "80353"
+      },
+      {
+       "category": "Tumorlet, benign",
+       "code": "80400"
+      },
+      {
+       "category": "Tumorlet UNS",
+       "code": "80401"
+      },
+      {
+       "category": "Småcellet karsinom UNS",
+       "code": "80413"
+      },
+      {
+       "category": "Småcellet karsinom, oat cell type",
+       "code": "80423"
+      },
+      {
+       "category": "Småcellet karsinom, spolcellet type",
+       "code": "80433"
+      },
+      {
+       "category": "Småcellet karsinom, intermediærcelletype",
+       "code": "80443"
+      },
+      {
+       "category": "Kombinert småcellet karsinom",
+       "code": "80453"
+      },
+      {
+       "category": "Ikke-småcellet karsinom",
+       "code": "80463"
+      },
+      {
+       "category": "Papillom UNS",
+       "code": "80500"
+      },
+      {
+       "category": "Papillært karsinom in situ UNS",
+       "code": "80502"
+      },
+      {
+       "category": "Papillært karsinom UNS",
+       "code": "80503"
+      },
+      {
+       "category": "Verrukøst papilllom",
+       "code": "80510"
+      },
+      {
+       "category": "Verrukøst karsinom UNS",
+       "code": "80513"
+      },
+      {
+       "category": "Plateepitelpapillom UNS",
+       "code": "80520"
+      },
+      {
+       "category": "Ikke-invasivt papillært plateepitelkarsinom",
+       "code": "80522"
+      },
+      {
+       "category": "Papillært plateepitelkarsinom ",
+       "code": "80523"
+      },
+      {
+       "category": "Invertert plateepitelpapillom",
+       "code": "80530"
+      },
+      {
+       "category": "Vortelignende dyskeratom",
+       "code": "80540"
+      },
+      {
+       "category": "Vortelignende karsinom",
+       "code": "80543"
+      },
+      {
+       "category": "Plateepitelpapillomatose",
+       "code": "80600"
+      },
+      {
+       "category": "Aktinisk keratose",
+       "code": "80700"
+      },
+      {
+       "category": "Plateepitelkarsinom in situ UNS",
+       "code": "80702"
+      },
+      {
+       "category": "Plateepitelkarsinom UNS",
+       "code": "80703"
+      },
+      {
+       "category": "Plateepitelkarsinom, metastase, UNS",
+       "code": "80706"
+      },
+      {
+       "category": "Differensiert intraepitelial neoplasi",
+       "code": "80712"
+      },
+      {
+       "category": "Keratoakantom",
+       "code": "80713"
+      },
+      {
+       "category": "Storcellet akantom",
+       "code": "80720"
+      },
+      {
+       "category": "Ikke-keratiniserende storcellet plateepitelkarsinom UNS",
+       "code": "80723"
+      },
+      {
+       "category": "Ikke-keratiniserende småcellet plateepitelkarsinom ",
+       "code": "80733"
+      },
+      {
+       "category": "Spolcellet plateepitelkarsinom ",
+       "code": "80743"
+      },
+      {
+       "category": "Adenoid plateepitelkarsinom ",
+       "code": "80753"
+      },
+      {
+       "category": "Plateepitelkarsinom in situ med tvilsom stromal infiltrasjon",
+       "code": "80762"
+      },
+      {
+       "category": "Mikroinvasivt plateepitelkarsinom",
+       "code": "80763"
+      },
+      {
+       "category": "Lavgradig skvamøs intraepitelial neoplasi",
+       "code": "80770"
+      },
+      {
+       "category": "Høygradig skvamøs intraepitelial neoplasi",
+       "code": "80772"
+      },
+      {
+       "category": "Plateepitelkarsinom med kutant horn-dannelse",
+       "code": "80783"
+      },
+      {
+       "category": "Erytroplasi, Queyrat",
+       "code": "80802"
+      },
+      {
+       "category": "Bowens sykdom",
+       "code": "80812"
+      },
+      {
+       "category": "Lymfoepitelialt karsinom",
+       "code": "80823"
+      },
+      {
+       "category": "Basaloid plateepitelkarsinom",
+       "code": "80833"
+      },
+      {
+       "category": "Klarcellet akantom",
+       "code": "80840"
+      },
+      {
+       "category": "Klarcellet plateepitelkarsinom",
+       "code": "80843"
+      },
+      {
+       "category": "Plateepitelkarsinom, HPV-positivt",
+       "code": "80853"
+      },
+      {
+       "category": "Plateepitelkarsinom, HPV-negativt",
+       "code": "80863"
+      },
+      {
+       "category": "Basalcelletumor",
+       "code": "80901"
+      },
+      {
+       "category": "Bassalcellekarsinom UNS",
+       "code": "80903"
+      },
+      {
+       "category": "Overfladisk basalcellekarsinom",
+       "code": "80913"
+      },
+      {
+       "category": "Infiltrerende basalcellekarsinom UNS",
+       "code": "80923"
+      },
+      {
+       "category": "Fibroepitelialt basalcellekarsinom",
+       "code": "80933"
+      },
+      {
+       "category": "Basoskvamøst karsinom",
+       "code": "80943"
+      },
+      {
+       "category": "Metatypisk karsinom",
+       "code": "80953"
+      },
+      {
+       "category": "Jadassohn intraepitedermalt epiteliom",
+       "code": "80960"
+      },
+      {
+       "category": "Nodulært basalcellekarsinom",
+       "code": "80973"
+      },
+      {
+       "category": "Adenoid basalcellekarsinom",
+       "code": "80983"
+      },
+      {
+       "category": "Trichoepiteliom",
+       "code": "81000"
+      },
+      {
+       "category": "Trikoblastisk karsinom/karsinosarkom",
+       "code": "81003"
+      },
+      {
+       "category": "Trichofollikulom",
+       "code": "81010"
+      },
+      {
+       "category": "Tricholemmom",
+       "code": "81020"
+      },
+      {
+       "category": "Tricholemmakarsinom",
+       "code": "81023"
+      },
+      {
+       "category": "Pilar tumor",
+       "code": "81030"
+      },
+      {
+       "category": "Prolifererende trichilemmatumor",
+       "code": "81031"
+      },
+      {
+       "category": "\"Pilar sheath\" akantom",
+       "code": "81040"
+      },
+      {
+       "category": "Pilomatrixom",
+       "code": "81100"
+      },
+      {
+       "category": "Pilomatrixalt karsinom",
+       "code": "81103"
+      },
+      {
+       "category": "Urotelialt papillom UNS",
+       "code": "81200"
+      },
+      {
+       "category": "Urotelialt karsinom in situ",
+       "code": "81202"
+      },
+      {
+       "category": "Overgangsepitelkarsinom UNS",
+       "code": "81203"
+      },
+      {
+       "category": "Eksofyttisk sinonasalt papillom",
+       "code": "81210"
+      },
+      {
+       "category": "Invertert sinonasalt papillom",
+       "code": "81211"
+      },
+      {
+       "category": "Karsinom ex invertert papillom",
+       "code": "81213"
+      },
+      {
+       "category": "Sarkomatoid urotelialt karsinom",
+       "code": "81223"
+      },
+      {
+       "category": "Basaloid karsinom",
+       "code": "81233"
+      },
+      {
+       "category": "Kloakogent karsinom",
+       "code": "81243"
+      },
+      {
+       "category": "Papillært urotelial neoplasme med lavt malignitetspotensiale",
+       "code": "81301"
+      },
+      {
+       "category": "Ikke-invasivt papillært urotelial karsinom",
+       "code": "81302"
+      },
+      {
+       "category": "Papillært urotelialt karsinom",
+       "code": "81303"
+      },
+      {
+       "category": "Mikropapillært urotelialt karsinom",
+       "code": "81313"
+      },
+      {
+       "category": "Adenom UNS",
+       "code": "81400"
+      },
+      {
+       "category": "Atypisk adenom",
+       "code": "81401"
+      },
+      {
+       "category": "Adenokarsinom in situ UNS",
+       "code": "81402"
+      },
+      {
+       "category": "Adenokarsinom UNS",
+       "code": "81403"
+      },
+      {
+       "category": "Adenokarsinommetastase UNS",
+       "code": "81406"
+      },
+      {
+       "category": "Skirrøst adenokarsinom",
+       "code": "81413"
+      },
+      {
+       "category": "Linitis plastica",
+       "code": "81423"
+      },
+      {
+       "category": "Overfladisk spredende adenokarsinom",
+       "code": "81433"
+      },
+      {
+       "category": "Adenom, intestinal type, lavgradig",
+       "code": "81440"
+      },
+      {
+       "category": "Adenom, intestinal type, høygradig",
+       "code": "81442"
+      },
+      {
+       "category": "Adenokarsinom, intestinal type",
+       "code": "81443"
+      },
+      {
+       "category": "Karsinom, diffus type",
+       "code": "81453"
+      },
+      {
+       "category": "Monomorft adenom",
+       "code": "81460"
+      },
+      {
+       "category": "Basalcelleadenom",
+       "code": "81470"
+      },
+      {
+       "category": "Basalcelleadenokarsinom",
+       "code": "81473"
+      },
+      {
+       "category": "Lavgradig glandulær intraepitelial neoplasi",
+       "code": "81480"
+      },
+      {
+       "category": "Høygradig glandulær intraepitelial neoplasi",
+       "code": "81482"
+      },
+      {
+       "category": "Kanalikulært adenom",
+       "code": "81490"
+      },
+      {
+       "category": "Pankreatisk nevroendokrint mikroadenom",
+       "code": "81500"
+      },
+      {
+       "category": "Pankreatisk nevroendokrin ikke-funksjonell tumor",
+       "code": "81503"
+      },
+      {
+       "category": "Insulinom UNS",
+       "code": "81513"
+      },
+      {
+       "category": "Glukagonom",
+       "code": "81523"
+      },
+      {
+       "category": "Gastrinom",
+       "code": "81533"
+      },
+      {
+       "category": "Blandet nevroendokrint / ikke-nevroendokrint neoplasme",
+       "code": "81543"
+      },
+      {
+       "category": "VIPom",
+       "code": "81553"
+      },
+      {
+       "category": "Somatostatinom",
+       "code": "81563"
+      },
+      {
+       "category": "ACTH-produserende tumor",
+       "code": "81583"
+      },
+      {
+       "category": "Gallegangsadenom",
+       "code": "81600"
+      },
+      {
+       "category": "Cholangiokarsinom",
+       "code": "81603"
+      },
+      {
+       "category": "Cystadenom i gallegang",
+       "code": "81610"
+      },
+      {
+       "category": "Cystadenokarsinom i gallegang",
+       "code": "81613"
+      },
+      {
+       "category": "Perihilært cholangiokarsinom",
+       "code": "81623"
+      },
+      {
+       "category": "Ikke-invasivt pankreatobiliært neoplasme",
+       "code": "81630"
+      },
+      {
+       "category": "Papillært neoplasme, pankreatobiliær type, med høygradig intraepitelial neoplasi",
+       "code": "81632"
+      },
+      {
+       "category": "Karsinom, pankreatobiliær type",
+       "code": "81633"
+      },
+      {
+       "category": "Hepatocellulært adenom",
+       "code": "81700"
+      },
+      {
+       "category": "Hepatocellulært karsinom UNS",
+       "code": "81703"
+      },
+      {
+       "category": "Fibrolamellært hepatocellulært karsinom",
+       "code": "81713"
+      },
+      {
+       "category": "Skirrøst hepatocellulært karsinom",
+       "code": "81723"
+      },
+      {
+       "category": "Spolcellet hepatocellulært karsinom",
+       "code": "81733"
+      },
+      {
+       "category": "Klarcellet hepatocellulært karsinom",
+       "code": "81743"
+      },
+      {
+       "category": "Pleomorft hepatocellulært karsinom",
+       "code": "81753"
+      },
+      {
+       "category": "Blandet hepatocellulært karsinom og cholangiokarsinom",
+       "code": "81803"
+      },
+      {
+       "category": "Trabekulært adenom",
+       "code": "81900"
+      },
+      {
+       "category": "Trabekulært adenokarsinom",
+       "code": "81903"
+      },
+      {
+       "category": "Embryonalt adenom",
+       "code": "81910"
+      },
+      {
+       "category": "Ekkrint dermalt cylindrom",
+       "code": "82000"
+      },
+      {
+       "category": "Adenoid cystisk karsinom",
+       "code": "82003"
+      },
+      {
+       "category": "Kribriformt karsinom in situ",
+       "code": "82012"
+      },
+      {
+       "category": "Kribriformt karsinom UNS",
+       "code": "82013"
+      },
+      {
+       "category": "Mikrocystisk adenom",
+       "code": "82020"
+      },
+      {
+       "category": "Lakterende adenom",
+       "code": "82040"
+      },
+      {
+       "category": "Adenomatøs polypp, lavgradig dysplasi",
+       "code": "82100"
+      },
+      {
+       "category": "Adenomatøs polypp, høygradig dysplasi",
+       "code": "82102"
+      },
+      {
+       "category": "Adenokarsinom i adenomatøs polypp",
+       "code": "82103"
+      },
+      {
+       "category": "Tubulært adenom, lavgradig",
+       "code": "82110"
+      },
+      {
+       "category": "Tubulært adenom, høygradig",
+       "code": "82112"
+      },
+      {
+       "category": "Tubulært adenokarsinom",
+       "code": "82113"
+      },
+      {
+       "category": "Flatt adenom",
+       "code": "82120"
+      },
+      {
+       "category": "Sagtakket dysplasi, lavgradig",
+       "code": "82130"
+      },
+      {
+       "category": "Sagtakket dysplasi, høygradig",
+       "code": "82132"
+      },
+      {
+       "category": "Sagtakket adenokarsinom",
+       "code": "82133"
+      },
+      {
+       "category": "Parietalcellekarsinom",
+       "code": "82143"
+      },
+      {
+       "category": "Adenokarsinom i analkjertler",
+       "code": "82153"
+      },
+      {
+       "category": "Adenomatøs polyposis coli",
+       "code": "82200"
+      },
+      {
+       "category": "Adenokarsinom i adenomatøs polyposis coli",
+       "code": "82203"
+      },
+      {
+       "category": "Multiple adenomatøse polypper",
+       "code": "82210"
+      },
+      {
+       "category": "Adenokarsinom i multiple adenomatøse polypper",
+       "code": "82213"
+      },
+      {
+       "category": "Duktalt karsinom in situ, solid type",
+       "code": "82302"
+      },
+      {
+       "category": "Solid karsinom UNS",
+       "code": "82303"
+      },
+      {
+       "category": "Carcinoma simplex",
+       "code": "82313"
+      },
+      {
+       "category": "Nevroendokrin tumor UNS",
+       "code": "82403"
+      },
+      {
+       "category": "Enterochromaffincellekarsinoid",
+       "code": "82413"
+      },
+      {
+       "category": "Enterochromaffinlignende-celletumor",
+       "code": "82423"
+      },
+      {
+       "category": "Begercelleadenokarsinom",
+       "code": "82433"
+      },
+      {
+       "category": "Blandet adenonevroendokrint karsinom",
+       "code": "82443"
+      },
+      {
+       "category": "Tubulært karsinoid",
+       "code": "82451"
+      },
+      {
+       "category": "Adenokarsinoid tumor",
+       "code": "82453"
+      },
+      {
+       "category": "Nevroendokrint karsinom UNS",
+       "code": "82463"
+      },
+      {
+       "category": "Merkelcellekarsinom",
+       "code": "82473"
+      },
+      {
+       "category": "APUDom",
+       "code": "82481"
+      },
+      {
+       "category": "Nevroendokrin tumor, grad 2",
+       "code": "82493"
+      },
+      {
+       "category": "Atypisk adenomatøs hyperplasi",
+       "code": "82500"
+      },
+      {
+       "category": "Pulmonal adenomatose",
+       "code": "82501"
+      },
+      {
+       "category": "Adenokarsinom in situ i lunge, ikke-mucinøs",
+       "code": "82502"
+      },
+      {
+       "category": "Lepidisk adenokarsinom",
+       "code": "82503"
+      },
+      {
+       "category": "Alveolærcelleadenom",
+       "code": "82510"
+      },
+      {
+       "category": "Alveolærcellekarsinom",
+       "code": "82513"
+      },
+      {
+       "category": "Bronkioloalveolært karsinom, ikke-mucinøs type",
+       "code": "82523"
+      },
+      {
+       "category": "Adenokarsinom in situ i lunge, mucinøs type",
+       "code": "82532"
+      },
+      {
+       "category": "Adenokarsinom i lunge, mucinøs type",
+       "code": "82533"
+      },
+      {
+       "category": "Adenokarsinom i lunge, blandet mucinøs og ikke-mucinøs type",
+       "code": "82543"
+      },
+      {
+       "category": "Adenokarsinom, blandet type",
+       "code": "82553"
+      },
+      {
+       "category": "Minimalt invasivt adenokarsinom, ikke-mucinøs type",
+       "code": "82563"
+      },
+      {
+       "category": "Minimalt invasivt adenokarsinom, mucinøs type",
+       "code": "82573"
+      },
+      {
+       "category": "Papillært adenom UNS",
+       "code": "82600"
+      },
+      {
+       "category": "Aggressiv papillær tumor ",
+       "code": "82601"
+      },
+      {
+       "category": "Papillært adenokarsinom UNS",
+       "code": "82603"
+      },
+      {
+       "category": "Villøst adenom, lavgradig",
+       "code": "82610"
+      },
+      {
+       "category": "Villøst adenom, høygradig",
+       "code": "82612"
+      },
+      {
+       "category": "Adenokarsinom i villøst adenom",
+       "code": "82613"
+      },
+      {
+       "category": "Adenom-lignende adenokarsinom",
+       "code": "82623"
+      },
+      {
+       "category": "Tubulovilløst adenom, lavgradig",
+       "code": "82630"
+      },
+      {
+       "category": "Tubulovilløst adenom, høygradig",
+       "code": "82632"
+      },
+      {
+       "category": "Adenokarsinom i tubulovilløst adenom",
+       "code": "82633"
+      },
+      {
+       "category": "Glandulær papillomatose",
+       "code": "82640"
+      },
+      {
+       "category": "Mikropapillært karsinom UNS",
+       "code": "82653"
+      },
+      {
+       "category": "Kromofobt adenom",
+       "code": "82700"
+      },
+      {
+       "category": "Kromofobt karsinom",
+       "code": "82703"
+      },
+      {
+       "category": "Laktotroft adenom",
+       "code": "82710"
+      },
+      {
+       "category": "Laktotrof PitNET/adenom",
+       "code": "82713"
+      },
+      {
+       "category": "Hypofyseadenom UNS",
+       "code": "82720"
+      },
+      {
+       "category": "Hypofysekarsinom UNS",
+       "code": "82723"
+      },
+      {
+       "category": "Hypofyseblastom",
+       "code": "82733"
+      },
+      {
+       "category": "Acidofilt adenom",
+       "code": "82800"
+      },
+      {
+       "category": "Acidofilt karsinom",
+       "code": "82803"
+      },
+      {
+       "category": "Blandet acidofilt-basofilt adenom",
+       "code": "82810"
+      },
+      {
+       "category": "Blandet acidofilt-basofilt karsinom",
+       "code": "82813"
+      },
+      {
+       "category": "Oxyfilt adenom",
+       "code": "82900"
+      },
+      {
+       "category": "Oxyfilt adenokarsinom",
+       "code": "82903"
+      },
+      {
+       "category": "Basofilt adenom",
+       "code": "83000"
+      },
+      {
+       "category": "Basofilt karsinom",
+       "code": "83003"
+      },
+      {
+       "category": "Klarcellet adenom",
+       "code": "83100"
+      },
+      {
+       "category": "Klarcellet adenokarsinom UNS",
+       "code": "83103"
+      },
+      {
+       "category": "Hypernefroid tumor",
+       "code": "83111"
+      },
+      {
+       "category": "Hereditær leiomyomatose og nyrecellekarsinom-syndromassosiert nyrecellekarsinom",
+       "code": "83113"
+      },
+      {
+       "category": "Nyrecellekarsinom UNS",
+       "code": "83123"
+      },
+      {
+       "category": "Klarcellet adenofibrom",
+       "code": "83130"
+      },
+      {
+       "category": "Klarcellet borderlinetumor",
+       "code": "83131"
+      },
+      {
+       "category": "Malignt klarcellet adenofibrom",
+       "code": "83133"
+      },
+      {
+       "category": "Lipidrikt karsinom",
+       "code": "83143"
+      },
+      {
+       "category": "Glykogenrikt karsinom",
+       "code": "83153"
+      },
+      {
+       "category": "Multilokulær cystisk nyreneoplasme med lavt malignitetspotensiale",
+       "code": "83161"
+      },
+      {
+       "category": "Cyste-assosiert nyrecellekarsinom",
+       "code": "83163"
+      },
+      {
+       "category": "Kromofobt nyrecellekarsinom",
+       "code": "83173"
+      },
+      {
+       "category": "Sarkomatoid nyrecellekarsinom",
+       "code": "83183"
+      },
+      {
+       "category": "Samlerørskarsinom",
+       "code": "83193"
+      },
+      {
+       "category": "Granulærcellekarsinom",
+       "code": "83203"
+      },
+      {
+       "category": "Hovedcelleadenom",
+       "code": "83210"
+      },
+      {
+       "category": "Adenom med vannklare celler",
+       "code": "83220"
+      },
+      {
+       "category": "Adenokarsinom med vannklare celler",
+       "code": "83223"
+      },
+      {
+       "category": "Adenom, blandet type",
+       "code": "83230"
+      },
+      {
+       "category": "Klarcellet papillært nyrecellekarsinom",
+       "code": "83231"
+      },
+      {
+       "category": "Adenokarsinom, blandet type",
+       "code": "83233"
+      },
+      {
+       "category": "Lipoadenom",
+       "code": "83240"
+      },
+      {
+       "category": "Metanefrisk adenom",
+       "code": "83250"
+      },
+      {
+       "category": "Follikulært adenom UNS",
+       "code": "83300"
+      },
+      {
+       "category": "Atypisk follikulært adenom",
+       "code": "83301"
+      },
+      {
+       "category": "Follikulært karsinom UNS",
+       "code": "83303"
+      },
+      {
+       "category": "Follikulært adenokarsinom, høyt differensiert",
+       "code": "83313"
+      },
+      {
+       "category": "Trabekulært follikulært adenokarsinom",
+       "code": "83323"
+      },
+      {
+       "category": "Mikrofollikulært adenom UNS",
+       "code": "83330"
+      },
+      {
+       "category": "Adenokarsinom, føtal type",
+       "code": "83333"
+      },
+      {
+       "category": "Makrofollikulært adenom",
+       "code": "83340"
+      },
+      {
+       "category": "Follikulær tumor med usikkert malignitetspotensiale",
+       "code": "83351"
+      },
+      {
+       "category": "Follikulær karsinom, minimalt invasivt",
+       "code": "83353"
+      },
+      {
+       "category": "Hyaliniserende trabekulær tumor",
+       "code": "83361"
+      },
+      {
+       "category": "Thyreoideakarsinom, lavt differensiert",
+       "code": "83373"
+      },
+      {
+       "category": "Innkapslet follikulært karsinom med innvekst i blodkar",
+       "code": "83393"
+      },
+      {
+       "category": "Papillært karsinom, follikulær type",
+       "code": "83403"
+      },
+      {
+       "category": "Papillært mikrokarsinom",
+       "code": "83413"
+      },
+      {
+       "category": "Papillært karsinom, onkocyttær type",
+       "code": "83423"
+      },
+      {
+       "category": "Innkapslet papillært thyreoideakarsinom",
+       "code": "83433"
+      },
+      {
+       "category": "Papillært karsinom, sylindercelletype",
+       "code": "83443"
+      },
+      {
+       "category": "Medullært thyreoideakarsinom",
+       "code": "83453"
+      },
+      {
+       "category": "Blandet medullært-follikulært karsinom",
+       "code": "83463"
+      },
+      {
+       "category": "Blandet medullært-papillært karsinom",
+       "code": "83473"
+      },
+      {
+       "category": "Høyt differensiert tumor med usikkert malignitetspotensiale",
+       "code": "83481"
+      },
+      {
+       "category": "Ikke-invasivt follikulært thyreoideaneoplasme med papillær-lignende trekk",
+       "code": "83491"
+      },
+      {
+       "category": "Ikke-innkapslet skleroserende karsinom",
+       "code": "83503"
+      },
+      {
+       "category": "Multiple endokrine adenomer",
+       "code": "83601"
+      },
+      {
+       "category": "Juxtaglomerulær tumor",
+       "code": "83610"
+      },
+      {
+       "category": "Binyrebarkadenom UNS",
+       "code": "83700"
+      },
+      {
+       "category": "Binyrebarkkarsinom",
+       "code": "83703"
+      },
+      {
+       "category": "Binyrebarkadenom, kompakt celletype",
+       "code": "83710"
+      },
+      {
+       "category": "Binyrebarkadenom, pigmentert type",
+       "code": "83720"
+      },
+      {
+       "category": "Binyrebarkadenom, klarcellet type",
+       "code": "83730"
+      },
+      {
+       "category": "Binyrebarkadenom, glomerulosacelletype",
+       "code": "83740"
+      },
+      {
+       "category": "Binyrebarkadenom, blandet celletype",
+       "code": "83750"
+      },
+      {
+       "category": "Endometrioid adenom, UNS",
+       "code": "83800"
+      },
+      {
+       "category": "Endometrioid adenom, borderline",
+       "code": "83801"
+      },
+      {
+       "category": "Endometrioid intraepitelial neoplasi",
+       "code": "83802"
+      },
+      {
+       "category": "Endometrioid adenokarsinom UNS",
+       "code": "83803"
+      },
+      {
+       "category": "Endometrioid adenofibrom UNS",
+       "code": "83810"
+      },
+      {
+       "category": "Endometrioid adenofibrom, borderline",
+       "code": "83811"
+      },
+      {
+       "category": "Endometrioid adenofibrom, malignt",
+       "code": "83813"
+      },
+      {
+       "category": "Endometrioid adenokarsinom, sekretorisk type",
+       "code": "83823"
+      },
+      {
+       "category": "Endometrioid adenokarsinom, ciliert type",
+       "code": "83833"
+      },
+      {
+       "category": "Adenokarsinom, endocervikal type UNS",
+       "code": "83843"
+      },
+      {
+       "category": "Hudadneksneoplasmer",
+       "code": "83900"
+      },
+      {
+       "category": "Hudadneksadenokarsinom UNS",
+       "code": "83903"
+      },
+      {
+       "category": "Follikulært fibrom",
+       "code": "83910"
+      },
+      {
+       "category": "Syringofibroadenom",
+       "code": "83920"
+      },
+      {
+       "category": "Svettekjerteladenom",
+       "code": "84000"
+      },
+      {
+       "category": "Svettekjerteltumor UNS",
+       "code": "84001"
+      },
+      {
+       "category": "Svettekjerteladenokarsinom",
+       "code": "84003"
+      },
+      {
+       "category": "Apokrint adenom",
+       "code": "84010"
+      },
+      {
+       "category": "Apokrint adenokarsinom",
+       "code": "84013"
+      },
+      {
+       "category": "Hidradenom UNS",
+       "code": "84020"
+      },
+      {
+       "category": "Hidradenokarsinom",
+       "code": "84023"
+      },
+      {
+       "category": "Spiradenom UNS",
+       "code": "84030"
+      },
+      {
+       "category": "Malignt ekkrint spiradenom",
+       "code": "84033"
+      },
+      {
+       "category": "Hidrocystom",
+       "code": "84040"
+      },
+      {
+       "category": "Papillært hidradenom",
+       "code": "84050"
+      },
+      {
+       "category": "Syringocystadenoma papilliferum",
+       "code": "84060"
+      },
+      {
+       "category": "Syringocystadenokarsinoma papilliferum",
+       "code": "84063"
+      },
+      {
+       "category": "Syringom UNS",
+       "code": "84070"
+      },
+      {
+       "category": "Mikrocystisk adneksalt karsinom",
+       "code": "84073"
+      },
+      {
+       "category": "Ekkrint papillært adenom",
+       "code": "84080"
+      },
+      {
+       "category": "Digitalt papillært adenokarsinom",
+       "code": "84083"
+      },
+      {
+       "category": "Porom UNS",
+       "code": "84090"
+      },
+      {
+       "category": "Porokarsinom in situ",
+       "code": "84092"
+      },
+      {
+       "category": "Porokarsinom UNS",
+       "code": "84093"
+      },
+      {
+       "category": "Sebaceom",
+       "code": "84100"
+      },
+      {
+       "category": "Sebaceøst karsinom",
+       "code": "84103"
+      },
+      {
+       "category": "Ekkrint adenokarsinom",
+       "code": "84133"
+      },
+      {
+       "category": "Ceruminøst adenom",
+       "code": "84200"
+      },
+      {
+       "category": "Ceruminøst adenokarsinom",
+       "code": "84203"
+      },
+      {
+       "category": "Mucoepidermoid tumor",
+       "code": "84301"
+      },
+      {
+       "category": "Mucoepidermoid karsinom",
+       "code": "84303"
+      },
+      {
+       "category": "Cystadenom UNS",
+       "code": "84400"
+      },
+      {
+       "category": "Cystadenokarsinom UNS",
+       "code": "84403"
+      },
+      {
+       "category": "Serøst cystadenom UNS",
+       "code": "84410"
+      },
+      {
+       "category": "Serøst cystadenokarsinom in situ",
+       "code": "84412"
+      },
+      {
+       "category": "Serøst karsinom, UNS",
+       "code": "84413"
+      },
+      {
+       "category": "Lentigo simplex og lentiginøst melanocyttisk nevus",
+       "code": "84420"
+      },
+      {
+       "category": "Serøs borderlinetumor",
+       "code": "84421"
+      },
+      {
+       "category": "Klarcellet cystadenom",
+       "code": "84430"
+      },
+      {
+       "category": "Papillært cystadenom UNS",
+       "code": "84500"
+      },
+      {
+       "category": "Papillært cystadenokarsinom UNS",
+       "code": "84503"
+      },
+      {
+       "category": "Papillært cystadenom, borderline",
+       "code": "84511"
+      },
+      {
+       "category": "Solid pseudopapillær tumor i ovariet",
+       "code": "84521"
+      },
+      {
+       "category": "Solid pseudopapillær neoplasme i pancreas",
+       "code": "84523"
+      },
+      {
+       "category": "Intraduktalt papillært.mucinøst adenom",
+       "code": "84530"
+      },
+      {
+       "category": "Intraduktal papillær-mucinøs neoplasi med høygradig dysplasi",
+       "code": "84532"
+      },
+      {
+       "category": "Intraduktal papillær-mucinøs neoplasi med assosiert infiltrerende karsinom",
+       "code": "84533"
+      },
+      {
+       "category": "Cystisk tumor i atrioventrikulær knute",
+       "code": "84540"
+      },
+      {
+       "category": "Intraduktalt onkocyttært papillært neoplasme UNS",
+       "code": "84552"
+      },
+      {
+       "category": "Intraduktalt onkocyttært papillært neoplasme med assosiert invasivt karsinom",
+       "code": "84553"
+      },
+      {
+       "category": "Serøs borderlinetumor, mikropapillær type",
+       "code": "84602"
+      },
+      {
+       "category": "Lavgradig serøst karsinom",
+       "code": "84603"
+      },
+      {
+       "category": "Serøst overflatepapillom",
+       "code": "84610"
+      },
+      {
+       "category": "Høygradig serøst karsinom",
+       "code": "84613"
+      },
+      {
+       "category": "Mucinøst cystadenom UNS",
+       "code": "84700"
+      },
+      {
+       "category": "Mucinøst cystisk neoplasme med høygradig dysplasi",
+       "code": "84702"
+      },
+      {
+       "category": "Mucinøst cystadenokarsinom UNS",
+       "code": "84703"
+      },
+      {
+       "category": "Mucinøs cystisk tumor, borderline",
+       "code": "84721"
+      },
+      {
+       "category": "Seromucinøst cystadenom",
+       "code": "84740"
+      },
+      {
+       "category": "Seromucinøs borderlinetumor",
+       "code": "84741"
+      },
+      {
+       "category": "Seromucinøst karsinom",
+       "code": "84743"
+      },
+      {
+       "category": "Mucinøst adenom",
+       "code": "84800"
+      },
+      {
+       "category": "Lavgradig mucinøs neoplasi i appendix",
+       "code": "84801"
+      },
+      {
+       "category": "Høygradig mucinøst neoplasme i appendix",
+       "code": "84802"
+      },
+      {
+       "category": "Mucinøst adenokarsinom",
+       "code": "84803"
+      },
+      {
+       "category": "Pseudomyksoma peritonei",
+       "code": "84806"
+      },
+      {
+       "category": "Slimproduserende adenokarsinom",
+       "code": "84813"
+      },
+      {
+       "category": "Mucinøst karsinom, gastrisk type",
+       "code": "84823"
+      },
+      {
+       "category": "Adenokarsinom in situ, HPV-assosiert",
+       "code": "84832"
+      },
+      {
+       "category": "Adenokarsinom, HPV-assosiert",
+       "code": "84833"
+      },
+      {
+       "category": "Adenokarsinom in situ, HPV-uavhengig",
+       "code": "84842"
+      },
+      {
+       "category": "Adenokarsinom, HPV-uavhengig UNS",
+       "code": "84843"
+      },
+      {
+       "category": "Signetringcellekarsinom",
+       "code": "84903"
+      },
+      {
+       "category": "Metastaserende signetringcellekarsinom",
+       "code": "84906"
+      },
+      {
+       "category": "Duktalt karsinom in situ",
+       "code": "85002"
+      },
+      {
+       "category": "Infiltrerende duktalt karsinom UNS",
+       "code": "85003"
+      },
+      {
+       "category": "Komedokarsinom, ikke-infiltrerende",
+       "code": "85012"
+      },
+      {
+       "category": "Komedokarsinom UNS",
+       "code": "85013"
+      },
+      {
+       "category": "Sekretorisk karsinom",
+       "code": "85023"
+      },
+      {
+       "category": "Intraduktalt papillom",
+       "code": "85030"
+      },
+      {
+       "category": "Intraduktalt papillært adenokarsinom uten infiltrasjon",
+       "code": "85032"
+      },
+      {
+       "category": "Intraduktalt papillært adenokarsinom med infiltrasjon",
+       "code": "85033"
+      },
+      {
+       "category": "Intracystisk papillært adenom",
+       "code": "85040"
+      },
+      {
+       "category": "Innkapslet papillært karsinom",
+       "code": "85042"
+      },
+      {
+       "category": "Innkapslet papillært karsinom med infiltrasjon",
+       "code": "85043"
+      },
+      {
+       "category": "Intraduktal papillomatose UNS",
+       "code": "85050"
+      },
+      {
+       "category": "Brystvorteadenom",
+       "code": "85060"
+      },
+      {
+       "category": "Duktalt karsinom in situ, mikropapillær type",
+       "code": "85072"
+      },
+      {
+       "category": "Infiltrerende mikropapillært karsinom i bryst",
+       "code": "85073"
+      },
+      {
+       "category": "Cystisk hypersekretorisk karsinom",
+       "code": "85083"
+      },
+      {
+       "category": "Solid papillært karsinom in situ",
+       "code": "85092"
+      },
+      {
+       "category": "Solid papillært karsinom med infiltrasjon",
+       "code": "85093"
+      },
+      {
+       "category": "Medullært karsinom UNS",
+       "code": "85103"
+      },
+      {
+       "category": "Medullært karsinom med lymfoid stroma",
+       "code": "85123"
+      },
+      {
+       "category": "Atypisk medullært karsinom",
+       "code": "85133"
+      },
+      {
+       "category": "Duktalt karsinom, desmoplastisk type",
+       "code": "85143"
+      },
+      {
+       "category": "Pleomorft lobulært karsinom in situ",
+       "code": "85192"
+      },
+      {
+       "category": "Lobulært karsinom in situ UNS",
+       "code": "85202"
+      },
+      {
+       "category": "Lobulært karsinom UNS",
+       "code": "85203"
+      },
+      {
+       "category": "Infiltrerende duktulært karsinom",
+       "code": "85213"
+      },
+      {
+       "category": "Duktalt karsinom in situ (DCIS) og lobulært karsinom in situ (LCIS)",
+       "code": "85222"
+      },
+      {
+       "category": "Infiltrerende duktalt og lobulært karsinom",
+       "code": "85223"
+      },
+      {
+       "category": "Infiltrerende duktalt karsinom blandet med andre karsinomtyper",
+       "code": "85233"
+      },
+      {
+       "category": "Infiltrerende lobulært karsinom blandet med andre karsinomtyper",
+       "code": "85243"
+      },
+      {
+       "category": "Polymorft adenokarsinom",
+       "code": "85253"
+      },
+      {
+       "category": "Inflammatorisk karsinom",
+       "code": "85303"
+      },
+      {
+       "category": "Pagets sykdom i mamma",
+       "code": "85403"
+      },
+      {
+       "category": "Pagets sykdom og infiltrerende duktalt karsinom i mamma",
+       "code": "85413"
+      },
+      {
+       "category": "Ekstramammær Pagets sykdom",
+       "code": "85423"
+      },
+      {
+       "category": "Pagets sykdom og duktalt karsinom in situ i mamma",
+       "code": "85433"
+      },
+      {
+       "category": "Acinærcelleadenom",
+       "code": "85500"
+      },
+      {
+       "category": "Adcinærcelletumor",
+       "code": "85501"
+      },
+      {
+       "category": "Acinærcellekarsinom",
+       "code": "85503"
+      },
+      {
+       "category": "Acinærcellecystadenokarsinom",
+       "code": "85513"
+      },
+      {
+       "category": "Blandet acinært-duktalt karsinom",
+       "code": "85523"
+      },
+      {
+       "category": "Adenoskvamøst papillom",
+       "code": "85600"
+      },
+      {
+       "category": "Adenoskvamøst karsinom",
+       "code": "85603"
+      },
+      {
+       "category": "Adenolymfom",
+       "code": "85610"
+      },
+      {
+       "category": "Epitelialt-myoepitelialt karsinom",
+       "code": "85623"
+      },
+      {
+       "category": "Lymfadenom",
+       "code": "85630"
+      },
+      {
+       "category": "Adenokarsinom med plateepitelmetaplasi",
+       "code": "85703"
+      },
+      {
+       "category": "Adenokarsinom med brusk- og osseøs metaplasi",
+       "code": "85713"
+      },
+      {
+       "category": "Adenokarsinom med spolcellemetaplasi",
+       "code": "85723"
+      },
+      {
+       "category": "Adenokarsinom med apokrin metaplasi",
+       "code": "85733"
+      },
+      {
+       "category": "Adenokarsinom med nevroendokrin differensiering",
+       "code": "85743"
+      },
+      {
+       "category": "Metaplastisk karsinom UNS",
+       "code": "85753"
+      },
+      {
+       "category": "Hepatoid adenokarsinom",
+       "code": "85763"
+      },
+      {
+       "category": "Thymom, mikroskopisk",
+       "code": "85800"
+      },
+      {
+       "category": "Mikronodulært thymom med lymfoid stroma",
+       "code": "85801"
+      },
+      {
+       "category": "Thymom UNS",
+       "code": "85803"
+      },
+      {
+       "category": "Thymom , type A",
+       "code": "85813"
+      },
+      {
+       "category": "Thymom, type AB",
+       "code": "85823"
+      },
+      {
+       "category": "Thymom, type B1",
+       "code": "85833"
+      },
+      {
+       "category": "Thymom, type B2",
+       "code": "85843"
+      },
+      {
+       "category": "Thymom, type B3",
+       "code": "85853"
+      },
+      {
+       "category": "Thymuskarsinom UNS",
+       "code": "85863"
+      },
+      {
+       "category": "Ektopisk hamartomatøst thymom",
+       "code": "85870"
+      },
+      {
+       "category": "Spolcellet epitelial tumor med thymus-lignende elementer",
+       "code": "85883"
+      },
+      {
+       "category": "Intrathyreoid thymuskarsinom",
+       "code": "85893"
+      },
+      {
+       "category": "Sex cord-gonadestromatumor, benign",
+       "code": "85900"
+      },
+      {
+       "category": "Sex cord-gonadestromatumor UNS",
+       "code": "85901"
+      },
+      {
+       "category": "Malign ovarie stroma-svulst",
+       "code": "85903"
+      },
+      {
+       "category": "Inkomplett differensiert sex cord-gonadestromatumor",
+       "code": "85911"
+      },
+      {
+       "category": "Sex cord-gonadestromatumor, blandet type",
+       "code": "85921"
+      },
+      {
+       "category": "Stromal tumor med sparsomme sex cord-elementer",
+       "code": "85931"
+      },
+      {
+       "category": "Blandet germinalcelle- / sex cord-gonadestromatumor UNS",
+       "code": "85941"
+      },
+      {
+       "category": "Tekom UNS",
+       "code": "86000"
+      },
+      {
+       "category": "Malignt tekom",
+       "code": "86003"
+      },
+      {
+       "category": "Luteinisert tekom",
+       "code": "86010"
+      },
+      {
+       "category": "Skleroserende stromal tumor",
+       "code": "86020"
+      },
+      {
+       "category": "Luteom UNS",
+       "code": "86100"
+      },
+      {
+       "category": "Granulosacelletumor i testis",
+       "code": "86201"
+      },
+      {
+       "category": "Granulosacelletumor i ovariet",
+       "code": "86203"
+      },
+      {
+       "category": "Granulosacelle-thecacelletumor",
+       "code": "86211"
+      },
+      {
+       "category": "Juvenil granulosacelletumor i testis",
+       "code": "86220"
+      },
+      {
+       "category": "Juvenil granulosacelletumor",
+       "code": "86221"
+      },
+      {
+       "category": "Sex cord tumor med annulære tubuli",
+       "code": "86231"
+      },
+      {
+       "category": "Benignt andoblastom",
+       "code": "86300"
+      },
+      {
+       "category": "Andoblastom UNS",
+       "code": "86301"
+      },
+      {
+       "category": "Malignt androblastom",
+       "code": "86303"
+      },
+      {
+       "category": "Høyt differensiert Sertoli-Leydigcelletumor",
+       "code": "86310"
+      },
+      {
+       "category": "Middels differensiert Sertoli-Leydigcelletumor",
+       "code": "86311"
+      },
+      {
+       "category": "Lavt differensiert Sertoli-Leydigcelletumor",
+       "code": "86313"
+      },
+      {
+       "category": "Gynandroblastom",
+       "code": "86321"
+      },
+      {
+       "category": "Sertoli-Leydigcelletumor, retiform",
+       "code": "86331"
+      },
+      {
+       "category": "Middels differensiert Sertoli-Leydigcelletumor med heterologe elementer",
+       "code": "86341"
+      },
+      {
+       "category": "Lavt differensiert Sertoli-Leydigcelletumor med heterologe elementer",
+       "code": "86343"
+      },
+      {
+       "category": "Sertolicelletumor UNS",
+       "code": "86401"
+      },
+      {
+       "category": "Sertolicellekarsinom",
+       "code": "86403"
+      },
+      {
+       "category": "Sertolicelletumor med lipidlagring",
+       "code": "86410"
+      },
+      {
+       "category": "Storcellet og kalsifiserende Sertolicelletumor",
+       "code": "86421"
+      },
+      {
+       "category": "Intratubulær storcellet hyaliniserende Sertolicelleneoplasi",
+       "code": "86431"
+      },
+      {
+       "category": "Leydigcelletumor i ovariet UNS",
+       "code": "86500"
+      },
+      {
+       "category": "Leydigcelletumor i testis UNS",
+       "code": "86501"
+      },
+      {
+       "category": "Malign Leydigcelletumor",
+       "code": "86503"
+      },
+      {
+       "category": "Hiluscelletumor",
+       "code": "86600"
+      },
+      {
+       "category": "Lipidcelletumor i ovariet",
+       "code": "86700"
+      },
+      {
+       "category": "Malign steroidcelletumor",
+       "code": "86703"
+      },
+      {
+       "category": "Binyreresttumor",
+       "code": "86710"
+      },
+      {
+       "category": "Paragangliom UNS",
+       "code": "86803"
+      },
+      {
+       "category": "Sympatetisk paragangliom",
+       "code": "86813"
+      },
+      {
+       "category": "Parasympatetisk paragangliom",
+       "code": "86823"
+      },
+      {
+       "category": "Gangliocyttisk paragangliom",
+       "code": "86830"
+      },
+      {
+       "category": "Mellomøreparagangliom",
+       "code": "86903"
+      },
+      {
+       "category": "Aortalegemetumor",
+       "code": "86913"
+      },
+      {
+       "category": "Carotislegemetumor",
+       "code": "86923"
+      },
+      {
+       "category": "Ekstra-adrenalt paragangliom UNS",
+       "code": "86933"
+      },
+      {
+       "category": "Feokromocytom UNS",
+       "code": "87003"
+      },
+      {
+       "category": "Glomangiosarkom",
+       "code": "87103"
+      },
+      {
+       "category": "Glomustumor UNS",
+       "code": "87110"
+      },
+      {
+       "category": "Glomustumor med usikkert malignitetspotensiale",
+       "code": "87111"
+      },
+      {
+       "category": "Malign glomustumor",
+       "code": "87113"
+      },
+      {
+       "category": "Glomagiom",
+       "code": "87120"
+      },
+      {
+       "category": "Glomangiomyom",
+       "code": "87130"
+      },
+      {
+       "category": "Benign perivaskulær epiteloid tumor",
+       "code": "87140"
+      },
+      {
+       "category": "Malign perivaskulær epiteloid tumor",
+       "code": "87143"
+      },
+      {
+       "category": "Pigmentert nævus UNS",
+       "code": "87200"
+      },
+      {
+       "category": "Melanom in situ",
+       "code": "87202"
+      },
+      {
+       "category": "Malignt melanom UNS",
+       "code": "87203"
+      },
+      {
+       "category": "Nodulært melanom",
+       "code": "87213"
+      },
+      {
+       "category": "Ballongcellenævus",
+       "code": "87220"
+      },
+      {
+       "category": "Ballongcellemelanom",
+       "code": "87223"
+      },
+      {
+       "category": "Halonævus",
+       "code": "87230"
+      },
+      {
+       "category": "Malignt melanom i regress",
+       "code": "87233"
+      },
+      {
+       "category": "Nevronævus",
+       "code": "87250"
+      },
+      {
+       "category": "Magnocellulært nævus",
+       "code": "87260"
+      },
+      {
+       "category": "Dysplastisk nævus",
+       "code": "87270"
+      },
+      {
+       "category": "Meningeal melanocytose",
+       "code": "87280"
+      },
+      {
+       "category": "Meningealt melanocytom",
+       "code": "87281"
+      },
+      {
+       "category": "Meningeal melanomatose",
+       "code": "87283"
+      },
+      {
+       "category": "Ikke-pigmentert nævus",
+       "code": "87300"
+      },
+      {
+       "category": "Amelanotisk melanom",
+       "code": "87303"
+      },
+      {
+       "category": "Intraepidermal nævus UNS",
+       "code": "87400"
+      },
+      {
+       "category": "Malignt melanom i intraepidermal nævus",
+       "code": "87403"
+      },
+      {
+       "category": "Prekankrøs melanose UNS",
+       "code": "87412"
+      },
+      {
+       "category": "Malignt melanom i prekankrøs melanose",
+       "code": "87413"
+      },
+      {
+       "category": "Lentiginøs melanocyttnævus",
+       "code": "87420"
+      },
+      {
+       "category": "Lentigo maligna",
+       "code": "87422"
+      },
+      {
+       "category": "Lentigo maligna melanom ",
+       "code": "87423"
+      },
+      {
+       "category": "Malignt melanom in situ, superfisiell spredningstype",
+       "code": "87432"
+      },
+      {
+       "category": "Lav-kumulativ solskademelanom",
+       "code": "87433"
+      },
+      {
+       "category": "Akralt nævus",
+       "code": "87440"
+      },
+      {
+       "category": "Akralt melanom",
+       "code": "87443"
+      },
+      {
+       "category": "Desmoplastisk melanom UNS",
+       "code": "87453"
+      },
+      {
+       "category": "Mucosalt lentiginøst melanom",
+       "code": "87463"
+      },
+      {
+       "category": "Dermal nævus",
+       "code": "87500"
+      },
+      {
+       "category": "Sammensatt nævus",
+       "code": "87600"
+      },
+      {
+       "category": "Kongenitt melanocyttisk nevus",
+       "code": "87610"
+      },
+      {
+       "category": "Gigantisk pigmentert nævus UNS",
+       "code": "87611"
+      },
+      {
+       "category": "Malignt melanom i en gigantisk medfødt nævus",
+       "code": "87613"
+      },
+      {
+       "category": "Proliferativ dermal lesjon i medfødt nævus",
+       "code": "87621"
+      },
+      {
+       "category": "Epiteioid og spolcellet nævus",
+       "code": "87700"
+      },
+      {
+       "category": "Malign Spitz tumor",
+       "code": "87703"
+      },
+      {
+       "category": "Epiteloidcellenævus",
+       "code": "87710"
+      },
+      {
+       "category": "Epiteloidcellemelanom",
+       "code": "87713"
+      },
+      {
+       "category": "Spolcellet nævus UNS",
+       "code": "87720"
+      },
+      {
+       "category": "Spolcellet melanom UNS",
+       "code": "87723"
+      },
+      {
+       "category": "Spolcellet melanom, type A",
+       "code": "87733"
+      },
+      {
+       "category": "Spolcellet melanom, type B",
+       "code": "87743"
+      },
+      {
+       "category": "Blå nævus UNS",
+       "code": "87800"
+      },
+      {
+       "category": "Pigmentert epiteloid melanocytom",
+       "code": "87801"
+      },
+      {
+       "category": "Malign blå nævus",
+       "code": "87803"
+      },
+      {
+       "category": "Cellerik blå nævus",
+       "code": "87900"
+      },
+      {
+       "category": "Benign bløtdelstumor",
+       "code": "88000"
+      },
+      {
+       "category": "Sarkom UNS",
+       "code": "88003"
+      },
+      {
+       "category": "Sarkomatose UNS",
+       "code": "88009"
+      },
+      {
+       "category": "Spolcellet sarkom ",
+       "code": "88013"
+      },
+      {
+       "category": "Pleomorf hyaliniserende angiektatisk tumor",
+       "code": "88021"
+      },
+      {
+       "category": "Kjempecellesarkom",
+       "code": "88023"
+      },
+      {
+       "category": "Småcellet sarkom",
+       "code": "88033"
+      },
+      {
+       "category": "Epiteloid sarkom UNS",
+       "code": "88043"
+      },
+      {
+       "category": "Udifferensiert sarkom",
+       "code": "88053"
+      },
+      {
+       "category": "Desmoplastisk småcellet rundcellet tumor",
+       "code": "88063"
+      },
+      {
+       "category": "Fibrom UNS",
+       "code": "88100"
+      },
+      {
+       "category": "Cellulært fibrom",
+       "code": "88101"
+      },
+      {
+       "category": "Fibrosarkom UNS",
+       "code": "88103"
+      },
+      {
+       "category": "Fibromyksom UNS",
+       "code": "88110"
+      },
+      {
+       "category": "Myksoinflammatorisk fibroblastisk sarkom",
+       "code": "88111"
+      },
+      {
+       "category": "Myksofibrosarkom",
+       "code": "88113"
+      },
+      {
+       "category": "Periostealt fibrom",
+       "code": "88120"
+      },
+      {
+       "category": "Periostealt fibrosarkom",
+       "code": "88123"
+      },
+      {
+       "category": "Fibrom i seneskjede",
+       "code": "88130"
+      },
+      {
+       "category": "Palmar/plantar fibromatose",
+       "code": "88131"
+      },
+      {
+       "category": "Fascialt fibrosarkom",
+       "code": "88133"
+      },
+      {
+       "category": "Infantilt fibrosarkom",
+       "code": "88143"
+      },
+      {
+       "category": "Solitær fibrøs tumor / hemangiopericytom grad 1",
+       "code": "88150"
+      },
+      {
+       "category": "Solitær fibrøs tumor UNS",
+       "code": "88151"
+      },
+      {
+       "category": "Malign solitær fibrøs tumor",
+       "code": "88153"
+      },
+      {
+       "category": "Kalsifiserende aponevrotisk fibrom",
+       "code": "88160"
+      },
+      {
+       "category": "Kalsifiserende fibrøs tumor",
+       "code": "88170"
+      },
+      {
+       "category": "Fibrøs dysplasi",
+       "code": "88180"
+      },
+      {
+       "category": "Elastofibrom",
+       "code": "88200"
+      },
+      {
+       "category": "Aggressiv fibromatose",
+       "code": "88211"
+      },
+      {
+       "category": "Abdominal fibromatose",
+       "code": "88221"
+      },
+      {
+       "category": "Sklerotisk fibrom",
+       "code": "88230"
+      },
+      {
+       "category": "Desmoplastisk fibrom",
+       "code": "88231"
+      },
+      {
+       "category": "Myofibrom",
+       "code": "88240"
+      },
+      {
+       "category": "Myofibromatose",
+       "code": "88241"
+      },
+      {
+       "category": "Myofibroblastom",
+       "code": "88250"
+      },
+      {
+       "category": "Myofibroblastisk tumor UNS",
+       "code": "88251"
+      },
+      {
+       "category": "Myofibroblastisk sarkom",
+       "code": "88253"
+      },
+      {
+       "category": "Angiomyofibroblastom",
+       "code": "88260"
+      },
+      {
+       "category": "Peribronkial myofibroblastisk tumor",
+       "code": "88271"
+      },
+      {
+       "category": "Nodulær fasciitt",
+       "code": "88280"
+      },
+      {
+       "category": "Benignt fibrøst histiocytom UNS",
+       "code": "88300"
+      },
+      {
+       "category": "Atypisk fibrøst histiocytom",
+       "code": "88301"
+      },
+      {
+       "category": "Malignt fibrøst histiocytom",
+       "code": "88303"
+      },
+      {
+       "category": "Histiocytom UNS",
+       "code": "88310"
+      },
+      {
+       "category": "Dermatofibrom UNS",
+       "code": "88320"
+      },
+      {
+       "category": "Dermatofibrosarcoma protuberans UNS",
+       "code": "88321"
+      },
+      {
+       "category": "Dermatofibrosarcoma protuberans, fibrosarkomatøst",
+       "code": "88323"
+      },
+      {
+       "category": "Dermatofibrosarkoma protuberans, pigmentert",
+       "code": "88331"
+      },
+      {
+       "category": "Kjempecellefibroblastom",
+       "code": "88341"
+      },
+      {
+       "category": "Pleksiform fibrohistiocytær tumor",
+       "code": "88351"
+      },
+      {
+       "category": "Angiomatoid fibrøst histiocytom",
+       "code": "88361"
+      },
+      {
+       "category": "Myksom UNS",
+       "code": "88400"
+      },
+      {
+       "category": "Myksosarkom",
+       "code": "88403"
+      },
+      {
+       "category": "Angiomyksom UNS",
+       "code": "88410"
+      },
+      {
+       "category": "Ossifiserende fibromyxoid tumor UNS",
+       "code": "88420"
+      },
+      {
+       "category": "Malign ossifiserende fibromyxoid tumor",
+       "code": "88423"
+      },
+      {
+       "category": "Lipom UNS",
+       "code": "88500"
+      },
+      {
+       "category": "Atypisk lipomatøs tumor ",
+       "code": "88501"
+      },
+      {
+       "category": "Liposarkom UNS",
+       "code": "88503"
+      },
+      {
+       "category": "Fibrolipom",
+       "code": "88510"
+      },
+      {
+       "category": "Lipofibromatose",
+       "code": "88511"
+      },
+      {
+       "category": "Høyt differensiert liposarkom UNS",
+       "code": "88513"
+      },
+      {
+       "category": "Fibromyksolipom",
+       "code": "88520"
+      },
+      {
+       "category": "Myksoid liposarkom",
+       "code": "88523"
+      },
+      {
+       "category": "Rundcellet liposarkom",
+       "code": "88533"
+      },
+      {
+       "category": "Pleomorft lipom",
+       "code": "88540"
+      },
+      {
+       "category": "Pleomorft liposarkom",
+       "code": "88543"
+      },
+      {
+       "category": "Blandet liposarkom",
+       "code": "88553"
+      },
+      {
+       "category": "Intramuskulært lipom",
+       "code": "88560"
+      },
+      {
+       "category": "Spolcellet lipom",
+       "code": "88570"
+      },
+      {
+       "category": "Fibroblastisk lipom",
+       "code": "88573"
+      },
+      {
+       "category": "Dedifferensiert liposarkom",
+       "code": "88583"
+      },
+      {
+       "category": "Angiomyolipom",
+       "code": "88600"
+      },
+      {
+       "category": "Epiteloid angiomyolipom",
+       "code": "88601"
+      },
+      {
+       "category": "Angiolipom UNS",
+       "code": "88610"
+      },
+      {
+       "category": "Kondroid lipom",
+       "code": "88620"
+      },
+      {
+       "category": "Myelolipom",
+       "code": "88700"
+      },
+      {
+       "category": "Gastroblastom",
+       "code": "88761"
+      },
+      {
+       "category": "Hibernom",
+       "code": "88800"
+      },
+      {
+       "category": "Lipoblastomatose",
+       "code": "88810"
+      },
+      {
+       "category": "Leiomyom UNS",
+       "code": "88900"
+      },
+      {
+       "category": "Leiomyomatose UNS",
+       "code": "88901"
+      },
+      {
+       "category": "Leiomyosarkom UNS",
+       "code": "88903"
+      },
+      {
+       "category": "Epiteloid leiomyom",
+       "code": "88910"
+      },
+      {
+       "category": "Epiteloid glattmuskeltumor med usikkert malignitetspotensiale",
+       "code": "88911"
+      },
+      {
+       "category": "Epiteloid leiomyosarkom",
+       "code": "88913"
+      },
+      {
+       "category": "Cellulært leiomyom",
+       "code": "88920"
+      },
+      {
+       "category": "Bisart leiomyom",
+       "code": "88930"
+      },
+      {
+       "category": "Angioleiomyom",
+       "code": "88940"
+      },
+      {
+       "category": "Angiomyosarkom",
+       "code": "88943"
+      },
+      {
+       "category": "Myom ",
+       "code": "88950"
+      },
+      {
+       "category": "Myosarkom",
+       "code": "88953"
+      },
+      {
+       "category": "Myksoid leiomyom",
+       "code": "88960"
+      },
+      {
+       "category": "Myksoid glattmuskeltumor med usikkert malignitetspotensiale",
+       "code": "88961"
+      },
+      {
+       "category": "Myksoid leiomyosarkom",
+       "code": "88963"
+      },
+      {
+       "category": "Glattmuskeltumor med usikkert malignitetspotensiale",
+       "code": "88971"
+      },
+      {
+       "category": "Metastaserende leiomyom",
+       "code": "88981"
+      },
+      {
+       "category": "Rabdomyom UNS",
+       "code": "89000"
+      },
+      {
+       "category": "Rabdomyosarkom UNS",
+       "code": "89003"
+      },
+      {
+       "category": "Plemorft rabdomyosarkom, adult type",
+       "code": "89013"
+      },
+      {
+       "category": "Rabdomyosarkom, blandet type",
+       "code": "89023"
+      },
+      {
+       "category": "Føtalt rabdomyom",
+       "code": "89030"
+      },
+      {
+       "category": "Adult cellulært rabdomyom",
+       "code": "89040"
+      },
+      {
+       "category": "Genitalt rabdomyom",
+       "code": "89050"
+      },
+      {
+       "category": "Embryonalt rabdomyosarkom UNS",
+       "code": "89103"
+      },
+      {
+       "category": "Spolcellet rabdomyosarkom",
+       "code": "89123"
+      },
+      {
+       "category": "Alveolært rabdomyosarkom",
+       "code": "89203"
+      },
+      {
+       "category": "Ektomesenkymom",
+       "code": "89213"
+      },
+      {
+       "category": "Endometriestromaknute",
+       "code": "89300"
+      },
+      {
+       "category": "Endometriestromasarkom UNS",
+       "code": "89303"
+      },
+      {
+       "category": "Lavgradig endometriestromasarkom",
+       "code": "89313"
+      },
+      {
+       "category": "Adenomyom UNS",
+       "code": "89320"
+      },
+      {
+       "category": "Adenosarkom",
+       "code": "89333"
+      },
+      {
+       "category": "Karsinofibrom",
+       "code": "89343"
+      },
+      {
+       "category": "Benign stromal knute",
+       "code": "89350"
+      },
+      {
+       "category": "Stromal knute UNS",
+       "code": "89351"
+      },
+      {
+       "category": "Stromalt sarkom UNS",
+       "code": "89353"
+      },
+      {
+       "category": "Gatrointestinal stromal tumor",
+       "code": "89363"
+      },
+      {
+       "category": "Pleomorft adenom",
+       "code": "89400"
+      },
+      {
+       "category": "Malign blandet tumor UNS",
+       "code": "89403"
+      },
+      {
+       "category": "Karsinom i plemorft adenom",
+       "code": "89413"
+      },
+      {
+       "category": "Müllersk blandingstumor",
+       "code": "89503"
+      },
+      {
+       "category": "Mesodermal blandingstumor",
+       "code": "89513"
+      },
+      {
+       "category": "Benignt cystisk nefrom",
+       "code": "89590"
+      },
+      {
+       "category": "Cystisk delvis differensiert nefroblastom",
+       "code": "89591"
+      },
+      {
+       "category": "Malignt cystisk nefrom",
+       "code": "89593"
+      },
+      {
+       "category": "Mesoblastisk nefrom",
+       "code": "89601"
+      },
+      {
+       "category": "Nefroblastom UNS",
+       "code": "89603"
+      },
+      {
+       "category": "Rabdoid tumor UNS",
+       "code": "89633"
+      },
+      {
+       "category": "Klarcellet sarkom i nyre",
+       "code": "89643"
+      },
+      {
+       "category": "Renomedullær instertitiellcelletumor",
+       "code": "89660"
+      },
+      {
+       "category": "Ossifiserende nyretumor",
+       "code": "89670"
+      },
+      {
+       "category": "Hepatoblastom UNS",
+       "code": "89703"
+      },
+      {
+       "category": "Pankreatikoblastom",
+       "code": "89713"
+      },
+      {
+       "category": "Pulmonalt blastom",
+       "code": "89723"
+      },
+      {
+       "category": "Pleuropulmonalt blastom",
+       "code": "89733"
+      },
+      {
+       "category": "Sialoblastom",
+       "code": "89741"
+      },
+      {
+       "category": "Kalsifiserende rededannende stroma-epitelial tumor",
+       "code": "89751"
+      },
+      {
+       "category": "Gastroblastom",
+       "code": "89761"
+      },
+      {
+       "category": "Karsinosarkom UNS",
+       "code": "89803"
+      },
+      {
+       "category": "Karsinosarkom, embryonal type",
+       "code": "89813"
+      },
+      {
+       "category": "Myoepiteliom UNS",
+       "code": "89820"
+      },
+      {
+       "category": "Myoepitelialt karsinom",
+       "code": "89823"
+      },
+      {
+       "category": "Adenomyoepiteliom UNS",
+       "code": "89830"
+      },
+      {
+       "category": "Adenomyoepiteliom med karsinom",
+       "code": "89833"
+      },
+      {
+       "category": "Benignt mesenkymom",
+       "code": "89900"
+      },
+      {
+       "category": "Mesenkymom UNS",
+       "code": "89901"
+      },
+      {
+       "category": "Malignt mesenkymom",
+       "code": "89903"
+      },
+      {
+       "category": "Embryonalt sarkom",
+       "code": "89913"
+      },
+      {
+       "category": "Pulmonalt hamartom",
+       "code": "89920"
+      },
+      {
+       "category": "Brennertumor UNS",
+       "code": "90000"
+      },
+      {
+       "category": "Brennertumor, borderline",
+       "code": "90001"
+      },
+      {
+       "category": "Malign Brennertumor",
+       "code": "90003"
+      },
+      {
+       "category": "Fibroadenom UNS",
+       "code": "90100"
+      },
+      {
+       "category": "Intrakanalikulært fibroadenom",
+       "code": "90110"
+      },
+      {
+       "category": "Perikanalikulært fibroadenom",
+       "code": "90120"
+      },
+      {
+       "category": "Adenofibrom UNS",
+       "code": "90130"
+      },
+      {
+       "category": "Serøst adenofibrom UNS",
+       "code": "90140"
+      },
+      {
+       "category": "Serøst adenofibrom, borderline",
+       "code": "90141"
+      },
+      {
+       "category": "Serøst adenokarsinofibrom",
+       "code": "90143"
+      },
+      {
+       "category": "Mucinøst adenofibrom UNS",
+       "code": "90150"
+      },
+      {
+       "category": "Mucinøst adenofibrom, borderline",
+       "code": "90151"
+      },
+      {
+       "category": "Mucinøst adenokarsinofibrom",
+       "code": "90153"
+      },
+      {
+       "category": "Gigantisk fibroadenom",
+       "code": "90160"
+      },
+      {
+       "category": "Benign Phyllodestumor",
+       "code": "90200"
+      },
+      {
+       "category": "Borderline Phyllodestumor",
+       "code": "90201"
+      },
+      {
+       "category": "Malign Phyllodestumor",
+       "code": "90203"
+      },
+      {
+       "category": "Juvenilt fibroadenom",
+       "code": "90300"
+      },
+      {
+       "category": "Synoviom, benignt",
+       "code": "90400"
+      },
+      {
+       "category": "Synovialt sarkom UNS",
+       "code": "90403"
+      },
+      {
+       "category": "Spolcellet synovialt sarkom",
+       "code": "90413"
+      },
+      {
+       "category": "Epiteloid synovialt sarkom ",
+       "code": "90423"
+      },
+      {
+       "category": "Bifasisk synovialt sarkom",
+       "code": "90433"
+      },
+      {
+       "category": "Klarcellet sarkom  ",
+       "code": "90443"
+      },
+      {
+       "category": "Bifenotypisk sinonasalt sarkom",
+       "code": "90453"
+      },
+      {
+       "category": "Benignt mesoteliom",
+       "code": "90500"
+      },
+      {
+       "category": "Mesoteliom in situ",
+       "code": "90502"
+      },
+      {
+       "category": "Malignt mesoteliom",
+       "code": "90503"
+      },
+      {
+       "category": "Benignt mesoteliom, fibrøs type",
+       "code": "90510"
+      },
+      {
+       "category": "Malignt mesoteliom, fibrøs type",
+       "code": "90513"
+      },
+      {
+       "category": "Epiteloid benignt mesoteliom",
+       "code": "90520"
+      },
+      {
+       "category": "Høyt differensiert papillært mesoteliom i pleura",
+       "code": "90521"
+      },
+      {
+       "category": "Epiteloid malignt mesoteliom",
+       "code": "90523"
+      },
+      {
+       "category": "Bifasisk malignt mesoteliom",
+       "code": "90533"
+      },
+      {
+       "category": "Adenomatoid tumor UNS",
+       "code": "90540"
+      },
+      {
+       "category": "Peritonale inklusjonscyster",
+       "code": "90550"
+      },
+      {
+       "category": "Dysgerminom",
+       "code": "90603"
+      },
+      {
+       "category": "Seminom UNS",
+       "code": "90613"
+      },
+      {
+       "category": "Anaplastisk seminom",
+       "code": "90623"
+      },
+      {
+       "category": "Spermatocyttisk seminom",
+       "code": "90633"
+      },
+      {
+       "category": "Germinalcelleneoplasme in situ",
+       "code": "90642"
+      },
+      {
+       "category": "Germinalcelletumor  ",
+       "code": "90643"
+      },
+      {
+       "category": "Germinalcelletumor, ikke-seminom",
+       "code": "90653"
+      },
+      {
+       "category": "Embryonalt karsinom UNS",
+       "code": "90703"
+      },
+      {
+       "category": "Plommesekktumor UNS",
+       "code": "90713"
+      },
+      {
+       "category": "Polyembryom",
+       "code": "90723"
+      },
+      {
+       "category": "Gonadoblastom",
+       "code": "90731"
+      },
+      {
+       "category": "Modent teratom",
+       "code": "90800"
+      },
+      {
+       "category": "Teratom UNS",
+       "code": "90801"
+      },
+      {
+       "category": "Malignt teratom UNS",
+       "code": "90803"
+      },
+      {
+       "category": "Teratokarsinom",
+       "code": "90813"
+      },
+      {
+       "category": "Malignt teratom, udifferensiert",
+       "code": "90823"
+      },
+      {
+       "category": "Malignt teratom, intermediær",
+       "code": "90833"
+      },
+      {
+       "category": "Dermoidcyste UNS",
+       "code": "90840"
+      },
+      {
+       "category": "Teratom med malign transformasjon",
+       "code": "90843"
+      },
+      {
+       "category": "Blandet germinalcelletumor",
+       "code": "90853"
+      },
+      {
+       "category": "Germinalcelletumor med assosiert hematologisk malign sykdom",
+       "code": "90863"
+      },
+      {
+       "category": "Struma ovarii UNS",
+       "code": "90900"
+      },
+      {
+       "category": "Malignt struma ovarii",
+       "code": "90903"
+      },
+      {
+       "category": "Strumalt karsinoid",
+       "code": "90911"
+      },
+      {
+       "category": "Mola hydatidosa UNS",
+       "code": "91000"
+      },
+      {
+       "category": "Invasiv mola",
+       "code": "91001"
+      },
+      {
+       "category": "Koriokarsinom",
+       "code": "91003"
+      },
+      {
+       "category": "Koriokarsinom kombinert med andre germinalcelleelementer",
+       "code": "91013"
+      },
+      {
+       "category": "Trofoblastisk malignt teratom",
+       "code": "91023"
+      },
+      {
+       "category": "Partiell mola hydatidosa",
+       "code": "91030"
+      },
+      {
+       "category": "Tumor utgått fra placentas implantasjonssted",
+       "code": "91041"
+      },
+      {
+       "category": "Epiteloid trofoblasttumor",
+       "code": "91053"
+      },
+      {
+       "category": "Adenom i rete ovarii",
+       "code": "91100"
+      },
+      {
+       "category": "Tumor utgått fra Wolffske ganger",
+       "code": "91101"
+      },
+      {
+       "category": "Mesonefrisk karsinom",
+       "code": "91103"
+      },
+      {
+       "category": "Mesonefrisk-lignende adenokarsinom",
+       "code": "91113"
+      },
+      {
+       "category": "Hemangiom UNS",
+       "code": "91200"
+      },
+      {
+       "category": "Atypiske vaskulære lesjoner",
+       "code": "91201"
+      },
+      {
+       "category": "Hemangiosarkom ",
+       "code": "91203"
+      },
+      {
+       "category": "Kavernøst hemangiom",
+       "code": "91210"
+      },
+      {
+       "category": "Venøst hemangiom",
+       "code": "91220"
+      },
+      {
+       "category": "Arteriovenøst hamangiom",
+       "code": "91230"
+      },
+      {
+       "category": "Kupffercellesarkom",
+       "code": "91243"
+      },
+      {
+       "category": "Epiteloid hemangiom",
+       "code": "91250"
+      },
+      {
+       "category": "Atypisk vaskulær lesjon",
+       "code": "91260"
+      },
+      {
+       "category": "Benignt hemangioendoteliom",
+       "code": "91300"
+      },
+      {
+       "category": "Hemangiomendoteliom UNS",
+       "code": "91301"
+      },
+      {
+       "category": "Malignt hemangioendoteliom",
+       "code": "91303"
+      },
+      {
+       "category": "Kapillært hemangiom",
+       "code": "91310"
+      },
+      {
+       "category": "Intramuskulært hemangiom",
+       "code": "91320"
+      },
+      {
+       "category": "Epiteloid hemangioendoteliom UNS",
+       "code": "91333"
+      },
+      {
+       "category": "Papillært intralymfatisk engioendoteliom",
+       "code": "91351"
+      },
+      {
+       "category": "Spolcellet hemangioendoteliom",
+       "code": "91361"
+      },
+      {
+       "category": "Myointimom",
+       "code": "91370"
+      },
+      {
+       "category": "Intimasarkom",
+       "code": "91373"
+      },
+      {
+       "category": "Pseudomyogent (epiteloid sarkomlignende) hemangioendoteliom",
+       "code": "91381"
+      },
+      {
+       "category": "Kaposis sarkom",
+       "code": "91403"
+      },
+      {
+       "category": "Angiokeratom",
+       "code": "91410"
+      },
+      {
+       "category": "Verrukøst keratotisk hemangiom",
+       "code": "91420"
+      },
+      {
+       "category": "Angiofibrom UNS",
+       "code": "91600"
+      },
+      {
+       "category": "Angioblastom",
+       "code": "91610"
+      },
+      {
+       "category": "Hemangioblastom",
+       "code": "91611"
+      },
+      {
+       "category": "Lymfangiom UNS",
+       "code": "91700"
+      },
+      {
+       "category": "Lymfangiosarkom",
+       "code": "91703"
+      },
+      {
+       "category": "Kapillært lymfangiom",
+       "code": "91710"
+      },
+      {
+       "category": "Kavernøst lymfangiom",
+       "code": "91720"
+      },
+      {
+       "category": "Cystisk lymfangiom",
+       "code": "91730"
+      },
+      {
+       "category": "Lymfangiomyom",
+       "code": "91740"
+      },
+      {
+       "category": "Lymfangioleiomyomatose",
+       "code": "91741"
+      },
+      {
+       "category": "Lymfangioleiomyomatose i lunge",
+       "code": "91743"
+      },
+      {
+       "category": "Hemolymfangiom",
+       "code": "91750"
+      },
+      {
+       "category": "Osteom UNS",
+       "code": "91800"
+      },
+      {
+       "category": "Osteosarkom UNS",
+       "code": "91803"
+      },
+      {
+       "category": "Kondroblastisk osteosarkom",
+       "code": "91813"
+      },
+      {
+       "category": "Fibroblastisk osteosarkom",
+       "code": "91823"
+      },
+      {
+       "category": "Teleangiektatisk osteosarkom",
+       "code": "91833"
+      },
+      {
+       "category": "Osteosarkom utviklet i Pagets sykdom i benvev",
+       "code": "91843"
+      },
+      {
+       "category": "Småcellet osteosarkom UNS",
+       "code": "91853"
+      },
+      {
+       "category": "Sentralt osteosarkom UNS",
+       "code": "91863"
+      },
+      {
+       "category": "Lavgradig sentralt osteosarkom",
+       "code": "91873"
+      },
+      {
+       "category": "Osteoid osteom UNS",
+       "code": "91910"
+      },
+      {
+       "category": "Parostealt osteosarkom",
+       "code": "91923"
+      },
+      {
+       "category": "Periostealt osteosarkom ",
+       "code": "91933"
+      },
+      {
+       "category": "Høygradig overflateosteosarkom",
+       "code": "91943"
+      },
+      {
+       "category": "Intrakortikalt osteosarkom",
+       "code": "91953"
+      },
+      {
+       "category": "Osteoblastom UNS",
+       "code": "92000"
+      },
+      {
+       "category": "Aggressivt osteoblastom",
+       "code": "92001"
+      },
+      {
+       "category": "Osteokondrom",
+       "code": "92100"
+      },
+      {
+       "category": "Osteokondromatose UNS",
+       "code": "92101"
+      },
+      {
+       "category": "Osteokondromyksom",
+       "code": "92110"
+      },
+      {
+       "category": "Bisarr parosteal osteokondromatøs proliferasjon",
+       "code": "92120"
+      },
+      {
+       "category": "Sunungual eksostose",
+       "code": "92130"
+      },
+      {
+       "category": "Kondrom UNS",
+       "code": "92200"
+      },
+      {
+       "category": "Kondromatose UNS",
+       "code": "92201"
+      },
+      {
+       "category": "Kondrosarkom UNS",
+       "code": "92203"
+      },
+      {
+       "category": "Periostealt kondrom",
+       "code": "92210"
+      },
+      {
+       "category": "Periostealt kondrosarkom",
+       "code": "92213"
+      },
+      {
+       "category": "Atypisk kartilaginøs tumor",
+       "code": "92221"
+      },
+      {
+       "category": "Kondrosarkom, grad 1",
+       "code": "92223"
+      },
+      {
+       "category": "Kondroblastom UNS",
+       "code": "92301"
+      },
+      {
+       "category": "Malignt kondroblastom",
+       "code": "92303"
+      },
+      {
+       "category": "Myksoid kondrosarkom",
+       "code": "92313"
+      },
+      {
+       "category": "Mesenkymalt kondrosarkom",
+       "code": "92403"
+      },
+      {
+       "category": "Kondromyksoid fibrom",
+       "code": "92410"
+      },
+      {
+       "category": "Klarcellet kondrosarkom",
+       "code": "92423"
+      },
+      {
+       "category": "Dedifferensiert kondrosarkom",
+       "code": "92433"
+      },
+      {
+       "category": "Kjempecelletumor i ben",
+       "code": "92501"
+      },
+      {
+       "category": "Malign kjempecelletumor i ben",
+       "code": "92503"
+      },
+      {
+       "category": "Kjempecelletumor i bløtvev UNS",
+       "code": "92511"
+      },
+      {
+       "category": "Malign kjempecelletumor i bløtvev",
+       "code": "92513"
+      },
+      {
+       "category": "Tenosynovial kjempecelletumor UNS",
+       "code": "92520"
+      },
+      {
+       "category": "Diffus tenosynovial kjempecelletumor",
+       "code": "92521"
+      },
+      {
+       "category": "Malign tenosynovial kjempecelletumor",
+       "code": "92523"
+      },
+      {
+       "category": "Aneurismal bencyste",
+       "code": "92600"
+      },
+      {
+       "category": "Adamantinom i lange rørknokler",
+       "code": "92613"
+      },
+      {
+       "category": "Ossifiserende fibrom",
+       "code": "92620"
+      },
+      {
+       "category": "Benign odontogen tumor",
+       "code": "92700"
+      },
+      {
+       "category": "Odontogen tumor UNS",
+       "code": "92701"
+      },
+      {
+       "category": "Malign odontogen tumor",
+       "code": "92703"
+      },
+      {
+       "category": "Ameloblastisk fibrodentinom",
+       "code": "92710"
+      },
+      {
+       "category": "Sementom UNS",
+       "code": "92720"
+      },
+      {
+       "category": "Benignt sementoblastom",
+       "code": "92730"
+      },
+      {
+       "category": "Semento-ossifiserende fibrom",
+       "code": "92740"
+      },
+      {
+       "category": "Gigantiformt sementom",
+       "code": "92750"
+      },
+      {
+       "category": "Odontom UNS",
+       "code": "92800"
+      },
+      {
+       "category": "Sammensatt odontom",
+       "code": "92810"
+      },
+      {
+       "category": "Komplekst odontom",
+       "code": "92820"
+      },
+      {
+       "category": "Ameloblastisk fibro-odontom",
+       "code": "92900"
+      },
+      {
+       "category": "Ameloblastisk odontosarkom",
+       "code": "92903"
+      },
+      {
+       "category": "Adenomatoid odontogen tumor",
+       "code": "93000"
+      },
+      {
+       "category": "Forkalkende odontogen cyste",
+       "code": "93010"
+      },
+      {
+       "category": "Odontogen skyggecelletumor",
+       "code": "93020"
+      },
+      {
+       "category": "Odontogent skyggecellekarsinom",
+       "code": "93023"
+      },
+      {
+       "category": "Ameloblastom UNS",
+       "code": "93100"
+      },
+      {
+       "category": "Metastaserende ameloblastom",
+       "code": "93103"
+      },
+      {
+       "category": "Odontoameloblastom",
+       "code": "93110"
+      },
+      {
+       "category": "Skvamøs odontogen tumor",
+       "code": "93120"
+      },
+      {
+       "category": "Odontogent myksom",
+       "code": "93200"
+      },
+      {
+       "category": "Odontogent fibrom UNS",
+       "code": "93210"
+      },
+      {
+       "category": "Perifert odontogent fibrom",
+       "code": "93220"
+      },
+      {
+       "category": "Ameloblastisk fibrom",
+       "code": "93300"
+      },
+      {
+       "category": "Ameloblastisk fibrosarkom",
+       "code": "93303"
+      },
+      {
+       "category": "Forkalkende epitelial odontogen tumor",
+       "code": "93400"
+      },
+      {
+       "category": "Klarcellet odontogent karsinom",
+       "code": "93413"
+      },
+      {
+       "category": "Odontogent karsinosarkom",
+       "code": "93423"
+      },
+      {
+       "category": "Kraniofaryngeom",
+       "code": "93501"
+      },
+      {
+       "category": "Adamantinomatøst kraniofaryngeom",
+       "code": "93511"
+      },
+      {
+       "category": "Papillært kraniofaryngeom",
+       "code": "93521"
+      },
+      {
+       "category": "Pinealom",
+       "code": "93601"
+      },
+      {
+       "category": "Pineocytom",
+       "code": "93611"
+      },
+      {
+       "category": "Pineoblastom",
+       "code": "93623"
+      },
+      {
+       "category": "Melanotisk nevroektodermal tumor",
+       "code": "93630"
+      },
+      {
+       "category": "Ewings sarkom",
+       "code": "93643"
+      },
+      {
+       "category": "Askins tumor",
+       "code": "93653"
+      },
+      {
+       "category": "Rundcellet sarkom med ESWR1-non-ETS-fusjoner",
+       "code": "93663"
+      },
+      {
+       "category": "CIC-rearrangert sarkom",
+       "code": "93673"
+      },
+      {
+       "category": "Sarkom med BCOR-genendringer",
+       "code": "93683"
+      },
+      {
+       "category": "Benign notokordalcelletumor",
+       "code": "93700"
+      },
+      {
+       "category": "Kordom UNS",
+       "code": "93703"
+      },
+      {
+       "category": "Kondroid kordom",
+       "code": "93713"
+      },
+      {
+       "category": "Dedifferensiert kordom",
+       "code": "93723"
+      },
+      {
+       "category": "Parakordom",
+       "code": "93730"
+      },
+      {
+       "category": "Malignt gliom",
+       "code": "93803"
+      },
+      {
+       "category": "Gliomatosis cerebri",
+       "code": "93813"
+      },
+      {
+       "category": "Oligoastrocytom UNS",
+       "code": "93823"
+      },
+      {
+       "category": "Subependymom",
+       "code": "93831"
+      },
+      {
+       "category": "Subependymalt kjempecelleastrocytom",
+       "code": "93841"
+      },
+      {
+       "category": "Diffust midtlinjegliom, H3 K27M-mutert",
+       "code": "93853"
+      },
+      {
+       "category": "Plexus chorioideuspapillom",
+       "code": "93900"
+      },
+      {
+       "category": "Atypisk plexus choroideuspapillom",
+       "code": "93901"
+      },
+      {
+       "category": "Plexus chorioideuskarsinom",
+       "code": "93903"
+      },
+      {
+       "category": "Sellært ependymom",
+       "code": "93911"
+      },
+      {
+       "category": "Ependymom UNS",
+       "code": "93913"
+      },
+      {
+       "category": "Anaplastisk ependymom",
+       "code": "93923"
+      },
+      {
+       "category": "Papillært ependymom",
+       "code": "93933"
+      },
+      {
+       "category": "Myksopapillært ependymom",
+       "code": "93941"
+      },
+      {
+       "category": "Papillær tumor i pinealområdet",
+       "code": "93953"
+      },
+      {
+       "category": "Ependymom, RELA-fusjonspositivt",
+       "code": "93963"
+      },
+      {
+       "category": "Astrocytom UNS",
+       "code": "94003"
+      },
+      {
+       "category": "Anaplastisk astrocytom UNS",
+       "code": "94013"
+      },
+      {
+       "category": "Protoplasmisk astrocytom",
+       "code": "94103"
+      },
+      {
+       "category": "Gemistocystisk astrocytom UNS",
+       "code": "94113"
+      },
+      {
+       "category": "Desmoplastisk infantilt astrocytom",
+       "code": "94121"
+      },
+      {
+       "category": "Dysembryoplastisk nevroepitelial tumor",
+       "code": "94130"
+      },
+      {
+       "category": "Fibrillært astrocytom",
+       "code": "94203"
+      },
+      {
+       "category": "Pilocystisk astrocytom",
+       "code": "94211"
+      },
+      {
+       "category": "Høygradig astrocytom med piloide trekk",
+       "code": "94213"
+      },
+      {
+       "category": "Polart spongioblastom",
+       "code": "94233"
+      },
+      {
+       "category": "Pleomorft xantoastrocytom UNS",
+       "code": "94243"
+      },
+      {
+       "category": "Pilomyksoid astrocytom",
+       "code": "94253"
+      },
+      {
+       "category": "Astroblastom",
+       "code": "94303"
+      },
+      {
+       "category": "Astrosentrisk gliom",
+       "code": "94311"
+      },
+      {
+       "category": "Pituicytom",
+       "code": "94321"
+      },
+      {
+       "category": "Glioblastom UNS",
+       "code": "94403"
+      },
+      {
+       "category": "Kjempecelleglioblastom",
+       "code": "94413"
+      },
+      {
+       "category": "Gliofibrom",
+       "code": "94421"
+      },
+      {
+       "category": "Gliosarkom",
+       "code": "94423"
+      },
+      {
+       "category": "Kordoid gliom",
+       "code": "94441"
+      },
+      {
+       "category": "Glioblastom, IDH-mutert",
+       "code": "94453"
+      },
+      {
+       "category": "Oligodendrogliom UNS",
+       "code": "94503"
+      },
+      {
+       "category": "Anaplastisk oligodendrogliom UNS",
+       "code": "94513"
+      },
+      {
+       "category": "Oligodendroblastom",
+       "code": "94603"
+      },
+      {
+       "category": "Medulloblastom UNS",
+       "code": "94703"
+      },
+      {
+       "category": "Desmoplastisk nodulært medulloblastom",
+       "code": "94713"
+      },
+      {
+       "category": "Medullomyoblastom",
+       "code": "94723"
+      },
+      {
+       "category": "CNS embryonal tumor UNS",
+       "code": "94733"
+      },
+      {
+       "category": "Storcellet medulloblastom",
+       "code": "94743"
+      },
+      {
+       "category": "Medulloblastom, WNT-aktivert, UNS",
+       "code": "94753"
+      },
+      {
+       "category": "Medulloblastom, SHH-aktivert og TP53-mutert",
+       "code": "94763"
+      },
+      {
+       "category": "Medulloblastom, ikke-WNT/ikke-SHH",
+       "code": "94773"
+      },
+      {
+       "category": "Embryonal tumor med flerradede rosetter med C19MC-endring",
+       "code": "94783"
+      },
+      {
+       "category": "Cerebellært sarkom UNS",
+       "code": "94803"
+      },
+      {
+       "category": "Ganglionevrom",
+       "code": "94900"
+      },
+      {
+       "category": "Ganglionevroblastom",
+       "code": "94903"
+      },
+      {
+       "category": "Ganglionevromatose",
+       "code": "94910"
+      },
+      {
+       "category": "Gangliocytom UNS",
+       "code": "94920"
+      },
+      {
+       "category": "Dysplastisk gangliocytom i cerebellum (Lhermitte-Duclos)",
+       "code": "94930"
+      },
+      {
+       "category": "Nevroblastom UNS",
+       "code": "95003"
+      },
+      {
+       "category": "Benignt medulloepiteliom",
+       "code": "95010"
+      },
+      {
+       "category": "Medulloepitelion UNS",
+       "code": "95013"
+      },
+      {
+       "category": "Benignt teratoid medulloepiteliom",
+       "code": "95020"
+      },
+      {
+       "category": "Teratoid medulloepiteliom UNS",
+       "code": "95023"
+      },
+      {
+       "category": "Nevroepiteliom UNS",
+       "code": "95033"
+      },
+      {
+       "category": "Spongionevroblastom",
+       "code": "95043"
+      },
+      {
+       "category": "Gangliogliom UNS",
+       "code": "95051"
+      },
+      {
+       "category": "Anaplastisk gangliogliom",
+       "code": "95053"
+      },
+      {
+       "category": "Sentralt nevrocytom",
+       "code": "95061"
+      },
+      {
+       "category": "Paciniantumor",
+       "code": "95070"
+      },
+      {
+       "category": "Atypisk teratoid/rabdoid tumor",
+       "code": "95083"
+      },
+      {
+       "category": "Papillær glionevronal tumor",
+       "code": "95091"
+      },
+      {
+       "category": "Retinocytom",
+       "code": "95100"
+      },
+      {
+       "category": "Retinoblastom UNS",
+       "code": "95103"
+      },
+      {
+       "category": "Differensiert retinoblastom",
+       "code": "95113"
+      },
+      {
+       "category": "Udifferensiert retinoblastom",
+       "code": "95123"
+      },
+      {
+       "category": "Diffust retinoblastom",
+       "code": "95133"
+      },
+      {
+       "category": "Spontant regrediert retinoblastom",
+       "code": "95141"
+      },
+      {
+       "category": "Olfaktorisk nevrogen tumor",
+       "code": "95203"
+      },
+      {
+       "category": "Olfaktorisk nevrocytom",
+       "code": "95213"
+      },
+      {
+       "category": "Olfaktorisk nevroblastom",
+       "code": "95223"
+      },
+      {
+       "category": "Olfaktorisk nevroepiteliom",
+       "code": "95233"
+      },
+      {
+       "category": "Meningeom UNS",
+       "code": "95300"
+      },
+      {
+       "category": "Malignt meningeom",
+       "code": "95303"
+      },
+      {
+       "category": "Meningotelialt meningeom",
+       "code": "95310"
+      },
+      {
+       "category": "Fibrøst meningeom",
+       "code": "95320"
+      },
+      {
+       "category": "Psammomatøst meningeom",
+       "code": "95330"
+      },
+      {
+       "category": "Angiomatøst meningeom",
+       "code": "95340"
+      },
+      {
+       "category": "Hemangioblastisk meningeom",
+       "code": "95350"
+      },
+      {
+       "category": "Blandingsmeningeom",
+       "code": "95370"
+      },
+      {
+       "category": "Klarcellet meningeom",
+       "code": "95381"
+      },
+      {
+       "category": "Papillært meningeom",
+       "code": "95383"
+      },
+      {
+       "category": "Atypisk meningeom",
+       "code": "95391"
+      },
+      {
+       "category": "Meningeal sarkomatose",
+       "code": "95393"
+      },
+      {
+       "category": "Nevrofibrom UNS",
+       "code": "95400"
+      },
+      {
+       "category": "Malign perifer nerveskjedetumor UNS",
+       "code": "95403"
+      },
+      {
+       "category": "Melanotisk nevrofibrom",
+       "code": "95410"
+      },
+      {
+       "category": "Epiteloid malign perifer nerveskjedetumor",
+       "code": "95423"
+      },
+      {
+       "category": "Pleksiformt nevrofibrom",
+       "code": "95500"
+      },
+      {
+       "category": "Schwannom UNS",
+       "code": "95600"
+      },
+      {
+       "category": "Melanotisk schwannom",
+       "code": "95601"
+      },
+      {
+       "category": "Malignt nevrilemmom",
+       "code": "95603"
+      },
+      {
+       "category": "Malign perifer nerveskjedetumor med rabdomyoblastisk differensiering",
+       "code": "95613"
+      },
+      {
+       "category": "Nerveskjedemyksom",
+       "code": "95620"
+      },
+      {
+       "category": "Nerveskjedetumor UNS",
+       "code": "95630"
+      },
+      {
+       "category": "Nevrom UNS",
+       "code": "95700"
+      },
+      {
+       "category": "Perinevrom UNS",
+       "code": "95710"
+      },
+      {
+       "category": "Malignt perinevrom",
+       "code": "95713"
+      },
+      {
+       "category": "Granulærecelletumor UNS",
+       "code": "95800"
+      },
+      {
+       "category": "Malign granulærcelletumor",
+       "code": "95803"
+      },
+      {
+       "category": "Alveolært bløtdelssarksom",
+       "code": "95813"
+      },
+      {
+       "category": "Granulærcelletumorer i sella-området",
+       "code": "95820"
+      },
+      {
+       "category": "Malignt lymfom UNS",
+       "code": "95903"
+      },
+      {
+       "category": "Monoklonal B-cellelymfocytose",
+       "code": "95911"
+      },
+      {
+       "category": "Non-Hodgkin lymfom UNS",
+       "code": "95913"
+      },
+      {
+       "category": "Sammensatt Hodgkin og non-Hodgkin lymfom",
+       "code": "95963"
+      },
+      {
+       "category": "Primært kutant follikulært lymfom",
+       "code": "95973"
+      },
+      {
+       "category": "Klassisk Hodgkin lymfom UNS",
+       "code": "96503"
+      },
+      {
+       "category": "Klassisk Hodgkin lymfom, lymfocyttrikt",
+       "code": "96513"
+      },
+      {
+       "category": "Klassisk Hodgkin lymfom, blandet cellularitet UNS",
+       "code": "96523"
+      },
+      {
+       "category": "Klassisk Hodgkin lymfom, lymfocyttfattig UNS",
+       "code": "96533"
+      },
+      {
+       "category": "Klassisk Hodgkin lymfom, lymfocyttfattig, diffus fibrose",
+       "code": "96543"
+      },
+      {
+       "category": "Klassisk Hodgkin lymfom, lymfocyttfattig, retikulært",
+       "code": "96553"
+      },
+      {
+       "category": "Klassisk Hodgkin lymfom, nodulært lymfocyttrikt",
+       "code": "96593"
+      },
+      {
+       "category": "Hodgkin granulom",
+       "code": "96613"
+      },
+      {
+       "category": "Hodgkin sarkom",
+       "code": "96623"
+      },
+      {
+       "category": "Klassisk Hodgkin lymfom, nodulær sklerose",
+       "code": "96633"
+      },
+      {
+       "category": "Klassisk Hodgkin lymfom, nodulær sklerose, cellulær fase",
+       "code": "96643"
+      },
+      {
+       "category": "Klassisk Hodgkin lymfom, nodulær sklerose, grad 1",
+       "code": "96653"
+      },
+      {
+       "category": "Klassisk Hodgkin lymfom, nodulær sklerose, grad 2",
+       "code": "96673"
+      },
+      {
+       "category": "Lymfoplasmacyttisk lymfom",
+       "code": "96713"
+      },
+      {
+       "category": "Mantelcelleneoplasmer in situ",
+       "code": "96731"
+      },
+      {
+       "category": "Mantelcellelymfom",
+       "code": "96733"
+      },
+      {
+       "category": "Malignt lymfom, blandet småcellet og storcellet, diffust",
+       "code": "96753"
+      },
+      {
+       "category": "Primært effusjonslymfom",
+       "code": "96783"
+      },
+      {
+       "category": "Mediastinalt storcellet B-cellelymfom",
+       "code": "96793"
+      },
+      {
+       "category": "EBV-positivt mucokutant ulcus",
+       "code": "96801"
+      },
+      {
+       "category": "Diffust storcellet B-cellelymfom UNS",
+       "code": "96803"
+      },
+      {
+       "category": "Diffust storcellet B-cellelymfom, immunoblastisk UNS",
+       "code": "96843"
+      },
+      {
+       "category": "Burkitts lymfom UNS",
+       "code": "96873"
+      },
+      {
+       "category": "T-celle/histiocyttrikt storcellet B-cellelymfom",
+       "code": "96883"
+      },
+      {
+       "category": "Splenisk marginalsonelymfom",
+       "code": "96893"
+      },
+      {
+       "category": "Follikulært lymfom UNS",
+       "code": "96903"
+      },
+      {
+       "category": "Follikulært lymfom, grad 2",
+       "code": "96913"
+      },
+      {
+       "category": "Follikulære neoplasmer in situ",
+       "code": "96951"
+      },
+      {
+       "category": "Follikulært lymfom, grad 1",
+       "code": "96953"
+      },
+      {
+       "category": "Follikulært lymfom, grad 3",
+       "code": "96983"
+      },
+      {
+       "category": "Marginalsone B-cellelymfom UNS",
+       "code": "96993"
+      },
+      {
+       "category": "Mycosis fungoides",
+       "code": "97003"
+      },
+      {
+       "category": "Sezarys syndrom",
+       "code": "97013"
+      },
+      {
+       "category": "Indolent T-cellelymfoproliferativ sykdom i gastrointestinaltractus",
+       "code": "97021"
+      },
+      {
+       "category": "Perifert T-cellelymfom UNS",
+       "code": "97023"
+      },
+      {
+       "category": "Angioimmunoblastisk T-cellelymfom",
+       "code": "97053"
+      },
+      {
+       "category": "Subkutant pannikulitt-lignende T-cellelymfom",
+       "code": "97083"
+      },
+      {
+       "category": "Primær kutan CD4-positiv små/medium T-celle lymfoproliferativ sykdom",
+       "code": "97091"
+      },
+      {
+       "category": "Kutant T-cellelymfom UNS",
+       "code": "97093"
+      },
+      {
+       "category": "Intravaskulært storcellet B-cellelymfom",
+       "code": "97123"
+      },
+      {
+       "category": "Anaplastisk storcellet lymfom, T-celle og Null-celletype",
+       "code": "97143"
+      },
+      {
+       "category": "Anaplastisk storcellet lymfom, ALK-negativt",
+       "code": "97153"
+      },
+      {
+       "category": "Hepatosplenisk T-cellelymfom",
+       "code": "97163"
+      },
+      {
+       "category": "Intestinalt T-cellelymfom",
+       "code": "97173"
+      },
+      {
+       "category": "Primært kutant CD30-positiv T-celle lymfoproliferativ sykdom",
+       "code": "97181"
+      },
+      {
+       "category": "Primært kutant anaplastisk storcellet lymfom",
+       "code": "97183"
+      },
+      {
+       "category": "NK-/T-cellelymfom, nasal og nasal type",
+       "code": "97193"
+      },
+      {
+       "category": "Systemisk EBV-positiv T-cellelymfom hos barn",
+       "code": "97243"
+      },
+      {
+       "category": "Hydroa vacciniforme-lignende lymfom",
+       "code": "97251"
+      },
+      {
+       "category": "Primært kutant gamma-delta T-cellelymfom",
+       "code": "97263"
+      },
+      {
+       "category": "Prekursor-celle lymfoblastisk lymfom UNS",
+       "code": "97273"
+      },
+      {
+       "category": "Plasmacytom UNS",
+       "code": "97313"
+      },
+      {
+       "category": "Plasmacellemyelom",
+       "code": "97323"
+      },
+      {
+       "category": "Plasmacelleleukemi",
+       "code": "97333"
+      },
+      {
+       "category": "Ekstramedullært plasmacytom",
+       "code": "97343"
+      },
+      {
+       "category": "Plasmablastisk lymfom",
+       "code": "97353"
+      },
+      {
+       "category": "ALK-positivt storcellet B-cellelymfom",
+       "code": "97373"
+      },
+      {
+       "category": "HHV8-positivt diffust storcellet B-cellelymfom",
+       "code": "97383"
+      },
+      {
+       "category": "Mastocytom UNS",
+       "code": "97401"
+      },
+      {
+       "category": "Mastcellesarkom",
+       "code": "97403"
+      },
+      {
+       "category": "Indolent systemisk mastocytose",
+       "code": "97411"
+      },
+      {
+       "category": "Malign mastocytose",
+       "code": "97413"
+      },
+      {
+       "category": "Mastcelleleukemi",
+       "code": "97423"
+      },
+      {
+       "category": "Erdheim-Chesters sykdom",
+       "code": "97493"
+      },
+      {
+       "category": "Malign histiocytose",
+       "code": "97503"
+      },
+      {
+       "category": "Langerhanscellehistiocytose",
+       "code": "97511"
+      },
+      {
+       "category": "Disseminert Langerhanscellehistiocytose",
+       "code": "97513"
+      },
+      {
+       "category": "Histiocytært sarkom",
+       "code": "97553"
+      },
+      {
+       "category": "Langerhanscellesarkom",
+       "code": "97563"
+      },
+      {
+       "category": "Interdigiterende dendrittcellesarkom",
+       "code": "97573"
+      },
+      {
+       "category": "Follikulært dendrittcellesarkom",
+       "code": "97583"
+      },
+      {
+       "category": "Fibroblastisk retikulærcellesarkom",
+       "code": "97593"
+      },
+      {
+       "category": "Immunproliferativ sykdom UNS",
+       "code": "97603"
+      },
+      {
+       "category": "IgM monoklonal gammopati av usikker betydning",
+       "code": "97611"
+      },
+      {
+       "category": "Waldenströms makroglobulinemi",
+       "code": "97613"
+      },
+      {
+       "category": "Tungkjedesykdom UNS",
+       "code": "97623"
+      },
+      {
+       "category": "Immunoproliferativ tynntarmssykdom",
+       "code": "97643"
+      },
+      {
+       "category": "Monoklonal gammopati av usikker betydning UNS",
+       "code": "97651"
+      },
+      {
+       "category": "Angiosentrisk immunoproliferativ lesjon",
+       "code": "97661"
+      },
+      {
+       "category": "Lymfomatoid granulomatose, grad 3",
+       "code": "97663"
+      },
+      {
+       "category": "Angioimmunoblastisk lymfadenopati (AIL)",
+       "code": "97671"
+      },
+      {
+       "category": "T-gamma lymfoproliferativ sykdom",
+       "code": "97681"
+      },
+      {
+       "category": "Immunoglobulinavleiringssykdom",
+       "code": "97691"
+      },
+      {
+       "category": "Leukemi UNS",
+       "code": "98003"
+      },
+      {
+       "category": "Akutt leukemi UNS",
+       "code": "98013"
+      },
+      {
+       "category": "Akutt bifenotypisk leukemi",
+       "code": "98053"
+      },
+      {
+       "category": "Blandet fenotype akutt leukemi med t(9;22)(q34;q11 .2);BCR-ABL1",
+       "code": "98063"
+      },
+      {
+       "category": "Blandet fenotype akutt leukemi med t(v;11q23); MLL rearrangert",
+       "code": "98073"
+      },
+      {
+       "category": "Blandet fenotype akutt leukemi, B/myeloid UNS",
+       "code": "98083"
+      },
+      {
+       "category": "Blandet fenotype akutt leukemi, T/myeloid UNS",
+       "code": "98093"
+      },
+      {
+       "category": "B-lymfoblastisk leukemi/lymfom UNS",
+       "code": "98113"
+      },
+      {
+       "category": "B-lymfoblastisk leukemi/lymfom med t(9;22)(q34;q11.2); BCR-ABL1",
+       "code": "98123"
+      },
+      {
+       "category": "B-lymfoblastisk leukemi/lymfom med t(v;11q23); MLL rearrangert",
+       "code": "98133"
+      },
+      {
+       "category": "B-lymfoblastisk leukemi/lymfom med t(12;21)(p13;q22); TEL-AML1 (ETV6-RUNX1)",
+       "code": "98143"
+      },
+      {
+       "category": "B-lymfoblastisk leukemi/lymfom med hyperdiploidi",
+       "code": "98153"
+      },
+      {
+       "category": "B-lymfoblastisk leukemi/lymfom med hyperdiploidi (Hypodiploid ALL)",
+       "code": "98163"
+      },
+      {
+       "category": "B-lymfoblastisk leukemi/lymfom med t(5;14)(q31;q32); IL3-IGH",
+       "code": "98173"
+      },
+      {
+       "category": "B-lymfoblastisk leukemi/lymfom med t(1;19)(q23;p13.3); E2A-PBX1 (TCF3-PBX1)",
+       "code": "98183"
+      },
+      {
+       "category": "B-lymfoblastisk leukemi/lymfom, BCR-ABL1-lignende",
+       "code": "98193"
+      },
+      {
+       "category": "Lymfoid leukemi UNS",
+       "code": "98203"
+      },
+      {
+       "category": "Monoklonal B-cellelymfocytose, KLL-type",
+       "code": "98231"
+      },
+      {
+       "category": "B-celle kronisk lymfatisk leukemi / småcellet lymfocytært lymfom",
+       "code": "98233"
+      },
+      {
+       "category": "Adult T-celleleukemi/-lymfom, HTLV-1-positivt",
+       "code": "98273"
+      },
+      {
+       "category": "Storgranulær T-lymfocyttleukemi",
+       "code": "98313"
+      },
+      {
+       "category": "Prolymfocyttleukemi UNS",
+       "code": "98323"
+      },
+      {
+       "category": "B-prolymfocyttleukemi",
+       "code": "98333"
+      },
+      {
+       "category": "T-prolymfocyttleukemi",
+       "code": "98343"
+      },
+      {
+       "category": "Prekursorcelle lymfoblastisk leukemi UNS",
+       "code": "98353"
+      },
+      {
+       "category": "Prekursor T-cellelymfoblastisk leukemi",
+       "code": "98373"
+      },
+      {
+       "category": "Akutt erytroleukemi",
+       "code": "98403"
+      },
+      {
+       "category": "Myelogen leukemi UNS",
+       "code": "98603"
+      },
+      {
+       "category": "Akutt myelogen leukemi UNS",
+       "code": "98613"
+      },
+      {
+       "category": "Kronisk myelogen leukemi UNS",
+       "code": "98633"
+      },
+      {
+       "category": "Akutt myelogen leukemi med t(6;9)(p23;q34); DEK-NUP214",
+       "code": "98653"
+      },
+      {
+       "category": "Akutt promyelocyttleukemi med t(15;17)(q22;q12)",
+       "code": "98663"
+      },
+      {
+       "category": "Akutt myelomonocyttleukemi UNS",
+       "code": "98673"
+      },
+      {
+       "category": "Akutt myelogen leukemi med inv(3)(q21q26.2) eller t(3;3)(q21;q26.2); RPN1-EVI1",
+       "code": "98693"
+      },
+      {
+       "category": "Akutt basofil leukemi",
+       "code": "98703"
+      },
+      {
+       "category": "Akutt myelogen leukemi med abnorme marg-eosinofile",
+       "code": "98713"
+      },
+      {
+       "category": "Akutt myelogen leukemi med minimal differensiering",
+       "code": "98723"
+      },
+      {
+       "category": "Akutt myelogen leukemi uten modning",
+       "code": "98733"
+      },
+      {
+       "category": "Akutt myelogen leukemi med modning",
+       "code": "98743"
+      },
+      {
+       "category": "Kronisk myelogen leukemi, BCR/ABL-positiv",
+       "code": "98753"
+      },
+      {
+       "category": "Atypisk kronisk myelogen leukemi, BCR/ABL-negativ",
+       "code": "98763"
+      },
+      {
+       "category": "Akutt myelogen leukemi med mutert NPM1",
+       "code": "98773"
+      },
+      {
+       "category": "Akutt myelogen leukemi med biallel mutasjon i CEBPA",
+       "code": "98783"
+      },
+      {
+       "category": "Akutt myelogen leukemi med mutert RUNX1",
+       "code": "98793"
+      },
+      {
+       "category": "Akutt monocyttleukemi",
+       "code": "98913"
+      },
+      {
+       "category": "Akutt myelogen leukemi med myelodysplasi-relaterte forandringer",
+       "code": "98953"
+      },
+      {
+       "category": "Akutt myelogen leukemi  med t(8;21)(q22;q22)",
+       "code": "98963"
+      },
+      {
+       "category": "Akutt myelogen leukemi  med 11q23-abnormalitet",
+       "code": "98973"
+      },
+      {
+       "category": "Transient abnorm myelopoiese",
+       "code": "98981"
+      },
+      {
+       "category": "Myelogen leukemi assosiert med Downs syndrom",
+       "code": "98983"
+      },
+      {
+       "category": "Akutt megakaryoblastleukemi",
+       "code": "99103"
+      },
+      {
+       "category": "Akutt myelogen leukemi (megakaryoblastisk) med t(1;22)(p13;q13); RBM15-MKL1",
+       "code": "99113"
+      },
+      {
+       "category": "Akutt myelogen leukemi med BCR-ABL1",
+       "code": "99123"
+      },
+      {
+       "category": "Terapirelatert myelogen neoplasi",
+       "code": "99203"
+      },
+      {
+       "category": "Myeloid sarkom",
+       "code": "99303"
+      },
+      {
+       "category": "Akutt panmyelose med myelofibrose",
+       "code": "99313"
+      },
+      {
+       "category": "Hårcelleleukemi UNS",
+       "code": "99403"
+      },
+      {
+       "category": "Kronisk myelomonocyttleukemi UNS",
+       "code": "99453"
+      },
+      {
+       "category": "Juvenil myelomonocyttleukemi UNS",
+       "code": "99463"
+      },
+      {
+       "category": "Aggressiv NK-cellelleukemi",
+       "code": "99483"
+      },
+      {
+       "category": "Polycytemia vera",
+       "code": "99503"
+      },
+      {
+       "category": "Myeloproliferative neoplasmer UNS",
+       "code": "99603"
+      },
+      {
+       "category": "Primær myelofibrose",
+       "code": "99613"
+      },
+      {
+       "category": "Essensiell trombocytemi",
+       "code": "99623"
+      },
+      {
+       "category": "Kronisk nøytrofil leukemi",
+       "code": "99633"
+      },
+      {
+       "category": "Kronisk eosinofil leukemi",
+       "code": "99643"
+      },
+      {
+       "category": "Myelogen eller lymfoid neoplasi med PDGFRA-rearrangering",
+       "code": "99653"
+      },
+      {
+       "category": "Myelogen neoplasi med PDGFRB-rearrangering",
+       "code": "99663"
+      },
+      {
+       "category": "Myelogen eller lymfoid neoplasi med FGFR1-abnormiteter",
+       "code": "99673"
+      },
+      {
+       "category": "Myelogen eller lymfoid neoplasi med PCM1-JAK2",
+       "code": "99683"
+      },
+      {
+       "category": "Lymfoproliferativ sykdom UNS",
+       "code": "99701"
+      },
+      {
+       "category": "Post-transplantasjon lymfoproliferativ sykdom UNS",
+       "code": "99711"
+      },
+      {
+       "category": "Uklassifiserbar myeloproliferativ neoplasi",
+       "code": "99753"
+      },
+      {
+       "category": "Myelodysplastisk syndrom med single linje dysplasi",
+       "code": "99803"
+      },
+      {
+       "category": "Myelodysplastisk syndrom med ringsideroblaster og single linje dysplasi",
+       "code": "99823"
+      },
+      {
+       "category": "Myelodysplastisk syndrom med blastoverskudd",
+       "code": "99833"
+      },
+      {
+       "category": "Refraktær anemi med blastoverskudd i transformasjon",
+       "code": "99843"
+      },
+      {
+       "category": "Myelodysplastisk syndrom med multilinjedysplasi",
+       "code": "99853"
+      },
+      {
+       "category": "Myelodysplastisk syndrom med isolert del (5q)",
+       "code": "99863"
+      },
+      {
+       "category": "Terapirelatert myelodysplastisk syndrom UNS",
+       "code": "99873"
+      },
+      {
+       "category": "Myelodysplastisk syndrom UNS",
+       "code": "99893"
+      },
+      {
+       "category": "Myelodysplastisk syndrom med ringsideroblaster og multilinjedysplasi",
+       "code": "99933"
+      }
+     ],
+     "missingValues": []
+    }
+   },
+   {
+    "description": "Svulsttype, tumors histopatologiske klassifisering angitt på det aktuelle tilfelle. Generert fra histologi og morfologi for alle tilfeller. Svulsttype angis i de fire første sifrene og tumoratferd i femte siffer. Tumors differensieringsgrad er sjette siffer.\n\nFor mer informasjon om variabelen, besøk Kreftregisterets [metadatabase](https://metadata.kreftregisteret.no/variables/detail/23)",
+    "validPeriod": {
+     "start": 8401,
+     "stop": 11687
+    },
+    "valueDomain": {
+     "missingValues": [],
+     "delta": {
+      "remove": [],
+      "reorder": [],
+      "replace": {},
+      "insert": {
+       "483": {
+        "category": "Sammensatt gangliocytom/nevrom og nevroendokrin tumor",
+        "code": "86833"
+       },
+       "619": {
+        "category": "Malignt angiomyolipom",
+        "code": "88603"
+       },
+       "763": {
+        "category": "Svulst utgått fra placentas implantasjonssted, med metastaser",
+        "code": "91043"
+       },
+       "792": {
+        "category": "Malignt hemangiopericytom",
+        "code": "91503"
+       },
+       "897": {
+        "category": "Gliose",
+        "code": "93810"
+       },
+       "964": {
+        "category": "Multinodular and vacuolating neuronal tumour",
+        "code": "95090"
+       },
+       "966": {
+        "category": "Diffus leptomeningeal glinevronal tumor",
+        "code": "95093"
+       }
+      }
+     }
+    }
+   },
+   {
+    "description": "Svulsttype, tumors histopatologiske klassifisering angitt på det aktuelle tilfelle. Generert fra histologi og morfologi for alle tilfeller. Svulsttype angis i de fire første sifrene og tumoratferd i femte siffer. Tumors differensieringsgrad er sjette siffer.\n\nFor mer informasjon om variabelen, besøk Kreftregisterets [metadatabase](https://metadata.kreftregisteret.no/variables/detail/23)",
+    "validPeriod": {
+     "start": 11688,
+     "stop": 16800
+    },
+    "valueDomain": {
+     "missingValues": [],
+     "delta": {
+      "remove": [],
+      "reorder": [],
+      "replace": {},
+      "insert": {
+       "1166": {
+        "category": "Malign lymfoproliferativ sykdom UNS",
+        "code": "99703"
+       },
+       "1168": {
+        "category": "Post-transplantasjonlymfoproliferativ sykdom, polymorf",
+        "code": "99713"
+       }
+      }
+     }
+    }
+   },
+   {
+    "description": "Svulsttype, tumors histopatologiske klassifisering angitt på det aktuelle tilfelle. Generert fra histologi og morfologi for alle tilfeller. Svulsttype angis i de fire første sifrene og tumoratferd i femte siffer. Tumors differensieringsgrad er sjette siffer.\n\nFor mer informasjon om variabelen, besøk Kreftregisterets [metadatabase](https://metadata.kreftregisteret.no/variables/detail/23)",
+    "validPeriod": {
+     "start": 16801,
+     "stop": 17594
+    },
+    "valueDomain": {
+     "missingValues": [],
+     "delta": {
+      "remove": [],
+      "reorder": [],
+      "replace": {},
+      "insert": {
+       "230": {
+        "category": "Lavgradig onkocytær tumor",
+        "code": "82901"
+       }
+      }
+     }
+    }
+   },
+   {
+    "description": "Svulsttype, tumors histopatologiske klassifisering angitt på det aktuelle tilfelle. Generert fra histologi og morfologi for alle tilfeller. Svulsttype angis i de fire første sifrene og tumoratferd i femte siffer. Tumors differensieringsgrad er sjette siffer.\n\nFor mer informasjon om variabelen, besøk Kreftregisterets [metadatabase](https://metadata.kreftregisteret.no/variables/detail/23)",
+    "validPeriod": {
+     "start": 17595,
+     "stop": 18261
+    },
+    "valueDomain": {
+     "missingValues": [],
+     "delta": {
+      "remove": [
+       204
+      ],
+      "reorder": [],
+      "replace": {},
+      "insert": {}
+     }
+    }
+   },
+   {
+    "description": "Svulsttype, tumors histopatologiske klassifisering angitt på det aktuelle tilfelle. Generert fra histologi og morfologi for alle tilfeller. Svulsttype angis i de fire første sifrene og tumoratferd i femte siffer. Tumors differensieringsgrad er sjette siffer.\n\nFor mer informasjon om variabelen, besøk Kreftregisterets [metadatabase](https://metadata.kreftregisteret.no/variables/detail/23)",
+    "validPeriod": {
+     "start": 18262,
+     "stop": 19357
+    },
+    "valueDomain": {
+     "missingValues": [],
+     "delta": {
+      "remove": [
+       199
+      ],
+      "reorder": [],
+      "replace": {},
+      "insert": {}
+     }
+    }
+   },
+   {
+    "description": "Svulsttype, tumors histopatologiske klassifisering angitt på det aktuelle tilfelle. Generert fra histologi og morfologi for alle tilfeller. Svulsttype angis i de fire første sifrene og tumoratferd i femte siffer. Tumors differensieringsgrad er sjette siffer.\n\nFor mer informasjon om variabelen, besøk Kreftregisterets [metadatabase](https://metadata.kreftregisteret.no/variables/detail/23)",
+    "validPeriod": {
+     "start": 19358,
+     "stop": 19722
+    },
+    "valueDomain": {
+     "missingValues": [],
+     "delta": {
+      "remove": [
+       618,
+       762,
+       791,
+       896
+      ],
+      "reorder": [],
+      "replace": {},
+      "insert": {}
+     }
+    }
+   },
+   {
+    "description": "Svulsttype, tumors histopatologiske klassifisering angitt på det aktuelle tilfelle. Generert fra histologi og morfologi for alle tilfeller. Svulsttype angis i de fire første sifrene og tumoratferd i femte siffer. Tumors differensieringsgrad er sjette siffer.\n\nFor mer informasjon om variabelen, besøk Kreftregisterets [metadatabase](https://metadata.kreftregisteret.no/variables/detail/23)",
+    "validPeriod": {
+     "start": 19723
+    },
+    "valueDomain": {
+     "missingValues": [],
+     "delta": {
+      "remove": [
+       1163
+      ],
+      "reorder": [],
+      "replace": {},
+      "insert": {}
+     }
+    }
+   }
+  ]
+ },
+ "identifierVariables": [
+  {
+   "name": "KRG_TILFELLEID",
+   "label": "Krefttilfelle-indentifikator",
+   "notPseudonym": false,
+   "dataType": "Long",
+   "format": "RandomUInt48",
+   "variableRole": "Identifier",
+   "keyType": {
+    "name": "KRG_KREFTTILFELLE",
+    "label": "Krefttilfelle",
+    "description": "En enkelt kreftsykdom hos en pasient, inkludert spredning, tilbakefall og progresjon av den samme kreftsykdommen. En pasient kan ha flere krefttilfeller."
+   },
+   "representedVariables": [
+    {
+     "description": "Identifikator for krefttilfelle i microdata",
+     "validPeriod": {
+      "start": -25567,
+      "stop": 20773
+     },
+     "valueDomain": {
+      "description": "Pseudonymisert løpenummer",
+      "unitOfMeasure": "N/A"
+     }
+    }
+   ]
+  }
+ ],
+ "attributeVariables": [
+  {
+   "name": "START",
+   "label": "Startdato",
+   "notPseudonym": true,
+   "dataType": "Instant",
+   "variableRole": "Start",
+   "representedVariables": [
+    {
+     "description": "Startdato/måletidspunktet for hendelsen",
+     "validPeriod": {
+      "start": -25567,
+      "stop": 20773
+     },
+     "valueDomain": {
+      "description": "Dato oppgitt i dager siden 1970-01-01",
+      "unitOfMeasure": "N/A"
+     }
+    }
+   ]
+  },
+  {
+   "name": "STOP",
+   "label": "Stoppdato",
+   "notPseudonym": true,
+   "dataType": "Instant",
+   "variableRole": "Stop",
+   "representedVariables": [
+    {
+     "description": "Stoppdato/måletidspunktet for hendelsen",
+     "validPeriod": {
+      "start": -25567,
+      "stop": 20773
+     },
+     "valueDomain": {
+      "description": "Dato oppgitt i dager siden 1970-01-01",
+      "unitOfMeasure": "N/A"
+     }
+    }
+   ]
+  }
+ ],
+ "globalTemporalCoverage": {
+  "start": -1096,
+  "stop": 20774
+ },
+ "updatedAt": 1794909969
+}

@@ -7,21 +7,26 @@ Resultat:
   metadata/variabler.csv          oversikt, én linje per variabel
   metadata/kodelister.csv         gjeldende kodeliste for alle variabler (navn;kode;kategori)
   metadata/variabler/<NAVN>.json  full metadata inkl. kodelistehistorikk og måletidspunkter
-  metadata/datalager.json         datalagerets versjonshistorikk
-  metadata/VERSJON                versjonen JSON-filene ble hentet fra (avgjør om neste kjøring henter alt)
+  metadata/datalager.json         versjonshistorikken til no.ssb.fdb (SSB)
+  metadata/datalagre.json         alle datalagrene på listesiden: navn, beskrivelse og versjon
+  metadata/VERSJON                versjonen JSON-filene ble hentet fra, én linje per datalager (lager;versjon)
+
+Listen har flere datalagre: no.ssb.fdb (SSB) og fra 2026-11 no.fhi.kreftregisteret og no.fhi.npr (FHI).
+variabler.csv har kolonnen datalager, og ekstern_metadata med lenkene i beskrivelsen (Kreftregisterets
+metadatabase ELVIS, helsedata.no, FinnKode).
 
 Kjøres fra prosjektmappen:  python verktoy/hent_variabler.py [--alle] [--tving] [--versjon N]
-Uten --alle hoppes variabler som allerede ligger i metadata/variabler/ over, så lenge datalagerversjonen
-er den samme som sist. Er versjonen ny, hentes alle variabler på nytt.
+Uten --alle hoppes variabler som allerede ligger i metadata/variabler/ over, så lenge versjonen av
+datalageret deres er den samme som sist. Er versjonen ny, hentes alle variabler i det datalageret på nytt.
 
-Datalagerversjonen leses fra listesiden (dataStores -> no.ssb.fdb -> version) og brukes i
-detalj-URL-ene (/discovery/variable/no.ssb.fdb/<versjon>/<NAVN>). --versjon N overstyrer den.
-Hentet versjon står i metadata/VERSJON. Nyeste versjon står øverst i metadata/datalager.json (versions[0]),
-som med --versjon kan være en annen enn den som ble hentet.
+Versjonene leses fra listesiden (dataStores -> <lager> -> version) og brukes i detalj-URL-ene
+(/discovery/variable/<lager>/<versjon>/<NAVN>). --versjon N overstyrer versjonen for no.ssb.fdb.
+Nyeste SSB-versjon står øverst i metadata/datalager.json (versions[0]), som med --versjon kan være en
+annen enn den som ble hentet.
 
 Alt hentes og kontrolleres i minnet før noe skrives. Ved feil avsluttes skriptet med feilkode 1 uten å
 endre noen filer. Kontrollene er: ingen nedlastingsfeil, antall variabler lik totalCount fra listesiden,
-ikke mer enn 10 % færre variabler enn sist, ikke mer enn 20 % færre kodelinjer enn sist, og at
+ikke mer enn 10 % færre variabler enn sist (i alt), ikke mer enn 20 % færre kodelinjer enn sist, og at
 datalager.json gjelder samme versjon som ble hentet. --tving skriver likevel (for manuell kjøring etter at
 du har sett på feilene). JSON-filer for variabler som ikke lenger står i katalogen, slettes.
 """
@@ -41,10 +46,11 @@ from pathlib import Path
 BASE = "https://microdata.no/discovery"
 UT = Path(__file__).resolve().parent.parent / "metadata"
 PAUSE = 0.3  # sekunder mellom forespørsler
-DATALAGER = "no.ssb.fdb"
+DATALAGER = "no.ssb.fdb"  # SSB. --versjon og datalager.json gjelder dette lageret
 MIN_ANDEL_VARIABLER = 0.9  # minst så stor andel av forrige antall variabler
 MIN_ANDEL_KODELINJER = 0.8  # minst så stor andel av forrige antall kodelinjer
 
+LENKE = re.compile(r"https?://[^\s)\]>\"']+")
 NEXT_DATA = re.compile(r'<script id="__NEXT_DATA__"[^>]*>(.*?)</script>', re.S)
 
 
@@ -90,7 +96,7 @@ def dato(dager):
     return (dt.date(1970, 1, 1) + dt.timedelta(days=dager)).isoformat()
 
 
-def bygg_rad(n, ds):
+def bygg_rad(n, ds, lager=DATALAGER):
     """Oversiktsrad og kodelinjer for én variabel."""
     koder = gjeldende_kodeliste(ds)
     mv = ds["measureVariable"]
@@ -108,8 +114,20 @@ def bygg_rad(n, ds):
         "emner": "; ".join(ds.get("subjectFields", [])),
         "beskrivelse": " ".join(siste.get("description", "").split()),
         "populasjon": " ".join((ds.get("populationDescription") or "").split()),
+        "datalager": lager,
+        "ekstern_metadata": " ".join(lenker(siste.get("description", ""))),
     }
     return rad, [{"navn": n, "kode": k["code"], "kategori": k["category"].strip()} for k in koder]
+
+
+def lenker(tekst):
+    """Unike URL-er i en beskrivelse, i rekkefølge ('[metadatabase](https://.../detail/4)' -> https://.../detail/4)."""
+    ut = []
+    for u in LENKE.findall(tekst):
+        u = u.rstrip(".,;:")
+        if u not in ut:
+            ut.append(u)
+    return ut
 
 
 def antall_linjer(sti):
@@ -125,18 +143,23 @@ def hovedversjon(versjon):
     return str(versjon).split(".")[0] if versjon else ""
 
 
-def forrige_versjon():
-    """Versjonen variablene sist ble hentet fra (metadata/VERSJON), eller hovedversjonen i datalager.json.
+def forrige_versjoner():
+    """{datalager: versjon} variablene sist ble hentet fra (metadata/VERSJON). En linje uten «;» (eldre format)
+    gjelder no.ssb.fdb. Mangler filen, brukes hovedversjonen i datalager.json for no.ssb.fdb.
     datalager.json alene er ikke nok: med --versjon 57 viser detaljsidene historikken med 59 øverst."""
     try:
-        return (UT / "VERSJON").read_text(encoding="utf-8").strip()
+        ut = {}
+        for linje in (UT / "VERSJON").read_text(encoding="utf-8").split():
+            lager, _, v = linje.rpartition(";")
+            ut[lager or DATALAGER] = v
+        return ut
     except OSError:
         pass
     fil = UT / "datalager.json"
     try:
-        return hovedversjon(json.loads(fil.read_text(encoding="utf-8"))["versions"][0]["version"])
+        return {DATALAGER: hovedversjon(json.loads(fil.read_text(encoding="utf-8"))["versions"][0]["version"])}
     except (OSError, ValueError, KeyError, IndexError):
-        return ""
+        return {}
 
 
 def kontroller(feil, navn, totalt, rader, kodelinjer, versjon="", datalager=None):
@@ -183,50 +206,55 @@ def main():
     alle, tving = a.alle, a.tving
     (UT / "variabler").mkdir(parents=True, exist_ok=True)
 
-    navn, side, totalt, versjon = [], 0, 0, a.versjon
-    andre, sett = {}, 0
+    navn, lager_for, side, totalt = [], {}, 0, 0
+    lagre = {}  # datalager -> {label, description, version} fra listesiden
     while True:
         data = hent(f"{BASE}/variables?pageIndex={side}")["data"]
-        if not versjon:
-            versjon = hovedversjon(data.get("dataStores", {}).get(DATALAGER, {}).get("version"))
-            if not versjon:
-                sys.exit("AVBRUTT: fant ikke datalagerversjonen på listesiden. Bruk --versjon N.")
+        lagre.update(data.get("dataStores") or {})
         for d in data["dataStructures"]:
-            # Listen har også andre datalagre (FHI Kreftregisteret og Norsk pasientregister fra 2026-11).
-            # Skillen dekker bare no.ssb.fdb, og detalj-URL-ene bruker SSB-versjonen.
-            lager = d.get("dataStore", DATALAGER)
-            if lager == DATALAGER:
-                navn.append(d["name"])
-            else:
-                andre[lager] = andre.get(lager, 0) + 1
-        sett += len(data["dataStructures"])
-        totalt = data["totalCount"] - sum(andre.values())
-        print(f"liste side {side}: {sett}/{data['totalCount']}", file=sys.stderr)
-        if sett >= data["totalCount"] or not data["dataStructures"]:
+            navn.append(d["name"])
+            lager_for[d["name"]] = d.get("dataStore", DATALAGER)
+        totalt = data["totalCount"]
+        print(f"liste side {side}: {len(navn)}/{totalt}", file=sys.stderr)
+        if len(navn) >= totalt or not data["dataStructures"]:
             break
         side += 1
-    if andre:
-        print("hoppet over andre datalagre: " + ", ".join(f"{k} ({v})" for k, v in sorted(andre.items())), file=sys.stderr)
 
-    forrige = forrige_versjon()
-    print(f"datalagerversjon {versjon} (forrige: {forrige or 'ukjent'})", file=sys.stderr)
-    if forrige != versjon and not alle:
-        print("Ny versjon: henter alle variabler på nytt.", file=sys.stderr)
-        alle = True
+    versjoner = {k: hovedversjon(v.get("version")) for k, v in lagre.items()}
+    if a.versjon:
+        versjoner[DATALAGER] = a.versjon
+    mangler = sorted({lager_for[n] for n in navn if not versjoner.get(lager_for[n])})
+    if mangler:
+        sys.exit(f"AVBRUTT: fant ikke versjonen for {', '.join(mangler)} på listesiden"
+                 + (". Bruk --versjon N." if DATALAGER in mangler else "."))
+    versjon = versjoner.get(DATALAGER, "")
+    brukt = sorted(set(lager_for.values()))
+
+    forrige = forrige_versjoner()
+    hent_alle = set(brukt) if alle else set()
+    for lager in brukt:
+        antall = sum(1 for n in navn if lager_for[n] == lager)
+        print(f"{lager}: versjon {versjoner[lager]} (forrige: {forrige.get(lager) or 'ukjent'}), {antall} variabler",
+              file=sys.stderr)
+        if forrige.get(lager) != versjoner[lager] and not alle:
+            print(f"  ny versjon: henter alle variabler i {lager} på nytt.", file=sys.stderr)
+            hent_alle.add(lager)
 
     rader, kodelinjer, datalager = [], [], None
     nye_json, feil = {}, []
     for i, n in enumerate(navn, 1):
         fil = UT / "variabler" / f"{n}.json"
+        lager = lager_for[n]
         try:
-            if fil.exists() and not alle:
+            if fil.exists() and lager not in hent_alle:
                 ds = json.loads(fil.read_text(encoding="utf-8"))
             else:
-                pp = hent(f"{BASE}/variable/{DATALAGER}/{versjon}/{n}")
+                pp = hent(f"{BASE}/variable/{lager}/{versjoner[lager]}/{n}")
                 ds = pp["ds"]
-                datalager = datalager or pp.get("dataStore")
+                if lager == DATALAGER:
+                    datalager = datalager or pp.get("dataStore")
                 nye_json[n] = ds
-            rad, kodelinjer_n = bygg_rad(n, ds)
+            rad, kodelinjer_n = bygg_rad(n, ds, lager)
         except Exception as e:  # noqa: BLE001 - samle feil og avbryt før noe skrives
             print(f"FEIL {n}: {e!r}", file=sys.stderr)
             feil.append(f"{n} ({e.__class__.__name__})")
@@ -254,8 +282,11 @@ def main():
     if datalager:
         (UT / "datalager.json").write_text(
             json.dumps(datalager, ensure_ascii=False, indent=1), encoding="utf-8", newline="\n")
+    if lagre:
+        (UT / "datalagre.json").write_text(
+            json.dumps(dict(sorted(lagre.items())), ensure_ascii=False, indent=1), encoding="utf-8", newline="\n")
     if nye_json:
-        (UT / "VERSJON").write_text(f"{versjon}\n", encoding="utf-8", newline="\n")
+        (UT / "VERSJON").write_text("".join(f"{k};{versjoner[k]}\n" for k in brukt), encoding="utf-8", newline="\n")
     # Slett bare når listen er komplett, ellers kan --tving med en avkortet liste slette gyldige filer.
     komplett = len(set(navn)) == totalt
     utgaatt = sorted(p for p in (UT / "variabler").glob("*.json") if komplett and p.stem not in set(navn))
@@ -264,7 +295,7 @@ def main():
     if utgaatt:
         print(f"slettet {len(utgaatt)} variabler som ikke lenger står i katalogen: "
               + " ".join(p.stem for p in utgaatt[:10]) + (" ..." if len(utgaatt) > 10 else ""), file=sys.stderr)
-    print(f"ferdig: {len(rader)} variabler fra versjon {versjon}", file=sys.stderr)
+    print(f"ferdig: {len(rader)} variabler, " + ", ".join(f"{k} {versjoner[k]}" for k in brukt), file=sys.stderr)
 
 
 if __name__ == "__main__":

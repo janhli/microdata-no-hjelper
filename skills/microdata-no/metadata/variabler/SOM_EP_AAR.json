@@ -1,0 +1,155 @@
+{
+ "name": "SOM_EP_AAR",
+ "temporality": "FIXED",
+ "languageCode": "no",
+ "sensitivityLevel": "PERSON_SPECIAL",
+ "populationDescription": "Episoder ved somatiske sykehus og klinikker. Episode betegner tidsperiode hvor pasienten får helsehjelp for ett og samme helseproblem i form av en poliklinisk kontakt, dagbehandling eller døgnopphold. En episode betegner aktivitet, ikke bare behandling.",
+ "subjectFields": [
+  "Norsk pasientregister"
+ ],
+ "temporalCoverage": {
+  "start": -25567,
+  "stop": 20755
+ },
+ "measureVariable": {
+  "name": "SOM_EP_AAR",
+  "label": "Somatiske sykehus - Episode - Rapporteringsår",
+  "notPseudonym": true,
+  "dataType": "String",
+  "variableRole": "Measure",
+  "representedVariables": [
+   {
+    "description": "Rapporteringsår knyttet til episode ved somatiske sykehus.\n                       \nFor mer informasjon om variabelen, gå inn på variabelutforskeren på [Helsedata.no](https://helsedata.no). \n",
+    "validPeriod": {
+     "start": 10957
+    },
+    "valueDomain": {
+     "codeList": [
+      {
+       "category": "2016",
+       "code": "2016"
+      },
+      {
+       "category": "2017",
+       "code": "2017"
+      },
+      {
+       "category": "2018",
+       "code": "2018"
+      },
+      {
+       "category": "2019",
+       "code": "2019"
+      },
+      {
+       "category": "2020",
+       "code": "2020"
+      },
+      {
+       "category": "2021",
+       "code": "2021"
+      },
+      {
+       "category": "2022",
+       "code": "2022"
+      },
+      {
+       "category": "2023",
+       "code": "2023"
+      },
+      {
+       "category": "2024",
+       "code": "2024"
+      },
+      {
+       "category": "2025",
+       "code": "2025"
+      },
+      {
+       "category": "Ikke rapportert (missing)",
+       "code": "NA"
+      }
+     ],
+     "missingValues": [
+      "NA"
+     ]
+    }
+   }
+  ]
+ },
+ "identifierVariables": [
+  {
+   "name": "NPR_EPISODEID",
+   "label": "Episodeidentifikator",
+   "notPseudonym": false,
+   "dataType": "Long",
+   "format": "RandomUInt48",
+   "variableRole": "Identifier",
+   "keyType": {
+    "name": "NPR_EPISODE",
+    "label": "Episode NPR",
+    "description": "Tidsperiode hvor pasienten får helsehjelp ved én og samme helseinstitusjon for ett og samme helseproblem. En episode kan være en poliklinisk kontakt eller et avdelingsopphold (dagopphold eller døgnopphold). En episode betegner aktivitet, ikke bare behandling."
+   },
+   "representedVariables": [
+    {
+     "description": "Identifikator for NPR-episode",
+     "validPeriod": {
+      "start": -25567,
+      "stop": 20755
+     },
+     "valueDomain": {
+      "description": "Pseudonymisert episodeidentifikator",
+      "unitOfMeasure": "N/A"
+     }
+    }
+   ]
+  }
+ ],
+ "attributeVariables": [
+  {
+   "name": "START",
+   "label": "Startdato",
+   "notPseudonym": true,
+   "dataType": "Instant",
+   "variableRole": "Start",
+   "representedVariables": [
+    {
+     "description": "Startdato/måletidspunktet for hendelsen",
+     "validPeriod": {
+      "start": -25567,
+      "stop": 20755
+     },
+     "valueDomain": {
+      "description": "Dato oppgitt i dager siden 1970-01-01",
+      "unitOfMeasure": "N/A"
+     }
+    }
+   ]
+  },
+  {
+   "name": "STOP",
+   "label": "Stoppdato",
+   "notPseudonym": true,
+   "dataType": "Instant",
+   "variableRole": "Stop",
+   "representedVariables": [
+    {
+     "description": "Stoppdato/måletidspunktet for hendelsen",
+     "validPeriod": {
+      "start": -25567,
+      "stop": 20755
+     },
+     "valueDomain": {
+      "description": "Dato oppgitt i dager siden 1970-01-01",
+      "unitOfMeasure": "N/A"
+     }
+    }
+   ]
+  }
+ ],
+ "globalTemporalCoverage": {
+  "start": -1096,
+  "stop": 20774
+ },
+ "updatedAt": 1794904626
+}

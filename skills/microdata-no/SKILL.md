@@ -15,10 +15,11 @@ Alle stier er relative til denne skill-mappen. Søk med Grep, og ikke les hele f
 
 | Fil | Innhold |
 |---|---|
-| `metadata/variabler.csv` | Én linje per variabel (`;`-separert): navn, label, temporalitet, datatype, enhet, fra, til, antall koder, emner, beskrivelse, populasjon |
+| `metadata/variabler.csv` | Én linje per variabel (`;`-separert): navn, label, temporalitet, datatype, enhet, fra, til, antall koder, emner, beskrivelse, populasjon, datalager, ekstern_metadata (lenker i beskrivelsen, f.eks. til Kreftregisterets metadatabase ELVIS) |
 | `metadata/kodelister.csv` | Gjeldende kodeliste for alle variabler: `navn;kode;kategori` |
 | `metadata/variabler/<NAVN>.json` | Full metadata: kodelistehistorikk, måletidspunkter (`temporalStatusDates`, dager siden 1970-01-01) og beskrivelser per periode |
 | `metadata/datalager.json` | Versjonshistorikk for `no.ssb.fdb`, med hvilke variabler som er endret i hver versjon |
+| `metadata/datalagre.json` | Alle datalagrene med navn og versjon: `no.ssb.fdb` (SSB) og fra 2026-11 `no.fhi.kreftregisteret` og `no.fhi.npr` (FHI). Kolonnen `datalager` i `variabler.csv` sier hvor variabelen ligger. FHI-dataene er ikke testet i microdata.no ennå (issue #11) |
 | `metadata/kommuneendringer.json` | Kommuneendringer fra SSB Klass 131 siden 1989 (gammel kode, ny kode, dato, navn). Brukes av `verktoy/kommuneomkoding.py` |
 | `metadata/regioner/*.csv` | Koblingstabeller fra kommune (2024) til regioninndelinger: politidistrikt, valgdistrikt, økonomiske regioner, helseregioner, familievern, barnevern, reiseliv, samiske valgkretser, sentralitet, landsdeler og bo- og arbeidsmarkedsregioner. Kolonner `kommunenr;regionkode;regionnavn`. Oversikt i `INDEX.csv`, manuelt lastede filer i `manuelt/` |
 | `metadata/manual/**/*.md` | Hele manualen som Markdown. Kommandoreferansen ligger i `kommandoer_og_funksjoner/kommandoer.md` og funksjonene i `.../funksjoner.md`. |

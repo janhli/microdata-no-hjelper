@@ -1,0 +1,231 @@
+{
+ "name": "SOM_EP_INNMATEHAST",
+ "temporality": "FIXED",
+ "languageCode": "no",
+ "sensitivityLevel": "PERSON_SPECIAL",
+ "populationDescription": "Episoder ved somatiske sykehus og klinikker. Episode betegner tidsperiode hvor pasienten får helsehjelp for ett og samme helseproblem i form av en poliklinisk kontakt, dagbehandling eller døgnopphold. En episode betegner aktivitet, ikke bare behandling.",
+ "subjectFields": [
+  "Norsk pasientregister"
+ ],
+ "temporalCoverage": {
+  "start": -25567,
+  "stop": 20755
+ },
+ "measureVariable": {
+  "name": "SOM_EP_INNMATEHAST",
+  "label": "Somatiske sykehus - Episode - Innmåte hastegrad",
+  "notPseudonym": true,
+  "dataType": "String",
+  "variableRole": "Measure",
+  "representedVariables": [
+   {
+    "description": "Innmåte hastegrad, knyttet til episode ved somatiske sykehus. For mer informasjon om variabelen, gå inn på variabelutforskeren på [Helsedata.no](https://helsedata.no/)",
+    "validPeriod": {
+     "start": 13879,
+     "stop": 15705
+    },
+    "valueDomain": {
+     "codeList": [
+      {
+       "category": "Akutt = uten opphold / venting",
+       "code": "1"
+      },
+      {
+       "category": "Ikke akutt, men behandling innen 6 timer",
+       "code": "2"
+      },
+      {
+       "category": "Venting mellom 6 og 24 timer",
+       "code": "3"
+      },
+      {
+       "category": "Planlagt, eller venting over 24 timer og friske nyfødte",
+       "code": "4"
+      },
+      {
+       "category": "Ikke rapportert (missing)",
+       "code": "NA"
+      }
+     ],
+     "missingValues": [
+      "NA"
+     ]
+    }
+   },
+   {
+    "description": "Innmåte hastegrad, knyttet til episode ved somatiske sykehus. For mer informasjon om variabelen, gå inn på variabelutforskeren på [Helsedata.no](https://helsedata.no/)",
+    "validPeriod": {
+     "start": 15706,
+     "stop": 16800
+    },
+    "valueDomain": {
+     "missingValues": [
+      "NA"
+     ],
+     "delta": {
+      "remove": [],
+      "reorder": [],
+      "replace": {
+       "3": {
+        "category": "Planlagt, eller venting over 24 timer",
+        "code": "4"
+       }
+      },
+      "insert": {}
+     }
+    }
+   },
+   {
+    "description": "Innmåte hastegrad, knyttet til episode ved somatiske sykehus. For mer informasjon om variabelen, gå inn på variabelutforskeren på [Helsedata.no](https://helsedata.no/)",
+    "validPeriod": {
+     "start": 16801,
+     "stop": 17531
+    },
+    "valueDomain": {
+     "missingValues": [
+      "NA"
+     ],
+     "delta": {
+      "remove": [
+       1,
+       2
+      ],
+      "reorder": [],
+      "replace": {
+       "1": {
+        "category": "Planlagt",
+        "code": "4"
+       }
+      },
+      "insert": {
+       "2": {
+        "category": "Tilbakeføring av pasient fra annet sykehus",
+        "code": "5"
+       }
+      }
+     }
+    }
+   },
+   {
+    "description": "Innmåte hastegrad, knyttet til episode ved somatiske sykehus. For mer informasjon om variabelen, gå inn på variabelutforskeren på [Helsedata.no](https://helsedata.no/)",
+    "validPeriod": {
+     "start": 17532,
+     "stop": 17896
+    },
+    "valueDomain": {
+     "missingValues": [
+      "NA"
+     ],
+     "delta": {
+      "remove": [],
+      "reorder": [],
+      "replace": {
+       "2": {
+        "category": "Hastegrad ikke satt - tilbakeføring av pasient fra annet sykehus",
+        "code": "5"
+       }
+      },
+      "insert": {}
+     }
+    }
+   },
+   {
+    "description": "Innmåte hastegrad, knyttet til episode ved somatiske sykehus. For mer informasjon om variabelen, gå inn på variabelutforskeren på [Helsedata.no](https://helsedata.no/)",
+    "validPeriod": {
+     "start": 17897
+    },
+    "valueDomain": {
+     "missingValues": [
+      "NA"
+     ],
+     "delta": {
+      "remove": [],
+      "reorder": [],
+      "replace": {
+       "0": {
+        "category": "Akutt = uten opphold eller innen 24 timer",
+        "code": "1"
+       }
+      },
+      "insert": {}
+     }
+    }
+   }
+  ]
+ },
+ "identifierVariables": [
+  {
+   "name": "NPR_EPISODEID",
+   "label": "Episodeidentifikator",
+   "notPseudonym": false,
+   "dataType": "Long",
+   "format": "RandomUInt48",
+   "variableRole": "Identifier",
+   "keyType": {
+    "name": "NPR_EPISODE",
+    "label": "Episode NPR",
+    "description": "Tidsperiode hvor pasienten får helsehjelp ved én og samme helseinstitusjon for ett og samme helseproblem. En episode kan være en poliklinisk kontakt eller et avdelingsopphold (dagopphold eller døgnopphold). En episode betegner aktivitet, ikke bare behandling."
+   },
+   "representedVariables": [
+    {
+     "description": "Identifikator for NPR-episode",
+     "validPeriod": {
+      "start": -25567,
+      "stop": 20755
+     },
+     "valueDomain": {
+      "description": "Pseudonymisert episodeidentifikator",
+      "unitOfMeasure": "N/A"
+     }
+    }
+   ]
+  }
+ ],
+ "attributeVariables": [
+  {
+   "name": "START",
+   "label": "Startdato",
+   "notPseudonym": true,
+   "dataType": "Instant",
+   "variableRole": "Start",
+   "representedVariables": [
+    {
+     "description": "Startdato/måletidspunktet for hendelsen",
+     "validPeriod": {
+      "start": -25567,
+      "stop": 20755
+     },
+     "valueDomain": {
+      "description": "Dato oppgitt i dager siden 1970-01-01",
+      "unitOfMeasure": "N/A"
+     }
+    }
+   ]
+  },
+  {
+   "name": "STOP",
+   "label": "Stoppdato",
+   "notPseudonym": true,
+   "dataType": "Instant",
+   "variableRole": "Stop",
+   "representedVariables": [
+    {
+     "description": "Stoppdato/måletidspunktet for hendelsen",
+     "validPeriod": {
+      "start": -25567,
+      "stop": 20755
+     },
+     "valueDomain": {
+      "description": "Dato oppgitt i dager siden 1970-01-01",
+      "unitOfMeasure": "N/A"
+     }
+    }
+   ]
+  }
+ ],
+ "globalTemporalCoverage": {
+  "start": -1096,
+  "stop": 20774
+ },
+ "updatedAt": 1794904626
+}

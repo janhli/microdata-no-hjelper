@@ -1,0 +1,115 @@
+{
+ "name": "SOM_PROS_EPISODEID",
+ "temporality": "FIXED",
+ "languageCode": "no",
+ "sensitivityLevel": "PERSON_SPECIAL",
+ "populationDescription": "Kirurgisk, medisinsk eller radiologisk prosedyre tilknyttet episoder i somatiske sykehus og klinikker, registrert i Norsk pasientregister. Kategorisert etter Norsk klinisk prosedyrekodeverk (NKPK).",
+ "subjectFields": [
+  "Norsk pasientregister"
+ ],
+ "temporalCoverage": {
+  "start": -25567,
+  "stop": 20755
+ },
+ "measureVariable": {
+  "name": "SOM_PROS_EPISODEID",
+  "label": "Somatiske sykehus - Prosedyre - Episodeidentifikator",
+  "notPseudonym": false,
+  "dataType": "Long",
+  "format": "RandomUInt48",
+  "variableRole": "Measure",
+  "keyType": {
+   "name": "NPR_EPISODE",
+   "label": "Episode NPR",
+   "description": "Tidsperiode hvor pasienten får helsehjelp ved én og samme helseinstitusjon for ett og samme helseproblem. En episode kan være en poliklinisk kontakt eller et avdelingsopphold (dagopphold eller døgnopphold). En episode betegner aktivitet, ikke bare behandling."
+  },
+  "representedVariables": [
+   {
+    "description": "Pseudonymisert episodeidentifikator ved somatiske sykehus og klinikker. Brukes som koblingsnøkkel for å knytte NPR-prosedyrer til NPR-episoder",
+    "validPeriod": {
+     "start": -25567,
+     "stop": 20755
+    },
+    "valueDomain": {
+     "description": "Pseudonymisert episodeidentifikator",
+     "unitOfMeasure": "N/A"
+    }
+   }
+  ]
+ },
+ "identifierVariables": [
+  {
+   "name": "NPR_PROSEDYREID",
+   "label": "Prosedyreidentifikator",
+   "notPseudonym": false,
+   "dataType": "Long",
+   "format": "RandomUInt48",
+   "variableRole": "Identifier",
+   "keyType": {
+    "name": "NPR_PROSEDYRE",
+    "label": "Prosedyre NPR",
+    "description": "Pasientrettet tiltak kategorisert etter en normgivende beskrivelse eller et kodeverk."
+   },
+   "representedVariables": [
+    {
+     "description": "Identifikator for NPR-prosedyre",
+     "validPeriod": {
+      "start": -25567,
+      "stop": 20755
+     },
+     "valueDomain": {
+      "description": "Pseudonymisert prosedyreidentifikator",
+      "unitOfMeasure": "N/A"
+     }
+    }
+   ]
+  }
+ ],
+ "attributeVariables": [
+  {
+   "name": "START",
+   "label": "Startdato",
+   "notPseudonym": true,
+   "dataType": "Instant",
+   "variableRole": "Start",
+   "representedVariables": [
+    {
+     "description": "Startdato/måletidspunktet for hendelsen",
+     "validPeriod": {
+      "start": -25567,
+      "stop": 20755
+     },
+     "valueDomain": {
+      "description": "Dato oppgitt i dager siden 1970-01-01",
+      "unitOfMeasure": "N/A"
+     }
+    }
+   ]
+  },
+  {
+   "name": "STOP",
+   "label": "Stoppdato",
+   "notPseudonym": true,
+   "dataType": "Instant",
+   "variableRole": "Stop",
+   "representedVariables": [
+    {
+     "description": "Stoppdato/måletidspunktet for hendelsen",
+     "validPeriod": {
+      "start": -25567,
+      "stop": 20755
+     },
+     "valueDomain": {
+      "description": "Dato oppgitt i dager siden 1970-01-01",
+      "unitOfMeasure": "N/A"
+     }
+    }
+   ]
+  }
+ ],
+ "globalTemporalCoverage": {
+  "start": -1096,
+  "stop": 20774
+ },
+ "updatedAt": 1794904626
+}

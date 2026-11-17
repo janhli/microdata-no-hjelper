@@ -1,0 +1,17 @@
+{
+ "no.fhi.kreftregisteret": {
+  "label": "FHI (Kreftregisteret)",
+  "description": "Databank for FHI (Kreftregisteret)",
+  "version": "1.0.0.0"
+ },
+ "no.fhi.npr": {
+  "label": "FHI (Norsk pasientregister)",
+  "description": "Databank for FHI (Norsk pasientregister)",
+  "version": "1.0.0.0"
+ },
+ "no.ssb.fdb": {
+  "label": "SSB (registerdata)",
+  "description": "Databank for SSB (registerdata som inngår i SSBs statistikkproduksjon)",
+  "version": "59.0.0.0"
+ }
+}
