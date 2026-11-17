@@ -98,7 +98,10 @@ def skriv_recode(variabel, kart, merkelapper, utelat=""):
 def kommando_sok(a):
     r = hent(f"{KLASS}/classifications/search?query={urllib.parse.quote(a.tekst)}")
     sett = set()
-    for c in r["_embedded"]["searchResults"]:
+    treff = r.get("_embedded", {}).get("searchResults", [])  # uten treff mangler _embedded
+    if not treff:
+        print(f"Ingen klassifikasjoner i Klass for «{a.tekst}».")
+    for c in treff:
         if c["language"] == "nb" and c["id"] not in sett:
             sett.add(c["id"])
             print(f"{c['id']:>5}  {c['name']}")
