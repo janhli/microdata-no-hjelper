@@ -8,6 +8,7 @@ Resultat:
   metadata/kodelister.csv         gjeldende kodeliste for alle variabler (navn;kode;kategori)
   metadata/variabler/<NAVN>.json  full metadata inkl. kodelistehistorikk og måletidspunkter
   metadata/datalager.json         datalagerets versjonshistorikk
+  metadata/VERSJON                versjonen JSON-filene ble hentet fra (avgjør om neste kjøring henter alt)
 
 Kjøres fra prosjektmappen:  python verktoy/hent_variabler.py [--alle] [--tving] [--versjon N]
 Uten --alle hoppes variabler som allerede ligger i metadata/variabler/ over, så lenge datalagerversjonen
@@ -15,7 +16,8 @@ er den samme som sist. Er versjonen ny, hentes alle variabler på nytt.
 
 Datalagerversjonen leses fra listesiden (dataStores -> no.ssb.fdb -> version) og brukes i
 detalj-URL-ene (/discovery/variable/no.ssb.fdb/<versjon>/<NAVN>). --versjon N overstyrer den.
-Hentet versjon står øverst i metadata/datalager.json (versions[0]).
+Hentet versjon står i metadata/VERSJON. Nyeste versjon står øverst i metadata/datalager.json (versions[0]),
+som med --versjon kan være en annen enn den som ble hentet.
 
 Alt hentes og kontrolleres i minnet før noe skrives. Ved feil avsluttes skriptet med feilkode 1 uten å
 endre noen filer. Kontrollene er: ingen nedlastingsfeil, antall variabler lik totalCount fra listesiden,
@@ -121,7 +123,12 @@ def hovedversjon(versjon):
 
 
 def forrige_versjon():
-    """Hovedversjonen i metadata/datalager.json fra forrige kjøring, eller '' hvis den mangler."""
+    """Versjonen variablene sist ble hentet fra (metadata/VERSJON), eller hovedversjonen i datalager.json.
+    datalager.json alene er ikke nok: med --versjon 57 viser detaljsidene historikken med 59 øverst."""
+    try:
+        return (UT / "VERSJON").read_text(encoding="utf-8").strip()
+    except OSError:
+        pass
     fil = UT / "datalager.json"
     try:
         return hovedversjon(json.loads(fil.read_text(encoding="utf-8"))["versions"][0]["version"])
@@ -156,7 +163,9 @@ def skriv_csv(sti, felter, rader):
     """Skriver til en midlertidig fil og bytter den inn, så en avbrutt kjøring ikke gir halv fil."""
     tmp = sti.with_name(sti.name + ".tmp")
     with open(tmp, "w", newline="", encoding="utf-8-sig") as f:
-        w = csv.DictWriter(f, fieldnames=felter, delimiter=";")
+        # \n som i git (.gitattributes). Med csv-standarden \r\n ser filen endret ut for git status selv om
+        # innholdet er likt, og workflowen åpnet PR-er med bare ny dato (TESTLISTE 6.1).
+        w = csv.DictWriter(f, fieldnames=felter, delimiter=";", lineterminator="\n")
         w.writeheader()
         w.writerows(rader)
     os.replace(tmp, sti)
@@ -231,6 +240,8 @@ def main():
     if datalager:
         (UT / "datalager.json").write_text(
             json.dumps(datalager, ensure_ascii=False, indent=1), encoding="utf-8", newline="\n")
+    if nye_json:
+        (UT / "VERSJON").write_text(f"{versjon}\n", encoding="utf-8", newline="\n")
     # Slett bare når listen er komplett, ellers kan --tving med en avkortet liste slette gyldige filer.
     komplett = len(set(navn)) == totalt
     utgaatt = sorted(p for p in (UT / "variabler").glob("*.json") if komplett and p.stem not in set(navn))

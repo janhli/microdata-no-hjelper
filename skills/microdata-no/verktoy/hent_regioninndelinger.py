@@ -11,13 +11,16 @@ Kilder:
 
 Skriver metadata/regioner/<inndeling>.csv (kolonner: kommunenr;regionkode;regionnavn) og INDEX.csv.
 Hver tabell må dekke nøyaktig kommunene i den valgte kommuneinndelingen, en region per kommune.
+Mangler noen kommuner region (utenom Svalbard), avsluttes skriptet med feilkode uten å endre filer.
+Alle tabellene skrives først til .tmp og byttes inn samlet, så en avbrutt kjøring ikke blander gamle og nye.
 
-Kjøres fra prosjektmappen:  python verktoy/hent_regioninndelinger.py [--aar 2024]
+Kjøres fra prosjektmappen:  python verktoy/hent_regioninndelinger.py [--aar 2024] [--tving]
 """
 
 import argparse
 import csv
 import json
+import os
 import re
 import sys
 import urllib.request
@@ -101,12 +104,18 @@ def slutt_pa_tom(kommuner, kobl, slug, kilde):
 
 
 def skriv_csv(slug, kobl, kommuner):
-    with open(UT / f"{slug}.csv", "w", encoding="utf-8", newline="\n") as f:
+    """Skriver til en midlertidig fil. Den byttes inn av bytt_inn() når alle tabellene er skrevet."""
+    with open(UT / f"{slug}.csv.tmp", "w", encoding="utf-8", newline="\n") as f:
         w = csv.writer(f, delimiter=";", lineterminator="\n")
         w.writerow(["kommunenr", "regionkode", "regionnavn"])
         for k in sorted(kobl):
             kode, navn = kobl[k]
             w.writerow([k, kode, navn])
+
+
+def bytt_inn():
+    for tmp in UT.glob("*.tmp"):
+        os.replace(tmp, tmp.with_suffix(""))
 
 
 def fra_klass(slug, klassid, mot, aar, kommuner, endr):
@@ -158,7 +167,10 @@ def main():
     sys.stdout.reconfigure(encoding="utf-8")
     ap = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
     ap.add_argument("--aar", type=int, default=2024, help="kommuneinndelingen tabellene skal gjelde for (standard 2024)")
+    ap.add_argument("--tving", action="store_true", help="skriv selv om kommuner mangler region")
     a = ap.parse_args()
+    for tmp in UT.glob("*.tmp"):  # rester etter en avbrutt kjøring
+        tmp.unlink()
     if not ENDRINGER.exists():
         sys.exit("Mangler metadata/kommuneendringer.json. Kjør først: python verktoy/hent_kommuneendringer.py")
     endr = json.loads(ENDRINGER.read_text(encoding="utf-8"))["endringer"]
@@ -188,18 +200,24 @@ def main():
     indeks.append(["bo_og_arbeidsmarkedsregioner", "Bo- og arbeidsmarkedsregioner (TØI 2019, omkodet til 2024)",
                    "Manuelt (TØI)", fil, "nei", len({v[0] for v in ba.values()}), len(ba)])
 
-    with open(UT / "INDEX.csv", "w", encoding="utf-8", newline="\n") as f:
+    with open(UT / "INDEX.csv.tmp", "w", encoding="utf-8", newline="\n") as f:
         w = csv.writer(f, delimiter=";", lineterminator="\n")
         w.writerow(["inndeling", "beskrivelse", "kilde", "tabell", "oversatt_fra_eldre_kommuneinndeling",
                     "antall_regioner", "antall_kommuner"])
         w.writerows(indeks)
-    (UT / "HENTET").write_text(f"{date.today().isoformat()} (kommuneinndeling {a.aar})\n", encoding="utf-8", newline="\n")
+    (UT / "HENTET.tmp").write_text(f"{date.today().isoformat()} (kommuneinndeling {a.aar})\n", encoding="utf-8", newline="\n")
 
     for r in indeks:
         print(f"{r[0]:32} {r[5]:>4} regioner {r[6]:>4} kommuner  {r[3]}" + ("  [oversatt]" if r[4] == "ja" else ""))
-    for p in problemer:
-        print("ADVARSEL:", p)
     print(f"Kommuner i Kommuneinndeling {a.aar}: {len(kommuner)}")
+    for p in problemer:
+        print("PROBLEM:", p, file=sys.stderr)
+    if problemer and not a.tving:
+        for tmp in UT.glob("*.tmp"):
+            tmp.unlink()
+        print("AVBRUTT: ingen filer er endret. Bruk --tving for å skrive likevel.", file=sys.stderr)
+        sys.exit(1)
+    bytt_inn()
 
 
 if __name__ == "__main__":

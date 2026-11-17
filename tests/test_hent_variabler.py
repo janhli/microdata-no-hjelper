@@ -91,7 +91,7 @@ class TestHentVariabler(unittest.TestCase):
     def test_vellykket_kjoring_gir_identiske_filer(self):
         kode, err = self.kjor(["--alle"], Stub())
         self.assertEqual(kode, 0, err[-500:])
-        # Linjeskift sammenlignes ikke: csv skriver \r\n, og git normaliserer til \n (.gitattributes).
+        # Linjeskift sammenlignes ikke: en lokal utsjekking kan ha \r\n (git normaliserer til \n, .gitattributes).
         for f in ("variabler.csv", "kodelister.csv"):
             self.assertEqual((self.ut / f).read_bytes().replace(b"\r\n", b"\n"),
                              (METADATA / f).read_bytes().replace(b"\r\n", b"\n"), f)
@@ -107,6 +107,22 @@ class TestHentVariabler(unittest.TestCase):
         kode, _ = self.kjor(["--alle", "--versjon", "57"], stub)
         self.assertEqual(kode, 0)
         self.assertTrue(all("/no.ssb.fdb/57/" in u for u in stub.detaljer))
+
+    def test_csv_skrives_med_lf(self):
+        self.kjor(["--alle"], Stub())
+        for f in ("variabler.csv", "kodelister.csv"):
+            self.assertNotIn(b"\r\n", (self.ut / f).read_bytes(), f)
+
+    def test_overstyrt_versjon_huskes_til_neste_kjoring(self):
+        # Med --versjon 57 viser datalager.json likevel nyeste versjon øverst. Neste vanlige kjøring skal
+        # da hente alt på nytt, ikke gjenbruke filene fra 57.
+        self.kjor(["--alle", "--versjon", "57"], Stub())
+        self.assertEqual((self.ut / "VERSJON").read_text(encoding="utf-8").strip(), "57")
+        stub = Stub()
+        kode, err = self.kjor([], stub)
+        self.assertEqual(kode, 0, err[-500:])
+        self.assertEqual(len(stub.detaljer), len(NAVN))
+        self.assertEqual((self.ut / "VERSJON").read_text(encoding="utf-8").strip(), VERSJON)
 
     def test_mangler_versjon_paa_listesiden(self):
         h = self.hash()

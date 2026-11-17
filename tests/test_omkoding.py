@@ -8,6 +8,7 @@ import csv
 import unittest
 
 from hjelp import METADATA, avvik, kjor, recode_linjer_i, simuler, tiltenkt
+from kommuneomkoding import koder_ved, last
 from recode_regler import MAKS_TEGN, konflikter, q, recode_linjer
 
 
@@ -95,6 +96,19 @@ class TestKommuneomkoding(unittest.TestCase, LinjelengdeMixin):
         for kode in ("0114", "0720", "1850", "9999", "3000"):  # delte kommuner og spesialkoder
             self.assertEqual(ut[kode], kode)
         self.assertIn("0114 Varteig", tekst)
+
+    def test_fra_tar_med_koder_opprettet_etter_1989(self):
+        # Før: startkodene var alltid 1989-kodene, så --fra 2019 lot 25 koder stå uendret (Klæbu, Sarpsborg ...)
+        tekst = kjor("kommuneomkoding.py", "--fra", "2019")
+        ut = utfall(tekst, "5030", "0105", "0710", "1903")
+        self.assertEqual(ut, {"5030": "5001", "0105": "3105", "0710": "3907", "1903": "5503"})
+        # Generelt: en kode som er gyldig ved --fra, ender likt som når man starter i 1989
+        standard = kjor("kommuneomkoding.py")
+        for aar in ("2002", "2013", "2018", "2019", "2020"):
+            with self.subTest(fra=aar):
+                koder = sorted(koder_ved(last(), f"{aar}-01-01"))
+                fra_aar = utfall(kjor("kommuneomkoding.py", "--fra", aar), *koder)
+                self.assertEqual({k: v for k, v in fra_aar.items() if v != utfall(standard, k)[k]}, {})
 
     def test_maalkodene_faar_navn_fra_inndelingen(self):
         # Nye koder står ellers uten navn i gamle årganger (TESTLISTE 2.8)

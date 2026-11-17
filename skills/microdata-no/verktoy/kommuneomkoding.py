@@ -61,10 +61,27 @@ def last():
     return json.loads(DATA.read_text(encoding="utf-8"))
 
 
+def koder_ved(d, fra):
+    """Kodene som gjaldt på datoen fra: kodene ved starten av Klass-uttrekket (1989), med alle endringer
+    før fra lagt på. Uten dette mangler koder opprettet mellom 1989 og fra (f.eks. 5030 Klæbu 2018 med --fra 2019)."""
+    koder = {c["kode"]: c["navn"] for c in d["koder_ved_fra"]}
+    per_dato = defaultdict(list)
+    for e in d["endringer"]:
+        if e["dato"] < fra:
+            per_dato[e["dato"]].append(e)
+    for dato in sorted(per_dato):
+        nye = {}
+        for e in per_dato[dato]:
+            koder.pop(e["gammel"], None)
+            nye[e["ny"]] = e["nytt_navn"]
+        koder.update(nye)
+    return koder
+
+
 def bygg(d, fra, til):
     """Returnerer (kart, delt, antatt): kart[kode] = mål-kode, delt[kode] = kandidater, antatt = valgt ved navn."""
     endr = [e for e in d["endringer"] if fra <= e["dato"] <= til]
-    ved_start = {c["kode"]: c["navn"] for c in d["koder_ved_fra"]}
+    ved_start = koder_ved(d, fra)
 
     # Alle koder som kan forekomme i perioden: gyldige ved start + koder opprettet av en endring
     opprettet = {}  # kode -> (dato, navn) første gang den dukker opp som ny kode
