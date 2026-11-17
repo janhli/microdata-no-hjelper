@@ -108,7 +108,7 @@ Sammenlign agentens svar med og uten skillen på disse oppgavene.
 ## 8. Analyse (fra manualen, ikke kjørt)
 
 Antakelser i «Analyse» i [`fallgruver.md`](skills/microdata-no/referanser/fallgruver.md). Kan samles i ett skript
-på en populasjon over 100 000 (f.eks. bosatte 30–60 år). Skriptet for 8.1–8.5 og 8.7 ligger i
+på en populasjon over 100 000 (f.eks. bosatte 30–60 år). Skriptet for 8.1–8.5, 8.7 og 8.8 ligger i
 [`.claude/skills/vedlikehold/testskript/del8_analyse.txt`](.claude/skills/vedlikehold/testskript/del8_analyse.txt) (ikke kjørt ennå).
 
 | # | Hva | Hvordan | Forventet | Pri |
@@ -120,6 +120,7 @@ på en populasjon over 100 000 (f.eks. bosatte 30–60 år). Skriptet for 8.1–
 | 8.5 | `regress-panel-diff` mot `regress-panel ... gruppe##etter, pooled` | Begge på samme panel | Samme ATET (manualen sier det) | P2 |
 | 8.6 | Sensurering i overlevelsesanalyse | Tid til død for bosatte 70+ med og uten sensurering ved utvandring (`BEFOLKNING_STATUSKODE` `'3'`) | Liten forskjell for hele gruppen, større for innvandrere | P2 |
 | 8.7 | `mfx(dydx)` for en 0/1-variabel | `logit` med en dummy, og sammenlign med forskjellen mellom de to verdiene i `margins(dummy)` (målt ved gjennomsnittet, så bare omtrent lik) | Uavklart om dummyen gir diskret endring eller derivert | P3 |
+| 8.8 | `citation` (kildehenvisning, ny 2026-11, #9) | Sist i et skript, etter import fra `no.ssb.fdb` | Datert kildehenvisning med SSB og versjon. Avklar formatet, og om den tar med variablene. Står i `SKILL.md` og `mal_analyse.txt`. Test også med FHI-data i samme skript når #11 er på plass: begge datatilbyderne skal stå i henvisningen | P3 |
 
 ## 9. Eksport av figurer (Vega), issue #3
 

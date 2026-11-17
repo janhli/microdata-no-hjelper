@@ -1,5 +1,5 @@
 // =====================================================================
-// Testskript: TESTLISTE del 8 (analyse), punkt 8.1, 8.2, 8.3, 8.7, 8.5 og 8.4
+// Testskript: TESTLISTE del 8 (analyse), punkt 8.1, 8.2, 8.3, 8.7, 8.8, 8.5 og 8.4
 // Laget:      2026-11, ikke kjørt ennå
 // Versjon:    no.ssb.fdb:59. Spør om analysemiljøet er på samme versjon før kjøring.
 // Populasjon: bosatte 30–60 år (alder ved utgangen av 2023) per 1.1.2024
@@ -105,6 +105,17 @@ replace hoy = 1 if lonn > 600000 & mangler_lonn == 0
 tabulate hoy, missing
 logit hoy mann alder, mfx(dydx)
 logit hoy mann alder, margins(mann)
+
+// ---------------------------------------------------------------------
+textblock
+## Test 8.8: `citation` (kildehenvisning)
+Ny kommando (2026-11). Microdata.no beskriver ikke syntaks eller opsjoner. Står før 8.5 og 8.4, som kan
+stoppes, så den blir kjørt. Lim inn utskriften.
+
+**Forventet:** En kopierbar, datert kildehenvisning som nevner SSB (`no.ssb.fdb`, versjon 59). Noter om
+den nevner variablene eller bare datalageret, og om den tar med datoen for kjøringen.
+endblock
+citation
 
 // ---------------------------------------------------------------------
 textblock

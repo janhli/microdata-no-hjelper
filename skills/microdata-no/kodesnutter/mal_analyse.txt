@@ -6,6 +6,7 @@
 //              2) datasett og import
 //              3) avledede variabler med etiketter (alltid en 'ukjent'-kategori)
 //              4) tabeller, hver med en textblock foran
+//              5) citation: datert kildehenvisning for datakildene som er brukt
 // Fallgruver:
 //   - Ikke legg tabeller med tittel i for-løkker. Skriv dem ut for hvert år.
 //   - Datasett og variabler kan ikke ha samme navn.
@@ -56,3 +57,7 @@ textblock
 ## 2. Aldersfordeling etter fylke, 1.1.2025 (radprosent)
 endblock
 tabulate fylke aldgr, missing rowpct
+
+// --- 5. Kildehenvisning ---
+// Ny kommando (2026-11), ikke kjørt i malen ennå (TESTLISTE 8.8). Står sist, så den tar med alle kildene.
+citation

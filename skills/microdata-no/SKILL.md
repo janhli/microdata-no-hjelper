@@ -110,7 +110,7 @@ og si fra om forutsetningene (f.eks. parallelle trender i diff-in-diff, instrume
    stå ved hver variabel: `https://microdata.no/discovery/variable/no.ssb.fdb/<versjon>/<NAVN>`.
 4. Sett en `textblock` ... `endblock` (Markdown) med tittel og en kort lesehjelp foran hver
    `tabulate`, `summarize` og `regress`. Ikke legg tabeller med tittel inne i `for`-løkker. Skriv dem
-   ut for hvert år, så årstallet kan stå i tittelen.
+   ut for hvert år, så årstallet kan stå i tittelen. Avslutt skriptet med `citation`.
 5. Brukeren kjører skriptet og melder tilbake. Rett feilen, og finnes den ikke allerede i
    `fallgruver.md`, foreslå at brukeren bidrar med den (se CONTRIBUTING.md i repoet).
 
@@ -131,6 +131,9 @@ gamle versjoner, og da må du sjekke at variabelnavnene fortsatt finnes i `varia
 - `collapse`, `aggregate`, `merge ... into ... on ...`
 - `tabulate`, `summarize`, `regress`, `logit`, `barchart`, `histogram`
 - `let` og `for ... end` for løkker
+- `citation` nederst i skriptet gir en datert kildehenvisning for datakildene som er brukt (ny i 2026-11,
+  ikke testet: TESTLISTE 8.8). Resultater skal ha microdata.no som kilde ved publisering
+  (https://www.microdata.no/dokumentasjon/kildehenvisning/)
 
 ## Nettkilder (hvis lokale filer ikke strekker til)
 
