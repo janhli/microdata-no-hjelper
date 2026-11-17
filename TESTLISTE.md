@@ -79,7 +79,7 @@ Bruk ett lite skript med `import fdb/BEFOLKNING_KOMMNR_FORMELL 2024-01-01 as kom
 
 | # | Hva | Hvordan | Forventet | Pri |
 |---|---|---|---|---|
-| 6.1 | Ukentlig workflow | Kjør «Oppdater metadata» manuelt (workflow_dispatch) | Pull request åpnes bare ved faktiske endringer. **Feilet 2026-11-17:** PR #10 med bare ny dato, fordi `variabler.csv` og `kodelister.csv` ble skrevet med `\r\n` og så endret ut for `git status`. Rettet (`lineterminator="\n"`). Kjør på nytt etter fletting | P2 |
+| 6.1 | Ukentlig workflow | Kjør «Oppdater metadata» manuelt (workflow_dispatch) | Pull request åpnes bare ved faktiske endringer. **Feilet 2026-11-17:** PR #10 med bare ny dato, fordi `variabler.csv` og `kodelister.csv` ble skrevet med `\r\n` og så endret ut for `git status`. Rettet (`lineterminator="\n"`). Ny kjøring samme dag gikk ut på tid: listesiden har fått variabler fra FHI (Kreftregisteret 30, Norsk pasientregister 12), som ga 404 under `no.ssb.fdb` og ble forsøkt fire ganger hver. Nå hoppes andre datalagre over, 4xx forsøkes ikke på nytt, og grensen er 45 min. Kjør på nytt | P2 |
 | 6.2 | Delvis feilet henting | Simulert i `tests/test_hent_variabler.py` og `tests/test_hent_manual.py`. Se første gang det skjer i workflowen | Jobben feiler, og ingen PR åpnes | P3 |
 | 6.3 | Ny datalagerversjon | Første ukentlige kjøring etter at microdata.no har fått ny versjon | Alle variabler hentes på nytt, `datalager.json` viser den nye versjonen, og PR-tittelen nevner den | P2 |
 | 6.4 | `hent_kommuneendringer.py`, `hent_regioninndelinger.py` | Kjør på nytt på en annen maskin | Identiske filer (bortsett fra datoer) | P3 |

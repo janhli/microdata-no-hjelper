@@ -12,6 +12,8 @@ import shutil
 import sys
 import tempfile
 import unittest
+import urllib.error
+import urllib.request
 from pathlib import Path
 
 from hjelp import METADATA
@@ -32,9 +34,11 @@ def datalager_med_versjon(versjon):
 class Stub:
     """Erstatter hv.hent. Teller detaljforespørsler og husker URL-ene."""
 
-    def __init__(self, navn=None, feil_paa=(), totalt=None, versjon=VERSJON, datalager=None):
+    def __init__(self, navn=None, feil_paa=(), totalt=None, versjon=VERSJON, datalager=None, andre=()):
         self.navn = NAVN if navn is None else navn
-        self.totalt = len(self.navn) if totalt is None else totalt
+        # andre: (datalager, navn) som står i listen, men hører til et annet datalager (FHI)
+        self.liste = [{"name": n} for n in self.navn] + [{"name": n, "dataStore": s} for s, n in andre]
+        self.totalt = len(self.liste) if totalt is None else totalt
         self.feil_paa, self.versjon = set(feil_paa), versjon
         self.datalager = DATALAGER if datalager is None else datalager
         self.detaljer = []
@@ -42,7 +46,7 @@ class Stub:
     def __call__(self, url, forsok=4):
         if "/variables?pageIndex=" in url:
             side = int(url.rsplit("=", 1)[1])
-            data = {"dataStructures": [{"name": n} for n in self.navn[side * 20:(side + 1) * 20]],
+            data = {"dataStructures": self.liste[side * 20:(side + 1) * 20],
                     "totalCount": self.totalt}
             if self.versjon:
                 data["dataStores"] = {"no.ssb.fdb": {"version": f"{self.versjon}.0.0.0"}}
@@ -107,6 +111,30 @@ class TestHentVariabler(unittest.TestCase):
         kode, _ = self.kjor(["--alle", "--versjon", "57"], stub)
         self.assertEqual(kode, 0)
         self.assertTrue(all("/no.ssb.fdb/57/" in u for u in stub.detaljer))
+
+    def test_andre_datalagre_hoppes_over(self):
+        # Listesiden fikk FHI-variabler i 2026-11. De ga 404 under no.ssb.fdb, og workflowen gikk ut på tid.
+        stub = Stub(andre=[("no.fhi.npr", "SOM_EP_AAR"), ("no.fhi.kreftregisteret", "S_KIR")])
+        kode, err = self.kjor(["--alle"], stub)
+        self.assertEqual(kode, 0, err[-500:])
+        self.assertEqual(len(stub.detaljer), len(NAVN))
+        self.assertNotIn("SOM_EP_AAR", "".join(stub.detaljer))
+        self.assertIn("no.fhi.npr (1)", err)
+
+    def test_404_proves_ikke_paa_nytt(self):
+        kall = []
+
+        def svar(req, timeout):
+            kall.append(req.full_url)
+            raise urllib.error.HTTPError(req.full_url, 404, "Not Found", None, None)
+        orig = urllib.request.urlopen, hv.time.sleep
+        urllib.request.urlopen, hv.time.sleep = svar, lambda s: None
+        try:
+            with self.assertRaises(urllib.error.HTTPError):
+                hv.hent("https://example.invalid/x")
+        finally:
+            urllib.request.urlopen, hv.time.sleep = orig
+        self.assertEqual(len(kall), 1)
 
     def test_csv_skrives_med_lf(self):
         self.kjor(["--alle"], Stub())

@@ -34,12 +34,14 @@ import os
 import re
 import sys
 import time
+import urllib.error
 import urllib.request
 from pathlib import Path
 
 BASE = "https://microdata.no/discovery"
 UT = Path(__file__).resolve().parent.parent / "metadata"
 PAUSE = 0.3  # sekunder mellom forespørsler
+DATALAGER = "no.ssb.fdb"
 MIN_ANDEL_VARIABLER = 0.9  # minst så stor andel av forrige antall variabler
 MIN_ANDEL_KODELINJER = 0.8  # minst så stor andel av forrige antall kodelinjer
 
@@ -53,8 +55,9 @@ def hent(url, forsok=4):
             with urllib.request.urlopen(req, timeout=60) as r:
                 html = r.read().decode("utf-8")
             break
-        except OSError:
-            if i == forsok - 1:
+        except OSError as e:
+            # 404 o.l. blir ikke bedre av nye forsøk (12 variabler × 30 s fikk workflowen til å gå ut på tid)
+            if i == forsok - 1 or (isinstance(e, urllib.error.HTTPError) and 400 <= e.code < 500 and e.code != 429):
                 raise
             time.sleep(5 * (i + 1))
     time.sleep(PAUSE)
@@ -181,18 +184,29 @@ def main():
     (UT / "variabler").mkdir(parents=True, exist_ok=True)
 
     navn, side, totalt, versjon = [], 0, 0, a.versjon
+    andre, sett = {}, 0
     while True:
         data = hent(f"{BASE}/variables?pageIndex={side}")["data"]
         if not versjon:
-            versjon = hovedversjon(data.get("dataStores", {}).get("no.ssb.fdb", {}).get("version"))
+            versjon = hovedversjon(data.get("dataStores", {}).get(DATALAGER, {}).get("version"))
             if not versjon:
                 sys.exit("AVBRUTT: fant ikke datalagerversjonen på listesiden. Bruk --versjon N.")
-        navn += [d["name"] for d in data["dataStructures"]]
-        totalt = data["totalCount"]
-        print(f"liste side {side}: {len(navn)}/{totalt}", file=sys.stderr)
-        if len(navn) >= totalt or not data["dataStructures"]:
+        for d in data["dataStructures"]:
+            # Listen har også andre datalagre (FHI Kreftregisteret og Norsk pasientregister fra 2026-11).
+            # Skillen dekker bare no.ssb.fdb, og detalj-URL-ene bruker SSB-versjonen.
+            lager = d.get("dataStore", DATALAGER)
+            if lager == DATALAGER:
+                navn.append(d["name"])
+            else:
+                andre[lager] = andre.get(lager, 0) + 1
+        sett += len(data["dataStructures"])
+        totalt = data["totalCount"] - sum(andre.values())
+        print(f"liste side {side}: {sett}/{data['totalCount']}", file=sys.stderr)
+        if sett >= data["totalCount"] or not data["dataStructures"]:
             break
         side += 1
+    if andre:
+        print("hoppet over andre datalagre: " + ", ".join(f"{k} ({v})" for k, v in sorted(andre.items())), file=sys.stderr)
 
     forrige = forrige_versjon()
     print(f"datalagerversjon {versjon} (forrige: {forrige or 'ukjent'})", file=sys.stderr)
@@ -208,7 +222,7 @@ def main():
             if fil.exists() and not alle:
                 ds = json.loads(fil.read_text(encoding="utf-8"))
             else:
-                pp = hent(f"{BASE}/variable/no.ssb.fdb/{versjon}/{n}")
+                pp = hent(f"{BASE}/variable/{DATALAGER}/{versjon}/{n}")
                 ds = pp["ds"]
                 datalager = datalager or pp.get("dataStore")
                 nye_json[n] = ds

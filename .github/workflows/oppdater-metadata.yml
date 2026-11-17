@@ -20,7 +20,7 @@ permissions:
 jobs:
   oppdater:
     runs-on: ubuntu-latest
-    timeout-minutes: 30
+    timeout-minutes: 45  # vanlig kjøring tar 22–28 min
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-python@v5
