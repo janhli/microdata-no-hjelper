@@ -4,6 +4,27 @@
  "description": "Databank for SSB (registerdata som inngår i SSBs statistikkproduksjon)",
  "versions": [
   {
+   "version": "60.0.0.0",
+   "description": "Slettet ARBLONN_FRTK_SEKTOR_2014. Ny variabel BEFOLKNING_GRUNNKRETS",
+   "releaseTime": 1794925895,
+   "languageCode": "no",
+   "updateType": "MAJOR",
+   "dataStructureUpdates": [
+    {
+     "name": "BEFOLKNING_GRUNNKRETS",
+     "description": "Første publisering.",
+     "operation": "ADD",
+     "releaseStatus": "RELEASED"
+    },
+    {
+     "name": "ARBLONN_FRTK_SEKTOR_2014",
+     "description": "Deleted ARBLONN_FRTK_SEKTOR_2014",
+     "operation": "REMOVE",
+     "releaseStatus": "DELETED"
+    }
+   ]
+  },
+  {
    "version": "59.0.0.0",
    "description": "Data om arbeidssøker, a-ordningen og elhub oppdatert til siste periode. ",
    "releaseTime": 1793790331,
