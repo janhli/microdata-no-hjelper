@@ -34,12 +34,14 @@ med pull request (se CONTRIBUTING.md). Tagg dem med datalagerversjon/dato hvis d
   `ARBSTATUS_PERS_STATUS8` for prioritert status for alle bosatte 15+ (4. kvartal).
 - Sjekk alltid `fra`/`til` i `metadata/variabler.csv` før du bruker en variabel fra et eldre skript.
 
-### Sektor på personnivå er stoppet etter 2019
-- **Symptom:** `REGSYS_FRTK_SEKTOR_2014` har ingen data etter 2019-11-16.
-- **Årsak:** SSB stoppet variabelen av personvernhensyn (risiko for å avsløre opplysninger om foretak).
-- **Løsning:** For lønnstakere: bruk `ARBLONN_FRTK_SEKTOR_2014` på jobbnivå og velg sektoren med mest
-  avtalt arbeidstid per person. Se `kodesnutter/sektor_lonnstakere.txt`, som treffer SSB tabell 13926
-  innenfor 0,1 % for stat og kommune (4. kvartal 2025, versjon 59). Selvstendige kommer ikke med.
+### Sektor finnes ikke etter 2019
+- **Symptom:** `REGSYS_FRTK_SEKTOR_2014` har ingen data etter 2019-11-16, og `ARBLONN_FRTK_SEKTOR_2014`
+  (jobbnivå, 2015–2026) finnes ikke fra versjon 60.
+- **Årsak:** SSB stoppet personvariabelen av personvernhensyn (risiko for å avsløre opplysninger om foretak),
+  og slettet jobbvariabelen i versjon 60 (november 2026, ingen erstatning).
+- **Løsning:** Sektor kan bare brukes til og med 2019 (`REGSYS_FRTK_SEKTOR_2014`, 4. kvartal). Si fra til
+  brukeren at nyere sektortall ikke finnes i microdata.no. `kodesnutter/sektor_lonnstakere.txt` er
+  utgått. Den traff SSB tabell 13926 innenfor 0,1 % (versjon 59) og viser metoden.
 
 ### `BEFOLKNING_PARITET` mangler for de siste fødselskullene
 - **Symptom:** 100 % ukjent paritet for barn født i 2025 (observert november 2026).
@@ -105,9 +107,25 @@ med pull request (se CONTRIBUTING.md). Tagg dem med datalagerversjon/dato hvis d
 - **Løsning:** Bruk `ARBLONN_ARB_ARBKOMM` for jobben der `ARBLONN_ARB_HOVEDARBEID == '1'`. Det ga
   182 609 for Bergen (testet november 2026, versjon 59).
 
-### Manglende verdier i sammenligninger er udokumentert
-- Hvordan `sysmiss` håndteres i `if`-sammenligninger er ikke dokumentert. Avslutt alltid grupperinger
-  med `replace gr = 'ukjent' if sysmiss(x)`, så ingen enheter havner i feil gruppe i stillhet.
+### Sammenligninger med manglende verdi gir 0 eller 1, ikke missing
+- **Symptom:** En dummy laget med `generate h = x > 5` har ingen manglende verdier, selv om `x` mangler for
+  mange. Enhetene kommer med i regresjoner og tabeller med feil verdi.
+- **Årsak (testet versjon 60, november 2026, TESTLISTE 8.2):** En sammenligning med manglende verdi er
+  *usann*, unntatt `!=`, som er *sann* (som NaN i flyttall, ikke som i Stata):
+  - `generate h = x > 5` gir **0** når `x` mangler (Stata gir 1).
+  - `generate h = x != 2` gir **1** når `x` mangler.
+  - `replace h = 1 if x > 5` endrer ikke enheter der `x` mangler.
+- **Løsning:** Lag dummyer slik at manglende verdi blir manglende:
+  `generate h = x > 5 if !sysmiss(x)` (som `generate hoy = 0 if mangler_lonn == 0` i 8.7). Avslutt alltid
+  grupperinger med `replace gr = 'ukjent' if sysmiss(x)`.
+
+### Kopi av hele utskriften mangler noen resultater
+- **Symptom:** En bruker limer inn utskriften, og `citation`, `tabulate-panel` og `regress-panel-diff`
+  står uten resultat. Det ser ut som kommandoen ikke ga noe.
+- **Årsak:** Når hele skriptet med resultater kopieres ut, kommer resultatet av disse kommandoene ikke med,
+  selv om det vises i microdata.no (versjon 60, november 2026, TESTLISTE 8.5 og 8.8).
+- **Løsning:** Be brukeren kopiere resultatet av kommandoen for seg, før du konkluderer med at den feilet.
+  En stoppet kommando gir derimot tomme tabeller og en feilmelding («Problem på linje N: ...»).
 
 ## Bindinger og løkker
 
@@ -126,10 +144,31 @@ med pull request (se CONTRIBUTING.md). Tagg dem med datalagerversjon/dato hvis d
 
 ## Avsløringskontroll
 
-### Tabeller på små delgrupper stoppes
-- **Symptom:** Tabellen blir ikke vist, f.eks. `tabulate far_landbak if far_kat == '4', top(15)` på
-  en liten gruppe.
-- **Løsning:** Grupper til få, store kategorier, og tabuler for hele datasettet uten `if`.
+### Versjon 2 av anonymiseringstiltakene (fra versjon 60, 17. november 2026)
+Kilde: `metadata/manual/konfidensialitet.md` og `systemendringer.md`. Det som står i avsnittene under, ble
+avklart med versjon 1, hvis ikke annet står. Endringene som påvirker skript:
+- **Fjernet:** `generate`/`replace`/`recode` som treffer 1–9 enheter, stoppes ikke lenger (tiltak 6).
+  Tabeller med mange små celler stoppes ikke (tiltak 5). Konstantleddet skjules ikke (tiltak 9).
+- **Celler med 1–4 settes til 0** i tabeller og grafer (tiltak 11). 0 betyr «0–5», 5 betyr «5–10».
+- **Minste datasett er 100 personer** (var 1000). Gjelder også datasett under personnivå (jobber):
+  de må kunne knyttes til minst 100 personer.
+- **Winsorisering per undergruppe** i `tabulate ..., summarize()`, `barchart, by()/over()` og med `if`, og
+  nå også i regresjoner og `correlate` (se «Analyse»).
+- **Nedsampling:** 1–3 tilfeldige observasjoner fjernes før de fleste analyser (per undergruppe i
+  volumtabeller), og 1–11 før `regress`, `ivregress` og `anova`. Samme statistikk i to kommandoer kan
+  derfor avvike litt (`tabulate ..., summarize(x)` mot `barchart (mean) x`).
+- **Støyen avhenger av skriptet.** Samme tabell for de samme personene gir ny støy når skriptet er endret.
+  Sammenlign ikke små tall mellom kjøringer av ulike skriptversjoner.
+- **`configure confidentiality v1`** øverst i skriptet gir de gamle tiltakene, til 30. april 2027 (planlagt).
+  Bare for brukere akkreditert før 17. november 2026, og ikke med FHI-data eller `BEFOLKNING_GRUNNKRETS`.
+  Bruk det bare for å gjenskape gamle resultater.
+
+### Tabeller på små delgrupper
+- **Versjon 2:** Tabellen vises alltid. Celler med 1–4 vises som 0, så små kategorier ser tomme ut.
+  Behandle 0 i en tabell som «0–5», ikke som ingen.
+- **Versjon 1:** Tabeller der minst halvparten av cellene var under 5, ble ikke vist, f.eks.
+  `tabulate far_landbak if far_kat == '4', top(15)` på en liten gruppe.
+- **Løsning:** Grupper til få, store kategorier.
 
 ### `collapse`/`aggregate` med `sum` winsoriseres når `by()` er en vanlig variabel
 - **Symptom:** Antall tilfeller per kommune (eller fylke, utdanningsnivå osv.) blir feil, særlig for små
@@ -141,54 +180,66 @@ med pull request (se CONTRIBUTING.md). Tagg dem med datalagerversjon/dato hvis d
   telles til missing først. Bruk `sum` bare til å summere verdier. Det går fint å summere per person
   før man aggregerer videre, slik `kodesnutter/sektor_lonnstakere.txt` gjør.
 
-### `replace`/`recode` må endre minst 10 enheter
-- En `replace` eller `recode` som treffer færre enn 10 enheter blir avvist. Slå sammen kategorier
-  eller endre rekkefølgen på omkodingen.
-- I `recode` gjelder grensen **hver målverdi for seg**, ikke kommandoen samlet. Én liten regel stopper
-  hele kommandoen. Symptom: «Stoppet av avsløringskontroll. Omkodingen til 9 påvirker for få enheter»
-  (`(990 = 9)` for uoppgitt landbakgrunn, versjon 59, november 2026). Slå små koder sammen med en
-  større gruppe i samme regel. Er de små til sammen også (`(980 989 990 = 8)` ble også stoppet), la
-  dem stå uomkodet og gi dem navn med `define-labels`.
-- En regel som treffer **0** enheter stoppes ikke (TESTLISTE 1.7). Utskrift med koder som ikke finnes i
-  dataene (f.eks. gamle kommunenumre fra `kommuneomkoding.py`) er derfor trygg.
-- Detaljerte koblinger (f.eks. `klass.py kobling` mellom SN2002 og SN2007 på femsifret nivå) har ofte
-  målkoder med 1–9 personer, og stoppes. Feilmeldingen nevner bare én målkode om gangen («Omkodingen til
-  17.240 påvirker for få enheter»). Ta ut målkodene med `klass.py ... --utelat 17.240,...`. Raskest:
-  `tabulate` kildevariabelen først, og ta ut alle målkoder med under 20 personer eller uten synlige
-  kilder på én gang (SN2002 → SN2007 gikk gjennom i tredje runde, 33 av 410 målkoder tatt ut).
-- Koblinger med koder som har flere mål blander kodeverk: SN2002 → SN2007 lot 42 % av sysselsatte
-  (november 2006) stå med SN2002-kode. Gruppering på de første sifrene blir da feil (f.eks. «85» er helse
-  i SN2002 og undervisning i SN2007).
-- **Bruk `kobling --nivaa 1` (eller 2) for næring over tid.** Målene løftes til seksjon (A–U) eller
-  divisjon, så koder med flere detaljerte mål blir entydige: 91 % omkodet på nivå 1 og 83 % på nivå 2
-  (november 2007), mot 57 % på femsifret nivå. Omkodede og uendrede koder kan skilles på lengden (1 eller
-  2 tegn mot `xx.xxx`). Nivå 1 trengte ingen `--utelat`.
-- **`tabulate` ser ut til å skjule kategorier med svært få enheter.** Kildekoder som ikke var med i
-  tabellen (23.100, og 35.201/35.410/35.420), ga likevel «påvirker for få enheter» (versjon 59, november
-  2026). Behandle koder som mangler i tabellen som små, ikke som tomme.
+### `replace`/`recode` må endre minst 10 enheter (bare versjon 1)
+- **Gjelder ikke fra versjon 2** (tiltak 6 er fjernet 17. november 2026). Ikke testet ennå (TESTLISTE 1.13).
+  `--utelat` i verktøyene trengs da bare med `configure confidentiality v1`.
+- **Versjon 1:** En `replace` eller `recode` som traff 1–9 enheter ble avvist. I `recode` gjaldt grensen
+  **hver målverdi for seg**: «Stoppet av avsløringskontroll. Omkodingen til 9 påvirker for få enheter»
+  (`(990 = 9)` for uoppgitt landbakgrunn, versjon 59). En regel som traff 0 enheter ble ikke stoppet
+  (TESTLISTE 1.7). Feilmeldingen nevnte én målkode om gangen. Ta ut målkoder med `--utelat` (SN2002 →
+  SN2007 gikk gjennom i tredje runde, 33 av 410 målkoder tatt ut). Kategorier som ikke var med i
+  `tabulate`, kunne likevel stoppe omkodingen.
 
 ## Analyse
 
 Kartlagt fra manualen (`metadata/manual/konfidensialitet.md`, `kommandoer_og_funksjoner/kommandoer.md` og
-`eksempel/Regresjonsanalyser/`, versjon 59, november 2026). Punktene er **ikke kjørt** i microdata.no før det
-står. Det som må testes, står i TESTLISTE del 8.
+`eksempel/Regresjonsanalyser/`, versjon 60 med anonymiseringstiltak versjon 2, november 2026). Punktene er
+**ikke kjørt** i microdata.no før det står. Det som må testes, står i TESTLISTE del 8.
 
-### Regresjoner bruker andre data enn tabellene
-- **Symptom:** Et gjennomsnitt fra `regress y` (bare konstantledd) eller `margins()` stemmer ikke med
-  `summarize y` eller `tabulate ..., summarize(y)`.
-- **Årsak:** Deskriptiv statistikk winsoriseres (1 % i hver ende settes til 1- og 99-prosentilen) og
-  tellinger støylegges (±5). Regresjoner bruker de underliggende, ikke-winsoriserte dataene (tiltak 2).
-  Prosentiler mikroaggregeres og glattes (tiltak 10).
-- **Løsning:** Ikke bruk tabellene til å kontrollere regresjonen mot, eller omvendt. Skriv i `textblock`
-  at gjennomsnitt i tabeller av skjeve variabler (inntekt, formue) er winsorisert og blir litt for lave.
+### Regresjoner winsoriseres og nedsamples
+- **Versjon 2:** Alle kontinuerlige variabler i en regresjon winsoriseres før estimeringen (1 % i hver ende),
+  også i `correlate`. Koeffisienter for skjeve variabler (inntekt, formue) påvirkes mindre av ekstreme
+  verdier, og R² blir ofte høyere. Før `regress`, `ivregress` og `anova` fjernes 1–11 tilfeldige
+  observasjoner, så N og frihetsgrader varierer litt mellom kjøringer.
+- **Versjon 1:** Regresjoner brukte de ikke-winsoriserte dataene, mens tabellene var winsorisert.
+  Regresjoner fra før 17. november 2026 kan derfor gi andre koeffisienter.
+- **Testet (versjon 60, november 2026, TESTLISTE 8.3):** lønn etter tre utdanningsgrupper. Konstantledd +
+  koeffisienter avvek med 0,7 %, 0,4 % og −0,6 % fra gjennomsnittene i `tabulate ..., summarize()`. Regresjonen
+  winsoriseres på hele utvalget og tabellen per gruppe, så regresjonen ble litt lavere for gruppen med de
+  høyeste lønningene og litt høyere for den laveste.
+- Manglende verdier utelates listevis: N i `regress y x1 x2` var lik antall uten manglende verdi i noen av
+  variablene (TESTLISTE 8.1).
+- Prosentiler mikroaggregeres og glattes (tiltak 10). Tellinger støylegges (±5).
+- **Løsning:** Skriv i `textblock` at kontinuerlige variabler er winsorisert, både i tabeller og regresjoner.
+  For å gjenskape eldre resultater: `configure confidentiality v1` (til 30. april 2027).
 
-### Konstantleddet skjules ved små kombinasjoner av kategorier
-- **Symptom:** Regresjonsresultatet mangler konstantledd, men resten vises.
-- **Årsak:** Tiltak 9: har en kombinasjon av de kategoriske forklaringsvariablene færre enn 5 enheter i
-  analysepopulasjonen, skjules konstantleddet. Kontinuerlige variabler teller ikke. Estimeringen er den samme.
-- **Løsning:** Grovere kategorier, færre kategoriske variabler eller større populasjon. Faktorledd med
-  mange nivåer (`i.kommune`, interaksjoner som `i.kjonn#i.utdniv#i.fylke`) gir lett små kombinasjoner.
-  Trenger du ikke konstantleddet, kan du la det være.
+### Kategoriske variabler med små grupper fjernes fra regresjonen (tiltak 14)
+- **Symptom:** En forklaringsvariabel (f.eks. `i.kommune`) mangler helt i resultatet, og under tabellen står
+  «Leddet i.kommune er fjernet fra analysen pga. lav frekvens i minst en av gruppene.» Regresjonen kjøres
+  likevel, uten variabelen (testet versjon 60, november 2026, TESTLISTE 8.4).
+- **Årsak:** Har én kategori færre enn 5 observasjoner, fjernes **hele variabelen** fra analysen, ikke bare
+  kategorien (tiltak 14). Interaksjoner som `i.kjonn#i.utdniv#i.fylke` gir lett små grupper. Meldingen er
+  lett å overse, og resultatet ser ut som en modell uten variabelen.
+- **Løsning:** Slå små kategorier sammen med nabokategorier, bruk grovere inndeling eller større
+  populasjon. `tabulate` variabelen i analysepopulasjonen først: celler som vises som 0, er under 5.
+
+### Forklaringsvariabler som er (nesten) like utfallet, fjernes (tiltak 12 og 13)
+- En forklaringsvariabel som er perfekt eller nesten perfekt korrelert med utfallet, droppes. `correlate`
+  viser 1 når to variabler er like for alle unntatt under 5 enheter. Skjer det, er modellen trolig feil
+  spesifisert (f.eks. utfallet laget av en av forklaringsvariablene).
+
+### En regresjon må ha minst to koeffisienter (tiltak 17)
+- **Symptom:** «Regresjonsmodellen har for få forklaringsvariabler/koeffisienter. Nedre grense er to
+  koeffisienter.» på `regress lonn mann` (testet versjon 60, november 2026, TESTLISTE 8.9). Skriptet stopper.
+- **Årsak:** Modeller med færre enn to koeffisienter (konstantleddet telles ikke) stoppes. Det gjelder også
+  når tiltak 14 har fjernet en faktorvariabel, så det bare er én forklaringsvariabel igjen. En faktorvariabel
+  med tre nivåer gir to koeffisienter og er nok.
+- **Løsning:** Ta med minst to forklaringsvariabler. Et gruppegjennomsnitt hentes med
+  `tabulate gr, summarize(y)`, ikke med regresjon.
+
+### Konstantleddet skjules ved små kombinasjoner av kategorier (bare versjon 1)
+- Tiltak 9 er fjernet i versjon 2. I versjon 1 ble konstantleddet skjult når en kombinasjon av de
+  kategoriske forklaringsvariablene hadde færre enn 5 enheter.
 
 ### Overlevelsesanalyse: populasjonen må være alle i risiko
 - **Symptom:** Nesten alle har `hendelse = 1`, og overlevelseskurven faller til 0.
@@ -224,6 +275,10 @@ står. Det som må testes, står i TESTLISTE del 8.
   year(date@panel) >= 2020`). Settes den bare for behandlingsgruppen, er den lik interaksjonsleddet.
 - **Løsning:** `gruppe` = 1 for behandlingsgruppen, `etter` = 1 for alle fra behandlingsåret. Samme
   resultat: `regress-panel y gruppe##etter ..., pooled`.
+- **Testet (versjon 60, november 2026, TESTLISTE 8.5):** med `etter` = 1 for alle i 2020–2021 ga
+  `regress-panel-diff` −4 159 for `gruppe ⨯ etter` og den pooled regresjonen −4 156 for interaksjonen.
+  Forskjellen skyldes nedsampling (N 331 647 mot 331 649). Utskriften kaller estimatet `gruppe ⨯ etter`,
+  ikke ATET.
 
 ### `ivregress`: endogen variabel til venstre for `=`, instrumentene til høyre
 - **Årsak:** Teksten i manualen bytter om begrepene («instrumentvariabel på venstre side»), og eksempelsiden
@@ -255,11 +310,14 @@ står. Det som må testes, står i TESTLISTE del 8.
   `i.a#i.b` (bare interaksjonen) eller `i.a##i.b` (hovedeffekter og interaksjon). `control(i.kommune)` tar
   med faste effekter uten å vise dem.
 - `logit`/`probit` krever et utfall som er 0/1. `mfx(dydx)` gir gjennomsnittlige marginaleffekter
-  (`overall`). `or` gir oddsratio. `margins()` gir predikert verdi ved gjennomsnittet av
+  (`overall`). For en 0/1-variabel er det trolig den deriverte, ikke en diskret endring fra 0 til 1:
+  `mann` ga 0,1805, mens forskjellen i `margins(mann)` var 0,1864 og en derivert ga om lag 0,180 (TESTLISTE
+  8.7, versjon 60). Forskjellen er liten. Trengs den diskrete effekten, bruk forskjellen i `margins()`. `or` gir oddsratio. `margins()` gir predikert verdi ved gjennomsnittet av
   forklaringsvariablene, ikke gjennomsnittet av predikerte verdier.
 - `regress-mml`: gruppevariabelen kan ikke også være forklaringsvariabel. Like variansestimater for to
   nivåer (f.eks. fylke og landsdel) betyr at nivåene fanger opp det samme. Bruk ett av dem.
-- Spredningsplott finnes ikke. Bruk `hexbin` (celler med under 5 enheter vises ikke).
+- Spredningsplott finnes ikke. Bruk `hexbin` (celler med under 5 enheter vises ikke). Søyler i `histogram`
+  og `barchart` med under 5 enheter vises heller ikke (tiltak 11).
 
 ## Geografi
 
@@ -300,6 +358,27 @@ står. Det som må testes, står i TESTLISTE del 8.
   - Bo- og arbeidsmarkedsregioner (TØI) finnes ikke i Klass og er lastet inn manuelt.
     Se `metadata/regioner/manuelt/README.md`.
 
+### Grunnkrets (`BEFOLKNING_GRUNNKRETS`, fra versjon 60)
+Kartlagt fra metadataene og SSB Klass (november 2026). Ikke kjørt i microdata.no ennå (TESTLISTE del 11).
+- **Koden skifter med kommunenummeret.** Grunnkrets `15040101` (Ålesund 2019) er `15070101` i 2020–2023 og
+  `15080101` fra 2024. Over 10 000 koder ble byttet i 2020 og 6 000 i 2024. Koble aldri grunnkretser fra
+  ulike år direkte. Bruk `verktoy/grunnkrets.py --aar <år>`, som følger kodene gjennom Klass-endringene.
+- **Små enheter:** mange grunnkretser har under 10 beboere. Tabeller på grunnkrets (og delområde) får mange
+  celler med 1–4, som vises som 0. Kod rett til delområde, levekårssone, bydel eller egne områder.
+  Verktøyet tar med alle grunnkretsene i hver målenhet i samme regel, også de uendrede. Det gir kortere
+  skript enn å gå via gjeldende grunnkrets. (Grunnkrets kan ikke brukes med `configure confidentiality v1`,
+  så 10-enhetsregelen fra versjon 1 gjelder ikke her.)
+- **Delte grunnkretser:** noen grunnkretser er senere delt mellom flere delområder eller soner (334 fra
+  1990, 59 fra 2019, 3 fra 2025 på grunnkretsnivå, langt færre på sone- og delområdenivå). De kan ikke
+  fordeles uten adresse og står uendret (8 tegn) med `--splitt behold`.
+- **Uoppgitt grunnkrets** har koden `kkkk9999` i hver kommune (360 koder i 2026) og står uendret.
+- **Kodelisten har også delområdene** (6 sifre, med navn). Dataene har trolig bare 8-sifrede koder.
+- **Delområde** er de seks første sifrene i *gjeldende* kode. For eldre år gir `substr(gk, 1, 6)` det gamle
+  delområdet med gammelt kommunenummer. `grunnkrets.py --til delomrade` omkoder bare delområdene som har
+  endrede koder, og tar resten med `substr`.
+- **Levekårssoner** finnes i Klass for 66 kommuner (2026-inndelingen, ikke Oslo). Bydeler finnes for Oslo,
+  Bergen, Trondheim og Stavanger, delbydeler for Oslo. Alle bygger på 2026-grunnkretsene.
+
 ## Klass
 
 - **Velg riktig versjon med `--dato`.** `klass.py` bruker kodene som gjelder på datoen (standard i dag). SN2007-variabler
@@ -314,6 +393,13 @@ står. Det som må testes, står i TESTLISTE del 8.
     Det samme gjelder andre prefiksbaserte klassifikasjoner (STYRK, NUS), men ikke landkoder.
 - **Resultatet er en kopi av kodene i Klass akkurat nå.** Klassifikasjoner endres. Oppgi hentedato i skriptet (verktøyet
   skriver den i en kommentar).
+- **Koblinger med koder som har flere mål blander kodeverk.** SN2002 → SN2007 lot 42 % av sysselsatte
+  (november 2006) stå med SN2002-kode. Gruppering på de første sifrene blir da feil (f.eks. «85» er helse
+  i SN2002 og undervisning i SN2007).
+- **Bruk `kobling --nivaa 1` (eller 2) for næring over tid.** Målene løftes til seksjon (A–U) eller
+  divisjon, så koder med flere detaljerte mål blir entydige: 91 % omkodet på nivå 1 og 83 % på nivå 2
+  (november 2007), mot 57 % på femsifret nivå. Omkodede og uendrede koder kan skilles på lengden (1 eller
+  2 tegn mot `xx.xxx`).
 - **Koblingstabeller kan være mange-til-mange.** `kobling` utelater koder som går til flere mål, og koder uten
   motpart (Klass har rader uten mål, f.eks. `46.890` i SN2025–SN2007), og lister dem i en kommentar.
 - **Samme kode som kilde i én regel og mål i en annen** (vanlig mellom versjoner, f.eks. `25.300 -> 25.400` og
@@ -322,8 +408,9 @@ står. Det som må testes, står i TESTLISTE del 8.
 - **`recode` på strenger.** Koder som `'01.110'` og `'0110'` må skrives som strenger. Landkodene i `BEFOLKNING_LANDBAK3GEN` er
   strenger. Snutten `landbakgrunn_region.txt` bruker `destring` og tallintervaller. Det går også, men verktøyets
   utskrift er strenger og skal ikke kombineres med `destring`.
-- **Statsløs og uoppgitt stoppes.** `grupper 545` gir egne målkoder for statsløs og uoppgitt (`V9`, eller `V91` og
-  `V92` på nivå 2). De har under 10 bosatte og stopper `recode`. Bruk `--utelat V9` (nivå 1) eller `--utelat V91,V92`.
+- **Statsløs og uoppgitt er små.** `grupper 545` gir egne målkoder for statsløs og uoppgitt (`V9`, eller `V91` og
+  `V92` på nivå 2). De har under 10 bosatte og stoppet `recode` med versjon 1 av tiltakene (da: `--utelat V9`
+  eller `--utelat V91,V92`). Med versjon 2 vises de som 0 i tabeller.
   Klass 545 er autoritet for verdensdel (Kypros i Europa, Bermuda og Saint-Pierre-et-Miquelon i Nord-Amerika).
   `landbakgrunn_region.txt` følger Klass og skiller i tillegg EU/EØS fra resten av Europa, som Klass ikke gjør.
 - **Dataene kan ha nyere koder enn kodelisten.** `NUDB_BU` 1.7.2024 hadde NUS-koder (f.eks. 754144 Master, kunstig

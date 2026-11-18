@@ -1,7 +1,7 @@
 // =====================================================================
 // Lønnstakere etter sektor (stat, kommune, privat, offentlig foretak), fra jobbnivå
-// Status:    testet (no.ssb.fdb:59, 2026-11). Logikken er kjørt; denne renskrevne versjonen har bare
-//            nye navn, kommentarer og titler.
+// Status:    UTGÅTT i no.ssb.fdb:60. ARBLONN_FRTK_SEKTOR_2014 er slettet (november 2026), uten erstatning.
+//            Var testet (no.ssb.fdb:59, 2026-11). Beholdt som dokumentasjon av metoden.
 // Variabler: ARBLONN_FRTK_SEKTOR_2014 (jobb, månedlig 16., 2015-01 til 2026-07)
 //            https://microdata.no/discovery/variable/no.ssb.fdb/59/ARBLONN_FRTK_SEKTOR_2014
 //            ARBLONN_ARB_ARBEIDSTID (jobb, avtalt arbeidstid per uke)

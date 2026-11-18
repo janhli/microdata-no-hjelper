@@ -41,8 +41,8 @@ from pathlib import Path
 
 KLASS = "https://data.ssb.no/api/klass/v1"
 KODELISTER = Path(__file__).resolve().parent.parent / "metadata" / "kodelister.csv"
-UTELAT_HJELP = ("kommaseparerte målkoder som tas ut, f.eks. 17.240 fra microdata.no-feilen «Omkodingen til "
-                "17.240 påvirker for få enheter». Legg til én kode per runde og kjør på nytt")
+UTELAT_HJELP = ("kommaseparerte målkoder som tas ut. Trengs bare med configure confidentiality v1 (versjon 1 av "
+                "tiltakene), der «Omkodingen til 17.240 påvirker for få enheter» stoppet kommandoen")
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 from recode_regler import konflikter, recode_linjer  # noqa: E402
@@ -75,8 +75,9 @@ def kodeliste(variabel):
 def skriv_recode(variabel, kart, merkelapper, utelat=""):
     """Skriver recode-linjene, og sier fra hvis noen regler måtte samles i én kommando.
 
-    utelat: kommaseparerte målkoder som tas ut. microdata.no stopper en recode der én målverdi treffer
-    1–9 enheter («Omkodingen til X påvirker for få enheter»). Kildekodene til X står da uendret.
+    utelat: kommaseparerte målkoder som tas ut. Med versjon 1 av anonymiseringstiltakene stoppet microdata.no en
+    recode der én målverdi traff 1–9 enheter («Omkodingen til X påvirker for få enheter»). Fjernet i versjon 2
+    (november 2026). Kildekodene til X står uendret.
     """
     ut = {m.strip() for m in utelat.split(",") if m.strip()}
     if ut:

@@ -10,7 +10,8 @@
 // Fallgruver:
 //   - Ikke legg tabeller med tittel i for-løkker. Skriv dem ut for hvert år.
 //   - Datasett og variabler kan ikke ha samme navn.
-//   - Hver replace/recode må endre minst 10 enheter.
+//   - Celler med 1–4 vises som 0 (anonymiseringstiltak versjon 2, fra 2026-11-17).
+//   - En regresjon må ha minst to koeffisienter, og kategorier med under 5 observasjoner fjerner hele variabelen.
 // =====================================================================
 
 // ---------------------------------------------------------------------
@@ -59,5 +60,7 @@ endblock
 tabulate fylke aldgr, missing rowpct
 
 // --- 5. Kildehenvisning ---
-// Ny kommando (2026-11), ikke kjørt i malen ennå (TESTLISTE 8.8). Står sist, så den tar med alle kildene.
+// Gir «Analysen er gjennomført i microdata.no med datagrunnlag fra: SSB (registerdata). Data analysert:
+// <dato>» (TESTLISTE 8.8, versjon 60). Ikke med datalagerversjon: oppgi den i teksten. Kommer ikke med
+// når hele utskriften kopieres. Kopier den for seg.
 citation

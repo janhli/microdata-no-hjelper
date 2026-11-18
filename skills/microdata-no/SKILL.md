@@ -21,16 +21,17 @@ Alle stier er relative til denne skill-mappen. Søk med Grep, og ikke les hele f
 | `metadata/datalager.json` | Versjonshistorikk for `no.ssb.fdb`, med hvilke variabler som er endret i hver versjon |
 | `metadata/datalagre.json` | Alle datalagrene med navn og versjon: `no.ssb.fdb` (SSB) og fra 2026-11 `no.fhi.kreftregisteret` og `no.fhi.npr` (FHI). Kolonnen `datalager` i `variabler.csv` sier hvor variabelen ligger. FHI-dataene er ikke testet i microdata.no ennå (issue #11) |
 | `metadata/kommuneendringer.json` | Kommuneendringer fra SSB Klass 131 siden 1989 (gammel kode, ny kode, dato, navn). Brukes av `verktoy/kommuneomkoding.py` |
+| `metadata/grunnkrets/` | Grunnkrets (SSB Klass 1): `endringer.csv` (alle kodeendringer siden 1990) og `inndelinger.csv` (grunnkrets → levekårssone, bydel og delbydel i Oslo, gjeldende inndeling). Brukes av `verktoy/grunnkrets.py` |
 | `metadata/regioner/*.csv` | Koblingstabeller fra kommune (2024) til regioninndelinger: politidistrikt, valgdistrikt, økonomiske regioner, helseregioner, familievern, barnevern, reiseliv, samiske valgkretser, sentralitet, landsdeler og bo- og arbeidsmarkedsregioner. Kolonner `kommunenr;regionkode;regionnavn`. Oversikt i `INDEX.csv`, manuelt lastede filer i `manuelt/` |
 | `metadata/manual/**/*.md` | Hele manualen som Markdown. Kommandoreferansen ligger i `kommandoer_og_funksjoner/kommandoer.md` og funksjonene i `.../funksjoner.md`. |
 | `referanser/fallgruver.md` | Feil som ikke står (tydelig) i manualen, med feilmelding og løsning. **Les den før du leverer et skript.** |
-| `kodesnutter/` | Frittstående og kommenterte snutter med teststatus: analysemal, alder, innvandringskategori, landbakgrunn, utdanning, arbeidsstyrkestatus, sektor for lønnstakere, samliv, husholdning, bolig, lavinntekt, verdi ved hendelse, mor–barn og forløp. Oversikt i `kodesnutter/README.md`. **Ta utgangspunkt i disse før du skriver noe selv.** |
+| `kodesnutter/` | Frittstående og kommenterte snutter med teststatus: analysemal, alder, innvandringskategori, landbakgrunn, utdanning, arbeidsstyrkestatus, sektor for lønnstakere (utgått i versjon 60), samliv, husholdning, bolig, lavinntekt, verdi ved hendelse, mor–barn og forløp. Oversikt i `kodesnutter/README.md`. **Ta utgangspunkt i disse før du skriver noe selv.** |
 
 Dato for siste nedlasting står i `metadata/HENTET`. Oppdater med `python verktoy/hent_variabler.py`
 (`--alle` henter alt på nytt, ca. 6 min) og `python verktoy/hent_manual.py`.
 Begge skriptene kontrollerer uttrekket før de skriver, og avsluttes med feilkode uten å endre filer hvis noe
 mangler. `--tving` skriver likevel.
-Kommuneendringene oppdateres med `python verktoy/hent_kommuneendringer.py`.
+Kommuneendringene oppdateres med `python verktoy/hent_kommuneendringer.py`. Grunnkretsene oppdateres med `python verktoy/hent_grunnkrets.py`.
 
 ## Kommunenumre over tid
 
@@ -45,6 +46,25 @@ For å gruppere kommuner i regioner (helseregion, politidistrikt, økonomisk reg
 `python verktoy/regionomkoding.py <inndeling> --fra <kommunevariabel> --til <ny variabel>`
 (`--liste` viser inndelingene). Tabellene gjelder kommunenummer i 2024-inndelingen, så omkod gamle
 kommunenumre først. Oppdater tabellene med `python verktoy/hent_regioninndelinger.py`.
+
+## Grunnkrets, delområde, levekårssone og bydel
+
+`BEFOLKNING_GRUNNKRETS` (fra versjon 60, november 2026) er grunnkretsen personen bor i per 1.1., 1990–2026.
+Koden er kommune (4) + delområde (2) + grunnkrets (2) og skifter når kommunen skifter nummer. Bruk
+`python verktoy/grunnkrets.py --til <inndeling> --aar <år> --var <variabel> [--kommune 4601,5001]`:
+
+| `--til` | Gir |
+|---|---|
+| `delomrade` | Delområde (6 sifre), hele landet |
+| `lks` | Levekårssoner fra Klass (10 sifre, 66 kommuner) |
+| `bydel` | Bydeler i Oslo, Bergen, Trondheim og Stavanger (6 sifre) |
+| `delbydel` | Delbydeler i Oslo (4 sifre) |
+| `FIL.csv` | Egne områder, kolonnene `grunnkrets;kode;navn` med gjeldende grunnkretskoder |
+
+`--aar` er året dataene er hentet for. Verktøyet følger gamle koder gjennom endringene til gjeldende
+inndeling og koder rett til målet. Ikke omkod til enkeltgrunnkretser først (lange skript, og tabeller på
+grunnkrets får mange celler under 5). Si fra til brukeren om grunnkretser som er delt mellom enheter (står i
+kommentaren), og at verdier med 8 tegn ikke er omkodet. Se «Grunnkrets» i `referanser/fallgruver.md`.
 
 ## Klass: slå opp i stedet for å skrive reglene for hånd
 
@@ -115,7 +135,8 @@ Eksemplene bruker gamle datalagerversjoner (23–45), så sjekk variabelnavnene.
 | Overganger mellom kategorier over tid | `transitions-panel` | På paneldata. Overganger til og fra missing er utelatt |
 
 Les «Analyse» i `referanser/fallgruver.md` før du leverer en analyse. Der står konfidensialitetstiltakene som
-påvirker analyser (konstantledd som skjules, winsorisering i tabeller men ikke i regresjoner) og feil i
+påvirker analyser (winsorisering også i regresjoner, kategorier med under 5 observasjoner som fjernes, minst to
+koeffisienter) og feil i
 manualens eksempler (overlevelsesanalyse, diff-in-diff, `ivregress`). Velg modell etter utfallet og designet,
 og si fra om forutsetningene (f.eks. parallelle trender i diff-in-diff, instrumentets gyldighet).
 
@@ -149,8 +170,9 @@ gamle versjoner, og da må du sjekke at variabelnavnene fortsatt finnes i `varia
 - `collapse`, `aggregate`, `merge ... into ... on ...`
 - `tabulate`, `summarize`, `regress`, `logit`, `barchart`, `histogram`
 - `let` og `for ... end` for løkker
-- `citation` nederst i skriptet gir en datert kildehenvisning for datakildene som er brukt (ny i 2026-11,
-  ikke testet: TESTLISTE 8.8). Resultater skal ha microdata.no som kilde ved publisering
+- `citation` nederst i skriptet gir én linje: «Analysen er gjennomført i microdata.no med datagrunnlag fra:
+  SSB (registerdata). Data analysert: 2026-11-18» (versjon 60). Uten datalagerversjon og variabler, så oppgi
+  `require`-versjonen selv. Resultater skal ha microdata.no som kilde ved publisering
   (https://www.microdata.no/dokumentasjon/kildehenvisning/)
 
 ## Nettkilder (hvis lokale filer ikke strekker til)
@@ -173,3 +195,9 @@ datalagerversjoner og har kjente feil.
 Microdata.no undertrykker små celler og legger på støy. Unngå svært finfordelte tabeller og små
 populasjoner. Resultatene kan avvike litt fra SSBs offisielle statistikk. Se også avsnittet om
 avsløringskontroll i `referanser/fallgruver.md`.
+
+Fra 17. november 2026 (versjon 60) gjelder **versjon 2 av anonymiseringstiltakene**: celler med 1–4 vises som
+0, tabeller stoppes ikke, `replace`/`recode` på 1–9 enheter er tillatt, minste datasett er 100 personer,
+regresjoner winsoriseres og nedsamples, og støyen endres når skriptet endres. Mye i `fallgruver.md` og
+`TESTLISTE.md` ble avklart med versjon 1, og er merket slik. `configure confidentiality v1` gir de gamle
+tiltakene (til 30. april 2027, ikke med FHI-data eller grunnkrets).

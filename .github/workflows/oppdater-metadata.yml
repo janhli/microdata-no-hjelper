@@ -32,6 +32,9 @@ jobs:
       - name: Hent manual
         working-directory: skills/microdata-no
         run: python verktoy/hent_manual.py
+      - name: Hent grunnkretsendringer og levekårssoner (SSB Klass 1)
+        working-directory: skills/microdata-no
+        run: python verktoy/hent_grunnkrets.py
       - name: Kjør testene mot de nye filene
         run: python -m unittest discover -s tests
       - name: Sett dato hvis noe er endret

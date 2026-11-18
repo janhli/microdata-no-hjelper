@@ -1,7 +1,7 @@
 // =====================================================================
 // Testskript: TESTLISTE del 10 (FHI-datalagrene, issue #11), punkt 10.1–10.7, og 8.8 med to kilder
 // Laget:      2026-11, ikke kjørt ennå
-// Versjoner:  no.ssb.fdb:59, no.fhi.kreftregisteret:1, no.fhi.npr:1. Spør om analysemiljøet har de samme.
+// Versjoner:  no.ssb.fdb:60, no.fhi.kreftregisteret:1, no.fhi.npr:1. Spør om analysemiljøet har de samme.
 // Populasjon: krefttilfeller med diagnoseår 2023 (Kreftregisteret), episoder rapportert 2024 (NPR)
 // Variabler:  https://microdata.no/discovery/variable/no.fhi.kreftregisteret/1/S_DIAGNOSEAR
 //             https://microdata.no/discovery/variable/no.fhi.kreftregisteret/1/S_TOPOGRAFIICD10
@@ -11,13 +11,13 @@
 //             https://microdata.no/discovery/variable/no.fhi.npr/1/SOM_EP_AAR
 //             https://microdata.no/discovery/variable/no.fhi.npr/1/SOM_EP_HOVEDTILSTAND1
 //             https://microdata.no/discovery/variable/no.fhi.npr/1/SOM_EP_PERSONID
-//             https://microdata.no/discovery/variable/no.ssb.fdb/59/BEFOLKNING_KJOENN
+//             https://microdata.no/discovery/variable/no.ssb.fdb/60/BEFOLKNING_KJOENN
 // Kodelister: kreftregisteret.py verdier --variabel <NAVN> (ELVIS)
 // Rekkefølge: det sikreste først. collapse til person (10.6) og NPR (10.7) står sist.
 //             citation (8.8 med to kilder) står før dem, så den blir kjørt.
 // =====================================================================
 
-require no.ssb.fdb:59 as fdb
+require no.ssb.fdb:60 as fdb
 require no.fhi.kreftregisteret:1 as krg
 require no.fhi.npr:1 as npr
 
@@ -50,7 +50,7 @@ textblock
 ## Test 10.2: Kodeformat og kreftform (nivå 1, laget med kreftregisteret.py)
 Kodene er uten punktum (C18, C187). De tre første tegnene gir kreftformen, og hovedgruppene er ELVIS sine.
 
-**Forventet:** Ingen feil fra `recode` (10-enhetsregelen). Bare ondartede (atferd 3). Størst: mannlige
+**Forventet:** Ingen feil fra `recode`. Bare ondartede (atferd 3). Størst: mannlige
 kjønnsorganer (prostata), fordøyelsesorganer, bryst, hud og lunge. C77–C79 (spredning) og D-koder står
 uendret. Sammenlign med Kreftregisterets statistikkbank (https://sb.kreftregisteret.no/) for 2023.
 endblock
@@ -92,8 +92,10 @@ tabulate kreftform kjonn if atferd == 3 & inlist(kreftform, 'C51-C58', 'C60-C63'
 // ---------------------------------------------------------------------
 textblock
 ## Test 8.8 (med to kilder): `citation`
-**Forventet:** Kildehenvisningen nevner både SSB og FHI (Kreftregisteret), og helst NPR, siden alle tre er
-koblet til med `require`. Noter om bare datalagrene som er brukt i import, kommer med. NPR er ikke importert ennå.
+**Forventet:** Med bare SSB ble det «... datagrunnlag fra: SSB (registerdata). Data analysert: <dato>».
+Her bør både SSB og FHI (Kreftregisteret) stå, og helst NPR, siden alle tre er koblet til med `require`. Noter
+om bare datalagrene som er brukt i import, kommer med (NPR er ikke importert ennå). Resultatet kommer ikke med
+når hele utskriften kopieres: kopier det for seg.
 endblock
 citation
 
@@ -151,11 +153,11 @@ tabulate kreftdiag harkreft23, rowpct
 textblock
 ## Test 10.8: Merkelapp med en regel til samme verdi
 Brystkreft er både hovedgruppe og tresifret kode (`C50`). `kreftregisteret.py grupper --nivaa 1` setter
-navnet med `('C50' = 'C50' 'Bryst')`. Regelen endrer ingen verdier, og kan bli stoppet av regelen om at
-`recode` må påvirke minst 10 enheter. Står sist, så den ikke stopper resten.
+navnet med `('C50' = 'C50' 'Bryst')`. Regelen endrer ingen verdier. Med versjon 1 av
+anonymiseringstiltakene kunne den bli stoppet (minst 10 enheter), men det tiltaket er fjernet. Står sist.
 
-**Forventet:** `C50` vises som «Bryst» i tabellen. Blir kommandoen stoppet, må merkelappen settes på
-en annen måte (fallgruve).
+**Forventet:** `C50` vises som «Bryst» i tabellen. Blir den stoppet eller merkelappen ikke satt, må
+merkelappen settes på en annen måte (fallgruve).
 endblock
 use kreft
 recode kreftform ('C50' = 'C50' 'Bryst')

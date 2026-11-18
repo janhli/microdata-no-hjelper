@@ -182,9 +182,9 @@ def kommando_grupper(a):
               + (f": {' '.join(andre[:15])}{' ...' if len(andre) > 15 else ''}" if andre else ""))
     var = a.var or a.variabel.lower()
     if a.ukjent:
-        # Ikke recode med sluttregel (*): uavklart om den også treffer manglende verdier, og identitetsregler for
-        # sjeldne kreftformer (C58 morkake) kan stoppe kommandoen (10-enhetsregelen). Kreftkodene velges heller
-        # med en betingelse: C-koder unntatt dem som ikke er kreftform i ELVIS, pluss D-kodene som er det.
+        # Ikke recode med sluttregel (*): uavklart om den også treffer manglende verdier, og en recode med nesten
+        # 20 000 koder blir svært lang. Kreftkodene velges heller med en betingelse: C-koder unntatt dem som ikke er
+        # kreftform i ELVIS, pluss D-kodene som er det.
         tre = f"substr({var}, 1, 3)"
         c_ut = [p for p in uten_c if p.startswith("C")]
         d_inn = [p for p in med if not p.startswith("C")]
@@ -251,7 +251,7 @@ def main():
                    help="1: 14 hovedgrupper, 2: tresifret kode med navn")
     p.add_argument("--navn", default="kreftform", help="navn på den nye variabelen (standard kreftform)")
     p.add_argument("--ukjent", action="store_true", help="koder som ikke er kreftform, blir 'annet'")
-    p.add_argument("--utelat", help="nivå 1: grupper som tas ut (stoppet av 10-enhetsregelen), f.eks. C40-C41")
+    p.add_argument("--utelat", help="nivå 1: grupper som tas ut, f.eks. C40-C41 (trengs bare med configure confidentiality v1)")
     p.set_defaults(f=kommando_grupper)
     p = sub.add_parser("verdier", help="verdier for en variabel, med kreftformene de gjelder for")
     p.add_argument("--variabel", required=True)

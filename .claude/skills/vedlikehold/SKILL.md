@@ -59,7 +59,7 @@ Brukeren kjører, du tolker. Lag ett skript som dekker flere punkter i testliste
 - Følg `skills/microdata-no/SKILL.md` og les `fallgruver.md` først.
 - Én `textblock` per test med punktnummer (f.eks. «Test 1.9»), hva som testes, og hva resultatet
   **skal** vise hvis antakelsen stemmer.
-- Unngå små grupper (avsløringskontroll, 10-enhetsregelen). Ett feilende punkt skal helst ikke stoppe
+- Unngå små grupper (celler med 1–4 vises som 0, versjon 2 av anonymiseringstiltakene). Ett feilende punkt skal helst ikke stoppe
   resten. Sett det mest usikre sist.
 - Oppgi datalagerversjon i `require` (gjeldende fra `datalager.json`, men spør om brukerens miljø er på
   samme versjon).

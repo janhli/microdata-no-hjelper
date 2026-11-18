@@ -1,19 +1,20 @@
 // =====================================================================
-// Testskript: TESTLISTE del 8 (analyse), punkt 8.1, 8.2, 8.3, 8.7, 8.8, 8.5 og 8.4
-// Laget:      2026-11, ikke kjørt ennå
-// Versjon:    no.ssb.fdb:59. Spør om analysemiljøet er på samme versjon før kjøring.
+// Testskript: TESTLISTE del 8 (analyse), punkt 8.1, 8.2, 8.3, 8.7, 8.8, 8.5, 8.4 og 8.9
+// Laget:      2026-11, kjørt 2026-11-18 (versjon 60). Resultatene står i TESTLISTE og fallgruver.md
+// Versjon:    no.ssb.fdb:60, anonymiseringstiltak versjon 2 (fra 2026-11-17). Spør om analysemiljøet
+//             er på samme versjon før kjøring.
 // Populasjon: bosatte 30–60 år (alder ved utgangen av 2023) per 1.1.2024
-// Variabler:  https://microdata.no/discovery/variable/no.ssb.fdb/59/BEFOLKNING_STATUSKODE
-//             https://microdata.no/discovery/variable/no.ssb.fdb/59/BEFOLKNING_FOEDSELS_AAR_MND
-//             https://microdata.no/discovery/variable/no.ssb.fdb/59/BEFOLKNING_KJOENN
-//             https://microdata.no/discovery/variable/no.ssb.fdb/59/BEFOLKNING_KOMMNR_FORMELL
-//             https://microdata.no/discovery/variable/no.ssb.fdb/59/INNTEKT_WLONN
-//             https://microdata.no/discovery/variable/no.ssb.fdb/59/NUDB_BU
-// Rekkefølge: det sikreste først. 8.5 (panel) og 8.4 (som kan stoppes) står sist.
+// Variabler:  https://microdata.no/discovery/variable/no.ssb.fdb/60/BEFOLKNING_STATUSKODE
+//             https://microdata.no/discovery/variable/no.ssb.fdb/60/BEFOLKNING_FOEDSELS_AAR_MND
+//             https://microdata.no/discovery/variable/no.ssb.fdb/60/BEFOLKNING_KJOENN
+//             https://microdata.no/discovery/variable/no.ssb.fdb/60/BEFOLKNING_KOMMNR_FORMELL
+//             https://microdata.no/discovery/variable/no.ssb.fdb/60/INNTEKT_WLONN
+//             https://microdata.no/discovery/variable/no.ssb.fdb/60/NUDB_BU
+// Rekkefølge: det sikreste først. 8.5 (panel), 8.4 og 8.9 (som skal stoppes) står sist.
 // 8.6 (sensurering i overlevelsesanalyse) får et eget skript.
 // =====================================================================
 
-require no.ssb.fdb:59 as fdb
+require no.ssb.fdb:60 as fdb
 
 // --- Populasjon ---
 create-dataset personer
@@ -53,8 +54,9 @@ textblock
 Hva testes: om `regress` utelater enheter som mangler en av variablene (listevis utelatelse).
 
 **Forventet hvis antakelsen stemmer:** Antall observasjoner i regresjonen er omtrent lik cellen
-«mangler_utd = 0, mangler_lonn = 0» i tabellen over (±5 for støy). Er N lik hele populasjonen, er
-manglende verdier fylt inn eller satt til 0, og det må inn i fallgruver.md.
+«mangler_utd = 0, mangler_lonn = 0» i tabellen over (±5 for støy, og 1–11 færre fordi regresjonen
+nedsamples, tiltak 16). Er N lik hele populasjonen, er manglende verdier fylt inn eller satt til 0, og det
+må inn i fallgruver.md.
 endblock
 regress lonn mann utd1
 
@@ -80,15 +82,20 @@ tabulate mangler_utd h_if, missing
 
 // ---------------------------------------------------------------------
 textblock
-## Test 8.3: Regresjon mot winsorisert gjennomsnitt
-Hva testes: om regresjoner bruker data uten winsorisering (tiltak 2), mens tabeller winsoriseres.
+## Test 8.3: Regresjoner winsoriseres (tiltak 2, versjon 2)
+Hva testes: om regresjonen nå bruker winsoriserte data, som tabellene. Lønn etter tre utdanningsgrupper
+(to koeffisienter, så tiltak 17 ikke stopper den). Gruppe 1 er grunnskole eller lavere (`utd1` 0–2),
+2 er videregående (3–5), 3 er høyere (6–8).
 
-**Forventet hvis antakelsen stemmer:** Konstantleddet (kvinner) og konstantledd + koeffisienten for mann
-(menn) er litt **høyere** enn gjennomsnittene i tabellen, fordi de høyeste lønningene ikke er kuttet.
-Er de like, winsoriseres også regresjonen.
+**Forventet hvis antakelsen stemmer:** Konstantleddet og konstantledd + hver koeffisient er omtrent lik
+gjennomsnittene i tabellen (avvik på under ca. 1 %, tabellen winsoriseres per gruppe og regresjonen på hele
+utvalget). Med versjon 1 var regresjonen klart **høyere** for gruppe 3, der de høyeste lønningene er.
 endblock
-tabulate mann if mangler_lonn == 0, summarize(lonn) mean
-regress lonn mann if mangler_lonn == 0
+generate utdgr = 1 if utd1 <= 2
+replace utdgr = 2 if utd1 >= 3 & utd1 <= 5
+replace utdgr = 3 if utd1 >= 6 & utd1 <= 8
+tabulate utdgr if mangler_lonn == 0, summarize(lonn) mean
+regress lonn i.utdgr if mangler_lonn == 0
 
 // ---------------------------------------------------------------------
 textblock
@@ -112,7 +119,7 @@ textblock
 Ny kommando (2026-11). Microdata.no beskriver ikke syntaks eller opsjoner. Står før 8.5 og 8.4, som kan
 stoppes, så den blir kjørt. Lim inn utskriften.
 
-**Forventet:** En kopierbar, datert kildehenvisning som nevner SSB (`no.ssb.fdb`, versjon 59). Noter om
+**Forventet:** En kopierbar, datert kildehenvisning som nevner SSB (`no.ssb.fdb`, versjon 60). Noter om
 den nevner variablene eller bare datalageret, og om den tar med datoen for kjøringen.
 endblock
 citation
@@ -149,12 +156,13 @@ regress-panel plonn gruppe##etter, pooled
 
 // ---------------------------------------------------------------------
 textblock
-## Test 8.4: Konstantleddet skjules ved små kombinasjoner (tiltak 9)
-Hva testes: om konstantleddet forsvinner når en kategorisk variabel har mange små grupper. Utvalg på
-20 000 personer, og kommune som faktor (357 kommuner, mange med under 5 personer i utvalget).
+## Test 8.4: Kategorisk variabel med små grupper fjernes (tiltak 14)
+Hva testes: om hele `i.kommune` fjernes når noen kommuner har under 5 personer. Utvalg på 20 000
+personer (357 kommuner, mange med under 5 i utvalget). Alder er med, så modellen har to koeffisienter
+selv om kommune fjernes (tiltak 17). Tiltak 9 (konstantledd skjules) er fjernet i versjon 2.
 
-**Forventet hvis antakelsen stemmer:** Koeffisientene vises, men konstantleddet mangler. Kan bli stoppet
-eller gå tregt. Da er det ikke en feil i resten av skriptet.
+**Forventet hvis antakelsen stemmer:** Bare `lmann`, `lalder` og konstantledd i utskriften, ingen
+kommunekoeffisienter. Noter om det står en melding om hvorfor kommune mangler.
 endblock
 use personer
 clone-units personer liten
@@ -162,8 +170,21 @@ use liten
 import fdb/BEFOLKNING_KOMMNR_FORMELL 2024-01-01 as kommune
 import fdb/INNTEKT_WLONN 2023-12-31 as llonn
 import fdb/BEFOLKNING_KJOENN as lkjonn
+import fdb/BEFOLKNING_FOEDSELS_AAR_MND as lfaarmnd
 sample 20000 4711
 generate lmann = 0
 replace lmann = 1 if lkjonn == '1'
+generate lalder = 2023 - int(lfaarmnd/100)
 destring kommune
-regress llonn lmann i.kommune
+regress llonn lmann lalder i.kommune
+
+// ---------------------------------------------------------------------
+textblock
+## Test 8.9: Regresjon med én koeffisient stoppes (tiltak 17)
+Hva testes: om `regress` med bare én forklaringsvariabel stoppes. Står sist, fordi den skal stoppe.
+
+**Forventet hvis antakelsen stemmer:** Kjøringen stoppes med en melding om for få koeffisienter. Noter
+den eksakte meldingen til fallgruver.md.
+endblock
+use personer
+regress lonn mann

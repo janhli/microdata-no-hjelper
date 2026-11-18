@@ -55,6 +55,8 @@ def main():
         st = status(tekst)
         if not valgt and st.startswith("testet (") and f"fdb:{versjon}," in st:
             continue  # allerede testet frittstående med gjeldende versjon
+        if not valgt and st.upper().startswith("UTGÅTT"):
+            continue  # bygger på variabler som er slettet
         deler.append((n, tekst, st))
 
     sys.stdout.reconfigure(encoding="utf-8")

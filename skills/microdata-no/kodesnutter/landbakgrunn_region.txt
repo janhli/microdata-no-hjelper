@@ -19,9 +19,10 @@
 //   - Uspesifiserte koder («Resten av Afrika», «Asia uspesifisert» osv., x94–x99) er med i
 //     verdensdelen sin. 194–199 er Europa utenom EU/EØS.
 //   - Statsløs (980), uoppgitt utenlandsk statsborgerskap (989) og uoppgitt (990) har til sammen
-//     under 10 bosatte. En recode-regel som treffer så få stoppes av avsløringskontrollen, også når
-//     de tre slås sammen (testet versjon 59, november 2026). De omkodes derfor ikke, men får navn.
-//   - Tabeller for enkeltland på små populasjoner stoppes av avsløringskontrollen.
+//     under 10 bosatte. Med versjon 1 av anonymiseringstiltakene ble en recode-regel som treffer så få
+//     stoppet, også når de tre ble slått sammen (testet versjon 59, november 2026). De omkodes derfor
+//     ikke, men får navn. Med versjon 2 (fra 2026-11-17) vises de som 0 i tabeller.
+//   - Tabeller for enkeltland på små populasjoner får mange celler med 1–4, som vises som 0.
 // =====================================================================
 
 require no.ssb.fdb:59 as fdb

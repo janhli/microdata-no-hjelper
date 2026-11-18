@@ -11,6 +11,9 @@ Det som kan sjekkes uten microdata.no, er automatisert i [`tests/`](tests/) (`py
 
 Bruk ett lite skript med `import fdb/BEFOLKNING_KOMMNR_FORMELL 2024-01-01 as kommune` og `generate x = kommune`.
 
+Punktene er avklart med versjon 1 av anonymiseringstiltakene. 1.5 og 1.10 (og 4.1 om `V9`) gjaldt regelen om
+minst 10 enheter (tiltak 6), som er fjernet i versjon 2 (17. november 2026). Se 1.13.
+
 | # | Hva | Hvordan | Forventet | Pri |
 |---|---|---|---|---|
 | 1.1 | ~~Sluttregel i egen `recode`-kommando~~ **Avklart (versjon 59, 2026-11):** overskriver alt, også det som er omkodet før | | | ✓ |
@@ -25,6 +28,7 @@ Bruk ett lite skript med `import fdb/BEFOLKNING_KOMMNR_FORMELL 2024-01-01 as kom
 | 1.10 | ~~Detaljerte koblinger stoppes av 10-enhetsregelen~~ **Avklart (versjon 59, 2026-11):** `klass.py --utelat` virker. SN2002 → SN2007 gikk gjennom i runde 3, med 33 målkoder tatt ut (beregnet fra `tabulate` på kildekodene). Men 42 % av sysselsatte står igjen med SN2002-kode fordi kodene har flere mål. Se 1.11 | | | ✓ |
 | 1.11 | ~~`klass.py kobling --nivaa N`~~ **Avklart (versjon 59, 2026-11):** SN2002 → SN2007 for november 2007 omkoder 91,0 % på nivå 1 (seksjon) og 82,6 % på nivå 2 (divisjon). Nivå 1 gikk gjennom uten `--utelat`, nivå 2 trengte `--utelat 30`. Fordelingen på seksjon ligner ekte SN2007 (2008), med avvik på +0,1 til −1,7 prosentpoeng, størst for N og O | | | ✓ |
 | 1.12 | ~~`klass.py grupper` for koder som mangler i Klass~~ **Avklart (versjon 59, 2026-11):** `grupper` går nå opp i hierarkiet via prefiks (43.220 → 43.22 → F). `REGSYS_NARING_SN2007` for november 2008 ble gruppert fullt ut (før: 1,2 % ugruppert). Seksjon F +19 244 | | | ✓ |
+| 1.13 | `recode` som treffer 1–9 enheter (versjon 2) | `import fdb/BEFOLKNING_LANDBAK3GEN 2025-01-01 as landbak` og `recode landbak (990 = 9)`, som ble stoppet i versjon 59 | Godtas uten «påvirker for få enheter». Da kan `--utelat`-rådene i verktøyene merkes som bare versjon 1 | P2 |
 
 ## 2. Kommuneomkoding (`verktoy/kommuneomkoding.py`)
 
@@ -108,19 +112,20 @@ Sammenlign agentens svar med og uten skillen på disse oppgavene.
 ## 8. Analyse (fra manualen, ikke kjørt)
 
 Antakelser i «Analyse» i [`fallgruver.md`](skills/microdata-no/referanser/fallgruver.md). Kan samles i ett skript
-på en populasjon over 100 000 (f.eks. bosatte 30–60 år). Skriptet for 8.1–8.5, 8.7 og 8.8 ligger i
+på en populasjon over 100 000 (f.eks. bosatte 30–60 år). Skriptet for 8.1–8.5, 8.7–8.9 (kjørt 2026-11-18, versjon 60) ligger i
 [`.claude/skills/vedlikehold/testskript/del8_analyse.txt`](.claude/skills/vedlikehold/testskript/del8_analyse.txt) (ikke kjørt ennå).
 
 | # | Hva | Hvordan | Forventet | Pri |
 |---|---|---|---|---|
-| 8.1 | Manglende verdier i regresjoner | `regress y x` der x mangler for en kjent andel, og sammenlign N i utskriften med `summarize` | Enheter med manglende verdi utelates (listevis). Står ikke i manualen | P1 |
-| 8.2 | Dummy fra sammenligning med `sysmiss` | `generate h = inntekt > 500000` der inntekt mangler for noen, og `tabulate h, missing` | Uavklart: 0, 1 eller missing for de som mangler. Påvirker utfallet i `logit` | P1 |
-| 8.3 | Regresjon mot winsorisert gjennomsnitt | `regress inntekt` (bare konstantledd) mot `summarize inntekt` | Konstantleddet er høyere enn det winsoriserte gjennomsnittet | P3 |
-| 8.4 | Konstantledd skjules (tiltak 9) | `regress y i.kommune#i.kjonn#i.alder5` på en liten populasjon | Konstantleddet mangler, koeffisientene vises | P3 |
-| 8.5 | `regress-panel-diff` mot `regress-panel ... gruppe##etter, pooled` | Begge på samme panel | Samme ATET (manualen sier det) | P2 |
+| 8.1 | ~~Manglende verdier i regresjoner~~ **Avklart (versjon 60, 2026-11-18):** listevis. N i `regress lonn mann utd1` var 1 888 890, lik antallet uten manglende lønn og utdanning | | | ✓ |
+| 8.2 | ~~Dummy fra sammenligning med `sysmiss`~~ **Avklart (versjon 60, 2026-11-18):** `x > 5` gir 0, `x != 2` gir 1, og `replace ... if x > 5` endrer ingenting når x mangler. Ikke som Stata. Se `fallgruver.md` | | | ✓ |
+| 8.3 | ~~Regresjoner winsoriseres (versjon 2)~~ **Avklart (versjon 60, 2026-11-18):** regresjonen avvek under 1 % fra gruppegjennomsnittene i tabellen (winsorisert på hele utvalget) | | | ✓ |
+| 8.4 | ~~Kategorisk variabel med grupper under 5 fjernes (tiltak 14)~~ **Avklart (versjon 60, 2026-11-18):** hele `i.kommune` fjernet, med melding under tabellen, og regresjonen kjørt med resten (N 16 976 av 20 000). Se `fallgruver.md` | | | ✓ |
+| 8.5 | ~~`regress-panel-diff` mot `regress-panel ... gruppe##etter, pooled`~~ **Avklart (versjon 60, 2026-11-18):** −4 159 mot −4 156 (forskjellen er nedsampling). Variabel 3 er etter-perioden for alle. Se `fallgruver.md` | | | ✓ |
 | 8.6 | Sensurering i overlevelsesanalyse | Tid til død for bosatte 70+ med og uten sensurering ved utvandring (`BEFOLKNING_STATUSKODE` `'3'`) | Liten forskjell for hele gruppen, større for innvandrere | P2 |
-| 8.7 | `mfx(dydx)` for en 0/1-variabel | `logit` med en dummy, og sammenlign med forskjellen mellom de to verdiene i `margins(dummy)` (målt ved gjennomsnittet, så bare omtrent lik) | Uavklart om dummyen gir diskret endring eller derivert | P3 |
-| 8.8 | `citation` (kildehenvisning, ny 2026-11, #9) | Sist i et skript, etter import fra `no.ssb.fdb` | Datert kildehenvisning med SSB og versjon. Avklar formatet, og om den tar med variablene. Står i `SKILL.md` og `mal_analyse.txt`. Test også med FHI-data i samme skript når #11 er på plass: begge datatilbyderne skal stå i henvisningen | P3 |
+| 8.7 | ~~`mfx(dydx)` for en 0/1-variabel~~ **Trolig avklart (versjon 60, 2026-11-18):** 0,1805 mot 0,1864 i `margins(mann)`. Ligner den deriverte (ca. 0,180), ikke diskret endring | | | ✓ |
+| 8.9 | ~~Minst to koeffisienter (tiltak 17)~~ **Avklart (versjon 60, 2026-11-18):** stoppes med «Regresjonsmodellen har for få forklaringsvariabler/koeffisienter. Nedre grense er to koeffisienter.» | | | ✓ |
+| 8.8 | ~~`citation` (kildehenvisning, #9)~~ **Avklart for SSB (versjon 60, 2026-11-18):** «Analysen er gjennomført i microdata.no med datagrunnlag fra: SSB (registerdata). Data analysert: 2026-11-18». Ingen versjon eller variabler. Kommer ikke med når hele utskriften kopieres. Gjenstår: flere kilder (del 10) | | | ✓ |
 
 ## 9. Eksport av figurer (Vega), issue #3
 
@@ -148,4 +153,20 @@ med 8.8 (`citation`) for flere kilder.
 | 10.5 | `collapse ... by(personid)` kobles inn i persondatasett | `merge antall into personer` | Går uten feil | P2 |
 | 10.6 | NPR-episoder, filtrert med `values()` | `import npr/SOM_EP_AAR as aar, values("2024")` | Millioner av episoder, kreft som liten andel | P2 |
 | 10.7 | Samme person i NPR og Kreftregisteret | Kreft i 2023 koblet inn i episodene | Episoder med C-diagnose har oftere krefttilfelle | P2 |
-| 10.8 | `recode` til samme verdi for å sette merkelapp (`('C50' = 'C50' 'Bryst')`) | Sist i `del10_fhi.txt` | Godtas, og C50 vises som «Bryst». Ellers stoppes den av 10-enhetsregelen | P3 |
+| 10.8 | `recode` til samme verdi for å sette merkelapp (`('C50' = 'C50' 'Bryst')`) | Sist i `del10_fhi.txt` | Godtas, og C50 vises som «Bryst» (10-enhetsregelen er fjernet i versjon 2) | P3 |
+
+## 11. Grunnkrets (`BEFOLKNING_GRUNNKRETS`, versjon 60)
+
+Antakelser i «Grunnkrets» i [`fallgruver.md`](skills/microdata-no/referanser/fallgruver.md). Skriptet ligger i
+[`.claude/skills/vedlikehold/testskript/del11_grunnkrets.txt`](.claude/skills/vedlikehold/testskript/del11_grunnkrets.txt) (ikke kjørt ennå),
+med recode-linjer fra `verktoy/grunnkrets.py`.
+
+| # | Hva | Hvordan | Forventet | Pri |
+|---|---|---|---|---|
+| 11.1 | Kodeformat i dataene | `tabulate length(gk)` og andel `kkkk9999` | Bare 8 tegn (delområdene i kodelisten er bare navn). Under 1 % uoppgitt | P2 |
+| 11.2 | De fire første sifrene er bostedskommunen | Sammenlign med `BEFOLKNING_KOMMNR_FORMELL` på samme dato | Like for nesten alle | P1 |
+| 11.3 | Levekårssoner, gjeldende år | `grunnkrets.py --til lks --aar 2026 --kommune 4601` | Ingen stopp, 63 soner i Bergen | P2 |
+| 11.4 | Gamle koder følges gjennom kommunereformen | 2019 til delområde i Bergen (1201 → 4601) | Alle omkodet (6 tegn, 4601) | P1 |
+| 11.5 | Bydel fra eldre år | 2019 til bydel i Oslo | Alle bydeler, 8 tegn bare for uoppgitt | P2 |
+| 11.6 | Lang recode for hele landet | 2015 til delområde (160 kB, 300 linjer) | Godtas. Ellers: begrens med `--kommune`, og noter grensen | P2 |
+| 11.7 | `configure confidentiality v1` med grunnkrets | Eget lite skript med `configure confidentiality v1` øverst og import av `BEFOLKNING_GRUNNKRETS` | Stoppes (manualen: ikke tillatt med grunnkrets eller FHI-data). Noter meldingen | P3 |
