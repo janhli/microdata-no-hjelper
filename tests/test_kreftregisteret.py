@@ -20,8 +20,8 @@ class TestGrupper(unittest.TestCase):
         tekst = grupper("--variabel", "S_TOPOGRAFIICD10", "--nivaa", "1", "--var", "topo")
         self.assertIn("generate kreftform = substr(topo, 1, 3)", tekst)
         self.assertEqual(avvik(tekst), [])
-        ut = simuler(recode_linjer_i(tekst), ["C18", "C50", "C34", "D47", "C78", "D05"])
-        self.assertEqual(ut, ["C15-C26", "C50", "C30-C39", "C81-C96", "C78", "D05"])
+        ut = simuler(recode_linjer_i(tekst), ["C18", "C50", "C34", "D47", "D45", "C78", "D05"])
+        self.assertEqual(ut, ["C15-C26", "C50", "C30-C39", "C81-C96", "C81-C96", "C78", "D05"])  # D45 mangler i kodelisten
         self.assertIn("'C15-C26' 'Fordøyelsesorganer'", tekst)
         self.assertIn("('C50' = 'C50' 'Bryst')", tekst)  # gruppe og kode er like, men skal ha navn
         self.assertIn("C77 C78 C79 C97", tekst)  # spredning og flere svulster står uendret, og det sies fra

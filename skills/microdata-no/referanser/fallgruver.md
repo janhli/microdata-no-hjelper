@@ -20,6 +20,12 @@ med pull request (se CONTRIBUTING.md). Tagg dem med datalagerversjon/dato hvis d
   aktivt, så variablene fra forrige datasett finnes ikke der.
 - **Løsning:** `use <kildedatasett>` før `merge ... into <måldatasett>`, og `use <måldatasett>` etterpå.
 
+### `collapse` endrer det aktive datasettet
+- **Symptom:** «Feil ved kreftform: Variabelen kreftform eksisterer ikke» etter en `collapse` tidligere i skriptet.
+- **Årsak:** `collapse` lager ikke et nytt datasett. Det gjør om det aktive datasettet til ett per `by()`-enhet
+  med bare de aggregerte variablene. De andre variablene er borte (versjon 60, november 2026).
+- **Løsning:** `clone-dataset kilde kopi` og `use kopi` før `collapse` når kilden skal brukes videre.
+
 ### Datasett og variabler kan ikke ha samme navn
 - **Symptom:** «Navnet er allerede brukt som et datasett».
 - **Årsak:** f.eks. `create-dataset intro` etterfulgt av `import ... as intro`.
@@ -89,6 +95,30 @@ med pull request (se CONTRIBUTING.md). Tagg dem med datalagerversjon/dato hvis d
   `import fdb/BEFOLKNING_MOR_FNR as fnr_mor, values_from(mor)`.
 - Manual: `metadata/manual/brukermanual/Oppretting og endring av datasett/2.6 Filtrering av datasettutvalg.md`.
 
+### Datoer er tall i formatet ÅÅÅÅMMDD, ikke dager
+- **Symptom:** Tid til hendelse blir rundt 20 millioner. `dod - date(2024, 1, 1)` ga 20 222 468 i stedet
+  for et antall dager (versjon 60, november 2026).
+- **Årsak:** `BEFOLKNING_DOEDS_DATO`, `BEFOLKNING_FORSTDATO` og `INTRO_*_DATO` er tall som `20240315`
+  (`format: YYYYMMDD` i `metadata/variabler/<NAVN>.json`). `date()` gir dager siden 1970-01-01. 24 variabler
+  har `YYYYMM` (f.eks. `BEFOLKNING_FOEDSELS_AAR_MND`) og 4 har `YYYY`.
+- **Oversikt** (`dataType` og `format` i `metadata/variabler/<NAVN>.json`, versjon 60):
+
+  | Lagring | Eksempler | Regne med `date()` |
+  |---|---|---|
+  | `START@`/`STOP@` fra `import-event` | `START@astatus` | Ja, dager siden 1970 (manualens eksempler) |
+  | `date@panel` fra `import-panel` | | Ja, `year(date@panel)` virker |
+  | `Instant` (5) | `ARBLONN_ARB_START`/`_SLUTT`, `SOM_EP_INNDATO`/`_UTDATO`, `S_DIAGNOSEDATO` | Ja, dager siden 1970 (testet for `S_DIAGNOSEDATO` og `SOM_EP_INNDATO`, TESTLISTE 10.9) |
+  | `Long` ÅÅÅÅMMDD (5) | `BEFOLKNING_DOEDS_DATO`, `BEFOLKNING_FORSTDATO`, `INTRO_*_DATO`, `INTRO_GJENNOMFORINGSFRIST` | Nei, regn om (TESTLISTE 8.10) |
+  | `Long` ÅÅÅÅMM (24) | `BEFOLKNING_FOEDSELS_AAR_MND`, `ARBEIDSSOKER_DAGDATO1`, `KRIMINALITET_SIKTEDE_*DATO` | Nei, `int(x/100)` gir året |
+  | ÅÅÅÅ (5) | `BOFORHOLD_BYGGEAAR`, `KJORETOY_FREG_AR`, `BARNEVERN_FODTAAR` (tekst), `SOM_EP_AAR` (tekst) | Rene årstall |
+
+  Navnet sier lite om formatet: `KRIMINALITET_SIKTEDE_GJDATO1` er ÅÅÅÅMM.
+- **Løsning:** Sjekk `format` i JSON-filen. Gjør om til dager før du regner med datoer (testet versjon 60,
+  TESTLISTE 8.10: dødsdatoer 2023–2025 ble 19 380–20 436, og tid fra diagnose til død 0–971 dager):
+  `generate dag_aar = int(dod/10000)`, `generate dag_mnd = int(dod/100) - dag_aar*100`,
+  `generate dag_dag = dod - int(dod/100)*100` og `generate doddag = date(dag_aar, dag_mnd, dag_dag)`.
+  Sammenligning med en dato kan gjøres direkte på tallet: `dod >= 20240101`.
+
 ## Tabeller og statistikk
 
 ### `median` er ikke gyldig i `tabulate ..., summarize(x)`
@@ -120,10 +150,16 @@ med pull request (se CONTRIBUTING.md). Tagg dem med datalagerversjon/dato hvis d
   grupperinger med `replace gr = 'ukjent' if sysmiss(x)`.
 
 ### Kopi av hele utskriften mangler noen resultater
-- **Symptom:** En bruker limer inn utskriften, og `citation`, `tabulate-panel` og `regress-panel-diff`
-  står uten resultat. Det ser ut som kommandoen ikke ga noe.
-- **Årsak:** Når hele skriptet med resultater kopieres ut, kommer resultatet av disse kommandoene ikke med,
-  selv om det vises i microdata.no (versjon 60, november 2026, TESTLISTE 8.5 og 8.8).
+- **Symptom:** En bruker limer inn utskriften, og noen kommandoer står uten resultat. Det ser ut som de
+  ikke ga noe.
+- **Årsak:** Når hele skriptet med resultater kopieres ut, mangler resultatet av en del kommandoer, selv om
+  det vises i microdata.no (versjon 60, november 2026, testskriptet `utklipp.txt`):
+  - Mangler: `citation`, `tabulate-panel`, `regress-panel-diff`, `summarize-panel`, `probit`, `poisson`,
+    `negative-binomial`, `list-labels`, `variables`, og alle grafer (`histogram`, `barchart`, `boxplot`,
+    `hexbin`, `piechart`, `kaplan-meier`). `coefplot` gir tomme regresjonstabeller.
+  - Kommer med: `summarize`, `tabulate` (også `rowpct` og `summarize()`), `ci`, `correlate`, `normaltest`,
+    `anova`, `regress`, `logit`, `mlogit`, `oaxaca`, `regress-mml`, `regress-panel`, `hausman`,
+    `transitions-panel`, `cox`, `weibull`.
 - **Løsning:** Be brukeren kopiere resultatet av kommandoen for seg, før du konkluderer med at den feilet.
   En stoppet kommando gir derimot tomme tabeller og en feilmelding («Problem på linje N: ...»).
 
@@ -255,7 +291,8 @@ Kartlagt fra manualen (`metadata/manual/konfidensialitet.md`, `kommandoer_og_fun
 - **Symptom:** For lang overlevelsestid, særlig for eldre og innvandrere.
 - **Årsak:** Manualen setter tiden til maksverdi for alle uten hendelse. Den som dør eller utvandrer i
   perioden, regnes da som i risiko helt til slutt. Det finnes ingen hendelsesvariabel for utvandring.
-- **Løsning:** Sett sensureringstid ved død (`BEFOLKNING_DOEDS_DATO`) og ved første 1.1. med
+- **Løsning:** Sett sensureringstid ved død (`BEFOLKNING_DOEDS_DATO`, tallet ÅÅÅÅMMDD, se «Datoer er tall i
+  formatet ÅÅÅÅMMDD») og ved første 1.1. med
   `BEFOLKNING_STATUSKODE` = `'3'` (utvandret, bare årlig). Hendelse etter sensurering skal ikke telle.
   Er hendelsen selv død, er utvandring den viktigste sensureringen. Si fra om at utvandring bare er kjent
   per 1.1.
@@ -314,6 +351,9 @@ Kartlagt fra manualen (`metadata/manual/konfidensialitet.md`, `kommandoer_og_fun
   `mann` ga 0,1805, mens forskjellen i `margins(mann)` var 0,1864 og en derivert ga om lag 0,180 (TESTLISTE
   8.7, versjon 60). Forskjellen er liten. Trengs den diskrete effekten, bruk forskjellen i `margins()`. `or` gir oddsratio. `margins()` gir predikert verdi ved gjennomsnittet av
   forklaringsvariablene, ikke gjennomsnittet av predikerte verdier.
+- `mlogit` viser koeffisientene for hver utfallskategori under hverandre uten å si hvilken kategori blokken
+  gjelder (versjon 60). Første kategori er referanse, og blokkene står trolig i stigende rekkefølge. Si fra om
+  det når resultatet tolkes, eller lag utfallet med få, tydelige kategorier.
 - `regress-mml`: gruppevariabelen kan ikke også være forklaringsvariabel. Like variansestimater for to
   nivåer (f.eks. fylke og landsdel) betyr at nivåene fanger opp det samme. Bruk ett av dem.
 - Spredningsplott finnes ikke. Bruk `hexbin` (celler med under 5 enheter vises ikke). Søyler i `histogram`
@@ -451,6 +491,21 @@ metadataene og ELVIS, og er **ikke testet i microdata.no** (TESTLISTE del 10).
   (3). Kreftregisterets publiserte tall for nye krefttilfeller gjelder ondartede.
 - **Beskrivelser og verdier står i ELVIS.** Lenken til detaljsiden står i kolonnen `ekstern_metadata` i `variabler.csv`.
   Verdiene er hentet til `metadata/fhi/kreftregisteret/verdier.csv` med `kreftregisteret.py hent`.
+- **Testet (versjon 60 / FHI 1, november 2026, TESTLISTE del 10):**
+  - Tre `require` i samme skript virker. 38 889 krefttilfeller med diagnoseår 2023, 37 118 ondartede (atferd 3).
+  - Personnøkkelen er samme pseudonym som hos SSB: alle tilfeller fikk kjønn med `merge ... on personid`, og
+    kjønnsorganer ble 100 % ett kjønn (brystkreft 0,9 % menn). NPR (`SOM_EP_PERSONID`) kobler også: 25 % av
+    kreftepisodene i 2024 gjaldt personer med krefttilfelle i 2023, mot 2 % av andre episoder.
+  - `collapse ... by(personid)` på krefttilfeller gir et persondatasett som kan kobles inn i SSB-personer
+    (37 872 personer, 97 % med ett tilfelle i 2023).
+  - `S_STRALEBEH` har bare `1` (8 567) og manglende (30 322). Manglende betyr ikke registrert med stråling.
+  - `values("2024")` på `SOM_EP_AAR` virker: 9,1 millioner episoder, 0,3 % uten hoveddiagnose.
+  - Instant-datoene (`S_DIAGNOSEDATO`, `SOM_EP_INNDATO`) er dager siden 1970 og kan regnes med `date()`.
+    Dødsdato fra SSB (ÅÅÅÅMMDD, regnet om) minus diagnosedato ga 0–971 dager. Andel døde innen 2025 av
+    tilfellene i 2023: lunge m.m. 58 %, fordøyelse 42 %, bryst 8 %.
+  - `recode kreftform ('C50' = 'C50' 'Bryst')` setter merkelappen (regel til samme verdi, TESTLISTE 10.8).
+  - **Dataene har koder som ikke står i kodelisten.** `S_TOPOGRAFIICD10` hadde D45 (102) og D46 (200) blant de
+    ondartede, men kodelisten har bare D47. `kreftregisteret.py grupper` tar nå med alle kreftformene i ELVIS.
 
 ## Alder
 

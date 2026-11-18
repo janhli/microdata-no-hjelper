@@ -164,7 +164,11 @@ def kommando_grupper(a):
     grupper = {f["icd"]: f["navn"] for f in former if f["nivaa"] == "1"}
     koder = kodeliste(a.variabel)
     prefiks = sorted({k[:3] for k in koder})
-    med = [p for p in prefiks if p in tresifret]
+    # Alle kreftformer i ELVIS tas med, også de som mangler i kodelisten: S_TOPOGRAFIICD10 har D45 og D46 i
+    # dataene (302 ondartede i 2023), men ikke i kodelisten (versjon 1, TESTLISTE 10.2). Regler som treffer 0
+    # enheter er ufarlige (TESTLISTE 1.7).
+    med = sorted(tresifret)
+    ikke_i_kodelisten = [p for p in med if p not in prefiks]
     uten_c = [p for p in prefiks if p not in tresifret and (p.startswith("C") or p in ("D45", "D46", "D47"))]
     andre = [p for p in prefiks if p not in tresifret and p not in uten_c]
     if not med:
@@ -173,7 +177,9 @@ def kommando_grupper(a):
 
     print(f"// {a.variabel} -> kreftform nivå {a.nivaa} (Kreftregisterets metadatabase ELVIS, "
           f"hentet {(UT / 'HENTET').read_text(encoding='utf-8').split()[0]})")
-    print(f"// {len(koder)} koder i kodelisten, {len(med)} tresifrede kreftformer.")
+    print(f"// {len(koder)} koder i kodelisten, {len(med)} tresifrede kreftformer i ELVIS.")
+    if ikke_i_kodelisten:
+        print(f"// Kreftformer som ikke står i kodelisten, men tas med (dataene kan ha dem): {' '.join(ikke_i_kodelisten)}")
     if uten_c:
         print(f"// Ikke kreftform i ELVIS, står {'som annet' if a.ukjent else 'uendret'}: {' '.join(uten_c)}"
               " (C77-C79 er spredning, C97 flere svulster)")
@@ -215,7 +221,7 @@ def kommando_grupper(a):
     for linje in recode_linjer(navn, kart, grupper):
         print(linje)
     # Hovedgrupper med samme kode som den tresifrede (C50 Bryst) blir ikke med i recode_linjer (k == m), og
-    # ville stått uten merkelapp. En regel til samme verdi setter merkelappen (ikke testet, TESTLISTE 10.8).
+    # ville stått uten merkelapp. En regel til samme verdi setter merkelappen (testet versjon 60, TESTLISTE 10.8).
     like = sorted(m for k, m in kart.items() if k == m)
     if like:
         print(f"recode {navn} " + " ".join(f"({q(m)} = {q(m)} {q(grupper[m])})" for m in like))

@@ -124,8 +124,9 @@ på en populasjon over 100 000 (f.eks. bosatte 30–60 år). Skriptet for 8.1–
 | 8.5 | ~~`regress-panel-diff` mot `regress-panel ... gruppe##etter, pooled`~~ **Avklart (versjon 60, 2026-11-18):** −4 159 mot −4 156 (forskjellen er nedsampling). Variabel 3 er etter-perioden for alle. Se `fallgruver.md` | | | ✓ |
 | 8.6 | Sensurering i overlevelsesanalyse | Tid til død for bosatte 70+ med og uten sensurering ved utvandring (`BEFOLKNING_STATUSKODE` `'3'`) | Liten forskjell for hele gruppen, større for innvandrere | P2 |
 | 8.7 | ~~`mfx(dydx)` for en 0/1-variabel~~ **Trolig avklart (versjon 60, 2026-11-18):** 0,1805 mot 0,1864 i `margins(mann)`. Ligner den deriverte (ca. 0,180), ikke diskret endring | | | ✓ |
+| 8.10 | ~~Dato i ÅÅÅÅMMDD til dager~~ **Avklart (2026-11-18):** `int()` og `date()` virker: dødsdato 19 380–20 436, tid fra diagnose til død 0–971 dager, ingen negative | | | ✓ |
 | 8.9 | ~~Minst to koeffisienter (tiltak 17)~~ **Avklart (versjon 60, 2026-11-18):** stoppes med «Regresjonsmodellen har for få forklaringsvariabler/koeffisienter. Nedre grense er to koeffisienter.» | | | ✓ |
-| 8.8 | ~~`citation` (kildehenvisning, #9)~~ **Avklart for SSB (versjon 60, 2026-11-18):** «Analysen er gjennomført i microdata.no med datagrunnlag fra: SSB (registerdata). Data analysert: 2026-11-18». Ingen versjon eller variabler. Kommer ikke med når hele utskriften kopieres. Gjenstår: flere kilder (del 10) | | | ✓ |
+| 8.8 | ~~`citation` (kildehenvisning, #9)~~ **Avklart (versjon 60, 2026-11-18):** «Analysen er gjennomført i microdata.no med datagrunnlag fra: SSB (registerdata). Data analysert: 2026-11-18». Med tre `require` (del 10): «FHI (Kreftregisteret), FHI (Norsk pasientregister) og SSB (registerdata)», også NPR før noe var importert derfra. Ingen versjon eller variabler. Kommer ikke med når hele utskriften kopieres | | | ✓ |
 
 ## 9. Eksport av figurer (Vega), issue #3
 
@@ -141,19 +142,20 @@ Manualen nevner Vega-editoren bare i [`1.6 Eksport av resultater`](skills/microd
 ## 10. FHI-datalagrene (Kreftregisteret og NPR), issue #11
 
 Antakelser i «FHI-data» i [`fallgruver.md`](skills/microdata-no/referanser/fallgruver.md). Skriptet ligger i
-[`.claude/skills/vedlikehold/testskript/del10_fhi.txt`](.claude/skills/vedlikehold/testskript/del10_fhi.txt) (ikke kjørt ennå),
+[`.claude/skills/vedlikehold/testskript/del10_fhi.txt`](.claude/skills/vedlikehold/testskript/del10_fhi.txt) (kjørt 2026-11-18),
 med 8.8 (`citation`) for flere kilder.
 
 | # | Hva | Hvordan | Forventet | Pri |
 |---|---|---|---|---|
-| 10.1 | Tre `require` i samme skript, import fra Kreftregisteret | `require no.fhi.kreftregisteret:1 as krg`, `import krg/...` uten dato | Kjører. Rundt 40 000 tilfeller med diagnoseår 2023 | P2 |
-| 10.2 | Kreftform fra `kreftregisteret.py grupper` | Nivå 1 på `S_TOPOGRAFIICD10`, bare ondartede | Ingen stopp. Fordeling som i Kreftregisterets statistikkbank for 2023 | P1 |
-| 10.3 | Manglende verdi i `S_STRALEBEH` | `tabulate, missing` | Bare `1` og manglende: manglende = ikke registrert | P1 |
-| 10.4 | Personnøkkelen er samme pseudonym som hos SSB | `merge kjonn into kreft on personid` | Nesten alle får kjønn. Prostata 100 % menn | P1 |
-| 10.5 | `collapse ... by(personid)` kobles inn i persondatasett | `merge antall into personer` | Går uten feil | P2 |
-| 10.6 | NPR-episoder, filtrert med `values()` | `import npr/SOM_EP_AAR as aar, values("2024")` | Millioner av episoder, kreft som liten andel | P2 |
-| 10.7 | Samme person i NPR og Kreftregisteret | Kreft i 2023 koblet inn i episodene | Episoder med C-diagnose har oftere krefttilfelle | P2 |
-| 10.8 | `recode` til samme verdi for å sette merkelapp (`('C50' = 'C50' 'Bryst')`) | Sist i `del10_fhi.txt` | Godtas, og C50 vises som «Bryst» (10-enhetsregelen er fjernet i versjon 2) | P3 |
+| 10.1 | ~~Tre `require`, import fra Kreftregisteret~~ **Avklart (2026-11-18):** 38 889 tilfeller i 2023, 37 118 ondartede | | | ✓ |
+| 10.2 | ~~Kreftform fra `kreftregisteret.py grupper`~~ **Avklart (2026-11-18):** ingen stopp, fordelingen rimelig (fordøyelse 7 999, melanom/hud 6 128, prostata m.m. 5 669, bryst 4 121, lunge m.m. 3 588). D45 og D46 sto igjen fordi de mangler i kodelisten; verktøyet tar dem nå med | | | ✓ |
+| 10.3 | ~~Manglende verdi i `S_STRALEBEH`~~ **Avklart (2026-11-18):** bare `1` og manglende: manglende = ikke registrert | | | ✓ |
+| 10.4 | ~~Personnøkkelen er samme pseudonym som hos SSB~~ **Avklart (2026-11-18):** alle fikk kjønn, kjønnsorganer 100 % ett kjønn | | | ✓ |
+| 10.5 | ~~`collapse ... by(personid)` kobles inn i persondatasett~~ **Avklart (2026-11-18):** virker, 37 872 personer | | | ✓ |
+| 10.6 | ~~NPR-episoder, filtrert med `values()`~~ **Avklart (2026-11-18):** 9,1 millioner episoder, 12 % med kreftdiagnose | | | ✓ |
+| 10.7 | ~~Samme person i NPR og Kreftregisteret~~ **Avklart (2026-11-18):** 25 % av kreftepisodene mot 2 % av andre har krefttilfelle i 2023 | | | ✓ |
+| 10.9 | ~~Datoer av typen Instant~~ **Avklart (2026-11-18):** dager siden 1970. `S_DIAGNOSEDATO` 19 361–19 713 (2023), `year()` gir 2023 for alle. `SOM_EP_INNDATO`: 2024 for alle unntatt 7 391 (2023) | | | ✓ |
+| 10.8 | ~~`recode` til samme verdi for å sette merkelapp~~ **Avklart (2026-11-18):** `('C50' = 'C50' 'Bryst')` godtas, og C50 vises som «C50 - Bryst» | | | ✓ |
 
 ## 11. Grunnkrets (`BEFOLKNING_GRUNNKRETS`, versjon 60)
 

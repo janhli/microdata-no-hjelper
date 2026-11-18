@@ -1,6 +1,7 @@
 // =====================================================================
-// Testskript: TESTLISTE del 10 (FHI-datalagrene, issue #11), punkt 10.1–10.7, og 8.8 med to kilder
-// Laget:      2026-11, ikke kjørt ennå
+// Testskript: TESTLISTE del 10 (FHI-datalagrene, issue #11), punkt 10.1–10.10, 8.8 med to kilder og 8.10
+// Laget:      2026-11, kjørt 2026-11-18 (alle punkter). Recoden i 10.2 er fra før D45/D46 ble tatt med:
+//             lag den på nytt med kreftregisteret.py grupper hvis skriptet brukes igjen
 // Versjoner:  no.ssb.fdb:60, no.fhi.kreftregisteret:1, no.fhi.npr:1. Spør om analysemiljøet har de samme.
 // Populasjon: krefttilfeller med diagnoseår 2023 (Kreftregisteret), episoder rapportert 2024 (NPR)
 // Variabler:  https://microdata.no/discovery/variable/no.fhi.kreftregisteret/1/S_DIAGNOSEAR
@@ -12,6 +13,9 @@
 //             https://microdata.no/discovery/variable/no.fhi.npr/1/SOM_EP_HOVEDTILSTAND1
 //             https://microdata.no/discovery/variable/no.fhi.npr/1/SOM_EP_PERSONID
 //             https://microdata.no/discovery/variable/no.ssb.fdb/60/BEFOLKNING_KJOENN
+//             https://microdata.no/discovery/variable/no.ssb.fdb/60/BEFOLKNING_DOEDS_DATO
+//             https://microdata.no/discovery/variable/no.fhi.kreftregisteret/1/S_DIAGNOSEDATO
+//             https://microdata.no/discovery/variable/no.fhi.npr/1/SOM_EP_INNDATO
 // Kodelister: kreftregisteret.py verdier --variabel <NAVN> (ELVIS)
 // Rekkefølge: det sikreste først. collapse til person (10.6) og NPR (10.7) står sist.
 //             citation (8.8 med to kilder) står før dem, så den blir kjørt.
@@ -140,7 +144,8 @@ inn i episodene via persondatasettet.
 
 **Forventet:** Episoder med kreftdiagnose (C) har oftere et krefttilfelle i 2023 enn andre episoder.
 endblock
-use kreft
+clone-dataset kreft kreftper
+use kreftper
 generate kreft23 = 1
 collapse (max) kreft23, by(personid)
 merge kreft23 into episoder on personid
@@ -162,3 +167,47 @@ endblock
 use kreft
 recode kreftform ('C50' = 'C50' 'Bryst')
 tabulate kreftform if atferd == 3
+
+// ---------------------------------------------------------------------
+textblock
+## Test 10.9: Datoer av typen Instant (`S_DIAGNOSEDATO`, `SOM_EP_INNDATO`)
+Instant antas å være dager siden 1970, som `START@` og `date()`.
+
+**Forventet:** `diagaar` er 2023 for alle (samme som `S_DIAGNOSEAR`), og `dager` ligger mellom 0 og 364.
+For NPR er `inaar` 2024 for nesten alle (noen episoder kan starte i 2023). Blir verdiene rundt 20 000 000,
+er datoen lagret som ÅÅÅÅMMDD.
+endblock
+use kreft
+import krg/S_DIAGNOSEDATO as diagdato
+summarize diagdato
+generate diagaar = year(diagdato)
+tabulate diagaar
+generate dager = diagdato - date(2023, 1, 1)
+summarize dager
+use episoder
+import npr/SOM_EP_INNDATO as inndato
+generate inaar = year(inndato)
+tabulate inaar
+
+// ---------------------------------------------------------------------
+textblock
+## Test 8.10: Dødsdato (ÅÅÅÅMMDD) til dager, og tid fra diagnose til død
+`BEFOLKNING_DOEDS_DATO` er tallet 20240315. Regnes om med `int()` og `date()`, og trekkes fra diagnosedatoen.
+
+**Forventet:** `doddag` ligger rundt 19 400–20 450 (dager siden 1970 for 2023–2025). `tid` er 0–1 100 dager
+for de som døde, og ingen negative verdier. Andelen døde innen 2025 er høyest for lunge og lavest for bryst.
+endblock
+use personer
+import fdb/BEFOLKNING_DOEDS_DATO as dod
+merge dod into kreft on personid
+use kreft
+generate dag_aar = int(dod/10000)
+generate dag_mnd = int(dod/100) - dag_aar*100
+generate dag_dag = dod - int(dod/100)*100
+generate doddag = date(dag_aar, dag_mnd, dag_dag)
+summarize dod doddag
+generate tid = doddag - diagdato
+summarize tid
+generate dode = 0
+replace dode = 1 if !sysmiss(doddag)
+tabulate kreftform dode if atferd == 3 & inlist(kreftform, 'C30-C39', 'C50', 'C15-C26'), rowpct

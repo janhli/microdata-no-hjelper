@@ -1,0 +1,175 @@
+// =====================================================================
+// Testskript: hvilke resultater kommer med når hele utskriften kopieres? (fallgruve, november 2026)
+// Laget:      2026-11-18, kjørt 2026-11-18 (versjon 60). Resultat: fallgruver.md, «Kopi av hele utskriften».
+//             Del 21 regnet feil: dødsdato er ÅÅÅÅMMDD, ikke dager (TESTLISTE 8.10).
+// Versjon:    no.ssb.fdb:60
+// Populasjon: utvalg på 50 000 bosatte 30–60 år per 1.1.2024
+// Bruk:       Kjør, kopier hele utskriften og lim den inn. Sammenlign med resultatvinduet: noter hvilke
+//             nummererte overskrifter som står uten resultat i kopien, men har resultat i microdata.no.
+//             Allerede kjent: citation, tabulate-panel og regress-panel-diff mangler i kopien.
+// Rekkefølge: tabeller og regresjoner først, så panel, grafer og overlevelse (mest usikkert) til slutt.
+// =====================================================================
+
+require no.ssb.fdb:60 as fdb
+
+create-dataset personer
+import fdb/BEFOLKNING_STATUSKODE 2024-01-01 as regstat
+keep if regstat == '1'
+import fdb/BEFOLKNING_FOEDSELS_AAR_MND as faarmnd
+generate alder = 2023 - int(faarmnd/100)
+keep if alder >= 30 & alder <= 60
+sample 50000 1811
+import fdb/BEFOLKNING_KJOENN as kjonn
+generate mann = 0
+replace mann = 1 if kjonn == '1'
+import fdb/INNTEKT_WLONN 2023-12-31 as lonn
+import fdb/INNTEKT_WYRKINNT 2023-12-31 as yrkinnt
+import fdb/BEFOLKNING_BARN_I_HUSH 2024-01-01 as barn
+import fdb/BEFOLKNING_KOMMNR_FORMELL 2024-01-01 as kommune
+import fdb/NUDB_BU 2023-07-01 as utd
+generate fylke = substr(kommune, 1, 2)
+generate utd1 = substr(utd, 1, 1)
+destring utd1
+generate utdgr = 1 if utd1 <= 2 & !sysmiss(utd1)
+replace utdgr = 2 if utd1 >= 3 & utd1 <= 5
+replace utdgr = 3 if utd1 >= 6 & utd1 <= 8
+define-labels utdtxt 1 'Grunnskole' 2 'Videregående' 3 'Høyere'
+assign-labels utdgr utdtxt
+generate hoy = lonn > 600000 if !sysmiss(lonn)
+
+textblock
+## 1 summarize
+endblock
+summarize lonn alder
+
+textblock
+## 2 tabulate (enveis og toveis med rowpct)
+endblock
+tabulate utdgr, missing
+tabulate utdgr mann, rowpct
+
+textblock
+## 3 tabulate med summarize
+endblock
+tabulate utdgr, summarize(lonn) mean p50
+
+textblock
+## 4 ci
+endblock
+ci lonn
+
+textblock
+## 5 correlate
+endblock
+correlate lonn yrkinnt alder
+
+textblock
+## 6 normaltest
+endblock
+normaltest alder
+
+textblock
+## 7 anova
+endblock
+anova lonn utdgr mann
+
+textblock
+## 8 regress med robust
+endblock
+regress lonn mann alder i.utdgr, robust
+
+textblock
+## 9 regress-predict (lager variabel) og summarize av den
+endblock
+regress-predict lonn mann alder, predicted(pred)
+summarize pred
+
+textblock
+## 10 probit
+endblock
+probit hoy mann alder
+
+textblock
+## 11 mlogit
+endblock
+mlogit utdgr mann alder
+
+textblock
+## 12 poisson og negative-binomial
+endblock
+poisson barn mann alder
+negative-binomial barn mann alder
+
+textblock
+## 13 oaxaca
+endblock
+oaxaca lonn alder utd1 by mann
+
+textblock
+## 14 regress-mml (flernivå, fylke)
+endblock
+destring fylke
+regress-mml lonn mann alder by fylke
+
+textblock
+## 15 list-labels og variables
+endblock
+list-labels utdtxt
+variables fdb/INNTEKT_WLONN
+
+textblock
+## 16 citation (kjent: mangler i kopien)
+endblock
+citation
+
+// --- Panel ---
+clone-units personer panel
+use panel
+import-panel fdb/INNTEKT_WLONN fdb/REGSYS_ARB_ARBMARK_STATUS 2021-11-16 2022-11-16 2023-11-16
+rename INNTEKT_WLONN plonn
+rename REGSYS_ARB_ARBMARK_STATUS arbst
+destring arbst
+
+textblock
+## 17 summarize-panel
+endblock
+summarize-panel plonn
+
+textblock
+## 18 transitions-panel
+endblock
+transitions-panel arbst
+
+textblock
+## 19 regress-panel (fe) og hausman
+endblock
+generate aar = year(date@panel)
+regress-panel plonn aar i.arbst, fe
+hausman plonn aar i.arbst
+
+// --- Grafer (forventet: bare bilde, ingen tekst i kopien) ---
+use personer
+
+textblock
+## 20 histogram, barchart, boxplot, hexbin, piechart, coefplot
+endblock
+histogram alder
+barchart (mean) lonn, over(utdgr)
+boxplot lonn, over(mann)
+hexbin lonn alder
+piechart utdgr
+coefplot regress lonn mann alder i.utdgr
+
+// --- Overlevelse (død 2024–2025, få hendelser) ---
+textblock
+## 21 kaplan-meier, cox og weibull
+endblock
+import fdb/BEFOLKNING_DOEDS_DATO as dod
+generate dod24 = 0
+replace dod24 = 1 if dod >= date(2024, 1, 1) & !sysmiss(dod)
+generate tid = date(2026, 1, 1) - date(2024, 1, 1)
+replace tid = dod - date(2024, 1, 1) if dod24 == 1
+tabulate dod24
+kaplan-meier dod24 tid, by(mann)
+cox dod24 tid mann alder
+weibull dod24 tid

@@ -172,7 +172,9 @@ gamle versjoner, og da må du sjekke at variabelnavnene fortsatt finnes i `varia
 - `let` og `for ... end` for løkker
 - `citation` nederst i skriptet gir én linje: «Analysen er gjennomført i microdata.no med datagrunnlag fra:
   SSB (registerdata). Data analysert: 2026-11-18» (versjon 60). Uten datalagerversjon og variabler, så oppgi
-  `require`-versjonen selv. Resultater skal ha microdata.no som kilde ved publisering
+  `require`-versjonen selv. Med flere datalagre listes alle som står i `require`, også dem som ikke er brukt i
+  `import` («FHI (Kreftregisteret), FHI (Norsk pasientregister) og SSB (registerdata)»). Ta bare med
+  `require` for lagrene du bruker. Resultater skal ha microdata.no som kilde ved publisering
   (https://www.microdata.no/dokumentasjon/kildehenvisning/)
 
 ## Nettkilder (hvis lokale filer ikke strekker til)
