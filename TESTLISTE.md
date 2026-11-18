@@ -112,8 +112,8 @@ Sammenlign agentens svar med og uten skillen på disse oppgavene.
 ## 8. Analyse (fra manualen, ikke kjørt)
 
 Antakelser i «Analyse» i [`fallgruver.md`](skills/microdata-no/referanser/fallgruver.md). Kan samles i ett skript
-på en populasjon over 100 000 (f.eks. bosatte 30–60 år). Skriptet for 8.1–8.5, 8.7–8.9 (kjørt 2026-11-18, versjon 60) ligger i
-[`.claude/skills/vedlikehold/testskript/del8_analyse.txt`](.claude/skills/vedlikehold/testskript/del8_analyse.txt) (ikke kjørt ennå).
+på en populasjon over 100 000 (f.eks. bosatte 30–60 år). Skriptet for 8.1–8.5 og 8.7–8.9 ligger i
+[`.claude/skills/vedlikehold/testskript/del8_analyse.txt`](.claude/skills/vedlikehold/testskript/del8_analyse.txt) (kjørt 2026-11-18, versjon 60).
 
 | # | Hva | Hvordan | Forventet | Pri |
 |---|---|---|---|---|
@@ -123,7 +123,7 @@ på en populasjon over 100 000 (f.eks. bosatte 30–60 år). Skriptet for 8.1–
 | 8.4 | ~~Kategorisk variabel med grupper under 5 fjernes (tiltak 14)~~ **Avklart (versjon 60, 2026-11-18):** hele `i.kommune` fjernet, med melding under tabellen, og regresjonen kjørt med resten (N 16 976 av 20 000). Se `fallgruver.md` | | | ✓ |
 | 8.5 | ~~`regress-panel-diff` mot `regress-panel ... gruppe##etter, pooled`~~ **Avklart (versjon 60, 2026-11-18):** −4 159 mot −4 156 (forskjellen er nedsampling). Variabel 3 er etter-perioden for alle. Se `fallgruver.md` | | | ✓ |
 | 8.6 | Sensurering i overlevelsesanalyse | Tid til død for bosatte 70+ med og uten sensurering ved utvandring (`BEFOLKNING_STATUSKODE` `'3'`) | Liten forskjell for hele gruppen, større for innvandrere | P2 |
-| 8.7 | ~~`mfx(dydx)` for en 0/1-variabel~~ **Trolig avklart (versjon 60, 2026-11-18):** 0,1805 mot 0,1864 i `margins(mann)`. Ligner den deriverte (ca. 0,180), ikke diskret endring | | | ✓ |
+| 8.7 | ~~`mfx(dydx)` for en 0/1-variabel~~ **Avklart (versjon 60, 2026-11-18):** gir den deriverte, ikke diskret endring. Se `fallgruver.md` | | | ✓ |
 | 8.10 | ~~Dato i ÅÅÅÅMMDD til dager~~ **Avklart (2026-11-18):** `int()` og `date()` virker: dødsdato 19 380–20 436, tid fra diagnose til død 0–971 dager, ingen negative | | | ✓ |
 | 8.9 | ~~Minst to koeffisienter (tiltak 17)~~ **Avklart (versjon 60, 2026-11-18):** stoppes med «Regresjonsmodellen har for få forklaringsvariabler/koeffisienter. Nedre grense er to koeffisienter.» | | | ✓ |
 | 8.8 | ~~`citation` (kildehenvisning, #9)~~ **Avklart (versjon 60, 2026-11-18):** «Analysen er gjennomført i microdata.no med datagrunnlag fra: SSB (registerdata). Data analysert: 2026-11-18». Med tre `require` (del 10): «FHI (Kreftregisteret), FHI (Norsk pasientregister) og SSB (registerdata)», også NPR før noe var importert derfra. Ingen versjon eller variabler. Kommer ikke med når hele utskriften kopieres | | | ✓ |
@@ -141,7 +141,7 @@ Manualen nevner Vega-editoren bare i [`1.6 Eksport av resultater`](skills/microd
 
 ## 10. FHI-datalagrene (Kreftregisteret og NPR), issue #11
 
-Antakelser i «FHI-data» i [`fallgruver.md`](skills/microdata-no/referanser/fallgruver.md). Skriptet ligger i
+Avklart. Resultatene står i «FHI-data» i [`fallgruver.md`](skills/microdata-no/referanser/fallgruver.md). Skriptet ligger i
 [`.claude/skills/vedlikehold/testskript/del10_fhi.txt`](.claude/skills/vedlikehold/testskript/del10_fhi.txt) (kjørt 2026-11-18),
 med 8.8 (`citation`) for flere kilder.
 

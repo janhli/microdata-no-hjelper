@@ -464,15 +464,15 @@ Kartlagt fra metadataene og SSB Klass (november 2026). Ikke kjørt i microdata.n
 ## FHI-data (Kreftregisteret og Norsk pasientregister)
 
 Fra 2026-11 har microdata.no to datalagre fra FHI: `no.fhi.kreftregisteret` (versjon 1) og `no.fhi.npr` (versjon 1).
-Kolonnen `datalager` i `metadata/variabler.csv` sier hvor variabelen ligger. Det meste her er lest ut av
-metadataene og ELVIS, og er **ikke testet i microdata.no** (TESTLISTE del 10).
+Kolonnen `datalager` i `metadata/variabler.csv` sier hvor variabelen ligger. Punktene er lest ut av metadataene
+og ELVIS, og de viktigste er testet i microdata.no (TESTLISTE del 10, se «Testet» nederst).
 
 - **Enheten er ikke person.** Kreftregisteret har krefttilfelle (`KRG_TILFELLEID`), NPR har episode (`NPR_EPISODEID`)
   og prosedyre (`NPR_PROSEDYREID`). En person kan ha flere tilfeller og mange episoder. Personen står som en vanlig
   variabel: `P_PERSONIDMICRODATA` (Kreftregisteret), `SOM_EP_PERSONID` og `SOM_PROS_PERSONID` (NPR).
   Personopplysninger kobles inn i tilfellene med `merge kjonn into kreft on personid` (fra persondatasettet).
-  Motsatt vei må tilfellene aggregeres med `collapse ..., by(personid)` først. Om resultatet kan kobles inn i et
-  persondatasett, og om nøkkelen er samme pseudonym som hos SSB, er ikke testet (10.4, 10.5).
+  Motsatt vei må tilfellene aggregeres med `collapse ..., by(personid)` først. Nøkkelen er samme pseudonym som hos
+  SSB, og det aggregerte datasettet kan kobles inn i et persondatasett (testet, 10.4 og 10.5).
 - **Hvert datalager har sin egen `require` og versjon.** `require no.fhi.kreftregisteret:1 as krg` og
   `import krg/S_TOPOGRAFIICD10 as topo`. Versjonene står i `metadata/datalagre.json`. Variablene er `FIXED` og
   importeres uten dato.
@@ -485,8 +485,8 @@ metadataene og ELVIS, og er **ikke testet i microdata.no** (TESTLISTE del 10).
   `kreftregisteret.py verdier --variabel S_PT --kreftform C50`.
 - **Kodelistene i microdata.no er et utvalg av ELVIS.** Alle kodene i microdata.no finnes i ELVIS, men ELVIS har flere.
   `S_STRALEBEH` har bare `1` (mottatt strålebehandling) i microdata.no, mens ELVIS også har `0` (ikke behandlet) og
-  `9` (ukjent). Manglende verdi er da trolig «ikke registrert», ikke «ukjent» (uavklart, 10.3). Det samme kan gjelde
-  `S_HORMONBEH` (4 av 8 verdier).
+  `9` (ukjent). Manglende verdi betyr «ikke registrert», ikke «ukjent» (testet, 10.3). Det samme gjelder trolig
+  `S_HORMONBEH` (4 av 8 verdier, ikke testet).
 - **Godartede svulster og forstadier er med.** `S_TUMORATFERD` skiller benign (0), usikker (1), in situ (2) og ondartet
   (3). Kreftregisterets publiserte tall for nye krefttilfeller gjelder ondartede.
 - **Beskrivelser og verdier står i ELVIS.** Lenken til detaljsiden står i kolonnen `ekstern_metadata` i `variabler.csv`.
