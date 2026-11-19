@@ -28,6 +28,7 @@ innen støyen (f.eks. innvandrere 964 836 mot 964 834, husholdninger koblet til 
 | [logistisk_regresjon.txt](logistisk_regresjon.txt) | v60, 2026-11 | Predikert mot observert | Treffer 25–54 år, avvik ±4 prosentpoeng for 55–66 år (se under) |
 | [mal_analyse.txt](mal_analyse.txt) | v60, 2026-11 | – | Kjørt uten feil |
 | [mor_barn.txt](mor_barn.txt) | v60, 2026-11 | – | Kjørt uten feil |
+| [overlevelse.txt](overlevelse.txt) | v60, 2026-11 | Med og uten sensurering (TESTLISTE 8.6) | Sensurering ved utvandring endrer innvandrerkoeffisienten fra −0,242 til −0,209 |
 | [paneldata.txt](paneldata.txt) | v60, 2026-11 | fe mot re mot pooled | Fixed effects mye mindre enn pooled, som ventet. Hausman velger fe |
 | [samlivsstatus.txt](samlivsstatus.txt) | v60, 2026-11 | – | Kjørt uten feil |
 | [sektor_lonnstakere.txt](sektor_lonnstakere.txt) | v59, 2026-11 | SSB 13926 | Stemmer for totalen. Offentlig foretak ca. 2 % lavere, med kjent årsak |
@@ -142,6 +143,14 @@ Bosatte 25–66 år 1.1.2025 (3 076 000), sysselsatt i 4. kvartal 2024 (78,1 %).
 
 Andregradskurven fanger ikke fallet ved 62 år (pensjon). Marginaleffekter mot grunnskole: videregående +17,
 UH lang +29 prosentpoeng. Innvandrer −10,7 og mann +6,4. Cluster på kommune gir z-verdier rundt 50 mot 290 uten.
+
+### overlevelse.txt
+
+Bosatte 70 år og eldre 1.1.2016 (575 859), fulgt til 1.1.2026. Kjørt frittstående 2026-11-19 med de samme
+tallene som testskriptet for TESTLISTE 8.6: 291 700 døde, 1 729 sensurert ved utvandring (1 135 av dem
+innvandrere). Snittid i oppfølging 7,4 år (innvandrere 7,7). Cox: innvandrer −0,209 (hazardrate 0,81),
+alder 1,135 per år, mann 1,336. Uten sensurering ved utvandring var innvandrerkoeffisienten −0,242.
+Med `hazard` vises ingen standardfeil, men konfidensintervallet.
 
 ### paneldata.txt
 

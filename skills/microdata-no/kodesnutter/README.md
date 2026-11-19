@@ -35,7 +35,7 @@ Hva testene viste, og hvilke tall snuttene er kontrollert mot, står i [TESTRESU
 | [forlop_til_person.txt](forlop_til_person.txt) | Første start og siste stopp i et forløp, per person | testet |
 | [husholdning.txt](husholdning.txt) | Person og husholdning: husholdningsvariabler, én rad per husholdning, egne aggregater per husholdning | testet |
 | [bolig.txt](bolig.txt) | Person, husholdning og bolig: boligens egenskaper per person og per bebodd bolig | testet |
-| [overlevelse.txt](overlevelse.txt) | Tid til hendelse (død) med sensurering ved utvandring og slutt på perioden, `kaplan-meier` og `cox` | testet i større skript (TESTLISTE 8.6) |
+| [overlevelse.txt](overlevelse.txt) | Tid til hendelse (død) med sensurering ved utvandring og slutt på perioden, `kaplan-meier` og `cox` | testet |
 | [logistisk_regresjon.txt](logistisk_regresjon.txt) | Ja/nei-utfall (sysselsatt): faktorvariabler, cluster, oddsratio, marginaleffekter, `margins()` og `logit-predict` mot observerte andeler | testet |
 | [paneldata.txt](paneldata.txt) | Paneldata: `import-panel` for et utvalg, `summarize-panel`, `tabulate-panel`, `transitions-panel`, `regress-panel` med fe/re/pooled og årseffekter, og `hausman` | testet |
 

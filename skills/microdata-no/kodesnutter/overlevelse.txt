@@ -1,6 +1,6 @@
 // =====================================================================
 // Overlevelsesanalyse: tid til død med sensurering ved utvandring, kaplan-meier og cox
-// Status:    testet i større skript (no.ssb.fdb:60, 2026-11, TESTLISTE 8.6)
+// Status:    testet (no.ssb.fdb:60, 2026-11)
 // Variabler: BEFOLKNING_STATUSKODE (1 = bosatt, 3 = utvandret, 5 = død, per 1.1.)
 //            https://microdata.no/discovery/variable/no.ssb.fdb/60/BEFOLKNING_STATUSKODE
 //            BEFOLKNING_DOEDS_DATO (fast, tallet ÅÅÅÅMMDD)
@@ -11,7 +11,8 @@
 //            sensur   – 1 = sensurert ved utvandring
 // Kontroll:  Bosatte 70+ 1.1.2016 (575 859), fulgt til 1.1.2026: 292 000 døde. 4,6 % av innvandrerne
 //            og 0,1 % av de andre utvandret. Cox-koeffisienten for innvandrer −0,209 (hazard 0,81), mot
-//            −0,242 uten sensurering. Alder 0,127 per år, mann 0,290. Kjørt som TESTLISTE 8.6.
+//            −0,242 uten sensurering. Alder 0,127 per år, mann 0,290. Kjørt som TESTLISTE 8.6 og frittstående
+//            (2026-11-19, samme tall): 291 700 døde, 1 729 sensurert ved utvandring, snittid 7,4 år.
 // Fallgruver:
 //   - Populasjonen må være alle i risiko ved start (her bosatte 1.1.), ikke bare dem som fikk
 //     hendelsen. Manualens eksempel A (import-event + collapse) gir en populasjon der alle dør.
@@ -24,7 +25,8 @@
 //   - Sett datoen for utvandring med faste år (date(2017, 1, 1) osv.), ikke date(utv_aar, 1, 1): da
 //     blir date(0, 1, 1) regnet ut for dem som ikke utvandret.
 //   - Cox-koeffisientene gjelder hazard (risikoen per tidsenhet). Negativ koeffisient = lavere risiko
-//     og lengre tid. Med hazard vises ingen standardfeil, så kjør begge. Bruk dager i cox, år i grafer.
+//     og lengre tid. Med hazard vises ingen standardfeil (men
+//     konfidensintervallet), så kjør begge. Bruk dager i cox, år i grafer.
 //   - summarize() i tabulate tar bare én variabel.
 //   - Bytt hendelse ved å importere en annen dato (f.eks. første uføretrygd fra et forløp, se
 //     forlop_til_person.txt) og la død bli sensurering på samme måte som utvandring.
