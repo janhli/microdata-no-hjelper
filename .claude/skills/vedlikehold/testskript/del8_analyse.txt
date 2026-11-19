@@ -11,7 +11,7 @@
 //             https://microdata.no/discovery/variable/no.ssb.fdb/60/INNTEKT_WLONN
 //             https://microdata.no/discovery/variable/no.ssb.fdb/60/NUDB_BU
 // Rekkefølge: det sikreste først. 8.5 (panel), 8.4 og 8.9 (som skal stoppes) står sist.
-// 8.6 (sensurering i overlevelsesanalyse) får et eget skript.
+// 8.6 (sensurering i overlevelsesanalyse) har eget skript: del8_6_sensurering.txt.
 // =====================================================================
 
 require no.ssb.fdb:60 as fdb

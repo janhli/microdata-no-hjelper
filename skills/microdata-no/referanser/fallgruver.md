@@ -133,6 +133,11 @@ med pull request (se CONTRIBUTING.md). Tagg dem med datalagerversjon/dato hvis d
 - Gyldige valg: `mean` (standard), `std`, `sum`, `p25`, `p50` (median), `p75`, `gini`, `iqr`.
 - Til sammenligning bruker `collapse` og `aggregate` `(median)`.
 
+### `summarize()` i `tabulate` tar bare én variabel
+- **Symptom:** «Feil ved hendelse_b): Syntaksfeil» for `tabulate gr, summarize(a b) mean`.
+- **Løsning:** Én `tabulate` per variabel. For flere variabler i samme tabell: `summarize a b` med `if`
+  per gruppe, eller `collapse (mean) a b, by(gr)` på en kopi av datasettet. Versjon 60, 2026-11-19.
+
 ### `Frekvens` i `tabulate gr, summarize(x) mean freq` er antall enheter
 - Frekvensen er antall enheter i datasettet (f.eks. kvinner), ikke summen av x. Ta med `sum` når x
   er en telling (f.eks. antall fødsler), og forklar radene i en `textblock`.
@@ -205,7 +210,9 @@ avklart med versjon 1, hvis ikke annet står. Endringene som påvirker skript:
   Sammenlign ikke små tall mellom kjøringer av ulike skriptversjoner.
 - **`configure confidentiality v1`** øverst i skriptet gir de gamle tiltakene, til 30. april 2027 (planlagt).
   Bare for brukere akkreditert før 17. november 2026, og ikke med FHI-data eller `BEFOLKNING_GRUNNKRETS`.
-  Bruk det bare for å gjenskape gamle resultater.
+  Bruk det bare for å gjenskape gamle resultater. Skriptet kjører fram til importen av grunnkrets, som
+  stoppes med «Ulovlig import med valgt konfidensialitetsprofil. Kan ikke bruke variabler innenfor
+  *_GRUNNKRETS» (versjon 60, TESTLISTE 11.7). FHI-data er ikke testet, men stoppes trolig på samme måte.
 
 ### Tabeller på små delgrupper
 - **Versjon 2:** Tabellen vises alltid. Celler med 1–4 vises som 0, så små kategorier ser tomme ut.
@@ -305,6 +312,12 @@ Kartlagt fra manualen (`metadata/manual/konfidensialitet.md`, `kommandoer_og_fun
   `BEFOLKNING_STATUSKODE` = `'3'` (utvandret, bare årlig). Hendelse etter sensurering skal ikke telle.
   Er hendelsen selv død, er utvandring den viktigste sensureringen. Si fra om at utvandring bare er kjent
   per 1.1.
+- **Størrelse (testet versjon 60, TESTLISTE 8.6):** bosatte 70+ 1.1.2016, fulgt i ti år. 4,6 % av
+  innvandrerne utvandret, mot 0,1 % av de andre. Bare 11 % av innvandrerne som utvandret, hadde
+  dødsdato (28 % av de andre). Uten sensurering ble innvandrernes snittid 88 dager for lang, og
+  `cox`-koeffisienten for innvandrer −0,242 i stedet for −0,209 (forskjell på 3 standardfeil). For hele
+  gruppen utgjorde det lite (277 av 292 000 dødsfall). Sensurer alltid når grupper med mye utvandring
+  sammenlignes.
 
 ### Overlevelsesanalyse: tolkning av `cox`
 - Koeffisientene gjelder hazard (risikoen for hendelsen per tidsenhet), ikke overlevelsestiden, selv om
@@ -419,12 +432,13 @@ del 11, 2026-11-19).
   celler med 1–4, som vises som 0. Kod rett til delområde, levekårssone, bydel eller egne områder.
   Verktøyet tar med alle grunnkretsene i hver målenhet i samme regel, også de uendrede. Det gir kortere
   skript enn å gå via gjeldende grunnkrets. (Grunnkrets kan ikke brukes med `configure confidentiality v1`,
-  så 10-enhetsregelen fra versjon 1 gjelder ikke her.)
+  testet i 11.7, så 10-enhetsregelen fra versjon 1 gjelder ikke her.)
 - **Delte grunnkretser:** noen grunnkretser er senere delt mellom flere delområder eller soner (334 fra
   1990, 59 fra 2019, 3 fra 2025 på grunnkretsnivå, langt færre på sone- og delområdenivå). De kan ikke
-  fordeles uten adresse og står uendret (8 tegn) med `--splitt behold`.
+  fordeles uten adresse og står uendret (8 tegn) med `--splitt behold`. For 2015 til delområde gjaldt det
+  14 grunnkretser og 2 657 personer (11.8). Si fra om dem, eller bruk `--splitt forste`.
 - **Uoppgitt grunnkrets** har koden `kkkk9999` i hver kommune (360 koder i 2026) og står uendret. 0,17 %
-  av bosatte 1.1.2026.
+  av bosatte 1.1.2026 og 0,37 % 1.1.2015 (11.8).
 - **Kodelisten har også delområdene** (6 sifre, med navn). Dataene har bare 8-sifrede koder (11.1).
 - **Delområde** er de seks første sifrene i *gjeldende* kode. For eldre år gir `substr(gk, 1, 6)` det gamle
   delområdet med gammelt kommunenummer. `grunnkrets.py --til delomrade` omkoder bare delområdene som har
@@ -432,7 +446,8 @@ del 11, 2026-11-19).
 - **Levekårssoner** finnes i Klass for 66 kommuner (2026-inndelingen, ikke Oslo). Bydeler finnes for Oslo,
   Bergen, Trondheim og Stavanger, delbydeler for Oslo. Alle bygger på 2026-grunnkretsene.
 - **Lange skript går.** Hele landet fra 2015 til delområde (160 kB, over 300 `recode`-linjer) ble godtatt
-  (11.6). Begrens med `--kommune` når analysen bare gjelder noen kommuner, så blir skriptet lettere å lese.
+  (11.6), og alle 2015-kodene i dataene ble omkodet til delområder som finnes i 2026 (11.8). Begrens med
+  `--kommune` når analysen bare gjelder noen kommuner, så blir skriptet lettere å lese.
 
 ## Klass
 

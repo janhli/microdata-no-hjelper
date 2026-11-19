@@ -1,0 +1,127 @@
+// =====================================================================
+// Testskript: TESTLISTE 8.6 (sensurering ved utvandring i overlevelsesanalyse)
+// Laget:      2026-11-19, kjørt samme dag (versjon 60). Resultatene står i TESTLISTE 8.6 og fallgruver.md
+// Versjon:    no.ssb.fdb:60, anonymiseringstiltak versjon 2. Spør om analysemiljøet har den samme.
+// Populasjon: bosatte 70 år og eldre (alder ved utgangen av 2015) per 1.1.2016, fulgt til 1.1.2026
+// Variabler:  https://microdata.no/discovery/variable/no.ssb.fdb/60/BEFOLKNING_STATUSKODE
+//             https://microdata.no/discovery/variable/no.ssb.fdb/60/BEFOLKNING_FOEDSELS_AAR_MND
+//             https://microdata.no/discovery/variable/no.ssb.fdb/60/BEFOLKNING_KJOENN
+//             https://microdata.no/discovery/variable/no.ssb.fdb/60/BEFOLKNING_INVKAT
+//             https://microdata.no/discovery/variable/no.ssb.fdb/60/BEFOLKNING_DOEDS_DATO
+// Metode:     A er manualens eksempel B (tiden settes til slutten for alle uten dødsdato). B sensurerer i
+//             tillegg ved første 1.1. med statuskode '3' (utvandret), se fallgruver.md.
+// =====================================================================
+
+require no.ssb.fdb:60 as fdb
+
+textblock
+# Sensurering ved utvandring (TESTLISTE 8.6)
+Tid til død for bosatte 70+ 1.1.2016, fulgt til 1.1.2026. **A:** uten sensurering (som manualen).
+**B:** sensurert ved første 1.1. personen er registrert som utvandret.
+
+**Forventet:** Liten forskjell for alle under ett, større for innvandrere. Uten sensurering ser innvandrere
+ut til å leve lenger, fordi de som flytter ut og dør i utlandet, ofte mangler dødsdato.
+endblock
+
+// --- Populasjon ---
+create-dataset eldre
+import fdb/BEFOLKNING_STATUSKODE 2016-01-01 as regstat
+keep if regstat == '1'
+import fdb/BEFOLKNING_FOEDSELS_AAR_MND as faarmnd
+generate alder = 2015 - int(faarmnd/100)
+keep if alder >= 70
+import fdb/BEFOLKNING_KJOENN as kjonn
+generate mann = 0
+replace mann = 1 if kjonn == '1'
+import fdb/BEFOLKNING_INVKAT as invkat
+generate innvandrer = 0
+replace innvandrer = 1 if invkat == 'B'
+
+// --- Dødsdato (tallet ÅÅÅÅMMDD) til dager ---
+import fdb/BEFOLKNING_DOEDS_DATO as dod
+generate dag_aar = int(dod/10000)
+generate dag_mnd = int(dod/100) - dag_aar*100
+generate dag_dag = dod - int(dod/100)*100
+generate doddag = date(dag_aar, dag_mnd, dag_dag)
+
+// --- Første 1.1. som utvandret (utv_aar 0 = aldri i perioden). Datoen settes med faste år, ikke
+// date(utv_aar, 1, 1), som ville gitt date(0, 1, 1) for dem som ikke utvandret ---
+import fdb/BEFOLKNING_STATUSKODE 2017-01-01 as s2017
+import fdb/BEFOLKNING_STATUSKODE 2018-01-01 as s2018
+import fdb/BEFOLKNING_STATUSKODE 2019-01-01 as s2019
+import fdb/BEFOLKNING_STATUSKODE 2020-01-01 as s2020
+import fdb/BEFOLKNING_STATUSKODE 2021-01-01 as s2021
+import fdb/BEFOLKNING_STATUSKODE 2022-01-01 as s2022
+import fdb/BEFOLKNING_STATUSKODE 2023-01-01 as s2023
+import fdb/BEFOLKNING_STATUSKODE 2024-01-01 as s2024
+import fdb/BEFOLKNING_STATUSKODE 2025-01-01 as s2025
+import fdb/BEFOLKNING_STATUSKODE 2026-01-01 as s2026
+generate utv_aar = 0
+generate utv_dag = date(2026, 1, 1)
+replace utv_dag = date(2017, 1, 1) if s2017 == '3' & utv_aar == 0
+replace utv_aar = 2017 if s2017 == '3' & utv_aar == 0
+replace utv_dag = date(2018, 1, 1) if s2018 == '3' & utv_aar == 0
+replace utv_aar = 2018 if s2018 == '3' & utv_aar == 0
+replace utv_dag = date(2019, 1, 1) if s2019 == '3' & utv_aar == 0
+replace utv_aar = 2019 if s2019 == '3' & utv_aar == 0
+replace utv_dag = date(2020, 1, 1) if s2020 == '3' & utv_aar == 0
+replace utv_aar = 2020 if s2020 == '3' & utv_aar == 0
+replace utv_dag = date(2021, 1, 1) if s2021 == '3' & utv_aar == 0
+replace utv_aar = 2021 if s2021 == '3' & utv_aar == 0
+replace utv_dag = date(2022, 1, 1) if s2022 == '3' & utv_aar == 0
+replace utv_aar = 2022 if s2022 == '3' & utv_aar == 0
+replace utv_dag = date(2023, 1, 1) if s2023 == '3' & utv_aar == 0
+replace utv_aar = 2023 if s2023 == '3' & utv_aar == 0
+replace utv_dag = date(2024, 1, 1) if s2024 == '3' & utv_aar == 0
+replace utv_aar = 2024 if s2024 == '3' & utv_aar == 0
+replace utv_dag = date(2025, 1, 1) if s2025 == '3' & utv_aar == 0
+replace utv_aar = 2025 if s2025 == '3' & utv_aar == 0
+replace utv_dag = date(2026, 1, 1) if s2026 == '3' & utv_aar == 0
+replace utv_aar = 2026 if s2026 == '3' & utv_aar == 0
+
+// --- A: uten sensurering ---
+generate hendelse_a = 0
+replace hendelse_a = 1 if !sysmiss(dod) & dod >= 20160101 & dod < 20260101
+generate dager_a = date(2026, 1, 1) - date(2016, 1, 1)
+replace dager_a = doddag - date(2016, 1, 1) if hendelse_a == 1
+
+// --- B: sensurert ved utvandring (død etter utvandringen teller ikke) ---
+generate sensur = 0
+replace sensur = 1 if utv_aar > 0 & hendelse_a == 0
+replace sensur = 1 if utv_aar > 0 & hendelse_a == 1 & doddag >= utv_dag
+generate hendelse_b = hendelse_a
+replace hendelse_b = 0 if sensur == 1
+generate dager_b = dager_a
+replace dager_b = utv_dag - date(2016, 1, 1) if sensur == 1
+
+// ---------------------------------------------------------------------
+textblock
+## 1. Hvor mange utvandrer, og har de dødsdato?
+**Forventet:** Under 1 % utvandrer i alt, flere blant innvandrere. Få av dem som utvandrer, har dødsdato.
+endblock
+tabulate utv_aar innvandrer
+tabulate hendelse_a innvandrer if utv_aar > 0
+tabulate sensur innvandrer
+
+// ---------------------------------------------------------------------
+textblock
+## 2. Døde og tid i risiko, A mot B
+**Forventet:** Like mange døde i A og B, minus dem som døde etter utvandring. Kortere snittid i B, mest
+for innvandrere.
+endblock
+// summarize() tar bare én variabel
+tabulate innvandrer, summarize(hendelse_a) mean freq
+tabulate innvandrer, summarize(hendelse_b) mean freq
+tabulate innvandrer, summarize(dager_a) mean
+tabulate innvandrer, summarize(dager_b) mean
+
+// ---------------------------------------------------------------------
+textblock
+## 3. Kaplan-Meier og Cox, A mot B
+**Forventet:** Kurven for innvandrere ligger lavere i B. Koeffisienten for `innvandrer` i `cox` er høyere
+(mindre negativ) i B enn i A.
+endblock
+kaplan-meier hendelse_a dager_a, by(innvandrer)
+kaplan-meier hendelse_b dager_b, by(innvandrer)
+cox hendelse_a dager_a innvandrer alder mann
+cox hendelse_b dager_b innvandrer alder mann

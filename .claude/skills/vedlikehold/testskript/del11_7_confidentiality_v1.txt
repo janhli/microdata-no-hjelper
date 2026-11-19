@@ -1,0 +1,32 @@
+configure confidentiality v1
+// =====================================================================
+// Testskript: TESTLISTE 11.7 (configure confidentiality v1 sammen med BEFOLKNING_GRUNNKRETS)
+// Laget:      2026-11-19, kjørt samme dag (versjon 60). Resultatet står i TESTLISTE 11.7
+// Versjon:    no.ssb.fdb:60. configure confidentiality v1 må stå øverst i skriptet (manualen).
+//             Bare for brukere akkreditert før 17. november 2026.
+// Variabler:  https://microdata.no/discovery/variable/no.ssb.fdb/60/BEFOLKNING_KOMMNR_FORMELL
+//             https://microdata.no/discovery/variable/no.ssb.fdb/60/BEFOLKNING_GRUNNKRETS
+// =====================================================================
+
+require no.ssb.fdb:60 as fdb
+
+textblock
+# configure confidentiality v1 med grunnkrets (TESTLISTE 11.7)
+Manualen (systemendringer): versjon 1 er ikke mulig for skript med FHI-data eller grunnkretsvariabelen,
+«noe som sjekkes automatisk».
+
+**Forventet:** Skriptet stoppes. Noter meldingen og *hvor* det stoppes:
+- før noe kjøres (hele skriptet sjekkes på forhånd),
+- ved `import` av grunnkrets (tabellen over kommer først), eller
+- ved `configure` (da gjelder det tilgangen, ikke grunnkrets).
+endblock
+
+create-dataset k
+import fdb/BEFOLKNING_KOMMNR_FORMELL 2026-01-01 as kommune
+generate oslo = 0
+replace oslo = 1 if kommune == '0301'
+tabulate oslo
+
+import fdb/BEFOLKNING_GRUNNKRETS 2026-01-01 as gk
+generate lengde = length(gk)
+tabulate lengde
