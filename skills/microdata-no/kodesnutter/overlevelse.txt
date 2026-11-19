@@ -1,0 +1,128 @@
+// =====================================================================
+// Overlevelsesanalyse: tid til død med sensurering ved utvandring, kaplan-meier og cox
+// Status:    testet i større skript (no.ssb.fdb:60, 2026-11, TESTLISTE 8.6)
+// Variabler: BEFOLKNING_STATUSKODE (1 = bosatt, 3 = utvandret, 5 = død, per 1.1.)
+//            https://microdata.no/discovery/variable/no.ssb.fdb/60/BEFOLKNING_STATUSKODE
+//            BEFOLKNING_DOEDS_DATO (fast, tallet ÅÅÅÅMMDD)
+//            https://microdata.no/discovery/variable/no.ssb.fdb/60/BEFOLKNING_DOEDS_DATO
+//            BEFOLKNING_FOEDSELS_AAR_MND, BEFOLKNING_KJOENN, BEFOLKNING_INVKAT
+// Lager:     hendelse – 1 = død i oppfølgingen (før eventuell utvandring), 0 = sensurert
+//            dager    – dager fra start (1.1.2016) til død, utvandring eller slutt (1.1.2026)
+//            sensur   – 1 = sensurert ved utvandring
+// Kontroll:  Bosatte 70+ 1.1.2016 (575 859), fulgt til 1.1.2026: 292 000 døde. 4,6 % av innvandrerne
+//            og 0,1 % av de andre utvandret. Cox-koeffisienten for innvandrer −0,209 (hazard 0,81), mot
+//            −0,242 uten sensurering. Alder 0,127 per år, mann 0,290. Kjørt som TESTLISTE 8.6.
+// Fallgruver:
+//   - Populasjonen må være alle i risiko ved start (her bosatte 1.1.), ikke bare dem som fikk
+//     hendelsen. Manualens eksempel A (import-event + collapse) gir en populasjon der alle dør.
+//   - Utvandrede må sensureres. Uten det står de som levende ut perioden, fordi dødsfall i utlandet
+//     ofte mangler (bare 11 % av innvandrerne som utvandret, hadde dødsdato). For hele gruppen utgjør
+//     det lite, men det gjør innvandrernes overlevelse for god.
+//   - Utvandring er bare kjent per 1.1. Sensuringstiden er 1.1. året personen først står som utvandret.
+//   - BEFOLKNING_DOEDS_DATO er tallet 20240315, ikke dager. Gjør om med int() og date() før du trekker
+//     fra en dato. Sammenligning med en dato kan gjøres på tallet (dod >= 20160101).
+//   - Sett datoen for utvandring med faste år (date(2017, 1, 1) osv.), ikke date(utv_aar, 1, 1): da
+//     blir date(0, 1, 1) regnet ut for dem som ikke utvandret.
+//   - Cox-koeffisientene gjelder hazard (risikoen per tidsenhet). Negativ koeffisient = lavere risiko
+//     og lengre tid. Med hazard vises ingen standardfeil, så kjør begge. Bruk dager i cox, år i grafer.
+//   - summarize() i tabulate tar bare én variabel.
+//   - Bytt hendelse ved å importere en annen dato (f.eks. første uføretrygd fra et forløp, se
+//     forlop_til_person.txt) og la død bli sensurering på samme måte som utvandring.
+// =====================================================================
+
+require no.ssb.fdb:60 as fdb
+
+// --- 1. Populasjon: bosatte 70 år og eldre 1.1.2016 ---
+create-dataset eldre
+import fdb/BEFOLKNING_STATUSKODE 2016-01-01 as regstat
+keep if regstat == '1'
+import fdb/BEFOLKNING_FOEDSELS_AAR_MND as faarmnd
+generate alder = 2015 - int(faarmnd/100)
+keep if alder >= 70
+import fdb/BEFOLKNING_KJOENN as kjonn
+generate mann = 0
+replace mann = 1 if kjonn == '1'
+import fdb/BEFOLKNING_INVKAT as invkat
+generate innvandrer = 0
+replace innvandrer = 1 if invkat == 'B'
+
+// --- 2. Dødsdato (ÅÅÅÅMMDD) til dager siden 1970 ---
+import fdb/BEFOLKNING_DOEDS_DATO as dod
+generate dag_aar = int(dod/10000)
+generate dag_mnd = int(dod/100) - dag_aar*100
+generate dag_dag = dod - int(dod/100)*100
+generate doddag = date(dag_aar, dag_mnd, dag_dag)
+
+// --- 3. Første 1.1. som utvandret (utv_aar 0 = aldri i perioden) ---
+for aar in 2017 : 2026
+  let dato = $aar ++ "-01-01"
+  let svar = s ++ $aar
+  import fdb/BEFOLKNING_STATUSKODE $dato as $svar
+end
+generate utv_aar = 0
+generate utv_dag = date(2026, 1, 1)
+replace utv_dag = date(2017, 1, 1) if s2017 == '3' & utv_aar == 0
+replace utv_aar = 2017 if s2017 == '3' & utv_aar == 0
+replace utv_dag = date(2018, 1, 1) if s2018 == '3' & utv_aar == 0
+replace utv_aar = 2018 if s2018 == '3' & utv_aar == 0
+replace utv_dag = date(2019, 1, 1) if s2019 == '3' & utv_aar == 0
+replace utv_aar = 2019 if s2019 == '3' & utv_aar == 0
+replace utv_dag = date(2020, 1, 1) if s2020 == '3' & utv_aar == 0
+replace utv_aar = 2020 if s2020 == '3' & utv_aar == 0
+replace utv_dag = date(2021, 1, 1) if s2021 == '3' & utv_aar == 0
+replace utv_aar = 2021 if s2021 == '3' & utv_aar == 0
+replace utv_dag = date(2022, 1, 1) if s2022 == '3' & utv_aar == 0
+replace utv_aar = 2022 if s2022 == '3' & utv_aar == 0
+replace utv_dag = date(2023, 1, 1) if s2023 == '3' & utv_aar == 0
+replace utv_aar = 2023 if s2023 == '3' & utv_aar == 0
+replace utv_dag = date(2024, 1, 1) if s2024 == '3' & utv_aar == 0
+replace utv_aar = 2024 if s2024 == '3' & utv_aar == 0
+replace utv_dag = date(2025, 1, 1) if s2025 == '3' & utv_aar == 0
+replace utv_aar = 2025 if s2025 == '3' & utv_aar == 0
+replace utv_dag = date(2026, 1, 1) if s2026 == '3' & utv_aar == 0
+replace utv_aar = 2026 if s2026 == '3' & utv_aar == 0
+
+// --- 4. Hendelse og tid, sensurert ved utvandring og ved slutten av perioden ---
+generate dod_i_perioden = 0
+replace dod_i_perioden = 1 if !sysmiss(dod) & dod >= 20160101 & dod < 20260101
+generate sensur = 0
+replace sensur = 1 if utv_aar > 0 & dod_i_perioden == 0
+replace sensur = 1 if utv_aar > 0 & dod_i_perioden == 1 & doddag >= utv_dag
+generate hendelse = dod_i_perioden
+replace hendelse = 0 if sensur == 1
+generate dager = date(2026, 1, 1) - date(2016, 1, 1)
+replace dager = doddag - date(2016, 1, 1) if hendelse == 1
+replace dager = utv_dag - date(2016, 1, 1) if sensur == 1
+generate aar = dager / 365.25
+
+define-labels innvtxt 0 'Øvrige' 1 'Innvandrere'
+assign-labels innvandrer innvtxt
+
+// --- 5. Tabeller og modeller ---
+textblock
+# Tid til død for bosatte 70 år og eldre, 2016–2025
+
+Bosatte 70 år og eldre 1.1.2016, fulgt til 1.1.2026. Personer som utvandret, er sensurert 1.1. året de
+først står som utvandret. Tallene er støylagt av microdata.no.
+
+## Død og sensurering etter innvandringsbakgrunn
+endblock
+tabulate hendelse innvandrer, missing
+tabulate sensur innvandrer, missing
+
+textblock
+## Gjennomsnittlig tid i oppfølging (år)
+endblock
+tabulate innvandrer, summarize(aar) mean freq
+
+textblock
+## Overlevelseskurver etter innvandringsbakgrunn
+endblock
+kaplan-meier hendelse aar, by(innvandrer)
+
+textblock
+## Cox-regresjon: risiko for død
+Koeffisienter med standardfeil, og hazardrater (exp av koeffisienten). Alder er per år, tiden i dager.
+endblock
+cox hendelse dager innvandrer alder mann
+cox hendelse dager innvandrer alder mann, hazard
