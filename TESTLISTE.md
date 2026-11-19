@@ -12,7 +12,7 @@ Det som kan sjekkes uten microdata.no, er automatisert i [`tests/`](tests/) (`py
 Bruk ett lite skript med `import fdb/BEFOLKNING_KOMMNR_FORMELL 2024-01-01 as kommune` og `generate x = kommune`.
 
 Punktene er avklart med versjon 1 av anonymiseringstiltakene. 1.5 og 1.10 (og 4.1 om `V9`) gjaldt regelen om
-minst 10 enheter (tiltak 6), som er fjernet i versjon 2 (17. november 2026). Se 1.13.
+minst 10 enheter (tiltak 6), som er fjernet i versjon 2 (17. november 2026). Bekreftet i 1.13.
 
 | # | Hva | Hvordan | Forventet | Pri |
 |---|---|---|---|---|
@@ -28,7 +28,7 @@ minst 10 enheter (tiltak 6), som er fjernet i versjon 2 (17. november 2026). Se 
 | 1.10 | ~~Detaljerte koblinger stoppes av 10-enhetsregelen~~ **Avklart (versjon 59, 2026-11):** `klass.py --utelat` virker. SN2002 → SN2007 gikk gjennom i runde 3, med 33 målkoder tatt ut (beregnet fra `tabulate` på kildekodene). Men 42 % av sysselsatte står igjen med SN2002-kode fordi kodene har flere mål. Se 1.11 | | | ✓ |
 | 1.11 | ~~`klass.py kobling --nivaa N`~~ **Avklart (versjon 59, 2026-11):** SN2002 → SN2007 for november 2007 omkoder 91,0 % på nivå 1 (seksjon) og 82,6 % på nivå 2 (divisjon). Nivå 1 gikk gjennom uten `--utelat`, nivå 2 trengte `--utelat 30`. Fordelingen på seksjon ligner ekte SN2007 (2008), med avvik på +0,1 til −1,7 prosentpoeng, størst for N og O | | | ✓ |
 | 1.12 | ~~`klass.py grupper` for koder som mangler i Klass~~ **Avklart (versjon 59, 2026-11):** `grupper` går nå opp i hierarkiet via prefiks (43.220 → 43.22 → F). `REGSYS_NARING_SN2007` for november 2008 ble gruppert fullt ut (før: 1,2 % ugruppert). Seksjon F +19 244 | | | ✓ |
-| 1.13 | `recode` som treffer 1–9 enheter (versjon 2) | `import fdb/BEFOLKNING_LANDBAK3GEN 2025-01-01 as landbak` og `recode landbak (990 = 9)`, som ble stoppet i versjon 59 | Godtas uten «påvirker for få enheter». Da kan `--utelat`-rådene i verktøyene merkes som bare versjon 1 | P2 |
+| 1.13 | ~~`recode` som treffer 1–9 enheter (versjon 2)~~ **Avklart (versjon 60, 2026-11-19):** `recode lb ('990' = '9')` på `BEFOLKNING_LANDBAK3GEN` godtas, uten «påvirker for få enheter». Kategori 9 vises ikke i tabellen (totalen er 3 høyere enn `000`). `--utelat` trengs bare med `configure confidentiality v1` | | | ✓ |
 
 ## 2. Kommuneomkoding (`verktoy/kommuneomkoding.py`)
 
@@ -77,6 +77,7 @@ minst 10 enheter (tiltak 6), som er fjernet i versjon 2 (17. november 2026). Se 
 | 5.2 | ~~`lavinntekt_vedvarende.txt`: sammenlign med SSBs tall~~ **Avklart (versjon 59, 2026-11):** 2021–2023 mot tabell 09571. Krav om privathusholdning bare siste år traff best: 10,0 % mot 9,9 % for barn under 18, Oslo 13,6 mot 13,8, alle fylker innen 0,3 prosentpoeng. Alle tre år: 9,8 (Oslo 13,3). Uten krav: 10,1 (Oslo 13,9). Snutten bruker nå siste år. Hele befolkningen mot 04204 («studenter er utelatt»): 9,6 mot 9,5 % (2022–2024) og 9,5 mot 9,2 (2021–2023), antall personer innen 0,2 %. Kommunal median lagt til og kjørt. KPI-tallene for 2023 og 2024 var feil, og er rettet | ✓ |
 | 5.4 | ~~Færre leiere i `bolig.txt` enn i SSB tabell 14897~~ **Avklart (versjon 59, 2026-11):** statistisk koblede husholdninger har anslått eierstatus med gammel metode (51,6 % eiere mot 13–15 % etter SSBs revisjon). Se `fallgruver.md` | ✓ |
 | 5.3 | ~~Kan `landbakgrunn_region.txt` erstattes av `klass.py grupper 545`?~~ **Avklart (versjon 59, 2026-11):** nei. Snutten skiller EU/EØS fra resten av Europa, det gjør ikke Klass 545. Snutten følger nå Klass for verdensdel (Kypros, Bermuda, Saint-Pierre), og EU/EØS-listen er rettet (Sveits, Grønland, Færøyene, Gibraltar og småstatene var med, Kypros manglet). Kontrollert mot Klass uten avvik. Må kjøres på nytt (5.5) | ✓ |
+| 5.6 | Kjør snuttene på nytt med versjon 60 (`samle_snutter.py`), etter 8.6. 14 er testet med versjon 59. `sektor_lonnstakere.txt` er utgått og beholdes som dokumentasjon | P3 |
 | 5.5 | ~~Kjør `landbakgrunn_region.txt` etter endringen av EU/EØS-listen~~ **Avklart (versjon 59, 2026-11):** hver gruppe ligger innenfor sin Klass-region (Grønland og Færøyene, 4 367, er Norden i Klass og Europa utenom EU/EØS i snutten). EU/EØS 710 473 | ✓ |
 
 ## 6. Henting og vedlikehold
@@ -160,15 +161,16 @@ med 8.8 (`citation`) for flere kilder.
 ## 11. Grunnkrets (`BEFOLKNING_GRUNNKRETS`, versjon 60)
 
 Antakelser i «Grunnkrets» i [`fallgruver.md`](skills/microdata-no/referanser/fallgruver.md). Skriptet ligger i
-[`.claude/skills/vedlikehold/testskript/del11_grunnkrets.txt`](.claude/skills/vedlikehold/testskript/del11_grunnkrets.txt) (ikke kjørt ennå),
-med recode-linjer fra `verktoy/grunnkrets.py`.
+[`.claude/skills/vedlikehold/testskript/del11_grunnkrets.txt`](.claude/skills/vedlikehold/testskript/del11_grunnkrets.txt) (kjørt 2026-11-19,
+versjon 60), med recode-linjer fra `verktoy/grunnkrets.py`. 11.1–11.6 er avklart.
 
 | # | Hva | Hvordan | Forventet | Pri |
 |---|---|---|---|---|
-| 11.1 | Kodeformat i dataene | `tabulate length(gk)` og andel `kkkk9999` | Bare 8 tegn (delområdene i kodelisten er bare navn). Under 1 % uoppgitt | P2 |
-| 11.2 | De fire første sifrene er bostedskommunen | Sammenlign med `BEFOLKNING_KOMMNR_FORMELL` på samme dato | Like for nesten alle | P1 |
-| 11.3 | Levekårssoner, gjeldende år | `grunnkrets.py --til lks --aar 2026 --kommune 4601` | Ingen stopp, 63 soner i Bergen | P2 |
-| 11.4 | Gamle koder følges gjennom kommunereformen | 2019 til delområde i Bergen (1201 → 4601) | Alle omkodet (6 tegn, 4601) | P1 |
-| 11.5 | Bydel fra eldre år | 2019 til bydel i Oslo | Alle bydeler, 8 tegn bare for uoppgitt | P2 |
-| 11.6 | Lang recode for hele landet | 2015 til delområde (160 kB, 300 linjer) | Godtas. Ellers: begrens med `--kommune`, og noter grensen | P2 |
+| 11.1 | ~~Kodeformat i dataene~~ **Avklart (2026-11-19):** bare 8 tegn 1.1.2026 (5,63 mill.). 9 508 uoppgitt (`kkkk9999`, 0,17 %) | | | ✓ |
+| 11.2 | ~~De fire første sifrene er bostedskommunen~~ **Avklart (2026-11-19):** like `BEFOLKNING_KOMMNR_FORMELL` for alle 1.1.2026, ingen avvik | | | ✓ |
+| 11.3 | ~~Levekårssoner, gjeldende år~~ **Avklart (2026-11-19):** ingen stopp. 63 soner i Bergen med 1 598–7 650 personer. Bare uoppgitt (433) står med 8 tegn | | | ✓ |
+| 11.4 | ~~Gamle koder følges gjennom kommunereformen~~ **Avklart (2026-11-19):** 2019 (1201) til delområde 2026 (4601): alle 20 delområder, 8 tegn bare for uoppgitt (`12019999`, ca. 615) | | | ✓ |
+| 11.5 | ~~Bydel fra eldre år~~ **Avklart (2026-11-19):** 2019 til bydel i Oslo: 15 bydeler pluss Sentrum (1 386) og Marka (1 637). Bare uoppgitt (`03019999`, 2 398) står igjen | | | ✓ |
+| 11.6 | ~~Lang recode for hele landet~~ **Avklart (2026-11-19):** 2015 til delområde (160 kB, over 300 `recode`-linjer) godtas. 5 144 078 med 6 tegn og 21 719 (0,4 %) med 8 tegn. Se 11.8 | | | ✓ |
 | 11.7 | `configure confidentiality v1` med grunnkrets | Eget lite skript med `configure confidentiality v1` øverst og import av `BEFOLKNING_GRUNNKRETS` | Stoppes (manualen: ikke tillatt med grunnkrets eller FHI-data). Noter meldingen | P3 |
+| 11.8 | Hva er de 21 719 med 8 tegn i 11.6? | Etter 11.6: `generate uopp = 0`, `replace uopp = 1 if substr(delomrade, 5, 4) == '9999'`, `tabulate uopp if dlengde == 8` | Nesten alle er uoppgitt. Resten bør være de 14 delte grunnkretsene. Er det flere, mangler 2015-koder i Klass-endringene | P3 |

@@ -85,6 +85,14 @@ med pull request (se CONTRIBUTING.md). Tagg dem med datalagerversjon/dato hvis d
   regel den første i måneden, f.eks. 2024-12-01, ikke 2024-12-31.
 - Forløpsvariabler som `NUDB_BU` har en siste dato som kan ligge langt bak inneværende år.
 
+### Faste variabler (`FIXED`) importeres uten dato
+- **Symptom:** «Denne registervariabelen tar ikke et datoargument siden den har temporalitet: 'Fast'».
+- **Årsak:** Variabelen har én verdi per enhet (kolonnen `temporalitet` i `variabler.csv` er `FIXED`), f.eks.
+  `BEFOLKNING_LANDBAK3GEN`, `BEFOLKNING_KJOENN`, `BEFOLKNING_FOEDSELS_AAR_MND` og alle FHI-variablene.
+- **Løsning:** `import fdb/BEFOLKNING_LANDBAK3GEN as landbak`, uten dato. Sjekk `temporalitet` før du skriver
+  importlinjen. Populasjonen avgrenses av variablene som har dato (f.eks. bostedskommune).
+- Versjon 60, 2026-11-19.
+
 ### Importfiltre: `values()` og `values_from()` (fra juli 2026)
 - `import ..., values("0301", "4601")` importerer bare enheter med disse kodene. Bruk det på den
   **første** importen i et datasett, der filteret bestemmer populasjonen. Ved senere import er det
@@ -217,7 +225,8 @@ avklart med versjon 1, hvis ikke annet står. Endringene som påvirker skript:
   før man aggregerer videre, slik `kodesnutter/sektor_lonnstakere.txt` gjør.
 
 ### `replace`/`recode` må endre minst 10 enheter (bare versjon 1)
-- **Gjelder ikke fra versjon 2** (tiltak 6 er fjernet 17. november 2026). Ikke testet ennå (TESTLISTE 1.13).
+- **Gjelder ikke fra versjon 2** (tiltak 6 er fjernet 17. november 2026). Testet med versjon 60: `(990 = 9)`
+  på landbakgrunn godtas nå (TESTLISTE 1.13).
   `--utelat` i verktøyene trengs da bare med `configure confidentiality v1`.
 - **Versjon 1:** En `replace` eller `recode` som traff 1–9 enheter ble avvist. I `recode` gjaldt grensen
   **hver målverdi for seg**: «Stoppet av avsløringskontroll. Omkodingen til 9 påvirker for få enheter»
@@ -399,7 +408,10 @@ Kartlagt fra manualen (`metadata/manual/konfidensialitet.md`, `kommandoer_og_fun
     Se `metadata/regioner/manuelt/README.md`.
 
 ### Grunnkrets (`BEFOLKNING_GRUNNKRETS`, fra versjon 60)
-Kartlagt fra metadataene og SSB Klass (november 2026). Ikke kjørt i microdata.no ennå (TESTLISTE del 11).
+Kartlagt fra metadataene og SSB Klass (november 2026), og testet i microdata.no med versjon 60 (TESTLISTE
+del 11, 2026-11-19).
+- **De fire første sifrene er bostedskommunen** på samme dato (lik `BEFOLKNING_KOMMNR_FORMELL` for alle
+  1.1.2026, 11.2).
 - **Koden skifter med kommunenummeret.** Grunnkrets `15040101` (Ålesund 2019) er `15070101` i 2020–2023 og
   `15080101` fra 2024. Over 10 000 koder ble byttet i 2020 og 6 000 i 2024. Koble aldri grunnkretser fra
   ulike år direkte. Bruk `verktoy/grunnkrets.py --aar <år>`, som følger kodene gjennom Klass-endringene.
@@ -411,13 +423,16 @@ Kartlagt fra metadataene og SSB Klass (november 2026). Ikke kjørt i microdata.n
 - **Delte grunnkretser:** noen grunnkretser er senere delt mellom flere delområder eller soner (334 fra
   1990, 59 fra 2019, 3 fra 2025 på grunnkretsnivå, langt færre på sone- og delområdenivå). De kan ikke
   fordeles uten adresse og står uendret (8 tegn) med `--splitt behold`.
-- **Uoppgitt grunnkrets** har koden `kkkk9999` i hver kommune (360 koder i 2026) og står uendret.
-- **Kodelisten har også delområdene** (6 sifre, med navn). Dataene har trolig bare 8-sifrede koder.
+- **Uoppgitt grunnkrets** har koden `kkkk9999` i hver kommune (360 koder i 2026) og står uendret. 0,17 %
+  av bosatte 1.1.2026.
+- **Kodelisten har også delområdene** (6 sifre, med navn). Dataene har bare 8-sifrede koder (11.1).
 - **Delområde** er de seks første sifrene i *gjeldende* kode. For eldre år gir `substr(gk, 1, 6)` det gamle
   delområdet med gammelt kommunenummer. `grunnkrets.py --til delomrade` omkoder bare delområdene som har
   endrede koder, og tar resten med `substr`.
 - **Levekårssoner** finnes i Klass for 66 kommuner (2026-inndelingen, ikke Oslo). Bydeler finnes for Oslo,
   Bergen, Trondheim og Stavanger, delbydeler for Oslo. Alle bygger på 2026-grunnkretsene.
+- **Lange skript går.** Hele landet fra 2015 til delområde (160 kB, over 300 `recode`-linjer) ble godtatt
+  (11.6). Begrens med `--kommune` når analysen bare gjelder noen kommuner, så blir skriptet lettere å lese.
 
 ## Klass
 
@@ -450,7 +465,7 @@ Kartlagt fra metadataene og SSB Klass (november 2026). Ikke kjørt i microdata.n
   utskrift er strenger og skal ikke kombineres med `destring`.
 - **Statsløs og uoppgitt er små.** `grupper 545` gir egne målkoder for statsløs og uoppgitt (`V9`, eller `V91` og
   `V92` på nivå 2). De har under 10 bosatte og stoppet `recode` med versjon 1 av tiltakene (da: `--utelat V9`
-  eller `--utelat V91,V92`). Med versjon 2 vises de som 0 i tabeller.
+  eller `--utelat V91,V92`). Med versjon 2 godtas omkodingen (TESTLISTE 1.13), og de vises som 0 i tabeller.
   Klass 545 er autoritet for verdensdel (Kypros i Europa, Bermuda og Saint-Pierre-et-Miquelon i Nord-Amerika).
   `landbakgrunn_region.txt` følger Klass og skiller i tillegg EU/EØS fra resten av Europa, som Klass ikke gjør.
 - **Dataene kan ha nyere koder enn kodelisten.** `NUDB_BU` 1.7.2024 hadde NUS-koder (f.eks. 754144 Master, kunstig

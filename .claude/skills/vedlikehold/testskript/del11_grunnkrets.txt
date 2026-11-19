@@ -1,6 +1,6 @@
 // =====================================================================
 // Testskript: TESTLISTE del 11 (grunnkrets, BEFOLKNING_GRUNNKRETS), punkt 11.1–11.6, og 1.13
-// Laget:      2026-11, ikke kjørt ennå
+// Laget:      2026-11. Kjørt 2026-11-19 (versjon 60), resultatene står i TESTLISTE del 11 og 1.13
 // Versjon:    no.ssb.fdb:60 (grunnkrets kom i versjon 60). Spør om analysemiljøet har den samme.
 // Populasjon: bosatte 1.1.2026, 1.1.2019 (Bergen og Oslo) og 1.1.2015
 // Variabler:  https://microdata.no/discovery/variable/no.ssb.fdb/60/BEFOLKNING_GRUNNKRETS
@@ -50,7 +50,7 @@ Tiltak 6 er fjernet i versjon 2.
 
 **Forventet:** Ingen stopp. Kategori 9 vises som 0 i tabellen hvis den har under 5 personer (tiltak 11).
 endblock
-import fdb/BEFOLKNING_LANDBAK3GEN 2026-01-01 as landbak
+import fdb/BEFOLKNING_LANDBAK3GEN as landbak
 generate lb = landbak
 recode lb ('990' = '9')
 tabulate lb if inlist(lb, '9', '000'), missing
