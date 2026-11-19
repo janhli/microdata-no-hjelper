@@ -1,7 +1,9 @@
 # microdata-no-hjelper
 
-En skill for AI-assistenter (Claude Code, claude.ai og andre) som skal skrive skript for
-[microdata.no](https://www.microdata.no/), SSB og Sikts tjeneste for registerdata.
+En skill for AI-assistenter og kodeagenter (Claude, GitHub Copilot, Codex, Cursor, Gemini CLI og andre)
+som skal skrive skript for [microdata.no](https://www.microdata.no/), SSB og Sikts tjeneste for
+registerdata. Skillen følger det åpne [Agent Skills](https://agentskills.io/)-formatet (`SKILL.md` med
+referansefiler), og verktøyene er Python-skript uten avhengigheter.
 
 Den inneholder:
 
@@ -15,6 +17,31 @@ resultatet eller feilmeldingen.
 
 ## Installasjon
 
+Skillen er mappen [`skills/microdata-no`](skills/microdata-no). Klon repoet ett sted og lenk mappen inn
+der agenten din leter etter skills. Med en lenke (ikke kopi) får du den ukentlige metadataoppdateringen
+med `git pull`.
+
+```
+git clone https://github.com/janhli/microdata-no-hjelper.git
+```
+
+**GitHub Copilot (VS Code, CLI), Codex, Cursor og Gemini CLI** leser alle personlige skills fra
+`~/.agents/skills/`:
+
+```
+# macOS / Linux
+mkdir -p ~/.agents/skills
+ln -s "$PWD/microdata-no-hjelper/skills/microdata-no" ~/.agents/skills/microdata-no
+
+# Windows (cmd, ingen administratorrettigheter trengs)
+mkdir "%USERPROFILE%\.agents\skills"
+mklink /J "%USERPROFILE%\.agents\skills\microdata-no" "%CD%\microdata-no-hjelper\skills\microdata-no"
+```
+
+For ett prosjekt i stedet: lenk mappen til `.agents/skills/microdata-no` i prosjektet. Agentene har i
+tillegg egne mapper (`~/.copilot/skills`, `~/.cursor/skills`, `~/.gemini/skills`, `.github/skills`).
+I Gemini CLI må skills foreløpig slås på i innstillingene. Sjekk at skillen er funnet med `/skills`.
+
 **Claude Code:**
 
 ```
@@ -22,11 +49,17 @@ resultatet eller feilmeldingen.
 /plugin install microdata-no@microdata-no-hjelper
 ```
 
+Eller lenk mappen til `~/.claude/skills/microdata-no` som over.
+
 **claude.ai:** Last ned repoet, pakk mappen `skills/microdata-no` som zip og last den opp under
 Settings → Capabilities → Skills.
 
-**Andre verktøy (Copilot, Codex, Cursor):** Klon repoet inn i prosjektet ditt og pek til
-`skills/microdata-no/SKILL.md` i `AGENTS.md` eller tilsvarende.
+**Agenter uten støtte for skills:** Legg en linje i prosjektets `AGENTS.md` (eller tilsvarende
+instruksjonsfil) om at agenten skal lese `<sti>/skills/microdata-no/SKILL.md` når den skriver skript
+for microdata.no. Se [`AGENTS.md`](AGENTS.md) i dette repoet for et eksempel.
+
+Skillen bruker bare lesing av filer, søk og Python 3 (standardbiblioteket), så den virker i alle
+agenter som kan det.
 
 ## Oppdatere metadata selv
 
@@ -41,7 +74,7 @@ python verktoy/hent_manual.py
 ## Bidrag og vedlikehold
 
 Alle kan foreslå endringer, men en liten gruppe vedlikeholdere godkjenner dem. Innholdet havner i
-Claude-sesjonen til alle som bruker skillen, så alt gjennomgås før det flettes inn. Se
+agentsesjonen til alle som bruker skillen, så alt gjennomgås før det flettes inn. Se
 [CONTRIBUTING.md](CONTRIBUTING.md).
 
 Vedlikeholdere står i [`.github/CODEOWNERS`](.github/CODEOWNERS).

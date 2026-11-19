@@ -109,6 +109,7 @@ Sammenlign agentens svar med og uten skillen på disse oppgavene.
 | 7.11 | Tid til hendelse | Lager populasjonen av alle i risiko, sensurerer ved død og utvandring, og tolker `cox` som hazard |
 | 7.12 | Diff-in-diff | Lager etter-dummyen for alle enheter, ikke bare behandlingsgruppen, og nevner forutsetningen om parallelle trender |
 | 7.13 | Instrumentvariabel | Skriver `( endogen = instrument )` riktig vei og drøfter om instrumentet er gyldig |
+| 7.14 | Andre agenter (Copilot, Codex, Cursor) | Skillen lenket til `~/.agents/skills/microdata-no` som i README: finnes med `/skills`, lastes ved en microdata.no-oppgave, finner `variabler.csv` og `fallgruver.md`, og kjører `verktoy/klass.py`. Oppgave 7.3 og 7.7 gir samme type svar som i Claude |
 
 ## 8. Analyse (fra manualen, ikke kjørt)
 

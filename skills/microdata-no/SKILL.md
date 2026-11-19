@@ -11,7 +11,7 @@ feilmeldinger eller resultater, og du justerer.
 
 ## Lokale kilder (bruk dem før nettet)
 
-Alle stier er relative til denne skill-mappen. Søk med Grep, og ikke les hele filene.
+Alle stier er relative til denne skill-mappen. Søk i filene (grep, rg eller agentens søkeverktøy), og ikke les hele filene.
 
 | Fil | Innhold |
 |---|---|
