@@ -1,0 +1,134 @@
+// =====================================================================
+// Logistisk regresjon: ja/nei-utfall med faktorvariabler, cluster, oddsratio, marginaleffekter og prediksjon
+// Status:    testet (no.ssb.fdb:60, 2026-11)
+// Variabler: ARBSTATUS_PERS_STATUS8 (prioritert arbeidsstyrkestatus, se arbeidsstyrkestatus.txt)
+//            https://microdata.no/discovery/variable/no.ssb.fdb/60/ARBSTATUS_PERS_STATUS8
+//            NUDB_BU (høyeste utdanning, se utdanningsniva.txt)
+//            https://microdata.no/discovery/variable/no.ssb.fdb/60/NUDB_BU
+//            BEFOLKNING_KOMMNR_FORMELL, BEFOLKNING_FOEDSELS_AAR_MND, BEFOLKNING_KJOENN, BEFOLKNING_INVKAT
+// Lager:     syss     – 1 = sysselsatt i 4. kvartal 2024, 0 = ikke (utfallet)
+//            utdniv   – 1 grunnskole (referanse), 2 vgs, 3 fagskole, 4 UH kort, 5 UH lang, 9 uoppgitt
+//            innv     – 1 øvrige (referanse), 2 innvandrer, 3 norskfødt med innvandrerforeldre
+//            kommnum  – kommunenummeret som tall, til cluster()
+//            alder2   – alder i andre, så sysselsettingen kan stige og falle med alder
+//            p_syss   – predikert sannsynlighet for å være sysselsatt (logit-predict)
+// Kontroll:  3 076 000 bosatte 25–66 år, 78,1 % sysselsatt. Marginaleffekter mot grunnskole: vgs +17, UH lang
+//            +29 prosentpoeng. Innvandrer −10,7, mann +6,4. margins(innvandrer): 0,836 mot 0,714. Predikert mot
+//            observert per aldersgruppe innen 1,4 prosentpoeng for 25–54 år, men 55–61 år 73,3 mot 77,1 og 62–66 år
+//            59,8 mot 56,2: andregradskurven fanger ikke fallet ved 62 (bruk i.aldgr eller en dummy for 62+ når
+//            de eldste er viktige). Testet november 2026, versjon 60.
+// Fallgruver:
+//   - Utfallet må være 0/1 og laget eksplisitt. «generate y = x > 5» gir 0 (ikke manglende) når x mangler,
+//     så avgrens populasjonen eller sett manglende selv (TESTLISTE 8.2).
+//   - Faktorvariabler: i.var på en numerisk variabel. Laveste kode er referansen, så gi referansegruppen
+//     lavest kode. Strengvariabler må gjøres om med destring.
+//   - Har én kategori under 5 observasjoner, fjernes hele variabelen fra modellen, med en melding under
+//     tabellen som er lett å overse (tiltak 14, TESTLISTE 8.4). Tabuler kategoriene i populasjonen først.
+//   - Modellen må ha minst to koeffisienter (tiltak 17). Kontinuerlige variabler (her alder) winsoriseres.
+//   - cluster() må være numerisk og ikke med i modellen, og kan ikke kombineres med robust.
+//   - or gir oddsratio. Oddsratio er ikke relativ risiko når utfallet er vanlig (her ca. 80 %): bruk
+//     marginaleffekter eller predikerte andeler for å forklare størrelser.
+//   - mfx(dydx) er gjennomsnittlig marginaleffekt, og for 0/1-variabler den deriverte, ikke endringen fra
+//     0 til 1. Forskjellen er liten (TESTLISTE 8.7). margins() predikerer ved gjennomsnittet av de andre
+//     variablene, ikke gjennomsnittet av predikerte verdier.
+//   - Alder har ikke rett linje-effekt på sysselsetting: ta med alder i andre som egen variabel. Leddet
+//     c.x#c.x blir stille utelatt fra modellen (versjon 60): samme log-likelihood som uten, og ingen melding.
+//   - mfx(dydx) skriver først koeffisientene, så marginaleffektene («dydx av syss»). Les den andre tabellen.
+//   - Kontroller prediksjonen mot en variabel som ikke er i modellen (her aldersgrupper). For kategoriene i
+//     modellen treffer en logit gjennomsnittet per definisjon, så den sammenligningen sier ingenting.
+// =====================================================================
+
+require no.ssb.fdb:60 as fdb
+
+// --- 1. Populasjon: bosatte 25–66 år 1.1.2025 (alder ved utgangen av 2024) ---
+create-dataset personer
+import fdb/BEFOLKNING_KOMMNR_FORMELL 2025-01-01 as kommune
+import fdb/BEFOLKNING_FOEDSELS_AAR_MND as faarmnd
+generate alder = 2024 - int(faarmnd/100)
+keep if alder >= 25 & alder <= 66
+
+// --- 2. Utfall: sysselsatt i 4. kvartal 2024 (koder som i arbeidsstyrkestatus.txt) ---
+import fdb/ARBSTATUS_PERS_STATUS8 2024-11-16 as status
+// Ikke bosatt i november 2024: ingen status. Tas ut, så 0 betyr «bosatt og ikke sysselsatt».
+drop if sysmiss(status)
+generate status4 = substr(status, 1, 4)
+generate syss = 0
+replace syss = 1 if status4 == '0808' | status4 == '0816' | status4 == '0832' | status4 == '1608'
+
+// --- 3. Forklaringsvariabler som tall, referansegruppen med lavest kode ---
+import fdb/BEFOLKNING_KJOENN as kjonn
+generate mann = 0
+replace mann = 1 if kjonn == '1'
+
+import fdb/BEFOLKNING_INVKAT as invkat
+generate innv = 1
+replace innv = 2 if invkat == 'B'
+replace innv = 3 if invkat == 'C'
+define-labels innvtxt 1 'Øvrige' 2 'Innvandrer' 3 'Norskfødt med innvandrerforeldre'
+assign-labels innv innvtxt
+
+import fdb/NUDB_BU 2024-07-01 as utd
+generate utd1 = substr(utd, 1, 1)
+generate utdniv = 9
+replace utdniv = 1 if utd1 == '0' | utd1 == '1' | utd1 == '2'
+replace utdniv = 2 if utd1 == '3' | utd1 == '4'
+replace utdniv = 3 if utd1 == '5'
+replace utdniv = 4 if utd1 == '6'
+replace utdniv = 5 if utd1 == '7' | utd1 == '8'
+define-labels utdtxt 1 'Grunnskole eller mindre' 2 'Videregående' 3 'Fagskole' 4 'UH kort' 5 'UH lang' 9 'Uoppgitt'
+assign-labels utdniv utdtxt
+
+generate alder2 = alder * alder
+generate aldgr = 1
+replace aldgr = 2 if alder >= 35
+replace aldgr = 3 if alder >= 45
+replace aldgr = 4 if alder >= 55
+replace aldgr = 5 if alder >= 62
+define-labels aldgrtxt 1 '25–34' 2 '35–44' 3 '45–54' 4 '55–61' 5 '62–66'
+assign-labels aldgr aldgrtxt
+
+// Kommune som tall til cluster (personer i samme kommune er ikke uavhengige)
+generate kommnum = kommune
+destring kommnum
+
+// --- 4. Beskrivende tabeller: sjekk at ingen kategori er liten (tiltak 14) ---
+textblock
+# Sysselsetting for bosatte 25–66 år, 4. kvartal 2024
+
+Bosatte 25–66 år 1.1.2025 med arbeidsstyrkestatus i november 2024. Sysselsatt etter SSBs prioriterte
+arbeidsstyrkestatus. Tallene er støylagt, og kontinuerlige variabler er winsorisert av microdata.no.
+
+## Andel sysselsatte etter utdanning og innvandringsbakgrunn
+endblock
+tabulate utdniv, summarize(syss) mean freq
+tabulate innv, summarize(syss) mean freq
+
+// --- 5. Modeller ---
+textblock
+## Logistisk regresjon: oddsratio
+Oddsratio over 1 betyr høyere odds for å være sysselsatt enn referansegruppen (grunnskole, øvrige,
+kvinner). Standardfeil med cluster på kommune.
+endblock
+logit syss i.utdniv i.innv mann alder alder2, or cluster(kommnum)
+
+textblock
+## Gjennomsnittlige marginaleffekter
+Endring i sannsynligheten for å være sysselsatt (0,05 = 5 prosentpoeng) sammenlignet med referansegruppen.
+endblock
+logit syss i.utdniv i.innv mann alder alder2, mfx(dydx) cluster(kommnum)
+
+textblock
+## Predikert sannsynlighet for innvandrere og andre, ved gjennomsnittet av de øvrige variablene
+endblock
+generate innvandrer = 0
+replace innvandrer = 1 if innv == 2
+logit syss innvandrer i.utdniv mann alder alder2, margins(innvandrer)
+
+// --- 6. Prediksjon: kontroll av modellen ---
+textblock
+## Observert og predikert andel sysselsatte etter aldersgruppe
+Aldersgruppene er ikke i modellen (bare alder og alder i andre). Like tall betyr at alderskurven er god nok.
+endblock
+logit-predict syss i.utdniv i.innv mann alder alder2, probabilities(p_syss)
+tabulate aldgr, summarize(syss) mean
+tabulate aldgr, summarize(p_syss) mean

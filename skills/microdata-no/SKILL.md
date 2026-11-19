@@ -26,7 +26,7 @@ Alle stier er relative til denne skill-mappen. Søk i filene (grep, rg eller age
 | `metadata/manual/**/*.md` | Hele manualen som Markdown. Kommandoreferansen ligger i `kommandoer_og_funksjoner/kommandoer.md` og funksjonene i `.../funksjoner.md`. |
 | `referanser/fallgruver.md` | Feil som ikke står (tydelig) i manualen, med feilmelding og løsning. **Les den før du leverer et skript.** |
 | `referanser/vega.md` | Endre figurer fra microdata.no i Vega-editoren: brukeren limer inn Vega-Lite-spesifikasjonen (med tallene), du endrer etiketter, rekkefølge, farger, titler og tallformat. Les den når brukeren vil ha en penere eller tilpasset figur |
-| `kodesnutter/` | Frittstående og kommenterte snutter med teststatus: analysemal, alder, innvandringskategori, landbakgrunn, utdanning, arbeidsstyrkestatus, sektor for lønnstakere (utgått i versjon 60), samliv, husholdning, bolig, lavinntekt, verdi ved hendelse, mor–barn, forløp og overlevelsesanalyse. Oversikt i `kodesnutter/README.md`. **Ta utgangspunkt i disse før du skriver noe selv.** |
+| `kodesnutter/` | Frittstående og kommenterte snutter med teststatus: analysemal, alder, innvandringskategori, landbakgrunn, utdanning, arbeidsstyrkestatus, sektor for lønnstakere (utgått i versjon 60), samliv, husholdning, bolig, lavinntekt, verdi ved hendelse, mor–barn, forløp, overlevelsesanalyse og logistisk regresjon. Oversikt i `kodesnutter/README.md`. **Ta utgangspunkt i disse før du skriver noe selv.** |
 
 Dato for siste nedlasting står i `metadata/HENTET`. Oppdater med `python verktoy/hent_variabler.py`
 (`--alle` henter alt på nytt, ca. 6 min) og `python verktoy/hent_manual.py`.
@@ -118,7 +118,7 @@ Eksemplene bruker gamle datalagerversjoner (23–45), så sjekk variabelnavnene.
 | Problem | Kommando | Merk |
 |---|---|---|
 | Kontinuerlig utfall (lønn, inntekt) | `regress` | `robust` eller `cluster()`. Diagnostikk med `ov vif het_bp` |
-| Ja/nei-utfall | `logit` / `probit` | Utfallet må være 0/1. `mfx(dydx)` for marginaleffekter, `or` for oddsratio |
+| Ja/nei-utfall | `logit` / `probit` | Utfallet må være 0/1. `mfx(dydx)` for marginaleffekter, `or` for oddsratio. Snutt: `kodesnutter/logistisk_regresjon.txt` |
 | Utfall med flere kategorier uten rekkefølge | `mlogit` | |
 | Antall (sykemeldinger, fødsler) | `poisson`, `negative-binomial` ved overdispersjon | `exposure()` for rater, `irr` |
 | Forskjell mellom to grupper, forklart og uforklart | `oaxaca ... by gruppe` | |

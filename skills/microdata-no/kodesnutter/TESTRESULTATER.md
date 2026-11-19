@@ -25,6 +25,7 @@ innen støyen (f.eks. innvandrere 964 836 mot 964 834, husholdninger koblet til 
 | [landbakgrunn_region.txt](landbakgrunn_region.txt) | v60, 2026-11 | Klass 545 | Stemmer etter retting av EU/EØS-listen |
 | [lavinntekt_eu60.txt](lavinntekt_eu60.txt) | v60, 2026-11 | – | Kjørt uten feil |
 | [lavinntekt_vedvarende.txt](lavinntekt_vedvarende.txt) | v60, 2026-11 | SSB 09571, 04204, FHI 403 | Stemmer innen 0,3 prosentpoeng (kommunal median: storbyene opptil 0,5 over FHI) |
+| [logistisk_regresjon.txt](logistisk_regresjon.txt) | v60, 2026-11 | Predikert mot observert | Treffer 25–54 år, avvik ±4 prosentpoeng for 55–66 år (se under) |
 | [mal_analyse.txt](mal_analyse.txt) | v60, 2026-11 | – | Kjørt uten feil |
 | [mor_barn.txt](mor_barn.txt) | v60, 2026-11 | – | Kjørt uten feil |
 | [samlivsstatus.txt](samlivsstatus.txt) | v60, 2026-11 | – | Kjørt uten feil |
@@ -121,6 +122,25 @@ Kjørt på nytt med versjon 60 (2026-11-19, TESTLISTE 5.6): samme tall innen 0,1
 8,8 og 11,5 %).
 
 Rettet etter kjøring: `merge` ble kjørt fra feil datasett, og KPI-faktorene for 2023 og 2024 var feil.
+
+### logistisk_regresjon.txt
+
+Bosatte 25–66 år 1.1.2025 (3 076 000), sysselsatt i 4. kvartal 2024 (78,1 %). Kjørt to ganger, versjon 60:
+
+- Første versjon hadde `c.alder#c.alder`. Leddet ble stille utelatt fra modellen (TESTLISTE 8.11), og
+  sammenligningen av predikert og observert andel per utdanning var meningsløs (utdanning var i modellen).
+- Rettet versjon med `alder2` og kontroll per aldersgruppe:
+
+| Alder | Observert | Predikert |
+|---|---|---|
+| 25–34 | 80,7 % | 80,0 % |
+| 35–44 | 82,0 % | 83,4 % |
+| 45–54 | 81,6 % | 81,9 % |
+| 55–61 | 77,1 % | 73,3 % |
+| 62–66 | 56,2 % | 59,8 % |
+
+Andregradskurven fanger ikke fallet ved 62 år (pensjon). Marginaleffekter mot grunnskole: videregående +17,
+UH lang +29 prosentpoeng. Innvandrer −10,7 og mann +6,4. Cluster på kommune gir z-verdier rundt 50 mot 290 uten.
 
 ### bolig.txt
 

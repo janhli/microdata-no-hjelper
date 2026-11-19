@@ -377,6 +377,17 @@ Kartlagt fra manualen (`metadata/manual/konfidensialitet.md`, `kommandoer_og_fun
 - Kategoriske variabler skrives som `i.var`. Uten `i.` tolkes en numerisk kode som kontinuerlig. Interaksjon:
   `i.a#i.b` (bare interaksjonen) eller `i.a##i.b` (hovedeffekter og interaksjon). `control(i.kommune)` tar
   med faste effekter uten å vise dem.
+- **Testet med `logit` (versjon 60, november 2026, `kodesnutter/logistisk_regresjon.txt`):** laveste kode er
+  referanse, og kategoriene vises med navn. `cluster()` virker med `or` og `mfx()` (z-verdier ca. 50 mot
+  290 uten). `mfx(dydx)` skriver først koeffisientene, så marginaleffektene under «dydx av syss».
+  `logit-predict` godtar `i.`-ledd.
+- **`c.x#c.x` (andregradsledd) utelates stille fra modellen.** `logit ... alder c.alder#c.alder` ga samme
+  modell som uten leddet: log-likelihood −1 456 133 mot −1 430 816 med `alder2 = alder * alder`, og
+  koeffisienten for alder skiftet fortegn. Ingen melding (TESTLISTE 8.11). Lag andregradsledd som egen
+  variabel: `generate alder2 = alder * alder`. `LR chi2` har én frihetsgrad mer enn de synlige leddene uansett,
+  så frihetsgradene sier ikke om et ledd er med.
+- **Kontroller prediksjoner mot noe som ikke er i modellen.** En logit med `i.gruppe` treffer andelen per
+  gruppe nøyaktig (avvik 0,03 prosentpoeng), så den sammenligningen sier ingenting.
 - `logit`/`probit` krever et utfall som er 0/1. `mfx(dydx)` gir gjennomsnittlige marginaleffekter
   (`overall`). For en 0/1-variabel er det trolig den deriverte, ikke en diskret endring fra 0 til 1:
   `mann` ga 0,1805, mens forskjellen i `margins(mann)` var 0,1864 og en derivert ga om lag 0,180 (TESTLISTE
