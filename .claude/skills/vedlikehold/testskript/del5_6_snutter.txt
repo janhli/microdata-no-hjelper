@@ -1,0 +1,557 @@
+// Samlet testskript for 13 kodesnutter, laget 2026-11-19 av samle_snutter.py.
+// Kjør hele skriptet. Stopper det med feil, noter snutten (overskriften «Snutt N») og feilmeldingen.
+require no.ssb.fdb:60 as fdb
+
+textblock
+# Test av 13 kodesnutter, no.ssb.fdb:60
+Hver snutt kjøres ordrett etter hverandre, og datasettene slettes mellom dem. En snutt er bestått når
+den kjører uten feil og tabellene ser rimelige ut (ingen tomme kategorier som skulle hatt innhold).
+endblock
+
+// =====================================================================
+// Snutt 1: alder.txt
+// =====================================================================
+textblock
+# Snutt 1/13: alder.txt
+Alder og aldersgrupper. Status før test: testet (no.ssb.fdb:59, 2026-11).
+endblock
+create-dataset personer
+import fdb/BEFOLKNING_KOMMNR_FORMELL 2025-01-01 as kommune
+import fdb/BEFOLKNING_FOEDSELS_AAR_MND as faarmnd
+
+// Alder 1.1.2025 slik Statistikkbanken regner den
+generate alder = 2025 - 1 - int(faarmnd/100)
+
+// Femårsgrupper til 80+
+generate aldgr = '80+'
+replace aldgr = '00-04' if alder < 5
+replace aldgr = '05-09' if alder >= 5 & alder < 10
+replace aldgr = '10-14' if alder >= 10 & alder < 15
+replace aldgr = '15-19' if alder >= 15 & alder < 20
+replace aldgr = '20-24' if alder >= 20 & alder < 25
+replace aldgr = '25-29' if alder >= 25 & alder < 30
+replace aldgr = '30-34' if alder >= 30 & alder < 35
+replace aldgr = '35-39' if alder >= 35 & alder < 40
+replace aldgr = '40-44' if alder >= 40 & alder < 45
+replace aldgr = '45-49' if alder >= 45 & alder < 50
+replace aldgr = '50-54' if alder >= 50 & alder < 55
+replace aldgr = '55-59' if alder >= 55 & alder < 60
+replace aldgr = '60-64' if alder >= 60 & alder < 65
+replace aldgr = '65-69' if alder >= 65 & alder < 70
+replace aldgr = '70-74' if alder >= 70 & alder < 75
+replace aldgr = '75-79' if alder >= 75 & alder < 80
+replace aldgr = 'ukjent' if sysmiss(alder)
+
+textblock
+## Bosatte etter aldersgruppe, 1.1.2025
+Alder ved utgangen av 2024.
+endblock
+tabulate aldgr, missing
+
+// Rydd før neste snutt
+delete-dataset personer
+
+// =====================================================================
+// Snutt 2: innvandringskategori.txt
+// =====================================================================
+textblock
+# Snutt 2/13: innvandringskategori.txt
+Innvandringskategori i tre grupper. Status før test: testet (no.ssb.fdb:59, 2026-11).
+endblock
+create-dataset personer
+import fdb/BEFOLKNING_KOMMNR_FORMELL 2025-01-01 as kommune
+import fdb/BEFOLKNING_INVKAT as invkat
+
+generate innvkat = '3'
+replace innvkat = '1' if invkat == 'B'
+replace innvkat = '2' if invkat == 'C'
+replace innvkat = '9' if sysmiss(invkat)
+define-labels innvkattxt '1' 'Innvandrer' '2' 'Norskfødt med innvandrerforeldre' '3' 'Øvrig befolkning' '9' 'Ukjent'
+assign-labels innvkat innvkattxt
+
+textblock
+## Bosatte etter innvandringskategori, 1.1.2025
+endblock
+tabulate innvkat, missing
+
+// Rydd før neste snutt
+delete-dataset personer
+
+// =====================================================================
+// Snutt 3: landbakgrunn_region.txt
+// =====================================================================
+textblock
+# Snutt 3/13: landbakgrunn_region.txt
+Landbakgrunn gruppert i verdensregioner. Status før test: testet (no.ssb.fdb:59, 2026-11). Verdensdelene stemmer med SSB Klass 545 for alle bosatte.
+endblock
+create-dataset personer
+import fdb/BEFOLKNING_KOMMNR_FORMELL 2025-01-01 as kommune
+import fdb/BEFOLKNING_LANDBAK3GEN as landbak
+
+destring landbak
+// EU/EØS: Danmark, Finland, Island, Sverige, Belgia, Bulgaria, Estland, Frankrike, Hellas, Irland, Kroatia,
+// Italia, Latvia, Malta, Nederland, Liechtenstein, Luxembourg, Polen, Portugal, Romania, Litauen, Spania,
+// Tsjekkoslovakia, Tyskland, Slovenia, DDR, Ungarn, Østerrike, Slovakia, Tsjekkia og Kypros
+recode landbak (101 103 105 106 112 113 115 117 119 121 122 123 124 126 127 128 129 131 132 133 136 137 142 144 146 151 152 153 157 158 500 = 1) (143 = 4) (102/199 = 2) (203/399 = 3) (404/599 = 4) (606 612 676 684 = 5) (601/799 = 6) (802/899 = 7)
+define-labels vregion 0 'Norge' 1 'EU/EØS' 2 'Europa utenom EU/EØS' 3 'Afrika' 4 'Asia med Tyrkia' 5 'Nord-Amerika' 6 'Sør- og Mellom-Amerika' 7 'Oseania' 980 'Statsløs' 989 'Uoppgitt' 990 'Uoppgitt'
+assign-labels landbak vregion
+
+textblock
+## Bosatte etter landbakgrunn (verdensregion), 1.1.2025
+endblock
+tabulate landbak, missing
+
+// Rydd før neste snutt
+delete-dataset personer
+
+// =====================================================================
+// Snutt 4: samlivsstatus.txt
+// =====================================================================
+textblock
+# Snutt 4/13: samlivsstatus.txt
+Samlivsstatus (parstatus i familien). Status før test: testet (no.ssb.fdb:59, 2026-11).
+endblock
+create-dataset personer
+import fdb/BEFOLKNING_KOMMNR_FORMELL 2025-01-01 as kommune
+import fdb/BEFOLKNING_PARSTATUS 2025-01-01 as parst
+
+generate samliv = '9'
+replace samliv = '1' if parst == '1' | parst == '2'
+replace samliv = '2' if parst == '3' | parst == '5' | parst == '6' | parst == '7' | parst == 'u' | parst == 'p'
+replace samliv = '3' if parst == '0'
+replace samliv = '4' if parst == '8'
+define-labels samlivtxt '1' 'Gift / registrert partner' '2' 'Samboer' '3' 'Ikke i par (enslig)' '4' 'Bor som barn hos foreldre' '9' 'Ukjent / ikke bosatt 1.1.'
+assign-labels samliv samlivtxt
+
+textblock
+## Bosatte etter samlivsstatus, 1.1.2025
+endblock
+tabulate samliv, missing
+
+// Rydd før neste snutt
+delete-dataset personer
+
+// =====================================================================
+// Snutt 5: arbeidsstyrkestatus.txt
+// =====================================================================
+textblock
+# Snutt 5/13: arbeidsstyrkestatus.txt
+Prioritert arbeidsstyrkestatus i åtte grupper. Status før test: testet (no.ssb.fdb:59, 2026-11).
+endblock
+create-dataset personer
+import fdb/BEFOLKNING_KOMMNR_FORMELL 2025-01-01 as kommune
+import fdb/ARBSTATUS_PERS_STATUS8 2024-11-16 as status
+
+generate status4 = substr(status, 1, 4)
+generate arbstatus = '8'
+replace arbstatus = '1' if status4 == '0808' | status4 == '0816' | status4 == '0832' | status4 == '1608'
+replace arbstatus = '2' if status4 == '2408'
+replace arbstatus = '3' if status4 == '3208' | status4 == '3216' | status4 == '3240' | status4 == '4816'
+replace arbstatus = '4' if status4 == '4008'
+replace arbstatus = '5' if status4 == '4848' | status4 == '4864'
+replace arbstatus = '6' if status4 == '5616' | status4 == '5632'
+replace arbstatus = '7' if status4 == '3224' | status4 == '4808' | status4 == '5608' | status4 == '5624' | status4 == '5640' | status4 == '6408' | status4 == '6416' | status4 == '6424' | status4 == '6432'
+define-labels arbstatustxt '1' 'Sysselsatt' '2' 'Registrert ledig' '3' 'Arbeidsmarkedstiltak' '4' 'Under utdanning' '5' 'AAP/uføretrygd' '6' 'AFP/alderspensjon' '7' 'Andre (dagpenger, sykepenger, stønader mv.)' '8' 'Ukjent / ikke bosatt'
+assign-labels arbstatus arbstatustxt
+
+textblock
+## Bosatte 1.1.2025 etter arbeidsstyrkestatus i 4. kvartal 2024
+«Ukjent / ikke bosatt» omfatter barn under 15 og personer som ikke var bosatt i november 2024.
+endblock
+tabulate arbstatus, missing
+
+// Rydd før neste snutt
+delete-dataset personer
+
+// =====================================================================
+// Snutt 6: utdanningsniva.txt
+// =====================================================================
+textblock
+# Snutt 6/13: utdanningsniva.txt
+Høyeste fullførte utdanning (seks nivåer). Status før test: testet (no.ssb.fdb:59, 2026-11).
+endblock
+create-dataset personer
+import fdb/BEFOLKNING_KOMMNR_FORMELL 2024-01-01 as kommune
+import fdb/NUDB_BU 2024-07-01 as utd
+
+generate utd1 = substr(utd, 1, 1)
+generate utdniv = '1'
+replace utdniv = '2' if utd1 == '1' | utd1 == '2'
+replace utdniv = '3' if utd1 == '3' | utd1 == '4'
+replace utdniv = '4' if utd1 == '5'
+replace utdniv = '5' if utd1 == '6'
+replace utdniv = '6' if utd1 == '7' | utd1 == '8'
+define-labels utdnivtxt '1' 'Uoppgitt / ingen' '2' 'Grunnskole' '3' 'Videregående' '4' 'Fagskole' '5' 'UH kort (til og med 4 år)' '6' 'UH lang (over 4 år) og forsker'
+assign-labels utdniv utdnivtxt
+
+textblock
+## Bosatte etter høyeste fullførte utdanning, 1.7.2024
+«Uoppgitt / ingen» omfatter barn og innvandrere uten registrert utdanning.
+endblock
+tabulate utdniv, missing
+
+// Rydd før neste snutt
+delete-dataset personer
+
+// =====================================================================
+// Snutt 7: mal_analyse.txt
+// =====================================================================
+textblock
+# Snutt 7/13: mal_analyse.txt
+MAL: analyseskript. Status før test: testet (no.ssb.fdb:59, 2026-11).
+endblock
+// ---------------------------------------------------------------------
+// Tittel: <hva analysen viser>
+// Populasjon: <hvem, hvor, når>
+// Variabler: https://microdata.no/discovery/variable/no.ssb.fdb/59/<NAVN>
+// ---------------------------------------------------------------------
+
+// Spør om versjonen som er tilgjengelig i analysemiljøet (kan ligge en bak metadatasidene)
+
+// --- 1. Populasjon ---
+create-dataset personer
+// Første import bestemmer populasjonen. values() filtrerer allerede ved import.
+import fdb/BEFOLKNING_KOMMNR_FORMELL 2025-01-01 as kommune
+generate fylke = substr(kommune, 1, 2)
+
+// --- 2. Kjennetegn ---
+import fdb/BEFOLKNING_KJOENN as kjonn
+import fdb/BEFOLKNING_FOEDSELS_AAR_MND as faarmnd
+
+// --- 3. Avledede variabler ---
+generate alder = 2025 - 1 - int(faarmnd/100)
+generate aldgr = '1'
+replace aldgr = '2' if alder >= 20
+replace aldgr = '3' if alder >= 67
+replace aldgr = '9' if sysmiss(alder)
+define-labels aldgrtxt '1' '0–19 år' '2' '20–66 år' '3' '67 år og over' '9' 'Ukjent'
+assign-labels aldgr aldgrtxt
+
+// --- 4. Tabeller ---
+textblock
+# <Tittel på analysen>
+
+<Populasjon og tidspunkt i én–to setninger.> Tallene er støylagt av microdata.no, så små celler kan
+avvike og prosenter summere til litt mer eller mindre enn 100.
+
+## 1. Bosatte etter aldersgruppe og kjønn, 1.1.2025
+Antall personer.
+endblock
+tabulate aldgr kjonn, missing
+
+textblock
+## 2. Aldersfordeling etter fylke, 1.1.2025 (radprosent)
+endblock
+tabulate fylke aldgr, missing rowpct
+
+// --- 5. Kildehenvisning ---
+// Gir «Analysen er gjennomført i microdata.no med datagrunnlag fra: SSB (registerdata). Data analysert:
+// <dato>» (TESTLISTE 8.8, versjon 60). Ikke med datalagerversjon: oppgi den i teksten. Kommer ikke med
+// når hele utskriften kopieres. Kopier den for seg.
+citation
+
+// Rydd før neste snutt
+delete-dataset personer
+
+// =====================================================================
+// Snutt 8: forlop_til_person.txt
+// =====================================================================
+textblock
+# Snutt 8/13: forlop_til_person.txt
+Forløp til personnivå: første start og siste stopp. Status før test: testet (no.ssb.fdb:59, 2026-11).
+endblock
+create-dataset personer
+import fdb/BEFOLKNING_KOMMNR_FORMELL 2025-01-01 as kommune
+
+create-dataset introdata
+import-event fdb/INTROSTFDT_MOTTAK 2005-01-01 to 2024-12-01 as intro
+collapse (min) START@intro -> intro_start (max) STOP@intro -> intro_stopp, by(PERSONID_1)
+merge intro_start intro_stopp into personer
+delete-dataset introdata
+
+use personer
+generate intro = '0'
+replace intro = '1' if intro_start > 0
+define-labels introtxt '0' 'Ikke mottatt' '1' 'Har mottatt introduksjonsstønad 2005–2024'
+assign-labels intro introtxt
+
+textblock
+## Bosatte 1.1.2025 som har mottatt introduksjonsstønad i 2005–2024
+endblock
+tabulate intro, missing
+
+// Rydd før neste snutt
+delete-dataset personer
+
+// =====================================================================
+// Snutt 9: mor_barn.txt
+// =====================================================================
+textblock
+# Snutt 9/13: mor_barn.txt
+Mor–barn-kobling: telle barn per mor og hente kjennetegn ved den andre forelderen. Status før test: testet (no.ssb.fdb:59, 2026-11).
+endblock
+// --- Barn født 2021–2024 ---
+create-dataset barn
+import fdb/BEFOLKNING_FOEDSELS_AAR_MND as faarmnd
+keep if faarmnd >= 202101 & faarmnd <= 202412
+import fdb/BEFOLKNING_MOR_FNR as fnr_mor
+import fdb/BEFOLKNING_FAR_FNR as fnr_far
+
+// --- Antall barn per mor ---
+create-dataset mor
+import fdb/BEFOLKNING_KJOENN as kjonn, values("2")
+
+clone-dataset barn barn_tmp
+use barn_tmp
+collapse (count) faarmnd -> ant_barn, by(fnr_mor)
+merge ant_barn into mor
+delete-dataset barn_tmp
+
+use mor
+drop if sysmiss(ant_barn)
+
+// --- Kjønnet til barnets andre forelder (medmor = kvinne) ---
+create-dataset personer_kjonn
+import fdb/BEFOLKNING_KJOENN as kjonn_forelder2
+merge kjonn_forelder2 into barn on fnr_far
+delete-dataset personer_kjonn
+
+use barn
+generate forelder2 = '9'
+replace forelder2 = '1' if kjonn_forelder2 == '1'
+replace forelder2 = '2' if kjonn_forelder2 == '2'
+define-labels forelder2txt '1' 'Far' '2' 'Medmor' '9' 'Ingen registrert forelder 2'
+assign-labels forelder2 forelder2txt
+
+use mor
+textblock
+## Kvinner etter antall barn født 2021–2024
+Tvillinger telles som to barn.
+endblock
+tabulate ant_barn, missing
+
+use barn
+textblock
+## Barn født 2021–2024 etter barnets andre forelder
+endblock
+tabulate forelder2, missing
+
+// Rydd før neste snutt
+delete-dataset barn
+delete-dataset mor
+
+// =====================================================================
+// Snutt 10: verdi_ved_hendelse.txt
+// =====================================================================
+textblock
+# Snutt 10/13: verdi_ved_hendelse.txt
+Verdi av en variabel ved (eller året før) en hendelse. Status før test: testet (no.ssb.fdb:59, 2026-11).
+endblock
+// --- Hendelser: barn født 2021–2024 ---
+create-dataset barn
+import fdb/BEFOLKNING_FOEDSELS_AAR_MND as faarmnd
+keep if faarmnd >= 202101 & faarmnd <= 202412
+import fdb/BEFOLKNING_MOR_FNR as fnr_mor
+generate fodeaar = int(faarmnd/100)
+
+// --- Personer (mødre) med verdien for hvert år ---
+create-dataset mor
+import fdb/BEFOLKNING_KJOENN as kjonn, values("2")
+for aar in 2020 : 2023
+  let dato = $aar ++ "-07-01"
+  let var = utd ++ $aar
+  import fdb/NUDB_BU $dato as $var
+end
+
+// --- Koble og velg riktig år ---
+merge utd2020 utd2021 utd2022 utd2023 into barn on fnr_mor
+use barn
+generate utd = '0'
+for aar in 2021 : 2024
+  let fjor = $aar - 1
+  let uvar = utd ++ $fjor
+  replace utd = $uvar if fodeaar == $aar
+end
+generate utdniv1 = substr(utd, 1, 1)
+
+textblock
+## Fødsler etter første siffer i mors NUS-kode (1.7. året før fødselsåret), per år
+Kolonneprosent. Se utdanningsniva.txt for en gruppering med navn.
+endblock
+tabulate utdniv1 fodeaar, missing colpct
+
+// Rydd før neste snutt
+delete-dataset barn
+delete-dataset mor
+
+// =====================================================================
+// Snutt 11: lavinntekt_eu60.txt
+// =====================================================================
+textblock
+# Snutt 11/13: lavinntekt_eu60.txt
+Lavinntekt (EU-60), med egen medianberegning per år. Status før test: testet (no.ssb.fdb:59, 2026-11).
+endblock
+create-dataset personer
+import fdb/BEFOLKNING_KOMMNR_FORMELL 2025-01-01 as kommune
+
+for aar in 2022 : 2024
+  let dato = $aar ++ "-12-31"
+  let ivar = ies ++ $aar
+  let lvar = lav ++ $aar
+  create-dataset hushinnt
+  import fdb/INNTEKT_HUSH_IES_EU $dato as $ivar
+  import fdb/INNTEKT_KODE_PRIVATHUSH2 $dato as privhush
+  keep if privhush == '1'
+  drop if sysmiss($ivar)
+  generate alle = 1
+  aggregate (median) $ivar -> median_ies, by(alle)
+  generate $lvar = 0
+  replace $lvar = 1 if $ivar < 0.6 * median_ies
+  merge $ivar $lvar into personer
+  delete-dataset hushinnt
+end
+
+use personer
+generate lavinnt = '9'
+replace lavinnt = '0' if lav2024 == 0
+replace lavinnt = '1' if lav2024 == 1
+define-labels lavinnttxt '0' 'Ikke lavinntekt' '1' 'Lavinntekt (EU-60)' '9' 'Ukjent / ikke i privathusholdning'
+assign-labels lavinnt lavinnttxt
+
+textblock
+## Bosatte 1.1.2025 etter lavinntekt (EU-60) i 2024
+Husholdningsinntekt etter skatt per forbruksenhet under 60 % av medianen for alle i privathusholdninger.
+endblock
+tabulate lavinnt, missing
+
+// Rydd før neste snutt
+delete-dataset personer
+
+// =====================================================================
+// Snutt 12: bolig.txt
+// =====================================================================
+textblock
+# Snutt 12/13: bolig.txt
+Person, husholdning og bolig: boligens egenskaper per person og per husholdning. Status før test: testet (no.ssb.fdb:59, 2026-11). Eierstatus bruker SSBs gamle metode, se Kontroll.
+endblock
+create-dataset personer
+import fdb/BEFOLKNING_KOMMNR_FORMELL 2024-01-01 as kommune
+import fdb/BEFOLKNING_HUSHNR 2024-01-01 as hushnr
+import fdb/BEFOLKNING_KONTAKT_HUSHNR 2024-01-01 as kontakt
+import fdb/BEFOLKNING_PERS_I_HUSHNR 2024-01-01 as hushstr
+import fdb/BOFORHOLD_BOLIG_HUSH 2024-01-01 as koblet
+import fdb/BOFORHOLD_KOBLNIVAA_HUSH_BOLIG 2024-01-01 as koblniva
+import fdb/BOFORHOLD_BYGNINGSTYPE_AGGR 2024-01-01 as bygntype
+import fdb/BOFORHOLD_EIE_LEIE 2024-01-01 as eieleie
+import fdb/BOFORHOLD_ANTALL_ROM 2024-01-01 as rom
+import fdb/BOFORHOLD_BRUKSAREAL 2024-01-01 as areal
+import fdb/BOFORHOLD_TRANGBODD 2024-01-01 as trangbodd
+
+// Én rad per bebodd bolig: kontaktpersonen i en husholdning som er koblet til bolig
+generate bolig = 0
+replace bolig = 1 if kontakt == '1' & koblet == 'HMB'
+
+textblock
+## Bosatte etter kobling mellom husholdning og bolig, 1.1.2024
+HMB = husholdning koblet til bolig, HUB = ikke koblet, AND = ikke privathusholdning, UTL = utlandet.
+Boligvariablene finnes bare for HMB.
+endblock
+tabulate koblet, missing
+
+textblock
+## Bosatte etter bygningstype, 1.1.2024 (person)
+endblock
+tabulate bygntype, missing
+
+textblock
+## Kontroll: husholdninger etter eierstatus og koblingsnivå, 1.1.2024 (antall og radprosent)
+SSB tabell 14897 (2024): 2 584 517 i alt, selveier 1 530 670, andels-/aksjeeier 346 063, leier 707 784.
+microdata.no har samme antall husholdninger, men færre leiere. Statistisk koblede husholdninger (STAT)
+har anslått eierstatus (51,6 % eiere i 2024), mens SSB etter revisjonen (notat 2026/17) regner med
+13–15 %. Vis STAT som egen gruppe når eierstatus brukes.
+endblock
+tabulate koblniva eieleie if bolig == 1, missing
+tabulate koblniva eieleie if bolig == 1, missing rowpct
+
+textblock
+## Bebodde boliger etter bygningstype og eie/leie, 1.1.2024 (radprosent)
+Én rad per husholdning koblet til bolig. Kan sammenlignes med SSB tabell 14897 (eierstatus etter
+bygningstype, husholdninger).
+endblock
+tabulate bygntype eieleie if bolig == 1, missing rowpct
+
+textblock
+## Bebodde boliger etter bygningstype: gjennomsnittlig antall rom, bruksareal og personer, 1.1.2024
+endblock
+tabulate bygntype if bolig == 1, summarize(rom) mean
+tabulate bygntype if bolig == 1, summarize(areal) mean
+tabulate bygntype if bolig == 1, summarize(hushstr) mean
+
+textblock
+## Personer etter trangboddhet, 1.1.2024
+endblock
+tabulate trangbodd, missing
+
+// Rydd før neste snutt
+delete-dataset personer
+
+// =====================================================================
+// Snutt 13: husholdning.txt
+// =====================================================================
+textblock
+# Snutt 13/13: husholdning.txt
+Person og husholdning: husholdningsvariabler, én rad per husholdning, og egne aggregater. Status før test: testet (no.ssb.fdb:59, 2026-11).
+endblock
+create-dataset personer
+import fdb/BEFOLKNING_KOMMNR_FORMELL 2025-01-01 as kommune
+import fdb/BEFOLKNING_HUSHNR 2025-01-01 as hushnr
+import fdb/BEFOLKNING_KONTAKT_HUSHNR 2025-01-01 as kontakt
+import fdb/BEFOLKNING_PERS_I_HUSHNR 2025-01-01 as hushstr
+import fdb/BEFOLKNING_REGSTAT_HUSHTYP 2025-01-01 as hushtype
+import fdb/BEFOLKNING_FOEDSELS_AAR_MND as faarmnd
+generate alder = 2025 - 1 - int(faarmnd/100)
+generate barn = 0
+replace barn = 1 if alder < 18
+// Teller personer med en variabel som alltid har verdi (count på alder hopper over manglende fødselsår)
+generate en = 1
+
+// Egne aggregater per husholdning: kopier, behold privathusholdninger, aggreger til hushnr og koble tilbake
+clone-dataset personer husholdninger
+use husholdninger
+// hushnr finnes også for institusjoner og felleshusholdninger. De har ikke husholdningsstørrelse.
+drop if sysmiss(hushstr)
+collapse (sum) en -> ant_pers (sum) barn -> ant_barn, by(hushnr)
+merge ant_pers ant_barn into personer on hushnr
+delete-dataset husholdninger
+use personer
+
+// Kontroll: eget antall personer skal være lik den ferdige variabelen
+generate avvik_str = ant_pers - hushstr
+
+// Husholdningstype på øverste nivå (1.1 aleneboende, 1.2 par uten barn osv.)
+generate hushtype2 = substr(hushtype, 1, 3)
+
+textblock
+## Kontroll: eget antall personer i husholdningen minus BEFOLKNING_PERS_I_HUSHNR, 1.1.2025
+Skal være 0 for alle i privathusholdninger. Manglende verdi er personer utenfor privathusholdning.
+endblock
+tabulate avvik_str, missing
+
+textblock
+## Privathusholdninger etter antall personer, 1.1.2025
+Én rad per husholdning (kontaktpersonen). Kan sammenlignes med SSB tabell 06079.
+endblock
+tabulate hushstr if kontakt == '1', missing
+
+textblock
+## Privathusholdninger etter husholdningstype (øverste nivå), 1.1.2025
+Kan sammenlignes med SSB tabell 06070.
+endblock
+tabulate hushtype2 if kontakt == '1', missing
+
+textblock
+## Personer etter antall barn 0–17 år i husholdningen, 1.1.2025
+Manglende verdi er personer utenfor privathusholdning.
+endblock
+tabulate ant_barn, missing
+

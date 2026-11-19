@@ -1,14 +1,14 @@
 // =====================================================================
 // Person og husholdning: husholdningsvariabler, én rad per husholdning, og egne aggregater
-// Status:    testet (no.ssb.fdb:59, 2026-11)
+// Status:    testet (no.ssb.fdb:60, 2026-11)
 // Variabler: BEFOLKNING_HUSHNR (status 1.1., 2005–2025; pseudonymisert husholdningsnøkkel)
-//            https://microdata.no/discovery/variable/no.ssb.fdb/59/BEFOLKNING_HUSHNR
+//            https://microdata.no/discovery/variable/no.ssb.fdb/60/BEFOLKNING_HUSHNR
 //            BEFOLKNING_KONTAKT_HUSHNR ('1' = kontaktperson, den eldste i husholdningen)
-//            https://microdata.no/discovery/variable/no.ssb.fdb/59/BEFOLKNING_KONTAKT_HUSHNR
+//            https://microdata.no/discovery/variable/no.ssb.fdb/60/BEFOLKNING_KONTAKT_HUSHNR
 //            BEFOLKNING_PERS_I_HUSHNR (antall personer i husholdningen)
-//            https://microdata.no/discovery/variable/no.ssb.fdb/59/BEFOLKNING_PERS_I_HUSHNR
+//            https://microdata.no/discovery/variable/no.ssb.fdb/60/BEFOLKNING_PERS_I_HUSHNR
 //            BEFOLKNING_REGSTAT_HUSHTYP (husholdningstype, f.eks. 1.2.3)
-//            https://microdata.no/discovery/variable/no.ssb.fdb/59/BEFOLKNING_REGSTAT_HUSHTYP
+//            https://microdata.no/discovery/variable/no.ssb.fdb/60/BEFOLKNING_REGSTAT_HUSHTYP
 //            BEFOLKNING_FOEDSELS_AAR_MND, BEFOLKNING_KOMMNR_FORMELL
 // Lager:     personer – én rad per person med hushnr, hushstr, hushtype, og egne aggregater
 //            ant_pers og ant_barn (antall personer og barn 0–17 år i husholdningen)
@@ -34,7 +34,7 @@
 //            (testet november 2026).
 // =====================================================================
 
-require no.ssb.fdb:59 as fdb
+require no.ssb.fdb:60 as fdb
 
 create-dataset personer
 import fdb/BEFOLKNING_KOMMNR_FORMELL 2025-01-01 as kommune

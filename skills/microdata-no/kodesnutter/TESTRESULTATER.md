@@ -9,25 +9,28 @@ git-historikken. Når en snutt kjøres på nytt, oppdaterer du statuslinjen i sn
 ## Oversikt
 
 Alle snuttene er kjørt frittstående med datalagerversjon 59 (`no.ssb.fdb:59`) i november 2026, satt sammen
-til ett skript med `samle_snutter.py`. `lavinntekt_vedvarende.txt` ble kjørt for seg.
+til ett skript med `samle_snutter.py`. `lavinntekt_vedvarende.txt` ble kjørt for seg. De 14 som fortsatt
+gjelder, er kjørt på nytt med versjon 60 (2026-11-19, TESTLISTE 5.6), uten feil og med de samme tallene
+innen støyen (f.eks. innvandrere 964 836 mot 964 834, husholdninger koblet til bolig 2 584 502 mot
+2 584 506, husholdningsstørrelsene 41,2/30,8/11,8/11,2/5,0 %). `sektor_lonnstakere.txt` er utgått.
 
 | Snutt | Kjørt | Kontrollert mot | Resultat |
 |---|---|---|---|
-| [alder.txt](alder.txt) | v59, 2026-11 | – | Kjørt uten feil |
-| [arbeidsstyrkestatus.txt](arbeidsstyrkestatus.txt) | v59, 2026-11 | – | Kjørt uten feil |
-| [bolig.txt](bolig.txt) | v59, 2026-11 | SSB 14897 | Antall husholdninger stemmer. Eierstatus avviker, men årsaken er kjent (se under) |
-| [forlop_til_person.txt](forlop_til_person.txt) | v59, 2026-11 | – | Kjørt uten feil |
-| [husholdning.txt](husholdning.txt) | v59, 2026-11 | SSB 06079 | Stemmer |
-| [innvandringskategori.txt](innvandringskategori.txt) | v59, 2026-11 | SSB 09817 | Stemmer (avvik under 0,03 %) |
-| [landbakgrunn_region.txt](landbakgrunn_region.txt) | v59, 2026-11 | Klass 545 | Stemmer etter retting av EU/EØS-listen |
-| [lavinntekt_eu60.txt](lavinntekt_eu60.txt) | v59, 2026-11 | – | Kjørt uten feil |
-| [lavinntekt_vedvarende.txt](lavinntekt_vedvarende.txt) | v59, 2026-11 | SSB 09571, 04204 | Stemmer innen 0,3 prosentpoeng |
-| [mal_analyse.txt](mal_analyse.txt) | v59, 2026-11 | – | Kjørt uten feil |
-| [mor_barn.txt](mor_barn.txt) | v59, 2026-11 | – | Kjørt uten feil |
-| [samlivsstatus.txt](samlivsstatus.txt) | v59, 2026-11 | – | Kjørt uten feil |
+| [alder.txt](alder.txt) | v60, 2026-11 | – | Kjørt uten feil |
+| [arbeidsstyrkestatus.txt](arbeidsstyrkestatus.txt) | v60, 2026-11 | – | Kjørt uten feil |
+| [bolig.txt](bolig.txt) | v60, 2026-11 | SSB 14897 | Antall husholdninger stemmer. Eierstatus avviker, men årsaken er kjent (se under) |
+| [forlop_til_person.txt](forlop_til_person.txt) | v60, 2026-11 | – | Kjørt uten feil |
+| [husholdning.txt](husholdning.txt) | v60, 2026-11 | SSB 06079 | Stemmer |
+| [innvandringskategori.txt](innvandringskategori.txt) | v60, 2026-11 | SSB 09817 | Stemmer (avvik under 0,03 %) |
+| [landbakgrunn_region.txt](landbakgrunn_region.txt) | v60, 2026-11 | Klass 545 | Stemmer etter retting av EU/EØS-listen |
+| [lavinntekt_eu60.txt](lavinntekt_eu60.txt) | v60, 2026-11 | – | Kjørt uten feil |
+| [lavinntekt_vedvarende.txt](lavinntekt_vedvarende.txt) | v60, 2026-11 | SSB 09571, 04204, FHI 403 | Stemmer innen 0,3 prosentpoeng (kommunal median: storbyene opptil 0,5 over FHI) |
+| [mal_analyse.txt](mal_analyse.txt) | v60, 2026-11 | – | Kjørt uten feil |
+| [mor_barn.txt](mor_barn.txt) | v60, 2026-11 | – | Kjørt uten feil |
+| [samlivsstatus.txt](samlivsstatus.txt) | v60, 2026-11 | – | Kjørt uten feil |
 | [sektor_lonnstakere.txt](sektor_lonnstakere.txt) | v59, 2026-11 | SSB 13926 | Stemmer for totalen. Offentlig foretak ca. 2 % lavere, med kjent årsak |
-| [utdanningsniva.txt](utdanningsniva.txt) | v59, 2026-11 | – | Kjørt uten feil |
-| [verdi_ved_hendelse.txt](verdi_ved_hendelse.txt) | v59, 2026-11 | – | Kjørt uten feil |
+| [utdanningsniva.txt](utdanningsniva.txt) | v60, 2026-11 | – | Kjørt uten feil |
+| [verdi_ved_hendelse.txt](verdi_ved_hendelse.txt) | v60, 2026-11 | – | Kjørt uten feil |
 
 «–» betyr at snutten er kjørt uten feil og at resultatet ser rimelig ut, men at det ikke er sammenlignet med
 publiserte tall.
@@ -94,17 +97,28 @@ Hele befolkningen, mot SSB tabell 04204:
 
 Antall personer stemmer innen 0,2 %.
 
-Kommunal median, barn 2022–2024. Dette finnes ikke i Statistikkbanken, så det er bare sjekket for rimelighet:
+Kommunal median, barn 2022–2024 (versjon 60). Finnes ikke i Statistikkbanken, men hos FHI
+(nøkkeltall-tabell 403 «Vedvarende lavinntekt, kommunegrense», EU60 kommunal median, hentet 2026-11-19):
 
-| | Nasjonal median | Kommunal median |
-|---|---|---|
-| Landet | 10,1 % | 10,1 % |
-| Oslo | 13,0 % | 15,4 % |
-| Bærum | 6,1 % | 11,0 % |
-| Stavanger | 8,7 % | 11,6 % |
-| Østfold | 14,8 % | 11,3 % |
+| | Nasjonal median | Kommunal median | FHI 403 |
+|---|---|---|---|
+| Landet | 10,1 % | 10,1 % | 10,1 % |
+| Oslo | 13,0 % | 15,4 % | 14,9 % |
+| Bergen | 9,1 % | 9,9 % | 9,6 % |
+| Trondheim | 7,4 % | 8,1 % | 7,8 % |
+| Stavanger | 8,8 % | 11,5 % | 11,3 % |
+| Bærum | 6,1 % | 11,0 % | 10,9 % |
+| Bodø | 6,8 % | 7,7 % | 7,5 % |
+| Østfold | 14,8 % | 11,3 % | 11,4 % |
+
+Alle fylkene ligger innen 0,25 prosentpoeng av FHI. Storbyene ligger 0,1–0,5 prosentpoeng over, mest Oslo,
+Bergen og Trondheim. Det tyder på at medianen er beregnet litt ulikt i byer med mange studenter (FHI holder
+studenthusholdninger utenfor). Årsaken er ikke undersøkt.
 
 Kommunal median i Bærum er 608 500 kr og i Oslo 528 000 kr.
+
+Kjørt på nytt med versjon 60 (2026-11-19, TESTLISTE 5.6): samme tall innen 0,1 prosentpoeng (Stavanger
+8,8 og 11,5 %).
 
 Rettet etter kjøring: `merge` ble kjørt fra feil datasett, og KPI-faktorene for 2023 og 2024 var feil.
 

@@ -1,0 +1,99 @@
+// Samlet testskript for 1 kodesnutter, laget 2026-11-19 av samle_snutter.py.
+// Kjør hele skriptet. Stopper det med feil, noter snutten (overskriften «Snutt N») og feilmeldingen.
+require no.ssb.fdb:60 as fdb
+
+textblock
+# Test av 1 kodesnutter, no.ssb.fdb:60
+Hver snutt kjøres ordrett etter hverandre, og datasettene slettes mellom dem. En snutt er bestått når
+den kjører uten feil og tabellene ser rimelige ut (ingen tomme kategorier som skulle hatt innhold).
+endblock
+
+// =====================================================================
+// Snutt 1: lavinntekt_vedvarende.txt
+// =====================================================================
+textblock
+# Snutt 1/1: lavinntekt_vedvarende.txt
+Vedvarende lavinntekt (EU-60, treårsperiode). Status før test: testet (no.ssb.fdb:59, 2026-11).
+endblock
+// --- 1. Treårsgjennomsnitt, nasjonal og kommunal median ---
+create-dataset vedvarende
+for aar in 2022 : 2024
+  let dato = $aar ++ "-12-31"
+  let ivar = ies ++ $aar
+  let pvar = ph ++ $aar
+  import fdb/INNTEKT_HUSH_IES_EU $dato as $ivar
+  import fdb/INNTEKT_KODE_PRIVATHUSH2 $dato as $pvar
+end
+
+// Inntekt alle tre årene, og i privathusholdning siste år (studenthusholdninger og institusjoner er utenfor)
+keep if ph2024 == '1'
+drop if sysmiss(ies2022) | sysmiss(ies2023) | sysmiss(ies2024)
+
+// KPI, årsgjennomsnitt (2015 = 100), SSB tabell 03014: 2022 = 122.8, 2023 = 129.6, 2024 = 133.6
+generate snitt3 = (ies2022 * 133.6 / 122.8 + ies2023 * 133.6 / 129.6 + ies2024) / 3
+
+// Nasjonal median
+generate alle = 1
+aggregate (median) snitt3 -> median3, by(alle)
+generate vlav = 0
+replace vlav = 1 if snitt3 < 0.6 * median3
+
+// Kommunal median: medianen for alle med bosted i samme kommune ved utgangen av perioden
+import fdb/BEFOLKNING_KOMMNR_FORMELL 2025-01-01 as kommune_slutt
+aggregate (median) snitt3 -> median3k, by(kommune_slutt)
+generate vlavk = 0 if !sysmiss(kommune_slutt)
+replace vlavk = 1 if !sysmiss(kommune_slutt) & snitt3 < 0.6 * median3k
+
+// --- 2. Populasjon: barn 0–17 år bosatt ved utgangen av perioden ---
+create-dataset barn
+import fdb/BEFOLKNING_KOMMNR_FORMELL 2025-01-01 as kommune
+import fdb/BEFOLKNING_FOEDSELS_AAR_MND as faarmnd
+generate alder = 2024 - int(faarmnd/100)
+keep if alder >= 0 & alder <= 17
+generate fylke = substr(kommune, 1, 2)
+
+// merge kjøres fra datasettet variablene ligger i
+use vedvarende
+merge snitt3 median3k vlav vlavk into barn
+delete-dataset vedvarende
+use barn
+
+generate vlavgr = '9'
+replace vlavgr = '0' if vlav == 0
+replace vlavgr = '1' if vlav == 1
+generate vlavkgr = '9'
+replace vlavkgr = '0' if vlavk == 0
+replace vlavkgr = '1' if vlavk == 1
+define-labels vlavgrtxt '0' 'Ikke vedvarende lavinntekt' '1' 'Vedvarende lavinntekt (EU-60, nasjonal median)' '9' 'Ikke med alle tre årene / ukjent'
+define-labels vlavkgrtxt '0' 'Ikke vedvarende lavinntekt' '1' 'Vedvarende lavinntekt (EU-60, kommunal median)' '9' 'Ikke med alle tre årene / ukjent'
+assign-labels vlavgr vlavgrtxt
+assign-labels vlavkgr vlavkgrtxt
+
+textblock
+## Barn 0–17 år i husholdninger med vedvarende lavinntekt, 2022–2024
+Gjennomsnittlig inntekt etter skatt per forbruksenhet (EU-skala) for 2022–2024, i 2024-kroner, under
+60 % av medianen for hele landet. «Ikke med alle tre årene» er i hovedsak barn som er født eller har
+innvandret i perioden. SSB holder dem utenfor nevneren.
+endblock
+tabulate vlavgr, missing
+
+textblock
+## Andel barn i vedvarende lavinntekt etter fylke, 2022–2024 (radprosent)
+Bare barn som er med alle tre årene.
+endblock
+tabulate fylke vlavgr if vlavgr != '9', rowpct
+
+textblock
+## Andel barn i vedvarende lavinntekt etter fylke, kommunal median, 2022–2024 (radprosent)
+Grensen er 60 % av medianen i barnets bostedskommune. Sammenlign med tabellen over (nasjonal median).
+endblock
+tabulate fylke vlavkgr if vlavkgr != '9', rowpct
+
+textblock
+## Kommunal median og andel barn i vedvarende lavinntekt, utvalgte kommuner
+Medianen er treårsgjennomsnittet per forbruksenhet i 2024-kroner.
+endblock
+tabulate kommune if inlist(kommune, '0301', '4601', '5001', '1103', '3201', '1804'), summarize(median3k) mean
+tabulate kommune vlavgr if inlist(kommune, '0301', '4601', '5001', '1103', '3201', '1804') & vlavgr != '9', rowpct
+tabulate kommune vlavkgr if inlist(kommune, '0301', '4601', '5001', '1103', '3201', '1804') & vlavkgr != '9', rowpct
+

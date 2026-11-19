@@ -1,10 +1,10 @@
 // =====================================================================
 // Vedvarende lavinntekt (EU-60, treårsperiode)
-// Status:    testet (no.ssb.fdb:59, 2026-11)
+// Status:    testet (no.ssb.fdb:60, 2026-11)
 // Variabler: INNTEKT_HUSH_IES_EU (akkumulert, til 2024-12-31)
-//            https://microdata.no/discovery/variable/no.ssb.fdb/59/INNTEKT_HUSH_IES_EU
+//            https://microdata.no/discovery/variable/no.ssb.fdb/60/INNTEKT_HUSH_IES_EU
 //            INNTEKT_KODE_PRIVATHUSH2
-//            https://microdata.no/discovery/variable/no.ssb.fdb/59/INNTEKT_KODE_PRIVATHUSH2
+//            https://microdata.no/discovery/variable/no.ssb.fdb/60/INNTEKT_KODE_PRIVATHUSH2
 //            BEFOLKNING_FOEDSELS_AAR_MND, BEFOLKNING_KOMMNR_FORMELL
 // Lager:     snitt3 – gjennomsnittlig inntekt per forbruksenhet 2022–2024 i 2024-kroner
 //            vlav   – 1 = vedvarende lavinntekt, nasjonal median (snitt3 under 60 % av landsmedianen)
@@ -20,12 +20,14 @@
 //            Hele befolkningen mot SSB tabell 04204 («studenter er utelatt»): 9,6 % mot 9,5 % (2022–2024) og
 //            9,5 mot 9,2 (2021–2023). Antall personer innen 0,2 %. Uten krav om privathusholdning treffer
 //            «omfatter også studenter»: 10,6 mot 10,6 (2022–2024) og 10,5 mot 10,3 (2021–2023).
-//            Kommunal median, barn 2022–2024: landet 10,1 % (som nasjonal). Oslo 13,0 → 15,4, Bærum 6,1 → 11,0,
-//            Stavanger 8,7 → 11,6, Østfold 14,8 → 11,3. Kommunal median i Bærum 608 500, Oslo 528 000 kr.
+//            Kommunal median, barn 2022–2024, mot FHI (nøkkeltall-tabell 403, EU60 kommunal median, versjon 60):
+//            landet 10,1 mot 10,1 %, alle fylker innen 0,25 prosentpoeng (Østfold 11,3 mot 11,4). Storbyene
+//            ligger litt over: Oslo 15,4 mot 14,9, Bergen 9,9 mot 9,6, Trondheim 8,1 mot 7,8, Bærum 11,0 mot
+//            10,9. Kommunal median i Bærum 608 500, Oslo 528 000 kr.
 // Fallgruver:
 //   - Medianen beregnes for alle som er med i alle tre årene, ikke for din populasjon (f.eks. barna).
-//   - Nasjonal median er SSBs standard og den eneste som kan kontrolleres mot Statistikkbanken.
-//     Kommunal median måler lavinntekt i forhold til inntektsnivået der man bor: andelen blir høyere i
+//   - Nasjonal median er SSBs standard (Statistikkbanken). Kommunal median finnes hos FHI
+//     (statistikk-data.fhi.no, nokkel/403, også for levekårssoner og bydeler). Kommunal median måler lavinntekt i forhold til inntektsnivået der man bor: andelen blir høyere i
 //     kommuner med høy median (Oslo, Bærum) og lavere i kommuner med lav median. Kommunen er bosted
 //     1.1. etter perioden. I små kommuner bygger medianen på få husholdninger og blir ustabil. Bytt
 //     by(kommune_slutt) med fylke for fylkesmedian.
@@ -39,7 +41,7 @@
 //   - Årlig lavinntekt (lavinntekt_eu60.txt) gir høyere andeler enn vedvarende lavinntekt.
 // =====================================================================
 
-require no.ssb.fdb:59 as fdb
+require no.ssb.fdb:60 as fdb
 
 // --- 1. Treårsgjennomsnitt, nasjonal og kommunal median ---
 create-dataset vedvarende
