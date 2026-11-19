@@ -28,6 +28,7 @@ innen støyen (f.eks. innvandrere 964 836 mot 964 834, husholdninger koblet til 
 | [logistisk_regresjon.txt](logistisk_regresjon.txt) | v60, 2026-11 | Predikert mot observert | Treffer 25–54 år, avvik ±4 prosentpoeng for 55–66 år (se under) |
 | [mal_analyse.txt](mal_analyse.txt) | v60, 2026-11 | – | Kjørt uten feil |
 | [mor_barn.txt](mor_barn.txt) | v60, 2026-11 | – | Kjørt uten feil |
+| [paneldata.txt](paneldata.txt) | v60, 2026-11 | fe mot re mot pooled | Fixed effects mye mindre enn pooled, som ventet. Hausman velger fe |
 | [samlivsstatus.txt](samlivsstatus.txt) | v60, 2026-11 | – | Kjørt uten feil |
 | [sektor_lonnstakere.txt](sektor_lonnstakere.txt) | v59, 2026-11 | SSB 13926 | Stemmer for totalen. Offentlig foretak ca. 2 % lavere, med kjent årsak |
 | [utdanningsniva.txt](utdanningsniva.txt) | v60, 2026-11 | – | Kjørt uten feil |
@@ -141,6 +142,22 @@ Bosatte 25–66 år 1.1.2025 (3 076 000), sysselsatt i 4. kvartal 2024 (78,1 %).
 
 Andregradskurven fanger ikke fallet ved 62 år (pensjon). Marginaleffekter mot grunnskole: videregående +17,
 UH lang +29 prosentpoeng. Innvandrer −10,7 og mann +6,4. Cluster på kommune gir z-verdier rundt 50 mot 290 uten.
+
+### paneldata.txt
+
+Utvalg på 100 000 født 1985–1994, bosatt 1.1.2018, fulgt 2018–2024: 599 984 person-år for 93 382 personer.
+Lønn i 1000 kr, med årseffekter:
+
+| | Gift | Samboer | Oslo |
+|---|---|---|---|
+| Fixed effects | 13,0 | 7,5 | 45,8 |
+| Random effects | 29,2 | 18,7 | 50,1 |
+| Pooled | 93,9 | 89,1 | 69,8 |
+
+Hausman chi2(9) = 1 269, p = 0. Robuste standardfeil i fe er ca. 45 % større enn de vanlige (1,52 mot 1,05
+for gift). `tabulate-panel samliv, colpct` virker med én variabel (kolonnene er årene): gifte 16,7 % i 2018 og 29,5 % i
+2024, uten par 48,8 % og 32,0 %. Overganger mellom samlivsformer fra år til år: 97,7 % av de gifte var gift året etter, 83,6 % av
+samboerne var samboere og 81,4 % av dem uten par var fortsatt uten par.
 
 ### bolig.txt
 

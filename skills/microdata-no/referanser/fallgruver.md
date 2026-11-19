@@ -369,7 +369,13 @@ Kartlagt fra manualen (`metadata/manual/konfidensialitet.md`, `kommandoer_og_fun
 - Akkumulerte variabler (inntekt) gir årsverdien uansett dato i året. Med `2018-01-01` får du inntekt for
   2018, men status (sivstand, bosted) per 1.1.2018. Si fra om rekkefølgen er viktig for tolkningen.
 - `robust` i `regress-panel` og `regress-panel-diff` er cluster på panel-ID. `cluster()` kan ikke brukes samtidig.
-- `hausman`: p < 0,05 betyr at fixed effects bør brukes.
+- `hausman`: p < 0,05 betyr at fixed effects bør brukes. Utskriften har fe, re og forskjellene. Tom
+  standardfeil for noen ledd (negativ variansforskjell) er normalt. Les chi2 og p nederst.
+- **Testet (versjon 60, november 2026, `kodesnutter/paneldata.txt`):** `import-panel` med en fast variabel
+  (kjønn) og datoer virker, `year(date@panel)` gir året, og `i.aar` virker i `regress-panel` og `hausman`
+  (første år er referanse). `transitions-panel` viser kodene uten navn. `tabulate-panel x, colpct` virker med én
+  variabel, med årene som kolonner. Samliv og lønn: fixed effects
+  +13 000 kr for gift, pooled +94 000. Uten fe blandes effekten med faste forskjeller mellom personer.
 
 ### Standardfeil, faktorvariabler og prediksjon
 - `cluster()` må være en numerisk variabel som ikke er med i modellen, og kan ikke kombineres med `robust`.

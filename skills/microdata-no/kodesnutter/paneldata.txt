@@ -1,0 +1,120 @@
+// =====================================================================
+// Paneldata: import-panel, beskrivelse over tid, regress-panel (fe/re/pooled) og hausman
+// Status:    testet (no.ssb.fdb:60, 2026-11)
+// Variabler: INNTEKT_WLONN (lønnsinntekt, akkumulert: datoen gir hele året)
+//            https://microdata.no/discovery/variable/no.ssb.fdb/60/INNTEKT_WLONN
+//            BEFOLKNING_PARSTATUS (parstatus 1.1., se samlivsstatus.txt)
+//            https://microdata.no/discovery/variable/no.ssb.fdb/60/BEFOLKNING_PARSTATUS
+//            BEFOLKNING_KOMMNR_FORMELL, BEFOLKNING_FOEDSELS_AAR_MND, BEFOLKNING_KJOENN
+// Lager:     panel (datasett) – én rad per person og år, 2018–2024
+//            lonn   – lønnsinntekt i 1000 kr (årets lønn)
+//            gift, samboer, oslo – 0/1 per 1.1. samme år
+//            aar    – året (fra date@panel), til årseffekter i.aar
+// Spørsmål:  Hvor mye endres lønnen for en person når hen gifter seg eller blir samboer? Fixed effects
+//            sammenligner hver person med seg selv, så faste forskjeller mellom personer faller bort.
+// Kontroll:  600 000 person-år for 93 400 personer (de andre manglet lønn eller bosted alle år). Fixed effects:
+//            gift +13 000 kr, samboer +7 500, Oslo +46 000. Random effects 29 000/18 700, pooled 94 000/89 000:
+//            sammenligning mellom personer overdriver effekten fordi de som lever i par, tjener mer fra før.
+//            Hausman chi2(9) = 1 269, p = 0: fixed effects. Testet november 2026, versjon 60.
+// Fallgruver:
+//   - import-panel virker bare i et tomt datasett. Lag populasjonen først, så clone-units og use.
+//   - Hold populasjonen under ca. 1 million personer (rader = personer × år). Her et utvalg på 100 000.
+//     sample trenger en variabel i datasettet først.
+//   - Variablene får registernavnet (INNTEKT_WLONN osv.). Bytt navn med rename.
+//   - Akkumulerte variabler (lønn) gir hele årets verdi uansett dato, statusvariabler (parstatus, bosted)
+//     verdien per datoen. Her: lønn for året og parstatus 1.1. samme år.
+//   - Variabler som ikke endrer seg (kjønn), forsvinner i fe. Ta dem med i re og pooled.
+//   - Ta med årseffekter (i.aar), ellers fanger «gift» opp den generelle lønnsveksten med alderen. i.aar
+//     virker i regress-panel og hausman, med første år som referanse.
+//   - robust i regress-panel er cluster på person. cluster() kan ikke brukes samtidig.
+//   - hausman: p < 0,05 betyr at fe bør brukes (re er inkonsistent). Testen skriver fe, re og forskjellene.
+//     Tom standardfeil for noen ledd betyr negativ variansforskjell. Bruk chi2 og p nederst.
+//   - transitions-panel viser kodene uten navn, med antall og radprosent i hver celle.
+//   - summarize-panel og tabulate-panel kommer ikke med når hele utskriften kopieres. Kopier dem for seg.
+//   - Lønn winsoriseres i regresjonene (1 % i hver ende), og tabellene er støylagt.
+//   - Effekten er en sammenheng over tid, ikke nødvendigvis årsak: lønn og samliv kan påvirke hverandre.
+// =====================================================================
+
+require no.ssb.fdb:60 as fdb
+
+// --- 1. Populasjon: utvalg av bosatte født 1985–1994, bosatt 1.1.2018 ---
+create-dataset populasjon
+import fdb/BEFOLKNING_KOMMNR_FORMELL 2018-01-01 as kommune
+import fdb/BEFOLKNING_FOEDSELS_AAR_MND as faarmnd
+generate faar = int(faarmnd/100)
+keep if faar >= 1985 & faar <= 1994
+sample 100000 2026
+
+// --- 2. Paneldata: samme personer, 2018–2024 ---
+clone-units populasjon panel
+use panel
+import-panel fdb/INNTEKT_WLONN fdb/BEFOLKNING_PARSTATUS fdb/BEFOLKNING_KOMMNR_FORMELL fdb/BEFOLKNING_KJOENN 2018-01-01 2019-01-01 2020-01-01 2021-01-01 2022-01-01 2023-01-01 2024-01-01
+rename INNTEKT_WLONN wlonn
+rename BEFOLKNING_PARSTATUS parst
+rename BEFOLKNING_KOMMNR_FORMELL pkommune
+rename BEFOLKNING_KJOENN pkjonn
+
+// Ikke bosatt eller uten lønnsopplysning det året: raden tas ut (ubalansert panel)
+drop if sysmiss(pkommune)
+drop if sysmiss(wlonn)
+generate lonn = wlonn / 1000
+generate aar = year(date@panel)
+
+generate gift = 0
+replace gift = 1 if parst == '1' | parst == '2'
+generate samboer = 0
+replace samboer = 1 if parst == '3' | parst == '5' | parst == '6' | parst == '7' | parst == 'u' | parst == 'p'
+generate oslo = 0
+replace oslo = 1 if pkommune == '0301'
+generate mann = 0
+replace mann = 1 if pkjonn == '1'
+
+generate samliv = 3
+replace samliv = 1 if gift == 1
+replace samliv = 2 if samboer == 1
+define-labels samlivtxt 1 'Gift / partner' 2 'Samboer' 3 'Ikke i par'
+assign-labels samliv samlivtxt
+
+// --- 3. Beskrivelse over tid ---
+textblock
+# Lønn og samliv over tid, personer født 1985–1994
+
+Utvalg på 100 000 personer bosatt 1.1.2018, fulgt 2018–2024. Lønn i 1000 kr for året, samliv per 1.1.
+samme år. Tallene er støylagt, og lønn er winsorisert i regresjonene.
+
+## Lønn per år
+endblock
+summarize-panel lonn
+
+textblock
+## Samlivsstatus per år (kolonneprosent)
+endblock
+tabulate-panel samliv, colpct
+
+textblock
+## Overganger mellom samlivsstatus fra år til år
+endblock
+transitions-panel samliv
+
+// --- 4. Modeller ---
+textblock
+## Fixed effects: endring for samme person
+Koeffisientene er endringen i lønn (1000 kr) når personen blir gift eller samboer, sammenlignet med
+år personen ikke var i par. Årseffekter tar bort den generelle lønnsveksten. Robuste standardfeil
+(cluster på person).
+endblock
+regress-panel lonn gift samboer oslo i.aar, fe robust
+
+textblock
+## Random effects og pooled, til sammenligning
+Her sammenlignes også ulike personer, så koeffisientene blandes med faste forskjeller mellom dem.
+Kjønn kan bare være med her, fordi det ikke endrer seg.
+endblock
+regress-panel lonn gift samboer oslo mann i.aar, re robust
+regress-panel lonn gift samboer oslo mann i.aar, pooled robust
+
+textblock
+## Hausman-test: fixed eller random effects?
+p < 0,05 betyr at random effects gir skjeve koeffisienter, og at fixed effects bør brukes.
+endblock
+hausman lonn gift samboer oslo i.aar
