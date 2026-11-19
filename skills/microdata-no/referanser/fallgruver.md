@@ -162,6 +162,14 @@ med pull request (se CONTRIBUTING.md). Tagg dem med datalagerversjon/dato hvis d
   `generate h = x > 5 if !sysmiss(x)` (som `generate hoy = 0 if mangler_lonn == 0` i 8.7). Avslutt alltid
   grupperinger med `replace gr = 'ukjent' if sysmiss(x)`.
 
+### Figurtallene ligger i Vega-spesifikasjonen
+- Manualen sier at figurer eksporteres som bilder uten de underliggende tallene. Det gjelder .png og .svg.
+  «Åpne i Vega-editor» gir en Vega-Lite-spesifikasjon (v6) med de aggregerte, støylagte tallene i
+  `data.values`, på vega.github.io/editor (versjon 60, TESTLISTE 9.1–9.3).
+- **Bruk:** Brukeren limer inn spesifikasjonen, og du endrer figuren. Se `referanser/vega.md`.
+- Editorens Config-fane har en mørk stil fra microdata.no (tallformat `~s` på aksene gir «NaN» for
+  navn). Be brukeren tømme den (`{}`) før «Run».
+
 ### Kopi av hele utskriften mangler noen resultater
 - **Symptom:** En bruker limer inn utskriften, og noen kommandoer står uten resultat. Det ser ut som de
   ikke ga noe.

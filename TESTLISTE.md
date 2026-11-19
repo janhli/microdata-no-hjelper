@@ -136,10 +136,11 @@ Manualen nevner Vega-editoren bare i [`1.6 Eksport av resultater`](skills/microd
 
 | # | Hva | Hvordan | Forventet | Pri |
 |---|---|---|---|---|
-| 9.1 | Vega eller Vega-Lite? | Lag en `barchart` (f.eks. bosatte etter fylke), velg «Åpne i Vega-editor» og se på første linje i spesifikasjonen | `$schema` viser `vega-lite` eller `vega`, med versjon | P3 |
-| 9.2 | Ligger dataene i spesifikasjonen? | Se etter `data` → `values` i samme spesifikasjon | De aggregerte (støylagte) tallene står der. Manualens «får ikke de underliggende tallene» gjelder da bare .png/.svg | P3 |
-| 9.3 | Hvilken editor? | Noter adressen editoren åpnes på | Trolig vega.github.io/editor, utenfor microdata.no. Avgjør om spesifikasjonen sendes ut av tjenesten | P3 |
+| 9.1 | ~~Vega eller Vega-Lite?~~ **Avklart (versjon 60, 2026-11-19):** Vega-Lite v6 (`$schema` …/vega-lite/v6.json), fra `barchart (count) fylke` | | | ✓ |
+| 9.2 | ~~Ligger dataene i spesifikasjonen?~~ **Avklart (2026-11-19):** ja, de aggregerte tallene står i `data.values` (`title` = kategori, `value` = tall, `category`/`cat_order` som lister). Manualens «får ikke de underliggende tallene» gjelder bare .png/.svg. Se `referanser/vega.md` | | | ✓ |
+| 9.3 | ~~Hvilken editor?~~ **Avklart (2026-11-19):** vega.github.io/editor, utenfor microdata.no | | | ✓ |
 | 9.4 | `tabulate ..., flatten` | Kjør på samme tabell og kopier ut | Rutenett som kan limes inn som CSV og brukes som data i en egen Vega-Lite-spesifikasjon | P3 |
+| 9.5 | ~~Endringene i `referanser/vega.md`~~ **Avklart (2026-11-19):** fylkesnavn (`lookup`), sortering, liggende søyler, tittel/kilde og norsk tallformat (`config.locale`) virker. Microdata.no legger en mørk stil i editorens Config-fane (`axisX`/`axisY`/`legend` med format `~s`, `labelAngle` 45, IBM Plex Sans, mørk bakgrunn). Den ga «NaN» for navn på y-aksen og blandede fonter. Brukeren tømmer fanen, og agenten setter stilen eksplisitt. Står i `vega.md` | | | ✓ |
 
 ## 10. FHI-datalagrene (Kreftregisteret og NPR), issue #11
 

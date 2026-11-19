@@ -25,6 +25,7 @@ Alle stier er relative til denne skill-mappen. Søk i filene (grep, rg eller age
 | `metadata/regioner/*.csv` | Koblingstabeller fra kommune (2024) til regioninndelinger: politidistrikt, valgdistrikt, økonomiske regioner, helseregioner, familievern, barnevern, reiseliv, samiske valgkretser, sentralitet, landsdeler og bo- og arbeidsmarkedsregioner. Kolonner `kommunenr;regionkode;regionnavn`. Oversikt i `INDEX.csv`, manuelt lastede filer i `manuelt/` |
 | `metadata/manual/**/*.md` | Hele manualen som Markdown. Kommandoreferansen ligger i `kommandoer_og_funksjoner/kommandoer.md` og funksjonene i `.../funksjoner.md`. |
 | `referanser/fallgruver.md` | Feil som ikke står (tydelig) i manualen, med feilmelding og løsning. **Les den før du leverer et skript.** |
+| `referanser/vega.md` | Endre figurer fra microdata.no i Vega-editoren: brukeren limer inn Vega-Lite-spesifikasjonen (med tallene), du endrer etiketter, rekkefølge, farger, titler og tallformat. Les den når brukeren vil ha en penere eller tilpasset figur |
 | `kodesnutter/` | Frittstående og kommenterte snutter med teststatus: analysemal, alder, innvandringskategori, landbakgrunn, utdanning, arbeidsstyrkestatus, sektor for lønnstakere (utgått i versjon 60), samliv, husholdning, bolig, lavinntekt, verdi ved hendelse, mor–barn, forløp og overlevelsesanalyse. Oversikt i `kodesnutter/README.md`. **Ta utgangspunkt i disse før du skriver noe selv.** |
 
 Dato for siste nedlasting står i `metadata/HENTET`. Oppdater med `python verktoy/hent_variabler.py`
@@ -168,7 +169,7 @@ gamle versjoner, og da må du sjekke at variabelnavnene fortsatt finnes i `varia
 - `import-event`, `import-panel` henter hendelser og paneldata
 - `generate`, `replace`, `recode`, `destring`, `drop`, `keep`
 - `collapse`, `aggregate`, `merge ... into ... on ...`
-- `tabulate`, `summarize`, `regress`, `logit`, `barchart`, `histogram`
+- `tabulate`, `summarize`, `regress`, `logit`, `barchart`, `histogram` (figurene kan endres i Vega-editoren, se `referanser/vega.md`)
 - `let` og `for ... end` for løkker
 - `citation` nederst i skriptet gir én linje: «Analysen er gjennomført i microdata.no med datagrunnlag fra:
   SSB (registerdata). Data analysert: 2026-11-18» (versjon 60). Uten datalagerversjon og variabler, så oppgi
