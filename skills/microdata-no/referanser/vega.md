@@ -7,7 +7,8 @@ spesifikasjon som limes inn igjen.
 
 Avklart med `barchart (count) fylke`, versjon 60, november 2026 (TESTLISTE 9.1–9.3). Endringsmønstrene
 under er prøvd i editoren (fylkesnavn, sortering, liggende søyler, tittel, norsk tallformat,
-TESTLISTE 9.5). Tall på søylene og farge etter gruppe er ikke prøvd.
+farge etter gruppe, stablede søyler i prosent og figur fra eksportert tabell, TESTLISTE 9.4–9.5).
+Tall på søylene er ikke prøvd.
 
 ## Slik gjør brukeren det (forklar det slik)
 
@@ -15,10 +16,8 @@ TESTLISTE 9.5). Tall på søylene og farge etter gruppe er ikke prøvd.
 2. Editoren åpnes på **vega.github.io/editor**, utenfor microdata.no. Spesifikasjonen står til venstre.
 3. Merk alt i venstre vindu (Ctrl+A), kopier (Ctrl+C) og lim det inn i samtalen sammen med hva som skal
    endres.
-4. Åpne fanen **Config** (ved siden av spesifikasjonen) og erstatt alt der med `{}`. Microdata.no legger
-   en egen stil der, som ellers ødelegger endringene (se under).
-5. Lim den nye spesifikasjonen inn i venstre vindu i stedet for den gamle, og klikk **Run** øverst.
-6. Lagre med **Export** (.png, .svg, .pdf, .html eller .json). Ta vare på .json for å endre figuren igjen.
+4. Lim den nye spesifikasjonen inn i venstre vindu i stedet for den gamle, og klikk **Run** øverst.
+5. Lagre med **Export** (.png, .svg, .pdf, .html eller .json). Ta vare på .json for å endre figuren igjen.
 
 ## Hva spesifikasjonen fra microdata.no inneholder
 
@@ -64,9 +63,10 @@ og `axisX`/`axisY` der går foran `axis` i spesifikasjonen (TESTLISTE 9.5, 2026-
 | `style` med `"font": "IBM Plex Sans"` | Fonten finnes sjelden lokalt, så aksene faller tilbake til Times |
 | `"background": "#002b36"`, `"bar": {"fill": "#859900"}`, `range` | Mørk bakgrunn, grønne søyler, egne fargeskalaer |
 
-Be brukeren tømme Config-fanen (`{}`). Sett likevel alt du trenger i spesifikasjonen, så figuren blir
-riktig om det glemmes: `labelExpr` på navneakser og navneforklaringer, `axisX`/`axisY` i `config`, og
-bakgrunn, farger og fonter. Ta alltid med denne blokken (bytt ut `config` fra microdata.no):
+Brukeren trenger ikke røre Config-fanen når du setter alt i spesifikasjonen: `labelExpr` på navneakser og
+navneforklaringer, `axisX`/`axisY` i `config`, og bakgrunn, farger og fonter (prøvd: riktig figur med
+fanen urørt). Vil brukeren tømme den, må det stå `{}`. En helt tom fane gir «ValueExpected at Ln 1,
+Col 1». Ta alltid med denne blokken (bytt ut `config` fra microdata.no):
 
 ```json
 "background": "white",
@@ -135,17 +135,46 @@ og `"axis": {"format": ",d"}` på tallaksen (`",.1f"` for én desimal, `".0%"` f
 
 ## Figur fra en tabell (når figurkommandoen ikke holder)
 
-Lag figuren fra en tabell som er eksportert fra microdata.no: `tabulate ..., flatten` gir et rutenett som
-kan limes inn. Gjør radene om til `data.values` og skriv en minimal spesifikasjon:
+Brukeren eksporterer tabellen: musepekeren over tabellen, eksportknappen, «semikolonseparert» på og
+«norsk kommategnsetting» av, Ctrl+C. Utskriften ser slik ut (prøvd 2026-11-19, TESTLISTE 9.4):
 
-```json
-{"$schema": "https://vega.github.io/schema/vega-lite/v6.json",
- "data": {"values": [{"gruppe": "...", "andel": 12.3}]},
- "mark": "bar",
- "encoding": {"x": {"field": "gruppe", "type": "nominal"}, "y": {"field": "andel", "type": "quantitative"}}}
+```
+fylke; 1 - 0–19 år; 2 - 20–66 år; 3 - 67 år og over; 9 - Ukjent; Total
+03; 20.238356576689267; 68.02109091210325; 11.722465908133863; 0.017396274712029525; 100
+...
+Total; 22.211586466814566; 61.01639926232546; 16.7602881270828; 0.011744018996352919; 100
 ```
 
-Ikke testet med `flatten` ennå (TESTLISTE 9.4).
+- Semikolon og et mellomrom mellom feltene. Overskriftene er «kode - navn», så navnene følger med.
+- **Ta ut raden og kolonnen `Total`**, og små restgrupper som «Ukjent» når de ikke skal vises.
+- Alle desimaler følger med. **Avrund** (én desimal for prosent), så tallene ikke ser presise ut.
+- `flatten` endrer ingenting for to dimensjoner. Den trengs ved tre eller flere.
+
+Behold tabellen bred (én rad per rad i tabellen) og bruk `fold` til én rad per kategori. Mønster for
+stablede søyler i prosent med farge etter gruppe (prøvd, riktig rekkefølge på farger og rader):
+
+```json
+"data": {"values": [{"fylke": "03", "0–19 år": 20.2, "20–66 år": 68.0, "67 år og over": 11.7}, ...]},
+"transform": [
+  {"lookup": "fylke", "from": {"data": {"values": [{"kode": "03", "navn": "Oslo"}, ...]}, "key": "kode", "fields": ["navn"]}},
+  {"calculate": "datum['67 år og over']", "as": "eldre"},
+  {"fold": ["0–19 år", "20–66 år", "67 år og over"], "as": ["aldersgruppe", "prosent"]},
+  {"calculate": "indexof(['0–19 år', '20–66 år', '67 år og over'], datum.aldersgruppe)", "as": "rekkefolge"}
+],
+"mark": {"type": "bar", "orient": "horizontal"},
+"encoding": {
+  "y": {"field": "navn", "type": "nominal", "title": null,
+        "sort": {"field": "eldre", "op": "max", "order": "descending"}, "axis": {"labelExpr": "datum.value"}},
+  "x": {"field": "prosent", "type": "quantitative", "stack": "normalize", "title": null, "axis": {"format": ".0%"}},
+  "color": {"field": "aldersgruppe", "type": "nominal", "title": null, "sort": ["0–19 år", "20–66 år", "67 år og over"],
+            "legend": {"orient": "top", "labelExpr": "datum.value"}},
+  "order": {"field": "rekkefolge"}
+}
+```
+
+`eldre` lagres før `fold`, så radene kan sorteres etter én av gruppene. `order` og `sort` på `color`
+holder fargene i samme rekkefølge i søylene og i forklaringen. For søyler ved siden av hverandre: fjern
+`stack` og legg til `"yOffset": {"field": "aldersgruppe"}`.
 
 ## Personvern
 

@@ -168,7 +168,8 @@ med pull request (se CONTRIBUTING.md). Tagg dem med datalagerversjon/dato hvis d
   `data.values`, på vega.github.io/editor (versjon 60, TESTLISTE 9.1–9.3).
 - **Bruk:** Brukeren limer inn spesifikasjonen, og du endrer figuren. Se `referanser/vega.md`.
 - Editorens Config-fane har en mørk stil fra microdata.no (tallformat `~s` på aksene gir «NaN» for
-  navn). Be brukeren tømme den (`{}`) før «Run».
+  navn). Overstyr den i spesifikasjonen (`config`-blokken i `vega.md`). En helt tom fane gir
+  «ValueExpected», skriv `{}`.
 
 ### Kopi av hele utskriften mangler noen resultater
 - **Symptom:** En bruker limer inn utskriften, og noen kommandoer står uten resultat. Det ser ut som de
