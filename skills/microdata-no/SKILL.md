@@ -87,7 +87,7 @@ Verktøyet krever nettilgang. Er den ikke der, si fra til brukeren og bruk det s
 | Utdanning (NUS), `NUDB_BU`, `NUDB_KURS_NUS` | 36 | `grupper 36 --nivaa 1 --variabel NUDB_BU --navn nus` |
 | Landkode til verdensdel, `BEFOLKNING_LANDBAK3GEN`, `*_FODELAND` | 545 (verdensinndeling) | `grupper 545 --nivaa 2 --variabel BEFOLKNING_LANDBAK3GEN --navn landbak`. Statsløs og uoppgitt er under 10 personer og vises som 0. Med `configure confidentiality v1`: legg til `--utelat V91,V92` (nivå 1: `--utelat V9`) |
 | Land til EU/EFTA, Norden osv. | 546 (gruppering av land) | `grupper 546 --nivaa 2 --variabel ...` |
-| Næring (SN2007), `REGSYS_NARING_SN2007` (2008–2014), `REGSYS_VIRK_NACE1_SN07` (2015–2019) | 6 | `grupper 6 --nivaa 1 --dato 2019-11-16 --variabel REGSYS_VIRK_NACE1_SN07 --navn naring`. Ingen næringsvariabel dekker tiden etter november 2019: si det til brukeren |
+| Næring (SN2007), `REGSYS_NARING_SN2007` (2008–2014), `REGSYS_VIRK_NACE1_SN07` (2015–2019) | 6 | `grupper 6 --nivaa 1 --dato 2019-11-16 --variabel REGSYS_VIRK_NACE1_SN07 --navn naring`. Ingen næringsvariabel dekker tiden etter november 2019 (SSB oppdaterer den ikke lenger): si det til brukeren. Brudd mellom 2014 og 2015 (ny variabel og a-ordningen). Se «Klass» i `fallgruver.md` |
 | Koblingstabeller (NUS til ISCED osv.) | 36, 6, 91 | `kobling 36` lister tabellene, `kobling 36 --tabell "ISCED 2011 Attainment" --navn nus` lager recode |
 | Næring over tid (SN2002 til SN2007) | 6 | `kobling 6 --dato 2005-01-01 --tabell "SN 2007" --nivaa 1 --navn naring` (seksjon, 91 % omkodet). Uten `--nivaa` står 42 % uendret |
 | Finne en annen klassifikasjon | | `sok yrke` |
