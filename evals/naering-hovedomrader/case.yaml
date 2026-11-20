@@ -2,4 +2,4 @@ schema_version: "1.1"
 name: naering-hovedomrader
 # TESTLISTE 7.7
 expected_outcome: |
-  Agenten bruker verktoy/klass.py til å gruppere næringskodene og setter --dato i tråd med dataenes dato.
+  Agenten oppdager at ingen næringsvariabel dekker november 2024 (siste er REGSYS_VIRK_NACE1_SN07, til 2019-11-16), sier det, og foreslår 2019 eller en annen løsning. Grupperingen lages med verktoy/klass.py med --dato som passer dataene. (Endret etter runde 1, der kriteriet krevde en variabel som ikke finnes.)

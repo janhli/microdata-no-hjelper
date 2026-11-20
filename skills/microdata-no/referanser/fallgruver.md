@@ -131,6 +131,7 @@ med pull request (se CONTRIBUTING.md). Tagg dem med datalagerversjon/dato hvis d
 
 ### `median` er ikke gyldig i `tabulate ..., summarize(x)`
 - Gyldige valg: `mean` (standard), `std`, `sum`, `p25`, `p50` (median), `p75`, `gini`, `iqr`.
+- Standardavvik er `std`, ikke `sd` (Stata). `sd` stopper skriptet.
 - Til sammenligning bruker `collapse` og `aggregate` `(median)`.
 
 ### `summarize()` i `tabulate` tar bare én variabel
@@ -161,6 +162,10 @@ med pull request (se CONTRIBUTING.md). Tagg dem med datalagerversjon/dato hvis d
 - **Løsning:** Lag dummyer slik at manglende verdi blir manglende:
   `generate h = x > 5 if !sysmiss(x)` (som `generate hoy = 0 if mangler_lonn == 0` i 8.7). Avslutt alltid
   grupperinger med `replace gr = 'ukjent' if sysmiss(x)`.
+- **Grupper av inntekt eller andre beløp:** start ikke med `generate gr = '1'` og la `replace ... if x >= ...`
+  bestemme resten. Da havner alle med manglende beløp stille i laveste gruppe. Gi dem egen kode, ta dem ut,
+  eller gjør det eksplisitt (`replace x = 0 if sysmiss(x)`) når manglende skal bety 0, og si hva som er valgt
+  (agentevaluering, TESTLISTE 7.4).
 
 ### Figurtallene ligger i Vega-spesifikasjonen
 - Manualen sier at figurer eksporteres som bilder uten de underliggende tallene. Det gjelder .png og .svg.

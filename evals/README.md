@@ -23,7 +23,7 @@ det i instruksen til underagenten, eller kjør i en kopi uten mappen.
 | `inntektsgrupper-sysmiss` | 7.4 | Manglende verdier havner ikke stille i en gruppe |
 | `feil-statistikkopsjon` | 7.5 | `median` → `p50` i `tabulate ..., summarize()` |
 | `region-politidistrikt` | 7.6 | `regionomkoding.py`, ingen sluttregel i samme recode |
-| `naering-hovedomrader` | 7.7 | `klass.py` med riktig `--dato` |
+| `naering-hovedomrader` | 7.7 | Oppdager at næring mangler etter 2019, `klass.py` med riktig `--dato` |
 | `usikkerhet-merket` | 7.8 | Skiller kontrollert, testet og ukjent |
 | `logit-sysselsatt` | 7.9 | `logit`, utfall som 0/1, `mfx`/`or` |
 | `faktor-og-cluster` | 7.10 | `i.`, `cluster()` uten `robust` |
@@ -43,7 +43,10 @@ det i instruksen til underagenten, eller kjør i en kopi uten mappen.
   agenten ikke lese `skills/` eller `evals/`. Svarene vurderes mot `graders/`, og resultatet føres i
   TESTLISTE del 7.
 - **Med CLI:** `claude plugin eval` kjører mappene med og uten skillen fra skillmappen. Kopier da
-  `evals/` til `skills/microdata-no/evals/` midlertidig, og fjern den etterpå. Kjøringene koster.
+  `evals/` til `skills/microdata-no/evals/` midlertidig (uten `resultater/`, som ikke er en oppgave), og
+  fjern den etterpå. Kjøringene koster.
+
+Resultatene ligger i `resultater/` (runde 1: med skill 50/53, uten 34/53).
 
 Kriteriene sjekker valgene agenten gjør, ikke om skriptet kjører i microdata.no. Kjør gjerne et utvalg
 av skriptene for hånd etterpå.
