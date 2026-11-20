@@ -1,0 +1,5 @@
+schema_version: "1.1"
+name: usikkerhet-merket
+# TESTLISTE 7.8
+expected_outcome: |
+  Agenten skiller tydelig mellom det som er sjekket mot metadata, det som bygger på testede snutter, og det som er ukjent til skriptet er kjørt, og gir ikke et tall som om det var kjent.

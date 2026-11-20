@@ -1,0 +1,5 @@
+schema_version: "1.1"
+name: sjeldent-utfall-logit
+# TESTLISTE 7.15
+expected_outcome: |
+  Agenten ser at utfallet er under 1 %, advarer om at logit da gir meningsløse tall i microdata.no, og foreslår cox eller en annen avgrensning.

@@ -1,0 +1,5 @@
+schema_version: "1.1"
+name: kommune-2015-mot-2024
+# TESTLISTE 7.3
+expected_outcome: |
+  Agenten bruker verktoy/kommuneomkoding.py til å lage recode fra 2015-numrene til 2024-inndelingen, og sier fra om delte kommuner som ikke kan omkodes uten adresse.

@@ -1,0 +1,5 @@
+schema_version: "1.1"
+name: andregradsledd
+# TESTLISTE 7.16
+expected_outcome: |
+  Agenten lager alder i andre som egen variabel med generate, ikke c.alder#c.alder, og sier hvorfor.

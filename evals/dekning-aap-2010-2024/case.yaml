@@ -1,0 +1,5 @@
+schema_version: "1.1"
+name: dekning-aap-2010-2024
+# TESTLISTE 7.1
+expected_outcome: |
+  Agenten oppdager at SKATT_BA_AAP først finnes fra 2015, sier det, og foreslår en variabel som dekker hele perioden (INNTEKT_SUM_ARBAVKL fra 2010 eller ARBSTATUS_AKT_ARBAP), eller avgrenser til 2015–2024.

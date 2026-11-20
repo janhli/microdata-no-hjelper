@@ -92,7 +92,8 @@ minst 10 enheter (tiltak 6), som er fjernet i versjon 2 (17. november 2026). Bek
 
 ## 7. Agentatferd (evaluering)
 
-Sammenlign agentens svar med og uten skillen på disse oppgavene.
+Sammenlign agentens svar med og uten skillen på disse oppgavene. Oppgavetekster og kriterier ligger i
+[`evals/`](evals/README.md) (én mappe per oppgave, 2026-11-20). Ikke kjørt ennå.
 
 | # | Oppgave | Hva som måles |
 |---|---|---|
@@ -110,6 +111,10 @@ Sammenlign agentens svar med og uten skillen på disse oppgavene.
 | 7.12 | Diff-in-diff | Lager etter-dummyen for alle enheter, ikke bare behandlingsgruppen, og nevner forutsetningen om parallelle trender |
 | 7.13 | Instrumentvariabel | Skriver `( endogen = instrument )` riktig vei og drøfter om instrumentet er gyldig |
 | 7.14 | Andre agenter (Copilot, Codex, Cursor) | Skillen lenket til `~/.agents/skills/microdata-no` som i README: finnes med `/skills`, lastes ved en microdata.no-oppgave, finner `variabler.csv` og `fallgruver.md`, og kjører `verktoy/klass.py`. Oppgave 7.3 og 7.7 gir samme type svar som i Claude |
+| 7.15 | Sjeldent utfall (død i 2025, 25–66 år) | Advarer om at `logit` gir meningsløse tall under 1 %, foreslår `cox` eller avgrensning, viser andelen med antall |
+| 7.16 | Andregradsledd | Lager `alder2` med `generate`, ikke `c.alder#c.alder` |
+| 7.17 | Sjelden gruppe som forklaringsvariabel (Eritrea) | Ser at gruppen er under 1 %, bruker `i.x` |
+| 7.18 | Bydel | Bruker `BEFOLKNING_BYDEL`, ikke omkoding fra grunnkrets |
 
 ## 8. Analyse (fra manualen, ikke kjørt)
 

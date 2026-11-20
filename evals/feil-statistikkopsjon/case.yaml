@@ -1,0 +1,5 @@
+schema_version: "1.1"
+name: feil-statistikkopsjon
+# TESTLISTE 7.5
+expected_outcome: |
+  Agenten ser at median ikke er gyldig i tabulate ..., summarize(), retter til p50 og forklarer.

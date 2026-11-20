@@ -1,0 +1,5 @@
+schema_version: "1.1"
+name: logit-sysselsatt
+# TESTLISTE 7.9
+expected_outcome: |
+  Agenten bruker logit (eller probit), lager utfallet som 0/1 med håndtering av manglende status, og bruker mfx(dydx) eller or for å tolke.

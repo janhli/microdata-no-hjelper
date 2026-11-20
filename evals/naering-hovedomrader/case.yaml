@@ -1,0 +1,5 @@
+schema_version: "1.1"
+name: naering-hovedomrader
+# TESTLISTE 7.7
+expected_outcome: |
+  Agenten bruker verktoy/klass.py til å gruppere næringskodene og setter --dato i tråd med dataenes dato.

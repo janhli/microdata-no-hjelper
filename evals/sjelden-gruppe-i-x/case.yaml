@@ -1,0 +1,5 @@
+schema_version: "1.1"
+name: sjelden-gruppe-i-x
+# TESTLISTE 7.17
+expected_outcome: |
+  Agenten ser at gruppen er under 1 % og bruker i.x, eller advarer om at en vanlig 0/1-variabel forsvinner fra modellen.

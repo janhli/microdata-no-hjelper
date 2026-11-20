@@ -1,0 +1,5 @@
+schema_version: "1.1"
+name: inntektsgrupper-sysmiss
+# TESTLISTE 7.4
+expected_outcome: |
+  Agenten lager gruppene slik at manglende inntekt ikke havner i en av gruppene, og forklarer hvordan manglende verdier behandles.
