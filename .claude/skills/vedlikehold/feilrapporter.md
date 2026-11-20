@@ -67,6 +67,13 @@ Samspill mellom ulike variabler virker (`c.alder#c.lonn23`, `i.mann#c.alder`). A
 og brukeren får en annen modell enn den hen skrev. Enten bør leddet beregnes, eller det bør komme en
 feilmelding.
 
+### 18. Winsorisering gjør gjennomsnittet av sjeldne 0/1-variabler til 0 (funnet 20. november 2026)
+En 0/1-variabel der 0,53 % har verdien 1 (3 729 av 709 037), ga i `summarize` gjennomsnitt 0,
+standardavvik 0 og 99-persentil 0. `tabulate bydel, summarize(x) mean` ga 0 i alle grupper. `tabulate x`
+viste 3 729 med verdien 1. Andeler av sjeldne utfall (død, diagnoser) blir dermed 0 uten melding, og i
+undergrupper også for utfall som er over 1 % totalt. Winsorisering gir neppe mening for variabler med to
+verdier. Kan 0/1-variabler (eller variabler med få verdier) unntas?
+
 ## Metadata
 
 ### 9. `S_TOPOGRAFIICD10`: dataene har koder som ikke står i kodelisten

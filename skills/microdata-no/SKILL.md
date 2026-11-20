@@ -57,7 +57,7 @@ variabler som kan brukes.
 
 **Bydeler:** bruk først den ferdige `BEFOLKNING_BYDEL` (Oslo, Bergen, Trondheim, Stavanger, 1990–2026, eldre år
 omkodet til gjeldende bydeler, Klass 103). `grunnkrets.py --til bydel` trengs når bydelene skal følge
-2026-grunnkretsene eksakt (sammenligning i TESTLISTE 11.9, ikke kjørt).
+2026-grunnkretsene eksakt. De to ga samme bydel for 99,8 % i 2025 (resten er uoppgitt med ulik kode, TESTLISTE 11.9).
 
 Koden er kommune (4) + delområde (2) + grunnkrets (2) og skifter når kommunen skifter nummer. Bruk
 `python verktoy/grunnkrets.py --til <inndeling> --aar <år> --var <variabel> [--kommune 4601,5001]`:

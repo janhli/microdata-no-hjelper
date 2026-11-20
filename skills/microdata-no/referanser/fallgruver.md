@@ -223,6 +223,20 @@ avklart med versjon 1, hvis ikke annet står. Endringene som påvirker skript:
   stoppes med «Ulovlig import med valgt konfidensialitetsprofil. Kan ikke bruke variabler innenfor
   *_GRUNNKRETS» (versjon 60, TESTLISTE 11.7). FHI-data er ikke testet, men stoppes trolig på samme måte.
 
+### Gjennomsnitt av sjeldne 0/1-variabler blir 0 (versjon 2)
+- **Symptom:** `tabulate gruppe, summarize(x) mean` eller `summarize x` gir gjennomsnitt 0 (og standardavvik 0)
+  for en 0/1-variabel, selv om `tabulate x` viser mange med verdien 1. Ingen melding.
+- **Årsak:** winsoriseringen (1 % i hver ende) gjelder også 0/1-variabler. Har under 1 % verdien 1, er
+  99-persentilen 0, og alle 1-erne blir 0. Testet: 3 729 av 709 037 (0,53 %) med krefttilfelle i Oslo ga
+  gjennomsnitt 0 i alle bydeler og i totalen (versjon 60, 2026-11-20, TESTLISTE 11.12). Motsatt blir alle
+  0-ene 1 når over 99 % har verdien 1.
+- **Også i undergrupper:** winsoriseringen skjer per gruppe i `summarize()`, `by()`/`over()` og med `if`. En
+  andel som er over 1 % totalt, kan bli 0 i en gruppe der den er lavere (dødelighet blant unge, sjeldne
+  diagnoser i små grupper).
+- **Løsning:** bruk antall i en krysstabell for andeler: `tabulate gruppe x, rowpct`. Bruk
+  `summarize(x) mean` bare når andelen er godt over 1 % (og under 99 %) i hver gruppe. Ikke testet: om det
+  samme skjer med 0/1-variabler i regresjoner (forklaringsvariabel i `regress`).
+
 ### Tabeller på små delgrupper
 - **Versjon 2:** Tabellen vises alltid. Celler med 1–4 vises som 0, så små kategorier ser tomme ut.
   Behandle 0 i en tabell som «0–5», ikke som ingen.
@@ -480,6 +494,11 @@ del 11, 2026-11-19).
   endrede koder, og tar resten med `substr`.
 - **Levekårssoner** finnes i Klass for 66 kommuner (2026-inndelingen, ikke Oslo). Bydeler finnes for Oslo,
   Bergen, Trondheim og Stavanger, delbydeler for Oslo. Alle bygger på 2026-grunnkretsene.
+- **`BEFOLKNING_BYDEL` gir de samme bydelene som `grunnkrets.py --til bydel`** (1.1.2025: 99,8 % samme kode,
+  alle bydeler innen ±15). Uoppgitt er `kkkk99` i `BEFOLKNING_BYDEL` og `kkkk9999` fra grunnkrets, og 193
+  personer hadde grunnkrets, men manglende `BEFOLKNING_BYDEL` (TESTLISTE 11.9).
+- **Grunnkrets kan brukes med alle personvariabler og med FHI-data** under versjon 2 (lønn etter delområde,
+  krefttilfeller koblet til bosatte med grunnkrets, 11.10–11.11). Delområder laget med `substr` har ikke navn.
 - **Lange skript går.** Hele landet fra 2015 til delområde (160 kB, over 300 `recode`-linjer) ble godtatt
   (11.6), og alle 2015-kodene i dataene ble omkodet til delområder som finnes i 2026 (11.8). Begrens med
   `--kommune` når analysen bare gjelder noen kommuner, så blir skriptet lettere å lese.

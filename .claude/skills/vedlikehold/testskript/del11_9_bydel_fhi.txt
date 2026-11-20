@@ -1,6 +1,6 @@
 // =====================================================================
 // Testskript: TESTLISTE 11.9–11.11 (BEFOLKNING_BYDEL, grunnkrets med andre personvariabler, FHI og grunnkrets)
-// Laget:      2026-11-20, ikke kjørt ennå
+// Laget:      2026-11-20, kjørt 2026-11-20 (resultat i TESTLISTE 11.9–11.12)
 // Versjon:    no.ssb.fdb:60, no.fhi.kreftregisteret:1, anonymiseringstiltak versjon 2. Spør om analysemiljøet
 //             har de samme.
 // Variabler:  https://microdata.no/discovery/variable/no.ssb.fdb/60/BEFOLKNING_BYDEL
@@ -130,6 +130,7 @@ import fdb/BEFOLKNING_KOMMNR_FORMELL 2023-01-01 as kommune
 keep if kommune == '0301'
 import fdb/BEFOLKNING_GRUNNKRETS 2023-01-01 as gk
 import fdb/BEFOLKNING_BYDEL 2023-01-01 as bydel
+use kreft
 merge kreft23 into oslo
 use oslo
 replace kreft23 = 0 if sysmiss(kreft23)
