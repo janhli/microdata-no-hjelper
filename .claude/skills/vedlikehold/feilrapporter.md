@@ -54,6 +54,19 @@ feilmeldingen. Mindre viktig, men kan forveksles med et resultat.
 ### 8. `regress-panel-diff`: navnet på interaksjonsleddet begynner med ⨯
 Leddet heter «⨯ gruppe ⨯ etter». Kosmetisk.
 
+## Modeller
+
+### 17. `c.x#c.x` og `c.x##c.x` utelates uten melding (funnet 19.–20. november 2026)
+Et samspill mellom en variabel og seg selv tas ikke med i modellen, og ingen melding forteller det:
+- `regress lonn alder c.alder#c.alder mann` gir samme modell som `regress lonn alder mann`: R² 0,0615
+  og F(2, ...). Med `alder2 = alder*alder` er R² 0,0932.
+- `c.alder##c.alder` gir det samme.
+- `logit hoy alder c.alder#c.alder mann` gir log-likelihood −107 337, og med `alder2` −104 976.
+
+Samspill mellom ulike variabler virker (`c.alder#c.lonn23`, `i.mann#c.alder`). Andregradsledd er vanlige,
+og brukeren får en annen modell enn den hen skrev. Enten bør leddet beregnes, eller det bør komme en
+feilmelding.
+
 ## Metadata
 
 ### 9. `S_TOPOGRAFIICD10`: dataene har koder som ikke står i kodelisten

@@ -387,11 +387,20 @@ Kartlagt fra manualen (`metadata/manual/konfidensialitet.md`, `kommandoer_og_fun
   referanse, og kategoriene vises med navn. `cluster()` virker med `or` og `mfx()` (z-verdier ca. 50 mot
   290 uten). `mfx(dydx)` skriver først koeffisientene, så marginaleffektene under «dydx av syss».
   `logit-predict` godtar `i.`-ledd.
-- **`c.x#c.x` (andregradsledd) utelates stille fra modellen.** `logit ... alder c.alder#c.alder` ga samme
-  modell som uten leddet: log-likelihood −1 456 133 mot −1 430 816 med `alder2 = alder * alder`, og
-  koeffisienten for alder skiftet fortegn. Ingen melding (TESTLISTE 8.11). Lag andregradsledd som egen
-  variabel: `generate alder2 = alder * alder`. `LR chi2` har én frihetsgrad mer enn de synlige leddene uansett,
-  så frihetsgradene sier ikke om et ledd er med.
+- **`c.x#c.x` og `c.x##c.x` (andregradsledd) utelates fra modellen uten melding**, både i `regress` og
+  `logit` (versjon 60, 2026-11-20, TESTLISTE 8.11).
+  - `regress lonn alder c.alder#c.alder mann` ga R² 0,0615 og ingen rad for leddet, altså samme modell
+    som uten. Med `alder2 = alder * alder` ble R² 0,0932. `c.alder##c.alder` ga det samme som `#`.
+  - I `logit` ble log-likelihood −107 337, mot −104 976 med `alder2`. Koeffisienten for alder blir helt
+    annerledes.
+  - **Løsning:** lag andregradsledd som egen variabel: `generate alder2 = alder * alder`.
+  - **Samspill mellom ulike variabler virker:** `c.alder#c.lonn23` (vises som «alder ⨯ lonn23») og
+    `i.mann#c.alder` (vises som «mann '1' ⨯ alder»), i både `regress` og `logit`. R² og log-likelihood
+    var nesten like med en variabel laget med `generate`. Koeffisientene skilte seg med 3–8 %, trolig
+    fordi den genererte produktvariabelen winsoriseres for seg.
+  - Sjekk at alle ledd du skrev, har en rad i tabellen. I `regress` er F-testens frihetsgrader lik antall
+    ledd som faktisk er med. `LR chi2` i `logit` har alltid én frihetsgrad mer enn de synlige leddene, så
+    der sier frihetsgradene ikke om et ledd er med.
 - **Kontroller prediksjoner mot noe som ikke er i modellen.** En logit med `i.gruppe` treffer andelen per
   gruppe nøyaktig (avvik 0,03 prosentpoeng), så den sammenligningen sier ingenting.
 - `logit`/`probit` krever et utfall som er 0/1. `mfx(dydx)` gir gjennomsnittlige marginaleffekter

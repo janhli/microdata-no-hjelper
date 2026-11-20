@@ -1,0 +1,91 @@
+// =====================================================================
+// Testskript: TESTLISTE 8.11 (blir c.x#c.x og andre samspillsledd med i modellen?)
+// Laget:      2026-11-19, kjørt 2026-11-20 (resultat i TESTLISTE 8.11 og fallgruver.md)
+// Versjon:    no.ssb.fdb:60, anonymiseringstiltak versjon 2. Spør om analysemiljøet har den samme.
+// Populasjon: utvalg på 200 000 bosatte 25–66 år 1.1.2025 med lønn i 2023 og 2024
+// Variabler:  https://microdata.no/discovery/variable/no.ssb.fdb/60/INNTEKT_WLONN
+//             https://microdata.no/discovery/variable/no.ssb.fdb/60/BEFOLKNING_FOEDSELS_AAR_MND
+//             https://microdata.no/discovery/variable/no.ssb.fdb/60/BEFOLKNING_KJOENN
+// Bakgrunn:   I logistisk_regresjon.txt ga «logit ... alder c.alder#c.alder» samme log-likelihood som uten
+//             leddet, og leddet ble ikke vist. Hver test kjører et ledd skrevet med #-syntaks og det samme
+//             leddet laget som egen variabel. Er leddet med, er R² (regress) eller log-likelihood (logit)
+//             lik i begge, og koeffisienten for egenvariabelen står i den andre utskriften.
+// Rekkefølge: regress først (11.a–11.d), så logit (11.e). Ingen test skal stoppe skriptet.
+// =====================================================================
+
+require no.ssb.fdb:60 as fdb
+
+textblock
+# Test av samspillsledd (TESTLISTE 8.11)
+Hver test har to modeller: leddet skrevet med `#` og det samme leddet laget med `generate`. Er R²
+(eller log-likelihood) lik og leddet synlig i begge, virker `#`-syntaksen. Små forskjeller i N og R²
+skyldes nedsampling (1–11 observasjoner) før `regress`.
+endblock
+
+// --- Populasjon ---
+create-dataset personer
+import fdb/BEFOLKNING_KOMMNR_FORMELL 2025-01-01 as kommune
+import fdb/BEFOLKNING_FOEDSELS_AAR_MND as faarmnd
+generate alder = 2024 - int(faarmnd/100)
+keep if alder >= 25 & alder <= 66
+sample 200000 811
+import fdb/BEFOLKNING_KJOENN as kjonn
+generate mann = 0
+replace mann = 1 if kjonn == '1'
+import fdb/INNTEKT_WLONN 2024-12-31 as wlonn24
+import fdb/INNTEKT_WLONN 2023-12-31 as wlonn23
+drop if sysmiss(wlonn24) | sysmiss(wlonn23)
+generate lonn = wlonn24 / 1000
+generate lonn23 = wlonn23 / 1000
+
+// Leddene laget som egne variabler
+generate alder2 = alder * alder
+generate alder_lonn23 = alder * lonn23
+generate mann_alder = mann * alder
+generate hoy = 0
+replace hoy = 1 if lonn > 600
+
+// ---------------------------------------------------------------------
+textblock
+## Test 11.a: andregradsledd i regress, `c.alder#c.alder` mot `alder2`
+**Forventet hvis leddet virker:** samme R² og en koeffisient for leddet i begge.
+**Hvis det utelates (som i logit):** lavere R² i første, og ingen rad for leddet.
+endblock
+regress lonn alder c.alder#c.alder mann
+regress lonn alder alder2 mann
+
+// ---------------------------------------------------------------------
+textblock
+## Test 11.b: `c.alder##c.alder` (hovedledd og samspill med ##)
+**Forventet hvis leddet virker:** samme R² som `alder alder2` i 11.a.
+endblock
+regress lonn c.alder##c.alder mann
+
+// ---------------------------------------------------------------------
+textblock
+## Test 11.c: to ulike kontinuerlige variabler, `c.alder#c.lonn23` mot `alder_lonn23`
+Manualen har eksempelet `c.inntekt2003#c.inntekt2002`.
+**Forventet hvis leddet virker:** samme R² og en koeffisient for samspillet i begge.
+endblock
+regress lonn alder lonn23 c.alder#c.lonn23
+regress lonn alder lonn23 alder_lonn23
+
+// ---------------------------------------------------------------------
+textblock
+## Test 11.d: faktor ganger kontinuerlig, `i.mann#c.alder` mot `mann_alder`
+**Forventet hvis leddet virker:** samme R². I første utskrift trolig én rad per kjønn (eller bare for
+menn), i andre én rad for `mann_alder`.
+endblock
+regress lonn mann alder i.mann#c.alder
+regress lonn mann alder mann_alder
+
+// ---------------------------------------------------------------------
+textblock
+## Test 11.e: logit, `c.alder#c.alder` mot `alder2` (gjentar funnet) og `c.alder#c.lonn23`
+**Forventet:** første par som i logistisk_regresjon.txt (leddet mangler, lavere log-likelihood).
+Andre par viser om to ulike variabler virker i logit.
+endblock
+logit hoy alder c.alder#c.alder mann
+logit hoy alder alder2 mann
+logit hoy alder lonn23 c.alder#c.lonn23
+logit hoy alder lonn23 alder_lonn23

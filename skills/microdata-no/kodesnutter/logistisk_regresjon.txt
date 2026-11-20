@@ -32,7 +32,8 @@
 //     0 til 1. Forskjellen er liten (TESTLISTE 8.7). margins() predikerer ved gjennomsnittet av de andre
 //     variablene, ikke gjennomsnittet av predikerte verdier.
 //   - Alder har ikke rett linje-effekt på sysselsetting: ta med alder i andre som egen variabel. Leddet
-//     c.x#c.x blir stille utelatt fra modellen (versjon 60): samme log-likelihood som uten, og ingen melding.
+//     c.x#c.x og c.x##c.x blir utelatt fra modellen uten melding, også i regress (versjon 60). Samspill
+//     mellom ulike variabler (c.alder#c.lonn, i.mann#c.alder) virker.
 //   - mfx(dydx) skriver først koeffisientene, så marginaleffektene («dydx av syss»). Les den andre tabellen.
 //   - Kontroller prediksjonen mot en variabel som ikke er i modellen (her aldersgrupper). For kategoriene i
 //     modellen treffer en logit gjennomsnittet per definisjon, så den sammenligningen sier ingenting.
