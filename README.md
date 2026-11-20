@@ -61,6 +61,17 @@ for microdata.no. Se [`AGENTS.md`](AGENTS.md) i dette repoet for et eksempel.
 Skillen bruker bare lesing av filer, søk og Python 3 (standardbiblioteket), så den virker i alle
 agenter som kan det.
 
+### Oppdatere skillen
+
+Skillen har ikke versjonsnummer. Hver endring på GitHub er en ny versjon, og metadataene oppdateres
+når microdata.no endrer seg. Ingen agent henter endringene av seg selv uten at du har slått det på:
+
+| Installert som | Slik oppdaterer du |
+|---|---|
+| Klonet repo med lenke (`~/.agents/skills`, `~/.claude/skills`) | `git pull` i repoet. Gjelder fra neste økt |
+| Plugin i Claude Code | `claude plugin update microdata-no@microdata-no-hjelper`, eller slå på automatisk oppdatering under `/plugin` → Marketplaces |
+| Kopi av mappen, eller zip på claude.ai | Last ned på nytt og bytt ut mappen (eller last opp zip-filen på nytt) |
+
 ## Oppdatere metadata selv
 
 Bare standardbiblioteket i Python er nødvendig:

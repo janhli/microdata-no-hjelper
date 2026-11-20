@@ -77,3 +77,7 @@ Brukeren kjører, du tolker. Lag ett skript som dekker flere punkter i testliste
 - **Verktøy:** Kjør `python -m unittest discover -s tests` etter endringer i `skills/microdata-no/verktoy/`.
 - **Commit og push bare når brukeren ber om det.** Avslutt økten med en kort oppsummering av hva som er
   endret og hva som gjenstår.
+- **Push samlet.** Skillen har ikke versjonsnummer: hver push til `main` er en ny versjon for brukere med
+  automatisk oppdatering av pluginen. Commit gjerne underveis, men foreslå å pushe samlet når økten er
+  ferdig, ikke etter hver liten endring. Unntak: rettelser av feil som kan gi feil resultat uten at det
+  synes (P1), pushes med en gang.
