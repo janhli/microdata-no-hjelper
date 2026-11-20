@@ -51,6 +51,14 @@ kommunenumre først. Oppdater tabellene med `python verktoy/hent_regioninndeling
 ## Grunnkrets, delområde, levekårssone og bydel
 
 `BEFOLKNING_GRUNNKRETS` (fra versjon 60, november 2026) er grunnkretsen personen bor i per 1.1., 1990–2026.
+Den er en vanlig personvariabel, så alt som finnes på person (inntekt, utdanning, sysselsetting, trygd)
+kan tabuleres og brukes i modeller etter grunnkrets og områdene under. Grensen er små celler, ikke hvilke
+variabler som kan brukes.
+
+**Bydeler:** bruk først den ferdige `BEFOLKNING_BYDEL` (Oslo, Bergen, Trondheim, Stavanger, 1990–2026, eldre år
+omkodet til gjeldende bydeler, Klass 103). `grunnkrets.py --til bydel` trengs når bydelene skal følge
+2026-grunnkretsene eksakt (sammenligning i TESTLISTE 11.9, ikke kjørt).
+
 Koden er kommune (4) + delområde (2) + grunnkrets (2) og skifter når kommunen skifter nummer. Bruk
 `python verktoy/grunnkrets.py --til <inndeling> --aar <år> --var <variabel> [--kommune 4601,5001]`:
 
@@ -58,7 +66,7 @@ Koden er kommune (4) + delområde (2) + grunnkrets (2) og skifter når kommunen 
 |---|---|
 | `delomrade` | Delområde (6 sifre), hele landet |
 | `lks` | Levekårssoner fra Klass (10 sifre, 66 kommuner) |
-| `bydel` | Bydeler i Oslo, Bergen, Trondheim og Stavanger (6 sifre) |
+| `bydel` | Bydeler i Oslo, Bergen, Trondheim og Stavanger (6 sifre). Se `BEFOLKNING_BYDEL` over |
 | `delbydel` | Delbydeler i Oslo (4 sifre) |
 | `FIL.csv` | Egne områder, kolonnene `grunnkrets;kode;navn` med gjeldende grunnkretskoder |
 
