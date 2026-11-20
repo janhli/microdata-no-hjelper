@@ -75,6 +75,9 @@ undergrupper også for utfall som er over 1 % totalt. Winsorisering gir neppe me
 verdier. Det samme gjelder regresjoner: i et utvalg på 405 000 ble 0/1-variabler med 0,22 % og 0,85 % enere
 utelatt fra `regress` og `logit` uten melding, mens 1,26 % og 2,47 % var med. Kan 0/1-variabler (eller
 variabler med få verdier) unntas, eller kan det i det minste komme en melding når en variabel blir konstant?
+Som utfall er det verre: med et utfall på 0,34 % ga `regress` bare 0 og NaN, og `logit` «Pseudo R2 Infinity»
+etter 35 iterasjoner. Med utfallet snudd (over 99 %) ga `logit` negativ LR chi2 og koeffisienter med
+z = −145, som ser ut som et resultat. Kategorier i `i.`-variabler på 0,2 % ble ikke berørt.
 
 ## Metadata
 

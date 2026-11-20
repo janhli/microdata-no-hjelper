@@ -237,13 +237,24 @@ avklart med versjon 1, hvis ikke annet står. Endringene som påvirker skript:
   uten melding (TESTLISTE 8.12, 405 000 personer). Andel 0,22 % og 0,85 %: ingen rad, og `F(1, ...)` med
   `mann` alene, som uten variabelen. Andel 1,26 % og 2,47 %: med, og koeffisienten som ventet. Grensen er
   1 %, likt med `summarize`. `logit` med utfall på 1,26 % virket.
+- **Kategorier i `i.`-variabler rammes ikke.** `regress lonn i.gruppe mann` og `logit` viste kategorier på
+  0,2 %, 0,85 % og 1,6 %, med koeffisienter nær forskjellene i gjennomsnitt (+30, +19, +30 mot +29, +17, +26).
+  `i.` lages trolig om til 0/1-ledd etter winsoriseringen (TESTLISTE 8.13).
+- **Utfall under 1 % (eller over 99 %) gir meningsløse modeller uten feilmelding** (8.13, lønn over 3 mill.,
+  0,34 %):
+  - `regress`: alle koeffisienter og standardfeil 0, R² og F «NaN».
+  - `logit`: 35 iterasjoner, «Pseudo R2 Infinity» og negativ eller nær null `LR chi2`. Med utfallet over 99 %
+    fikk koeffisientene z-verdier på −145 og ser signifikante ut, men tallene er tull.
+  - Kjennetegn: «NaN», «Infinity», negativ `LR chi2`, 35 iterasjoner, standardavvik 0 i `summarize`.
 - **Løsning:**
   - Andeler: bruk antall i en krysstabell, `tabulate gruppe x, rowpct`. Bruk `summarize(x) mean` bare når
     andelen er godt over 1 % (og under 99 %) i hver gruppe.
-  - Regresjoner: tabuler hver 0/1-variabel først, og sjekk at alle forklaringsvariablene har en rad i
-    resultatet. Slå sammen sjeldne grupper til en større gruppe (over 1 %), eller avgrens populasjonen så
-    gruppen blir større enn 1 %.
-  - Ikke testet: kategorier under 1 % i `i.`-variabler, og `logit` med utfall under 1 % (TESTLISTE 8.13).
+  - Sjeldne forklaringsvariabler: skriv `i.x` i stedet for `x` (eller lag én kategorivariabel med de
+    sjeldne gruppene). Sjekk at alle forklaringsvariablene har en rad i resultatet.
+  - Sjeldne utfall: tabuler utfallet først. Under 1 % kan ikke modelleres med `regress` eller `logit` på hele
+    populasjonen. Avgrens populasjonen til en risikogruppe der utfallet er over 1 %, eller bruk tabeller med
+    antall.
+  - Ikke testet: `i.x` på en enkelt 0/1-variabel, og sjeldne hendelser i `cox` (TESTLISTE 8.14).
 
 ### Tabeller på små delgrupper
 - **Versjon 2:** Tabellen vises alltid. Celler med 1–4 vises som 0, så små kategorier ser tomme ut.

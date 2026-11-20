@@ -145,8 +145,8 @@ Eksemplene bruker gamle datalagerversjoner (23–45), så sjekk variabelnavnene.
 
 Les «Analyse» i `referanser/fallgruver.md` før du leverer en analyse. Der står konfidensialitetstiltakene som
 påvirker analyser (winsorisering også i regresjoner, kategorier med under 5 observasjoner som fjernes, minst to
-koeffisienter, og **0/1-variabler der under 1 % har verdien 1, som blir 0 i gjennomsnitt og forsvinner fra
-regresjoner uten melding**) og feil i
+koeffisienter, og **0/1-variabler der under 1 % har verdien 1: de blir 0 i gjennomsnitt, forsvinner fra
+regresjoner (bruk `i.x`), og som utfall gir de meningsløse modeller uten feilmelding**) og feil i
 manualens eksempler (overlevelsesanalyse, diff-in-diff, `ivregress`). Velg modell etter utfallet og designet,
 og si fra om forutsetningene (f.eks. parallelle trender i diff-in-diff, instrumentets gyldighet).
 

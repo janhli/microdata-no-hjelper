@@ -1,0 +1,102 @@
+// =====================================================================
+// Testskript: TESTLISTE 8.13 (kategorier under 1 % i i.-variabler, og utfall under 1 %)
+// Laget:      2026-11-20, kjørt 2026-11-20 (resultat i TESTLISTE 8.13)
+// Versjon:    no.ssb.fdb:60, anonymiseringstiltak versjon 2. Spør om analysemiljøet har den samme.
+// Populasjon: utvalg på 500 000 bosatte 25–66 år 1.1.2025 med lønn i 2023 og 2024 (som 8.12)
+// Variabler:  https://microdata.no/discovery/variable/no.ssb.fdb/60/INNTEKT_WLONN
+//             https://microdata.no/discovery/variable/no.ssb.fdb/60/BEFOLKNING_FOEDSELS_AAR_MND
+//             https://microdata.no/discovery/variable/no.ssb.fdb/60/BEFOLKNING_KJOENN
+// Bakgrunn:   TESTLISTE 8.12: 0/1-variabler der under 1 % har verdien 1, utelates fra regress og logit uten
+//             melding. Gjelder det også kategorier i i.-variabler (som lages om til 0/1-ledd), og hva skjer når
+//             utfallet er under 1 % (eller over 99 %)?
+// Gruppe:     én kategorivariabel med kjent størrelse på kategoriene (alle over 5, så tiltak 14 slår ikke inn):
+//               1 – alle andre (referanse)
+//               2 – 40 år, født januar–april   (ca. 0,85 %, under grensen)
+//               3 – 40 år, født mai–desember   (ca. 1,6 %, over grensen)
+//               4 – 41 år, født i mars         (ca. 0,2 %, under grensen)
+// Utfall:     sjelden – lønn 2024 over 3 mill. kr (ventet under 1 %, se tabellen)
+//             vanlig  – 1 minus sjelden (over 99 %)
+// Rekkefølge: i.-variabler først (8.13.a–b). Så sjeldne utfall (8.13.c–e), som kan stoppe skriptet. Stopper
+//             det, kommenter ut linjen som stoppet (//) og kjør resten.
+// =====================================================================
+
+require no.ssb.fdb:60 as fdb
+
+textblock
+# Test av sjeldne kategorier og sjeldne utfall (TESTLISTE 8.13)
+Hver test sier hva resultatet skal vise hvis det går som i 8.12 (sjeldne 0/1-variabler utelates).
+endblock
+
+// --- Populasjon ---
+create-dataset personer
+import fdb/BEFOLKNING_KOMMNR_FORMELL 2025-01-01 as kommune
+import fdb/BEFOLKNING_FOEDSELS_AAR_MND as faarmnd
+generate alder = 2024 - int(faarmnd/100)
+keep if alder >= 25 & alder <= 66
+sample 500000 813
+generate mnd = faarmnd - int(faarmnd/100)*100
+import fdb/BEFOLKNING_KJOENN as kjonn
+generate mann = 0
+replace mann = 1 if kjonn == '1'
+import fdb/INNTEKT_WLONN 2024-12-31 as wlonn24
+import fdb/INNTEKT_WLONN 2023-12-31 as wlonn23
+drop if sysmiss(wlonn24) | sysmiss(wlonn23)
+generate lonn = wlonn24 / 1000
+generate lonn23 = wlonn23 / 1000
+
+generate gruppe = 1
+replace gruppe = 2 if alder == 40 & mnd <= 4
+replace gruppe = 3 if alder == 40 & mnd > 4
+replace gruppe = 4 if alder == 41 & mnd == 3
+define-labels gruppetxt 1 'Andre' 2 '40 år, jan–apr (0,85 %)' 3 '40 år, mai–des (1,6 %)' 4 '41 år, mars (0,2 %)'
+assign-labels gruppe gruppetxt
+
+generate hoy = 0
+replace hoy = 1 if lonn > 600
+generate sjelden = 0
+replace sjelden = 1 if lonn > 3000
+generate vanlig = 1 - sjelden
+
+// ---------------------------------------------------------------------
+textblock
+## Test 8.13.a: størrelsen på kategoriene og utfallene, og lønn per kategori (fasit)
+endblock
+tabulate gruppe, missing
+tabulate gruppe, summarize(lonn) mean freq
+tabulate sjelden, missing
+summarize sjelden
+summarize vanlig
+
+// ---------------------------------------------------------------------
+textblock
+## Test 8.13.b: kategorier under 1 % i `i.gruppe`, i `regress` og `logit`
+**Hvis som 8.12:** rader for kategori 3, men ikke for 2 og 4, og ingen melding. `F(...)` i `regress` har da 2
+frihetsgrader (gruppe 3 og mann), ikke 4.
+**Hvis i.-kategoriene ikke winsoriseres:** rader for 2, 3 og 4, med koeffisienter nær forskjellene i 8.13.a.
+endblock
+regress lonn i.gruppe mann
+logit hoy i.gruppe mann
+
+// ---------------------------------------------------------------------
+textblock
+## Test 8.13.c: utfall under 1 % i `regress` (lineær sannsynlighetsmodell)
+**Hvis som 8.12:** `sjelden` blir 0 for alle, og modellen gir R² 0 og koeffisienter 0, eller en feilmelding.
+**Ellers:** positiv koeffisient for lønn 2023.
+endblock
+regress sjelden lonn23 mann
+
+// ---------------------------------------------------------------------
+textblock
+## Test 8.13.d: utfall under 1 % i `logit`
+**Hvis som 8.12:** `logit` stopper (utfallet har bare én verdi) eller gir tomme tall.
+**Ellers:** en vanlig modell med positiv koeffisient for lønn 2023.
+endblock
+logit sjelden lonn23 mann
+
+// ---------------------------------------------------------------------
+textblock
+## Test 8.13.e: utfall over 99 % i `logit` (det motsatte av 8.13.d)
+**Hvis som 8.12:** alle 0-ene blir 1, og `logit` stopper eller gir tomme tall.
+**Ellers:** samme modell som 8.13.d med motsatt fortegn.
+endblock
+logit vanlig lonn23 mann
