@@ -21,6 +21,7 @@ Hva testene viste, og hvilke tall snuttene er kontrollert mot, står i [TESTRESU
 | Fil | Hva den gir | Status |
 |---|---|---|
 | [mal_analyse.txt](mal_analyse.txt) | Skjelett for et helt analyseskript med `textblock`-titler | testet |
+| [fylke.txt](fylke.txt) | Fylke med navn (2024-inndelingen), som tekst og som tall til `i.fylkenum`. Kontrolltall fra SSB tabell 07459 | testet |
 | [alder.txt](alder.txt) | Alder som i Statistikkbanken, og aldersgrupper | testet |
 | [innvandringskategori.txt](innvandringskategori.txt) | Innvandrer / norskfødt med innvandrerforeldre / øvrige | testet |
 | [landbakgrunn_region.txt](landbakgrunn_region.txt) | Landbakgrunn gruppert i verdensregioner | testet |
@@ -41,7 +42,6 @@ Hva testene viste, og hvilke tall snuttene er kontrollert mot, står i [TESTRESU
 
 ## Ønskeliste (bidra gjerne)
 
-- Fylke med navn (2024-inndeling)
 - Familietype
 - Pendling (bosted mot arbeidssted)
 - Tilknytning til arbeid, utdanning og velferd (NEET)

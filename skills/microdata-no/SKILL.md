@@ -26,7 +26,7 @@ Alle stier er relative til denne skill-mappen. Søk i filene (grep, rg eller age
 | `metadata/manual/**/*.md` | Hele manualen som Markdown. Kommandoreferansen ligger i `kommandoer_og_funksjoner/kommandoer.md` og funksjonene i `.../funksjoner.md`. |
 | `referanser/fallgruver.md` | Feil som ikke står (tydelig) i manualen, med feilmelding og løsning. **Les den før du leverer et skript.** |
 | `referanser/vega.md` | Endre figurer fra microdata.no i Vega-editoren: brukeren limer inn Vega-Lite-spesifikasjonen (med tallene), du endrer etiketter, rekkefølge, farger, titler og tallformat. Les den når brukeren vil ha en penere eller tilpasset figur |
-| `kodesnutter/` | Frittstående og kommenterte snutter med teststatus: analysemal, alder, innvandringskategori, landbakgrunn, utdanning, arbeidsstyrkestatus, sektor for lønnstakere (utgått i versjon 60), samliv, husholdning, bolig, lavinntekt, verdi ved hendelse, mor–barn, forløp, overlevelsesanalyse, logistisk regresjon og paneldata. Oversikt i `kodesnutter/README.md`. **Ta utgangspunkt i disse før du skriver noe selv.** |
+| `kodesnutter/` | Frittstående og kommenterte snutter med teststatus: analysemal, fylke med navn, alder, innvandringskategori, landbakgrunn, utdanning, arbeidsstyrkestatus, sektor for lønnstakere (utgått i versjon 60), samliv, husholdning, bolig, lavinntekt, verdi ved hendelse, mor–barn, forløp, overlevelsesanalyse, logistisk regresjon og paneldata. Oversikt i `kodesnutter/README.md`. **Ta utgangspunkt i disse før du skriver noe selv.** |
 
 Dato for siste nedlasting står i `metadata/HENTET`. Oppdater med `python verktoy/hent_variabler.py`
 (`--alle` henter alt på nytt, ca. 6 min) og `python verktoy/hent_manual.py`.

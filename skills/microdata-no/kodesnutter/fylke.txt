@@ -1,0 +1,54 @@
+// =====================================================================
+// Fylke med navn (fylkesinndelingen fra 2024)
+// Status:    testet (no.ssb.fdb:60, 2026-11)
+// Variabler: BEFOLKNING_KOMMNR_FORMELL (bostedskommune per dato, fylket er de to første sifrene)
+//            https://microdata.no/discovery/variable/no.ssb.fdb/60/BEFOLKNING_KOMMNR_FORMELL
+// Lager:     fylke    – fylkesnummeret som tekst ('03', '31' ...) med navn
+//            fylkenum – det samme som tall, til i.fylkenum i regresjoner (Oslo, 3, er referansen)
+// Navn:      SSB Klass 104 (Fylkesinndeling), samme 15 fylker 1.1.2024 og 1.1.2026. Samiske og kvenske
+//            navn er tatt bort (Klass: «Troms - Romsa - Tromssa»).
+// Kontroll:  SSB tabell 07459, folkemengde 1.1.2025: hele landet 5 594 340. Oslo 724 290, Akershus 740 680,
+//            Vestland 655 210, Finnmark 75 042 (alle fylker under). Kjørt 2026-11-20: alle fylker innen ±5,
+//            landet 5 594 337. Ingen rader for 21 Svalbard, 99 Uoppgitt eller manglende kommune.
+// Fallgruver:
+//   - Gjelder bare datoer fra 1.1.2024. For 2020–2023 gir de to første sifrene 30 Viken, 38 Vestfold og
+//     Telemark og 54 Troms og Finnmark, og før 2020 de 19 gamle fylkene. Kod om kommunen til
+//     2024-inndelingen først med python verktoy/kommuneomkoding.py --fra <år> --til 2024, og lim
+//     recode-linjene inn før substr (se fallgruver.md, «Kommune- og fylkesnummer endres»).
+//   - Fylket er bostedet per datoen. Bruk samme dato som populasjonen.
+//   - Labels endrer ikke sorteringen: tabellene sorteres etter nummeret (03 Oslo først), ikke i
+//     SSBs standardrekkefølge (31 Østfold først).
+//   - 21 Svalbard og 99 Uoppgitt har navn i tilfelle de forekommer. Folkemengden i 07459 har ingen på
+//     Svalbard.
+// =====================================================================
+
+require no.ssb.fdb:60 as fdb
+
+create-dataset personer
+import fdb/BEFOLKNING_KOMMNR_FORMELL 2025-01-01 as kommune
+
+// --- Fylke som tekst med navn ---
+generate fylke = substr(kommune, 1, 2)
+define-labels fylketxt '03' 'Oslo' '11' 'Rogaland' '15' 'Møre og Romsdal' '18' 'Nordland' '31' 'Østfold' '32' 'Akershus' '33' 'Buskerud' '34' 'Innlandet' '39' 'Vestfold' '40' 'Telemark' '42' 'Agder' '46' 'Vestland' '50' 'Trøndelag' '55' 'Troms' '56' 'Finnmark' '21' 'Svalbard' '99' 'Uoppgitt'
+assign-labels fylke fylketxt
+
+// --- Fylke som tall, til i.fylkenum ---
+generate fylkenum = fylke
+destring fylkenum
+define-labels fylkenumtxt 3 'Oslo' 11 'Rogaland' 15 'Møre og Romsdal' 18 'Nordland' 31 'Østfold' 32 'Akershus' 33 'Buskerud' 34 'Innlandet' 39 'Vestfold' 40 'Telemark' 42 'Agder' 46 'Vestland' 50 'Trøndelag' 55 'Troms' 56 'Finnmark' 21 'Svalbard' 99 'Uoppgitt'
+assign-labels fylkenum fylkenumtxt
+
+textblock
+# Bosatte etter fylke 1.1.2025
+Kontroll mot SSB tabell 07459: Østfold 314 407, Akershus 740 680, Oslo 724 290, Innlandet 377 556,
+Buskerud 271 248, Vestfold 258 071, Telemark 177 863, Agder 322 188, Rogaland 504 496, Vestland 655 210,
+Møre og Romsdal 272 413, Trøndelag 486 815, Nordland 243 582, Troms 170 479, Finnmark 75 042.
+endblock
+tabulate fylke, missing
+tabulate fylkenum, missing
+
+textblock
+## Figur
+Vises fylkesnavnene på aksen, eller bare numrene?
+endblock
+barchart (count) fylke

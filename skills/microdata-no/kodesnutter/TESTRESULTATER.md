@@ -19,6 +19,7 @@ innen støyen (f.eks. innvandrere 964 836 mot 964 834, husholdninger koblet til 
 | [alder.txt](alder.txt) | v60, 2026-11 | – | Kjørt uten feil |
 | [arbeidsstyrkestatus.txt](arbeidsstyrkestatus.txt) | v60, 2026-11 | – | Kjørt uten feil |
 | [bolig.txt](bolig.txt) | v60, 2026-11 | SSB 14897 | Antall husholdninger stemmer. Eierstatus avviker, men årsaken er kjent (se under) |
+| [fylke.txt](fylke.txt) | v60, 2026-11 | SSB 07459 | Stemmer (alle fylker innen ±5) |
 | [forlop_til_person.txt](forlop_til_person.txt) | v60, 2026-11 | – | Kjørt uten feil |
 | [husholdning.txt](husholdning.txt) | v60, 2026-11 | SSB 06079 | Stemmer |
 | [innvandringskategori.txt](innvandringskategori.txt) | v60, 2026-11 | SSB 09817 | Stemmer (avvik under 0,03 %) |
@@ -39,6 +40,31 @@ innen støyen (f.eks. innvandrere 964 836 mot 964 834, husholdninger koblet til 
 publiserte tall.
 
 ## Kontroll mot publiserte tall
+
+### fylke.txt
+
+Bosatte 1.1.2025 etter fylke (`tabulate fylke`), mot SSB tabell 07459 (kjørt 2026-11-20, versjon 60):
+
+| Fylke | Snutten | SSB |
+|---|---|---|
+| Østfold | 314 409 | 314 407 |
+| Akershus | 740 683 | 740 680 |
+| Oslo | 724 291 | 724 290 |
+| Innlandet | 377 557 | 377 556 |
+| Buskerud | 271 250 | 271 248 |
+| Vestfold | 258 073 | 258 071 |
+| Telemark | 177 865 | 177 863 |
+| Agder | 322 188 | 322 188 |
+| Rogaland | 504 495 | 504 496 |
+| Vestland | 655 209 | 655 210 |
+| Møre og Romsdal | 272 411 | 272 413 |
+| Trøndelag | 486 818 | 486 815 |
+| Nordland | 243 583 | 243 582 |
+| Troms | 170 479 | 170 479 |
+| Finnmark | 75 047 | 75 042 |
+| Hele landet | 5 594 337 | 5 594 340 |
+
+`tabulate fylkenum` ga de samme tallene innen støyen. Ingen bosatte hadde fylke 21, 99 eller manglende kommune.
 
 ### husholdning.txt
 

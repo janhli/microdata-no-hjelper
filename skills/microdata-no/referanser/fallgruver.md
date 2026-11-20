@@ -419,7 +419,7 @@ Kartlagt fra manualen (`metadata/manual/konfidensialitet.md`, `kommandoer_og_fun
 ## Geografi
 
 ### Kommune- og fylkesnummer endres med regionreformene
-- Fylke hentes med `substr(BEFOLKNING_KOMMNR_FORMELL, 1, 2)`.
+- Fylke hentes med `substr(BEFOLKNING_KOMMNR_FORMELL, 1, 2)`. Navn og kontrolltall: `kodesnutter/fylke.txt`.
 - Fylkesnumrene fra 2024 gjelder: 31 Østfold, 32 Akershus, 33 Buskerud osv. Kommuner i Viken (30xx)
   i 2020–2023 må omkodes til nummeret de fikk i 2024 (31xx/32xx/33xx) før du sammenligner over tid.
   Tilsvarende gjelder Vestfold og Telemark (38xx → 39xx/40xx) og Troms og Finnmark (54xx → 55xx/56xx).
