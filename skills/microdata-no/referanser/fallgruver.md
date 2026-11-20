@@ -249,12 +249,16 @@ avklart med versjon 1, hvis ikke annet står. Endringene som påvirker skript:
 - **Løsning:**
   - Andeler: bruk antall i en krysstabell, `tabulate gruppe x, rowpct`. Bruk `summarize(x) mean` bare når
     andelen er godt over 1 % (og under 99 %) i hver gruppe.
-  - Sjeldne forklaringsvariabler: skriv `i.x` i stedet for `x` (eller lag én kategorivariabel med de
-    sjeldne gruppene). Sjekk at alle forklaringsvariablene har en rad i resultatet.
+  - Sjeldne forklaringsvariabler: skriv `i.x` i stedet for `x`. Testet (8.14): `d08` (0,86 %) ble utelatt,
+    mens `i.d08` ga raden «d08 '1'» med +27 (forskjell i gjennomsnitt +25), i både `regress` og `logit`.
+    Sjekk at alle forklaringsvariablene har en rad i resultatet.
   - Sjeldne utfall: tabuler utfallet først. Under 1 % kan ikke modelleres med `regress` eller `logit` på hele
     populasjonen. Avgrens populasjonen til en risikogruppe der utfallet er over 1 %, eller bruk tabeller med
     antall.
-  - Ikke testet: `i.x` på en enkelt 0/1-variabel, og sjeldne hendelser i `cox` (TESTLISTE 8.14).
+- **`cox` rammes ikke.** Død i 2025 for 25–66-åringer (948 av 500 000, 0,19 %) ga 0 i `summarize`, men `cox`
+  fant alle 947 hendelsene, med alder +0,086 og mann +0,48 per år (kontroll med 8,7 % døde: +0,105 og +0,39).
+  For sjeldne hendelser over tid er `cox` derfor et alternativ til `logit` (TESTLISTE 8.14). `kaplan-meier`
+  og andre modeller (`poisson`, `probit`) er ikke testet.
 
 ### Tabeller på små delgrupper
 - **Versjon 2:** Tabellen vises alltid. Celler med 1–4 vises som 0, så små kategorier ser tomme ut.

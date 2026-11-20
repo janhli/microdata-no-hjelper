@@ -1,0 +1,107 @@
+// =====================================================================
+// Testskript: TESTLISTE 8.14 (i.x på en sjelden 0/1-variabel, og sjelden hendelse i cox)
+// Laget:      2026-11-20, kjørt 2026-11-20 (resultat i TESTLISTE 8.14)
+// Versjon:    no.ssb.fdb:60, anonymiseringstiltak versjon 2. Spør om analysemiljøet har den samme.
+// Variabler:  https://microdata.no/discovery/variable/no.ssb.fdb/60/INNTEKT_WLONN
+//             https://microdata.no/discovery/variable/no.ssb.fdb/60/BEFOLKNING_DOEDS_DATO
+//             https://microdata.no/discovery/variable/no.ssb.fdb/60/BEFOLKNING_FOEDSELS_AAR_MND
+//             https://microdata.no/discovery/variable/no.ssb.fdb/60/BEFOLKNING_KJOENN
+// Bakgrunn:   8.12: en 0/1-variabel der under 1 % har verdien 1, utelates fra regress og logit. 8.13: kategorier
+//             under 1 % i i.gruppe beholdes, og utfall under 1 % gir meningsløse modeller.
+//             8.14.a–b: virker i.x på en enkelt sjelden 0/1-variabel (som løsning)?
+//             8.14.c–d: rammes hendelsen i cox på samme måte som utfallet i logit?
+// Rekkefølge: i.x først. Cox med sjelden hendelse sist (kan gi meningsløse tall, men bør ikke stoppe).
+// =====================================================================
+
+require no.ssb.fdb:60 as fdb
+
+textblock
+# Test av i.x og sjeldne hendelser i cox (TESTLISTE 8.14)
+Hver test sier hva resultatet skal vise.
+endblock
+
+// --- Populasjon: utvalg av bosatte 25–66 år 1.1.2025 med lønn (som 8.12–8.13) ---
+create-dataset personer
+import fdb/BEFOLKNING_KOMMNR_FORMELL 2025-01-01 as kommune
+import fdb/BEFOLKNING_FOEDSELS_AAR_MND as faarmnd
+generate alder = 2024 - int(faarmnd/100)
+keep if alder >= 25 & alder <= 66
+sample 500000 814
+generate mnd = faarmnd - int(faarmnd/100)*100
+import fdb/BEFOLKNING_KJOENN as kjonn
+generate mann = 0
+replace mann = 1 if kjonn == '1'
+import fdb/INNTEKT_WLONN 2024-12-31 as wlonn24
+generate lonn = wlonn24 / 1000
+generate hoy = 0
+replace hoy = 1 if lonn > 600
+generate d08 = 0
+replace d08 = 1 if alder == 40 & mnd <= 4
+
+// ---------------------------------------------------------------------
+textblock
+## Test 8.14.a: `i.d08` mot `d08` i `regress`
+**Forventet:** `regress lonn d08 mann` har ingen rad for d08 (som i 8.12). `regress lonn i.d08 mann` har en
+rad for d08 = 1 med koeffisient nær forskjellen i gjennomsnitt, og `F(2, ...)`.
+endblock
+tabulate d08, missing
+tabulate d08, summarize(lonn) mean freq
+regress lonn d08 mann
+regress lonn i.d08 mann
+
+// ---------------------------------------------------------------------
+textblock
+## Test 8.14.b: `i.d08` i `logit`
+**Forventet:** en rad for d08 = 1, som `i.gruppe` i 8.13.
+endblock
+logit hoy i.d08 mann
+
+// ---------------------------------------------------------------------
+textblock
+## Test 8.14.c: cox med vanlig hendelse (kontroll)
+Bosatte 55–66 år 1.1.2016, død før 1.1.2026 (ventet ca. 6–8 %). Ikke sensurert ved utvandring (bare en
+test av hendelsen).
+**Forventet:** vanlige tall: positiv koeffisient for alder (ca. 0,1) og mann.
+endblock
+create-dataset eldre
+import fdb/BEFOLKNING_KOMMNR_FORMELL 2016-01-01 as kommune
+import fdb/BEFOLKNING_FOEDSELS_AAR_MND as faarmnd
+generate alder = 2015 - int(faarmnd/100)
+keep if alder >= 55 & alder <= 66
+import fdb/BEFOLKNING_KJOENN as kjonn
+generate mann = 0
+replace mann = 1 if kjonn == '1'
+import fdb/BEFOLKNING_DOEDS_DATO as dod
+generate dag_aar = int(dod/10000)
+generate dag_mnd = int(dod/100) - dag_aar*100
+generate dag_dag = dod - int(dod/100)*100
+generate doddag = date(dag_aar, dag_mnd, dag_dag)
+generate hendelse = 0
+replace hendelse = 1 if !sysmiss(dod) & dod >= 20160101 & dod < 20260101
+generate dager = date(2026, 1, 1) - date(2016, 1, 1)
+replace dager = doddag - date(2016, 1, 1) if hendelse == 1
+tabulate hendelse, missing
+summarize hendelse
+cox hendelse dager alder mann
+
+// ---------------------------------------------------------------------
+textblock
+## Test 8.14.d: cox med sjelden hendelse (under 1 %)
+Utvalget fra 8.14.a (25–66 år 1.1.2025), død i 2025 (ventet ca. 0,15 %).
+**Hvis hendelsen winsoriseres som utfallet i logit:** `summarize` gir 0, og cox gir meningsløse tall
+(«Infinity», «NaN», 0 eller enorme standardfeil). **Ellers:** positiv koeffisient for alder og mann, som i
+8.14.c.
+endblock
+use personer
+import fdb/BEFOLKNING_DOEDS_DATO as dod
+generate dag_aar = int(dod/10000)
+generate dag_mnd = int(dod/100) - dag_aar*100
+generate dag_dag = dod - int(dod/100)*100
+generate doddag = date(dag_aar, dag_mnd, dag_dag)
+generate hendelse = 0
+replace hendelse = 1 if !sysmiss(dod) & dod >= 20250101 & dod < 20260101
+generate dager = date(2026, 1, 1) - date(2025, 1, 1)
+replace dager = doddag - date(2025, 1, 1) if hendelse == 1
+tabulate hendelse, missing
+summarize hendelse
+cox hendelse dager alder mann

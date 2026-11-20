@@ -77,7 +77,8 @@ utelatt fra `regress` og `logit` uten melding, mens 1,26 % og 2,47 % var med. Ka
 variabler med få verdier) unntas, eller kan det i det minste komme en melding når en variabel blir konstant?
 Som utfall er det verre: med et utfall på 0,34 % ga `regress` bare 0 og NaN, og `logit` «Pseudo R2 Infinity»
 etter 35 iterasjoner. Med utfallet snudd (over 99 %) ga `logit` negativ LR chi2 og koeffisienter med
-z = −145, som ser ut som et resultat. Kategorier i `i.`-variabler på 0,2 % ble ikke berørt.
+z = −145, som ser ut som et resultat. Kategorier i `i.`-variabler på 0,2 % ble ikke berørt, og heller ikke
+hendelsen i `cox` (0,19 % døde ga riktige koeffisienter). Behandlingen er altså ulik mellom kommandoene.
 
 ## Metadata
 

@@ -24,6 +24,9 @@
 //     lavest kode. Strengvariabler må gjøres om med destring.
 //   - Har én kategori under 5 observasjoner, fjernes hele variabelen fra modellen, med en melding under
 //     tabellen som er lett å overse (tiltak 14, TESTLISTE 8.4). Tabuler kategoriene i populasjonen først.
+//   - En 0/1-forklaringsvariabel der under 1 % har verdien 1, utelates uten melding. Skriv i.x, som beholdes
+//     (TESTLISTE 8.12–8.14). Et utfall under 1 % (eller over 99 %) gir meningsløse tall («Pseudo R2 Infinity»):
+//     avgrens populasjonen, eller bruk cox for hendelser over tid.
 //   - Modellen må ha minst to koeffisienter (tiltak 17). Kontinuerlige variabler (her alder) winsoriseres.
 //   - cluster() må være numerisk og ikke med i modellen, og kan ikke kombineres med robust.
 //   - or gir oddsratio. Oddsratio er ikke relativ risiko når utfallet er vanlig (her ca. 80 %): bruk
