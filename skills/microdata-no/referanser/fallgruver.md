@@ -223,7 +223,7 @@ avklart med versjon 1, hvis ikke annet står. Endringene som påvirker skript:
   stoppes med «Ulovlig import med valgt konfidensialitetsprofil. Kan ikke bruke variabler innenfor
   *_GRUNNKRETS» (versjon 60, TESTLISTE 11.7). FHI-data er ikke testet, men stoppes trolig på samme måte.
 
-### Gjennomsnitt av sjeldne 0/1-variabler blir 0 (versjon 2)
+### Sjeldne 0/1-variabler blir 0 i gjennomsnitt og forsvinner fra regresjoner (versjon 2)
 - **Symptom:** `tabulate gruppe, summarize(x) mean` eller `summarize x` gir gjennomsnitt 0 (og standardavvik 0)
   for en 0/1-variabel, selv om `tabulate x` viser mange med verdien 1. Ingen melding.
 - **Årsak:** winsoriseringen (1 % i hver ende) gjelder også 0/1-variabler. Har under 1 % verdien 1, er
@@ -233,9 +233,17 @@ avklart med versjon 1, hvis ikke annet står. Endringene som påvirker skript:
 - **Også i undergrupper:** winsoriseringen skjer per gruppe i `summarize()`, `by()`/`over()` og med `if`. En
   andel som er over 1 % totalt, kan bli 0 i en gruppe der den er lavere (dødelighet blant unge, sjeldne
   diagnoser i små grupper).
-- **Løsning:** bruk antall i en krysstabell for andeler: `tabulate gruppe x, rowpct`. Bruk
-  `summarize(x) mean` bare når andelen er godt over 1 % (og under 99 %) i hver gruppe. Ikke testet: om det
-  samme skjer med 0/1-variabler i regresjoner (forklaringsvariabel i `regress`).
+- **Regresjoner:** en 0/1-forklaringsvariabel der under 1 % har verdien 1, utelates fra `regress` og `logit`
+  uten melding (TESTLISTE 8.12, 405 000 personer). Andel 0,22 % og 0,85 %: ingen rad, og `F(1, ...)` med
+  `mann` alene, som uten variabelen. Andel 1,26 % og 2,47 %: med, og koeffisienten som ventet. Grensen er
+  1 %, likt med `summarize`. `logit` med utfall på 1,26 % virket.
+- **Løsning:**
+  - Andeler: bruk antall i en krysstabell, `tabulate gruppe x, rowpct`. Bruk `summarize(x) mean` bare når
+    andelen er godt over 1 % (og under 99 %) i hver gruppe.
+  - Regresjoner: tabuler hver 0/1-variabel først, og sjekk at alle forklaringsvariablene har en rad i
+    resultatet. Slå sammen sjeldne grupper til en større gruppe (over 1 %), eller avgrens populasjonen så
+    gruppen blir større enn 1 %.
+  - Ikke testet: kategorier under 1 % i `i.`-variabler, og `logit` med utfall under 1 % (TESTLISTE 8.13).
 
 ### Tabeller på små delgrupper
 - **Versjon 2:** Tabellen vises alltid. Celler med 1–4 vises som 0, så små kategorier ser tomme ut.

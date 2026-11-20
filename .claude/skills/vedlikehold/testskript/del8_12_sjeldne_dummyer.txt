@@ -1,0 +1,106 @@
+// =====================================================================
+// Testskript: TESTLISTE 8.12 (winsoriseres sjeldne 0/1-variabler i regresjoner?)
+// Laget:      2026-11-20, kjørt 2026-11-20 (resultat i TESTLISTE 8.12)
+// Versjon:    no.ssb.fdb:60, anonymiseringstiltak versjon 2. Spør om analysemiljøet har den samme.
+// Populasjon: utvalg på 500 000 bosatte 25–66 år 1.1.2025 med lønn i 2023 og 2024
+// Variabler:  https://microdata.no/discovery/variable/no.ssb.fdb/60/INNTEKT_WLONN
+//             https://microdata.no/discovery/variable/no.ssb.fdb/60/BEFOLKNING_FOEDSELS_AAR_MND
+//             https://microdata.no/discovery/variable/no.ssb.fdb/60/BEFOLKNING_KJOENN
+// Bakgrunn:   TESTLISTE 11.12: summarize av en 0/1-variabel der 0,53 % har verdien 1, ga gjennomsnitt 0
+//             (winsorisering 1 % i hver ende). Regresjoner winsoriserer kontinuerlige variabler (8.3).
+//             Blir en sjelden 0/1-variabel også 0 i regress og logit, som forklaringsvariabel eller utfall?
+// Dummyer:    tre 0/1-variabler med kjent andel, laget av alder og fødselsmåned:
+//               d02 – 40 år og født i mars          (ca. 0,2 %)
+//               d08 – 40 år og født januar–april    (ca. 0,8 %)
+//               d24 – 40 år                         (ca. 2,4 %, over grensen, kontroll)
+//             og topp – lønn 2024 over 2 mill. kr (sjelden, med stor effekt på lønn 2023).
+// Rekkefølge: beskrivelse først, så regress, så logit. Ingen test skal stoppe skriptet.
+// =====================================================================
+
+require no.ssb.fdb:60 as fdb
+
+textblock
+# Test av sjeldne 0/1-variabler i regresjoner (TESTLISTE 8.12)
+Hvis winsoriseringen gjør en sjelden 0/1-variabel konstant (bare 0), forsvinner den fra modellen eller gir
+en feilmelding. Hvis den ikke winsoriseres, er koeffisienten omtrent lik forskjellen i gjennomsnitt i
+tabellene.
+endblock
+
+// --- Populasjon ---
+create-dataset personer
+import fdb/BEFOLKNING_KOMMNR_FORMELL 2025-01-01 as kommune
+import fdb/BEFOLKNING_FOEDSELS_AAR_MND as faarmnd
+generate alder = 2024 - int(faarmnd/100)
+keep if alder >= 25 & alder <= 66
+sample 500000 812
+generate mnd = faarmnd - int(faarmnd/100)*100
+import fdb/BEFOLKNING_KJOENN as kjonn
+generate mann = 0
+replace mann = 1 if kjonn == '1'
+import fdb/INNTEKT_WLONN 2024-12-31 as wlonn24
+import fdb/INNTEKT_WLONN 2023-12-31 as wlonn23
+drop if sysmiss(wlonn24) | sysmiss(wlonn23)
+generate lonn = wlonn24 / 1000
+generate lonn23 = wlonn23 / 1000
+
+generate d02 = 0
+replace d02 = 1 if alder == 40 & mnd == 3
+generate d08 = 0
+replace d08 = 1 if alder == 40 & mnd <= 4
+generate d24 = 0
+replace d24 = 1 if alder == 40
+generate topp = 0
+replace topp = 1 if lonn > 2000
+
+// ---------------------------------------------------------------------
+textblock
+## Test 8.12.a: andel med verdien 1, med antall og med gjennomsnitt
+**Forventet (fra 11.12):** antallene viser ca. 0,2 %, 0,8 % og 2,4 %. `summarize` gir gjennomsnitt 0 for
+d02 og d08 (under 1 %), men riktig andel for d24. topp: se antallet.
+endblock
+tabulate d02, missing
+tabulate d08, missing
+tabulate d24, missing
+tabulate topp, missing
+summarize d02
+summarize d08
+summarize d24
+summarize topp
+
+// ---------------------------------------------------------------------
+textblock
+## Test 8.12.b: gjennomsnittlig lønn i gruppene (fasit for koeffisientene)
+Lønn er kontinuerlig og winsoriseres per gruppe, men forskjellen mellom gruppene gir størrelsen
+koeffisienten bør ha.
+endblock
+tabulate d02, summarize(lonn) mean freq
+tabulate d08, summarize(lonn) mean freq
+tabulate d24, summarize(lonn) mean freq
+tabulate topp, summarize(lonn23) mean freq
+
+// ---------------------------------------------------------------------
+textblock
+## Test 8.12.c: sjelden 0/1-variabel som forklaringsvariabel i `regress`
+**Hvis den ikke winsoriseres:** en rad for dX med koeffisient nær forskjellen i 8.12.b (justert for kjønn).
+**Hvis den winsoriseres:** ingen rad for d02/d08 (eller feilmelding), men en rad for d24.
+For topp: lønn 2023 er mye høyere for dem med lønn over 2 mill. i 2024, så koeffisienten skal være stor
+(over 1 000) og R² tydelig høyere enn med bare kjønn.
+endblock
+regress lonn d02 mann
+regress lonn d08 mann
+regress lonn d24 mann
+regress lonn23 topp mann
+regress lonn23 mann alder
+
+// ---------------------------------------------------------------------
+textblock
+## Test 8.12.d: sjelden 0/1-variabel i `logit`, som forklaringsvariabel og som utfall
+**Forklaringsvariabel:** som i 8.12.c, en rad for d08 hvis den ikke winsoriseres.
+**Utfall:** hvis topp winsoriseres til bare 0, stopper `logit` eller gir tomme tall. Ellers en vanlig
+modell med positiv koeffisient for lønn 2023.
+endblock
+generate hoy = 0
+replace hoy = 1 if lonn > 600
+logit hoy d08 mann
+logit hoy d24 mann
+logit topp lonn23 mann

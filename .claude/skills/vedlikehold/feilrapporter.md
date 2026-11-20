@@ -72,7 +72,9 @@ En 0/1-variabel der 0,53 % har verdien 1 (3 729 av 709 037), ga i `summarize` gj
 standardavvik 0 og 99-persentil 0. `tabulate bydel, summarize(x) mean` ga 0 i alle grupper. `tabulate x`
 viste 3 729 med verdien 1. Andeler av sjeldne utfall (død, diagnoser) blir dermed 0 uten melding, og i
 undergrupper også for utfall som er over 1 % totalt. Winsorisering gir neppe mening for variabler med to
-verdier. Kan 0/1-variabler (eller variabler med få verdier) unntas?
+verdier. Det samme gjelder regresjoner: i et utvalg på 405 000 ble 0/1-variabler med 0,22 % og 0,85 % enere
+utelatt fra `regress` og `logit` uten melding, mens 1,26 % og 2,47 % var med. Kan 0/1-variabler (eller
+variabler med få verdier) unntas, eller kan det i det minste komme en melding når en variabel blir konstant?
 
 ## Metadata
 
