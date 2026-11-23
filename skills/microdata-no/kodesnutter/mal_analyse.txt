@@ -15,6 +15,7 @@
 // =====================================================================
 
 // ---------------------------------------------------------------------
+// Laget med hjelp fra en KI-agent (microdata-no-hjelper). Kontroller variabler, populasjon og resultater selv: du er ansvarlig for skriptet.
 // Tittel: <hva analysen viser>
 // Populasjon: <hvem, hvor, når>
 // Variabler: https://microdata.no/discovery/variable/no.ssb.fdb/60/<NAVN>

@@ -15,6 +15,14 @@ Den inneholder:
 Skillen kjører ingenting i microdata.no. Assistenten skriver skriptet, du kjører det og limer inn
 resultatet eller feilmeldingen.
 
+## Ansvar
+
+Skillen og KI-agenten er hjelpemidler, ikke kvalitetssikring. Agenten kan velge feil variabel, populasjon
+eller periode, og resultatene kan se rimelige ut selv om de er feil. Det er du som bruker som er ansvarlig
+for skriptet, for å kontrollere variabler, dekning og resultater, og for hvordan resultatene brukes. At en
+kodesnutt er merket «testet», betyr at den har kjørt uten feil med en gitt datalagerversjon, ikke at den er
+riktig for ditt spørsmål. Skript agenten skriver, får en linje om dette øverst.
+
 ## Installasjon
 
 Skillen er mappen [`skills/microdata-no`](skills/microdata-no). Klon repoet ett sted og lenk mappen inn

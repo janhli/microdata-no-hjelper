@@ -165,6 +165,10 @@ og si fra om forutsetningene (f.eks. parallelle trender i diff-in-diff, instrume
    `metadata/kodelister.csv` og eksakt syntaks i `metadata/manual/`.
 3. Les `referanser/fallgruver.md` og skriv skriptet. Det skal være kommentert, og kilde-URL skal
    stå ved hver variabel: `https://microdata.no/discovery/variable/no.ssb.fdb/<versjon>/<NAVN>`.
+   Kommentarblokken øverst i hvert skript du skriver, skal ha denne linjen ordrett:
+   `// Laget med hjelp fra en KI-agent (microdata-no-hjelper). Kontroller variabler, populasjon og resultater selv: du er ansvarlig for skriptet.`
+   Si det samme kort til brukeren når du leverer skriptet: du er et hjelpemiddel, og brukeren må
+   kontrollere og står ansvarlig for skriptet og resultatene.
 4. Sett en `textblock` ... `endblock` (Markdown) med tittel og en kort lesehjelp foran hver
    `tabulate`, `summarize` og `regress`. Ikke legg tabeller med tittel inne i `for`-løkker. Skriv dem
    ut for hvert år, så årstallet kan stå i tittelen. Avslutt skriptet med `citation`.
