@@ -38,8 +38,9 @@ Kommuneendringene oppdateres med `python verktoy/hent_kommuneendringer.py`. Grun
 
 Skal data fra flere år sammenlignes på kommune, må gamle kommunenumre omkodes til én inndeling.
 Ikke skriv reglene for hånd. Kjør `python verktoy/kommuneomkoding.py --fra <år> --til <år> --navn <variabel>`
-og lim `recode`-linjene inn i skriptet. Kommunene får navnet fra Klass, med samisk og kvensk navn der
-kommunen har det (Hábmer - Hamarøy). `--norske-navn` gir bare det norske navnet. Verktøyet lister kommuner som er delt i flere (f.eks. Tysfjord)
+og lim `recode`-linjene inn i skriptet. Velg et målår som er likt eller senere enn kildeåret. Kommunene får
+navnet fra Klass, med samisk og kvensk navn der kommunen har det (Hábmer - Hamarøy). `--norske-navn` gir
+bare det norske navnet. Verktøyet lister kommuner som er delt i flere (f.eks. Tysfjord)
 og lar dem stå uendret. Si fra til brukeren om disse, og om «koder som selv ble delt» (Ålesund 1507 i
 2020–2023 omkodes til 1508, også Haram). Se også «Geografi» i `referanser/fallgruver.md`.
 
@@ -110,7 +111,8 @@ ikke kjørt i microdata.no før brukeren har kjørt dem.
 
 Microdata.no har fra 2026-11 også `no.fhi.kreftregisteret` og `no.fhi.npr` (versjon 1, se `metadata/datalagre.json`).
 Hvert datalager trenger sin egen `require`. Enhetene er krefttilfelle, episode og prosedyre, ikke person. Les
-«FHI-data» i `referanser/fallgruver.md` før du skriver skriptet. Ingenting av dette er testet i microdata.no ennå.
+«FHI-data» i `referanser/fallgruver.md` før du skriver skriptet. Import av krefttilfeller og NPR-episoder og
+kobling på personnøkkel er testet i microdata.no med versjon 1. Se TESTLISTE del 10 for hvilke operasjoner som er kjørt.
 
 | Behov | Kommando |
 |---|---|
@@ -163,8 +165,9 @@ og si fra om forutsetningene (f.eks. parallelle trender i diff-in-diff, instrume
 1. Avklar tema, populasjon, år og geografi med brukeren.
 2. Finn kandidatvariabler i `metadata/variabler.csv`. Sjekk dekningen (`fra`/`til`), koder i
    `metadata/kodelister.csv` og eksakt syntaks i `metadata/manual/`.
-3. Les `referanser/fallgruver.md` og skriv skriptet. Det skal være kommentert, og kilde-URL skal
-   stå ved hver variabel: `https://microdata.no/discovery/variable/no.ssb.fdb/<versjon>/<NAVN>`.
+3. Les `referanser/fallgruver.md` og skriv skriptet. Kommenter koden og oppgi kilde-URL ved hver variabel med
+   `https://microdata.no/discovery/variable/<datalager>/<versjon>/<NAVN>`. Bruk kolonnen `datalager` i
+   `metadata/variabler.csv` og hovedversjonen fra `require` for det datalageret.
    Kommentarblokken øverst i hvert skript du skriver, skal ha denne linjen ordrett:
    `// Laget med hjelp fra en KI-agent (microdata-no-hjelper). Kontroller variabler, populasjon og resultater selv: du er ansvarlig for skriptet.`
    Si det samme kort til brukeren når du leverer skriptet: du er et hjelpemiddel, og brukeren må
@@ -177,8 +180,10 @@ og si fra om forutsetningene (f.eks. parallelle trender i diff-in-diff, instrume
 
 ## Datalagerversjon
 
-Skriv `require no.ssb.fdb:<versjon> as fdb` øverst i skriptet. Siste versjon står i
-`metadata/datalager.json`, men analysemiljøet kan ligge en versjon bak metadatasidene. **Spør
+Skriv én `require <datalager>:<versjon> as <alias>` øverst i skriptet per datalager du bruker. For SSB bruker
+du `require no.ssb.fdb:<versjon> as fdb`. Siste hovedversjon for hvert lager står i `metadata/datalagre.json`
+(for eksempel `1` fra `1.0.0.0`). SSBs versjonshistorikk ligger i `metadata/datalager.json`.
+Analysemiljøet kan ligge en versjon bak metadatasidene. **Spør
 brukeren hvilken versjon de har tilgang til** hvis det er usikkert. Eldre eksempelskript bruker ofte
 gamle versjoner, og da må du sjekke at variabelnavnene fortsatt finnes i `variabler.csv`.
 
@@ -204,7 +209,7 @@ gamle versjoner, og da må du sjekke at variabelnavnene fortsatt finnes i `varia
 | Hva | URL |
 |---|---|
 | Variabelliste | `https://microdata.no/discovery/variables?pageIndex={N}` (nullbasert, 20 per side, `&sortBy=LABEL&sortType=ASC`) |
-| Variabeldetaljer | `https://microdata.no/discovery/variable/no.ssb.fdb/<versjon>/<NAVN>` |
+| Variabeldetaljer | `https://microdata.no/discovery/variable/<datalager>/<versjon>/<NAVN>` |
 | Manual | `https://microdata.no/manual/` (med avsluttende `/`) |
 
 `https://microdata.no/discovery/` rendres med JavaScript og kommer tom tilbake.

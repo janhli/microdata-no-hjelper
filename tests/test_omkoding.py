@@ -81,6 +81,14 @@ class TestRecodeRegler(unittest.TestCase, LinjelengdeMixin):
 
 
 class TestKommuneomkoding(unittest.TestCase, LinjelengdeMixin):
+    def test_avviser_maalaar_for_kildeaar(self):
+        r = subprocess.run([sys.executable, "-I", "-X", "utf8", str(VERKTOY / "kommuneomkoding.py"),
+                            "--fra", "2025", "--til", "2024"], capture_output=True, text=True, encoding="utf-8")
+        self.assertNotEqual(r.returncode, 0)
+        self.assertEqual(r.stdout, "")
+        self.assertIn("--til (2024)", r.stderr)
+        self.assertIn("--fra (2025)", r.stderr)
+
     def test_varianter(self):
         for args in [(), ("--fra", "2015"), ("--til", "2020"), ("--til", "2026"), ("--splitt", "forste")]:
             with self.subTest(args=args):

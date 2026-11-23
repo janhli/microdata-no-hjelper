@@ -20,15 +20,15 @@
 //            aldgr     – '1' 15–19, '2' 20–24, '3' 25–29 år
 //            fylke     – bostedsfylke (2024-inndelingen) med navn
 //            innv      – '1' innvandrer, '2' resten (som SSB tabell 12423)
-//            utdniv    – '1' grunnskole, '2' videregående (inkl. fagskole), '3' universitet/høgskole,
-//                        '9' uoppgitt/ingen (som SSB tabell 12423)
+// Tillegg:   utdniv    – registrert utdanningsnivå fra NUDB_BU: '1' grunnskole, '2' videregående (inkl.
+//                        fagskole), '3' universitet/høgskole, '9' uoppgitt/ingen
 // Definisjon (SSB): NEET er bosatte 15–29 år som ikke er sysselsatt, under ordinær utdanning eller på
 //            arbeidsmarkedstiltak. Måletidspunkt 3. uke i november. Testet med hovedstatus (de fire første
 //            sifrene i STATUS8): ikke NEET er sysselsatte (0808, 0816, 0832, 1608), ordinær utdanning (4008)
 //            og tiltak (3208, 3216 tiltakspenger, 3240 introduksjonsprogram, 4816). Alle andre er NEET, også
 //            dagpenger (3224), sykepenger (4808), sosialhjelp, kontantstøtte, overgangsstønad og ukjent (7208).
-// Kontroll:  SSB tabell 13556 (NEET etter region, kjønn og alder) og 12423 (etter innvandringskategori og
-//            utdanningsnivå), 2024, hentet 2026-11-23. Tallene står i tekstblokkene under. Kjørt 2026-11-23:
+// Kontroll:  SSB tabell 13556 (NEET etter region, kjønn og alder) og 12423 (etter innvandringskategori),
+//            2024, hentet 2026-11-23. Sammenligningstall står i tekstblokkene under. Kjørt 2026-11-23:
 //            102 977 NEET av 1 044 100 (SSB 102 976 av 1 044 101). Ledige 11 659 (11 656), AAP/uføre 27 131
 //            (27 134), ukjent og andre 64 185 (64 186). Alder, kjønn, alle 15 fylker og innvandrere/resten
 //            innen 0,1 prosentpoeng. Ukjent status er 54 420 (53 % av NEET). Utdanning avviker, se under.
@@ -48,12 +48,10 @@
 //   - Registerdata gir en større NEET-gruppe enn Arbeidskraftundersøkelsen (AKU). Internasjonale
 //     sammenligninger bruker AKU. Halvparten av NEET-gruppen har ukjent status: de finnes ikke i registrene
 //     over arbeid, utdanning og ytelser (utvandret uten å melde fra, svart arbeid, utdanning i utlandet mv.).
-//   - Utdanningsnivået treffer ikke SSB 12423. NEET-andelen var 14,0 % for grunnskole (SSB 12,9), 6,8 for
-//     videregående (7,5), 5,6 for universitet/høgskole (6,9) og 16,1 for uoppgitt (54,4). Antall personer:
-//     uoppgitt 104 911 her mot 7 417 hos SSB, grunnskole 351 190 mot 425 984, videregående 324 039 mot
-//     333 069, universitet/høgskole 263 955 mot 277 630. SSB har altså fordelt nesten alle med uoppgitt
-//     utdanning på nivåene, de fleste på grunnskole. Trolig fyller SSB inn utdanning (f.eks. for innvandrere)
-//     som NUDB_BU ikke har. Ikke bekreftet. Bruk utdanningsfordelingen her som eget mål, ikke som SSBs tall.
+//   - Tilleggsanalysen viser registrert utdanning per 1.8.2024. SSB bruker 1. oktober, imputerer utdanningsnivå
+//     for innvandrere med uoppgitt nivå og koder mange 15- og 16-åringer som grunnskoleutdannet før de har
+//     fullført. Vis antall med uoppgitt eller ingen utdanning og bruk de publiserte tallene hvis du trenger
+//     SSBs utdanningsfordeling. Se TESTRESULTATER.md for forskjellene.
 // =====================================================================
 
 require no.ssb.fdb:60 as fdb
@@ -96,7 +94,7 @@ replace innv = '1' if invkat == 'B'
 define-labels innvtxt '1' 'Innvandrere' '2' 'Befolkningen utenom innvandrere'
 assign-labels innv innvtxt
 
-// --- Utdanningsnivå (som SSB 12423: fagskole regnes som videregående nivå) ---
+// --- Tilleggsanalyse: registrert utdanningsnivå (fagskole gruppert med videregående) ---
 generate utd1 = substr(utd, 1, 1)
 generate utdniv = '9'
 replace utdniv = '1' if utd1 == '1' | utd1 == '2'
@@ -107,7 +105,8 @@ assign-labels utdniv utdnivtxt
 
 textblock
 # NEET: unge 15–29 år utenfor arbeid, utdanning og arbeidsmarkedstiltak, november 2024
-Andelene står i kolonnen for NEET = 1 (radprosent). Tallene fra SSB er fasit, og hver celle har støy (±5).
+Andelene står i kolonnen for NEET = 1 i tabellene med radprosent. Små forskjeller fra de publiserte
+tallene er forventet, blant annet fordi microdata.no legger støy på tellingene.
 
 ## Alle
 **SSB 13556:** 1 044 101 personer, 102 976 NEET (9,9 %).
@@ -117,8 +116,8 @@ tabulate neet, missing
 textblock
 ## Hva NEET-gruppen gjør
 **SSB 13556:** registrert ledige 11 656, AAP/uføretrygd 27 134, «andre, ikke på tiltak» 64 186 (summen av
-ukjent status og andre ytelser her). Er summen ulik, er grupperingen feil. SSB anslår at omtrent halvparten
-av NEET-gruppen har ukjent status.
+ukjent status og andre ytelser her). Undersøk større avvik ved å kontrollere populasjonen og grupperingen.
+SSB anslår at omtrent halvparten av NEET-gruppen har ukjent status.
 endblock
 tabulate neetstat, missing
 
@@ -157,12 +156,19 @@ endblock
 tabulate innv neet, rowpct
 
 textblock
-## Etter utdanningsnivå
-**SSB 12423:** grunnskolenivå 12,9 %, videregående nivå 7,5 %, universitet og høgskole 6,9 %, uoppgitt eller
-ingen 54,4 % (7 417 personer). Treffer ikke (kjørt 2026-11-23: 14,0, 6,8, 5,6 og 16,1 %). Utdanningen her er
-målt 1.8.2024 fra NUDB_BU. Den første tabellen viser antallet: 104 911 med uoppgitt, mot 7 417 hos SSB.
+## Tilleggsanalyse: antall etter registrert utdanningsnivå
+Tabellen bruker registrert utdanning fra `NUDB_BU` per 1.8.2024. SSBs tabell 12423 bruker 1. oktober,
+beregner utdanningsnivå for innvandrere med uoppgitt nivå og koder mange 15- og 16-åringer som å ha
+fullført grunnskolen. Kategorien «Uoppgitt eller ingen» omfattet 104 911 her mot 7 417 hos SSB i
+kontrollkjøringen. [SSBs metodebeskrivelse](https://www.ssb.no/arbeid-og-lonn/sysselsetting/statistikk/tilknytning-til-arbeid-utdanning-og-velferdsordninger/#om-statistikken)
 endblock
 tabulate utdniv neet
+
+textblock
+## Tilleggsanalyse: NEET-andel etter registrert utdanningsnivå
+Les NEET-andelen innen hvert registrert nivå i kolonnen NEET = 1. Se antall med uoppgitt eller ingen
+utdanning i tabellen over når du tolker andelene. Bruk tabell 12423 for NEET etter SSBs utdanningsdefinisjon.
+endblock
 tabulate utdniv neet, rowpct
 
 textblock

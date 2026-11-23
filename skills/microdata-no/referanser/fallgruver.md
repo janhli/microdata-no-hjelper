@@ -48,10 +48,11 @@ med pull request (se CONTRIBUTING.md). Tagg dem med datalagerversjon/dato hvis d
   (4008) og tiltak (3208, 3216 tiltakspenger, 3240 introduksjonsprogram, 4816) er utenfor NEET. Dagpenger (3224)
   og sykepenger (4808) er NEET. Snutten `arbeidsstyrkestatus.txt` legger dagpenger i «andre», ikke i ledig.
 - Over halvparten av NEET-gruppen har ukjent status (7208).
-- Utdanningsnivå fra `NUDB_BU` gir ikke SSBs fordeling i tabell 12423. 15–29 år, november 2024: 104 911 med
-  uoppgitt utdanning mot 7 417 hos SSB, som har fordelt resten på nivåene (de fleste på grunnskole). Trolig fyller
-  SSB inn utdanning som mangler i registeret. Sammenlign ikke utdanningsfordelinger med SSBs tabeller uten å
-  vise antallet med uoppgitt.
+- NEET etter registrert utdanning fra `NUDB_BU` er en tilleggsanalyse. I 2024 var det 104 911 med uoppgitt
+  eller ingen utdanning, mot 7 417 i tabell 12423. Snutten bruker 1. august. SSB bruker 1. oktober, imputerer
+  utdanningsnivå for innvandrere med uoppgitt nivå og koder de fleste 15-åringene og en del 16-åringer som å
+  ha fullført grunnskolen. Vis antallet med uoppgitt eller ingen utdanning når du bruker `NUDB_BU`, og bruk
+  tabell 12423 hvis du trenger de publiserte tallene. [SSBs metodebeskrivelse](https://www.ssb.no/arbeid-og-lonn/sysselsetting/statistikk/tilknytning-til-arbeid-utdanning-og-velferdsordninger/#om-statistikken)
 - Dekker bare til 2024-11-16. Brudd mellom 2014 og 2015.
 
 ### Sektor finnes ikke etter 2019
@@ -240,7 +241,8 @@ avklart med versjon 1, hvis ikke annet står. Endringene som påvirker skript:
   Bare for brukere akkreditert før 17. november 2026, og ikke med FHI-data eller `BEFOLKNING_GRUNNKRETS`.
   Bruk det bare for å gjenskape gamle resultater. Skriptet kjører fram til importen av grunnkrets, som
   stoppes med «Ulovlig import med valgt konfidensialitetsprofil. Kan ikke bruke variabler innenfor
-  *_GRUNNKRETS» (versjon 60, TESTLISTE 11.7). FHI-data er ikke testet, men stoppes trolig på samme måte.
+  *_GRUNNKRETS» (versjon 60, TESTLISTE 11.7). FHI-testene i TESTLISTE del 10 ble kjørt med
+  konfidensialitetsprofil v2.
 
 ### Sjeldne 0/1-variabler blir 0 i gjennomsnitt og forsvinner fra regresjoner (versjon 2)
 - **Symptom:** `tabulate gruppe, summarize(x) mean` eller `summarize x` gir gjennomsnitt 0 (og standardavvik 0)
@@ -663,8 +665,10 @@ og ELVIS, og de viktigste er testet i microdata.no (TESTLISTE del 10, se «Teste
   `S_STRALEBEH` har bare `1` (mottatt strålebehandling) i microdata.no, mens ELVIS også har `0` (ikke behandlet) og
   `9` (ukjent). Manglende verdi betyr «ikke registrert», ikke «ukjent» (testet, 10.3). Det samme gjelder trolig
   `S_HORMONBEH` (4 av 8 verdier, ikke testet).
-- **Godartede svulster og forstadier er med.** `S_TUMORATFERD` skiller benign (0), usikker (1), in situ (2) og ondartet
-  (3). Kreftregisterets publiserte tall for nye krefttilfeller gjelder ondartede.
+- **Velg avgrensning etter hva du vil telle.** `S_TUMORATFERD` skiller benign (0), usikker (1), in situ (2) og
+  ondartet (3). Bruk atferd 3 når spørsmålet gjelder ondartede svulster. For sammenligning med «All kreft» i
+  *Cancer in Norway*, bruk rapportens diagnoseavgrensning. Den omfatter også utvalgte godartede svulster og
+  in situ-tilfeller, og utelater basalcellekarsinomer. [FHIs definisjon](https://www.fhi.no/is/ncd/dodelighet-sykelighet/kreft/)
 - **Beskrivelser og verdier står i ELVIS.** Lenken til detaljsiden står i kolonnen `ekstern_metadata` i `variabler.csv`.
   Verdiene er hentet til `metadata/fhi/kreftregisteret/verdier.csv` med `kreftregisteret.py hent`.
 - **Testet (versjon 60 / FHI 1, november 2026, TESTLISTE del 10):**

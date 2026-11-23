@@ -179,7 +179,7 @@ def main():
     sys.stdout.reconfigure(encoding="utf-8")
     ap = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
     ap.add_argument("--fra", type=int, default=1989, help="første år i dataene (standard 1989)")
-    ap.add_argument("--til", type=int, default=2024, help="inndelingen det skal omkodes til (standard 2024)")
+    ap.add_argument("--til", type=int, default=2024, help="målår, tidligst --fra (standard 2024)")
     ap.add_argument("--navn", default="kommune", help="variabelnavn i skriptet (standard kommune)")
     ap.add_argument("--norske-navn", action="store_true",
                     help="bare norsk navn i merkelappene (Hamarøy, ikke Hábmer - Hamarøy)")
@@ -189,6 +189,8 @@ def main():
                     help="fordel personene i delte kommuner etter grunnkrets: variabelen med BEFOLKNING_GRUNNKRETS "
                          "importert 1.1. i --fra-året (fra 1990)")
     a = ap.parse_args()
+    if a.til < a.fra:
+        ap.error(f"--til ({a.til}) kan ikke være før --fra ({a.fra}). Omkoding går framover i tid.")
 
     d = last()
     if a.fra < int(d["fra"][:4]):

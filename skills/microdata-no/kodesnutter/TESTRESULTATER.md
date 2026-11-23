@@ -242,8 +242,9 @@ versjon 60):
   | Universitet og høgskole | 263 955 | 277 630 | −13 675 |
   | Uoppgitt eller ingen | 104 911 | 7 417 | +97 494 |
 
-  SSB har fordelt nesten alle med uoppgitt utdanning på nivåene, 77 % av dem på grunnskole. Trolig fyller SSB inn
-  utdanning som mangler i `NUDB_BU` (f.eks. for innvandrere). Ikke bekreftet.
+  Snutten viser registrert utdanning per 1. august. SSB bruker 1. oktober, imputerer utdanningsnivå for innvandrere
+  med uoppgitt nivå og koder de fleste 15-åringene og en del 16-åringer som å ha fullført grunnskolen. Den samlede
+  forskjellen i tabellen viser ikke hvor mye hver metodeforskjell bidrar. [SSBs metodebeskrivelse](https://www.ssb.no/arbeid-og-lonn/sysselsetting/statistikk/tilknytning-til-arbeid-utdanning-og-velferdsordninger/#om-statistikken)
 
 ### overlevelse.txt
 
