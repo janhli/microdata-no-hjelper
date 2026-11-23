@@ -110,6 +110,9 @@ Vedlikeholdere står i [`.github/CODEOWNERS`](.github/CODEOWNERS).
   dem og er hentet fra de åpne sidene. <!-- TODO: avklar lisens før publisering -->
 - Kreftformer og verdier for `no.fhi.kreftregisteret`: Kreftregisterets metadatabase
   [ELVIS](https://metadata.kreftregisteret.no) (FHI), hentet med `verktoy/kreftregisteret.py hent`.
+- Kreftformene i Cancer in Norway (`metadata/fhi/kreftregisteret/cancer_in_norway.csv`): tabell 2.3 i
+  [Cancer in Norway 2025](https://www.fhi.no/publ/2026/cancer-in-norway-2025/) (FHI), skrevet av fra gjengivelsen på
+  [fhi.no](https://fhi.no/is/ncd/dodelighet-sykelighet/kreft).
 - Kommune-, region-, grunnkrets- og næringskoder: [SSB Klass](https://www.ssb.no/klass/).
 - Kodeeksempler: [JOSliper/Microdata-skript](https://github.com/JOSliper/Microdata-skript) (Trøndelag)
   er bare lenket til, ikke kopiert (repoet har ingen lisens).

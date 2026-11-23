@@ -4,10 +4,12 @@ Underkommandoer (fra skill-mappen, python verktoy/kreftregisteret.py <kommando> 
 
   hent                             Henter kreftformene og verdiene for Kreftregisterets variabler i
                                    microdata.no fra ELVIS til metadata/fhi/kreftregisteret/.
-  grupper --variabel V --nivaa N [--navn X] [--ukjent] [--utelat KODER]
+  grupper --variabel V --nivaa N [--navn X] [--ukjent] [--utelat KODER] [--kjonn K] [--topografi T] [--morfologi M]
                                    generate/recode fra en ICD-10-variabel (f.eks. S_TOPOGRAFIICD10,
                                    SOM_EP_HOVEDTILSTAND1) til kreftform. Nivå 1: 14 hovedgrupper
                                    (C15-C26 Fordøyelsesorganer ...). Nivå 2: tresifret kode (C18 Tykktarm).
+                                   Nivå cin: de 48 kreftformene i Cancer in Norway (C19-20 Endetarm og
+                                   rektosigmoid, C33-34 Lunge og luftrør ...).
   verdier --variabel V [--kreftform ICD]
                                    Verdiene i ELVIS for en variabel, med kreftformene hver verdi gjelder for
                                    (TNM-verdiene er ulike for ulike kreftformer).
@@ -16,6 +18,7 @@ Eksempler:
   python verktoy/kreftregisteret.py hent
   python verktoy/kreftregisteret.py grupper --variabel S_TOPOGRAFIICD10 --nivaa 1 --navn kreftform
   python verktoy/kreftregisteret.py grupper --variabel SOM_EP_HOVEDTILSTAND1 --nivaa 2 --navn kreft3 --ukjent
+  python verktoy/kreftregisteret.py grupper --variabel S_TOPOGRAFIICD10 --nivaa cin --var topo --kjonn kjonn --topografi topo3
   python verktoy/kreftregisteret.py verdier --variabel S_PT --kreftform C50
 
 Kilde: https://metadata.kreftregisteret.no (ELVIS). Hjelpesiden sier at variabler og verdier kan eksporteres
@@ -27,6 +30,19 @@ metadata/variabler.csv (lenken til detaljsiden).
 Kodene i microdata.no er uten punktum, med tre eller fire tegn (C18, C187). grupper bruker de tre første
 tegnene. Kreftformene i ELVIS dekker C00-C96 (ikke C77-C79 spredning og C97 flere svulster) og D45-D47.
 Koder som ikke er kreftform, står uendret, eller blir 'annet' med --ukjent.
+
+Nivå cin bygger på metadata/fhi/kreftregisteret/cancer_in_norway.csv: tabell 2.3 i Cancer in Norway 2025, slik
+FHI gjengir den på https://fhi.no/is/ncd/dodelighet-sykelighet/kreft (tabell 2, skrevet av 2026-11-23).
+Fasit for insidens: Kreftregisterets statistikkbank, https://sb.kreftregisteret.no/. Noen kreftformer avgjøres
+av fire tegn (C00.3-5 og C00.8 er munnhule, C05.1-2 oropharynx, C57.0-4 eggstokk, D35.2-4 og D44.3-5 endokrine
+kjertler). Tre regler trenger andre variabler:
+  * Leppekreft: i Kreftregisterets data er kreft i leppens vermilionkant kodet C44.0 (hud på leppe) eller C43.0
+    med ICD-10, men leppen står i ICD-O-3-topografien (S_TOPOGRAFIICDO3, uten C: 000-002, 006, 009). Rapporten
+    regner dem som leppe (--topografi). Testet: 91 tilfeller i 2023, rapporten 89 (TESTLISTE 10.11).
+  * C48.2 hos kvinner er eggstokk m.m. (--kjonn, BEFOLKNING_KJOENN, '2' = kvinne).
+  * Basalcellekarsinom (morfologi 809x i ICD-O-3) er ikke med (--morfologi, S_MORFOLOGIICDO3). Datalageret i
+    microdata.no har ingen basalcellekarsinomer (2023), så det trengs bare om de kommer med senere.
+Pagets sykdom i bryst og papillomer i urinveier er heller ikke med i rapporten, men skilles ikke ut her.
 """
 
 import argparse
@@ -159,6 +175,11 @@ def kodeliste(variabel):
 
 
 def kommando_grupper(a):
+    if a.nivaa == "cin":
+        return kommando_grupper_cin(a)
+    if a.kjonn or a.morfologi or a.topografi:
+        sys.exit("--kjonn, --topografi og --morfologi gjelder bare --nivaa cin.")
+    a.nivaa = int(a.nivaa)
     former = les_kreftformer()
     tresifret = {f["icd"]: f for f in former if f["nivaa"] == "2"}
     grupper = {f["icd"]: f["navn"] for f in former if f["nivaa"] == "1"}
@@ -227,6 +248,87 @@ def kommando_grupper(a):
         print(f"recode {navn} " + " ".join(f"({q(m)} = {q(m)} {q(grupper[m])})" for m in like))
 
 
+def les_cin():
+    fil = UT / "cancer_in_norway.csv"
+    with open(fil, encoding="utf-8") as f:
+        return list(csv.DictReader(f, delimiter=";"))
+
+
+CIN_KVINNE = "C56,C57.0-4,C48.2"
+
+
+def cin_kart(koder):
+    """{kode i dataene: kreftform}. Fire tegn går foran tre. Koder som ikke er kreftform, er ikke med."""
+    prefiks = {}
+    for g in les_cin():
+        for k in g["koder"].split():
+            prefiks[k] = g["gruppe"]
+    kart = {}
+    for k in koder:
+        m = prefiks.get(k[:4]) if k[:4] in prefiks else prefiks.get(k[:3])
+        if m:
+            kart[k] = m
+    return kart
+
+
+def kommando_grupper_cin(a):
+    cin = les_cin()
+    navn_for = {g["gruppe"]: g["navn"] for g in cin}
+    alle = [k for g in cin for k in g["koder"].split()]
+    tre, fire = sorted(k for k in alle if len(k) == 3), sorted(k for k in alle if len(k) == 4)
+    koder = kodeliste(a.variabel)
+    dekket = cin_kart(koder)
+    c_uten = sorted({k[:3] for k in koder if k.startswith("C") and k not in dekket})
+    var = a.var or a.variabel.lower()
+    navn = a.navn
+    t3, t4 = f"substr({var}, 1, 3)", f"substr({var}, 1, 4)"
+
+    print(f"// {a.variabel} -> kreftform som i Cancer in Norway ({len(cin)} kreftformer, tabell 2.3 i Cancer in "
+          "Norway 2025, gjengitt på fhi.no).")
+    print(f"// {len(dekket)} av {len(koder)} koder i kodelisten er kreftform. Fire tegn avgjør: {' '.join(fire)}.")
+    if c_uten:
+        print(f"// C-koder som ikke er kreftform i rapporten, står {'som annet' if a.ukjent else 'uendret'}: "
+              f"{' '.join(c_uten)} (C46 Kaposi er ført under organet, C77-C79 er spredning, C97 flere svulster)")
+    if a.ukjent:
+        print(f"generate {navn} = 'annet' if !sysmiss({var})")
+        print(f"replace {navn} = {t3} if inlist({t3}, {', '.join(q(k) for k in tre)})")
+    else:
+        print(f"generate {navn} = {t3}")
+    print(f"replace {navn} = {t4} if inlist({t4}, {', '.join(q(k) for k in fire)})")
+    if a.topografi:
+        o3 = f"substr({a.topografi}, 1, 3)"
+        hud = f"inlist({t3}, 'C43', 'C44')"
+        print(f"// Leppekreft er kodet som hud på leppe (C43.0/C44.0) i ICD-10. ICD-O-3-topografien ({a.topografi}, uten C) "
+              "viser leppen, som rapporten regner som leppe eller munnhule.")
+        print(f"replace {navn} = 'C00' if {hud} & inlist({o3}, '000', '001', '002', '006', '009')")
+        print(f"replace {navn} = 'C02-06' if {hud} & inlist({o3}, '003', '004', '005', '008')")
+    else:
+        print("// Leppekreft (om lag 90 i året) er kodet som hud på leppe (C44.0) og havner i C44 Hud, ikke C00 Leppe. Legg til "
+              "--topografi <variabel> (S_TOPOGRAFIICDO3) for å få den som i rapporten.")
+
+    kart = {k: g["gruppe"] for g in cin for k in g["koder"].split()}
+    for linje in recode_linjer(navn, kart, navn_for):
+        print(linje)
+    # Kreftformer der koden er lik gruppen (C18 Tykktarm) får navnet med en regel til samme verdi (TESTLISTE 10.8).
+    like = sorted({m for k, m in kart.items() if k == m})
+    if like:
+        print(f"recode {navn} " + " ".join(f"({q(m)} = {q(m)} {q(navn_for[m])})" for m in like))
+
+    if a.kjonn:
+        print(f"// C48.2 (bukhinnen) hos kvinner er eggstokk m.m. ({a.kjonn} == '2' er kvinne, som i BEFOLKNING_KJOENN).")
+        print(f"replace {navn} = {q(CIN_KVINNE)} if {t4} == 'C482' & {a.kjonn} == '2'")
+    else:
+        print("// C48.2 (bukhinnen) står i bløtvev for alle. I rapporten er den eggstokk m.m. for kvinner: legg til "
+              "--kjonn <variabel> (BEFOLKNING_KJOENN).")
+    if a.morfologi:
+        print(f"// Basalcellekarsinom (morfologi 809x) er ikke med i noen kreftform i rapporten.")
+        print(f"replace {navn} = 'basal' if substr({a.morfologi}, 1, 3) == '809' & !sysmiss({navn})")
+        print(f"recode {navn} ('basal' = 'basal' 'Basalcellekarsinom (ikke med i Cancer in Norway)')")
+    else:
+        print("// Basalcellekarsinom er ikke med i rapporten, men står her i sin kreftform (mest C44). Legg til "
+              "--morfologi <variabel> (S_MORFOLOGIICDO3) for å skille dem ut som 'basal'.")
+
+
 def kommando_verdier(a):
     fil = UT / "verdier.csv"
     if not fil.exists():
@@ -253,11 +355,14 @@ def main():
     p = sub.add_parser("grupper", help="recode fra ICD-10-kode til kreftform")
     p.add_argument("--variabel", required=True, help="variabel med ICD-10-koder (kodelisten brukes)")
     p.add_argument("--var", help="navnet på variabelen i skriptet (standard: variabelnavnet med små bokstaver)")
-    p.add_argument("--nivaa", type=int, choices=[1, 2], required=True,
-                   help="1: 14 hovedgrupper, 2: tresifret kode med navn")
+    p.add_argument("--nivaa", choices=["1", "2", "cin"], required=True,
+                   help="1: 14 hovedgrupper, 2: tresifret kode med navn, cin: kreftformene i Cancer in Norway")
     p.add_argument("--navn", default="kreftform", help="navn på den nye variabelen (standard kreftform)")
     p.add_argument("--ukjent", action="store_true", help="koder som ikke er kreftform, blir 'annet'")
     p.add_argument("--utelat", help="nivå 1: grupper som tas ut, f.eks. C40-C41 (trengs bare med configure confidentiality v1)")
+    p.add_argument("--kjonn", help="nivå cin: kjønnsvariabelen ('2' = kvinne), for C48.2 hos kvinner")
+    p.add_argument("--topografi", help="nivå cin: ICD-O-3-topografien (S_TOPOGRAFIICDO3), for leppekreft kodet som hud")
+    p.add_argument("--morfologi", help="nivå cin: morfologivariabelen (S_MORFOLOGIICDO3), for å skille ut basalcellekarsinom")
     p.set_defaults(f=kommando_grupper)
     p = sub.add_parser("verdier", help="verdier for en variabel, med kreftformene de gjelder for")
     p.add_argument("--variabel", required=True)

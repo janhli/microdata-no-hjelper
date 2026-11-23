@@ -1,0 +1,35 @@
+// =====================================================================
+// Testskript: TESTLISTE 10.11 (Cancer in Norway), oppfølging: hvor er leppekreftene?
+// Laget:      2026-11-23, kjørt 2026-11-23. Resultat i TESTLISTE 10.11 (fasit: bruk Cancer in Norway 2025, tabell 4.5–4.6)
+// Versjoner:  no.fhi.kreftregisteret:1, anonymiseringstiltak versjon 2
+// Bakgrunn:   I 10.11 stemte alle kreftformer med Cancer in Norway 2025 (tall for 2023) unntatt Leppe (C00):
+//             0 mot 89, og C44 Hud 3 153 mot 3 063 (+90). Trolig er leppekreftene kodet som C44.0
+//             (hud på leppe), og rapporten flytter noen av dem til leppe.
+// Variabler:  https://microdata.no/discovery/variable/no.fhi.kreftregisteret/1/S_DIAGNOSEAR
+//             https://microdata.no/discovery/variable/no.fhi.kreftregisteret/1/S_TOPOGRAFIICD10
+//             https://microdata.no/discovery/variable/no.fhi.kreftregisteret/1/S_TOPOGRAFIICDO3
+//             https://microdata.no/discovery/variable/no.fhi.kreftregisteret/1/S_MORFOLOGIICDO3
+// =====================================================================
+
+require no.fhi.kreftregisteret:1 as krg
+
+create-dataset kreft
+import krg/S_DIAGNOSEAR as diagar
+keep if diagar == 2023
+import krg/S_TOPOGRAFIICD10 as topo
+import krg/S_TOPOGRAFIICDO3 as topo3
+import krg/S_MORFOLOGIICDO3 as morf
+generate t3 = substr(topo, 1, 3)
+generate t4 = substr(topo, 1, 4)
+generate m3 = substr(morf, 1, 3)
+
+textblock
+## Test 10.11.d: koder for leppe og hud
+**Forventet hvis C44.0 er leppe:** ingen rader med C00x i ICD-10, og C440 har om lag 90 eller flere.
+ICD-O-3-topografien (`topo3`) for C440 viser om det er leppen (C00x) eller huden (C44x).
+endblock
+tabulate t4 if t3 == 'C00' | t3 == 'C44'
+tabulate topo3 if t4 == 'C440'
+tabulate m3 if t4 == 'C440'
+// Stoppet med «Tomt datasett»: S_TOPOGRAFIICDO3 er uten C (000, ikke C000)
+// tabulate t4 if substr(topo3, 1, 3) == 'C00'

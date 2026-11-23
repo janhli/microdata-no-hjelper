@@ -1,0 +1,49 @@
+gruppe;navn;koder;kommentar
+C00;Leppe;C00 C000 C001 C002 C006 C009;Slimhinnen (C00.3-5, C00.8) er i munnhule
+C02-06;Munnhule;C02 C03 C04 C05 C06 C003 C004 C005 C008;Bløt gane og drøvel (C05.1-2) er i oropharynx
+C07-08;Spyttkjertler;C07 C08;
+C09-10,C01,C14;Oropharynx;C09 C10 C01 C14 C051 C052;
+C11;Nasopharynx;C11;
+C12-13;Hypopharynx;C12 C13;
+C15;Spiserør;C15;
+C16;Magesekk;C16;
+C17;Tynntarm;C17;
+C18;Tykktarm;C18;
+C19-20;Endetarm og rektosigmoid;C19 C20;
+C21;Anus;C21;
+C22;Lever;C22;
+C23-24;Galleblære og galleganger;C23 C24;
+C25;Bukspyttkjertel;C25;
+C26;Andre fordøyelsesorganer;C26;
+C30-31;Nese, mellomøre og bihuler;C30 C31;
+C32;Strupehode og strupelokk;C32;
+C33-34;Lunge og luftrør;C33 C34;
+C38;Hjerte, mediastinum og pleura;C38;
+C40-41;Knokler og leddbrusk;C40 C41;
+C43;Melanom i hud;C43;
+C44;Hudkreft ekskl. melanom;C44;Basalcellekarsinom er ikke med (morfologi 809x)
+C45;Mesoteliom;C45;
+C47;Autonome nervesystem;C47;
+C48-49;Bløtvev;C48 C49;C48.2 hos kvinner er i eggstokk m.m.
+C50;Bryst;C50;Pagets sykdom er ikke med
+C51-52,C57.7-9;Andre kvinnelige kjønnsorganer;C51 C52 C57 C577 C578 C579;
+C53;Livmorhals;C53;
+C54;Livmorlegeme;C54;
+C55;Livmor, uspesifisert;C55;
+C56,C57.0-4,C48.2;Eggstokk, eggleder m.m.;C56 C570 C571 C572 C573 C574;C48.2 (bukhinnen) hos kvinner
+C58;Morkake;C58;
+C60,C63;Andre mannlige kjønnsorganer;C60 C63;
+C61;Prostata;C61;
+C62;Testikkel;C62;
+C64;Nyre ekskl. nyrebekken;C64;
+C65-68;Urinveier ekskl. nyre;C65 C66 C67 C68 D09 D41;Med carcinoma in situ og ikke-invasive papillære svulster (D09, D41), unntatt papillomer
+C69;Øye;C69;
+C70-72;Sentralnervesystemet;C70 C71 C72 D18 D32 D33 D42 D43;Med godartede svulster (D18, D32-33, D42-43)
+C73;Skjoldbruskkjertel;C73;
+C37,C74-75;Andre endokrine kjertler;C37 C74 C75 D352 D353 D354 D443 D444 D445;Med godartede svulster i hypofysen, epifysen og den kraniofaryngeale gangen
+C39,C76-80;Andre eller uspesifiserte;C39 C76 C80;C77-79 (metastaser) brukes ikke i Kreftregisteret
+C81;Hodgkin lymfom;C81;
+C82-86,C96;Non-Hodgkin lymfom;C82 C83 C84 C85 C86 C96;
+C88;Immunoproliferativ sykdom;C88;
+C90;Myelomatose;C90;Med plasmacytomer
+C91-95;Leukemi;C91 C92 C93 C94 C95 D45 D46 D47;Med polycytemia vera (D45), myelodysplastisk syndrom (D46) og D47

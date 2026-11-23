@@ -622,6 +622,23 @@ og ELVIS, og de viktigste er testet i microdata.no (TESTLISTE del 10, se «Teste
   `verktoy/kreftregisteret.py grupper` (nivå 1: 14 hovedgrupper, nivå 2: tresifret kode). Grupperingen er
   Kreftregisterets egen (ELVIS), ikke Klass. C77–C79 (spredning) og C97 er ikke kreftform og står uendret.
   `S_LOKICD7` er Kreftregisterets egen ICD-7 og passer ikke til grupperingen.
+- **Kreftformene i Cancer in Norway er en annen gruppering enn ELVIS.** Bruk `kreftregisteret.py grupper --nivaa cin`
+  når tallene skal sammenlignes med rapporten eller statistikkbanken (https://sb.kreftregisteret.no/). Den har 48
+  kreftformer (tabell 2.3 i Cancer in Norway 2025). Noen avgjøres av fire tegn (C00.3–5 og C05.1–2), og noen D-koder er
+  med (in situ i urinveier, godartede svulster i sentralnervesystemet og endokrine kjertler, D45–D47).
+  - **Leppekreft er kodet som hud på leppe (C44.0, noen C43.0) i `S_TOPOGRAFIICD10`.** Ingen tilfeller har C00
+    (2023). Leppen står i ICD-O-3-topografien `S_TOPOGRAFIICDO3`: 000–002 lepperødt, 006 munnvik. Rapporten regner
+    dem som leppe. Bruk `--topografi`, ellers havner om lag 90 leppekrefter i året i C44 Hud.
+  - **`S_TOPOGRAFIICDO3` er uten C** (`000`, `440`), ulikt ICD-10-variabelen (`C440`). Et utvalg med `'C00'` blir
+    tomt, og `tabulate` på et tomt utvalg stopper skriptet («Tomt datasett»).
+  - C48.2 (bukhinnen) er eggstokk m.m. for kvinner og bløtvev for menn. Kjønn må hentes fra SSB (`--kjonn`).
+  - Basalcellekarsinom (morfologi 809x) er ikke med i rapporten, og datalageret har ingen (2023). `--morfologi`
+    skiller dem ut som `basal` om de kommer med senere.
+  - Pagets sykdom i bryst og papillomer i urinveier er heller ikke med i rapporten, men skilles ikke ut.
+  - **Testet (versjon 1, 2026-11-23, TESTLISTE 10.11):** alle tilfeller i 2023 er 38 887, mot 38 889 i Cancer in Norway
+    2025 (tabell 4.5–4.6), og alle kreftformer stemmer innenfor støyen (tykktarm 3 422 mot 3 421, lunge 3 355 mot
+    3 354, leukemi 1 495 mot 1 493), unntatt leppe før `--topografi` (91 tilfeller i ICD-O-3 mot 89). Rapporten for
+    2023 (CiN 2023) har lavere tall for flere kreftformer: registeret er oppdatert siden.
 - **TNM-verdiene gjelder ulike kreftformer.** `4c`, `4d` og `is(DCIS)` i `S_PT` brukes bare for bryst (C50), `1a1` bare
   for livmor (C55). Tabeller over TNM på tvers av kreftformer blander verdisett. Se
   `kreftregisteret.py verdier --variabel S_PT --kreftform C50`.

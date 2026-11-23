@@ -116,6 +116,7 @@ Hvert datalager trenger sin egen `require`. Enhetene er krefttilfelle, episode o
 |---|---|
 | ICD-10 til kreftform (14 hovedgrupper) | `python verktoy/kreftregisteret.py grupper --variabel S_TOPOGRAFIICD10 --nivaa 1 --var topo` |
 | Tresifret kreftform med navn (C18 Tykktarm) | `... grupper --variabel S_TOPOGRAFIICD10 --nivaa 2 --navn kreft3 --var topo` |
+| Kreftformene i Cancer in Norway (48, f.eks. C19-20 Endetarm), for å sammenligne med publiserte tall | `... grupper --variabel S_TOPOGRAFIICD10 --nivaa cin --var topo --kjonn kjonn --topografi topo3` (`topo3` = `S_TOPOGRAFIICDO3`, for leppekreft) |
 | Diagnoser i NPR, resten som «annet» | `... grupper --variabel SOM_EP_HOVEDTILSTAND1 --nivaa 1 --var diag --ukjent` |
 | Hvilke verdier gjelder for en kreftform (TNM) | `... verdier --variabel S_PT --kreftform C50` |
 | Oppdatere kreftformer og verdier fra ELVIS | `... hent` |

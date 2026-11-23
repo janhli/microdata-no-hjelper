@@ -179,6 +179,7 @@ med 8.8 (`citation`) for flere kilder.
 | 10.7 | ~~Samme person i NPR og Kreftregisteret~~ **Avklart (2026-11-18):** 25 % av kreftepisodene mot 2 % av andre har krefttilfelle i 2023 | | | ✓ |
 | 10.9 | ~~Datoer av typen Instant~~ **Avklart (2026-11-18):** dager siden 1970. `S_DIAGNOSEDATO` 19 361–19 713 (2023), `year()` gir 2023 for alle. `SOM_EP_INNDATO`: 2024 for alle unntatt 7 391 (2023) | | | ✓ |
 | 10.8 | ~~`recode` til samme verdi for å sette merkelapp~~ **Avklart (2026-11-18):** `('C50' = 'C50' 'Bryst')` godtas, og C50 vises som «C50 - Bryst» | | | ✓ |
+| 10.11 | ~~Kreftformer som i Cancer in Norway (#13)~~ **Avklart (versjon 1, 2026-11-23):** 38 887 tilfeller i 2023 mot 38 889 i Cancer in Norway 2025 (tabell 4.5–4.6). Alle kreftformer innenfor støyen, unntatt leppe: ingen C00 i ICD-10, leppekreft er C44.0. ICD-O-3-topografien (uten C) har 91 i lepperødt og munnvik mot 89 i rapporten, og `--topografi` flytter dem. Ingen basalcellekarsinomer. C48.2 med `--kjonn` virker (eggstokk bare kvinner). Skript: `del10_11_cancer_in_norway.txt` og `del10_11b_leppe.txt`. Gjenstår: kjør `--topografi` én gang og se at C00 får navnet Leppe | | | ✓ |
 
 ## 11. Grunnkrets (`BEFOLKNING_GRUNNKRETS`, versjon 60)
 

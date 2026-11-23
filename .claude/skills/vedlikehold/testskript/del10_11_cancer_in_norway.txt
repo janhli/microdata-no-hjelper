@@ -1,0 +1,85 @@
+// =====================================================================
+// Testskript: issue #13 (kreftformer som i Cancer in Norway), TESTLISTE 10.11
+// Laget:      2026-11-23, kjørt 2026-11-23. Resultat i TESTLISTE 10.11 (fasit: bruk Cancer in Norway 2025, tabell 4.5–4.6)
+// Versjoner:  no.ssb.fdb:60, no.fhi.kreftregisteret:1, anonymiseringstiltak versjon 2
+// Populasjon: krefttilfeller med diagnoseår 2023
+// Variabler:  https://microdata.no/discovery/variable/no.fhi.kreftregisteret/1/S_DIAGNOSEAR
+//             https://microdata.no/discovery/variable/no.fhi.kreftregisteret/1/S_TOPOGRAFIICD10
+//             https://microdata.no/discovery/variable/no.fhi.kreftregisteret/1/S_MORFOLOGIICDO3
+//             https://microdata.no/discovery/variable/no.fhi.kreftregisteret/1/S_TUMORATFERD
+//             https://microdata.no/discovery/variable/no.fhi.kreftregisteret/1/P_PERSONIDMICRODATA
+//             https://microdata.no/discovery/variable/no.ssb.fdb/60/BEFOLKNING_KJOENN
+// Fasit:      Cancer in Norway 2023, tabell 5.1 (antall nye tilfeller 2023, begge kjønn). Registeret
+//             oppdateres etter rapporten, så tallene i microdata.no kan være litt høyere.
+// =====================================================================
+
+require no.ssb.fdb:60 as fdb
+require no.fhi.kreftregisteret:1 as krg
+
+textblock
+# Kreftformer som i Cancer in Norway (issue #13)
+Krefttilfeller med diagnoseår 2023, gruppert med `kreftregisteret.py grupper --nivaa cin`.
+endblock
+
+create-dataset kreft
+import krg/S_DIAGNOSEAR as diagar
+keep if diagar == 2023
+import krg/S_TOPOGRAFIICD10 as topo
+import krg/S_MORFOLOGIICDO3 as morf
+import krg/S_TUMORATFERD as atferd
+import krg/P_PERSONIDMICRODATA as personid
+create-dataset personer
+import fdb/BEFOLKNING_KJOENN as kjonn
+merge kjonn into kreft on personid
+use kreft
+
+// Utskrift fra: python verktoy/kreftregisteret.py grupper --variabel S_TOPOGRAFIICD10 --nivaa cin --var topo --kjonn kjonn --morfologi morf
+// S_TOPOGRAFIICD10 -> kreftform som i Cancer in Norway (48 kreftformer, tabell 2.3 i Cancer in Norway 2025, gjengitt på fhi.no).
+// 587 av 895 koder i kodelisten er kreftform. Fire tegn avgjør: C000 C001 C002 C003 C004 C005 C006 C008 C009 C051 C052 C570 C571 C572 C573 C574 C577 C578 C579 D352 D353 D354 D443 D444 D445.
+// C-koder som ikke er kreftform i rapporten, står uendret: C46 C77 C78 C79 C97 (C46 Kaposi er ført under organet, C77-C79 er spredning, C97 flere svulster)
+generate kreftform = substr(topo, 1, 3)
+replace kreftform = substr(topo, 1, 4) if inlist(substr(topo, 1, 4), 'C000', 'C001', 'C002', 'C003', 'C004', 'C005', 'C006', 'C008', 'C009', 'C051', 'C052', 'C570', 'C571', 'C572', 'C573', 'C574', 'C577', 'C578', 'C579', 'D352', 'D353', 'D354', 'D443', 'D444', 'D445')
+recode kreftform ('C000' 'C001' 'C002' 'C006' 'C009' = 'C00' 'Leppe') ('C003' 'C004' 'C005' 'C008' 'C02' 'C03' 'C04' 'C05' 'C06' = 'C02-06' 'Munnhule') ('C07' 'C08' = 'C07-08' 'Spyttkjertler') ('C01' 'C051' 'C052' 'C09' 'C10' 'C14' = 'C09-10,C01,C14' 'Oropharynx') ('C12' 'C13' = 'C12-13' 'Hypopharynx') ('C19' 'C20' = 'C19-20' 'Endetarm og rektosigmoid') ('C23' 'C24' = 'C23-24' 'Galleblære og galleganger') ('C30' 'C31' = 'C30-31' 'Nese, mellomøre og bihuler') ('C33' 'C34' = 'C33-34' 'Lunge og luftrør') ('C37' 'C74' 'C75' 'D352' 'D353' 'D354' 'D443' 'D444' 'D445' = 'C37,C74-75' 'Andre endokrine kjertler')
+recode kreftform ('C39' 'C76' 'C80' = 'C39,C76-80' 'Andre eller uspesifiserte') ('C40' 'C41' = 'C40-41' 'Knokler og leddbrusk') ('C48' 'C49' = 'C48-49' 'Bløtvev') ('C51' 'C52' 'C57' 'C577' 'C578' 'C579' = 'C51-52,C57.7-9' 'Andre kvinnelige kjønnsorganer') ('C56' 'C570' 'C571' 'C572' 'C573' 'C574' = 'C56,C57.0-4,C48.2' 'Eggstokk, eggleder m.m.') ('C60' 'C63' = 'C60,C63' 'Andre mannlige kjønnsorganer') ('C65' 'C66' 'C67' 'C68' 'D09' 'D41' = 'C65-68' 'Urinveier ekskl. nyre') ('C70' 'C71' 'C72' 'D18' 'D32' 'D33' 'D42' 'D43' = 'C70-72' 'Sentralnervesystemet')
+recode kreftform ('C82' 'C83' 'C84' 'C85' 'C86' 'C96' = 'C82-86,C96' 'Non-Hodgkin lymfom') ('C91' 'C92' 'C93' 'C94' 'C95' 'D45' 'D46' 'D47' = 'C91-95' 'Leukemi')
+recode kreftform ('C00' = 'C00' 'Leppe') ('C11' = 'C11' 'Nasopharynx') ('C15' = 'C15' 'Spiserør') ('C16' = 'C16' 'Magesekk') ('C17' = 'C17' 'Tynntarm') ('C18' = 'C18' 'Tykktarm') ('C21' = 'C21' 'Anus') ('C22' = 'C22' 'Lever') ('C25' = 'C25' 'Bukspyttkjertel') ('C26' = 'C26' 'Andre fordøyelsesorganer') ('C32' = 'C32' 'Strupehode og strupelokk') ('C38' = 'C38' 'Hjerte, mediastinum og pleura') ('C43' = 'C43' 'Melanom i hud') ('C44' = 'C44' 'Hudkreft ekskl. melanom') ('C45' = 'C45' 'Mesoteliom') ('C47' = 'C47' 'Autonome nervesystem') ('C50' = 'C50' 'Bryst') ('C53' = 'C53' 'Livmorhals') ('C54' = 'C54' 'Livmorlegeme') ('C55' = 'C55' 'Livmor, uspesifisert') ('C58' = 'C58' 'Morkake') ('C61' = 'C61' 'Prostata') ('C62' = 'C62' 'Testikkel') ('C64' = 'C64' 'Nyre ekskl. nyrebekken') ('C69' = 'C69' 'Øye') ('C73' = 'C73' 'Skjoldbruskkjertel') ('C81' = 'C81' 'Hodgkin lymfom') ('C88' = 'C88' 'Immunoproliferativ sykdom') ('C90' = 'C90' 'Myelomatose')
+// C48.2 (bukhinnen) hos kvinner er eggstokk m.m. (kjonn == '2' er kvinne, som i BEFOLKNING_KJOENN).
+replace kreftform = 'C56,C57.0-4,C48.2' if substr(topo, 1, 4) == 'C482' & kjonn == '2'
+// Basalcellekarsinom (morfologi 809x) er ikke med i noen kreftform i rapporten.
+replace kreftform = 'basal' if substr(morf, 1, 3) == '809' & !sysmiss(kreftform)
+recode kreftform ('basal' = 'basal' 'Basalcellekarsinom (ikke med i Cancer in Norway)')
+
+textblock
+## Test 10.11.a: antall per kreftform mot Cancer in Norway 2023 (tabell 5.1)
+Alle tilfeller, uten filter på atferd (rapporten tar med noen D-koder: in situ i urinveier, godartede i
+sentralnervesystemet og endokrine kjertler).
+**Forventet:** hver kreftform nær tallet under (litt over er normalt). Store avvik viser en feil i grupperingen.
+C00 Leppe 86 | C02-06 Munnhule 230 | C07-08 Spyttkjertler 78 | C09-10,C01,C14 Oropharynx 285 | C11 Nasopharynx 24
+C12-13 Hypopharynx 35 | C15 Spiserør 343 | C16 Magesekk 527 | C17 Tynntarm 256 | C18 Tykktarm 3 388
+C19-20 Endetarm 1 524 | C21 Anus 118 | C22 Lever 394 | C23-24 Galle 192 | C25 Bukspyttkjertel 968 | C26 Andre ford. 123
+C30-31 Nese 57 | C32 Strupe 110 | C33-34 Lunge 3 319 | C38 Hjerte m.m. 19 | C40-41 Knokler 55 | C43 Melanom 2 967
+C44 Hud ekskl. melanom 3 059 | C45 Mesoteliom 67 | C47 Autonome nervesystem 16 | C48-49 Bløtvev 143 | C50 Bryst 4 111
+C51-52,C57.7-9 Andre kvinnelige 107 | C53 Livmorhals 325 | C54 Livmorlegeme 759 | C55 Livmor uspes. 11
+C56,C57.0-4,C48.2 Eggstokk m.m. 525 | C58 Morkake 0 | C61 Prostata 5 258 | C62 Testikkel 260 | C60,C63 Andre mannlige 87
+C64 Nyre 958 | C65-68 Urinveier 1 817 | C69 Øye 74 | C70-72 Sentralnervesystemet 1 026 | C73 Skjoldbruskkjertel 497
+C37,C74-75 Andre endokrine 205 | C39,C76-80 Andre/uspes. 389 | C81 Hodgkin 160 | C82-86,C96 Non-Hodgkin 1 114
+C88 Immunoproliferativ 93 | C90 Myelomatose 562 | C91-95 Leukemi 1 373 | Alle 38 094
+**Basalcellekarsinom** ('basal') er ikke med i rapporten. Hvis 'basal' har mange tusen tilfeller og C44 er nær
+3 059, er utskillingen riktig. Hvis 'basal' er 0 eller mangler, har microdata.no ikke basalcellekarsinomene.
+endblock
+tabulate kreftform
+
+textblock
+## Test 10.11.b: atferd per kreftform
+**Forventet:** C-kreftformene er bare atferd 3 (ondartet). D-kodene som er med, ligger i C65-68, C70-72,
+C37,C74-75 og C91-95. Andre verdier (D05, D06, C77-79 ...) er ikke kreftform i rapporten.
+endblock
+tabulate kreftform atferd
+
+textblock
+## Test 10.11.c: C48.2 hos kvinner
+**Forventet:** eggstokk m.m. har bare kvinner, og bløtvev har begge kjønn.
+endblock
+tabulate kreftform kjonn if inlist(kreftform, 'C56,C57.0-4,C48.2', 'C48-49', 'C61', 'C50')
+
+citation
