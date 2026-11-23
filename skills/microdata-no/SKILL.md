@@ -199,7 +199,7 @@ gamle versjoner, og da må du sjekke at variabelnavnene fortsatt finnes i `varia
 `https://microdata.no/discovery/` rendres med JavaScript og kommer tom tilbake.
 `https://microdata.no/variable/...` (uten `/discovery/`) gir 404.
 
-Flere eksempler (eldre og ikke kvalitetssikret): https://github.com/JOSliper/Microdata-skript.
+Flere eksempler (ikke kvalitetssikret, kan bruke eldre syntaks eller variabler): https://github.com/JOSliper/Microdata-skript.
 Bruk dem bare som idékilde når `kodesnutter/` ikke dekker behovet. De bruker gamle
 datalagerversjoner og har kjente feil.
 

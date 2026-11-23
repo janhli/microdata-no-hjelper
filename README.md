@@ -108,6 +108,9 @@ Vedlikeholdere står i [`.github/CODEOWNERS`](.github/CODEOWNERS).
 
 - Variabelmetadata og manual: [microdata.no](https://microdata.no/) (SSB og Sikt). Innholdet tilhører
   dem og er hentet fra de åpne sidene. <!-- TODO: avklar lisens før publisering -->
+- Kreftformer og verdier for `no.fhi.kreftregisteret`: Kreftregisterets metadatabase
+  [ELVIS](https://metadata.kreftregisteret.no) (FHI), hentet med `verktoy/kreftregisteret.py hent`.
+- Kommune-, region-, grunnkrets- og næringskoder: [SSB Klass](https://www.ssb.no/klass/).
 - Kodeeksempler: [JOSliper/Microdata-skript](https://github.com/JOSliper/Microdata-skript) (Trøndelag)
   er bare lenket til, ikke kopiert (repoet har ingen lisens).
 
