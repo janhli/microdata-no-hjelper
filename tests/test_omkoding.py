@@ -174,7 +174,7 @@ class TestKommuneGrunnkrets(unittest.TestCase, LinjelengdeMixin):
         # Bare grunnkretsene som får en annen kommune enn recode gir, har regler (Haram, ikke Ålesund)
         self.assertNotIn("'15070101'", tekst)
         # 1580 finnes ikke i kodelisten 2023 og får ikke navn fra recode (TESTLISTE 2.9 c)
-        self.assertIn("Uten navn i tabellen (finnes ikke i kodelisten 1.1.2023): 1580 Haram", tekst)
+        self.assertIn("recode kommune ('1580' = '1580' 'Haram')", tekst)
 
     def test_grensejustering_uten_regler(self):
         # Indre Østfold 2026: grunnkretsene som ble flyttet, er selv delt. Ingen regler trengs.

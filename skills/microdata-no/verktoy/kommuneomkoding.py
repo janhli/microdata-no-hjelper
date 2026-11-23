@@ -39,7 +39,7 @@ from pathlib import Path
 DATA = Path(__file__).resolve().parent.parent / "metadata" / "kommuneendringer.json"
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
-from recode_regler import konflikter, recode_linjer  # noqa: E402
+from recode_regler import konflikter, q, recode_linjer  # noqa: E402
 
 
 def navnesett(n):
@@ -148,6 +148,11 @@ def bygg(d, fra, til):
     return kart, delt, antatt, kandidater, helt, malnavn
 
 
+def malnavn_for(kode, nye, d, a):
+    navn = nye.get(kode, kode)
+    return norsk_navn(navn, d) if a.norske_navn else navn
+
+
 def grunnkrets_fordeling(d, aar, til, kommuner):
     """Fordeler grunnkretsene i kommunene (koder gyldige 1.1.aar) på kommunene i inndelingen til.
 
@@ -251,9 +256,11 @@ def main():
         uten_navn = sorted(set(endret.values()) - set(malnavn) - set(ved_start))
         if uten_navn:
             # Kodelisten på datoen har ikke disse kodene, og recode over gir dem ikke navn (1580 Haram fra 2023).
+            # En regel til samme verdi setter navnet, også før noen har verdien (TESTLISTE 2.10).
             nye = koder_ved(d, f"{a.til + 1}-01-01")
-            out.append("// Uten navn i tabellen (finnes ikke i kodelisten 1.1." + f"{a.fra}): "
-                       + ", ".join(f"{k} {nye.get(k, '')}".strip() for k in uten_navn))
+            out.append(f"// Navn på kommuner som ikke finnes i kodelisten 1.1.{a.fra}:")
+            out.append(f"recode {a.navn} " + " ".join(f"({q(k)} = {q(k)} {q(malnavn_for(k, nye, d, a))})"
+                                                       for k in uten_navn))
         if endret:
             out.append(f"generate {hjelp} = {a.grunnkrets}")
             out += recode_linjer(hjelp, endret)

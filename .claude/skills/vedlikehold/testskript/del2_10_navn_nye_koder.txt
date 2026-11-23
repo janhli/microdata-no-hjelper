@@ -1,0 +1,155 @@
+// =====================================================================
+// Testskript: TESTLISTE 2.10 og 10.11 (navn på koder som ikke fantes i kodelisten)
+// Laget:      2026-11-23, kjørt 2026-11-23 (versjon 60). Resultat i TESTLISTE 2.10
+// Versjoner:  no.ssb.fdb:60, no.fhi.kreftregisteret:1, anonymiseringstiltak versjon 2
+// Variabler:  https://microdata.no/discovery/variable/no.ssb.fdb/60/BEFOLKNING_KOMMNR_FORMELL
+//             https://microdata.no/discovery/variable/no.ssb.fdb/60/BEFOLKNING_GRUNNKRETS
+//             https://microdata.no/discovery/variable/no.fhi.kreftregisteret/1/S_DIAGNOSEAR
+//             https://microdata.no/discovery/variable/no.fhi.kreftregisteret/1/S_TOPOGRAFIICD10
+//             https://microdata.no/discovery/variable/no.fhi.kreftregisteret/1/S_TOPOGRAFIICDO3
+// Bakgrunn:   I 2.9 c fikk 1580 Haram ingen merkelapp: koden finnes ikke i kodelisten 1.1.2023, og recode
+//             hadde den ikke som mål. Spørsmålet er om recode til samme verdi (som virker i 10.8) gir navn,
+//             og om det må stå etter at verdien finnes (etter replace), eller kan stå før.
+//             Samme spørsmål for C00 Leppe med kreftregisteret.py --topografi (10.11).
+// Rekkefølge: a) uten noe (kontroll), b) navnet etter replace, c) navnet før replace, d) Leppe.
+// =====================================================================
+
+require no.ssb.fdb:60 as fdb
+require no.fhi.kreftregisteret:1 as krg
+
+textblock
+# Navn på koder som ikke fantes i kodelisten (TESTLISTE 2.10)
+Ålesund 1.1.2023 fordelt på Ålesund og Haram med grunnkrets, og leppekreft fra ICD-O-3.
+endblock
+
+// ---------------------------------------------------------------------
+textblock
+## Test 2.10.a: kontroll, utskriften som den er
+Samme som 2.9 c, uten noe ekstra.
+**Forventet:** raden heter bare «1580», og «1508 - Ålesund» har navn.
+endblock
+create-dataset ha
+import fdb/BEFOLKNING_KOMMNR_FORMELL 2023-01-01 as kommune
+keep if kommune == '1507'
+import fdb/BEFOLKNING_GRUNNKRETS 2023-01-01 as gk
+// Kommunenumre 2023 -> inndelingen 2024. Kilde: SSB Klass 131 (hentet 2026-11-09).
+// 114 koder omkodes til 114 kommuner. Øvrige koder står uendret.
+// Koder som selv ble delt, satt til delen med samme navn. Personer i de andre delene kommer
+// med (riktig ved grensejusteringer, ellers ikke). Bruk eldre koder eller adresse om det er viktig:
+//   1507 Ålesund: 2024 delt i 1508 Ålesund, 1580 Haram, satt til 1508
+recode kommune ('1507' = '1508' 'Ålesund') ('3001' = '3101' 'Halden') ('3002' = '3103' 'Moss') ('3003' = '3105' 'Sarpsborg') ('3004' = '3107' 'Fredrikstad') ('3011' = '3110' 'Hvaler') ('3017' = '3112' 'Råde') ('3018' = '3114' 'Våler (Østfold)') ('3015' = '3116' 'Skiptvet') ('3014' = '3118' 'Indre Østfold') ('3016' = '3120' 'Rakkestad') ('3013' = '3122' 'Marker') ('3012' = '3124' 'Aremark') ('3024' = '3201' 'Bærum') ('3025' = '3203' 'Asker') ('3030' = '3205' 'Lillestrøm') ('3020' = '3207' 'Nordre Follo') ('3033' = '3209' 'Ullensaker') ('3023' = '3212' 'Nesodden') ('3022' = '3214' 'Frogn')
+recode kommune ('3019' = '3216' 'Vestby') ('3021' = '3218' 'Ås') ('3028' = '3220' 'Enebakk') ('3029' = '3222' 'Lørenskog') ('3027' = '3224' 'Rælingen') ('3026' = '3226' 'Aurskog-Høland') ('3034' = '3228' 'Nes') ('3032' = '3230' 'Gjerdrum') ('3031' = '3232' 'Nittedal') ('3054' = '3234' 'Lunner') ('3053' = '3236' 'Jevnaker') ('3036' = '3238' 'Nannestad') ('3035' = '3240' 'Eidsvoll') ('3037' = '3242' 'Hurdal') ('3005' = '3301' 'Drammen') ('3006' = '3303' 'Kongsberg') ('3007' = '3305' 'Ringerike') ('3038' = '3310' 'Hole') ('3049' = '3312' 'Lier') ('3048' = '3314' 'Øvre Eiker') ('3047' = '3316' 'Modum')
+recode kommune ('3046' = '3318' 'Krødsherad') ('3039' = '3320' 'Flå') ('3040' = '3322' 'Nesbyen') ('3041' = '3324' 'Gol') ('3042' = '3326' 'Hemsedal') ('3043' = '3328' 'Ål') ('3044' = '3330' 'Hol') ('3045' = '3332' 'Sigdal') ('3050' = '3334' 'Flesberg') ('3051' = '3336' 'Rollag') ('3052' = '3338' 'Nore og Uvdal') ('3801' = '3901' 'Horten') ('3802' = '3903' 'Holmestrand') ('3803' = '3905' 'Tønsberg') ('3804' = '3907' 'Sandefjord') ('3805' = '3909' 'Larvik') ('3811' = '3911' 'Færder') ('3806' = '4001' 'Porsgrunn') ('3807' = '4003' 'Skien') ('3808' = '4005' 'Notodden') ('3812' = '4010' 'Siljan')
+recode kommune ('3813' = '4012' 'Bamble') ('3814' = '4014' 'Kragerø') ('3815' = '4016' 'Drangedal') ('3816' = '4018' 'Nome') ('3817' = '4020' 'Midt-Telemark') ('3820' = '4022' 'Seljord') ('3819' = '4024' 'Hjartdal') ('3818' = '4026' 'Tinn') ('3821' = '4028' 'Kviteseid') ('3822' = '4030' 'Nissedal') ('3823' = '4032' 'Fyresdal') ('3824' = '4034' 'Tokke') ('3825' = '4036' 'Vinje') ('5401' = '5501' 'Tromsø') ('5402' = '5503' 'Harstad - Hárstták') ('5411' = '5510' 'Kvæfjord') ('5412' = '5512' 'Dielddanuorri - Tjeldsund') ('5413' = '5514' 'Ibestad') ('5414' = '5516' 'Gratangen - Rivtták')
+recode kommune ('5415' = '5518' 'Loabák - Lavangen') ('5416' = '5520' 'Bardu') ('5417' = '5522' 'Salangen') ('5418' = '5524' 'Målselv') ('5419' = '5526' 'Sørreisa') ('5420' = '5528' 'Dyrøy') ('5421' = '5530' 'Senja') ('5422' = '5532' 'Balsfjord') ('5423' = '5534' 'Karlsøy') ('5424' = '5536' 'Lyngen') ('5425' = '5538' 'Storfjord - Omasvuotna - Omasvuono') ('5426' = '5540' 'Gáivuotna - Kåfjord - Kaivuono') ('5427' = '5542' 'Skjervøy') ('5428' = '5544' 'Nordreisa - Ráisa - Raisi') ('5429' = '5546' 'Kvænangen') ('5403' = '5601' 'Alta') ('5406' = '5603' 'Hammerfest - Hámmerfeasta')
+recode kommune ('5444' = '5605' 'Sør-Varanger') ('5405' = '5607' 'Vadsø') ('5437' = '5610' 'Kárášjohka - Karasjok') ('5430' = '5612' 'Guovdageaidnu - Kautokeino') ('5432' = '5614' 'Loppa') ('5433' = '5616' 'Hasvik') ('5434' = '5618' 'Måsøy') ('5435' = '5620' 'Nordkapp') ('5436' = '5622' 'Porsanger - Porsángu - Porsanki') ('5438' = '5624' 'Lebesby') ('5439' = '5626' 'Gamvik') ('5441' = '5628' 'Deatnu - Tana') ('5440' = '5630' 'Berlevåg') ('5443' = '5632' 'Båtsfjord') ('5404' = '5634' 'Vardø') ('5442' = '5636' 'Unjárga - Nesseby')
+// Grunnkrets: personene i 1 kommuner som er delt eller valgt ved navn, fordeles etter grunnkretsen (gk, 1.1.2023). Kilde: SSB Klass 1.
+// Gjelder bare data fra 1.1.2023: grunnkretskodene skifter med kommunenummeret. Kjør på nytt for hvert år.
+//   1507 Ålesund
+// 109 av 109 grunnkretser (uten uoppgitt) får kommune, 25 av dem en annen enn recode over gir. Uoppgitt (kkkk9999) beholder kommunekoden fra recode over.
+// Uten navn i tabellen (finnes ikke i kodelisten 1.1.2023): 1580 Haram
+generate kommune_gk = gk
+recode kommune_gk ('15071101' '15071102' '15071103' '15071104' '15071105' '15071106' '15071107' '15071108' '15071109' '15071110' '15071201' '15071202' '15071203' '15071204' '15071301' '15071302' '15071303' '15071304' '15071305' '15071306' '15071307' '15071308' '15071401' '15071402' '15071403' = '1580')
+replace kommune = kommune_gk if length(kommune_gk) == 4
+drop kommune_gk
+tabulate kommune
+delete-dataset ha
+
+
+// ---------------------------------------------------------------------
+textblock
+## Test 2.10.b: recode til samme verdi etter replace
+En regel til samme verdi etter at Haram-kretsene har fått 1580.
+**Forventet:** raden heter «1580 - Haram». Antallet er det samme som i a.
+endblock
+create-dataset hb
+import fdb/BEFOLKNING_KOMMNR_FORMELL 2023-01-01 as kommune
+keep if kommune == '1507'
+import fdb/BEFOLKNING_GRUNNKRETS 2023-01-01 as gk
+// Kommunenumre 2023 -> inndelingen 2024. Kilde: SSB Klass 131 (hentet 2026-11-09).
+// 114 koder omkodes til 114 kommuner. Øvrige koder står uendret.
+// Koder som selv ble delt, satt til delen med samme navn. Personer i de andre delene kommer
+// med (riktig ved grensejusteringer, ellers ikke). Bruk eldre koder eller adresse om det er viktig:
+//   1507 Ålesund: 2024 delt i 1508 Ålesund, 1580 Haram, satt til 1508
+recode kommune ('1507' = '1508' 'Ålesund') ('3001' = '3101' 'Halden') ('3002' = '3103' 'Moss') ('3003' = '3105' 'Sarpsborg') ('3004' = '3107' 'Fredrikstad') ('3011' = '3110' 'Hvaler') ('3017' = '3112' 'Råde') ('3018' = '3114' 'Våler (Østfold)') ('3015' = '3116' 'Skiptvet') ('3014' = '3118' 'Indre Østfold') ('3016' = '3120' 'Rakkestad') ('3013' = '3122' 'Marker') ('3012' = '3124' 'Aremark') ('3024' = '3201' 'Bærum') ('3025' = '3203' 'Asker') ('3030' = '3205' 'Lillestrøm') ('3020' = '3207' 'Nordre Follo') ('3033' = '3209' 'Ullensaker') ('3023' = '3212' 'Nesodden') ('3022' = '3214' 'Frogn')
+recode kommune ('3019' = '3216' 'Vestby') ('3021' = '3218' 'Ås') ('3028' = '3220' 'Enebakk') ('3029' = '3222' 'Lørenskog') ('3027' = '3224' 'Rælingen') ('3026' = '3226' 'Aurskog-Høland') ('3034' = '3228' 'Nes') ('3032' = '3230' 'Gjerdrum') ('3031' = '3232' 'Nittedal') ('3054' = '3234' 'Lunner') ('3053' = '3236' 'Jevnaker') ('3036' = '3238' 'Nannestad') ('3035' = '3240' 'Eidsvoll') ('3037' = '3242' 'Hurdal') ('3005' = '3301' 'Drammen') ('3006' = '3303' 'Kongsberg') ('3007' = '3305' 'Ringerike') ('3038' = '3310' 'Hole') ('3049' = '3312' 'Lier') ('3048' = '3314' 'Øvre Eiker') ('3047' = '3316' 'Modum')
+recode kommune ('3046' = '3318' 'Krødsherad') ('3039' = '3320' 'Flå') ('3040' = '3322' 'Nesbyen') ('3041' = '3324' 'Gol') ('3042' = '3326' 'Hemsedal') ('3043' = '3328' 'Ål') ('3044' = '3330' 'Hol') ('3045' = '3332' 'Sigdal') ('3050' = '3334' 'Flesberg') ('3051' = '3336' 'Rollag') ('3052' = '3338' 'Nore og Uvdal') ('3801' = '3901' 'Horten') ('3802' = '3903' 'Holmestrand') ('3803' = '3905' 'Tønsberg') ('3804' = '3907' 'Sandefjord') ('3805' = '3909' 'Larvik') ('3811' = '3911' 'Færder') ('3806' = '4001' 'Porsgrunn') ('3807' = '4003' 'Skien') ('3808' = '4005' 'Notodden') ('3812' = '4010' 'Siljan')
+recode kommune ('3813' = '4012' 'Bamble') ('3814' = '4014' 'Kragerø') ('3815' = '4016' 'Drangedal') ('3816' = '4018' 'Nome') ('3817' = '4020' 'Midt-Telemark') ('3820' = '4022' 'Seljord') ('3819' = '4024' 'Hjartdal') ('3818' = '4026' 'Tinn') ('3821' = '4028' 'Kviteseid') ('3822' = '4030' 'Nissedal') ('3823' = '4032' 'Fyresdal') ('3824' = '4034' 'Tokke') ('3825' = '4036' 'Vinje') ('5401' = '5501' 'Tromsø') ('5402' = '5503' 'Harstad - Hárstták') ('5411' = '5510' 'Kvæfjord') ('5412' = '5512' 'Dielddanuorri - Tjeldsund') ('5413' = '5514' 'Ibestad') ('5414' = '5516' 'Gratangen - Rivtták')
+recode kommune ('5415' = '5518' 'Loabák - Lavangen') ('5416' = '5520' 'Bardu') ('5417' = '5522' 'Salangen') ('5418' = '5524' 'Målselv') ('5419' = '5526' 'Sørreisa') ('5420' = '5528' 'Dyrøy') ('5421' = '5530' 'Senja') ('5422' = '5532' 'Balsfjord') ('5423' = '5534' 'Karlsøy') ('5424' = '5536' 'Lyngen') ('5425' = '5538' 'Storfjord - Omasvuotna - Omasvuono') ('5426' = '5540' 'Gáivuotna - Kåfjord - Kaivuono') ('5427' = '5542' 'Skjervøy') ('5428' = '5544' 'Nordreisa - Ráisa - Raisi') ('5429' = '5546' 'Kvænangen') ('5403' = '5601' 'Alta') ('5406' = '5603' 'Hammerfest - Hámmerfeasta')
+recode kommune ('5444' = '5605' 'Sør-Varanger') ('5405' = '5607' 'Vadsø') ('5437' = '5610' 'Kárášjohka - Karasjok') ('5430' = '5612' 'Guovdageaidnu - Kautokeino') ('5432' = '5614' 'Loppa') ('5433' = '5616' 'Hasvik') ('5434' = '5618' 'Måsøy') ('5435' = '5620' 'Nordkapp') ('5436' = '5622' 'Porsanger - Porsángu - Porsanki') ('5438' = '5624' 'Lebesby') ('5439' = '5626' 'Gamvik') ('5441' = '5628' 'Deatnu - Tana') ('5440' = '5630' 'Berlevåg') ('5443' = '5632' 'Båtsfjord') ('5404' = '5634' 'Vardø') ('5442' = '5636' 'Unjárga - Nesseby')
+// Grunnkrets: personene i 1 kommuner som er delt eller valgt ved navn, fordeles etter grunnkretsen (gk, 1.1.2023). Kilde: SSB Klass 1.
+// Gjelder bare data fra 1.1.2023: grunnkretskodene skifter med kommunenummeret. Kjør på nytt for hvert år.
+//   1507 Ålesund
+// 109 av 109 grunnkretser (uten uoppgitt) får kommune, 25 av dem en annen enn recode over gir. Uoppgitt (kkkk9999) beholder kommunekoden fra recode over.
+// Uten navn i tabellen (finnes ikke i kodelisten 1.1.2023): 1580 Haram
+generate kommune_gk = gk
+recode kommune_gk ('15071101' '15071102' '15071103' '15071104' '15071105' '15071106' '15071107' '15071108' '15071109' '15071110' '15071201' '15071202' '15071203' '15071204' '15071301' '15071302' '15071303' '15071304' '15071305' '15071306' '15071307' '15071308' '15071401' '15071402' '15071403' = '1580')
+replace kommune = kommune_gk if length(kommune_gk) == 4
+drop kommune_gk
+recode kommune ('1580' = '1580' 'Haram')
+tabulate kommune
+delete-dataset hb
+
+
+// ---------------------------------------------------------------------
+textblock
+## Test 2.10.c: recode til samme verdi før replace
+Samme regel etter omkodingen av kommunene, men før replace, når ingen har verdien 1580 ennå. Viser om en merkelapp gjelder verdier som kommer senere.
+**Forventet:** hvis raden heter «1580 - Haram», kan verktøyet sette navnet hvor som helst. Heter den bare «1580», må regelen stå etter replace.
+endblock
+create-dataset hc
+import fdb/BEFOLKNING_KOMMNR_FORMELL 2023-01-01 as kommune
+keep if kommune == '1507'
+import fdb/BEFOLKNING_GRUNNKRETS 2023-01-01 as gk
+// Kommunenumre 2023 -> inndelingen 2024. Kilde: SSB Klass 131 (hentet 2026-11-09).
+// 114 koder omkodes til 114 kommuner. Øvrige koder står uendret.
+// Koder som selv ble delt, satt til delen med samme navn. Personer i de andre delene kommer
+// med (riktig ved grensejusteringer, ellers ikke). Bruk eldre koder eller adresse om det er viktig:
+//   1507 Ålesund: 2024 delt i 1508 Ålesund, 1580 Haram, satt til 1508
+recode kommune ('1507' = '1508' 'Ålesund') ('3001' = '3101' 'Halden') ('3002' = '3103' 'Moss') ('3003' = '3105' 'Sarpsborg') ('3004' = '3107' 'Fredrikstad') ('3011' = '3110' 'Hvaler') ('3017' = '3112' 'Råde') ('3018' = '3114' 'Våler (Østfold)') ('3015' = '3116' 'Skiptvet') ('3014' = '3118' 'Indre Østfold') ('3016' = '3120' 'Rakkestad') ('3013' = '3122' 'Marker') ('3012' = '3124' 'Aremark') ('3024' = '3201' 'Bærum') ('3025' = '3203' 'Asker') ('3030' = '3205' 'Lillestrøm') ('3020' = '3207' 'Nordre Follo') ('3033' = '3209' 'Ullensaker') ('3023' = '3212' 'Nesodden') ('3022' = '3214' 'Frogn')
+recode kommune ('3019' = '3216' 'Vestby') ('3021' = '3218' 'Ås') ('3028' = '3220' 'Enebakk') ('3029' = '3222' 'Lørenskog') ('3027' = '3224' 'Rælingen') ('3026' = '3226' 'Aurskog-Høland') ('3034' = '3228' 'Nes') ('3032' = '3230' 'Gjerdrum') ('3031' = '3232' 'Nittedal') ('3054' = '3234' 'Lunner') ('3053' = '3236' 'Jevnaker') ('3036' = '3238' 'Nannestad') ('3035' = '3240' 'Eidsvoll') ('3037' = '3242' 'Hurdal') ('3005' = '3301' 'Drammen') ('3006' = '3303' 'Kongsberg') ('3007' = '3305' 'Ringerike') ('3038' = '3310' 'Hole') ('3049' = '3312' 'Lier') ('3048' = '3314' 'Øvre Eiker') ('3047' = '3316' 'Modum')
+recode kommune ('3046' = '3318' 'Krødsherad') ('3039' = '3320' 'Flå') ('3040' = '3322' 'Nesbyen') ('3041' = '3324' 'Gol') ('3042' = '3326' 'Hemsedal') ('3043' = '3328' 'Ål') ('3044' = '3330' 'Hol') ('3045' = '3332' 'Sigdal') ('3050' = '3334' 'Flesberg') ('3051' = '3336' 'Rollag') ('3052' = '3338' 'Nore og Uvdal') ('3801' = '3901' 'Horten') ('3802' = '3903' 'Holmestrand') ('3803' = '3905' 'Tønsberg') ('3804' = '3907' 'Sandefjord') ('3805' = '3909' 'Larvik') ('3811' = '3911' 'Færder') ('3806' = '4001' 'Porsgrunn') ('3807' = '4003' 'Skien') ('3808' = '4005' 'Notodden') ('3812' = '4010' 'Siljan')
+recode kommune ('3813' = '4012' 'Bamble') ('3814' = '4014' 'Kragerø') ('3815' = '4016' 'Drangedal') ('3816' = '4018' 'Nome') ('3817' = '4020' 'Midt-Telemark') ('3820' = '4022' 'Seljord') ('3819' = '4024' 'Hjartdal') ('3818' = '4026' 'Tinn') ('3821' = '4028' 'Kviteseid') ('3822' = '4030' 'Nissedal') ('3823' = '4032' 'Fyresdal') ('3824' = '4034' 'Tokke') ('3825' = '4036' 'Vinje') ('5401' = '5501' 'Tromsø') ('5402' = '5503' 'Harstad - Hárstták') ('5411' = '5510' 'Kvæfjord') ('5412' = '5512' 'Dielddanuorri - Tjeldsund') ('5413' = '5514' 'Ibestad') ('5414' = '5516' 'Gratangen - Rivtták')
+recode kommune ('5415' = '5518' 'Loabák - Lavangen') ('5416' = '5520' 'Bardu') ('5417' = '5522' 'Salangen') ('5418' = '5524' 'Målselv') ('5419' = '5526' 'Sørreisa') ('5420' = '5528' 'Dyrøy') ('5421' = '5530' 'Senja') ('5422' = '5532' 'Balsfjord') ('5423' = '5534' 'Karlsøy') ('5424' = '5536' 'Lyngen') ('5425' = '5538' 'Storfjord - Omasvuotna - Omasvuono') ('5426' = '5540' 'Gáivuotna - Kåfjord - Kaivuono') ('5427' = '5542' 'Skjervøy') ('5428' = '5544' 'Nordreisa - Ráisa - Raisi') ('5429' = '5546' 'Kvænangen') ('5403' = '5601' 'Alta') ('5406' = '5603' 'Hammerfest - Hámmerfeasta')
+recode kommune ('5444' = '5605' 'Sør-Varanger') ('5405' = '5607' 'Vadsø') ('5437' = '5610' 'Kárášjohka - Karasjok') ('5430' = '5612' 'Guovdageaidnu - Kautokeino') ('5432' = '5614' 'Loppa') ('5433' = '5616' 'Hasvik') ('5434' = '5618' 'Måsøy') ('5435' = '5620' 'Nordkapp') ('5436' = '5622' 'Porsanger - Porsángu - Porsanki') ('5438' = '5624' 'Lebesby') ('5439' = '5626' 'Gamvik') ('5441' = '5628' 'Deatnu - Tana') ('5440' = '5630' 'Berlevåg') ('5443' = '5632' 'Båtsfjord') ('5404' = '5634' 'Vardø') ('5442' = '5636' 'Unjárga - Nesseby')
+// Grunnkrets: personene i 1 kommuner som er delt eller valgt ved navn, fordeles etter grunnkretsen (gk, 1.1.2023). Kilde: SSB Klass 1.
+// Gjelder bare data fra 1.1.2023: grunnkretskodene skifter med kommunenummeret. Kjør på nytt for hvert år.
+//   1507 Ålesund
+// 109 av 109 grunnkretser (uten uoppgitt) får kommune, 25 av dem en annen enn recode over gir. Uoppgitt (kkkk9999) beholder kommunekoden fra recode over.
+// Uten navn i tabellen (finnes ikke i kodelisten 1.1.2023): 1580 Haram
+recode kommune ('1580' = '1580' 'Haram')
+generate kommune_gk = gk
+recode kommune_gk ('15071101' '15071102' '15071103' '15071104' '15071105' '15071106' '15071107' '15071108' '15071109' '15071110' '15071201' '15071202' '15071203' '15071204' '15071301' '15071302' '15071303' '15071304' '15071305' '15071306' '15071307' '15071308' '15071401' '15071402' '15071403' = '1580')
+replace kommune = kommune_gk if length(kommune_gk) == 4
+drop kommune_gk
+tabulate kommune
+delete-dataset hc
+
+// ---------------------------------------------------------------------
+textblock
+## Test 10.11.e: C00 Leppe med --topografi
+Leppekreft (C44.0 i ICD-10) flyttes til C00 etter ICD-O-3-topografien, før recode, som har regelen
+('C00' = 'C00' 'Leppe').
+**Forventet:** raden «C00 - Leppe» med om lag 90, og C44 om lag 3 070 (3 153 i 10.11).
+endblock
+create-dataset kreft
+import krg/S_DIAGNOSEAR as diagar
+keep if diagar == 2023
+import krg/S_TOPOGRAFIICD10 as topo
+import krg/S_TOPOGRAFIICDO3 as topo3
+// Utskrift fra: python verktoy/kreftregisteret.py grupper --variabel S_TOPOGRAFIICD10 --nivaa cin --var topo --topografi topo3
+// S_TOPOGRAFIICD10 -> kreftform som i Cancer in Norway (48 kreftformer, tabell 2.3 i Cancer in Norway 2025, gjengitt på fhi.no).
+// 587 av 895 koder i kodelisten er kreftform. Fire tegn avgjør: C000 C001 C002 C003 C004 C005 C006 C008 C009 C051 C052 C570 C571 C572 C573 C574 C577 C578 C579 D352 D353 D354 D443 D444 D445.
+// C-koder som ikke er kreftform i rapporten, står uendret: C46 C77 C78 C79 C97 (C46 Kaposi er ført under organet, C77-C79 er spredning, C97 flere svulster)
+generate kreftform = substr(topo, 1, 3)
+replace kreftform = substr(topo, 1, 4) if inlist(substr(topo, 1, 4), 'C000', 'C001', 'C002', 'C003', 'C004', 'C005', 'C006', 'C008', 'C009', 'C051', 'C052', 'C570', 'C571', 'C572', 'C573', 'C574', 'C577', 'C578', 'C579', 'D352', 'D353', 'D354', 'D443', 'D444', 'D445')
+// Leppekreft er kodet som hud på leppe (C43.0/C44.0) i ICD-10. ICD-O-3-topografien (topo3, uten C) viser leppen, som rapporten regner som leppe eller munnhule.
+replace kreftform = 'C00' if inlist(substr(topo, 1, 3), 'C43', 'C44') & inlist(substr(topo3, 1, 3), '000', '001', '002', '006', '009')
+replace kreftform = 'C02-06' if inlist(substr(topo, 1, 3), 'C43', 'C44') & inlist(substr(topo3, 1, 3), '003', '004', '005', '008')
+recode kreftform ('C000' 'C001' 'C002' 'C006' 'C009' = 'C00' 'Leppe') ('C003' 'C004' 'C005' 'C008' 'C02' 'C03' 'C04' 'C05' 'C06' = 'C02-06' 'Munnhule') ('C07' 'C08' = 'C07-08' 'Spyttkjertler') ('C01' 'C051' 'C052' 'C09' 'C10' 'C14' = 'C09-10,C01,C14' 'Oropharynx') ('C12' 'C13' = 'C12-13' 'Hypopharynx') ('C19' 'C20' = 'C19-20' 'Endetarm og rektosigmoid') ('C23' 'C24' = 'C23-24' 'Galleblære og galleganger') ('C30' 'C31' = 'C30-31' 'Nese, mellomøre og bihuler') ('C33' 'C34' = 'C33-34' 'Lunge og luftrør') ('C37' 'C74' 'C75' 'D352' 'D353' 'D354' 'D443' 'D444' 'D445' = 'C37,C74-75' 'Andre endokrine kjertler')
+recode kreftform ('C39' 'C76' 'C80' = 'C39,C76-80' 'Andre eller uspesifiserte') ('C40' 'C41' = 'C40-41' 'Knokler og leddbrusk') ('C48' 'C49' = 'C48-49' 'Bløtvev') ('C51' 'C52' 'C57' 'C577' 'C578' 'C579' = 'C51-52,C57.7-9' 'Andre kvinnelige kjønnsorganer') ('C56' 'C570' 'C571' 'C572' 'C573' 'C574' = 'C56,C57.0-4,C48.2' 'Eggstokk, eggleder m.m.') ('C60' 'C63' = 'C60,C63' 'Andre mannlige kjønnsorganer') ('C65' 'C66' 'C67' 'C68' 'D09' 'D41' = 'C65-68' 'Urinveier ekskl. nyre') ('C70' 'C71' 'C72' 'D18' 'D32' 'D33' 'D42' 'D43' = 'C70-72' 'Sentralnervesystemet')
+recode kreftform ('C82' 'C83' 'C84' 'C85' 'C86' 'C96' = 'C82-86,C96' 'Non-Hodgkin lymfom') ('C91' 'C92' 'C93' 'C94' 'C95' 'D45' 'D46' 'D47' = 'C91-95' 'Leukemi')
+recode kreftform ('C00' = 'C00' 'Leppe') ('C11' = 'C11' 'Nasopharynx') ('C15' = 'C15' 'Spiserør') ('C16' = 'C16' 'Magesekk') ('C17' = 'C17' 'Tynntarm') ('C18' = 'C18' 'Tykktarm') ('C21' = 'C21' 'Anus') ('C22' = 'C22' 'Lever') ('C25' = 'C25' 'Bukspyttkjertel') ('C26' = 'C26' 'Andre fordøyelsesorganer') ('C32' = 'C32' 'Strupehode og strupelokk') ('C38' = 'C38' 'Hjerte, mediastinum og pleura') ('C43' = 'C43' 'Melanom i hud') ('C44' = 'C44' 'Hudkreft ekskl. melanom') ('C45' = 'C45' 'Mesoteliom') ('C47' = 'C47' 'Autonome nervesystem') ('C50' = 'C50' 'Bryst') ('C53' = 'C53' 'Livmorhals') ('C54' = 'C54' 'Livmorlegeme') ('C55' = 'C55' 'Livmor, uspesifisert') ('C58' = 'C58' 'Morkake') ('C61' = 'C61' 'Prostata') ('C62' = 'C62' 'Testikkel') ('C64' = 'C64' 'Nyre ekskl. nyrebekken') ('C69' = 'C69' 'Øye') ('C73' = 'C73' 'Skjoldbruskkjertel') ('C81' = 'C81' 'Hodgkin lymfom') ('C88' = 'C88' 'Immunoproliferativ sykdom') ('C90' = 'C90' 'Myelomatose')
+// C48.2 (bukhinnen) står i bløtvev for alle. I rapporten er den eggstokk m.m. for kvinner: legg til --kjonn <variabel> (BEFOLKNING_KJOENN).
+// Basalcellekarsinom er ikke med i rapporten, men står her i sin kreftform (mest C44). Legg til --morfologi <variabel> (S_MORFOLOGIICDO3) for å skille dem ut som 'basal'.
+tabulate kreftform if inlist(kreftform, 'C00', 'C02-06', 'C43', 'C44')

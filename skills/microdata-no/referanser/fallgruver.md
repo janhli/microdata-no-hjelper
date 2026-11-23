@@ -484,7 +484,10 @@ Kartlagt fra manualen (`metadata/manual/konfidensialitet.md`, `kommandoer_og_fun
     Testet (versjon 60, 2026-11-23, TESTLISTE 2.9): mot kommunen året etter delingen havnet 93–98 % i riktig
     kommune (Haram 2023: 8 940 av 9 252), og resten ser ut som flytting. Men de to delte grunnkretsene i Stokke
     har 13 % av befolkningen (1 534 i 2016), så Stokke står fortsatt delvis igjen. Si fra om det. Koder som
-    ikke finnes i kodelisten på datoen (1580 Haram i 2023), får ikke navn. Verktøyet lister dem.
+    ikke finnes i kodelisten på datoen (1580 Haram i 2023), får navn med en regel til samme verdi, som
+    verktøyet lager (TESTLISTE 2.10).
+  - **Merkelapp på en kode som ikke fantes:** `recode kommune ('1580' = '1580' 'Haram')` gir navnet, både før
+    og etter at noen har verdien (`replace` etterpå får også navnet). Testet med versjon 60, 2026-11-23.
   - Når Ålesund ble delt i 2024 (Haram ut igjen), kjedes de gamle kodene via navn. Haram 1534 blir 1580,
     og Ørskog, Skodje og Sandøy blir 1508. Verktøyet lister slike valg som «kontroller».
   - **Ålesund 1507 (2020–2023) omkodes helt til 1508, også Haram.** 1.1.2023 fikk 1508 67 525 personer,
