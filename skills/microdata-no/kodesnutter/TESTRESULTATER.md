@@ -27,6 +27,7 @@ innen støyen (f.eks. innvandrere 964 836 mot 964 834, husholdninger koblet til 
 | [lavinntekt_eu60.txt](lavinntekt_eu60.txt) | v60, 2026-11 | – | Kjørt uten feil |
 | [lavinntekt_vedvarende.txt](lavinntekt_vedvarende.txt) | v60, 2026-11 | SSB 09571, 04204, FHI 403 | Stemmer innen 0,3 prosentpoeng (kommunal median: storbyene opptil 0,5 over FHI) |
 | [logistisk_regresjon.txt](logistisk_regresjon.txt) | v60, 2026-11 | Predikert mot observert | Treffer 25–54 år, avvik ±4 prosentpoeng for 55–66 år (se under) |
+| [neet.txt](neet.txt) | v60, 2026-11 | SSB 13556, 12423 | Stemmer innen 0,1 prosentpoeng (status, alder, kjønn, fylke, innvandrere). Utdanningsnivå avviker (se under) |
 | [mal_analyse.txt](mal_analyse.txt) | v60, 2026-11 | – | Kjørt uten feil |
 | [mor_barn.txt](mor_barn.txt) | v60, 2026-11 | – | Kjørt uten feil |
 | [overlevelse.txt](overlevelse.txt) | v60, 2026-11 | Med og uten sensurering (TESTLISTE 8.6) | Sensurering ved utvandring endrer innvandrerkoeffisienten fra −0,242 til −0,209 |
@@ -210,6 +211,39 @@ Bosatte 25–66 år 1.1.2025 (3 076 000), sysselsatt i 4. kvartal 2024 (78,1 %).
 
 Andregradskurven fanger ikke fallet ved 62 år (pensjon). Marginaleffekter mot grunnskole: videregående +17,
 UH lang +29 prosentpoeng. Innvandrer −10,7 og mann +6,4. Cluster på kommune gir z-verdier rundt 50 mot 290 uten.
+
+### neet.txt
+
+NEET 15–29 år, november 2024, mot SSB 13556 og 12423 (hentet fra SSBs API 2026-11-23, kjørt 2026-11-23,
+versjon 60):
+
+| | Snutten | SSB |
+|---|---|---|
+| Personer 15–29 år | 1 044 100 | 1 044 101 |
+| NEET | 102 977 (9,86 %) | 102 976 (9,9 %) |
+| Registrert ledige | 11 659 | 11 656 |
+| AAP/uføretrygd | 27 131 | 27 134 |
+| Andre, ikke på tiltak (ukjent 54 420 + andre 9 765) | 64 185 | 64 186 |
+| 15–19 / 20–24 / 25–29 år | 5,24 / 10,79 / 13,27 % | 5,2 / 10,8 / 13,3 % |
+| Menn / kvinner | 9,97 / 9,75 % | 10,0 / 9,7 % |
+| Innvandrere / resten | 22,72 / 7,30 % | 22,7 / 7,3 % |
+| Grunnskole / vgs / UH / uoppgitt | 14,0 / 6,8 / 5,6 / 16,1 % | 12,9 / 7,5 / 6,9 / 54,4 % |
+
+- Alle 15 fylker innen 0,1 prosentpoeng (Oslo 9,93 mot 9,9, Østfold 11,70 mot 11,7, Finnmark 10,42 mot 10,4).
+- Hovedstatus mot NEET: bare sysselsatte, ordinær utdanning og tiltak (inkl. tiltakspenger, introduksjonsprogram
+  og nedsatt arbeidsevne på tiltak) er utenfor NEET. Dagpenger (1 043) og sykepenger (1 078) er NEET.
+- Ukjent status er 53 % av NEET. Blant innvandrerne er 16,3 % NEET med ukjent status, mot 3,0 % for resten.
+- Utdanningsnivået fra `NUDB_BU` 2024-08-01 treffer ikke 12423. Antall personer per nivå:
+
+  | | Snutten | SSB 12423 | Forskjell |
+  |---|---|---|---|
+  | Grunnskolenivå | 351 190 | 425 984 | −74 794 |
+  | Videregående nivå | 324 039 | 333 069 | −9 030 |
+  | Universitet og høgskole | 263 955 | 277 630 | −13 675 |
+  | Uoppgitt eller ingen | 104 911 | 7 417 | +97 494 |
+
+  SSB har fordelt nesten alle med uoppgitt utdanning på nivåene, 77 % av dem på grunnskole. Trolig fyller SSB inn
+  utdanning som mangler i `NUDB_BU` (f.eks. for innvandrere). Ikke bekreftet.
 
 ### overlevelse.txt
 

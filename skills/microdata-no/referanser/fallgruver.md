@@ -40,6 +40,20 @@ med pull request (se CONTRIBUTING.md). Tagg dem med datalagerversjon/dato hvis d
   `ARBSTATUS_PERS_STATUS8` for prioritert status for alle bosatte 15+ (4. kvartal).
 - Sjekk alltid `fra`/`til` i `metadata/variabler.csv` før du bruker en variabel fra et eldre skript.
 
+### NEET: bruk `ARBSTATUS_PERS_NEET`, ikke en egen definisjon
+- SSBs NEET-variabel (15–29 år, november) traff tabell 13556 innen ±3 personer (versjon 60, 2026-11-23,
+  `kodesnutter/neet.txt`). Importer den først i et tomt datasett, med alder og bosted fra `ARBSTATUS_PERS_ALDER`
+  og `ARBSTATUS_PERS_KOMM_NR` (datoene er den 30.), så populasjonen og gruppene blir som hos SSB.
+- Lager du NEET selv fra `ARBSTATUS_PERS_STATUS8`: bare sysselsatte (0808, 0816, 0832, 1608), ordinær utdanning
+  (4008) og tiltak (3208, 3216 tiltakspenger, 3240 introduksjonsprogram, 4816) er utenfor NEET. Dagpenger (3224)
+  og sykepenger (4808) er NEET. Snutten `arbeidsstyrkestatus.txt` legger dagpenger i «andre», ikke i ledig.
+- Over halvparten av NEET-gruppen har ukjent status (7208).
+- Utdanningsnivå fra `NUDB_BU` gir ikke SSBs fordeling i tabell 12423. 15–29 år, november 2024: 104 911 med
+  uoppgitt utdanning mot 7 417 hos SSB, som har fordelt resten på nivåene (de fleste på grunnskole). Trolig fyller
+  SSB inn utdanning som mangler i registeret. Sammenlign ikke utdanningsfordelinger med SSBs tabeller uten å
+  vise antallet med uoppgitt.
+- Dekker bare til 2024-11-16. Brudd mellom 2014 og 2015.
+
 ### Sektor finnes ikke etter 2019
 - **Symptom:** `REGSYS_FRTK_SEKTOR_2014` har ingen data etter 2019-11-16, og `ARBLONN_FRTK_SEKTOR_2014`
   (jobbnivå, 2015–2026) finnes ikke fra versjon 60.

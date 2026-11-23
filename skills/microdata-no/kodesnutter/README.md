@@ -27,6 +27,7 @@ Hva testene viste, og hvilke tall snuttene er kontrollert mot, står i [TESTRESU
 | [landbakgrunn_region.txt](landbakgrunn_region.txt) | Landbakgrunn gruppert i verdensregioner | testet |
 | [utdanningsniva.txt](utdanningsniva.txt) | Høyeste fullførte utdanning, seks nivåer (NUS) | testet |
 | [arbeidsstyrkestatus.txt](arbeidsstyrkestatus.txt) | Prioritert arbeidsstyrkestatus i åtte grupper | testet |
+| [neet.txt](neet.txt) | NEET (15–29 år utenfor arbeid, utdanning og tiltak) etter hva de gjør, alder, kjønn, fylke, innvandring og utdanning, med SSB-tall (13556, 12423) som fasit | testet |
 | [sektor_lonnstakere.txt](sektor_lonnstakere.txt) | Lønnstakere etter sektor (stat/kommune/privat/offentlig foretak) fra jobbnivå, med arbeidssted. Traff SSB tabell 13926 | **utgått** (variabelen slettet i versjon 60) |
 | [samlivsstatus.txt](samlivsstatus.txt) | Gift / samboer / enslig / bor hos foreldre | testet |
 | [lavinntekt_eu60.txt](lavinntekt_eu60.txt) | Flagg for lavinntekt (EU-60) med egen medianberegning | testet |
@@ -44,7 +45,6 @@ Hva testene viste, og hvilke tall snuttene er kontrollert mot, står i [TESTRESU
 
 - Familietype
 - Pendling (bosted mot arbeidssted)
-- Tilknytning til arbeid, utdanning og velferd (NEET)
 - Sysselsetting fra a-ordningen med statsborgerskap
 
 ## Format
