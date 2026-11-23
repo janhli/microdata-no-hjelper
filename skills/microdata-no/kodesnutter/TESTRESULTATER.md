@@ -149,6 +149,47 @@ Kommunal median i Bærum er 608 500 kr og i Oslo 528 000 kr.
 Kjørt på nytt med versjon 60 (2026-11-19, TESTLISTE 5.6): samme tall innen 0,1 prosentpoeng (Stavanger
 8,8 og 11,5 %).
 
+Avviket i storbyene undersøkt (TESTLISTE 5.7, 2026-11-23). Barn 2022–2024, andel med vedvarende lavinntekt:
+
+| | Snutten | Median over husholdninger | Uten studenthusholdning alle tre år | Studenter med i medianen | Bosted 1.1.2024 | FHI 403 |
+|---|---|---|---|---|---|---|
+| Oslo | 15,4 | 12,7 | 15,6 | 14,6 | 15,4 | 14,9 |
+| Bergen | 9,9 | 8,1 | 9,6 | 9,4 | 9,8 | 9,6 |
+| Trondheim | 8,1 | 6,2 | 8,1 | 7,6 | 8,2 | 7,8 |
+| Stavanger | 11,6 | 9,6 | 11,4 | 11,1 | 11,4 | 11,3 |
+| Bærum | 11,0 | 8,6 | 11,0 | 10,7 | 11,0 | 10,9 |
+| Bodø | 7,8 | 6,3 | 7,9 | 7,4 | 7,8 | 7,5 |
+| Østfold | 11,3 | 9,3 | 10,9 | 11,1 | 11,3 | 11,4 |
+| Landet | 10,1 | 8,4 | 10,0 | 9,8 | 10,1 | 10,1 |
+
+- Medianen er over personer, ikke husholdninger (husholdningsmedianen er 5–8 % lavere overalt og gir for lave
+  andeler). FHIs «medianinntekt for husholdninger» betyr husholdningsinntekten.
+- Bostedsdatoen betyr nesten ingenting.
+- Med studenthusholdningene i medianen (`INNTEKT_KODE_PRIVATHUSH1`) faller medianen mest i studentbyene (Oslo
+  −8 400 kr, Trondheim −9 200, Bodø −3 200), men den varianten bommer for alle aldre (se under).
+
+Alle aldre og aldersgrupper (runde 3, mot FHI 403 hentet fra det åpne API-et
+`statistikk-data.fhi.no/api/open/v1/nokkel/Table/403`):
+
+| | Alle aldre: snutten | Studenter i medianen | FHI | 18–24: snutten | FHI | 75+: snutten | FHI |
+|---|---|---|---|---|---|---|---|
+| Landet | 9,6 | 9,2 | 9,6 | 15,8 | 16,1 | 11,0 | 10,2 |
+| Oslo | 14,5 | 13,8 | 14,4 | 28,4 | 28,2 | 13,8 | 13,0 |
+| Bergen | 10,8 | 10,2 | 10,6 | 18,8 | 19,0 | 11,6 | 10,4 |
+| Trondheim | 9,9 | 9,2 | 9,7 | 19,1 | 19,3 | 10,6 | 9,2 |
+| Stavanger | 11,7 | 11,3 | 11,6 | 20,7 | 20,7 | 13,9 | 12,9 |
+| Bærum | 13,4 | 13,0 | 13,3 | 22,2 | 22,2 | 17,0 | 16,1 |
+| Bodø | 8,1 | 7,8 | 8,1 | 13,9 | 14,4 | 9,4 | 8,9 |
+| Østfold | 8,7 | 8,4 | 8,7 | | | | |
+
+- **Grensen i snutten er riktig:** for alle aldre og for 18–24 år treffer snutten FHI innen 0,2 prosentpoeng.
+  Med studentene i medianen bommer den med 0,3–0,6.
+- Avviket for barn i storbyene (opptil 0,5) ligger i hvordan barna telles (FHI: «gjennomsnittlig årlig antall»),
+  ikke i grensen.
+- 75+ ligger 0,5–1,4 prosentpoeng over FHI overalt. FHI bruker NAV-data for å finne flere institusjonsbeboere,
+  som trolig holder flere eldre utenfor. Ikke undersøkt.
+Skript: `testskript/del5_7_lavinntekt_storbyer.txt`, `del5_7b_lavinntekt_storbyer.txt` og `del5_7c_lavinntekt_aldre.txt`.
+
 Rettet etter kjøring: `merge` ble kjørt fra feil datasett, og KPI-faktorene for 2023 og 2024 var feil.
 
 ### logistisk_regresjon.txt

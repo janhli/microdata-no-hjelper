@@ -1,0 +1,122 @@
+// =====================================================================
+// Testskript: TESTLISTE 5.7 (vedvarende lavinntekt, kommunal median: hvorfor storbyene ligger over FHI)
+// Laget:      2026-11-23, kjørt 2026-11-23 (versjon 60). Resultat i TESTLISTE 5.7
+// Versjon:    no.ssb.fdb:60, anonymiseringstiltak versjon 2
+// Variabler:  https://microdata.no/discovery/variable/no.ssb.fdb/60/INNTEKT_HUSH_IES_EU
+//             https://microdata.no/discovery/variable/no.ssb.fdb/60/INNTEKT_KODE_PRIVATHUSH2
+//             https://microdata.no/discovery/variable/no.ssb.fdb/60/INNTEKT_HUSHNR
+//             https://microdata.no/discovery/variable/no.ssb.fdb/60/BEFOLKNING_KOMMNR_FORMELL
+//             https://microdata.no/discovery/variable/no.ssb.fdb/60/BEFOLKNING_FOEDSELS_AAR_MND
+// Bakgrunn:   lavinntekt_vedvarende.txt (kommunal median, barn 2022–2024) ligger 0,1–0,5 prosentpoeng over
+//             FHI nøkkeltall-tabell 403 i storbyene (Oslo 15,4 mot 14,9), men treffer landet og fylkene.
+//             FHI-definisjonen (statistikk-data.fhi.no, metadata for tabell 403): «kommunens medianinntekt
+//             for husholdninger», «Studenthusholdninger er ikke inkludert», folkeregistrert adresse.
+//             Snutten bruker medianen over personer, og krever privathusholdning (uten studenthusholdninger)
+//             bare siste år.
+// Varianter:  A snutten (median over personer, privathusholdning 2024)
+//             B median over husholdninger (én verdi per husholdning i 2024)
+//             C median over personer, privathusholdning alle tre årene (studenthusholdninger ute hele perioden)
+//             D både B og C
+// FHI 403:    Oslo 14,9, Bergen 9,6, Trondheim 7,8, Stavanger 11,3, Bærum 10,9, Bodø 7,5, Østfold 11,4, landet 10,1
+// Rekkefølge: A og C først (bare aggregate). B og D bruker collapse til husholdning og merge på
+//             husholdningsnummeret, som er det mest usikre.
+// =====================================================================
+
+require no.ssb.fdb:60 as fdb
+
+textblock
+# Vedvarende lavinntekt med kommunal median: fire varianter mot FHI (TESTLISTE 5.7)
+Barn 0–17 år, 2022–2024, EU-60 av medianen i bostedskommunen 1.1.2025. Andelene er gjennomsnitt av 0/1,
+altså andel av barna som er med i hver variant.
+endblock
+
+create-dataset vedvarende
+for aar in 2022 : 2024
+  let dato = $aar ++ "-12-31"
+  let ivar = ies ++ $aar
+  let pvar = ph ++ $aar
+  import fdb/INNTEKT_HUSH_IES_EU $dato as $ivar
+  import fdb/INNTEKT_KODE_PRIVATHUSH2 $dato as $pvar
+end
+keep if ph2024 == '1'
+drop if sysmiss(ies2022) | sysmiss(ies2023) | sysmiss(ies2024)
+// KPI, årsgjennomsnitt (2015 = 100), SSB tabell 03014: 2022 = 122.8, 2023 = 129.6, 2024 = 133.6
+generate snitt3 = (ies2022 * 133.6 / 122.8 + ies2023 * 133.6 / 129.6 + ies2024) / 3
+import fdb/BEFOLKNING_KOMMNR_FORMELL 2025-01-01 as kommune_slutt
+import fdb/INNTEKT_HUSHNR 2024-12-31 as hushnr
+
+// C og D: bare personer i privathusholdning (ikke studenthusholdning) alle tre årene
+generate alle3 = 0
+replace alle3 = 1 if ph2022 == '1' & ph2023 == '1'
+generate snitt3c = snitt3 if alle3 == 1
+
+// A og C: median over personer
+aggregate (median) snitt3 -> medA, by(kommune_slutt)
+aggregate (median) snitt3c -> medC, by(kommune_slutt)
+
+// B og D: median over husholdninger
+generate kommnum = kommune_slutt
+destring kommnum
+clone-dataset vedvarende hush
+use hush
+collapse (median) snitt3 -> hs (median) snitt3c -> hsc (max) kommnum, by(hushnr)
+aggregate (median) hs -> medB, by(kommnum)
+aggregate (median) hsc -> medD, by(kommnum)
+merge medB medD into vedvarende on hushnr
+use vedvarende
+delete-dataset hush
+
+generate vA = 0
+replace vA = 1 if snitt3 < 0.6 * medA
+generate vB = 0 if !sysmiss(medB)
+replace vB = 1 if !sysmiss(medB) & snitt3 < 0.6 * medB
+generate vC = 0 if alle3 == 1
+replace vC = 1 if alle3 == 1 & snitt3 < 0.6 * medC
+generate vD = 0 if alle3 == 1 & !sysmiss(medD)
+replace vD = 1 if alle3 == 1 & !sysmiss(medD) & snitt3 < 0.6 * medD
+
+// Barn 0–17 år bosatt 1.1.2025
+create-dataset barn
+import fdb/BEFOLKNING_KOMMNR_FORMELL 2025-01-01 as kommune
+import fdb/BEFOLKNING_FOEDSELS_AAR_MND as faarmnd
+generate alder = 2024 - int(faarmnd/100)
+keep if alder >= 0 & alder <= 17
+generate fylke = substr(kommune, 1, 2)
+generate landet = 1
+use vedvarende
+merge medA medB medC medD vA vB vC vD into barn
+delete-dataset vedvarende
+use barn
+
+textblock
+## Test 5.7.a: kommunal median (kroner per forbruksenhet), personer mot husholdninger
+**Forventet hvis husholdningsmedianen forklarer avviket:** B lavere enn A, mest i Oslo, Bergen og
+Trondheim (mange som bor alene), og nesten likt i Bodø og Bærum. Snutten ga Oslo 528 000, Bærum 608 500.
+endblock
+tabulate kommune if inlist(kommune, '0301', '4601', '5001', '1103', '3201', '1804'), summarize(medA) mean
+tabulate kommune if inlist(kommune, '0301', '4601', '5001', '1103', '3201', '1804'), summarize(medB) mean
+
+textblock
+## Test 5.7.b: andel barn i vedvarende lavinntekt, fire varianter
+**Fasit (FHI 403):** Oslo 14,9, Bergen 9,6, Trondheim 7,8, Stavanger 11,3, Bærum 10,9, Bodø 7,5.
+A skal gi det samme som snutten (Oslo 15,4, Bergen 9,9, Trondheim 8,1, Stavanger 11,5, Bærum 11,0, Bodø 7,7).
+Den varianten som treffer FHI i alle seks, er trolig FHIs metode.
+endblock
+tabulate kommune if inlist(kommune, '0301', '4601', '5001', '1103', '3201', '1804'), summarize(vA) mean
+tabulate kommune if inlist(kommune, '0301', '4601', '5001', '1103', '3201', '1804'), summarize(vB) mean
+tabulate kommune if inlist(kommune, '0301', '4601', '5001', '1103', '3201', '1804'), summarize(vC) mean
+tabulate kommune if inlist(kommune, '0301', '4601', '5001', '1103', '3201', '1804'), summarize(vD) mean
+
+textblock
+## Test 5.7.c: Østfold og landet
+**Fasit (FHI 403):** Østfold 11,4, landet 10,1. A ga 11,3 og 10,1. Varianten som er riktig, skal ikke
+bomme her heller.
+endblock
+tabulate fylke if fylke == '31', summarize(vA) mean
+tabulate fylke if fylke == '31', summarize(vB) mean
+tabulate fylke if fylke == '31', summarize(vC) mean
+tabulate fylke if fylke == '31', summarize(vD) mean
+tabulate landet, summarize(vA) mean
+tabulate landet, summarize(vB) mean
+tabulate landet, summarize(vC) mean
+tabulate landet, summarize(vD) mean

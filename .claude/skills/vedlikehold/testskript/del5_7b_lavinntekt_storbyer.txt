@@ -1,0 +1,101 @@
+// =====================================================================
+// Testskript: TESTLISTE 5.7, runde 2 (vedvarende lavinntekt, kommunal median, storbyene mot FHI 403)
+// Laget:      2026-11-23, kjørt 2026-11-23 (versjon 60). Resultat i TESTLISTE 5.7
+// Versjon:    no.ssb.fdb:60, anonymiseringstiltak versjon 2
+// Variabler:  https://microdata.no/discovery/variable/no.ssb.fdb/60/INNTEKT_HUSH_IES_EU
+//             https://microdata.no/discovery/variable/no.ssb.fdb/60/INNTEKT_KODE_PRIVATHUSH1
+//             https://microdata.no/discovery/variable/no.ssb.fdb/60/INNTEKT_KODE_PRIVATHUSH2
+//             https://microdata.no/discovery/variable/no.ssb.fdb/60/BEFOLKNING_KOMMNR_FORMELL
+//             https://microdata.no/discovery/variable/no.ssb.fdb/60/BEFOLKNING_FOEDSELS_AAR_MND
+// Bakgrunn:   Runde 1 (del5_7_lavinntekt_storbyer.txt): median over husholdninger ga for lave andeler overalt,
+//             og privathusholdning alle tre år forklarte ikke storbyene. Snutten (A) bruker medianen over
+//             personer i privathusholdning uten studenthusholdninger (PRIVATHUSH2) 2024, og bosted 1.1.2025.
+// Varianter:  A snutten
+//             E studenthusholdningene er med i medianen (PRIVATHUSH1), men ikke blant dem som telles
+//             F bosted 1.1.2024 i stedet for 1.1.2025, både for medianen og for barna
+// FHI 403:    Oslo 14,9, Bergen 9,6, Trondheim 7,8, Stavanger 11,3, Bærum 10,9, Bodø 7,5, Østfold 11,4, landet 10,1
+// Runde 1, A: Oslo 15,4, Bergen 9,9, Trondheim 8,1, Stavanger 11,6, Bærum 11,0, Bodø 7,8, Østfold 11,3, landet 10,1
+// =====================================================================
+
+require no.ssb.fdb:60 as fdb
+
+textblock
+# Vedvarende lavinntekt med kommunal median, runde 2 (TESTLISTE 5.7)
+Barn 0–17 år, 2022–2024, EU-60. A er snutten, E har studenthusholdningene med i medianen, F bruker
+bosted 1.1.2024.
+endblock
+
+create-dataset vedvarende
+for aar in 2022 : 2024
+  let dato = $aar ++ "-12-31"
+  let ivar = ies ++ $aar
+  import fdb/INNTEKT_HUSH_IES_EU $dato as $ivar
+end
+import fdb/INNTEKT_KODE_PRIVATHUSH1 2024-12-31 as ph1
+import fdb/INNTEKT_KODE_PRIVATHUSH2 2024-12-31 as ph2
+// PRIVATHUSH1 har med studenthusholdningene, PRIVATHUSH2 ikke
+keep if ph1 == '1'
+drop if sysmiss(ies2022) | sysmiss(ies2023) | sysmiss(ies2024)
+// KPI, årsgjennomsnitt (2015 = 100), SSB tabell 03014: 2022 = 122.8, 2023 = 129.6, 2024 = 133.6
+generate snitt3 = (ies2022 * 133.6 / 122.8 + ies2023 * 133.6 / 129.6 + ies2024) / 3
+generate snitt3a = snitt3 if ph2 == '1'
+import fdb/BEFOLKNING_KOMMNR_FORMELL 2025-01-01 as kommune_slutt
+import fdb/BEFOLKNING_KOMMNR_FORMELL 2024-01-01 as kommune_f
+
+// A: personer uten studenthusholdninger, bosted 1.1.2025
+aggregate (median) snitt3a -> medA, by(kommune_slutt)
+// E: personer med studenthusholdninger
+aggregate (median) snitt3 -> medE, by(kommune_slutt)
+// F: som A, bosted 1.1.2024
+aggregate (median) snitt3a -> medF, by(kommune_f)
+
+// Bare personer uten studenthusholdning telles (som i snutten)
+generate vA = 0 if ph2 == '1'
+replace vA = 1 if ph2 == '1' & snitt3 < 0.6 * medA
+generate vE = 0 if ph2 == '1'
+replace vE = 1 if ph2 == '1' & snitt3 < 0.6 * medE
+generate vF = 0 if ph2 == '1' & !sysmiss(kommune_f)
+replace vF = 1 if ph2 == '1' & !sysmiss(kommune_f) & snitt3 < 0.6 * medF
+
+// Barn 0–17 år (alder ved utgangen av 2024)
+create-dataset barn
+import fdb/BEFOLKNING_FOEDSELS_AAR_MND as faarmnd
+generate alder = 2024 - int(faarmnd/100)
+keep if alder >= 0 & alder <= 17
+import fdb/BEFOLKNING_KOMMNR_FORMELL 2025-01-01 as kommune
+import fdb/BEFOLKNING_KOMMNR_FORMELL 2024-01-01 as kommune24
+generate fylke = substr(kommune, 1, 2)
+generate fylke24 = substr(kommune24, 1, 2)
+generate landet = 1
+use vedvarende
+merge medA medE medF vA vE vF into barn
+delete-dataset vedvarende
+use barn
+
+textblock
+## Test 5.7.d: kommunal median, A mot E
+**Forventet hvis studentene er med i FHIs median:** E lavere enn A i Oslo, Bergen og Trondheim, nesten
+likt i Bærum og Bodø. A var Oslo 527 983, Bergen 515 525, Trondheim 514 577.
+endblock
+tabulate kommune if inlist(kommune, '0301', '4601', '5001', '1103', '3201', '1804'), summarize(medA) mean
+tabulate kommune if inlist(kommune, '0301', '4601', '5001', '1103', '3201', '1804'), summarize(medE) mean
+
+textblock
+## Test 5.7.e: andel barn, A, E og F
+**Fasit (FHI 403):** Oslo 14,9, Bergen 9,6, Trondheim 7,8, Stavanger 11,3, Bærum 10,9, Bodø 7,5.
+F er tabulert etter bosted 1.1.2024.
+endblock
+tabulate kommune if inlist(kommune, '0301', '4601', '5001', '1103', '3201', '1804'), summarize(vA) mean
+tabulate kommune if inlist(kommune, '0301', '4601', '5001', '1103', '3201', '1804'), summarize(vE) mean
+tabulate kommune24 if inlist(kommune24, '0301', '4601', '5001', '1103', '3201', '1804'), summarize(vF) mean
+
+textblock
+## Test 5.7.f: Østfold og landet
+**Fasit (FHI 403):** Østfold 11,4, landet 10,1.
+endblock
+tabulate fylke if fylke == '31', summarize(vA) mean
+tabulate fylke if fylke == '31', summarize(vE) mean
+tabulate fylke24 if fylke24 == '31', summarize(vF) mean
+tabulate landet, summarize(vA) mean
+tabulate landet, summarize(vE) mean
+tabulate landet, summarize(vF) mean

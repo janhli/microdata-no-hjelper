@@ -23,7 +23,10 @@
 //            Kommunal median, barn 2022–2024, mot FHI (nøkkeltall-tabell 403, EU60 kommunal median, versjon 60):
 //            landet 10,1 mot 10,1 %, alle fylker innen 0,25 prosentpoeng (Østfold 11,3 mot 11,4). Storbyene
 //            ligger litt over: Oslo 15,4 mot 14,9, Bergen 9,9 mot 9,6, Trondheim 8,1 mot 7,8, Bærum 11,0 mot
-//            10,9. Kommunal median i Bærum 608 500, Oslo 528 000 kr.
+//            10,9. Kommunal median i Bærum 608 500, Oslo 528 000 kr. Avviket i storbyene er undersøkt
+//            (TESTLISTE 5.7): grensen er riktig, for alle aldre treffer snutten FHI innen 0,2 (Oslo 14,5 mot
+//            14,4). Avviket gjelder bare tellingen av barn. 75+ ligger 0,5–1,4 over (trolig institusjonsbeboere).
+//            Se kodesnutter/TESTRESULTATER.md.
 // Fallgruver:
 //   - Medianen beregnes for alle som er med i alle tre årene, ikke for din populasjon (f.eks. barna).
 //   - Nasjonal median er SSBs standard (Statistikkbanken). Kommunal median finnes hos FHI

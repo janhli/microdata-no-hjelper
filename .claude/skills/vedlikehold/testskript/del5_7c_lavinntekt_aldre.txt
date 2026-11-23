@@ -1,0 +1,86 @@
+// =====================================================================
+// Testskript: TESTLISTE 5.7, runde 3 (vedvarende lavinntekt, kommunal median, alle aldre mot FHI 403)
+// Laget:      2026-11-23, kjørt 2026-11-23 (versjon 60). Resultat i TESTLISTE 5.7
+// Versjon:    no.ssb.fdb:60, anonymiseringstiltak versjon 2
+// Variabler:  https://microdata.no/discovery/variable/no.ssb.fdb/60/INNTEKT_HUSH_IES_EU
+//             https://microdata.no/discovery/variable/no.ssb.fdb/60/INNTEKT_KODE_PRIVATHUSH1
+//             https://microdata.no/discovery/variable/no.ssb.fdb/60/INNTEKT_KODE_PRIVATHUSH2
+//             https://microdata.no/discovery/variable/no.ssb.fdb/60/BEFOLKNING_KOMMNR_FORMELL
+//             https://microdata.no/discovery/variable/no.ssb.fdb/60/BEFOLKNING_FOEDSELS_AAR_MND
+// Bakgrunn:   For barn ligger snutten (A) 0,1–0,5 prosentpoeng over FHI i storbyene, og varianten med
+//             studenthusholdningene i medianen (E) 0,1–0,3 under overalt. Hvis avviket også finnes for alle
+//             aldre, ligger det i medianen (grensen). Finnes det bare for barn, ligger det i hvordan barna telles.
+// Fasit:      FHI/Helsedirektoratet nøkkeltall-tabell 403, EU60 kommunal median, 2022–2024, andel (prosent),
+//             hentet fra statistikk-data.fhi.no/api/open/v1/nokkel/Table/403 2026-11-23:
+//                         alle aldre  0-17  18-24  25+   75+
+//             Landet         9,6      10,1  16,1   8,8  10,2
+//             Oslo          14,4      14,9  28,2  13,2  13,0
+//             Bergen        10,6       9,6  19,0  10,0  10,4
+//             Trondheim      9,7       7,8  19,3   9,1   9,2
+//             Stavanger     11,6      11,3  20,7  10,8  12,9
+//             Bærum         13,3      10,9  22,2  13,2  16,1
+//             Bodø           8,1       7,5  14,4   7,7   8,9
+//             Østfold        8,7      11,4  15,3   7,4   7,0
+// Populasjon: personer i privathusholdning uten studenthusholdninger 2024, med inntekt alle tre årene,
+//             bosatt 1.1.2025, alder ved utgangen av 2024 (som snutten)
+// =====================================================================
+
+require no.ssb.fdb:60 as fdb
+
+textblock
+# Vedvarende lavinntekt med kommunal median etter alder (TESTLISTE 5.7, runde 3)
+A er snutten (medianen uten studenthusholdninger), E har studenthusholdningene med i medianen. Begge teller
+bare personer uten studenthusholdning. Tallene er andeler (0,144 = 14,4 %).
+endblock
+
+create-dataset vedvarende
+for aar in 2022 : 2024
+  let dato = $aar ++ "-12-31"
+  let ivar = ies ++ $aar
+  import fdb/INNTEKT_HUSH_IES_EU $dato as $ivar
+end
+import fdb/INNTEKT_KODE_PRIVATHUSH1 2024-12-31 as ph1
+import fdb/INNTEKT_KODE_PRIVATHUSH2 2024-12-31 as ph2
+keep if ph1 == '1'
+drop if sysmiss(ies2022) | sysmiss(ies2023) | sysmiss(ies2024)
+// KPI, årsgjennomsnitt (2015 = 100), SSB tabell 03014: 2022 = 122.8, 2023 = 129.6, 2024 = 133.6
+generate snitt3 = (ies2022 * 133.6 / 122.8 + ies2023 * 133.6 / 129.6 + ies2024) / 3
+generate snitt3a = snitt3 if ph2 == '1'
+import fdb/BEFOLKNING_KOMMNR_FORMELL 2025-01-01 as kommune
+aggregate (median) snitt3a -> medA, by(kommune)
+aggregate (median) snitt3 -> medE, by(kommune)
+generate vA = 0 if ph2 == '1'
+replace vA = 1 if ph2 == '1' & snitt3 < 0.6 * medA
+generate vE = 0 if ph2 == '1'
+replace vE = 1 if ph2 == '1' & snitt3 < 0.6 * medE
+
+import fdb/BEFOLKNING_FOEDSELS_AAR_MND as faarmnd
+generate alder = 2024 - int(faarmnd/100)
+generate aldgr = '4 25-74'
+replace aldgr = '1 0-17' if alder <= 17
+replace aldgr = '2 18-24' if alder >= 18 & alder <= 24
+replace aldgr = '5 75+' if alder >= 75
+replace aldgr = '9 ukjent' if sysmiss(alder)
+generate fylke = substr(kommune, 1, 2)
+generate landet = 1
+
+textblock
+## Test 5.7.g: alle aldre
+**Forventet hvis avviket ligger i medianen:** A over FHI også for alle aldre i Oslo, Bergen og Trondheim
+(FHI 14,4, 10,6 og 9,7), og E nærmere. **Hvis det ligger i tellingen av barn:** A treffer FHI for alle aldre.
+endblock
+tabulate kommune if inlist(kommune, '0301', '4601', '5001', '1103', '3201', '1804'), summarize(vA) mean
+tabulate kommune if inlist(kommune, '0301', '4601', '5001', '1103', '3201', '1804'), summarize(vE) mean
+tabulate fylke if fylke == '31', summarize(vA) mean
+tabulate fylke if fylke == '31', summarize(vE) mean
+tabulate landet, summarize(vA) mean
+tabulate landet, summarize(vE) mean
+
+textblock
+## Test 5.7.h: etter aldersgruppe
+Gruppen 25–74 finnes ikke i FHI-tabellen (25+ og 75+ gjør). 18–24 er studentalderen: der skiller A og E mest.
+endblock
+tabulate kommune aldgr if inlist(kommune, '0301', '4601', '5001', '1103', '3201', '1804'), summarize(vA) mean
+tabulate kommune aldgr if inlist(kommune, '0301', '4601', '5001', '1103', '3201', '1804'), summarize(vE) mean
+tabulate landet aldgr, summarize(vA) mean
+tabulate landet aldgr, summarize(vE) mean
