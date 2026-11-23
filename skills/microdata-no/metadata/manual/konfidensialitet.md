@@ -14,7 +14,7 @@ Dette vedlegget vil beskrive de tiltakene som er implementert for å ivareta kon
 
 De tiltakene som er beskrevet nedenfor er de som er implementert så langt. Det vil kunne komme flere tiltak etter hvert eller også justeringer av de tiltakene som er beskrevet nedenfor. Dette vedlegget vil bli oppdatert når det kommer endringer.
 
-## Tiltak 1: Minste populasjonsstørrelse
+## Tiltak 1: Minste populasjonsstørrelse Justering
 
 Det er ikke tillatt å opprette et datasett med populasjon under 100 personer. Om dette skjer, vises en feilmelding og brukeren blir stoppet fra å gå videre. Tidligere (tiltaksversjon 1) var grensen satt til 1000.
 
@@ -81,7 +81,7 @@ Winsorisering vil også utføres på analysedatasettet forut for beregninger av 
 
 Winsorisering fører til at rapporterte gjennomsnitts- og standardavvikverdier blir noe lavere enn de sanne verdier. Dette kommer imidlertid an på hvordan frekvensfordelingen er. Ved fordelinger som likner på normalfordeling, eller som har korte venstre- og høyrehaler, vil avvikene fra sanne verdier være lave (slike fordelinger har få ekstremverdier som blir sensurert gjennom dette tiltaket).
 
-Også regresjoner blir påvirket av dette tiltaket dersom man har innslag av kontinuerlige variabler med fordelingsskjevhet (lange høyre- og/eller ventrahaler). Men på den andre siden vil tiltaket også ha ønskede effekter: Man fjerner i praksis ekstremverdier («outliers»). Dette er vanligvis uønskede datapunkter når man vil kjøre regresjonsanalyser, siden de ødelegger mønsteret når man skal tilpasse en regresjonslinje til alle datapunktene. Det samme gjelder korrelasjonsmål (kommandoen `correlate`): Ved å fjerne outliers, vil man se bort fra variasjon som skyldes ekstremverdier, noe som vil kunne bidra til høyere korrelasjonsverdi.
+Også regresjoner blir påvirket av dette tiltaket dersom man har innslag av kontinuerlige variabler med fordelingsskjevhet (lange høyre- og/eller venstrehaler). Men på den andre siden vil tiltaket også ha ønskede effekter: Man fjerner i praksis ekstremverdier («outliers»). Dette er vanligvis uønskede datapunkter når man vil kjøre regresjonsanalyser, siden de ødelegger mønsteret når man skal tilpasse en regresjonslinje til alle datapunktene. Det samme gjelder korrelasjonsmål (kommandoen `correlate`): Ved å fjerne outliers, vil man se bort fra variasjon som skyldes ekstremverdier, noe som vil kunne bidra til høyere korrelasjonsverdi.
 
 ## Tiltak 3: Frekvensstøy Justering
 
