@@ -43,6 +43,12 @@ kommunen har det (Hábmer - Hamarøy). `--norske-navn` gir bare det norske navne
 og lar dem stå uendret. Si fra til brukeren om disse, og om «koder som selv ble delt» (Ålesund 1507 i
 2020–2023 omkodes til 1508, også Haram). Se også «Geografi» i `referanser/fallgruver.md`.
 
+Fra 1990 kan personene i delte kommuner fordeles etter grunnkrets: importer `BEFOLKNING_GRUNNKRETS` på
+samme dato som kommunen og legg til `--grunnkrets <variabel>`. Verktøyet lager da i tillegg regler for
+grunnkretsene i de delte kommunene og en `replace`. Grunnkretsene skifter kode med kommunenummeret, så
+`--fra` må være året dataene er fra, og hvert år trenger sin egen kjøring. Grunnkretser som selv er delt,
+og uoppgitt grunnkrets, beholder kommunekoden og står listet i utskriften.
+
 For å gruppere kommuner i regioner (helseregion, politidistrikt, økonomisk region osv.): kjør
 `python verktoy/regionomkoding.py <inndeling> --fra <kommunevariabel> --til <ny variabel>`
 (`--liste` viser inndelingene). Tabellene gjelder kommunenummer i 2024-inndelingen, så omkod gamle

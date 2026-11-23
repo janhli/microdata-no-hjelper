@@ -7,6 +7,7 @@ Eksempler (fra prosjektmappen):
   python verktoy/kommuneomkoding.py                          # 1989 -> 2024, variabel 'kommune'
   python verktoy/kommuneomkoding.py --fra 2015 --til 2024 --navn bosted
   python verktoy/kommuneomkoding.py --til 2020 --splitt forste
+  python verktoy/kommuneomkoding.py --fra 2015 --til 2024 --grunnkrets gk   # delte kommuner etter grunnkrets
 
 Hvordan det virker:
   * Hver kommunekode følges gjennom alle endringer i perioden. Kodene fra Klass-endringene er
@@ -19,6 +20,11 @@ Hvordan det virker:
   * Kommunene det omkodes til får navnet de har i inndelingen (merkelapp), så de nye kodene får navn
     også i gamle årganger, der kodelisten på datoen ikke har dem. --norske-navn tar bort samiske og
     kvenske navn (Hábmer - Hamarøy -> Hamarøy).
+  * Med --grunnkrets VAR fordeles personene i delte kommuner (og koder valgt ved navn eller som selv ble
+    delt) etter grunnkretsen 1.1. i --fra-året. Hver grunnkrets følges gjennom endringene i Klass 1 frem
+    til --til, og de fire første sifrene er kommunen. Utskriften får en hjelpevariabel <navn>_gk med regler
+    bare for grunnkretsene som får en annen kommune enn recode gir, og en replace. Grunnkretser som selv er
+    delt mellom kommuner, og uoppgitt (kkkk9999), beholder kommunekoden.
   * recode-linjene lages av verktoy/recode_regler.py. Er en kode både kilde og mål, samles de reglene
     i én kommando, så ingen verdi omkodes to ganger.
 """
@@ -142,6 +148,28 @@ def bygg(d, fra, til):
     return kart, delt, antatt, kandidater, helt, malnavn
 
 
+def grunnkrets_fordeling(d, aar, til, kommuner):
+    """Fordeler grunnkretsene i kommunene (koder gyldige 1.1.aar) på kommunene i inndelingen til.
+
+    Returnerer (kart, delt, antall): kart[grunnkrets] = kommune, delt = grunnkretser som selv er delt mellom
+    flere kommuner (eller havner i en kode som ikke er en kommune i inndelingen), antall = grunnkretser i alt.
+    """
+    import grunnkrets as gk  # noqa: PLC0415 (trengs bare med --grunnkrets)
+
+    koder = gk.kodeliste_aar(gk.kodelister(), aar)
+    per_dato = gk.les_endringer()
+    gyldige = set(koder_ved(d, f"{til + 1}-01-01"))
+    kart, delt, antall = {}, [], 0
+    for kode in sorted(k for k in koder if len(k) == 8 and k[:4] in kommuner and not k.endswith("9999")):
+        antall += 1
+        maal = {n[:4] for n in gk.folg(kode, f"{aar}-01-01", per_dato, f"{til}-12-31")}
+        if len(maal) == 1 and maal <= gyldige:
+            kart[kode] = maal.pop()
+        else:
+            delt.append(kode)
+    return kart, delt, antall
+
+
 def main():
     sys.stdout.reconfigure(encoding="utf-8")
     ap = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
@@ -152,11 +180,16 @@ def main():
                     help="bare norsk navn i merkelappene (Hamarøy, ikke Hábmer - Hamarøy)")
     ap.add_argument("--splitt", choices=["behold", "forste"], default="behold",
                     help="koder som er delt i flere kommuner: behold uendret, eller bruk første kandidat")
+    ap.add_argument("--grunnkrets", metavar="VAR",
+                    help="fordel personene i delte kommuner etter grunnkrets: variabelen med BEFOLKNING_GRUNNKRETS "
+                         "importert 1.1. i --fra-året (fra 1990)")
     a = ap.parse_args()
 
     d = last()
     if a.fra < int(d["fra"][:4]):
         sys.exit(f"--fra kan ikke være før {d['fra'][:4]}. Henter fra Klass er satt til {d['fra']}.")
+    if a.grunnkrets and a.fra < 1990:
+        sys.exit("--grunnkrets krever --fra 1990 eller senere (BEFOLKNING_GRUNNKRETS starter 1990).")
     fra, til = f"{a.fra}-01-01", f"{a.til}-12-31"
     siste = max(e["dato"] for e in d["endringer"])
     if a.til > int(siste[:4]):
@@ -195,6 +228,37 @@ def main():
             out.append(f"//   {k} {kand[k][1]}: {dato[:4]} delt i " + ", ".join(f"{x} {n}" for x, n in deler)
                        + f", satt til {kart.get(k, m)}")
     out += recode_linjer(a.navn, kart, malnavn)
+
+    if a.grunnkrets:
+        ved_start = koder_ved(d, fra)
+        berort = {k for k in set(delt) | set(helt) | set(antatt) if k in ved_start}
+        gkart, gdelt, gantall = grunnkrets_fordeling(d, a.fra, a.til, berort)
+        # Grunnkretser som havner i den kommunen recode over allerede gir, trenger ingen regel.
+        endret = {g: m for g, m in gkart.items() if m != kart.get(g[:4], g[:4])}
+        hjelp = f"{a.navn}_gk"
+        out.append(f"// Grunnkrets: personene i {len(berort)} kommuner som er delt eller valgt ved navn, fordeles etter "
+                   f"grunnkretsen ({a.grunnkrets}, 1.1.{a.fra}). Kilde: SSB Klass 1.")
+        out.append(f"// Gjelder bare data fra 1.1.{a.fra}: grunnkretskodene skifter med kommunenummeret. Kjør på nytt "
+                   "for hvert år.")
+        if berort:
+            out.append("//   " + ", ".join(f"{k} {ved_start[k]}" for k in sorted(berort)))
+        out.append(f"// {len(gkart)} av {gantall} grunnkretser (uten uoppgitt) får kommune, {len(endret)} av dem en annen "
+                   "enn recode over gir. Uoppgitt (kkkk9999)"
+                   + (f" og {len(gdelt)} grunnkretser som selv er delt mellom kommuner" if gdelt else "")
+                   + " beholder kommunekoden fra recode over.")
+        if gdelt:
+            out.append("//   Delte grunnkretser: " + " ".join(gdelt[:12]) + (" ..." if len(gdelt) > 12 else ""))
+        uten_navn = sorted(set(endret.values()) - set(malnavn) - set(ved_start))
+        if uten_navn:
+            # Kodelisten på datoen har ikke disse kodene, og recode over gir dem ikke navn (1580 Haram fra 2023).
+            nye = koder_ved(d, f"{a.til + 1}-01-01")
+            out.append("// Uten navn i tabellen (finnes ikke i kodelisten 1.1." + f"{a.fra}): "
+                       + ", ".join(f"{k} {nye.get(k, '')}".strip() for k in uten_navn))
+        if endret:
+            out.append(f"generate {hjelp} = {a.grunnkrets}")
+            out += recode_linjer(hjelp, endret)
+            out.append(f"replace {a.navn} = {hjelp} if length({hjelp}) == 4")
+            out.append(f"drop {hjelp}")
     print("\n".join(out))
 
 

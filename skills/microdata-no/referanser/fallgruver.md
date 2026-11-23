@@ -477,7 +477,14 @@ Kartlagt fra manualen (`metadata/manual/konfidensialitet.md`, `kommandoer_og_fun
 - Bruk `python verktoy/kommuneomkoding.py` til å lage `recode` fra gamle til nyere inndeling
   (data: SSB Klass 131 i `metadata/kommuneendringer.json`). Fallgruver:
   - Delte kommuner (Varteig 0114, Stokke 0720, Snillfjord 1613 og 5012, Tysfjord 1850) kan ikke
-    omkodes uten adresse. Verktøyet lar dem stå uendret, og de vises som gamle koder i tabellen.
+    omkodes på kommunekoden alene. Verktøyet lar dem stå uendret, og de vises som gamle koder i tabellen.
+    Fra 1990 fordeler `--grunnkrets <variabel>` personene etter grunnkretsen på samme dato (`BEFOLKNING_GRUNNKRETS`,
+    Klass 1). Det gjelder også Ålesund/Haram 2020–2023 og kommuner valgt ved navn. Grunnkretser som selv er
+    delt (f.eks. 2 i Stokke 2015, 3 i Indre Østfold 2025) og uoppgitt (`kkkk9999`) står med kommunekoden.
+    Testet (versjon 60, 2026-11-23, TESTLISTE 2.9): mot kommunen året etter delingen havnet 93–98 % i riktig
+    kommune (Haram 2023: 8 940 av 9 252), og resten ser ut som flytting. Men de to delte grunnkretsene i Stokke
+    har 13 % av befolkningen (1 534 i 2016), så Stokke står fortsatt delvis igjen. Si fra om det. Koder som
+    ikke finnes i kodelisten på datoen (1580 Haram i 2023), får ikke navn. Verktøyet lister dem.
   - Når Ålesund ble delt i 2024 (Haram ut igjen), kjedes de gamle kodene via navn. Haram 1534 blir 1580,
     og Ørskog, Skodje og Sandøy blir 1508. Verktøyet lister slike valg som «kontroller».
   - **Ålesund 1507 (2020–2023) omkodes helt til 1508, også Haram.** 1.1.2023 fikk 1508 67 525 personer,

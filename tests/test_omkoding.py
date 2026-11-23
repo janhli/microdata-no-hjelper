@@ -5,9 +5,12 @@ microdata.no faktisk oppfører seg slik, er punkt 1.9 i TESTLISTE.md.
 """
 
 import csv
+import re
+import subprocess
+import sys
 import unittest
 
-from hjelp import METADATA, avvik, kjor, recode_linjer_i, simuler, tiltenkt
+from hjelp import METADATA, VERKTOY, avvik, kjor, recode_linjer_i, simuler, tiltenkt
 from kommuneomkoding import koder_ved, last
 from recode_regler import MAKS_TEGN, konflikter, q, recode_linjer
 
@@ -138,6 +141,61 @@ class TestKommuneomkoding(unittest.TestCase, LinjelengdeMixin):
     def test_splitt_forste_omkoder_delte(self):
         ut = utfall(kjor("kommuneomkoding.py", "--splitt", "forste"), "0720")
         self.assertNotEqual(ut["0720"], "0720")
+
+
+def med_grunnkrets(tekst, par):
+    """Kjører utskriften fra kommuneomkoding.py --grunnkrets slik microdata.no gjør: recode på kommunen,
+    recode på hjelpevariabelen (grunnkretsen) og replace der hjelpevariabelen fikk fire tegn.
+    par: [(kommune, grunnkrets), ...]. Returnerer kommunene."""
+    linjer = recode_linjer_i(tekst)
+    kom = simuler([l for l in linjer if l.startswith("recode kommune ")], [k for k, _ in par])
+    gk = simuler([l for l in linjer if l.startswith("recode kommune_gk ")], [g for _, g in par])
+    if gk and "replace kommune = kommune_gk if length(kommune_gk) == 4" not in tekst:
+        return kom
+    return [g if len(g) == 4 else k for k, g in zip(kom, gk)]
+
+
+class TestKommuneGrunnkrets(unittest.TestCase, LinjelengdeMixin):
+    def test_stokke_fordeles_etter_grunnkrets(self):
+        tekst = kjor("kommuneomkoding.py", "--fra", "2015", "--til", "2024", "--grunnkrets", "gk")
+        self.sjekk_linjelengde(tekst)
+        ut = med_grunnkrets(tekst, [("0720", "07200104"), ("0720", "07200103"), ("0720", "07209999"),
+                                    ("1850", "18500101"), ("0301", "03010101"), ("1504", "15040101")])
+        # Stokke-krets til Sandefjord. Delt krets og uoppgitt står som 0720. Oslo og Ålesund som før.
+        self.assertEqual(ut, ["3907", "0720", "0720", "1806", "0301", "1508"])
+        self.assertIn("Delte grunnkretser: 07200103 07200301", tekst)
+        self.assertIn("generate kommune_gk = gk", tekst)
+        self.assertTrue(tekst.rstrip().endswith("drop kommune_gk"))
+
+    def test_haram_skilles_ut_fra_alesund_2023(self):
+        tekst = kjor("kommuneomkoding.py", "--fra", "2023", "--til", "2024", "--grunnkrets", "gk")
+        ut = med_grunnkrets(tekst, [("1507", "15071101"), ("1507", "15070101"), ("1507", "15079999")])
+        self.assertEqual(ut, ["1580", "1508", "1508"])
+        # Bare grunnkretsene som får en annen kommune enn recode gir, har regler (Haram, ikke Ålesund)
+        self.assertNotIn("'15070101'", tekst)
+        # 1580 finnes ikke i kodelisten 2023 og får ikke navn fra recode (TESTLISTE 2.9 c)
+        self.assertIn("Uten navn i tabellen (finnes ikke i kodelisten 1.1.2023): 1580 Haram", tekst)
+
+    def test_grensejustering_uten_regler(self):
+        # Indre Østfold 2026: grunnkretsene som ble flyttet, er selv delt. Ingen regler trengs.
+        tekst = kjor("kommuneomkoding.py", "--fra", "2025", "--til", "2026", "--grunnkrets", "gk")
+        self.assertIn("Delte grunnkretser: 31181206 31181303 31181401", tekst)
+        self.assertNotIn("kommune_gk", tekst)
+
+    def test_mal_er_kommune_i_inndelingen(self):
+        d = last()
+        for fra, til in ((1990, 2024), (2015, 2026), (2019, 2020)):
+            tekst = kjor("kommuneomkoding.py", "--fra", str(fra), "--til", str(til), "--grunnkrets", "gk")
+            gyldige = set(koder_ved(d, f"{til + 1}-01-01"))
+            mal = {m for l in recode_linjer_i(tekst) if l.startswith("recode kommune_gk ")
+                   for m in re.findall(r"= '(\d{4})'", l)}
+            self.assertTrue(mal <= gyldige, (fra, til, mal - gyldige))
+
+    def test_for_tidlig_aar(self):
+        r = subprocess.run([sys.executable, "-I", str(VERKTOY / "kommuneomkoding.py"), "--fra", "1989",
+                            "--grunnkrets", "gk"], capture_output=True, text=True, encoding="utf-8")
+        self.assertNotEqual(r.returncode, 0)
+        self.assertIn("1990", r.stderr)
 
 
 class TestRegionomkoding(unittest.TestCase, LinjelengdeMixin):

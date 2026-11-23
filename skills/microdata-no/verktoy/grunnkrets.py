@@ -87,10 +87,11 @@ def les_endringer():
     return per_dato
 
 
-def folg(kode, fra, per_dato):
-    """Gjeldende grunnkretskoder for en kode som var gyldig på datoen fra (flere ved deling)."""
+def folg(kode, fra, per_dato, til="9999-12-31"):
+    """Grunnkretskodene på datoen til (standard: gjeldende) for en kode som var gyldig på datoen fra
+    (flere ved deling)."""
     naa = {kode}
-    for dato in sorted(d for d in per_dato if d > fra):
+    for dato in sorted(d for d in per_dato if fra < d <= til):
         naa = {n for k in naa for n in (per_dato[dato].get(k) or [k])}
     return naa
 

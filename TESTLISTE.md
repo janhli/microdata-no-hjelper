@@ -42,6 +42,8 @@ minst 10 enheter (tiltak 6), som er fjernet i versjon 2 (17. november 2026). Bek
 | 2.6 | ~~Svalbard-kodene~~ **Avklart (versjon 59, 2026-11):** ingen personer har dem i 1995, 2010, 2019, 2023 eller 2024 | | | ✓ |
 | 2.8 | ~~Merkelapper på omkodede koder~~ **Avklart (versjon 59, 2026-11):** `kommuneomkoding.py` gir målkodene navnet i inndelingen det omkodes til. 1.1.2010 omkodet: alle rader har navn (1108 Sandnes, 3101 Halden, 5055 Heim), samme tall som før. Koder som ikke omkodes, beholder navnet fra datoen (1826 Hattfjelldal) | | | ✓ |
 | 2.7 | ~~Kode som er både kilde og mål~~ **Avklart (versjon 59, 2026-11):** håndteres i `recode_regler.py`, og 1.9 bekrefter at det virker i microdata.no | | | ✓ |
+| 2.9 | ~~`--grunnkrets`: delte kommuner fordelt etter grunnkrets~~ **Avklart (versjon 60, 2026-11-23):** virker. Bosatte året før delingen fordelt med verktøyet, mot faktisk kommune året etter: Stokke 2016 → Tønsberg 93 % og Sandefjord 96 % riktig, Tysfjord og Snillfjord 88–98 %, Ålesund 2023 → Haram 8 940 av 9 252 (97 %). Resten ser ut som flytting. Hele landet 2015 → 2024 ble godtatt. Gjenstår: de to delte grunnkretsene i Stokke har 13 % av befolkningen (1 534, delt likt på Tønsberg og Sandefjord), Snillfjord 31, Tysfjord 11. 1580 fikk ikke navn fra 2023 (se 2.10). Skript: [`del2_9_grunnkrets_kommune.txt`](.claude/skills/vedlikehold/testskript/del2_9_grunnkrets_kommune.txt) | | | ✓ |
+| 2.10 | Navn på koder som bare kommer fra grunnkrets | `recode kommune ('1580' = '1580' 'Haram')` etter `replace` i test 2.9 c | Raden «1580 - Haram». Gir det ikke navn, bruk `define-labels`/`assign-labels` eller la verktøyet nøye seg med kommentaren «Uten navn» | P3 |
 
 ## 3. Regionomkoding (`verktoy/regionomkoding.py`)
 
