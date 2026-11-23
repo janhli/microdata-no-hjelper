@@ -98,8 +98,10 @@ Sammenlign agentens svar med og uten skillen på disse oppgavene. Oppgavetekster
 **Runde 1 (2026-11-20, 7.1–7.13 og 7.15–7.18, én kjøring hver):** med skill 50/53 (94 %), uten 34/53 (64 %), aldri
 dårligere med skill. Størst forskjell på verktøy, metadata (dekning, versjon) og fallgruver som bare står i skillen
 (7.1, 7.4, 7.7, 7.15). Ingen forskjell på generell metode (7.11–7.13). Hull funnet og rettet: inntektsgrupper med
-manglende beløp, `sd` i stedet for `std`, næring finnes ikke etter 2019 (oppgave 7.7 skrevet om). Uavklart: `i.` på
-tekstvariabler (8.15). Detaljer: [`evals/resultater/runde1.md`](evals/resultater/runde1.md). 7.14 er ikke kjørt.
+manglende beløp, `sd` i stedet for `std`, næring finnes ikke etter 2019 (oppgave 7.7 skrevet om). `i.` på
+tekstvariabler virker (8.15). Detaljer: [`evals/resultater/runde1.md`](evals/resultater/runde1.md).
+
+**7.14 (2026-11-23):** Codex fant skillen via `~/.agents/skills`, og oppfylte kriteriene på 7.3 og 7.7 (ett av dem delvis). Copilot er ikke kjørt. Detaljer: [`evals/resultater/7_14_andre_agenter.md`](evals/resultater/7_14_andre_agenter.md).
 
 | # | Oppgave | Hva som måles |
 |---|---|---|
@@ -143,7 +145,7 @@ på en populasjon over 100 000 (f.eks. bosatte 30–60 år). Skriptet for 8.1–
 | 8.12 | ~~Winsoriseres sjeldne 0/1-variabler i regresjoner?~~ **Avklart (versjon 60, 2026-11-20):** ja. Av 405 000 personer: `d02` (0,22 %) og `d08` (0,85 %) ga gjennomsnitt 0 i `summarize` og ble utelatt fra `regress` og `logit` uten melding (`F(1, ...)`, bare `mann`). `d24` (2,47 %) og `topp` (1,26 %) var med: `d24` +23 (forskjell i gjennomsnitt +21), `topp` +1 245. `logit topp lonn23 mann` (utfall 1,26 %) virket. Se `fallgruver.md` og `feilrapporter.md` nr. 18. Skript: `testskript/del8_12_sjeldne_dummyer.txt` | | | ✓ |
 | 8.13 | ~~Kategorier under 1 % i `i.`-variabler, og utfall under 1 %~~ **Avklart (versjon 60, 2026-11-20):** `i.gruppe` med kategorier på 0,2, 0,85 og 1,6 % ga rader for alle tre i `regress` (`F(4, ...)`) og `logit`, med koeffisienter nær forskjellene i gjennomsnitt. Utfall 0,34 % (lønn over 3 mill.): `regress` ga 0 og NaN, `logit` 35 iterasjoner og «Pseudo R2 Infinity». Utfall over 99 %: `logit` ga negativ LR chi2 og z = −145, uten feilmelding. Se `fallgruver.md`. Skript: `testskript/del8_13_sjeldne_kategorier.txt` | | | ✓ |
 | 8.14 | ~~`i.x` på en sjelden 0/1-variabel, og sjelden hendelse i `cox`~~ **Avklart (versjon 60, 2026-11-20):** `d08` (0,86 %) ble utelatt, men `i.d08` ga raden «d08 '1'» med +27 (forskjell +25) og `F(2, ...)`, også i `logit`. `cox` med død i 2025 for 25–66-åringer (948, 0,19 %): `summarize` ga 0, men `cox` fant 947 hendelser med alder +0,086 og mann +0,48, som kontrollen (8,7 % døde, +0,105 og +0,39). Hendelsen i `cox` winsoriseres ikke. Skript: `testskript/del8_14_ix_og_cox.txt` | | | ✓ |
-| 8.15 | `i.` på en tekstvariabel | `regress lonn i.fylke mann` der `fylke` er tekst (`substr` av kommunenummer), mot samme med `destring` først | Enten kategorier med navn, eller en feilmelding. Agentevalueringen (7.13) brukte `i.` på tekst uten at skillen sier om det er lov | P2 |
+| 8.15 | ~~`i.` på en tekstvariabel~~ **Avklart (versjon 60, 2026-11-23):** virker. `i.kjonn`, `i.fylke` (`substr`) og `i.invkat` (bokstaver) ga én rad per kategori unntatt den laveste, i `regress` og `logit`, og `i.kjonn##i.invkat` ga samspill. `i.fylke` ga de samme koeffisientene som etter `destring` (Rogaland +0,38, Innlandet −126,6). Med kodeliste vises bare navnet («kjonn 'Kvinne'»). Tekst uten ledende null er ikke testet. Se `fallgruver.md`. Skript: `testskript/del8_15_i_tekst.txt` | | | ✓ |
 | 8.8 | ~~`citation` (kildehenvisning, #9)~~ **Avklart (versjon 60, 2026-11-18):** «Analysen er gjennomført i microdata.no med datagrunnlag fra: SSB (registerdata). Data analysert: 2026-11-18». Med tre `require` (del 10): «FHI (Kreftregisteret), FHI (Norsk pasientregister) og SSB (registerdata)», også NPR før noe var importert derfra. Ingen versjon eller variabler. Kommer ikke med når hele utskriften kopieres | | | ✓ |
 
 ## 9. Eksport av figurer (Vega), issue #3

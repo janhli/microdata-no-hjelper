@@ -425,6 +425,15 @@ Kartlagt fra manualen (`metadata/manual/konfidensialitet.md`, `kommandoer_og_fun
 - Kategoriske variabler skrives som `i.var`. Uten `i.` tolkes en numerisk kode som kontinuerlig. Interaksjon:
   `i.a#i.b` (bare interaksjonen) eller `i.a##i.b` (hovedeffekter og interaksjon). `control(i.kommune)` tar
   med faste effekter uten å vise dem.
+- **`i.` virker på tekstvariabler, og `destring` trengs ikke** (versjon 60, 2026-11-23, TESTLISTE 8.15).
+  `i.kjonn` (`BEFOLKNING_KJOENN`), `i.fylke` (`substr` av kommunenummeret) og `i.invkat` (bokstavene A–G)
+  ga én rad per kategori unntatt den laveste, i `regress` og `logit`, og `i.kjonn##i.invkat` ga
+  hovedeffekter og samspill («kjonn 'Kvinne' ⨯ invkat 'Innvandrere'»). `i.fylke` ga de samme
+  koeffisientene som etter `destring`. Variabler med kodeliste vises bare med navnet («invkat
+  'Innvandrere'», uten koden), og variabler uten kodeliste med verdien («fylke '11'»).
+  - Referansen er den laveste verdien. Fylkesnumrene har ledende null ('03'), så rekkefølgen var den samme
+    som for tall. Tekst uten ledende null ('3', '11') er ikke testet. Som tekst kommer '11' trolig før
+    '3', så se etter hvilken kategori som mangler i tabellen.
 - **Testet med `logit` (versjon 60, november 2026, `kodesnutter/logistisk_regresjon.txt`):** laveste kode er
   referanse, og kategoriene vises med navn. `cluster()` virker med `or` og `mfx()` (z-verdier ca. 50 mot
   290 uten). `mfx(dydx)` skriver først koeffisientene, så marginaleffektene under «dydx av syss».

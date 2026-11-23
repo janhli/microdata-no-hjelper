@@ -1,0 +1,109 @@
+// =====================================================================
+// Testskript: TESTLISTE 8.15 (`i.` på en tekstvariabel)
+// Laget:      2026-11-23, kjørt 2026-11-23 (versjon 60). Resultat i TESTLISTE 8.15
+// Versjon:    no.ssb.fdb:60, anonymiseringstiltak versjon 2. Spør om analysemiljøet har den samme.
+// Populasjon: utvalg på 500 000 bosatte 25–66 år 1.1.2025 med lønn i 2024
+// Variabler:  https://microdata.no/discovery/variable/no.ssb.fdb/60/BEFOLKNING_STATUSKODE
+//             https://microdata.no/discovery/variable/no.ssb.fdb/60/BEFOLKNING_KOMMNR_FORMELL
+//             https://microdata.no/discovery/variable/no.ssb.fdb/60/BEFOLKNING_FOEDSELS_AAR_MND
+//             https://microdata.no/discovery/variable/no.ssb.fdb/60/BEFOLKNING_KJOENN
+//             https://microdata.no/discovery/variable/no.ssb.fdb/60/BEFOLKNING_INVKAT
+//             https://microdata.no/discovery/variable/no.ssb.fdb/60/INNTEKT_WLONN
+// Bakgrunn:   Manualens eksempler bruker `i.kjønn` (BEFOLKNING_KJOENN, tekst) og `i.fylke` (substr, tekst),
+//             men skillen sier ikke om det er lov. Agentevalueringen (runde 1) brukte `i.` på tekst.
+// Tre slags tekst:
+//             kjonn  – '1'/'2', med merkelapper fra kodelisten
+//             fylke  – '03', '11' ... fra substr, uten merkelapper (ledende null)
+//             invkat – bokstaver 'A'–'G', med merkelapper. Alle kategorier har over 5 personer i utvalget
+// Rekkefølge: fasit og numerisk versjon først (8.15.a–b). Så tekstvariablene (8.15.c–f). Stopper en linje
+//             skriptet, kommenter den ut (//), noter meldingen og kjør resten.
+// =====================================================================
+
+require no.ssb.fdb:60 as fdb
+
+textblock
+# Test av `i.` på tekstvariabler (TESTLISTE 8.15)
+Hver test sier hva resultatet skal vise hvis `i.` virker på tekst som på tall.
+Lønn er i 1000 kr.
+endblock
+
+// --- Populasjon ---
+create-dataset personer
+import fdb/BEFOLKNING_STATUSKODE 2025-01-01 as regstat
+keep if regstat == '1'
+import fdb/BEFOLKNING_FOEDSELS_AAR_MND as faarmnd
+generate alder = 2024 - int(faarmnd/100)
+keep if alder >= 25 & alder <= 66
+sample 500000 815
+import fdb/INNTEKT_WLONN 2024-12-31 as wlonn
+drop if sysmiss(wlonn)
+generate lonn = wlonn / 1000
+generate hoy = 0
+replace hoy = 1 if lonn > 600
+
+import fdb/BEFOLKNING_KJOENN as kjonn
+generate mann = 0
+replace mann = 1 if kjonn == '1'
+
+import fdb/BEFOLKNING_KOMMNR_FORMELL 2025-01-01 as kommune
+generate fylke = substr(kommune, 1, 2)
+generate fylkenum = fylke
+destring fylkenum
+
+import fdb/BEFOLKNING_INVKAT as invkat
+
+// ---------------------------------------------------------------------
+textblock
+## Test 8.15.a: fasit
+Gjennomsnittlig lønn per kategori. Forskjellen til referansekategorien (laveste verdi: kjønn 1, fylke 03 Oslo,
+innvandringskategori A) skal ligne koeffisientene under, men regresjonene er winsorisert og har kontrollvariabler,
+så avvik på noen prosent er ventet.
+endblock
+tabulate kjonn, summarize(lonn) mean freq
+tabulate fylke, summarize(lonn) mean freq
+tabulate invkat, summarize(lonn) mean freq
+
+// ---------------------------------------------------------------------
+textblock
+## Test 8.15.b: numerisk fylke (sammenligningsgrunnlag)
+**Forventet:** én rad per fylke unntatt 3 (Oslo, referanse), altså 14 rader, og `mann`.
+endblock
+regress lonn i.fylkenum mann
+
+// ---------------------------------------------------------------------
+textblock
+## Test 8.15.c: `i.kjonn` (tekst '1'/'2'), som i manualens eksempel
+**Hvis `i.` virker på tekst:** én rad for kjønn 2 (kvinne, eventuelt med navn), med koeffisient lik minus
+koeffisienten for `mann` i linjen under.
+**Ellers:** en feilmelding. Noter den ordrett.
+endblock
+regress lonn alder mann
+regress lonn alder i.kjonn
+
+// ---------------------------------------------------------------------
+textblock
+## Test 8.15.d: `i.fylke` (tekst fra `substr`, med ledende null)
+**Hvis `i.` virker på tekst:** samme 14 rader og nesten samme koeffisienter som i 8.15.b, med fylkene skrevet
+som '11', '15' osv. Referansen er '03' (Oslo), som er lavest både som tekst og som tall.
+**Hvis koeffisientene avviker mye fra 8.15.b:** referansen eller rekkefølgen er en annen. Se hvilket fylke som mangler.
+endblock
+regress lonn i.fylke mann
+
+// ---------------------------------------------------------------------
+textblock
+## Test 8.15.e: `i.invkat` (bokstaver, med merkelapper)
+**Hvis `i.` virker på tekst:** rader for B, C, E, F og G (A er referanse), eventuelt med navn fra kodelisten.
+B (innvandrere) skal ha klart negativ koeffisient, i tråd med 8.15.a.
+endblock
+regress lonn i.invkat mann alder
+
+// ---------------------------------------------------------------------
+textblock
+## Test 8.15.f: `logit` og samspill mellom to tekstvariabler
+**Hvis `i.` virker på tekst:** `logit` har de samme radene som 8.15.d. Samspillet `i.kjonn##i.invkat` har
+hovedeffekter for kjønn og innvandringskategori og ledd som «kjonn '2' ⨯ invkat 'B'».
+endblock
+logit hoy i.fylke mann
+regress lonn alder i.kjonn##i.invkat
+
+citation
