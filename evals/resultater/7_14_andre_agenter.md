@@ -39,6 +39,37 @@ Bosatte som ikke kan plasseres, havnet på raden «Uavklart».
 **Lærdom for evalueringen:** Agenter i T3 kan lese tråden som startet dem. Start oppgavene fra en tråd
 uten fasit, eller si i oppgaven at andre tråder ikke skal leses.
 
-## Copilot
+## Copilot CLI (1.0.114, 2026-11-23)
 
-Ikke kjørt ennå.
+Kjørt med `copilot --allow-all -p "<oppgave>"` i hver sin tomme mappe. `copilot skill list` viste `microdata-no`
+under «Inherited skills», altså fra `~/.agents/skills`. Modellen ble valgt automatisk: GPT-6 Luna på 7.3 og
+MAI Code 2 Flash på 7.7. Begge kjøringene lastet skillen som første steg (`skill(microdata-no)`).
+
+| Oppgave | Poeng |
+|---|---|
+| `kommune-2015-mot-2024` (7.3) | 4/4 |
+| `naering-hovedomrader` (7.7) | 2/3 |
+
+**7.3:** Kjørte `kommuneomkoding.py --fra 2015 --til 2024` og satte reglene inn i skriptet med et lite
+Python-skript, ikke for hånd. Stokke, Snillfjord og Tysfjord er nevnt som delte kommuner, og det står at de
+mangler i sammenligningen. `BEFOLKNING_KOMMNR_FORMELL` er hentet på begge datoene, omkodingen gjelder bare
+2015, og `require no.ssb.fdb:60` er med. Utenfor kriteriene:
+- Målet er 2024-inndelingen, ikke 2026. Forskjellen er bare grensejusteringen i Indre Østfold.
+- Skriptet bruker `collapse (count)` og `merge` per kommune og summerer så tellingene i `tabulate`. Det er
+  mer omstendelig enn `tabulate kommune` på personnivå, og det er ikke testet hvordan anonymiseringen slår ut
+  på summerte tellinger.
+
+**7.7:** Fant i `variabler.csv` at `REGSYS_VIRK_NACE1_SN07` slutter i 2019, og merket skriptet tydelig.
+- **Kriterium 03 ikke oppfylt:** agenten kjørte `klass.py grupper 6 --nivaa 1 --dato 2019-11-16`, men
+  byttet etterpå ut reglene med divisjonsintervaller skrevet for hånd (`replace naring = 'C' if divisjonsnr >= 10
+  & divisjonsnr <= 33` osv.). Intervallene er riktige for SN2007, men ikke laget med verktøyet.
+- **Uheldig valg:** populasjonen er de sysselsatte i november 2024 (`ARBSTATUS_PERS_STATUS8`), mens næringen
+  er hentet fra 2019. Det står i skriptet, men tabellen blandes med personer som har byttet næring, og alle
+  som ikke var sysselsatt i 2019, havner i «uoppgitt». Codex valgte heller hele 2019-fordelingen.
+
+## Samlet
+
+Skillen virker i Codex og Copilot CLI. Begge fant den via `~/.agents/skills` uten oppsett utover lenken,
+lastet den på oppgaven, brukte `variabler.csv` og `fallgruver.md` og kjørte verktøyene. Svarene er av samme
+type som i Claude. Den eneste svikten (7.7 i Copilot) var at agenten skrev om verktøyets regler for hånd. Det
+skjedde med den minste modellen (MAI Code 2 Flash). Cursor er ikke kjørt.

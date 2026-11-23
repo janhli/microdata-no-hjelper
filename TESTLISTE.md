@@ -101,7 +101,7 @@ dårligere med skill. Størst forskjell på verktøy, metadata (dekning, versjon
 manglende beløp, `sd` i stedet for `std`, næring finnes ikke etter 2019 (oppgave 7.7 skrevet om). `i.` på
 tekstvariabler virker (8.15). Detaljer: [`evals/resultater/runde1.md`](evals/resultater/runde1.md).
 
-**7.14 (2026-11-23):** Codex fant skillen via `~/.agents/skills`, og oppfylte kriteriene på 7.3 og 7.7 (ett av dem delvis). Copilot er ikke kjørt. Detaljer: [`evals/resultater/7_14_andre_agenter.md`](evals/resultater/7_14_andre_agenter.md).
+**7.14 (2026-11-23):** Codex og Copilot CLI fant skillen via `~/.agents/skills` og lastet den på oppgaven. Codex oppfylte kriteriene på 7.3 og 7.7 (ett delvis), Copilot fikk 4/4 og 2/3 (skrev om `klass.py`-reglene for hånd). Cursor er ikke kjørt. Detaljer: [`evals/resultater/7_14_andre_agenter.md`](evals/resultater/7_14_andre_agenter.md).
 
 | # | Oppgave | Hva som måles |
 |---|---|---|
