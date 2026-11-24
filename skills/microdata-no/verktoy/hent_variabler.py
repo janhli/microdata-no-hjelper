@@ -6,7 +6,8 @@ variabel. Metadata ligger som JSON i <script id="__NEXT_DATA__"> på sidene.
 Resultat:
   metadata/variabler.csv          oversikt, én linje per variabel
   metadata/kodelister.csv         gjeldende kodeliste for alle variabler (navn;kode;kategori)
-  metadata/variabler/<NAVN>.json  full metadata inkl. kodelistehistorikk og måletidspunkter
+  metadata/variabler/<NAVN>.json  full metadata inkl. kodelistehistorikk og måletidspunkter (uten
+                                  globalTemporalCoverage, se UTELAT)
   metadata/datalager.json         versjonshistorikken til no.ssb.fdb (SSB)
   metadata/datalagre.json         alle datalagrene på listesiden: navn, beskrivelse og versjon
   metadata/VERSJON                versjonen JSON-filene ble hentet fra, én linje per datalager (lager;versjon)
@@ -49,6 +50,9 @@ PAUSE = 0.3  # sekunder mellom forespørsler
 DATALAGER = "no.ssb.fdb"  # SSB. --versjon og datalager.json gjelder dette lageret
 MIN_ANDEL_VARIABLER = 0.9  # minst så stor andel av forrige antall variabler
 MIN_ANDEL_KODELINJER = 0.8  # minst så stor andel av forrige antall kodelinjer
+# Lik for alle variablene i katalogen, og stop følger datoen for hentingen. Lagres den, endres alle JSON-filene hver
+# uke, og reelle endringer drukner i pull requesten (#15). Variabelens egen dekning står i temporalCoverage.
+UTELAT = "globalTemporalCoverage"
 
 LENKE = re.compile(r"https?://[^\s)\]>\"']+")
 NEXT_DATA = re.compile(r'<script id="__NEXT_DATA__"[^>]*>(.*?)</script>', re.S)
@@ -251,6 +255,7 @@ def main():
             else:
                 pp = hent(f"{BASE}/variable/{lager}/{versjoner[lager]}/{n}")
                 ds = pp["ds"]
+                ds.pop(UTELAT, None)
                 if lager == DATALAGER:
                     datalager = datalager or pp.get("dataStore")
                 nye_json[n] = ds

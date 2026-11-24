@@ -189,6 +189,35 @@ class TestHentVariabler(unittest.TestCase):
         for f in ("variabler.csv", "kodelister.csv"):
             self.assertNotIn(b"\r\n", (self.ut / f).read_bytes(), f)
 
+    def med_dekning(self, stop):
+        """Stub der katalogen har fått ny dato i globalTemporalCoverage, som er lik for alle variablene."""
+        stub = Stub()
+
+        def svar(url, forsok=4):
+            s = stub(url, forsok)
+            if "ds" in s:
+                s["ds"]["globalTemporalCoverage"] = {"start": -1096, "stop": stop}
+            return s
+        return svar
+
+    def test_ny_dato_for_katalogen_endrer_ingen_filer(self):
+        # stop følger datoen for hentingen. PR #15 hadde 772 endrede filer uten at noen variabel var endret.
+        kode, err = self.kjor(["--alle"], self.med_dekning(20778))
+        self.assertEqual(kode, 0, err[-500:])
+        forste = self.hash()
+        kode, err = self.kjor(["--alle"], self.med_dekning(20785))
+        self.assertEqual(kode, 0, err[-500:])
+        self.assertEqual(self.hash(), forste)
+
+    def test_bare_globalTemporalCoverage_utelates(self):
+        kode, err = self.kjor(["--alle"], self.med_dekning(20778))
+        self.assertEqual(kode, 0, err[-500:])
+        for n in NAVN:
+            ventet = json.loads((METADATA / "variabler" / f"{n}.json").read_text(encoding="utf-8"))
+            ventet.pop("globalTemporalCoverage", None)
+            lagret = json.loads((self.ut / "variabler" / f"{n}.json").read_text(encoding="utf-8"))
+            self.assertEqual(lagret, ventet, n)
+
     def test_overstyrt_versjon_huskes_til_neste_kjoring(self):
         # Med --versjon 57 viser datalager.json likevel nyeste versjon øverst. Neste vanlige kjøring skal
         # da hente alt på nytt, ikke gjenbruke filene fra 57.
