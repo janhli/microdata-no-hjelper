@@ -201,7 +201,7 @@ class TestHentVariabler(unittest.TestCase):
         return svar
 
     def test_ny_dato_for_katalogen_endrer_ingen_filer(self):
-        # stop følger datoen for hentingen. PR #15 hadde 772 endrede filer uten at noen variabel var endret.
+        # stop flytter seg mellom hentingene. PR #15 hadde 772 endrede filer uten at noen variabel var endret.
         kode, err = self.kjor(["--alle"], self.med_dekning(20778))
         self.assertEqual(kode, 0, err[-500:])
         forste = self.hash()

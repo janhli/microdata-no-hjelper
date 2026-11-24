@@ -50,8 +50,9 @@ PAUSE = 0.3  # sekunder mellom forespørsler
 DATALAGER = "no.ssb.fdb"  # SSB. --versjon og datalager.json gjelder dette lageret
 MIN_ANDEL_VARIABLER = 0.9  # minst så stor andel av forrige antall variabler
 MIN_ANDEL_KODELINJER = 0.8  # minst så stor andel av forrige antall kodelinjer
-# Lik for alle variablene i katalogen, og stop følger datoen for hentingen. Lagres den, endres alle JSON-filene hver
-# uke, og reelle endringer drukner i pull requesten (#15). Variabelens egen dekning står i temporalCoverage.
+# Lik for alle variablene i katalogen, og stop flytter seg mellom hentingene. Lagres den, endres alle JSON-filene
+# hver gang den har flyttet seg, og reelle endringer drukner i pull requesten (#15). Variabelens egen dekning står i
+# temporalCoverage.
 UTELAT = "globalTemporalCoverage"
 
 LENKE = re.compile(r"https?://[^\s)\]>\"']+")
