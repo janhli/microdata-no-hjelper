@@ -4,7 +4,7 @@ Les også «Avsløringskontroll» i `fallgruver.md`, særlig om sjeldne 0/1-vari
 
 Kartlagt fra manualen (`metadata/manual/konfidensialitet.md`, `kommandoer_og_funksjoner/kommandoer.md` og
 `eksempel/Regresjonsanalyser/`, versjon 60 med anonymiseringstiltak versjon 2, november 2026). Punkter med
-«testet» og et TESTLISTE-nummer er kjørt i microdata.no (del 8). De andre bygger bare på manualen.
+«testet» og et TESTLOGG-nummer er kjørt i microdata.no (del 8). De andre bygger bare på manualen.
 
 ## Regresjoner winsoriseres og nedsamples
 - Alle kontinuerlige variabler i en regresjon winsoriseres før estimeringen (1 % i hver ende),
@@ -13,9 +13,9 @@ Kartlagt fra manualen (`metadata/manual/konfidensialitet.md`, `kommandoer_og_fun
   observasjoner, så N og frihetsgrader varierer litt mellom kjøringer.
 - Regresjonen winsoriseres på hele utvalget og `tabulate ..., summarize()` per gruppe, så konstantledd +
   koeffisienter avviker litt (under 1 %) fra gjennomsnittene i tabellen: lavere for gruppen med de høyeste
-  verdiene og høyere for den laveste (testet versjon 60, november 2026, TESTLISTE 8.3).
+  verdiene og høyere for den laveste (testet versjon 60, november 2026, TESTLOGG 8.3).
 - Manglende verdier utelates listevis: N i `regress y x1 x2` var lik antall uten manglende verdi i noen av
-  variablene (TESTLISTE 8.1).
+  variablene (TESTLOGG 8.1).
 - Prosentiler mikroaggregeres og glattes (tiltak 10). Tellinger støylegges (±5).
 - **Løsning:** Skriv i `textblock` at kontinuerlige variabler er winsorisert, både i tabeller og regresjoner.
   For å gjenskape resultater fra før 17. november 2026: se «Versjon 1 av anonymiseringstiltakene» i `fallgruver.md`.
@@ -23,7 +23,7 @@ Kartlagt fra manualen (`metadata/manual/konfidensialitet.md`, `kommandoer_og_fun
 ## Kategoriske variabler med små grupper fjernes fra regresjonen (tiltak 14)
 - **Symptom:** En forklaringsvariabel (f.eks. `i.kommune`) mangler helt i resultatet, og under tabellen står
   «Leddet i.kommune er fjernet fra analysen pga. lav frekvens i minst en av gruppene.» Regresjonen kjøres
-  likevel, uten variabelen (testet versjon 60, november 2026, TESTLISTE 8.4).
+  likevel, uten variabelen (testet versjon 60, november 2026, TESTLOGG 8.4).
 - **Årsak:** Har én kategori færre enn 5 observasjoner, fjernes **hele variabelen** fra analysen, ikke bare
   kategorien (tiltak 14). Interaksjoner som `i.kjonn#i.utdniv#i.fylke` gir lett små grupper. Meldingen er
   lett å overse, og resultatet ser ut som en modell uten variabelen.
@@ -37,7 +37,7 @@ Kartlagt fra manualen (`metadata/manual/konfidensialitet.md`, `kommandoer_og_fun
 
 ## En regresjon må ha minst to koeffisienter (tiltak 17)
 - **Symptom:** «Regresjonsmodellen har for få forklaringsvariabler/koeffisienter. Nedre grense er to
-  koeffisienter.» på `regress lonn mann` (testet versjon 60, november 2026, TESTLISTE 8.9). Skriptet stopper.
+  koeffisienter.» på `regress lonn mann` (testet versjon 60, november 2026, TESTLOGG 8.9). Skriptet stopper.
 - **Årsak:** Modeller med færre enn to koeffisienter (konstantleddet telles ikke) stoppes. Det gjelder også
   når tiltak 14 har fjernet en faktorvariabel, så det bare er én forklaringsvariabel igjen. En faktorvariabel
   med tre nivåer gir to koeffisienter og er nok.
@@ -63,7 +63,7 @@ Kartlagt fra manualen (`metadata/manual/konfidensialitet.md`, `kommandoer_og_fun
   `BEFOLKNING_STATUSKODE` = `'3'` (utvandret, bare årlig). Hendelse etter sensurering skal ikke telle.
   Er hendelsen selv død, er utvandring den viktigste sensureringen. Si fra om at utvandring bare er kjent
   per 1.1.
-- **Størrelse (testet versjon 60, TESTLISTE 8.6):** for bosatte 70+, fulgt i ti år, ble `cox`-koeffisienten
+- **Størrelse (testet versjon 60, TESTLOGG 8.6):** for bosatte 70+, fulgt i ti år, ble `cox`-koeffisienten
   for innvandrer 3 standardfeil feil uten sensurering, fordi flere innvandrere utvandrer og få av dem får
   dødsdato. For hele gruppen utgjorde det lite. Sensurer alltid når grupper med mye utvandring sammenlignes.
 
@@ -82,7 +82,7 @@ Kartlagt fra manualen (`metadata/manual/konfidensialitet.md`, `kommandoer_og_fun
   year(date@panel) >= 2020`). Settes den bare for behandlingsgruppen, er den lik interaksjonsleddet.
 - **Løsning:** `gruppe` = 1 for behandlingsgruppen, `etter` = 1 for alle fra behandlingsåret. Samme
   resultat: `regress-panel y gruppe##etter ..., pooled`.
-- **Testet (versjon 60, november 2026, TESTLISTE 8.5):** med `etter` = 1 for alle ga `regress-panel-diff` og
+- **Testet (versjon 60, november 2026, TESTLOGG 8.5):** med `etter` = 1 for alle ga `regress-panel-diff` og
   den pooled regresjonen samme estimat, bortsett fra nedsampling. Utskriften kaller estimatet
   `gruppe ⨯ etter`, ikke ATET.
 
@@ -121,7 +121,7 @@ Kartlagt fra manualen (`metadata/manual/konfidensialitet.md`, `kommandoer_og_fun
 - Kategoriske variabler skrives som `i.var`. Uten `i.` tolkes en numerisk kode som kontinuerlig. Interaksjon:
   `i.a#i.b` (bare interaksjonen) eller `i.a##i.b` (hovedeffekter og interaksjon). `control(i.kommune)` tar
   med faste effekter uten å vise dem.
-- **`i.` virker på tekstvariabler, og `destring` trengs ikke** (versjon 60, 2026-11-23, TESTLISTE 8.15).
+- **`i.` virker på tekstvariabler, og `destring` trengs ikke** (versjon 60, 2026-11-23, TESTLOGG 8.15).
   `i.kjonn` (`BEFOLKNING_KJOENN`), `i.fylke` (`substr` av kommunenummeret) og `i.invkat` (bokstavene A–G)
   ga én rad per kategori unntatt den laveste, i `regress` og `logit`, og `i.kjonn##i.invkat` ga
   hovedeffekter og samspill («kjonn 'Kvinne' ⨯ invkat 'Innvandrere'»). `i.fylke` ga de samme
@@ -135,7 +135,7 @@ Kartlagt fra manualen (`metadata/manual/konfidensialitet.md`, `kommandoer_og_fun
   langt lavere z-verdier. `mfx(dydx)` skriver først koeffisientene, så marginaleffektene under «dydx av syss».
   `logit-predict` godtar `i.`-ledd.
 - **`c.x#c.x` og `c.x##c.x` (andregradsledd) utelates fra modellen uten melding**, både i `regress` og
-  `logit` (versjon 60, 2026-11-20, TESTLISTE 8.11).
+  `logit` (versjon 60, 2026-11-20, TESTLOGG 8.11).
   - Resultatet har ingen rad for leddet og er samme modell som uten. Koeffisienten for alder blir helt annerledes
     enn med andregradsleddet.
   - **Løsning:** lag andregradsledd som egen variabel: `generate alder2 = alder * alder`.
@@ -150,7 +150,7 @@ Kartlagt fra manualen (`metadata/manual/konfidensialitet.md`, `kommandoer_og_fun
   gruppe nøyaktig, så den sammenligningen sier ingenting.
 - `logit`/`probit` krever et utfall som er 0/1. `mfx(dydx)` gir gjennomsnittlige marginaleffekter
   (`overall`). For en 0/1-variabel er det trolig den deriverte, ikke en diskret endring fra 0 til 1
-  (TESTLISTE 8.7, versjon 60). Forskjellen er liten. Trengs den diskrete effekten, bruk forskjellen i
+  (TESTLOGG 8.7, versjon 60). Forskjellen er liten. Trengs den diskrete effekten, bruk forskjellen i
   `margins()`. `or` gir oddsratio. `margins()` gir predikert verdi ved gjennomsnittet av
   forklaringsvariablene, ikke gjennomsnittet av predikerte verdier.
 - `mlogit` viser koeffisientene for hver utfallskategori under hverandre uten å si hvilken kategori blokken

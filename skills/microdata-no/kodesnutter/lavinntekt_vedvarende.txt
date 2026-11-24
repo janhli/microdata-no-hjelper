@@ -16,7 +16,7 @@
 //   KPI-justeres til siste år. Bare personer som er med alle tre årene, inngår.
 // Kontroll:  Samme metode for 2021–2023 mot SSB tabell 09571 (EU-60, barn under 18 år): 10,0 % mot 9,9 %.
 //            Fylker (2020-inndeling) innen 0,3 prosentpoeng, Oslo 13,6 mot 13,8. Testet november 2026,
-//            versjon 59 (TESTLISTE 5.2).
+//            versjon 59 (TESTLOGG 5.2).
 //            Hele befolkningen mot SSB tabell 04204 («studenter er utelatt»): 9,6 % mot 9,5 % (2022–2024) og
 //            9,5 mot 9,2 (2021–2023). Antall personer innen 0,2 %. Uten krav om privathusholdning treffer
 //            «omfatter også studenter»: 10,6 mot 10,6 (2022–2024) og 10,5 mot 10,3 (2021–2023).
@@ -24,7 +24,7 @@
 //            landet 10,1 mot 10,1 %, alle fylker innen 0,25 prosentpoeng (Østfold 11,3 mot 11,4). Storbyene
 //            ligger litt over: Oslo 15,4 mot 14,9, Bergen 9,9 mot 9,6, Trondheim 8,1 mot 7,8, Bærum 11,0 mot
 //            10,9. Kommunal median i Bærum 608 500, Oslo 528 000 kr. Avviket i storbyene er undersøkt
-//            (TESTLISTE 5.7): grensen er riktig, for alle aldre treffer snutten FHI innen 0,2 (Oslo 14,5 mot
+//            (TESTLOGG 5.7): grensen er riktig, for alle aldre treffer snutten FHI innen 0,2 (Oslo 14,5 mot
 //            14,4). Avviket gjelder bare tellingen av barn. 75+ ligger 0,5–1,4 over (trolig institusjonsbeboere).
 //            Se kodesnutter/TESTRESULTATER.md.
 // Fallgruver:

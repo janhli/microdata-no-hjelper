@@ -258,7 +258,7 @@ def main():
         uten_navn = sorted(set(endret.values()) - set(malnavn) - set(ved_start))
         if uten_navn:
             # Kodelisten på datoen har ikke disse kodene, og recode over gir dem ikke navn (1580 Haram fra 2023).
-            # En regel til samme verdi setter navnet, også før noen har verdien (TESTLISTE 2.10).
+            # En regel til samme verdi setter navnet, også før noen har verdien (TESTLOGG 2.10).
             nye = koder_ved(d, f"{a.til + 1}-01-01")
             out.append(f"// Navn på kommuner som ikke finnes i kodelisten 1.1.{a.fra}:")
             out.append(f"recode {a.navn} " + " ".join(f"({q(k)} = {q(k)} {q(malnavn_for(k, nye, d, a))})"

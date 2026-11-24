@@ -13,7 +13,7 @@ Derfor:
   * Regler som ikke endrer noe (kode = samme kode) utelates.
 
 simuler() gjør det samme som microdata.no etter denne beskrivelsen, og brukes til å teste utskriften.
-Atferden er bekreftet i microdata.no (versjon 59, november 2026, TESTLISTE 1.1, 1.2 og 1.9).
+Atferden er bekreftet i microdata.no (versjon 59, november 2026, TESTLOGG 1.1, 1.2 og 1.9).
 
 Med versjon 1 av anonymiseringstiltakene stoppet avsløringskontrollen en recode-kommando hvis én målverdi
 traff 1–9 enheter (0 var greit). Det er fjernet i versjon 2 (17. november 2026), men gjelder fortsatt med

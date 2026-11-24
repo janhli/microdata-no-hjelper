@@ -5,7 +5,7 @@ description: Gjennomgang av vedlikeholdsbehov i microdata-no-hjelper. Ser over G
 
 # Vedlikeholdsøkt
 
-Hukommelsen mellom økter er repoet: `TESTLISTE.md`, GitHub-issues, `skills/microdata-no/referanser/fallgruver.md`,
+Hukommelsen mellom økter er repoet: `TESTLISTE.md` (åpne punkter), `TESTLOGG.md` (avklarte), GitHub-issues, `skills/microdata-no/referanser/fallgruver.md`,
 statuslinjene i `skills/microdata-no/kodesnutter/` og git-historikken. Les dem, ikke anta.
 
 ## 1. Samle status (kjør fra repoets rot)
@@ -19,7 +19,7 @@ python -I -c "import json;print(json.load(open('skills/microdata-no/metadata/dat
 grep -h "^// Status:" skills/microdata-no/kodesnutter/*.txt
 ```
 
-Les så `TESTLISTE.md` (bare åpne punkter, de uten avkrysning) og eventuelle issues som trenger innhold
+Les så `TESTLISTE.md` (bare åpne punkter) og eventuelle issues som trenger innhold
 (`gh issue view <nr>`).
 
 Se etter:
@@ -42,7 +42,7 @@ Se etter:
 
 Rekkefølge:
 1. Det som kan gi **feil resultat uten at det synes** (P1 i testlisten, feil i verktøy eller snutter).
-2. Det som **blokkerer annet** (f.eks. TESTLISTE 1.9: antakelsen om `recode` som omkodingsverktøyene bygger på).
+2. Det som **blokkerer annet** (f.eks. TESTLOGG 1.9: antakelsen om `recode` som omkodingsverktøyene bygger på).
 3. Det som **stopper skript** (P2), og ventende metadata-PR-er.
 4. **Raske gevinster** (nyhetsissues som bare trenger «ingen handling», små rettelser).
 5. Kvalitetssjekk (P3) og ønskelisten i `kodesnutter/README.md`.
@@ -74,9 +74,9 @@ Brukeren kjører, du tolker. Lag ett skript som dekker flere punkter i testliste
 
 ## 5. Etter arbeidet
 
-- **Testlisten:** Kryss av med versjon og dato. Når en test avklarer noe, skriv regelen inn i
-  `fallgruver.md` eller riktig temafil (symptom, årsak, løsning, versjon/dato, TESTLISTE-nummer). Tallene fra
-  kjøringen blir stående i TESTLISTE, ikke i fallgruvene. `fallgruver.md` skal være kort (tests/test_fallgruver.py).
+- **Testlisten:** Flytt raden til `TESTLOGG.md`, med versjon, dato og tallene. Når en test avklarer noe, skriv regelen inn i
+  `fallgruver.md` eller riktig temafil (symptom, årsak, løsning, versjon/dato, nummeret i TESTLOGG). Tallene fra
+  kjøringen skal bare stå i TESTLOGG, ikke i fallgruvene. `fallgruver.md` skal være kort (tests/test_fallgruver.py).
 - **Snutter:** Oppdater statuslinjen (`testet (no.ssb.fdb:<v>, <år-mnd>)`) bare når snutten faktisk er kjørt.
 - **Issues:** Lukk med en kommentar om hva som ble gjort (`gh issue close <nr> --comment "..."`).
   Nyhetsinnlegg skal vurderes og omformes, ikke kopieres inn i skillen.

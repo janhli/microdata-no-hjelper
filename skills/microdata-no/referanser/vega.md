@@ -5,9 +5,9 @@ med de aggregerte tallene inne i spesifikasjonen. Brukeren trenger ikke kunne Ve
 inn spesifikasjonen og sier hva som skal endres med vanlige ord. Du gir tilbake en hel, endret
 spesifikasjon som limes inn igjen.
 
-Avklart med `barchart (count) fylke`, versjon 60, november 2026 (TESTLISTE 9.1–9.3). Endringsmønstrene
+Avklart med `barchart (count) fylke`, versjon 60, november 2026 (TESTLOGG 9.1–9.3). Endringsmønstrene
 under er prøvd i editoren (fylkesnavn, sortering, liggende søyler, tittel, norsk tallformat,
-farge etter gruppe, stablede søyler i prosent og figur fra eksportert tabell, TESTLISTE 9.4–9.5).
+farge etter gruppe, stablede søyler i prosent og figur fra eksportert tabell, TESTLOGG 9.4–9.5).
 Tall på søylene er ikke prøvd.
 
 ## Slik gjør brukeren det (forklar det slik)
@@ -53,7 +53,7 @@ Tall på søylene er ikke prøvd.
 ## Stilen i Config-fanen
 
 Microdata.no legger en mørk stil i editorens **Config**-fane. Den gjelder i tillegg til spesifikasjonen,
-og `axisX`/`axisY` der går foran `axis` i spesifikasjonen (TESTLISTE 9.5, 2026-11-19):
+og `axisX`/`axisY` der går foran `axis` i spesifikasjonen (TESTLOGG 9.5, 2026-11-19):
 
 | I Config-fanen | Virkning |
 |---|---|
@@ -136,7 +136,7 @@ og `"axis": {"format": ",d"}` på tallaksen (`",.1f"` for én desimal, `".0%"` f
 ## Figur fra en tabell (når figurkommandoen ikke holder)
 
 Brukeren eksporterer tabellen: musepekeren over tabellen, eksportknappen, «semikolonseparert» på og
-«norsk kommategnsetting» av, Ctrl+C. Utskriften ser slik ut (prøvd 2026-11-19, TESTLISTE 9.4):
+«norsk kommategnsetting» av, Ctrl+C. Utskriften ser slik ut (prøvd 2026-11-19, TESTLOGG 9.4):
 
 ```
 fylke; 1 - 0–19 år; 2 - 20–66 år; 3 - 67 år og over; 9 - Ukjent; Total

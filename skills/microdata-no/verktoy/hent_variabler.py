@@ -195,7 +195,7 @@ def skriv_csv(sti, felter, rader):
     tmp = sti.with_name(sti.name + ".tmp")
     with open(tmp, "w", newline="", encoding="utf-8-sig") as f:
         # \n som i git (.gitattributes). Med csv-standarden \r\n ser filen endret ut for git status selv om
-        # innholdet er likt, og workflowen åpnet PR-er med bare ny dato (TESTLISTE 6.1).
+        # innholdet er likt, og workflowen åpnet PR-er med bare ny dato (TESTLOGG 6.1).
         w = csv.DictWriter(f, fieldnames=felter, delimiter=";", lineterminator="\n")
         w.writeheader()
         w.writerows(rader)

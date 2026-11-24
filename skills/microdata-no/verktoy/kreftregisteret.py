@@ -38,7 +38,7 @@ av fire tegn (C00.3-5 og C00.8 er munnhule, C05.1-2 oropharynx, C57.0-4 eggstokk
 kjertler). Tre regler trenger andre variabler:
   * Leppekreft: i Kreftregisterets data er kreft i leppens vermilionkant kodet C44.0 (hud på leppe) eller C43.0
     med ICD-10, men leppen står i ICD-O-3-topografien (S_TOPOGRAFIICDO3, uten C: 000-002, 006, 009). Rapporten
-    regner dem som leppe (--topografi). Testet: 91 tilfeller i 2023, rapporten 89 (TESTLISTE 10.11).
+    regner dem som leppe (--topografi). Testet: 91 tilfeller i 2023, rapporten 89 (TESTLOGG 10.11).
   * C48.2 hos kvinner er eggstokk m.m. (--kjonn, BEFOLKNING_KJOENN, '2' = kvinne).
   * Basalcellekarsinom (morfologi 809x i ICD-O-3) er ikke med (--morfologi, S_MORFOLOGIICDO3). Datalageret i
     microdata.no har ingen basalcellekarsinomer (2023), så det trengs bare om de kommer med senere.
@@ -186,8 +186,8 @@ def kommando_grupper(a):
     koder = kodeliste(a.variabel)
     prefiks = sorted({k[:3] for k in koder})
     # Alle kreftformer i ELVIS tas med, også de som mangler i kodelisten: S_TOPOGRAFIICD10 har D45 og D46 i
-    # dataene (302 ondartede i 2023), men ikke i kodelisten (versjon 1, TESTLISTE 10.2). Regler som treffer 0
-    # enheter er ufarlige (TESTLISTE 1.7).
+    # dataene (302 ondartede i 2023), men ikke i kodelisten (versjon 1, TESTLOGG 10.2). Regler som treffer 0
+    # enheter er ufarlige (TESTLOGG 1.7).
     med = sorted(tresifret)
     ikke_i_kodelisten = [p for p in med if p not in prefiks]
     uten_c = [p for p in prefiks if p not in tresifret and (p.startswith("C") or p in ("D45", "D46", "D47"))]
@@ -242,7 +242,7 @@ def kommando_grupper(a):
     for linje in recode_linjer(navn, kart, grupper):
         print(linje)
     # Hovedgrupper med samme kode som den tresifrede (C50 Bryst) blir ikke med i recode_linjer (k == m), og
-    # ville stått uten merkelapp. En regel til samme verdi setter merkelappen (testet versjon 60, TESTLISTE 10.8).
+    # ville stått uten merkelapp. En regel til samme verdi setter merkelappen (testet versjon 60, TESTLOGG 10.8).
     like = sorted(m for k, m in kart.items() if k == m)
     if like:
         print(f"recode {navn} " + " ".join(f"({q(m)} = {q(m)} {q(grupper[m])})" for m in like))
@@ -309,7 +309,7 @@ def kommando_grupper_cin(a):
     kart = {k: g["gruppe"] for g in cin for k in g["koder"].split()}
     for linje in recode_linjer(navn, kart, navn_for):
         print(linje)
-    # Kreftformer der koden er lik gruppen (C18 Tykktarm) får navnet med en regel til samme verdi (TESTLISTE 10.8).
+    # Kreftformer der koden er lik gruppen (C18 Tykktarm) får navnet med en regel til samme verdi (TESTLOGG 10.8).
     like = sorted({m for k, m in kart.items() if k == m})
     if like:
         print(f"recode {navn} " + " ".join(f"({q(m)} = {q(m)} {q(navn_for[m])})" for m in like))

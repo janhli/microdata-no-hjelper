@@ -19,20 +19,20 @@
 //            de eldste er viktige). Testet november 2026, versjon 60.
 // Fallgruver:
 //   - Utfallet må være 0/1 og laget eksplisitt. «generate y = x > 5» gir 0 (ikke manglende) når x mangler,
-//     så avgrens populasjonen eller sett manglende selv (TESTLISTE 8.2).
+//     så avgrens populasjonen eller sett manglende selv (TESTLOGG 8.2).
 //   - Faktorvariabler: i.var på en numerisk variabel. Laveste kode er referansen, så gi referansegruppen
 //     lavest kode. Strengvariabler må gjøres om med destring.
 //   - Har én kategori under 5 observasjoner, fjernes hele variabelen fra modellen, med en melding under
-//     tabellen som er lett å overse (tiltak 14, TESTLISTE 8.4). Tabuler kategoriene i populasjonen først.
+//     tabellen som er lett å overse (tiltak 14, TESTLOGG 8.4). Tabuler kategoriene i populasjonen først.
 //   - En 0/1-forklaringsvariabel der under 1 % har verdien 1, utelates uten melding. Skriv i.x, som beholdes
-//     (TESTLISTE 8.12–8.14). Et utfall under 1 % (eller over 99 %) gir meningsløse tall («Pseudo R2 Infinity»):
+//     (TESTLOGG 8.12–8.14). Et utfall under 1 % (eller over 99 %) gir meningsløse tall («Pseudo R2 Infinity»):
 //     avgrens populasjonen, eller bruk cox for hendelser over tid.
 //   - Modellen må ha minst to koeffisienter (tiltak 17). Kontinuerlige variabler (her alder) winsoriseres.
 //   - cluster() må være numerisk og ikke med i modellen, og kan ikke kombineres med robust.
 //   - or gir oddsratio. Oddsratio er ikke relativ risiko når utfallet er vanlig (her ca. 80 %): bruk
 //     marginaleffekter eller predikerte andeler for å forklare størrelser.
 //   - mfx(dydx) er gjennomsnittlig marginaleffekt, og for 0/1-variabler den deriverte, ikke endringen fra
-//     0 til 1. Forskjellen er liten (TESTLISTE 8.7). margins() predikerer ved gjennomsnittet av de andre
+//     0 til 1. Forskjellen er liten (TESTLOGG 8.7). margins() predikerer ved gjennomsnittet av de andre
 //     variablene, ikke gjennomsnittet av predikerte verdier.
 //   - Alder har ikke rett linje-effekt på sysselsetting: ta med alder i andre som egen variabel. Leddet
 //     c.x#c.x og c.x##c.x blir utelatt fra modellen uten melding, også i regress (versjon 60). Samspill

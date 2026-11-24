@@ -22,7 +22,7 @@ SKRIPT = sorted(
     + list((ROT / ".claude" / "skills" / "vedlikehold" / "testskript").glob("*.txt"))
 )
 # Testskript som har feilen med vilje, for å vise hva microdata.no gjør med den.
-FORVENTET = {("del8_11_interaksjoner.txt", "c.alder#c.alder")}  # TESTLISTE 8.11: leddet utelates
+FORVENTET = {("del8_11_interaksjoner.txt", "c.alder#c.alder")}  # TESTLOGG 8.11: leddet utelates
 
 
 def utgatt(tekst):

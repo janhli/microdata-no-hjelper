@@ -3,14 +3,14 @@
 Her står hva som kom ut da snuttene ble kjørt i microdata.no, og hva resultatene er kontrollert mot.
 Statuslinjen i hver snutt sier *at* den er testet. Denne filen sier *hva* testen viste.
 
-Kildene er toppseksjonene i snuttene (`Kontroll:`), [`TESTLISTE.md`](../../../TESTLISTE.md) del 5 og
+Kildene er toppseksjonene i snuttene (`Kontroll:`), [`TESTLOGG.md`](../../../TESTLOGG.md) del 5 og
 git-historikken. Når en snutt kjøres på nytt, oppdaterer du statuslinjen i snutten og raden her.
 
 ## Oversikt
 
 Alle snuttene er kjørt frittstående med datalagerversjon 59 (`no.ssb.fdb:59`) i november 2026, satt sammen
 til ett skript med `samle_snutter.py`. `lavinntekt_vedvarende.txt` ble kjørt for seg. De 14 som fortsatt
-gjelder, er kjørt på nytt med versjon 60 (2026-11-19, TESTLISTE 5.6), uten feil og med de samme tallene
+gjelder, er kjørt på nytt med versjon 60 (2026-11-19, TESTLOGG 5.6), uten feil og med de samme tallene
 innen støyen (f.eks. innvandrere 964 836 mot 964 834, husholdninger koblet til bolig 2 584 502 mot
 2 584 506, husholdningsstørrelsene 41,2/30,8/11,8/11,2/5,0 %). `sektor_lonnstakere.txt` er utgått og ligger i `arkiv/kodesnutter/` i repoet.
 
@@ -30,7 +30,7 @@ innen støyen (f.eks. innvandrere 964 836 mot 964 834, husholdninger koblet til 
 | [neet.txt](neet.txt) | v60, 2026-11 | SSB 13556, 12423 | Stemmer innen 0,1 prosentpoeng (status, alder, kjønn, fylke, innvandrere). Utdanningsnivå avviker (se under) |
 | [mal_analyse.txt](mal_analyse.txt) | v60, 2026-11 | – | Kjørt uten feil |
 | [mor_barn.txt](mor_barn.txt) | v60, 2026-11 | – | Kjørt uten feil |
-| [overlevelse.txt](overlevelse.txt) | v60, 2026-11 | Med og uten sensurering (TESTLISTE 8.6) | Sensurering ved utvandring endrer innvandrerkoeffisienten fra −0,242 til −0,209 |
+| [overlevelse.txt](overlevelse.txt) | v60, 2026-11 | Med og uten sensurering (TESTLOGG 8.6) | Sensurering ved utvandring endrer innvandrerkoeffisienten fra −0,242 til −0,209 |
 | [paneldata.txt](paneldata.txt) | v60, 2026-11 | fe mot re mot pooled | Fixed effects mye mindre enn pooled, som ventet. Hausman velger fe |
 | [samlivsstatus.txt](samlivsstatus.txt) | v60, 2026-11 | – | Kjørt uten feil |
 | [sektor_lonnstakere.txt](../../../arkiv/kodesnutter/sektor_lonnstakere.txt) (arkivert) | v59, 2026-11 | SSB 13926 | Stemmer for totalen. Offentlig foretak ca. 2 % lavere, med kjent årsak |
@@ -94,7 +94,7 @@ Uten `drop if sysmiss(hushstr)` blir de egne «husholdninger», og 32 822 kontak
 
 ### landbakgrunn_region.txt
 
-Bosatte 1.1.2025, mot Klass 545 (verdensinndeling) og `klass.py grupper 545` (TESTLISTE 4.1, 5.3 og 5.5):
+Bosatte 1.1.2025, mot Klass 545 (verdensinndeling) og `klass.py grupper 545` (TESTLOGG 4.1, 5.3 og 5.5):
 
 - Hver gruppe ligger innenfor sin Klass-region. EU/EØS: 710 473, Europa utenom EU/EØS: 267 378.
 - Grønland og Færøyene (4 367) er Norden i Klass, men Europa utenom EU/EØS i snutten. Det er med vilje.
@@ -107,7 +107,7 @@ Bosatte 1.1.2025, mot Klass 545 (verdensinndeling) og `klass.py grupper 545` (TE
 
 ### lavinntekt_vedvarende.txt
 
-Kontrollert i TESTLISTE 5.2. Barn under 18 år, 2021–2023, mot SSB tabell 09571 (EU-60):
+Kontrollert i TESTLOGG 5.2. Barn under 18 år, 2021–2023, mot SSB tabell 09571 (EU-60):
 
 | Krav om privathusholdning | Landet | Oslo |
 |---|---|---|
@@ -147,10 +147,10 @@ studenthusholdninger utenfor). Årsaken er ikke undersøkt.
 
 Kommunal median i Bærum er 608 500 kr og i Oslo 528 000 kr.
 
-Kjørt på nytt med versjon 60 (2026-11-19, TESTLISTE 5.6): samme tall innen 0,1 prosentpoeng (Stavanger
+Kjørt på nytt med versjon 60 (2026-11-19, TESTLOGG 5.6): samme tall innen 0,1 prosentpoeng (Stavanger
 8,8 og 11,5 %).
 
-Avviket i storbyene undersøkt (TESTLISTE 5.7, 2026-11-23). Barn 2022–2024, andel med vedvarende lavinntekt:
+Avviket i storbyene undersøkt (TESTLOGG 5.7, 2026-11-23). Barn 2022–2024, andel med vedvarende lavinntekt:
 
 | | Snutten | Median over husholdninger | Uten studenthusholdning alle tre år | Studenter med i medianen | Bosted 1.1.2024 | FHI 403 |
 |---|---|---|---|---|---|---|
@@ -197,7 +197,7 @@ Rettet etter kjøring: `merge` ble kjørt fra feil datasett, og KPI-faktorene fo
 
 Bosatte 25–66 år 1.1.2025 (3 076 000), sysselsatt i 4. kvartal 2024 (78,1 %). Kjørt to ganger, versjon 60:
 
-- Første versjon hadde `c.alder#c.alder`. Leddet ble stille utelatt fra modellen (TESTLISTE 8.11), og
+- Første versjon hadde `c.alder#c.alder`. Leddet ble stille utelatt fra modellen (TESTLOGG 8.11), og
   sammenligningen av predikert og observert andel per utdanning var meningsløs (utdanning var i modellen).
 - Rettet versjon med `alder2` og kontroll per aldersgruppe:
 
@@ -250,7 +250,7 @@ versjon 60):
 ### overlevelse.txt
 
 Bosatte 70 år og eldre 1.1.2016 (575 859), fulgt til 1.1.2026. Kjørt frittstående 2026-11-19 med de samme
-tallene som testskriptet for TESTLISTE 8.6: 291 700 døde, 1 729 sensurert ved utvandring (1 135 av dem
+tallene som testskriptet for TESTLOGG 8.6: 291 700 døde, 1 729 sensurert ved utvandring (1 135 av dem
 innvandrere). Snittid i oppfølging 7,4 år (innvandrere 7,7). Cox: innvandrer −0,209 (hazardrate 0,81),
 alder 1,135 per år, mann 1,336. Uten sensurering ved utvandring var innvandrerkoeffisienten −0,242.
 Med `hazard` vises ingen standardfeil, men konfidensintervallet.
@@ -273,7 +273,7 @@ samboerne var samboere og 81,4 % av dem uten par var fortsatt uten par.
 
 ### bolig.txt
 
-1.1.2024, mot SSB tabell 14897 (TESTLISTE 5.4):
+1.1.2024, mot SSB tabell 14897 (TESTLOGG 5.4):
 
 | | Snutten | SSB |
 |---|---|---|

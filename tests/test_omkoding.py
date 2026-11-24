@@ -1,7 +1,7 @@
 """Tester recode-utskriften fra recode_regler.py, kommuneomkoding.py og regionomkoding.py (uten nett).
 
 Utskriften kjøres med simulatoren i recode_regler.py, som følger manualens beskrivelse av recode. Om
-microdata.no faktisk oppfører seg slik, er punkt 1.9 i TESTLISTE.md.
+microdata.no faktisk oppfører seg slik, er punkt 1.9 i TESTLOGG.md.
 """
 
 import csv
@@ -122,7 +122,7 @@ class TestKommuneomkoding(unittest.TestCase, LinjelengdeMixin):
                 self.assertEqual({k: v for k, v in fra_aar.items() if v != utfall(standard, k)[k]}, {})
 
     def test_maalkodene_faar_navn_fra_inndelingen(self):
-        # Nye koder står ellers uten navn i gamle årganger (TESTLISTE 2.8)
+        # Nye koder står ellers uten navn i gamle årganger (TESTLOGG 2.8)
         tekst = kjor("kommuneomkoding.py")
         for regel in ("= '1108' 'Sandnes')", "= '1580' 'Haram')", "= '3101' 'Halden')", "= '1508' 'Ålesund')"):
             self.assertIn(regel, tekst)
@@ -138,7 +138,7 @@ class TestKommuneomkoding(unittest.TestCase, LinjelengdeMixin):
         self.assertIn("= '1875' 'Hábmer - Hamarøy')", kjor("kommuneomkoding.py"))  # standard: Klass-navnet
 
     def test_varsler_naar_koden_selv_ble_delt(self):
-        # 1507 Ålesund (2020–2023) omfatter Haram, som ble skilt ut i 2024 (TESTLISTE 2.4)
+        # 1507 Ålesund (2020–2023) omfatter Haram, som ble skilt ut i 2024 (TESTLOGG 2.4)
         tekst = kjor("kommuneomkoding.py")
         self.assertEqual(utfall(tekst, "1507")["1507"], "1508")
         varsel = tekst.split("selv ble delt")[1].split("\nrecode")[0]
@@ -181,7 +181,7 @@ class TestKommuneGrunnkrets(unittest.TestCase, LinjelengdeMixin):
         self.assertEqual(ut, ["1580", "1508", "1508"])
         # Bare grunnkretsene som får en annen kommune enn recode gir, har regler (Haram, ikke Ålesund)
         self.assertNotIn("'15070101'", tekst)
-        # 1580 finnes ikke i kodelisten 2023 og får ikke navn fra recode (TESTLISTE 2.9 c)
+        # 1580 finnes ikke i kodelisten 2023 og får ikke navn fra recode (TESTLOGG 2.9 c)
         self.assertIn("recode kommune ('1580' = '1580' 'Haram')", tekst)
 
     def test_grensejustering_uten_regler(self):

@@ -2,7 +2,7 @@
 
 Fra 2026-11 har microdata.no to datalagre fra FHI: `no.fhi.kreftregisteret` (versjon 1) og `no.fhi.npr` (versjon 1).
 Kolonnen `datalager` i `metadata/variabler.csv` sier hvor variabelen ligger. Punktene er lest ut av metadataene
-og ELVIS, og de viktigste er testet i microdata.no (TESTLISTE del 10, se siste punkt).
+og ELVIS, og de viktigste er testet i microdata.no (TESTLOGG del 10, se siste punkt).
 
 - **Enheten er ikke person.** Kreftregisteret har krefttilfelle (`KRG_TILFELLEID`), NPR har episode (`NPR_EPISODEID`)
   og prosedyre (`NPR_PROSEDYREID`). En person kan ha flere tilfeller og mange episoder. Personen står som en vanlig
@@ -30,7 +30,7 @@ og ELVIS, og de viktigste er testet i microdata.no (TESTLISTE del 10, se siste p
   - Basalcellekarsinom (morfologi 809x) er ikke med i rapporten, og datalageret har ingen (2023). `--morfologi`
     skiller dem ut som `basal` om de kommer med senere.
   - Pagets sykdom i bryst og papillomer i urinveier er heller ikke med i rapporten, men skilles ikke ut.
-  - **Testet (versjon 1, 2026-11-23, TESTLISTE 10.11):** alle tilfeller og alle kreftformer i 2023 stemmer med Cancer in
+  - **Testet (versjon 1, 2026-11-23, TESTLOGG 10.11):** alle tilfeller og alle kreftformer i 2023 stemmer med Cancer in
     Norway 2025 (tabell 4.5–4.6) innenfor støyen, unntatt leppe før `--topografi`. Rapporten for 2023 (CiN 2023) har
     lavere tall for flere kreftformer: registeret er oppdatert siden.
 - **TNM-verdiene gjelder ulike kreftformer.** `4c`, `4d` og `is(DCIS)` i `S_PT` brukes bare for bryst (C50), `1a1` bare
@@ -47,7 +47,7 @@ og ELVIS, og de viktigste er testet i microdata.no (TESTLISTE del 10, se siste p
   basalcellekarsinomer. [FHIs definisjon](https://www.fhi.no/is/ncd/dodelighet-sykelighet/kreft/)
 - **Beskrivelser og verdier står i ELVIS.** Lenken til detaljsiden står i kolonnen `ekstern_metadata` i `variabler.csv`.
   Verdiene er hentet til `metadata/fhi/kreftregisteret/verdier.csv` med `kreftregisteret.py hent`.
-- **Testet (versjon 60 / FHI 1, november 2026, TESTLISTE del 10):**
+- **Testet (versjon 60 / FHI 1, november 2026, TESTLOGG del 10):**
   - Tre `require` i samme skript virker.
   - Personnøkkelen er samme pseudonym som hos SSB, både i Kreftregisteret og NPR (`SOM_EP_PERSONID`). Alle tilfeller
     fikk kjønn med `merge ... on personid`.
@@ -56,6 +56,6 @@ og ELVIS, og de viktigste er testet i microdata.no (TESTLISTE del 10, se siste p
   - `values("2024")` på `SOM_EP_AAR` virker (9,1 millioner episoder).
   - Instant-datoene (`S_DIAGNOSEDATO`, `SOM_EP_INNDATO`) er dager siden 1970 og kan regnes med `date()`, også mot
     dødsdato fra SSB (ÅÅÅÅMMDD, regnet om).
-  - `recode kreftform ('C50' = 'C50' 'Bryst')` setter merkelappen (regel til samme verdi, TESTLISTE 10.8).
+  - `recode kreftform ('C50' = 'C50' 'Bryst')` setter merkelappen (regel til samme verdi, TESTLOGG 10.8).
   - **Dataene har koder som ikke står i kodelisten.** `S_TOPOGRAFIICD10` hadde D45 og D46 blant de ondartede, men
     kodelisten har bare D47. `kreftregisteret.py grupper` tar nå med alle kreftformene i ELVIS.

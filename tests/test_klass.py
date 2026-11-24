@@ -20,7 +20,7 @@ class TestKlass(unittest.TestCase):
                 self.assertEqual(avvik(tekst), [])
 
     def test_grupper_koder_som_mangler_i_klass_via_prefiks(self):
-        # 43.220 finnes i REGSYS_NARING_SN2007, men ikke i Klass. 43.22 finnes og ligger under F (TESTLISTE 1.12).
+        # 43.220 finnes i REGSYS_NARING_SN2007, men ikke i Klass. 43.22 finnes og ligger under F (TESTLOGG 1.12).
         tekst = kjor("klass.py", "grupper", "6", "--nivaa", "1", "--dato", "2009-01-01",
                      "--variabel", "REGSYS_NARING_SN2007")
         self.assertIn("43.220→43.22", tekst)
@@ -40,7 +40,7 @@ class TestKlass(unittest.TestCase):
         self.assertEqual(avvik(tekst), [])
 
     def test_kobling_utelat_tar_ut_maalkode(self):
-        # microdata.no stoppet SN2002 -> SN2007 på målkode 17.240 (TESTLISTE 1.10)
+        # microdata.no stoppet SN2002 -> SN2007 på målkode 17.240 (TESTLOGG 1.10)
         args = ("kobling", "6", "--dato", "2005-01-01", "--tabell", "SN 2007", "--navn", "naring")
         uten = kjor("klass.py", *args)
         med = kjor("klass.py", *args, "--utelat", "17.240")
@@ -73,13 +73,13 @@ class TestKlass(unittest.TestCase):
     def test_kobling_nus_til_isced(self):
         tekst = kjor("klass.py", "kobling", "36", "--dato", "2024-01-01", "--tabell", "ISCED 2011 Attainment")
         self.assertEqual(avvik(tekst), [])
-        # Fem mål heter «Not further defined» i Klass. Navnene over i hierarkiet gjør dem entydige (TESTLISTE 4.7)
+        # Fem mål heter «Not further defined» i Klass. Navnene over i hierarkiet gjør dem entydige (TESTLOGG 4.7)
         navn = re.findall(r"= '\d+' '([^']*)'", tekst)
         self.assertEqual(len(navn), len(set(navn)))
         self.assertIn("'Bachelor’s or equivalent level – Academic – Not further defined'", tekst)
 
     def test_grupper_tar_med_klass_koder_som_mangler_i_kodelisten(self):
-        # NUDB_BU 1.7.2024 hadde NUS-koder som bare finnes i nyere Klass-versjoner, f.eks. 754144 (TESTLISTE 4.6)
+        # NUDB_BU 1.7.2024 hadde NUS-koder som bare finnes i nyere Klass-versjoner, f.eks. 754144 (TESTLOGG 4.6)
         tekst = kjor("klass.py", "grupper", "36", "--nivaa", "1", "--dato", "2026-01-01", "--variabel", "NUDB_BU")
         self.assertIn("detaljkoder fra Klass som ikke står i kodelisten", tekst)
         self.assertEqual(simuler(recode_linjer_i(tekst), ["754144", "625106"]), ["7", "6"])

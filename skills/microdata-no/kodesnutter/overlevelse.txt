@@ -11,7 +11,7 @@
 //            sensur   – 1 = sensurert ved utvandring
 // Kontroll:  Bosatte 70+ 1.1.2016 (575 859), fulgt til 1.1.2026: 292 000 døde. 4,6 % av innvandrerne
 //            og 0,1 % av de andre utvandret. Cox-koeffisienten for innvandrer −0,209 (hazard 0,81), mot
-//            −0,242 uten sensurering. Alder 0,127 per år, mann 0,290. Kjørt som TESTLISTE 8.6 og frittstående
+//            −0,242 uten sensurering. Alder 0,127 per år, mann 0,290. Kjørt som TESTLOGG 8.6 og frittstående
 //            (2026-11-19, samme tall): 291 700 døde, 1 729 sensurert ved utvandring, snittid 7,4 år.
 // Fallgruver:
 //   - Populasjonen må være alle i risiko ved start (her bosatte 1.1.), ikke bare dem som fikk

@@ -14,16 +14,16 @@
     Grunnkretsene skifter kode med kommunenummeret, så `--fra` må være året dataene er fra, og hvert år trenger
     sin egen kjøring. Det gjelder også Ålesund/Haram 2020–2023 og kommuner valgt ved navn. Grunnkretser som selv er
     delt (f.eks. 2 i Stokke 2015, 3 i Indre Østfold 2025) og uoppgitt (`kkkk9999`) står med kommunekoden.
-    Testet (versjon 60, 2026-11-23, TESTLISTE 2.9): 88–98 % havnet i kommunen de bodde i året etter delingen, og
+    Testet (versjon 60, 2026-11-23, TESTLOGG 2.9): 88–98 % havnet i kommunen de bodde i året etter delingen, og
     resten ser ut som flytting. Men de to delte grunnkretsene i Stokke har 13 % av befolkningen, så Stokke står
     fortsatt delvis igjen. Si fra om det. Koder som
     ikke finnes i kodelisten på datoen (1580 Haram i 2023), får navn med en regel til samme verdi, som
-    verktøyet lager (TESTLISTE 2.10).
+    verktøyet lager (TESTLOGG 2.10).
   - **Merkelapp på en kode som ikke fantes:** `recode kommune ('1580' = '1580' 'Haram')` gir navnet, både før
     og etter at noen har verdien (`replace` etterpå får også navnet). Testet med versjon 60, 2026-11-23.
   - Når Ålesund ble delt i 2024 (Haram ut igjen), kjedes de gamle kodene via navn. Haram 1534 blir 1580,
     og Ørskog, Skodje og Sandøy blir 1508. Verktøyet lister slike valg som «kontroller».
-  - **Ålesund 1507 (2020–2023) omkodes helt til 1508, også Haram** (TESTLISTE 2.4). Koden kan ikke deles uten
+  - **Ålesund 1507 (2020–2023) omkodes helt til 1508, også Haram** (TESTLOGG 2.4). Koden kan ikke deles uten
     adresse. Verktøyet lister slike koder under «Koder som selv ble delt». Trenger du Haram for 2020–2023,
     bruk kommunen personen bodde i 1.1.2019 eller 1.1.2024.
   - Omkodingen er kontrollert mot SSB tabell 07459: alle kommuner innenfor ±5 (støy) for 1.1.2010 omkodet
@@ -39,7 +39,7 @@
   - `recode (* = ...)` må stå som siste regel i samme kommando som de andre reglene. I en egen kommando
     treffer den alle verdier, også de som allerede er omkodet. Derfor lager `regionomkoding.py` ingen
     sluttregel som standard. `--ukjent` gir én lang kommando. microdata.no har godtatt 2 789 tegn
-    (versjon 59, november 2026), og sluttregelen virker som forventet (TESTLISTE 1.1 og 1.2).
+    (versjon 59, november 2026), og sluttregelen virker som forventet (TESTLOGG 1.1 og 1.2).
   - Regionene er dagens inndeling. Politidistrikt (2016), helseregioner (2007), barnevern (2004) og
     samiske valgkretser (2009) har eldre versjoner enn 2024, og tabellene viser dagens kobling.
   - Helseregionene har bare tabell mot Kommuneinndeling 2020 hos Klass. Kommunekodene er oversatt
@@ -49,7 +49,7 @@
     Se `metadata/regioner/manuelt/README.md`.
 
 ## Grunnkrets (`BEFOLKNING_GRUNNKRETS`, fra versjon 60)
-Kartlagt fra metadataene og SSB Klass (november 2026), og testet i microdata.no med versjon 60 (TESTLISTE
+Kartlagt fra metadataene og SSB Klass (november 2026), og testet i microdata.no med versjon 60 (TESTLOGG
 del 11, 2026-11-19).
 - **De fire første sifrene er bostedskommunen** på samme dato (lik `BEFOLKNING_KOMMNR_FORMELL` for alle
   1.1.2026, 11.2).
@@ -71,7 +71,7 @@ del 11, 2026-11-19).
   endrede koder, og tar resten med `substr`.
 - **Levekårssoner** finnes i Klass for 66 kommuner (2026-inndelingen, ikke Oslo). Bydeler finnes for Oslo,
   Bergen, Trondheim og Stavanger, delbydeler for Oslo. Alle bygger på 2026-grunnkretsene.
-- **`BEFOLKNING_BYDEL` gir de samme bydelene som `grunnkrets.py --til bydel`** (TESTLISTE 11.9).
+- **`BEFOLKNING_BYDEL` gir de samme bydelene som `grunnkrets.py --til bydel`** (TESTLOGG 11.9).
   Uoppgitt er `kkkk99` i `BEFOLKNING_BYDEL` og `kkkk9999` fra grunnkrets, og noen få personer har grunnkrets, men
   manglende `BEFOLKNING_BYDEL`.
 - **Grunnkrets kan brukes med alle personvariabler og med FHI-data** under versjon 2 (lønn etter delområde,

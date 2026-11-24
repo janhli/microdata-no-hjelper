@@ -3,7 +3,7 @@
 Erfaringer fra faktiske kjøringer som ikke står, eller står utydelig, i manualen. Hver fallgruve har:
 **Symptom** (gjerne den eksakte feilmeldingen), **Årsak** og **Løsning**. Nye fallgruver legges til
 med pull request (se CONTRIBUTING.md). Tagg dem med datalagerversjon/dato hvis de kan bli utdatert.
-Tallene fra testkjøringene står i TESTLISTE.md i repoet (numre som 8.12) og i `kodesnutter/TESTRESULTATER.md`.
+Tallene fra testkjøringene står i TESTLOGG.md i repoet (numre som 8.12) og i `kodesnutter/TESTRESULTATER.md`.
 
 Denne filen gjelder alle skript. Les i tillegg hele temafilen når skriptet bruker temaet:
 
@@ -139,14 +139,14 @@ Denne filen gjelder alle skript. Les i tillegg hele temafilen når skriptet bruk
   |---|---|---|
   | `START@`/`STOP@` fra `import-event` | `START@astatus` | Ja, dager siden 1970 (manualens eksempler) |
   | `date@panel` fra `import-panel` | | Ja, `year(date@panel)` virker |
-  | `Instant` (5) | `ARBLONN_ARB_START`/`_SLUTT`, `SOM_EP_INNDATO`/`_UTDATO`, `S_DIAGNOSEDATO` | Ja, dager siden 1970 (testet for `S_DIAGNOSEDATO` og `SOM_EP_INNDATO`, TESTLISTE 10.9) |
-  | `Long` ÅÅÅÅMMDD (5) | `BEFOLKNING_DOEDS_DATO`, `BEFOLKNING_FORSTDATO`, `INTRO_*_DATO`, `INTRO_GJENNOMFORINGSFRIST` | Nei, regn om (TESTLISTE 8.10) |
+  | `Instant` (5) | `ARBLONN_ARB_START`/`_SLUTT`, `SOM_EP_INNDATO`/`_UTDATO`, `S_DIAGNOSEDATO` | Ja, dager siden 1970 (testet for `S_DIAGNOSEDATO` og `SOM_EP_INNDATO`, TESTLOGG 10.9) |
+  | `Long` ÅÅÅÅMMDD (5) | `BEFOLKNING_DOEDS_DATO`, `BEFOLKNING_FORSTDATO`, `INTRO_*_DATO`, `INTRO_GJENNOMFORINGSFRIST` | Nei, regn om (TESTLOGG 8.10) |
   | `Long` ÅÅÅÅMM (24) | `BEFOLKNING_FOEDSELS_AAR_MND`, `ARBEIDSSOKER_DAGDATO1`, `KRIMINALITET_SIKTEDE_*DATO` | Nei, `int(x/100)` gir året |
   | ÅÅÅÅ (5) | `BOFORHOLD_BYGGEAAR`, `KJORETOY_FREG_AR`, `BARNEVERN_FODTAAR` (tekst), `SOM_EP_AAR` (tekst) | Rene årstall |
 
   Navnet sier lite om formatet: `KRIMINALITET_SIKTEDE_GJDATO1` er ÅÅÅÅMM.
 - **Løsning:** Sjekk `format` i JSON-filen. Gjør om til dager før du regner med datoer (testet versjon 60,
-  TESTLISTE 8.10):
+  TESTLOGG 8.10):
   `generate dag_aar = int(dod/10000)`, `generate dag_mnd = int(dod/100) - dag_aar*100`,
   `generate dag_dag = dod - int(dod/100)*100` og `generate doddag = date(dag_aar, dag_mnd, dag_dag)`.
   Sammenligning med en dato kan gjøres direkte på tallet: `dod >= 20240101`.
@@ -177,7 +177,7 @@ Denne filen gjelder alle skript. Les i tillegg hele temafilen når skriptet bruk
 ### Sammenligninger med manglende verdi gir 0 eller 1, ikke missing
 - **Symptom:** En dummy laget med `generate h = x > 5` har ingen manglende verdier, selv om `x` mangler for
   mange. Enhetene kommer med i regresjoner og tabeller med feil verdi.
-- **Årsak (testet versjon 60, november 2026, TESTLISTE 8.2):** En sammenligning med manglende verdi er
+- **Årsak (testet versjon 60, november 2026, TESTLOGG 8.2):** En sammenligning med manglende verdi er
   *usann*, unntatt `!=`, som er *sann* (som NaN i flyttall, ikke som i Stata):
   - `generate h = x > 5` gir **0** når `x` mangler (Stata gir 1).
   - `generate h = x != 2` gir **1** når `x` mangler.
@@ -193,7 +193,7 @@ Denne filen gjelder alle skript. Les i tillegg hele temafilen når skriptet bruk
 ### Figurtallene ligger i Vega-spesifikasjonen
 - Manualen sier at figurer eksporteres som bilder uten de underliggende tallene. Det gjelder .png og .svg.
   «Åpne i Vega-editor» gir en Vega-Lite-spesifikasjon (v6) med de aggregerte, støylagte tallene i
-  `data.values`, på vega.github.io/editor (versjon 60, TESTLISTE 9.1–9.3).
+  `data.values`, på vega.github.io/editor (versjon 60, TESTLOGG 9.1–9.3).
 - **Bruk:** Brukeren limer inn spesifikasjonen, og du endrer figuren. Se `referanser/vega.md`.
 - Editorens Config-fane har en mørk stil fra microdata.no (tallformat `~s` på aksene gir «NaN» for
   navn). Overstyr den i spesifikasjonen (`config`-blokken i `vega.md`). En helt tom fane gir
@@ -232,7 +232,7 @@ Denne filen gjelder alle skript. Les i tillegg hele temafilen når skriptet bruk
 
 ### Versjon 2 av anonymiseringstiltakene (fra versjon 60, 17. november 2026)
 Kilde: `metadata/manual/konfidensialitet.md` og `systemendringer.md`. Det som påvirker skript:
-- **Stoppes ikke lenger:** `generate`/`replace`/`recode` som treffer 1–9 enheter (tiltak 6, TESTLISTE 1.13).
+- **Stoppes ikke lenger:** `generate`/`replace`/`recode` som treffer 1–9 enheter (tiltak 6, TESTLOGG 1.13).
   Tabeller med mange små celler stoppes ikke (tiltak 5). Konstantleddet skjules ikke (tiltak 9).
 - **Celler med 1–4 settes til 0** i tabeller og grafer (tiltak 11). 0 betyr «0–5», 5 betyr «5–10».
 - **Minste datasett er 100 personer.** Gjelder også datasett under personnivå (jobber):
@@ -249,16 +249,16 @@ Kilde: `metadata/manual/konfidensialitet.md` og `systemendringer.md`. Det som p�
 - **Symptom:** `tabulate gruppe, summarize(x) mean` eller `summarize x` gir gjennomsnitt 0 (og standardavvik 0)
   for en 0/1-variabel, selv om `tabulate x` viser mange med verdien 1. Ingen melding.
 - **Årsak:** winsoriseringen (1 % i hver ende) gjelder også 0/1-variabler. Har under 1 % verdien 1, er
-  99-persentilen 0, og alle 1-erne blir 0 (testet versjon 60, 2026-11-20, TESTLISTE 11.12). Motsatt blir alle
+  99-persentilen 0, og alle 1-erne blir 0 (testet versjon 60, 2026-11-20, TESTLOGG 11.12). Motsatt blir alle
   0-ene 1 når over 99 % har verdien 1.
 - **Også i undergrupper:** winsoriseringen skjer per gruppe i `summarize()`, `by()`/`over()` og med `if`. En
   andel som er over 1 % totalt, kan bli 0 i en gruppe der den er lavere (dødelighet blant unge, sjeldne
   diagnoser i små grupper).
 - **Regresjoner:** en 0/1-forklaringsvariabel der under 1 % har verdien 1, utelates fra `regress` og `logit`
   uten melding: ingen rad, og F-testen er som uten variabelen. Andeler over 1 % er med, og koeffisienten er
-  som ventet. Grensen er 1 %, likt med `summarize`, også for utfallet i `logit` (TESTLISTE 8.12).
+  som ventet. Grensen er 1 %, likt med `summarize`, også for utfallet i `logit` (TESTLOGG 8.12).
 - **Kategorier i `i.`-variabler rammes ikke.** `regress lonn i.gruppe mann` og `logit` viste kategorier under
-  1 %, med koeffisienter nær forskjellene i gjennomsnitt. `i.` lages trolig om til 0/1-ledd etter winsoriseringen (TESTLISTE 8.13).
+  1 %, med koeffisienter nær forskjellene i gjennomsnitt. `i.` lages trolig om til 0/1-ledd etter winsoriseringen (TESTLOGG 8.13).
 - **Utfall under 1 % (eller over 99 %) gir meningsløse modeller uten feilmelding** (8.13):
   - `regress`: alle koeffisienter og standardfeil 0, R² og F «NaN».
   - `logit`: 35 iterasjoner, «Pseudo R2 Infinity» og negativ eller nær null `LR chi2`. Med utfallet over 99 %
@@ -274,7 +274,7 @@ Kilde: `metadata/manual/konfidensialitet.md` og `systemendringer.md`. Det som p�
     populasjonen. Avgrens populasjonen til en risikogruppe der utfallet er over 1 %, eller bruk tabeller med
     antall.
 - **`cox` rammes ikke.** En hendelse på 0,19 % ga 0 i `summarize`, men `cox` fant hendelsene og ga rimelige
-  koeffisienter. For sjeldne hendelser over tid er `cox` derfor et alternativ til `logit` (TESTLISTE 8.14). `kaplan-meier`
+  koeffisienter. For sjeldne hendelser over tid er `cox` derfor et alternativ til `logit` (TESTLOGG 8.14). `kaplan-meier`
   og andre modeller (`poisson`, `probit`) er ikke testet.
 
 ### Tabeller på små delgrupper
@@ -298,15 +298,15 @@ Kilde: `metadata/manual/konfidensialitet.md` og `systemendringer.md`. Det som p�
   17. november 2026, og ikke med FHI-data eller `BEFOLKNING_GRUNNKRETS`. Bruk det bare for å gjenskape gamle
   resultater.
   - Skriptet kjører fram til importen av grunnkrets, som stoppes med «Ulovlig import med valgt
-    konfidensialitetsprofil. Kan ikke bruke variabler innenfor *_GRUNNKRETS» (versjon 60, TESTLISTE 11.7).
-    FHI-data er ikke testet, men stoppes trolig på samme måte. FHI-testene i TESTLISTE del 10 ble kjørt med
+    konfidensialitetsprofil. Kan ikke bruke variabler innenfor *_GRUNNKRETS» (versjon 60, TESTLOGG 11.7).
+    FHI-data er ikke testet, men stoppes trolig på samme måte. FHI-testene i TESTLOGG del 10 ble kjørt med
     versjon 2.
 - Minste datasett er 1000 personer.
 - **Tabeller** der minst halvparten av cellene er under 5, vises ikke, f.eks.
   `tabulate far_landbak if far_kat == '4', top(15)` på en liten gruppe (tiltak 5).
 - **`replace` eller `recode` som treffer 1–9 enheter, avvises** (tiltak 6). I `recode` gjelder grensen **hver
   målverdi for seg**: «Stoppet av avsløringskontroll. Omkodingen til 9 påvirker for få enheter» (`(990 = 9)`
-  for uoppgitt landbakgrunn, versjon 59). En regel som treffer 0 enheter, stoppes ikke (TESTLISTE 1.7).
+  for uoppgitt landbakgrunn, versjon 59). En regel som treffer 0 enheter, stoppes ikke (TESTLOGG 1.7).
   Feilmeldingen nevner én målkode om gangen. Ta ut målkoder med `--utelat` i verktøyene, eventuelt i flere
   runder. Kategorier som ikke er med i `tabulate`, kan likevel stoppe omkodingen. For `klass.py grupper 545`
   gjelder det statsløs og uoppgitt: `--utelat V9`, eller `--utelat V91,V92` på nivå 2.

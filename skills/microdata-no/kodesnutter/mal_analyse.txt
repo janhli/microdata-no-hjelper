@@ -62,6 +62,6 @@ tabulate fylke aldgr, missing rowpct
 
 // --- 5. Kildehenvisning ---
 // Gir «Analysen er gjennomført i microdata.no med datagrunnlag fra: SSB (registerdata). Data analysert:
-// <dato>» (TESTLISTE 8.8, versjon 60). Ikke med datalagerversjon: oppgi den i teksten. Kommer ikke med
+// <dato>» (TESTLOGG 8.8, versjon 60). Ikke med datalagerversjon: oppgi den i teksten. Kommer ikke med
 // når hele utskriften kopieres. Kopier den for seg.
 citation
