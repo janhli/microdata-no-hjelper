@@ -18,8 +18,10 @@ Advarsler (endrer ikke avslutningskoden):
   - gruppering som starter med en fast verdi og endres med replace ... if x < / > ..., uten sysmiss()
   - citation er ikke siste kommando
 
-Sjekken finner bare feil som kan sees i teksten. Les referanser/fallgruver.md og aktuelle temafiler likevel. --snutt slår av
-kravene til levering (ansvarslinje og citation), slik testene bruker den på kodesnuttene.
+Skriver også ut hvilke temafiler (referanser/fallgruver_*.md) som gjelder det skriptet bruker, og hvorfor.
+
+Sjekken finner bare feil som kan sees i teksten. Les referanser/fallgruver.md og temafilene den skriver ut likevel.
+--snutt slår av kravene til levering (ansvarslinje og citation), slik testene bruker den på kodesnuttene.
 """
 
 import argparse
@@ -34,6 +36,7 @@ from pathlib import Path
 SKILL = Path(__file__).resolve().parent.parent
 METADATA = SKILL / "metadata"
 FUNKSJONER_MD = METADATA / "manual" / "kommandoer_og_funksjoner" / "funksjoner.md"
+KOMMANDOER_MD = METADATA / "manual" / "kommandoer_og_funksjoner" / "kommandoer.md"
 
 ANSVARSLINJE = ("// Laget med hjelp fra en KI-agent (microdata-no-hjelper). Kontroller variabler, populasjon og "
                 "resultater selv: du er ansvarlig for skriptet.")
@@ -56,6 +59,11 @@ NAVN = [  # (?![\w$]): `t$i` er ikke navnet `t`, den feilen meldes for seg
     (re.compile(r"->\s*(\w+)(?![\w$])"), "variabelen"),
     (re.compile(r"^\s*(?:create-dataset|clone-dataset\s+\w+)\s+(\w+)(?![\w$])"), "datasettet"),
 ]
+# Temafilene i referanser/, og hva de gjelder. Testes mot filene som finnes.
+TEMAFILER = {"fallgruver_analyse.md": "statistisk analyse", "fallgruver_geografi.md": "geografi",
+             "fallgruver_klass.md": "Klass og næring", "fallgruver_fhi.md": "FHI-data"}
+NARING = re.compile(r"_NARING_SN|_NACE1?_SN")
+KLASSVARIABEL = re.compile(r"STYRK08|_NUS(?:2000)?(?:_|$)|^NUDB_BU$|LANDBAK|FODELAND")
 
 
 @lru_cache(maxsize=None)
@@ -106,6 +114,63 @@ def uten_tekst(s):
 
 def er_dato(verdi):
     return re.fullmatch(DATO, verdi) is not None
+
+
+@lru_cache(maxsize=None)
+def geografivariabler():
+    """Variabler med Oslo som kommune, fylke eller bydel i kodelisten, og grunnkrets (kodene har ikke navn på Oslo)."""
+    with open(METADATA / "kodelister.csv", encoding="utf-8-sig", newline="") as f:
+        navn = {r["navn"] for r in csv.DictReader(f, delimiter=";")
+                if (r["kode"], r["kategori"]) in {("0301", "Oslo"), ("03", "Oslo"), ("030101", "Gamle Oslo")}}
+    return frozenset(navn | {"BEFOLKNING_GRUNNKRETS"})
+
+
+@lru_cache(maxsize=None)
+def analysekommandoer():
+    """Kommandoene under Analyse, Regresjon og Overlevelsesanalyse i manualen, pluss paneldata og coefplot."""
+    ut = {"import-panel", "summarize-panel", "tabulate-panel", "coefplot"}
+    for del_ in re.split(r"(?m)^(?=## )", KOMMANDOER_MD.read_text(encoding="utf-8")):
+        if del_.split("\n", 1)[0] in ("## Analyse", "## Regresjon", "## Overlevelsesanalyse"):
+            ut |= set(re.findall(r"^### ([\w-]+)\s*$", del_, re.MULTILINE))
+    return frozenset(ut)
+
+
+def temafiler(tekst):
+    """{temafil: [hva i skriptet som gjør at den gjelder]}, i rekkefølgen fra TEMAFILER."""
+    grunner = {fil: [] for fil in TEMAFILER}
+    klass, recode = [], bool(re.search(r"(?mi)^\s*//.*\bklass\b", tekst))
+    kode = [uten_tekst(linje) for _, linje in kodelinjer(tekst)]
+
+    def brukt(alias):
+        """Om variabelen brukes til mer enn å avgrense populasjonen med sysmiss(), eller å fjernes."""
+        navn = re.escape(alias)
+        for s in kode:
+            if IMPORTLINJE.match(s) or re.match(rf"^\s*drop\s+{navn}\s*$", s):
+                continue
+            if re.search(rf"(?<![\w$]){navn}(?!\w)", re.sub(rf"sysmiss\(\s*{navn}\s*\)", "", s)):
+                return True
+        return False
+
+    for s in kode:
+        kommando = s.split()[0]
+        if kommando in analysekommandoer():
+            grunner["fallgruver_analyse.md"].append(kommando)
+        recode = recode or kommando == "recode"
+        if m := REQUIRE.match(s):
+            if m.group(1).startswith("no.fhi."):
+                grunner["fallgruver_fhi.md"].append(m.group(1))
+        elif IMPORTLINJE.match(s):
+            m = IMPORT.match(s)
+            for navn in re.findall(r"\b\w+/(\w+)", s):
+                if navn in geografivariabler() and (not m or m.group(4).startswith("$") or brukt(m.group(4))):
+                    grunner["fallgruver_geografi.md"].append(navn)
+                if NARING.search(navn):
+                    grunner["fallgruver_klass.md"].append(navn)
+                elif KLASSVARIABEL.search(navn):
+                    klass.append(navn)
+    if recode:  # yrke, utdanning og land bare når kodene grupperes
+        grunner["fallgruver_klass.md"] += klass
+    return {fil: list(dict.fromkeys(g)) for fil, g in grunner.items() if g}
 
 
 def sjekk(tekst, variabler=None, levering=True, datalagre=None, funksjoner=None, pseudonym=None):
@@ -278,7 +343,11 @@ def main():
     if antall_feil:
         print(f"\n{antall_feil} feil og {antall_adv} advarsler. Rett feilene før skriptet leveres.")
     else:
-        print(f"Ingen feil funnet ({antall_adv} advarsler). Sjekken finner ikke alt: les referanser/fallgruver.md og aktuelle temafiler.")
+        print(f"Ingen feil funnet ({antall_adv} advarsler). Sjekken finner ikke alt: les referanser/fallgruver.md.")
+    if tema := temafiler(tekst):
+        print("Les også temafilene for det skriptet bruker:")
+        for fil, grunner in tema.items():
+            print(f"  referanser/{fil} ({', '.join(grunner)})")
     sys.exit(1 if antall_feil else 0)
 
 

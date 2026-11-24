@@ -196,7 +196,8 @@ og si fra om forutsetningene (f.eks. parallelle trender i diff-in-diff, instrume
 5. Kjør `python verktoy/sjekk_skript.py <fil>` før du leverer (`-` leser skriptet fra stdin). Den finner
    variabler som ikke finnes, datoer utenfor dekningen, pseudonymer i uttrykk, `median`/`sd`, `c.x#c.x`,
    funksjonsnavn som navn og manglende ansvarslinje eller `citation`. Rett alle feil. Advarslene er ting du
-   må vurdere og eventuelt si fra om. Sjekken erstatter ikke fallgruvefilene.
+   må vurdere og eventuelt si fra om. Til slutt skriver den ut hvilke temafiler
+   skriptet trenger: les dem du ikke har lest, og rett skriptet. Sjekken erstatter ikke fallgruvefilene.
 6. Brukeren kjører skriptet og melder tilbake. Rett feilen, og finnes den ikke allerede i
    fallgruvefilene, foreslå at brukeren bidrar med den (se CONTRIBUTING.md i repoet).
 

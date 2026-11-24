@@ -13,7 +13,8 @@ import sys
 import unittest
 
 from hjelp import SKILL, VERKTOY  # hjelp legger verktoy/ på sys.path
-from sjekk_skript import ANSVARSLINJE, er_pseudonym, les_datalagre, les_funksjoner, sjekk
+from sjekk_skript import (ANSVARSLINJE, TEMAFILER, analysekommandoer, er_pseudonym, geografivariabler,
+                          les_datalagre, les_funksjoner, sjekk, temafiler)
 
 ROT = SKILL.parent.parent
 SKRIPT = sorted(
@@ -158,6 +159,67 @@ class TestMetadataenSjekkenBruker(unittest.TestCase):
         self.assertLessEqual({"no.ssb.fdb", "no.fhi.kreftregisteret", "no.fhi.npr"}, les_datalagre())
 
 
+class TestTemafiler(unittest.TestCase):
+    """Sjekken sier hvilke temafiler skriptet trenger, så agenten ikke må vurdere det selv."""
+
+    HODE = "require no.ssb.fdb:60 as fdb\ncreate-dataset p\n"
+
+    def tema(self, *linjer):
+        return {fil.removeprefix("fallgruver_").removesuffix(".md") for fil in temafiler(self.HODE + "\n".join(linjer))}
+
+    def test_temaene_er_filene_som_finnes(self):
+        self.assertEqual(set(TEMAFILER), {f.name for f in (SKILL / "referanser").glob("fallgruver_*.md")})
+
+    def test_skript_uten_tema(self):
+        self.assertEqual(self.tema("import fdb/BEFOLKNING_KJOENN as kjonn", "tabulate kjonn", "summarize kjonn"), set())
+
+    def test_tema_i_kode(self):
+        for linjer, forventet in [
+            (["import fdb/BEFOLKNING_KOMMNR_FORMELL 2024-01-01 as kommune", "tabulate kommune"], {"geografi"}),
+            (["import fdb/BEFOLKNING_GRUNNKRETS 2024-01-01 as gk", "generate del = substr(gk, 1, 6)"], {"geografi"}),
+            (["import fdb/BEFOLKNING_BYDEL 2024-01-01 as bydel", "keep if bydel == '030101'"], {"geografi"}),
+            (["import fdb/KRIMINALITET_SIKTEDE_GJFYLKE 2020-01-01 as fylke", "collapse (count) x, by(fylke)"], {"geografi"}),
+            (["import-event fdb/BOSATTEFDT_BOSTED 2010-01-01 to 2016-01-01 as e"], {"geografi"}),
+            (["import-panel fdb/BEFOLKNING_KOMMNR_FORMELL 2016-01-01 2017-01-01"], {"geografi", "analyse"}),
+            (["regress lonn alder mann"], {"analyse"}),
+            (["  cox tid hendelse alder"], {"analyse"}),
+            (["logit-predict y x"], {"analyse"}),
+            (["correlate a b"], {"analyse"}),
+            (["coefplot regress lonn alder mann"], {"analyse"}),
+            (["import fdb/REGSYS_VIRK_NACE1_SN07 2019-11-16 as naring"], {"klass"}),
+            (["import fdb/NUDB_BU 2024-07-01 as bu", "recode bu ('1' = '1')"], {"klass"}),
+            (["import fdb/BEFOLKNING_LANDBAK3GEN as lb", "// Klass 545 (2026-11-24): koder omkodet"], {"klass"}),
+            (["import fdb/NUDB_BU 2024-07-01 as bu"], set()),
+            (["require no.fhi.npr:1 as npr", "import npr/SOM_EP_AAR as aar"], {"fhi"}),
+        ]:
+            with self.subTest(linjer=linjer):
+                self.assertEqual(self.tema(*linjer), forventet)
+
+    def test_kommune_bare_for_aa_avgrense_til_bosatte_er_ikke_geografi(self):
+        importen = "import fdb/BEFOLKNING_KOMMNR_FORMELL 2024-01-01 as kommune"
+        for linje in ("drop if sysmiss(kommune)", "keep if !sysmiss(kommune)", "keep if sysmiss(kommune) == 0",
+                      "generate kommunetall = 1", "drop kommune"):
+            with self.subTest(linje=linje):
+                self.assertEqual(self.tema(importen, linje), set())
+        self.assertEqual(self.tema(importen), set())
+        self.assertEqual(self.tema(importen, "drop if sysmiss(kommune) | kommune == '2100'"), {"geografi"})
+        self.assertEqual(self.tema(importen.replace("kommune", "$var"), "tabulate kjonn"), {"geografi"})
+
+    def test_kommentarer_og_tekst_gir_ikke_tema(self):
+        self.assertEqual(self.tema("// regress lonn alder", "// require no.fhi.npr:1 as npr", "textblock",
+                                   "import fdb/BEFOLKNING_KOMMNR_FORMELL 2024-01-01 as k", "cox", "endblock"), set())
+
+    def test_variabler_som_ligner_er_ikke_geografi(self):
+        for navn in ("SKATT_INNTEKT_KOMMUNE", "BEFOLKNING_TETTNR", "ARBLONN_LONN_BONUS", "NUDB_UTVEKSL_STUDIEPROGRAM"):
+            with self.subTest(navn=navn):
+                self.assertEqual(self.tema(f"import fdb/{navn} 2020-01-01 as x", "recode x ('1' = '1')"), set())
+
+    def test_listene_fra_metadata_er_ikke_tomme(self):
+        self.assertGreater(len(geografivariabler()), 15)
+        self.assertLessEqual({"regress", "rdd", "oaxaca", "kaplan-meier", "ci", "import-panel"}, analysekommandoer())
+        self.assertFalse({"tabulate", "summarize", "import", "collapse"} & analysekommandoer())
+
+
 class TestKommandolinjen(unittest.TestCase):
     def kjor(self, *args, inn=""):
         return subprocess.run([sys.executable, "-I", str(VERKTOY / "sjekk_skript.py"), *args], input=inn,
@@ -178,6 +240,14 @@ class TestKommandolinjen(unittest.TestCase):
         r = self.kjor("--snutt", str(SKILL / "kodesnutter" / "alder.txt"))
         self.assertEqual(r.returncode, 0, r.stdout + r.stderr)
         self.assertIn("Ingen feil funnet", r.stdout)
+
+    def test_temafilene_skrives_ut_ogsaa_nar_skriptet_har_feil(self):
+        kode = "require no.ssb.fdb:60 as fdb\nimport fdb/BEFOLKNING_KOMMNR_FORMELL 2024-01-01 as k\ntabulate k\n"
+        for inn, args, returkode in [(kode, ["--snutt", "-"], 0), (kode, ["-"], 1)]:
+            r = self.kjor(*args, inn=inn)
+            self.assertEqual(r.returncode, returkode, r.stderr)
+            self.assertIn("referanser/fallgruver_geografi.md (BEFOLKNING_KOMMNR_FORMELL)", r.stdout)
+            self.assertNotIn("fallgruver_fhi.md", r.stdout)
 
 
 if __name__ == "__main__":
