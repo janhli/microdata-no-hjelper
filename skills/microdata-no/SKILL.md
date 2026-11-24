@@ -11,7 +11,8 @@ feilmeldinger eller resultater, og du justerer.
 
 ## Lokale kilder (bruk dem før nettet)
 
-Alle stier er relative til denne skill-mappen. Søk i filene (grep, rg eller agentens søkeverktøy), og ikke les hele filene.
+Alle stier er relative til denne skill-mappen. I `metadata/` søker du (grep, rg eller agentens søkeverktøy) i stedet for å
+lese hele filene. `referanser/fallgruver.md` leser du i sin helhet før du leverer et skript.
 
 | Fil | Innhold |
 |---|---|
@@ -24,7 +25,7 @@ Alle stier er relative til denne skill-mappen. Søk i filene (grep, rg eller age
 | `metadata/grunnkrets/` | Grunnkrets (SSB Klass 1): `endringer.csv` (alle kodeendringer siden 1990) og `inndelinger.csv` (grunnkrets → levekårssone, bydel og delbydel i Oslo, gjeldende inndeling). Brukes av `verktoy/grunnkrets.py` |
 | `metadata/regioner/*.csv` | Koblingstabeller fra kommune (2024) til regioninndelinger: politidistrikt, valgdistrikt, økonomiske regioner, helseregioner, familievern, barnevern, reiseliv, samiske valgkretser, sentralitet, landsdeler og bo- og arbeidsmarkedsregioner. Kolonner `kommunenr;regionkode;regionnavn`. Oversikt i `INDEX.csv`, manuelt lastede filer i `manuelt/` |
 | `metadata/manual/**/*.md` | Hele manualen som Markdown. Kommandoreferansen ligger i `kommandoer_og_funksjoner/kommandoer.md` og funksjonene i `.../funksjoner.md`. |
-| `referanser/fallgruver.md` | Feil som ikke står (tydelig) i manualen, med feilmelding og løsning. **Les den før du leverer et skript.** |
+| `referanser/fallgruver.md` | Feil som ikke står (tydelig) i manualen, med feilmelding og løsning. **Les hele før du leverer et skript.** |
 | `referanser/vega.md` | Endre figurer fra microdata.no i Vega-editoren: brukeren limer inn Vega-Lite-spesifikasjonen (med tallene), du endrer etiketter, rekkefølge, farger, titler og tallformat. Les den når brukeren vil ha en penere eller tilpasset figur |
 | `kodesnutter/` | Frittstående og kommenterte snutter med teststatus: analysemal, fylke med navn, alder, innvandringskategori, landbakgrunn, utdanning, arbeidsstyrkestatus, NEET, samliv, husholdning, bolig, lavinntekt, verdi ved hendelse, mor–barn, forløp, overlevelsesanalyse, logistisk regresjon og paneldata. Oversikt i `kodesnutter/README.md`. **Ta utgangspunkt i disse før du skriver noe selv.** |
 
@@ -33,6 +34,17 @@ Dato for siste nedlasting står i `metadata/HENTET`. Oppdater med `python verkto
 Begge skriptene kontrollerer uttrekket før de skriver, og avsluttes med feilkode uten å endre filer hvis noe
 mangler. `--tving` skriver likevel.
 Kommuneendringene oppdateres med `python verktoy/hent_kommuneendringer.py`. Grunnkretsene oppdateres med `python verktoy/hent_grunnkrets.py`.
+
+## Konfidensialitet
+
+Fra 17. november 2026 (versjon 60) gjelder **versjon 2 av anonymiseringstiltakene**: celler med 1–4 vises som
+0, tabeller stoppes ikke, `replace`/`recode` på 1–9 enheter er tillatt, minste datasett er 100 personer,
+regresjoner winsoriseres og nedsamples, og støyen endres når skriptet endres. Mye i `fallgruver.md` og
+`TESTLISTE.md` ble avklart med versjon 1, og er merket slik. `configure confidentiality v1` gir de gamle
+tiltakene (til 30. april 2027, ikke med FHI-data eller grunnkrets).
+
+Unngå svært finfordelte tabeller og små populasjoner. Resultatene kan avvike litt fra SSBs offisielle
+statistikk. Se «Avsløringskontroll» i `referanser/fallgruver.md`.
 
 ## Kommunenumre over tid
 
@@ -57,14 +69,14 @@ kommunenumre først. Oppdater tabellene med `python verktoy/hent_regioninndeling
 
 ## Grunnkrets, delområde, levekårssone og bydel
 
-`BEFOLKNING_GRUNNKRETS` (fra versjon 60, november 2026) er grunnkretsen personen bor i per 1.1., 1990–2026.
+`BEFOLKNING_GRUNNKRETS` (fra versjon 60, november 2026) er grunnkretsen personen bor i per 1.1. fra 1990.
 Den er en vanlig personvariabel, så alt som finnes på person (inntekt, utdanning, sysselsetting, trygd)
 kan tabuleres og brukes i modeller etter grunnkrets og områdene under. Grensen er små celler, ikke hvilke
 variabler som kan brukes.
 
-**Bydeler:** bruk først den ferdige `BEFOLKNING_BYDEL` (Oslo, Bergen, Trondheim, Stavanger, 1990–2026, eldre år
+**Bydeler:** bruk først den ferdige `BEFOLKNING_BYDEL` (Oslo, Bergen, Trondheim, Stavanger, fra 1990, eldre år
 omkodet til gjeldende bydeler, Klass 103). `grunnkrets.py --til bydel` trengs når bydelene skal følge
-2026-grunnkretsene eksakt. De to ga samme bydel for 99,8 % i 2025 (resten er uoppgitt med ulik kode, TESTLISTE 11.9).
+gjeldende grunnkretser eksakt. Avvikene mellom de to er nesten bare uoppgitt, som har ulik kode (se «Grunnkrets» i `referanser/fallgruver.md`).
 
 Koden er kommune (4) + delområde (2) + grunnkrets (2) og skifter når kommunen skifter nummer. Bruk
 `python verktoy/grunnkrets.py --til <inndeling> --aar <år> --var <variabel> [--kommune 4601,5001]`:
@@ -165,7 +177,7 @@ og si fra om forutsetningene (f.eks. parallelle trender i diff-in-diff, instrume
 1. Avklar tema, populasjon, år og geografi med brukeren.
 2. Finn kandidatvariabler i `metadata/variabler.csv`. Sjekk dekningen (`fra`/`til`), koder i
    `metadata/kodelister.csv` og eksakt syntaks i `metadata/manual/`.
-3. Les `referanser/fallgruver.md` og skriv skriptet. Kommenter koden og oppgi kilde-URL ved hver variabel med
+3. Les hele `referanser/fallgruver.md` og skriv skriptet. Kommenter koden og oppgi kilde-URL ved hver variabel med
    `https://microdata.no/discovery/variable/<datalager>/<versjon>/<NAVN>`. Bruk kolonnen `datalager` i
    `metadata/variabler.csv` og hovedversjonen fra `require` for det datalageret.
    Kommentarblokken øverst i hvert skript du skriver, skal ha denne linjen ordrett:
@@ -202,7 +214,7 @@ gamle versjoner, og da må du sjekke at variabelnavnene fortsatt finnes i `varia
 - `tabulate`, `summarize`, `regress`, `logit`, `barchart`, `histogram` (figurene kan endres i Vega-editoren, se `referanser/vega.md`)
 - `let` og `for ... end` for løkker
 - `citation` nederst i skriptet gir én linje: «Analysen er gjennomført i microdata.no med datagrunnlag fra:
-  SSB (registerdata). Data analysert: 2026-11-18» (versjon 60). Uten datalagerversjon og variabler, så oppgi
+  SSB (registerdata). Data analysert: <dato>». Uten datalagerversjon og variabler, så oppgi
   `require`-versjonen selv. Med flere datalagre listes alle som står i `require`, også dem som ikke er brukt i
   `import` («FHI (Kreftregisteret), FHI (Norsk pasientregister) og SSB (registerdata)»). Ta bare med
   `require` for lagrene du bruker. Resultater skal ha microdata.no som kilde ved publisering
@@ -239,15 +251,3 @@ Avsnittene står i `referanser/fallgruver.md`.
 Flere eksempler (ikke kvalitetssikret, kan bruke eldre syntaks eller variabler): https://github.com/JOSliper/Microdata-skript.
 Bruk dem bare som idékilde når `kodesnutter/` ikke dekker behovet. De bruker gamle
 datalagerversjoner og har kjente feil.
-
-## Konfidensialitet
-
-Microdata.no undertrykker små celler og legger på støy. Unngå svært finfordelte tabeller og små
-populasjoner. Resultatene kan avvike litt fra SSBs offisielle statistikk. Se også avsnittet om
-avsløringskontroll i `referanser/fallgruver.md`.
-
-Fra 17. november 2026 (versjon 60) gjelder **versjon 2 av anonymiseringstiltakene**: celler med 1–4 vises som
-0, tabeller stoppes ikke, `replace`/`recode` på 1–9 enheter er tillatt, minste datasett er 100 personer,
-regresjoner winsoriseres og nedsamples, og støyen endres når skriptet endres. Mye i `fallgruver.md` og
-`TESTLISTE.md` ble avklart med versjon 1, og er merket slik. `configure confidentiality v1` gir de gamle
-tiltakene (til 30. april 2027, ikke med FHI-data eller grunnkrets).
