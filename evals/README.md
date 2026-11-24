@@ -40,13 +40,39 @@ det i instruksen til underagenten, eller kjør i en kopi uten mappen.
 ## Kjøring
 
 - **Med underagenter (trinn 2 i planen):** én agent med skillen og én uten per oppgave. Uten skill: be
-  agenten ikke lese `skills/` eller `evals/`. Svarene vurderes mot `graders/`, og resultatet føres i
-  TESTLISTE del 7.
+  agenten ikke lese `skills/` eller `evals/`. Svarene lagres og vurderes mot `graders/` (se under), og
+  resultatet føres i TESTLOGG del 7.
 - **Med CLI:** `claude plugin eval` kjører mappene med og uten skillen fra skillmappen. Kopier da
   `evals/` til `skills/microdata-no/evals/` midlertidig (uten `resultater/`, som ikke er en oppgave), og
   fjern den etterpå. Kjøringene koster.
 
-Resultatene ligger i `resultater/` (runde 1: med skill 50/53, uten 34/53).
+## Resultater
+
+Hver runde har sin mappe, `resultater/<runde>/`:
+
+| Fil | Innhold |
+|---|---|
+| `svar/<oppgave>/<betingelse>-<kjøring>.md` | Sluttsvaret og skriptet, **lagret før vurderingen**. Øverst: modell, dato, om skillen var med, og commit for skillen. Ta ut lokale stier og tråd-ID-er. Svarene har skript, aldri resultater fra microdata.no |
+| `poeng.csv` | `oppgave;nr;betingelse;kjoring;poeng;merknad`, én rad per kriterium. `nr` er de to første sifrene i filnavnet i `graders/` |
+
+Betingelsen er `med`, `uten` eller navnet på agenten (`codex`). `python evals/poeng.py <runde>` summerer, og
+`tests/test_evals.py` sjekker at svarene er lagret og at poengene viser til kriterier som finnes.
+
+**Kriterier som krever skillen.** [`kriterier.csv`](kriterier.csv) merker dem, så sammenligningen med og uten skill
+kan vises uten dem:
+- `verktoy`: krever et av skillens egne verktøy. En agent uten skillen kan ikke få poeng.
+- `fil`: viser til filer i skillen, men kan oppfylles med det samme oppslaget på nettet.
+
+Endres et kriterium etter en runde, får det gamle et eget nummer (`r1-03`), så poengene fra runden fortsatt kan summeres.
+
+| Runde | Betingelse | Alle kriterier | Uten `verktoy` | Uten `verktoy` og `fil` |
+|---|---|---|---|---|
+| 1 | med | 50/53 (94 %) | 46/49 (94 %) | 43/46 (93 %) |
+| 1 | uten | 34/53 (64 %) | 34/49 (69 %) | 33/46 (72 %) |
+
+Runde 1 er én kjøring per oppgave, så vi vet ikke hvor mye som er støy. Svarene derfra ble ikke lagret og kan ikke
+vurderes på nytt. Vurderingen står i [`resultater/runde1.md`](resultater/runde1.md). Av 7.14 (Codex og Copilot CLI) er
+de fire svarene som teller, lagret. Vurderingen står i [`resultater/7_14_andre_agenter.md`](resultater/7_14_andre_agenter.md).
 
 Kriteriene sjekker valgene agenten gjør, ikke om skriptet kjører i microdata.no. Kjør gjerne et utvalg
 av skriptene for hånd etterpå.

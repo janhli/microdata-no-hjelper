@@ -1,0 +1,57 @@
+oppgave;nr;krav;merknad
+andregradsledd;01;;
+andregradsledd;02;;
+bydel-oslo;01;;
+bydel-oslo;02;;
+bydel-oslo;03;;
+dekning-aap-2010-2024;01;fil;sjekket i metadata
+dekning-aap-2010-2024;02;;
+dekning-aap-2010-2024;03;;
+dekning-aap-2010-2024;04;;
+diff-in-diff;01;;
+diff-in-diff;02;;
+diff-in-diff;03;;
+faktor-og-cluster;01;;
+faktor-og-cluster;02;;
+faktor-og-cluster;03;;
+feil-statistikkopsjon;01;;
+feil-statistikkopsjon;02;;
+inntektsgrupper-sysmiss;01;;
+inntektsgrupper-sysmiss;02;;
+inntektsgrupper-sysmiss;03;;
+instrumentvariabel;01;;
+instrumentvariabel;02;;
+instrumentvariabel;03;fil;viser til variabler.csv
+kommune-2015-mot-2024;01;verktoy;krever kommuneomkoding.py
+kommune-2015-mot-2024;02;;
+kommune-2015-mot-2024;03;;
+kommune-2015-mot-2024;04;fil;versjonen fra datalager.json
+logit-sysselsatt;01;;
+logit-sysselsatt;02;;
+logit-sysselsatt;03;;
+logit-sysselsatt;04;;
+naering-hovedomrader;01;fil;sjekket i variabler.csv
+naering-hovedomrader;02;;
+naering-hovedomrader;03;verktoy;krever klass.py
+naering-hovedomrader;r1-01;verktoy;bare i runde 1. Krever klass.py
+naering-hovedomrader;r1-02;verktoy;bare i runde 1. Krever --dato i klass.py
+naering-hovedomrader;r1-03;;bare i runde 1. Kunne ikke oppfylles: ingen næringsvariabel dekker november 2024
+pseudonym-mor-mangler;01;;
+pseudonym-mor-mangler;02;;
+pseudonym-mor-mangler;03;;
+region-politidistrikt;01;verktoy;krever regionomkoding.py eller tabellen i skillen
+region-politidistrikt;02;;
+region-politidistrikt;03;;
+sjelden-gruppe-i-x;01;;
+sjelden-gruppe-i-x;02;;
+sjelden-gruppe-i-x;03;;
+sjeldent-utfall-logit;01;;
+sjeldent-utfall-logit;02;;
+sjeldent-utfall-logit;03;;
+tid-til-hendelse;01;;
+tid-til-hendelse;02;;
+tid-til-hendelse;03;;
+tid-til-hendelse;04;;
+usikkerhet-merket;01;;
+usikkerhet-merket;02;;
+usikkerhet-merket;03;;

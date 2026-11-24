@@ -1,0 +1,15 @@
+oppgave;nr;betingelse;kjoring;poeng;merknad
+kommune-2015-mot-2024;01;codex;1;1;
+kommune-2015-mot-2024;02;codex;1;1;delvis: nevner ikke de delte kommunene ved navn, men sier hva som skjer med dem
+kommune-2015-mot-2024;03;codex;1;1;
+kommune-2015-mot-2024;04;codex;1;1;
+naering-hovedomrader;01;codex;1;1;
+naering-hovedomrader;02;codex;1;1;
+naering-hovedomrader;03;codex;1;1;
+kommune-2015-mot-2024;01;copilot;1;1;
+kommune-2015-mot-2024;02;copilot;1;1;
+kommune-2015-mot-2024;03;copilot;1;1;
+kommune-2015-mot-2024;04;copilot;1;1;
+naering-hovedomrader;01;copilot;1;1;
+naering-hovedomrader;02;copilot;1;1;
+naering-hovedomrader;03;copilot;1;0;kjørte klass.py, men byttet reglene med intervaller skrevet for hånd

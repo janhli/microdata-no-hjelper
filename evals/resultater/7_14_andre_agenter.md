@@ -1,5 +1,7 @@
 # TESTLISTE 7.14: skillen i andre agenter
 
+Svarene som teller, ligger i [`7_14/svar/`](7_14/svar) og poengene i [`7_14/poeng.csv`](7_14/poeng.csv).
+
 Skillen ble lenket til `~/.agents/skills/microdata-no` slik README beskriver (`mklink /J`, Windows).
 Hver oppgave ble kjørt i en tom mappe utenfor repoet. Agenten hadde derfor ingen `AGENTS.md`, `evals/` eller
 `skills/` i arbeidsmappen, og kunne bare finne skillen via `~/.agents/skills`. Oppgaveteksten var ordrett

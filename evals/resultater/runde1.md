@@ -7,7 +7,7 @@
 Vurderingen sier at nedsamplingen står ulikt i skillen («1–3» og «1–11»). Det stemmer ikke: 1–3 gjelder de
 fleste analyser og 1–11 `regress`, `ivregress` og `anova` (`fallgruver.md`).
 
-Svarene fra agentene er ikke lagret i repoet.
+Svarene fra agentene er ikke lagret i repoet. Poengene ligger også i [`runde1/poeng.csv`](runde1/poeng.csv).
 
 ---
 
