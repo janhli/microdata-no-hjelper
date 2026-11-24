@@ -1,6 +1,6 @@
 ---
 name: microdata-no
-description: Hjelp til å skrive og feilsøke skript for microdata.no (SSB/Sikt), det Stata-lignende skriptspråket for norske registerdata. Bruk skillen når brukeren nevner microdata.no, no.ssb.fdb, variabler som BEFOLKNING_*, INNTEKT_*, REGSYS_* eller NUDB_*, eller kommandoer som import-event, create-dataset og textblock, eller limer inn feilmeldinger eller resultater fra microdata.no.
+description: Hjelp til å skrive og feilsøke skript for microdata.no (SSB/Sikt), det Stata-lignende skriptspråket for norske registerdata. Bruk skillen når brukeren nevner microdata.no, no.ssb.fdb, variabler som BEFOLKNING_*, INNTEKT_*, REGSYS_* eller NUDB_*, eller kommandoer som import-event, create-dataset og textblock, eller limer inn feilmeldinger eller resultater fra microdata.no. Også for FHI-datalagrene i microdata.no (no.fhi.kreftregisteret, no.fhi.npr), grunnkrets og bydel i microdata.no (BEFOLKNING_GRUNNKRETS, BEFOLKNING_BYDEL) og for å endre figurer fra microdata.no i Vega-editoren.
 ---
 
 # microdata.no
@@ -26,7 +26,7 @@ Alle stier er relative til denne skill-mappen. Søk i filene (grep, rg eller age
 | `metadata/manual/**/*.md` | Hele manualen som Markdown. Kommandoreferansen ligger i `kommandoer_og_funksjoner/kommandoer.md` og funksjonene i `.../funksjoner.md`. |
 | `referanser/fallgruver.md` | Feil som ikke står (tydelig) i manualen, med feilmelding og løsning. **Les den før du leverer et skript.** |
 | `referanser/vega.md` | Endre figurer fra microdata.no i Vega-editoren: brukeren limer inn Vega-Lite-spesifikasjonen (med tallene), du endrer etiketter, rekkefølge, farger, titler og tallformat. Les den når brukeren vil ha en penere eller tilpasset figur |
-| `kodesnutter/` | Frittstående og kommenterte snutter med teststatus: analysemal, fylke med navn, alder, innvandringskategori, landbakgrunn, utdanning, arbeidsstyrkestatus, NEET, sektor for lønnstakere (utgått i versjon 60), samliv, husholdning, bolig, lavinntekt, verdi ved hendelse, mor–barn, forløp, overlevelsesanalyse, logistisk regresjon og paneldata. Oversikt i `kodesnutter/README.md`. **Ta utgangspunkt i disse før du skriver noe selv.** |
+| `kodesnutter/` | Frittstående og kommenterte snutter med teststatus: analysemal, fylke med navn, alder, innvandringskategori, landbakgrunn, utdanning, arbeidsstyrkestatus, NEET, samliv, husholdning, bolig, lavinntekt, verdi ved hendelse, mor–barn, forløp, overlevelsesanalyse, logistisk regresjon og paneldata. Oversikt i `kodesnutter/README.md`. **Ta utgangspunkt i disse før du skriver noe selv.** |
 
 Dato for siste nedlasting står i `metadata/HENTET`. Oppdater med `python verktoy/hent_variabler.py`
 (`--alle` henter alt på nytt, ca. 6 min) og `python verktoy/hent_manual.py`.
@@ -175,7 +175,11 @@ og si fra om forutsetningene (f.eks. parallelle trender i diff-in-diff, instrume
 4. Sett en `textblock` ... `endblock` (Markdown) med tittel og en kort lesehjelp foran hver
    `tabulate`, `summarize` og `regress`. Ikke legg tabeller med tittel inne i `for`-løkker. Skriv dem
    ut for hvert år, så årstallet kan stå i tittelen. Avslutt skriptet med `citation`.
-5. Brukeren kjører skriptet og melder tilbake. Rett feilen, og finnes den ikke allerede i
+5. Kjør `python verktoy/sjekk_skript.py <fil>` før du leverer (`-` leser skriptet fra stdin). Den finner
+   variabler som ikke finnes, datoer utenfor dekningen, pseudonymer i uttrykk, `median`/`sd`, `c.x#c.x`,
+   funksjonsnavn som navn og manglende ansvarslinje eller `citation`. Rett alle feil. Advarslene er ting du
+   må vurdere og eventuelt si fra om. Sjekken erstatter ikke `referanser/fallgruver.md`.
+6. Brukeren kjører skriptet og melder tilbake. Rett feilen, og finnes den ikke allerede i
    `fallgruver.md`, foreslå at brukeren bidrar med den (se CONTRIBUTING.md i repoet).
 
 ## Datalagerversjon
@@ -203,6 +207,23 @@ gamle versjoner, og da må du sjekke at variabelnavnene fortsatt finnes i `varia
   `import` («FHI (Kreftregisteret), FHI (Norsk pasientregister) og SSB (registerdata)»). Ta bare med
   `require` for lagrene du bruker. Resultater skal ha microdata.no som kilde ved publisering
   (https://www.microdata.no/dokumentasjon/kildehenvisning/)
+
+### Vaner fra Stata som ikke virker
+
+| Stata | microdata.no | Se |
+|---|---|---|
+| `x == .`, `x != .`, `generate x = .` | `sysmiss(x)` og `!sysmiss(x)`. `.` som manglende verdi står ikke i manualen | `sysmiss` i manualens funksjoner |
+| `x > 5` er sann når `x` mangler | Usann (0). Bare `!=` er sann. Skriv `generate h = x > 5 if !sysmiss(x)` | «Sammenligninger med manglende verdi» |
+| `summarize(x) median` eller `sd` i `tabulate` | `p50` og `std`. `sd` stopper skriptet. `collapse (median)` virker | «Tabeller og statistikk» |
+| `c.x#c.x` for andregradsledd | Utelates uten melding. Lag `generate x2 = x * x` | «Standardfeil, faktorvariabler og prediksjon» |
+| `i.` krever tall | `i.` virker på tekstvariabler. `destring` trengs ikke | samme |
+| `foreach` og `forvalues` med `` `i' `` | `for aar in 2022 : 2024` ... `end`, verdien er `$aar`. Navn: `let v = navn_ ++ $aar`, så `$v` | «Bindinger og løkker» |
+| `merge 1:1 id using fil` | `merge a b into <måldatasett> on <nøkkel>`, kjørt fra datasettet `a` og `b` ligger i | «`merge` kjøres fra datasettet variablene ligger i» |
+| Ett datasett i minnet | Flere datasett (`create-dataset`, `use`, `clone-dataset`). `collapse` gjør om det aktive | «`collapse` endrer det aktive datasettet» |
+| `vce(cluster id)` | `cluster(id)` med en numerisk variabel som ikke er i modellen. Kan ikke kombineres med `robust` | «Standardfeil, faktorvariabler og prediksjon» |
+| Datoer som dager | Mange datovariabler er tall som `20240315`. `date(år, mnd, dag)` gir dager siden 1970 | «Datoer er tall i formatet ÅÅÅÅMMDD» |
+
+Avsnittene står i `referanser/fallgruver.md`.
 
 ## Nettkilder (hvis lokale filer ikke strekker til)
 

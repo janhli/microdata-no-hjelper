@@ -27,6 +27,8 @@ Kodesnutter ligger i [`skills/microdata-no/kodesnutter/`](skills/microdata-no/ko
 4. Sett status ærlig: `testet` (kjørt alene uten feil), `testet i større skript` eller `utkast`, med
    datalagerversjon og måned.
 5. Legg den inn i tabellen i `kodesnutter/README.md`, og fjern den fra ønskelisten hvis den sto der.
+6. Kjør `python skills/microdata-no/verktoy/sjekk_skript.py --snutt <snutt>`. Testene gjør det samme for
+   alle snuttene og feiler på det sjekken finner.
 
 Har du kjørt en snutt som står som `utkast` eller `testet i større skript` uten feil? Send en liten
 pull request som oppgraderer statuslinjen. Det er et svært nyttig bidrag.

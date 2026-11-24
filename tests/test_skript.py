@@ -1,117 +1,51 @@
-"""Sjekker importlinjene i kodesnuttene og testskriptene mot metadataene.
+"""Kjører `verktoy/sjekk_skript.py` på kodesnuttene og testskriptene, og tester sjekken selv.
 
-- Variabelen må finnes i `variabler.csv`, i datalageret som aliaset i `require` peker på.
-- Faste variabler (temporalitet FIXED) tar ikke dato ved `import`, de andre må ha dato. Feilen stopper skriptet
-  i microdata.no («tar ikke et datoargument siden den har temporalitet: 'Fast'»).
-- Datoene må ligge innenfor dekningen (`fra`/`til`). For `import-event` må perioden overlappe dekningen.
-- En importlinje som ikke kan tolkes, er en feil, slik at linjer ikke hoppes over uten at det merkes.
-
-Datoer som er makroer (`$dato`) teller som dato, men dekningen sjekkes ikke. Snutter med status UTGÅTT
-hoppes over, fordi variablene deres kan være slettet.
+Snuttene og testskriptene er kjørt i microdata.no. Finner sjekken en feil i dem, er det enten en feil i filen
+(f.eks. en variabel som er slettet i en ny versjon av datalageret) eller en regel i sjekken som slår ut feil.
+Advarsler er tillatt. Snutter med status UTGÅTT hoppes over, fordi variablene deres kan være slettet.
+Kravene til levering (ansvarslinje og `citation`) gjelder skript agenten skriver, ikke snuttene.
 """
 
-import csv
+import os
 import re
+import subprocess
+import sys
 import unittest
-from pathlib import Path
 
-ROT = Path(__file__).resolve().parent.parent
-VARIABLER = ROT / "skills" / "microdata-no" / "metadata" / "variabler.csv"
+from hjelp import SKILL, VERKTOY  # hjelp legger verktoy/ på sys.path
+from sjekk_skript import ANSVARSLINJE, er_pseudonym, les_datalagre, les_funksjoner, sjekk
+
+ROT = SKILL.parent.parent
 SKRIPT = sorted(
-    list((ROT / "skills" / "microdata-no" / "kodesnutter").glob("*.txt"))
+    list((SKILL / "kodesnutter").glob("*.txt"))
     + list((ROT / ".claude" / "skills" / "vedlikehold" / "testskript").glob("*.txt"))
 )
-DATO = r"\d{4}-\d{2}-\d{2}"
-# Valg etter aliaset, f.eks. `, values("2")`, og kommentar.
-SLUTT = r"(?:\s*,.*)?(?:\s*//.*)?\s*$"
-REQUIRE = re.compile(r"^\s*require\s+([\w.]+):\d+\s+as\s+(\w+)", re.MULTILINE)
-IMPORTLINJE = re.compile(r"^\s*import(?:-event|-panel)?\s")
-IMPORT = re.compile(rf"^\s*import\s+(\w+)/(\w+)(?:\s+({DATO}|\$\w+))?\s+as\s+\$?\w+{SLUTT}")
-EVENT = re.compile(rf"^\s*import-event\s+(\w+)/(\w+)\s+({DATO}|\$\w+)\s+to\s+({DATO}|\$\w+)\s+as\s+\$?\w+{SLUTT}")
-PANEL = re.compile(rf"^\s*import-panel((?:\s+\w+/\w+)+)((?:\s+(?:{DATO}|\$\w+))+){SLUTT}")
-
-
-def les_variabler():
-    with open(VARIABLER, encoding="utf-8-sig", newline="") as f:
-        return {r["navn"]: r for r in csv.DictReader(f, delimiter=";")}
+# Testskript som har feilen med vilje, for å vise hva microdata.no gjør med den.
+FORVENTET = {("del8_11_interaksjoner.txt", "c.alder#c.alder")}  # TESTLISTE 8.11: leddet utelates
 
 
 def utgatt(tekst):
     return re.search(r"^// Status:\s*UTGÅTT", tekst, re.MULTILINE) is not None
 
 
-def er_dato(verdi):
-    return re.fullmatch(DATO, verdi) is not None
-
-
-def feil_i(tekst, variabler):
-    """Returnerer (linjenummer, melding) for hver feil i importlinjene i et skript."""
-    datalager = {alias: lager for lager, alias in REQUIRE.findall(tekst)}
-    feil = []
-
-    def variabel(nr, alias, navn):
-        if alias not in datalager:
-            feil.append((nr, f"aliaset {alias} har ingen require"))
-            return None
-        v = variabler.get(navn)
-        if v is None:
-            feil.append((nr, f"{navn} finnes ikke i variabler.csv"))
-            return None
-        if v["datalager"] != datalager[alias]:
-            feil.append((nr, f"{navn} ligger i {v['datalager']}, ikke i {datalager[alias]} ({alias})"))
-            return None
-        return v
-
-    def innenfor(nr, v, dato):
-        if er_dato(dato) and not v["fra"] <= dato <= v["til"]:
-            feil.append((nr, f"{v['navn']} {dato} er utenfor dekningen {v['fra']}–{v['til']}"))
-
-    for nr, linje in enumerate(tekst.splitlines(), 1):
-        if not IMPORTLINJE.match(linje):
-            continue
-        if m := IMPORT.match(linje):
-            alias, navn, dato = m.groups()
-            v = variabel(nr, alias, navn)
-            if v is None:
-                continue
-            if v["temporalitet"] == "FIXED":
-                if dato:
-                    feil.append((nr, f"{navn} er FIXED og skal importeres uten dato"))
-            elif not dato:
-                feil.append((nr, f"{navn} er {v['temporalitet']} og må ha dato"))
-            else:
-                innenfor(nr, v, dato)
-        elif m := EVENT.match(linje):
-            alias, navn, start, slutt = m.groups()
-            v = variabel(nr, alias, navn)
-            if v and er_dato(start) and er_dato(slutt) and (slutt < v["fra"] or start > v["til"]):
-                feil.append((nr, f"{navn} {start} to {slutt} overlapper ikke dekningen {v['fra']}–{v['til']}"))
-        elif m := PANEL.match(linje):
-            datoer = m.group(2).split()
-            for ref in m.group(1).split():
-                v = variabel(nr, *ref.split("/"))
-                if v and v["temporalitet"] != "FIXED":
-                    for dato in datoer:
-                        innenfor(nr, v, dato)
-        else:
-            feil.append((nr, f"kan ikke tolke importlinjen: {linje.strip()}"))
-    return feil
-
-
-class TestImportlinjer(unittest.TestCase):
-    def test_importlinjer_mot_metadata(self):
-        variabler = les_variabler()
+class TestSkriptene(unittest.TestCase):
+    def test_ingen_feil_i_snutter_og_testskript(self):
         feil = []
         for fil in SKRIPT:
             tekst = fil.read_text(encoding="utf-8")
             if utgatt(tekst):
                 continue
-            feil += [f"{fil.relative_to(ROT)}:{nr}: {melding}" for nr, melding in feil_i(tekst, variabler)]
+            for f in sjekk(tekst, levering=False):
+                if f.niva == "feil" and not any(fil.name == n and m in f.melding for n, m in FORVENTET):
+                    feil.append(f"{fil.relative_to(ROT)}:{f.linje}: {f.melding}")
         self.assertEqual(feil, [], "\n".join(feil))
 
     def test_finner_skript(self):
         self.assertTrue(any(f.parent.name == "kodesnutter" for f in SKRIPT))
         self.assertTrue(any(f.parent.name == "testskript" for f in SKRIPT))
+
+    def test_ansvarslinjen_er_lik_i_skill_md(self):
+        self.assertIn(f"`{ANSVARSLINJE}`", (SKILL / "SKILL.md").read_text(encoding="utf-8"))
 
 
 class TestSjekken(unittest.TestCase):
@@ -122,16 +56,23 @@ class TestSjekken(unittest.TestCase):
                  "datalager": "no.ssb.fdb"},
         "STATUS": {"navn": "STATUS", "temporalitet": "STATUS", "fra": "2015-01-01", "til": "2024-01-01",
                    "datalager": "no.ssb.fdb"},
+        "MORFNR": {"navn": "MORFNR", "temporalitet": "FIXED", "fra": "1900-01-01", "til": "2025-12-31",
+                   "datalager": "no.ssb.fdb"},
         "KREFT": {"navn": "KREFT", "temporalitet": "FIXED", "fra": "1953-01-01", "til": "2024-12-31",
                   "datalager": "no.fhi.kreftregisteret"},
     }
+    HODE = "require no.ssb.fdb:60 as fdb\nrequire no.fhi.kreftregisteret:1 as krg\nimport fdb/MORFNR as mor\n"
 
-    def meldinger(self, *linjer):
-        tekst = "require no.ssb.fdb:60 as fdb\nrequire no.fhi.kreftregisteret:1 as krg\n" + "\n".join(linjer)
-        return [melding for _, melding in feil_i(tekst, self.VARIABLER)]
+    def funn(self, *linjer, levering=False):
+        return sjekk(self.HODE + "\n".join(linjer), self.VARIABLER, levering=levering,
+                     datalagre={"no.ssb.fdb", "no.fhi.kreftregisteret", "no.fhi.npr"},
+                     funksjoner={"t", "year", "sysmiss"}, pseudonym=lambda navn: navn == "MORFNR")
 
-    def test_riktige_linjer_gir_ingen_feil(self):
-        self.assertEqual(self.meldinger(
+    def meldinger(self, *linjer, levering=False):
+        return [f.melding for f in self.funn(*linjer, levering=levering) if f.niva == "feil"]
+
+    def test_riktige_linjer_gir_ingen_funn(self):
+        self.assertEqual(self.funn(
             "import fdb/FAST as f",
             "import fdb/STATUS 2020-01-01 as s",
             "  import fdb/STATUS $dato as $var",
@@ -139,6 +80,23 @@ class TestSjekken(unittest.TestCase):
             'import fdb/FAST as f, values("2")',
             "import-event fdb/STATUS 2010-01-01 to 2016-01-01 as e",
             "import-panel fdb/STATUS fdb/FAST 2016-01-01 2017-01-01",
+            "summarize mor",
+            "collapse (count) f -> antall (median) s -> med, by(mor)",
+            "merge antall into barn on mor",
+            "tabulate f, summarize(s) mean std p50",
+            "regress s alder c.alder#c.lonn i.kjonn",
+            "for i in 1 2",
+            "  let v = tid_ ++ $i",
+            "  generate $v = 0",
+            "end",
+            "generate gr = '1'",
+            "replace gr = '2' if s >= 20",
+            "replace gr = '9' if sysmiss(s)",
+            "// generate t = sysmiss(mor) og import fdb/FINNESIKKE as x i en kommentar",
+            "textblock",
+            "import fdb/FINNESIKKE as x, if sysmiss(mor) og c.x#c.x i en tekstblokk",
+            "endblock",
+            "generate tekst = 'if mor'",
         ), [])
 
     def test_finner_feil(self):
@@ -152,11 +110,74 @@ class TestSjekken(unittest.TestCase):
             ("import-event fdb/STATUS 2000-01-01 to 2010-01-01 as e", "overlapper ikke"),
             ("import-panel fdb/STATUS 2016-01-01 2026-01-01", "utenfor dekningen"),
             ("import fdb/STATUS 2020-01-01", "kan ikke tolke"),
+            ("require no.ssb.fdb:latest as fdb2", "require må ha formen"),
+            ("require no.ssb.fbd:60 as fdb2", "finnes ikke"),
+            ("drop if sysmiss(mor)", "pseudonymisert"),
+            ("generate harmor = !sysmiss(mor)", "pseudonymisert"),
+            ("tabulate f if mor == 1", "pseudonymisert"),
+            ("tabulate f, summarize(s) median", "Bruk `p50`"),
+            ("tabulate f, summarize(s) mean sd", "Bruk `std`"),
+            ("regress s alder c.alder#c.alder", "utelates fra modellen"),
+            ("logit s c.alder##c.alder", "utelates fra modellen"),
+            ("generate t$i = 0", "kan ikke limes inn"),
+            ("let t = tid_ ++ $i", "samme navn som en funksjon"),
+            ("generate year = 2024", "samme navn som en funksjon"),
+            ("import fdb/FAST as t", "samme navn som en funksjon"),
         ]:
             with self.subTest(linje=linje):
                 meldinger = self.meldinger(linje)
                 self.assertEqual(len(meldinger), 1, meldinger)
                 self.assertIn(forventet, meldinger[0])
+
+    def test_advarsel_for_gruppering_uten_sysmiss(self):
+        funn = self.funn("import fdb/STATUS 2020-01-01 as s", "generate gr = '1'", "replace gr = '2' if s >= 20")
+        self.assertEqual([(f.niva, f.linje) for f in funn], [("advarsel", 5)])
+
+    def test_krav_til_levering(self):
+        self.assertEqual(len(self.meldinger(levering=True)), 2)  # ansvarslinje og citation
+        funn = self.funn(ANSVARSLINJE, "citation", "tabulate f", levering=True)
+        self.assertEqual([(f.niva, "citation" in f.melding) for f in funn], [("advarsel", True)])
+        self.assertEqual(self.funn(ANSVARSLINJE, "tabulate f", "citation", levering=True), [])
+
+
+class TestMetadataenSjekkenBruker(unittest.TestCase):
+    """Testene over gir sjekken egne lister. Disse fanger at de ekte listene blir tomme etter en ny henting
+    (f.eks. hvis manualen får andre overskrifter), så sjekkene ikke slutter å virke uten at det merkes."""
+
+    def test_funksjonene_fra_manualen(self):
+        funksjoner = les_funksjoner()
+        self.assertGreater(len(funksjoner), 50)
+        self.assertLessEqual({"t", "year", "sysmiss", "substr"}, funksjoner)
+
+    def test_pseudonymer_fra_variabelfilene(self):
+        self.assertTrue(er_pseudonym("BEFOLKNING_MOR_FNR"))
+        self.assertTrue(er_pseudonym("ARBEIDSFORHOLD_PERSON"))
+        self.assertFalse(er_pseudonym("BEFOLKNING_KJOENN"))
+
+    def test_datalagrene(self):
+        self.assertLessEqual({"no.ssb.fdb", "no.fhi.kreftregisteret", "no.fhi.npr"}, les_datalagre())
+
+
+class TestKommandolinjen(unittest.TestCase):
+    def kjor(self, *args, inn=""):
+        return subprocess.run([sys.executable, "-I", str(VERKTOY / "sjekk_skript.py"), *args], input=inn,
+                              capture_output=True, encoding="utf-8", env={**os.environ, "PYTHONIOENCODING": "utf-8"})
+
+    def test_feil_gir_kode_1(self):
+        r = self.kjor("-", inn="require no.ssb.fdb:60 as fdb\nimport fdb/FINNESIKKE as x\n")
+        self.assertEqual(r.returncode, 1, r.stderr)
+        self.assertIn("linje 2: FEIL: FINNESIKKE finnes ikke", r.stdout)
+
+    def test_pseudonym_i_uttrykk_med_ekte_metadata(self):
+        r = self.kjor("--snutt", "-", inn="require no.ssb.fdb:60 as fdb\ncreate-dataset p\n"
+                                          "import fdb/BEFOLKNING_MOR_FNR as mor\ndrop if sysmiss(mor)\n")
+        self.assertEqual(r.returncode, 1, r.stderr)
+        self.assertIn("linje 4: FEIL: mor (BEFOLKNING_MOR_FNR) er en pseudonymisert ID", r.stdout)
+
+    def test_snutt_uten_feil_gir_kode_0(self):
+        r = self.kjor("--snutt", str(SKILL / "kodesnutter" / "alder.txt"))
+        self.assertEqual(r.returncode, 0, r.stdout + r.stderr)
+        self.assertIn("Ingen feil funnet", r.stdout)
 
 
 if __name__ == "__main__":

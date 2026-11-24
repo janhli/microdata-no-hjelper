@@ -28,7 +28,6 @@ Hva testene viste, og hvilke tall snuttene er kontrollert mot, står i [TESTRESU
 | [utdanningsniva.txt](utdanningsniva.txt) | Høyeste fullførte utdanning, seks nivåer (NUS) | testet |
 | [arbeidsstyrkestatus.txt](arbeidsstyrkestatus.txt) | Prioritert arbeidsstyrkestatus i åtte grupper | testet |
 | [neet.txt](neet.txt) | NEET (15–29 år utenfor arbeid, utdanning og tiltak) etter hovedstatus, alder, kjønn, fylke og innvandringskategori, kontrollert mot SSB 13556 og 12423. Tilleggsanalyse etter registrert utdanning gir en annen fordeling enn SSB 12423. | testet |
-| [sektor_lonnstakere.txt](sektor_lonnstakere.txt) | Lønnstakere etter sektor (stat/kommune/privat/offentlig foretak) fra jobbnivå, med arbeidssted. Traff SSB tabell 13926 | **utgått** (variabelen slettet i versjon 60) |
 | [samlivsstatus.txt](samlivsstatus.txt) | Gift / samboer / enslig / bor hos foreldre | testet |
 | [lavinntekt_eu60.txt](lavinntekt_eu60.txt) | Flagg for lavinntekt (EU-60) med egen medianberegning | testet |
 | [lavinntekt_vedvarende.txt](lavinntekt_vedvarende.txt) | Vedvarende lavinntekt (EU-60, treårsgjennomsnitt, KPI-justert) med nasjonal og kommunal median, eksempel med barn per fylke og kommune | testet |
@@ -40,6 +39,9 @@ Hva testene viste, og hvilke tall snuttene er kontrollert mot, står i [TESTRESU
 | [overlevelse.txt](overlevelse.txt) | Tid til hendelse (død) med sensurering ved utvandring og slutt på perioden, `kaplan-meier` og `cox` | testet |
 | [logistisk_regresjon.txt](logistisk_regresjon.txt) | Ja/nei-utfall (sysselsatt): faktorvariabler, cluster, oddsratio, marginaleffekter, `margins()` og `logit-predict` mot observerte andeler | testet |
 | [paneldata.txt](paneldata.txt) | Paneldata: `import-panel` for et utvalg, `summarize-panel`, `tabulate-panel`, `transitions-panel`, `regress-panel` med fe/re/pooled og årseffekter, og `hausman` | testet |
+
+Snutter som bygger på slettede variabler, flyttes til [`arkiv/`](../../../arkiv/) i repoet, utenfor skillen
+(`sektor_lonnstakere.txt`, utgått i versjon 60).
 
 ## Ønskeliste (bidra gjerne)
 

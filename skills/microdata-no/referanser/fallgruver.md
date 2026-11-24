@@ -61,8 +61,11 @@ med pull request (se CONTRIBUTING.md). Tagg dem med datalagerversjon/dato hvis d
 - **Årsak:** SSB stoppet personvariabelen av personvernhensyn (risiko for å avsløre opplysninger om foretak),
   og slettet jobbvariabelen i versjon 60 (november 2026, ingen erstatning).
 - **Løsning:** Sektor kan bare brukes til og med 2019 (`REGSYS_FRTK_SEKTOR_2014`, 4. kvartal). Si fra til
-  brukeren at nyere sektortall ikke finnes i microdata.no. `kodesnutter/sektor_lonnstakere.txt` er
-  utgått. Den traff SSB tabell 13926 innenfor 0,1 % (versjon 59) og viser metoden.
+  brukeren at nyere sektortall ikke finnes i microdata.no.
+- **Metoden som traff SSB tabell 13926 innenfor 0,1 % (versjon 59):** sektor per jobb, avtalt arbeidstid
+  summert per sektor med `collapse (sum) ..., by(personid)` (personid fra `ARBEIDSFORHOLD_PERSON`), og
+  sektoren med mest arbeidstid per person. Region i tabellen er arbeidssted for hovedarbeidsforholdet. Snutten
+  er arkivert i `arkiv/kodesnutter/sektor_lonnstakere.txt` i repoet.
 
 ### `BEFOLKNING_PARITET` mangler for de siste fødselskullene
 - **Symptom:** 100 % ukjent paritet for barn født i 2025 (observert november 2026).
@@ -296,7 +299,7 @@ avklart med versjon 1, hvis ikke annet står. Endringene som påvirker skript:
   `count`, `median` og `percent` påvirkes ikke. (Manualen, 3.5 collapse, oppdatert i versjon 59.)
 - **Løsning:** Tell med `(count)`. `count` teller alle gyldige verdier, også 0, så sett dem som ikke skal
   telles til missing først. Bruk `sum` bare til å summere verdier. Det går fint å summere per person
-  før man aggregerer videre, slik `kodesnutter/sektor_lonnstakere.txt` gjør.
+  før man aggregerer videre (`by(personid)` på jobbdata, deretter per gruppe).
 
 ### `replace`/`recode` må endre minst 10 enheter (bare versjon 1)
 - **Gjelder ikke fra versjon 2** (tiltak 6 er fjernet 17. november 2026). Testet med versjon 60: `(990 = 9)`

@@ -22,4 +22,6 @@ jobs:
         with:
           python-version: "3.12"
       - name: Kjør testene
+        env:
+          UTEN_ALDERSSJEKK: "1"  # gamle metadata meldes av den ukentlige jobben, ikke ved hvert bidrag
         run: python -m unittest discover -s tests -v

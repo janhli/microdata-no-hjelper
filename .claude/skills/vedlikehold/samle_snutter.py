@@ -21,7 +21,7 @@ DATALAGER = ROT / "skills" / "microdata-no" / "metadata" / "datalager.json"
 # Enkle og sikre først, utkast og de mest sammensatte sist (en feil stopper resten av skriptet)
 REKKEFOLGE = ["alder", "innvandringskategori", "landbakgrunn_region", "samlivsstatus", "arbeidsstyrkestatus",
               "utdanningsniva", "mal_analyse", "forlop_til_person", "mor_barn", "verdi_ved_hendelse",
-              "lavinntekt_eu60", "sektor_lonnstakere", "lavinntekt_vedvarende"]
+              "lavinntekt_eu60", "lavinntekt_vedvarende"]
 
 
 def status(tekst):

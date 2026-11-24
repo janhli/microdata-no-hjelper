@@ -12,7 +12,7 @@ Alle snuttene er kjørt frittstående med datalagerversjon 59 (`no.ssb.fdb:59`) 
 til ett skript med `samle_snutter.py`. `lavinntekt_vedvarende.txt` ble kjørt for seg. De 14 som fortsatt
 gjelder, er kjørt på nytt med versjon 60 (2026-11-19, TESTLISTE 5.6), uten feil og med de samme tallene
 innen støyen (f.eks. innvandrere 964 836 mot 964 834, husholdninger koblet til bolig 2 584 502 mot
-2 584 506, husholdningsstørrelsene 41,2/30,8/11,8/11,2/5,0 %). `sektor_lonnstakere.txt` er utgått.
+2 584 506, husholdningsstørrelsene 41,2/30,8/11,8/11,2/5,0 %). `sektor_lonnstakere.txt` er utgått og ligger i `arkiv/kodesnutter/` i repoet.
 
 | Snutt | Kjørt | Kontrollert mot | Resultat |
 |---|---|---|---|
@@ -33,7 +33,7 @@ innen støyen (f.eks. innvandrere 964 836 mot 964 834, husholdninger koblet til 
 | [overlevelse.txt](overlevelse.txt) | v60, 2026-11 | Med og uten sensurering (TESTLISTE 8.6) | Sensurering ved utvandring endrer innvandrerkoeffisienten fra −0,242 til −0,209 |
 | [paneldata.txt](paneldata.txt) | v60, 2026-11 | fe mot re mot pooled | Fixed effects mye mindre enn pooled, som ventet. Hausman velger fe |
 | [samlivsstatus.txt](samlivsstatus.txt) | v60, 2026-11 | – | Kjørt uten feil |
-| [sektor_lonnstakere.txt](sektor_lonnstakere.txt) | v59, 2026-11 | SSB 13926 | Stemmer for totalen. Offentlig foretak ca. 2 % lavere, med kjent årsak |
+| [sektor_lonnstakere.txt](../../../arkiv/kodesnutter/sektor_lonnstakere.txt) (arkivert) | v59, 2026-11 | SSB 13926 | Stemmer for totalen. Offentlig foretak ca. 2 % lavere, med kjent årsak |
 | [utdanningsniva.txt](utdanningsniva.txt) | v60, 2026-11 | – | Kjørt uten feil |
 | [verdi_ved_hendelse.txt](verdi_ved_hendelse.txt) | v60, 2026-11 | – | Kjørt uten feil |
 
@@ -286,7 +286,7 @@ Statistikkbanken. Årsaken er bekreftet: statistisk koblede husholdninger (`STAT
 anslått med SSBs gamle metode (51,6 % eiere). SSB har revidert dette til 13–15 % eiere (notat 2026/17), og
 med det går avviket opp. Se [`fallgruver.md`](../referanser/fallgruver.md).
 
-### sektor_lonnstakere.txt
+### sektor_lonnstakere.txt (arkivert)
 
 4. kvartal 2025, mot SSB tabell 13926 (region = arbeidssted):
 

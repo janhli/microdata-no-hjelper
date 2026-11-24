@@ -36,6 +36,8 @@ jobs:
         working-directory: skills/microdata-no
         run: python verktoy/hent_grunnkrets.py
       - name: Kjør testene mot de nye filene
+        env:
+          UTEN_ALDERSSJEKK: "1"  # kjøres til slutt, så gamle filer ikke stopper pull requesten
         run: python -m unittest discover -s tests
       - name: Sett dato hvis noe er endret
         id: sjekk
@@ -65,3 +67,6 @@ jobs:
             - [ ] Ny versjon i `datalager.json`? Vurder om SKILL.md eller snuttene trenger oppdatering
             - [ ] Ingen sider i manualen er blitt tomme (tegn på at nettsiden er endret og hentescriptet må fikses)
           labels: metadata
+      - name: Sjekk at kommuneendringer, regioner og ELVIS er hentet siste år
+        # Hentes for hånd. Feiler steget, står kommandoen som oppdaterer i feilmeldingen.
+        run: python -m unittest discover -s tests -p test_metadata_alder.py -v
