@@ -16,9 +16,9 @@ I forbindelse med [den større utvidelsen av microdata.no](https://www.microdata
 
 Muligheten til å analysere helsedata og mer detaljerte geografiske inndelinger i microdata.no kommer etter grundige vurderinger og langvarig samarbeid mellom statistikere og systemutviklere om personvernløsningene i tjenesten.
 
-Hvis vi sammenligner andre med versjon 1 er det følgende endringer:
+Hvis vi sammenligner versjon 2 med versjon 1, er det følgende endringer som er blitt gjort:
 
-Tiltak 4, 7, 9 og 10 er uforandret. Noen tiltak er fjernet (5, 6, 8), andre er justert (1, 2, 3, 4), og noen nye tiltak (11-17) er kommet til.
+Tiltak 4, 7 og 10 er uforandret. Noen tiltak er fjernet (5, 6, 8, 9), andre er justert (1, 2, 3), og noen nye tiltak (11-17) er kommet til.
 
 Alle tiltakene er beskrevet i kapittelet om konfidensialitet i brukermanualen. Tiltak som har blitt fjernet eller justert er markert spesielt.
 
