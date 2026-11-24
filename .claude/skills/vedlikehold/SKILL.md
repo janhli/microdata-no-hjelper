@@ -32,6 +32,11 @@ Se etter:
 - **Snutter:** Status testet med en eldre datalagerversjon enn den gjeldende. Det er ikke feil, men
   kandidater for ny kjøring.
 - **Endringer i manualen** som kan påvirke fallgruver eller snutter (f.eks. nye regler for `collapse`).
+- **Versjon 1 av anonymiseringstiltakene**, som etter planen er over 30. april 2027 (datoen kan flyttes, se
+  `metadata/manual/systemendringer.md`). Fjern da avsnittet «Versjon 1 av anonymiseringstiltakene» i
+  `fallgruver.md`, med henvisningen i `fallgruver_analyse.md`, testen i `tests/test_fallgruver.py`, omtalen av
+  `configure confidentiality v1` i `skills/microdata-no/SKILL.md`, `landbakgrunn_region.txt` og docstringene, og vurder
+  `--utelat` i `klass.py`, `kreftregisteret.py` og `grunnkrets.py`.
 
 ## 2. Prioriter
 

@@ -55,3 +55,17 @@ De kjøres også av GitHub Actions ved push og pull request. Testene for `klass.
 hoppes over uten nett (eller med `UTEN_NETT=1`). Testene sjekker at `recode`-utskriften gir riktig
 resultat slik manualen beskriver `recode`. Om microdata.no oppfører seg slik, står i
 [`TESTLISTE.md`](TESTLISTE.md).
+
+## Oppsett på GitHub (én gang, for eieren av repoet)
+
+1. **Settings → Branches → Add branch ruleset** (eller «Add rule») for `main`:
+   - Require a pull request before merging
+   - Require approvals: 1
+   - Require review from Code Owners
+   - Block force pushes
+2. **Settings → Actions → General → Workflow permissions:** velg «Read and write permissions» og kryss
+   av for «Allow GitHub Actions to create and approve pull requests». Da kan den ukentlige
+   metadataoppdateringen åpne pull requests.
+3. **Issues → Labels:** opprett etikettene `fallgruve` og `metadata`.
+4. Ny vedlikeholder: gi personen rollen *Write* under Settings → Collaborators, og legg brukernavnet
+   til i `CODEOWNERS`.

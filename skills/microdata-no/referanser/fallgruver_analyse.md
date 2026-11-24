@@ -7,12 +7,10 @@ Kartlagt fra manualen (`metadata/manual/konfidensialitet.md`, `kommandoer_og_fun
 «testet» og et TESTLISTE-nummer er kjørt i microdata.no (del 8). De andre bygger bare på manualen.
 
 ## Regresjoner winsoriseres og nedsamples
-- **Versjon 2:** Alle kontinuerlige variabler i en regresjon winsoriseres før estimeringen (1 % i hver ende),
+- Alle kontinuerlige variabler i en regresjon winsoriseres før estimeringen (1 % i hver ende),
   også i `correlate`. Koeffisienter for skjeve variabler (inntekt, formue) påvirkes mindre av ekstreme
   verdier, og R² blir ofte høyere. Før `regress`, `ivregress` og `anova` fjernes 1–11 tilfeldige
   observasjoner, så N og frihetsgrader varierer litt mellom kjøringer.
-- **Versjon 1:** Regresjoner brukte de ikke-winsoriserte dataene, mens tabellene var winsorisert.
-  Regresjoner fra før 17. november 2026 kan derfor gi andre koeffisienter.
 - Regresjonen winsoriseres på hele utvalget og `tabulate ..., summarize()` per gruppe, så konstantledd +
   koeffisienter avviker litt (under 1 %) fra gjennomsnittene i tabellen: lavere for gruppen med de høyeste
   verdiene og høyere for den laveste (testet versjon 60, november 2026, TESTLISTE 8.3).
@@ -20,7 +18,7 @@ Kartlagt fra manualen (`metadata/manual/konfidensialitet.md`, `kommandoer_og_fun
   variablene (TESTLISTE 8.1).
 - Prosentiler mikroaggregeres og glattes (tiltak 10). Tellinger støylegges (±5).
 - **Løsning:** Skriv i `textblock` at kontinuerlige variabler er winsorisert, både i tabeller og regresjoner.
-  For å gjenskape eldre resultater: `configure confidentiality v1` (til 30. april 2027).
+  For å gjenskape resultater fra før 17. november 2026: se «Versjon 1 av anonymiseringstiltakene» i `fallgruver.md`.
 
 ## Kategoriske variabler med små grupper fjernes fra regresjonen (tiltak 14)
 - **Symptom:** En forklaringsvariabel (f.eks. `i.kommune`) mangler helt i resultatet, og under tabellen står
@@ -45,10 +43,6 @@ Kartlagt fra manualen (`metadata/manual/konfidensialitet.md`, `kommandoer_og_fun
   med tre nivåer gir to koeffisienter og er nok.
 - **Løsning:** Ta med minst to forklaringsvariabler. Et gruppegjennomsnitt hentes med
   `tabulate gr, summarize(y)`, ikke med regresjon.
-
-## Konstantleddet skjules ved små kombinasjoner av kategorier (bare versjon 1)
-- Tiltak 9 er fjernet i versjon 2. I versjon 1 ble konstantleddet skjult når en kombinasjon av de
-  kategoriske forklaringsvariablene hadde færre enn 5 enheter.
 
 ## Overlevelsesanalyse: populasjonen må være alle i risiko
 - **Symptom:** Nesten alle har `hendelse = 1`, og overlevelseskurven faller til 0.

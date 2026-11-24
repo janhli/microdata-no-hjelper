@@ -80,6 +80,21 @@ class TestFallgruver(unittest.TestCase):
                 if not treffer(navn, f)]
         self.assertEqual(feil, [], "\n".join(feil))
 
+    def test_versjon_1_av_tiltakene_staar_bare_i_ett_avsnitt(self):
+        # Avsnittet slettes når overgangsordningen er over (etter planen 30. april 2027).
+        monster = re.compile(r"confidentiality v1|\*\*Versjon 1|bare versjon 1|(?i:i|med|fra) versjon 1\b")
+        feil = []
+        for f in fallgruvefiler():
+            for avsnitt in re.split(r"(?m)^(?=#{2,3} )", les(f)):
+                tittel = avsnitt.split("\n", 1)[0]
+                if tittel.startswith("### Versjon 1 av anonymiseringstiltakene"):
+                    self.assertIn("30. april 2027", avsnitt)
+                    self.assertEqual(f, KJERNE)
+                    continue
+                feil += [f"{f.name}, {tittel}: {m}" for m in monster.findall(avsnitt)]
+        self.assertEqual(feil, [], "\n".join(feil))
+        self.assertTrue(treffer("Versjon 1 av anonymiseringstiltakene", KJERNE))
+
     def test_stata_tabellen_viser_til_avsnitt_som_finnes(self):
         tabell = les(SKILL / "SKILL.md").split("### Vaner fra Stata som ikke virker")[1].split("\n## ")[0]
         navn = [n for linje in tabell.splitlines() if linje.startswith("|")

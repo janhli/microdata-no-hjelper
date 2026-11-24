@@ -98,20 +98,6 @@ agentsesjonen til alle som bruker skillen, så alt gjennomgås før det flettes 
 
 Vedlikeholdere står i [`.github/CODEOWNERS`](.github/CODEOWNERS).
 
-### Oppsett på GitHub (én gang, for eieren av repoet)
-
-1. **Settings → Branches → Add branch ruleset** (eller «Add rule») for `main`:
-   - Require a pull request before merging
-   - Require approvals: 1
-   - Require review from Code Owners
-   - Block force pushes
-2. **Settings → Actions → General → Workflow permissions:** velg «Read and write permissions» og kryss
-   av for «Allow GitHub Actions to create and approve pull requests». Da kan den ukentlige
-   metadataoppdateringen åpne pull requests.
-3. **Issues → Labels:** opprett etikettene `fallgruve` og `metadata`.
-4. Ny vedlikeholder: gi personen rollen *Write* under Settings → Collaborators, og legg brukernavnet
-   til i `CODEOWNERS`.
-
 ## Kilder og kreditering
 
 - Variabelmetadata og manual: [microdata.no](https://microdata.no/) (SSB og Sikt). Innholdet tilhører

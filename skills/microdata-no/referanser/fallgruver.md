@@ -231,12 +231,11 @@ Denne filen gjelder alle skript. Les i tillegg hele temafilen når skriptet bruk
 ## Avsløringskontroll
 
 ### Versjon 2 av anonymiseringstiltakene (fra versjon 60, 17. november 2026)
-Kilde: `metadata/manual/konfidensialitet.md` og `systemendringer.md`. Det som står i avsnittene under, ble
-avklart med versjon 1, hvis ikke annet står. Endringene som påvirker skript:
-- **Fjernet:** `generate`/`replace`/`recode` som treffer 1–9 enheter, stoppes ikke lenger (tiltak 6).
+Kilde: `metadata/manual/konfidensialitet.md` og `systemendringer.md`. Det som påvirker skript:
+- **Stoppes ikke lenger:** `generate`/`replace`/`recode` som treffer 1–9 enheter (tiltak 6, TESTLISTE 1.13).
   Tabeller med mange små celler stoppes ikke (tiltak 5). Konstantleddet skjules ikke (tiltak 9).
 - **Celler med 1–4 settes til 0** i tabeller og grafer (tiltak 11). 0 betyr «0–5», 5 betyr «5–10».
-- **Minste datasett er 100 personer** (var 1000). Gjelder også datasett under personnivå (jobber):
+- **Minste datasett er 100 personer.** Gjelder også datasett under personnivå (jobber):
   de må kunne knyttes til minst 100 personer.
 - **Winsorisering per undergruppe** i `tabulate ..., summarize()`, `barchart, by()/over()` og med `if`, og
   nå også i regresjoner og `correlate` (se `fallgruver_analyse.md`).
@@ -245,12 +244,6 @@ avklart med versjon 1, hvis ikke annet står. Endringene som påvirker skript:
   derfor avvike litt (`tabulate ..., summarize(x)` mot `barchart (mean) x`).
 - **Støyen avhenger av skriptet.** Samme tabell for de samme personene gir ny støy når skriptet er endret.
   Sammenlign ikke små tall mellom kjøringer av ulike skriptversjoner.
-- **`configure confidentiality v1`** øverst i skriptet gir de gamle tiltakene, til 30. april 2027 (planlagt).
-  Bare for brukere akkreditert før 17. november 2026, og ikke med FHI-data eller `BEFOLKNING_GRUNNKRETS`.
-  Bruk det bare for å gjenskape gamle resultater. Skriptet kjører fram til importen av grunnkrets, som
-  stoppes med «Ulovlig import med valgt konfidensialitetsprofil. Kan ikke bruke variabler innenfor
-  *_GRUNNKRETS» (versjon 60, TESTLISTE 11.7). FHI-data er ikke testet med v1, men stoppes trolig på samme
-  måte. FHI-testene i TESTLISTE del 10 ble kjørt med v2.
 
 ### Sjeldne 0/1-variabler blir 0 i gjennomsnitt og forsvinner fra regresjoner (versjon 2)
 - **Symptom:** `tabulate gruppe, summarize(x) mean` eller `summarize x` gir gjennomsnitt 0 (og standardavvik 0)
@@ -285,10 +278,8 @@ avklart med versjon 1, hvis ikke annet står. Endringene som påvirker skript:
   og andre modeller (`poisson`, `probit`) er ikke testet.
 
 ### Tabeller på små delgrupper
-- **Versjon 2:** Tabellen vises alltid. Celler med 1–4 vises som 0, så små kategorier ser tomme ut.
+- Tabellen vises alltid. Celler med 1–4 vises som 0, så små kategorier ser tomme ut.
   Behandle 0 i en tabell som «0–5», ikke som ingen.
-- **Versjon 1:** Tabeller der minst halvparten av cellene var under 5, ble ikke vist, f.eks.
-  `tabulate far_landbak if far_kat == '4', top(15)` på en liten gruppe.
 - **Løsning:** Grupper til få, store kategorier.
 
 ### `collapse`/`aggregate` med `sum` winsoriseres når `by()` er en vanlig variabel
@@ -296,21 +287,33 @@ avklart med versjon 1, hvis ikke annet står. Endringene som påvirker skript:
   grupper, når de telles med `collapse (sum) dummy, by(kommune)`.
 - **Årsak:** Anonymiseringstiltaket winsorisering slår inn når det aggregeres til en vanlig variabel. Det
   gjelder ikke når `by()` er en pseudonymisert enhet (personid, familieid, husholdningsid, jobbid).
-  `count`, `median` og `percent` påvirkes ikke. (Manualen, 3.5 collapse, oppdatert i versjon 59.)
+  `count`, `median` og `percent` påvirkes ikke. (Manualen, 3.5 collapse, versjon 60.)
 - **Løsning:** Tell med `(count)`. `count` teller alle gyldige verdier, også 0, så sett dem som ikke skal
   telles til missing først. Bruk `sum` bare til å summere verdier. Det går fint å summere per person
   før man aggregerer videre (`by(personid)` på jobbdata, deretter per gruppe).
 
-### `replace`/`recode` må endre minst 10 enheter (bare versjon 1)
-- **Gjelder ikke fra versjon 2** (tiltak 6 er fjernet 17. november 2026). Testet med versjon 60: `(990 = 9)`
-  på landbakgrunn godtas nå (TESTLISTE 1.13).
-  `--utelat` i verktøyene trengs da bare med `configure confidentiality v1`.
-- **Versjon 1:** En `replace` eller `recode` som traff 1–9 enheter ble avvist. I `recode` gjaldt grensen
-  **hver målverdi for seg**: «Stoppet av avsløringskontroll. Omkodingen til 9 påvirker for få enheter»
-  (`(990 = 9)` for uoppgitt landbakgrunn, versjon 59). En regel som traff 0 enheter ble ikke stoppet
-  (TESTLISTE 1.7). Feilmeldingen nevnte én målkode om gangen. Ta ut målkoder med `--utelat`,
-  eventuelt i flere runder. Kategorier som ikke var med i
-  `tabulate`, kunne likevel stoppe omkodingen.
+### Versjon 1 av anonymiseringstiltakene (bare med `configure confidentiality v1`)
+**Avsnittet fjernes etter 30. april 2027**, da overgangsordningen etter planen er over.
+- `configure confidentiality v1` øverst i skriptet gir de gamle tiltakene. Bare for brukere akkreditert før
+  17. november 2026, og ikke med FHI-data eller `BEFOLKNING_GRUNNKRETS`. Bruk det bare for å gjenskape gamle
+  resultater.
+  - Skriptet kjører fram til importen av grunnkrets, som stoppes med «Ulovlig import med valgt
+    konfidensialitetsprofil. Kan ikke bruke variabler innenfor *_GRUNNKRETS» (versjon 60, TESTLISTE 11.7).
+    FHI-data er ikke testet, men stoppes trolig på samme måte. FHI-testene i TESTLISTE del 10 ble kjørt med
+    versjon 2.
+- Minste datasett er 1000 personer.
+- **Tabeller** der minst halvparten av cellene er under 5, vises ikke, f.eks.
+  `tabulate far_landbak if far_kat == '4', top(15)` på en liten gruppe (tiltak 5).
+- **`replace` eller `recode` som treffer 1–9 enheter, avvises** (tiltak 6). I `recode` gjelder grensen **hver
+  målverdi for seg**: «Stoppet av avsløringskontroll. Omkodingen til 9 påvirker for få enheter» (`(990 = 9)`
+  for uoppgitt landbakgrunn, versjon 59). En regel som treffer 0 enheter, stoppes ikke (TESTLISTE 1.7).
+  Feilmeldingen nevner én målkode om gangen. Ta ut målkoder med `--utelat` i verktøyene, eventuelt i flere
+  runder. Kategorier som ikke er med i `tabulate`, kan likevel stoppe omkodingen. For `klass.py grupper 545`
+  gjelder det statsløs og uoppgitt: `--utelat V9`, eller `--utelat V91,V92` på nivå 2.
+- **Regresjoner** bruker de ikke-winsoriserte dataene, mens tabellene er winsorisert. Regresjoner fra før
+  17. november 2026 kan derfor gi andre koeffisienter.
+- **Konstantleddet** skjules når en kombinasjon av de kategoriske forklaringsvariablene har færre enn 5 enheter
+  (tiltak 9).
 
 ## Alder
 

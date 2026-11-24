@@ -42,8 +42,7 @@
   strenger. Snutten `landbakgrunn_region.txt` bruker `destring` og tallintervaller. Det går også, men verktøyets
   utskrift er strenger og skal ikke kombineres med `destring`.
 - **Statsløs og uoppgitt er små.** `grupper 545` gir egne målkoder for statsløs og uoppgitt (`V9`, eller `V91` og
-  `V92` på nivå 2). De har under 10 bosatte og stoppet `recode` med versjon 1 av tiltakene (da: `--utelat V9`
-  eller `--utelat V91,V92`). Med versjon 2 godtas omkodingen (TESTLISTE 1.13), og de vises som 0 i tabeller.
+  `V92` på nivå 2). De har under 10 bosatte. Omkodingen godtas (TESTLISTE 1.13), og de vises som 0 i tabeller.
   Klass 545 er autoritet for verdensdel (Kypros i Europa, Bermuda og Saint-Pierre-et-Miquelon i Nord-Amerika).
   `landbakgrunn_region.txt` følger Klass og skiller i tillegg EU/EØS fra resten av Europa, som Klass ikke gjør.
 - **Dataene kan ha nyere koder enn kodelisten.** `NUDB_BU` 1.7.2024 hadde NUS-koder (f.eks. 754144 Master, kunstig

@@ -59,8 +59,7 @@ del 11, 2026-11-19).
 - **Små enheter:** mange grunnkretser har under 10 beboere. Tabeller på grunnkrets (og delområde) får mange
   celler med 1–4, som vises som 0. Kod rett til delområde, levekårssone, bydel eller egne områder.
   Verktøyet tar med alle grunnkretsene i hver målenhet i samme regel, også de uendrede. Det gir kortere
-  skript enn å gå via gjeldende grunnkrets. (Grunnkrets kan ikke brukes med `configure confidentiality v1`,
-  testet i 11.7, så 10-enhetsregelen fra versjon 1 gjelder ikke her.)
+  skript enn å gå via gjeldende grunnkrets.
 - **Delte grunnkretser:** noen grunnkretser er senere delt mellom flere delområder eller soner (334 fra
   1990, 59 fra 2019, 3 fra 2025 på grunnkretsnivå, langt færre på sone- og delområdenivå). De kan ikke
   fordeles uten adresse og står uendret (8 tegn) med `--splitt behold` (11.8). Si fra om dem, eller bruk `--splitt forste`.
