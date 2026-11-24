@@ -1,6 +1,6 @@
 // =====================================================================
 // Testskript: TESTLISTE 8.6 (sensurering ved utvandring i overlevelsesanalyse)
-// Laget:      2026-11-19, kjørt samme dag (versjon 60). Resultatene står i TESTLISTE 8.6 og fallgruver.md
+// Laget:      2026-11-19, kjørt samme dag (versjon 60). Resultatene står i TESTLISTE 8.6 og fallgruver_analyse.md
 // Versjon:    no.ssb.fdb:60, anonymiseringstiltak versjon 2. Spør om analysemiljøet har den samme.
 // Populasjon: bosatte 70 år og eldre (alder ved utgangen av 2015) per 1.1.2016, fulgt til 1.1.2026
 // Variabler:  https://microdata.no/discovery/variable/no.ssb.fdb/60/BEFOLKNING_STATUSKODE
@@ -9,7 +9,7 @@
 //             https://microdata.no/discovery/variable/no.ssb.fdb/60/BEFOLKNING_INVKAT
 //             https://microdata.no/discovery/variable/no.ssb.fdb/60/BEFOLKNING_DOEDS_DATO
 // Metode:     A er manualens eksempel B (tiden settes til slutten for alle uten dødsdato). B sensurerer i
-//             tillegg ved første 1.1. med statuskode '3' (utvandret), se fallgruver.md.
+//             tillegg ved første 1.1. med statuskode '3' (utvandret), se fallgruver_analyse.md.
 // =====================================================================
 
 require no.ssb.fdb:60 as fdb

@@ -3,6 +3,16 @@
 Erfaringer fra faktiske kjøringer som ikke står, eller står utydelig, i manualen. Hver fallgruve har:
 **Symptom** (gjerne den eksakte feilmeldingen), **Årsak** og **Løsning**. Nye fallgruver legges til
 med pull request (se CONTRIBUTING.md). Tagg dem med datalagerversjon/dato hvis de kan bli utdatert.
+Tallene fra testkjøringene står i TESTLISTE.md i repoet (numre som 8.12) og i `kodesnutter/TESTRESULTATER.md`.
+
+Denne filen gjelder alle skript. Les i tillegg hele temafilen når skriptet bruker temaet:
+
+| Skriptet bruker | Les |
+|---|---|
+| Regresjon, `correlate`, overlevelsesanalyse, paneldata eller andre statistiske analyser | `fallgruver_analyse.md` |
+| Kommune, fylke, region, bydel eller grunnkrets | `fallgruver_geografi.md` |
+| Næring, eller yrke, utdanning eller landbakgrunn gruppert etter Klass (`klass.py`) | `fallgruver_klass.md` |
+| `no.fhi.kreftregisteret` eller `no.fhi.npr` | `fallgruver_fhi.md` |
 
 ## Variabler og ID-er
 
@@ -48,8 +58,8 @@ med pull request (se CONTRIBUTING.md). Tagg dem med datalagerversjon/dato hvis d
   (4008) og tiltak (3208, 3216 tiltakspenger, 3240 introduksjonsprogram, 4816) er utenfor NEET. Dagpenger (3224)
   og sykepenger (4808) er NEET. Snutten `arbeidsstyrkestatus.txt` legger dagpenger i «andre», ikke i ledig.
 - Over halvparten av NEET-gruppen har ukjent status (7208).
-- NEET etter registrert utdanning fra `NUDB_BU` er en tilleggsanalyse. I 2024 var det 104 911 med uoppgitt
-  eller ingen utdanning, mot 7 417 i tabell 12423. Snutten bruker 1. august. SSB bruker 1. oktober, imputerer
+- NEET etter registrert utdanning fra `NUDB_BU` er en tilleggsanalyse. Langt flere har uoppgitt eller ingen
+  utdanning enn i tabell 12423. Snutten bruker 1. august. SSB bruker 1. oktober, imputerer
   utdanningsnivå for innvandrere med uoppgitt nivå og koder de fleste 15-åringene og en del 16-åringer som å
   ha fullført grunnskolen. Vis antallet med uoppgitt eller ingen utdanning når du bruker `NUDB_BU`, og bruk
   tabell 12423 hvis du trenger de publiserte tallene. [SSBs metodebeskrivelse](https://www.ssb.no/arbeid-og-lonn/sysselsetting/statistikk/tilknytning-til-arbeid-utdanning-og-velferdsordninger/#om-statistikken)
@@ -73,15 +83,11 @@ med pull request (se CONTRIBUTING.md). Tagg dem med datalagerversjon/dato hvis d
 
 ### `BOFORHOLD_EIE_LEIE` gir færre leiere enn Statistikkbanken
 - **Symptom:** 1.1.2024 gir 23,6 % leiere blant husholdninger koblet til bolig, mot 27,4 % i SSB tabell
-  14897. Antall husholdninger er det samme (2 584 506 mot 2 584 517), men ca. 98 000 er selveiere i
-  microdata.no og leiere i Statistikkbanken. SSB-tabellen ligger på 27–28 % leiere for hele 2015–2025.
+  14897, selv om antall husholdninger er det samme.
 - **Årsak (bekreftet november 2026, versjon 59):** Husholdninger som er *statistisk koblet* til bolig
-  (`BOFORHOLD_KOBLNIVAA_HUSH_BOLIG = STAT`, 293 143 husholdninger) får anslått (imputert) eierstatus.
-  I microdata.no er 51,6 % av dem eiere, mens bare 13–15 % har registrert eierskap i Matrikkelen,
-  Grunnboken eller skattemeldingen. Med 13–15 % eiere i denne gruppen blir det 716 000–721 000 leiere,
-  mot 707 784 i tabell 14897. SSB har revidert eierstatus med tidsserier bakover, mens `BOFORHOLD_*`
-  i microdata.no (til 1.1.2024) bruker den gamle metoden. Direkte koblede husholdninger (DIR) har
-  20,4 % leiere, så de alene er heller ikke representative.
+  (`BOFORHOLD_KOBLNIVAA_HUSH_BOLIG = STAT`) får anslått (imputert) eierstatus, og for mange blir eiere.
+  SSB har revidert eierstatus med tidsserier bakover, mens `BOFORHOLD_*` i microdata.no (til 1.1.2024)
+  bruker den gamle metoden. Direkte koblede husholdninger (DIR) alene er heller ikke representative.
   Kilde: [SSB, notat 2026/17](https://www.ssb.no/bygg-bolig-og-eiendom/bolig-og-boforhold/artikler/boforholdsregisteret-dokumentasjon-og-revisjon-av-eierstatus-variabel).
 - **Løsning:** Sammenlign ikke eierandeler direkte med Statistikkbanken. Vis statistisk koblede
   husholdninger som egen gruppe, eller regn eierstatus for dem som usikker. Unge, aleneboende og
@@ -122,8 +128,8 @@ med pull request (se CONTRIBUTING.md). Tagg dem med datalagerversjon/dato hvis d
 - Manual: `metadata/manual/brukermanual/Oppretting og endring av datasett/2.6 Filtrering av datasettutvalg.md`.
 
 ### Datoer er tall i formatet ÅÅÅÅMMDD, ikke dager
-- **Symptom:** Tid til hendelse blir rundt 20 millioner. `dod - date(2024, 1, 1)` ga 20 222 468 i stedet
-  for et antall dager (versjon 60, november 2026).
+- **Symptom:** Tid til hendelse (`dod - date(2024, 1, 1)`) blir rundt 20 millioner i stedet for et antall
+  dager (versjon 60, november 2026).
 - **Årsak:** `BEFOLKNING_DOEDS_DATO`, `BEFOLKNING_FORSTDATO` og `INTRO_*_DATO` er tall som `20240315`
   (`format: YYYYMMDD` i `metadata/variabler/<NAVN>.json`). `date()` gir dager siden 1970-01-01. 24 variabler
   har `YYYYMM` (f.eks. `BEFOLKNING_FOEDSELS_AAR_MND`) og 4 har `YYYY`.
@@ -140,7 +146,7 @@ med pull request (se CONTRIBUTING.md). Tagg dem med datalagerversjon/dato hvis d
 
   Navnet sier lite om formatet: `KRIMINALITET_SIKTEDE_GJDATO1` er ÅÅÅÅMM.
 - **Løsning:** Sjekk `format` i JSON-filen. Gjør om til dager før du regner med datoer (testet versjon 60,
-  TESTLISTE 8.10: dødsdatoer 2023–2025 ble 19 380–20 436, og tid fra diagnose til død 0–971 dager):
+  TESTLISTE 8.10):
   `generate dag_aar = int(dod/10000)`, `generate dag_mnd = int(dod/100) - dag_aar*100`,
   `generate dag_dag = dod - int(dod/100)*100` og `generate doddag = date(dag_aar, dag_mnd, dag_dag)`.
   Sammenligning med en dato kan gjøres direkte på tallet: `dod >= 20240101`.
@@ -162,12 +168,11 @@ med pull request (se CONTRIBUTING.md). Tagg dem med datalagerversjon/dato hvis d
   er en telling (f.eks. antall fødsler), og forklar radene i en `textblock`.
 
 ### Region i Statistikkbankens lønnstakertabeller er arbeidssted
-- **Symptom:** Antall lønnstakere i en kommune er langt lavere enn i SSB tabell 13926 (Bergen 2025K4:
-  154 082 etter bosted mot 182 619 i tabellen).
+- **Symptom:** Antall lønnstakere etter bosted i en kommune er langt lavere enn i SSB tabell 13926.
 - **Årsak:** Tabellen fordeler etter arbeidsstedet for hovedarbeidsforholdet. `REGSYS_ARB_ARBKOMM` gir
   heller ikke samme tall, fordi den bare har bosatte sysselsatte 15–74 år.
-- **Løsning:** Bruk `ARBLONN_ARB_ARBKOMM` for jobben der `ARBLONN_ARB_HOVEDARBEID == '1'`. Det ga
-  182 609 for Bergen (testet november 2026, versjon 59).
+- **Løsning:** Bruk `ARBLONN_ARB_ARBKOMM` for jobben der `ARBLONN_ARB_HOVEDARBEID == '1'`. Det
+  traff tabellen (testet november 2026, versjon 59).
 
 ### Sammenligninger med manglende verdi gir 0 eller 1, ikke missing
 - **Symptom:** En dummy laget med `generate h = x > 5` har ingen manglende verdier, selv om `x` mangler for
@@ -234,7 +239,7 @@ avklart med versjon 1, hvis ikke annet står. Endringene som påvirker skript:
 - **Minste datasett er 100 personer** (var 1000). Gjelder også datasett under personnivå (jobber):
   de må kunne knyttes til minst 100 personer.
 - **Winsorisering per undergruppe** i `tabulate ..., summarize()`, `barchart, by()/over()` og med `if`, og
-  nå også i regresjoner og `correlate` (se «Analyse»).
+  nå også i regresjoner og `correlate` (se `fallgruver_analyse.md`).
 - **Nedsampling:** 1–3 tilfeldige observasjoner fjernes før de fleste analyser (per undergruppe i
   volumtabeller), og 1–11 før `regress`, `ivregress` og `anova`. Samme statistikk i to kommandoer kan
   derfor avvike litt (`tabulate ..., summarize(x)` mot `barchart (mean) x`).
@@ -251,37 +256,32 @@ avklart med versjon 1, hvis ikke annet står. Endringene som påvirker skript:
 - **Symptom:** `tabulate gruppe, summarize(x) mean` eller `summarize x` gir gjennomsnitt 0 (og standardavvik 0)
   for en 0/1-variabel, selv om `tabulate x` viser mange med verdien 1. Ingen melding.
 - **Årsak:** winsoriseringen (1 % i hver ende) gjelder også 0/1-variabler. Har under 1 % verdien 1, er
-  99-persentilen 0, og alle 1-erne blir 0. Testet: 3 729 av 709 037 (0,53 %) med krefttilfelle i Oslo ga
-  gjennomsnitt 0 i alle bydeler og i totalen (versjon 60, 2026-11-20, TESTLISTE 11.12). Motsatt blir alle
+  99-persentilen 0, og alle 1-erne blir 0 (testet versjon 60, 2026-11-20, TESTLISTE 11.12). Motsatt blir alle
   0-ene 1 når over 99 % har verdien 1.
 - **Også i undergrupper:** winsoriseringen skjer per gruppe i `summarize()`, `by()`/`over()` og med `if`. En
   andel som er over 1 % totalt, kan bli 0 i en gruppe der den er lavere (dødelighet blant unge, sjeldne
   diagnoser i små grupper).
 - **Regresjoner:** en 0/1-forklaringsvariabel der under 1 % har verdien 1, utelates fra `regress` og `logit`
-  uten melding (TESTLISTE 8.12, 405 000 personer). Andel 0,22 % og 0,85 %: ingen rad, og `F(1, ...)` med
-  `mann` alene, som uten variabelen. Andel 1,26 % og 2,47 %: med, og koeffisienten som ventet. Grensen er
-  1 %, likt med `summarize`. `logit` med utfall på 1,26 % virket.
-- **Kategorier i `i.`-variabler rammes ikke.** `regress lonn i.gruppe mann` og `logit` viste kategorier på
-  0,2 %, 0,85 % og 1,6 %, med koeffisienter nær forskjellene i gjennomsnitt (+30, +19, +30 mot +29, +17, +26).
-  `i.` lages trolig om til 0/1-ledd etter winsoriseringen (TESTLISTE 8.13).
-- **Utfall under 1 % (eller over 99 %) gir meningsløse modeller uten feilmelding** (8.13, lønn over 3 mill.,
-  0,34 %):
+  uten melding: ingen rad, og F-testen er som uten variabelen. Andeler over 1 % er med, og koeffisienten er
+  som ventet. Grensen er 1 %, likt med `summarize`, også for utfallet i `logit` (TESTLISTE 8.12).
+- **Kategorier i `i.`-variabler rammes ikke.** `regress lonn i.gruppe mann` og `logit` viste kategorier under
+  1 %, med koeffisienter nær forskjellene i gjennomsnitt. `i.` lages trolig om til 0/1-ledd etter winsoriseringen (TESTLISTE 8.13).
+- **Utfall under 1 % (eller over 99 %) gir meningsløse modeller uten feilmelding** (8.13):
   - `regress`: alle koeffisienter og standardfeil 0, R² og F «NaN».
   - `logit`: 35 iterasjoner, «Pseudo R2 Infinity» og negativ eller nær null `LR chi2`. Med utfallet over 99 %
-    fikk koeffisientene z-verdier på −145 og ser signifikante ut, men tallene er tull.
+    ser koeffisientene signifikante ut (svært høye z-verdier), men tallene er tull.
   - Kjennetegn: «NaN», «Infinity», negativ `LR chi2`, 35 iterasjoner, standardavvik 0 i `summarize`.
 - **Løsning:**
   - Andeler: bruk antall i en krysstabell, `tabulate gruppe x, rowpct`. Bruk `summarize(x) mean` bare når
     andelen er godt over 1 % (og under 99 %) i hver gruppe.
-  - Sjeldne forklaringsvariabler: skriv `i.x` i stedet for `x`. Testet (8.14): `d08` (0,86 %) ble utelatt,
-    mens `i.d08` ga raden «d08 '1'» med +27 (forskjell i gjennomsnitt +25), i både `regress` og `logit`.
+  - Sjeldne forklaringsvariabler: skriv `i.x` i stedet for `x`. Raden heter da «x '1'». Testet i både
+    `regress` og `logit` (8.14).
     Sjekk at alle forklaringsvariablene har en rad i resultatet.
   - Sjeldne utfall: tabuler utfallet først. Under 1 % kan ikke modelleres med `regress` eller `logit` på hele
     populasjonen. Avgrens populasjonen til en risikogruppe der utfallet er over 1 %, eller bruk tabeller med
     antall.
-- **`cox` rammes ikke.** Død i 2025 for 25–66-åringer (948 av 500 000, 0,19 %) ga 0 i `summarize`, men `cox`
-  fant alle 947 hendelsene, med alder +0,086 og mann +0,48 per år (kontroll med 8,7 % døde: +0,105 og +0,39).
-  For sjeldne hendelser over tid er `cox` derfor et alternativ til `logit` (TESTLISTE 8.14). `kaplan-meier`
+- **`cox` rammes ikke.** En hendelse på 0,19 % ga 0 i `summarize`, men `cox` fant hendelsene og ga rimelige
+  koeffisienter. For sjeldne hendelser over tid er `cox` derfor et alternativ til `logit` (TESTLISTE 8.14). `kaplan-meier`
   og andre modeller (`poisson`, `probit`) er ikke testet.
 
 ### Tabeller på små delgrupper
@@ -308,388 +308,9 @@ avklart med versjon 1, hvis ikke annet står. Endringene som påvirker skript:
 - **Versjon 1:** En `replace` eller `recode` som traff 1–9 enheter ble avvist. I `recode` gjaldt grensen
   **hver målverdi for seg**: «Stoppet av avsløringskontroll. Omkodingen til 9 påvirker for få enheter»
   (`(990 = 9)` for uoppgitt landbakgrunn, versjon 59). En regel som traff 0 enheter ble ikke stoppet
-  (TESTLISTE 1.7). Feilmeldingen nevnte én målkode om gangen. Ta ut målkoder med `--utelat` (SN2002 →
-  SN2007 gikk gjennom i tredje runde, 33 av 410 målkoder tatt ut). Kategorier som ikke var med i
+  (TESTLISTE 1.7). Feilmeldingen nevnte én målkode om gangen. Ta ut målkoder med `--utelat`,
+  eventuelt i flere runder. Kategorier som ikke var med i
   `tabulate`, kunne likevel stoppe omkodingen.
-
-## Analyse
-
-Kartlagt fra manualen (`metadata/manual/konfidensialitet.md`, `kommandoer_og_funksjoner/kommandoer.md` og
-`eksempel/Regresjonsanalyser/`, versjon 60 med anonymiseringstiltak versjon 2, november 2026). Punkter med
-«testet» og et TESTLISTE-nummer er kjørt i microdata.no (del 8). De andre bygger bare på manualen.
-
-### Regresjoner winsoriseres og nedsamples
-- **Versjon 2:** Alle kontinuerlige variabler i en regresjon winsoriseres før estimeringen (1 % i hver ende),
-  også i `correlate`. Koeffisienter for skjeve variabler (inntekt, formue) påvirkes mindre av ekstreme
-  verdier, og R² blir ofte høyere. Før `regress`, `ivregress` og `anova` fjernes 1–11 tilfeldige
-  observasjoner, så N og frihetsgrader varierer litt mellom kjøringer.
-- **Versjon 1:** Regresjoner brukte de ikke-winsoriserte dataene, mens tabellene var winsorisert.
-  Regresjoner fra før 17. november 2026 kan derfor gi andre koeffisienter.
-- **Testet (versjon 60, november 2026, TESTLISTE 8.3):** lønn etter tre utdanningsgrupper. Konstantledd +
-  koeffisienter avvek med 0,7 %, 0,4 % og −0,6 % fra gjennomsnittene i `tabulate ..., summarize()`. Regresjonen
-  winsoriseres på hele utvalget og tabellen per gruppe, så regresjonen ble litt lavere for gruppen med de
-  høyeste lønningene og litt høyere for den laveste.
-- Manglende verdier utelates listevis: N i `regress y x1 x2` var lik antall uten manglende verdi i noen av
-  variablene (TESTLISTE 8.1).
-- Prosentiler mikroaggregeres og glattes (tiltak 10). Tellinger støylegges (±5).
-- **Løsning:** Skriv i `textblock` at kontinuerlige variabler er winsorisert, både i tabeller og regresjoner.
-  For å gjenskape eldre resultater: `configure confidentiality v1` (til 30. april 2027).
-
-### Kategoriske variabler med små grupper fjernes fra regresjonen (tiltak 14)
-- **Symptom:** En forklaringsvariabel (f.eks. `i.kommune`) mangler helt i resultatet, og under tabellen står
-  «Leddet i.kommune er fjernet fra analysen pga. lav frekvens i minst en av gruppene.» Regresjonen kjøres
-  likevel, uten variabelen (testet versjon 60, november 2026, TESTLISTE 8.4).
-- **Årsak:** Har én kategori færre enn 5 observasjoner, fjernes **hele variabelen** fra analysen, ikke bare
-  kategorien (tiltak 14). Interaksjoner som `i.kjonn#i.utdniv#i.fylke` gir lett små grupper. Meldingen er
-  lett å overse, og resultatet ser ut som en modell uten variabelen.
-- **Løsning:** Slå små kategorier sammen med nabokategorier, bruk grovere inndeling eller større
-  populasjon. `tabulate` variabelen i analysepopulasjonen først: celler som vises som 0, er under 5.
-
-### Forklaringsvariabler som er (nesten) like utfallet, fjernes (tiltak 12 og 13)
-- En forklaringsvariabel som er perfekt eller nesten perfekt korrelert med utfallet, droppes. `correlate`
-  viser 1 når to variabler er like for alle unntatt under 5 enheter. Skjer det, er modellen trolig feil
-  spesifisert (f.eks. utfallet laget av en av forklaringsvariablene).
-
-### En regresjon må ha minst to koeffisienter (tiltak 17)
-- **Symptom:** «Regresjonsmodellen har for få forklaringsvariabler/koeffisienter. Nedre grense er to
-  koeffisienter.» på `regress lonn mann` (testet versjon 60, november 2026, TESTLISTE 8.9). Skriptet stopper.
-- **Årsak:** Modeller med færre enn to koeffisienter (konstantleddet telles ikke) stoppes. Det gjelder også
-  når tiltak 14 har fjernet en faktorvariabel, så det bare er én forklaringsvariabel igjen. En faktorvariabel
-  med tre nivåer gir to koeffisienter og er nok.
-- **Løsning:** Ta med minst to forklaringsvariabler. Et gruppegjennomsnitt hentes med
-  `tabulate gr, summarize(y)`, ikke med regresjon.
-
-### Konstantleddet skjules ved små kombinasjoner av kategorier (bare versjon 1)
-- Tiltak 9 er fjernet i versjon 2. I versjon 1 ble konstantleddet skjult når en kombinasjon av de
-  kategoriske forklaringsvariablene hadde færre enn 5 enheter.
-
-### Overlevelsesanalyse: populasjonen må være alle i risiko
-- **Symptom:** Nesten alle har `hendelse = 1`, og overlevelseskurven faller til 0.
-- **Årsak:** Manualens eksempel A lager datasettet fra `import-event` (`keep if astatus == '1'` og
-  `collapse (min) START@...`). Da består populasjonen bare av personer som *fikk* hendelsen, og ingen er
-  sensurert. Kurven viser tid til hendelsen blant dem som fikk den, ikke risikoen i befolkningen.
-- **Løsning:** Lag populasjonen først (f.eks. bosatte 16–60 år 1.1. startåret), finn første hendelsesdato
-  i et eget datasett (`import-event`, `keep`, `collapse (min) START@... by(PERSONID_1)`), og `merge` den
-  inn. De uten dato får `hendelse = 0` og tiden satt til slutten av perioden. Se også
-  `kodesnutter/forlop_til_person.txt`.
-
-### Overlevelsesanalyse: død og utvandring er ikke sensurert
-- **Symptom:** For lang overlevelsestid, særlig for eldre og innvandrere.
-- **Årsak:** Manualen setter tiden til maksverdi for alle uten hendelse. Den som dør eller utvandrer i
-  perioden, regnes da som i risiko helt til slutt. Det finnes ingen hendelsesvariabel for utvandring.
-- **Løsning:** Sett sensureringstid ved død (`BEFOLKNING_DOEDS_DATO`, tallet ÅÅÅÅMMDD, se «Datoer er tall i
-  formatet ÅÅÅÅMMDD») og ved første 1.1. med
-  `BEFOLKNING_STATUSKODE` = `'3'` (utvandret, bare årlig). Hendelse etter sensurering skal ikke telle.
-  Er hendelsen selv død, er utvandring den viktigste sensureringen. Si fra om at utvandring bare er kjent
-  per 1.1.
-- **Størrelse (testet versjon 60, TESTLISTE 8.6):** bosatte 70+ 1.1.2016, fulgt i ti år. 4,6 % av
-  innvandrerne utvandret, mot 0,1 % av de andre. Bare 11 % av innvandrerne som utvandret, hadde
-  dødsdato (28 % av de andre). Uten sensurering ble innvandrernes snittid 88 dager for lang, og
-  `cox`-koeffisienten for innvandrer −0,242 i stedet for −0,209 (forskjell på 3 standardfeil). For hele
-  gruppen utgjorde det lite (277 av 292 000 dødsfall). Sensurer alltid når grupper med mye utvandring
-  sammenlignes.
-
-### Overlevelsesanalyse: tolkning av `cox`
-- Koeffisientene gjelder hazard (risikoen for hendelsen per tidsenhet), ikke overlevelsestiden, selv om
-  manualen kaller tiden «avhengig variabel». Positiv koeffisient (hazardrate over 1) betyr høyere risiko
-  og kortere tid til hendelsen.
-- Med `hazard` vises ingen standardfeil. Kjør uten `hazard` for å se usikkerheten, og regn om med `exp()`.
-- Tid i hele år (`int(dager/365.24)`, som i manualen) gir mange like tider. Bruk dager eller måneder i
-  `cox`, år bare i grafer.
-
-### `regress-panel-diff`: behandlingsvariabelen er etter-perioden for alle
-- **Symptom:** Diff-in-diff-estimatet (ATET) blir feil eller lik null.
-- **Årsak:** Manualen kaller variabel 3 «behandlingsvariabel», men den skal være 1 for **alle enheter** fra
-  og med behandlingstidspunktet, også kontrollgruppen (eksempelet: `replace behandling = 1 if
-  year(date@panel) >= 2020`). Settes den bare for behandlingsgruppen, er den lik interaksjonsleddet.
-- **Løsning:** `gruppe` = 1 for behandlingsgruppen, `etter` = 1 for alle fra behandlingsåret. Samme
-  resultat: `regress-panel y gruppe##etter ..., pooled`.
-- **Testet (versjon 60, november 2026, TESTLISTE 8.5):** med `etter` = 1 for alle i 2020–2021 ga
-  `regress-panel-diff` −4 159 for `gruppe ⨯ etter` og den pooled regresjonen −4 156 for interaksjonen.
-  Forskjellen skyldes nedsampling (N 331 647 mot 331 649). Utskriften kaller estimatet `gruppe ⨯ etter`,
-  ikke ATET.
-
-### `ivregress`: endogen variabel til venstre for `=`, instrumentene til høyre
-- **Årsak:** Teksten i manualen bytter om begrepene («instrumentvariabel på venstre side»), og eksempelsiden
-  sier at IV er for multikollinearitet. Syntaksen i eksemplene er
-  `ivregress y x1 x2 ( endogen = instrument1 instrument2 )`.
-- **Løsning:** Skriv det slik, og forklar valget av instrument: det må påvirke `endogen`, men ikke `y` på
-  annen måte. Alder som instrument for formue i lønnsregresjonen (manualens eksempel) oppfyller ikke det.
-  IV er for endogenitet (utelatte variabler, omvendt kausalitet, målefeil), ikke multikollinearitet.
-
-### `poisson` eller `negative-binomial`
-- Teksten for `negative-binomial` sier «forventet verdi større enn variansen». Det er omvendt:
-  overdispersjon er når variansen er større enn forventningen, og da passer `negative-binomial`. Teksten for
-  `poisson` er riktig. Sjekk med `summarize` (varians = std²) og se om `alpha` i `negative-binomial` er
-  tydelig større enn 0.
-
-### Paneldata
-- `import-panel` virker bare i et tomt datasett. Lag populasjonen først, og bruk
-  `clone-units <populasjon> <panel>` og `use <panel>` før `import-panel`.
-- Datasettet får én rad per enhet og tidspunkt. Hold populasjonen under ca. 1 million enheter (manualen).
-- Akkumulerte variabler (inntekt) gir årsverdien uansett dato i året. Med `2018-01-01` får du inntekt for
-  2018, men status (sivstand, bosted) per 1.1.2018. Si fra om rekkefølgen er viktig for tolkningen.
-- `robust` i `regress-panel` og `regress-panel-diff` er cluster på panel-ID. `cluster()` kan ikke brukes samtidig.
-- `hausman`: p < 0,05 betyr at fixed effects bør brukes. Utskriften har fe, re og forskjellene. Tom
-  standardfeil for noen ledd (negativ variansforskjell) er normalt. Les chi2 og p nederst.
-- **Testet (versjon 60, november 2026, `kodesnutter/paneldata.txt`):** `import-panel` med en fast variabel
-  (kjønn) og datoer virker, `year(date@panel)` gir året, og `i.aar` virker i `regress-panel` og `hausman`
-  (første år er referanse). `transitions-panel` viser kodene uten navn. `tabulate-panel x, colpct` virker med én
-  variabel, med årene som kolonner. Samliv og lønn: fixed effects
-  +13 000 kr for gift, pooled +94 000. Uten fe blandes effekten med faste forskjeller mellom personer.
-
-### Standardfeil, faktorvariabler og prediksjon
-- `cluster()` må være en numerisk variabel som ikke er med i modellen, og kan ikke kombineres med `robust`.
-  Bruk cluster når enhetene er gruppert (f.eks. elever i skoler, personer i kommuner).
-- Kategoriske variabler skrives som `i.var`. Uten `i.` tolkes en numerisk kode som kontinuerlig. Interaksjon:
-  `i.a#i.b` (bare interaksjonen) eller `i.a##i.b` (hovedeffekter og interaksjon). `control(i.kommune)` tar
-  med faste effekter uten å vise dem.
-- **`i.` virker på tekstvariabler, og `destring` trengs ikke** (versjon 60, 2026-11-23, TESTLISTE 8.15).
-  `i.kjonn` (`BEFOLKNING_KJOENN`), `i.fylke` (`substr` av kommunenummeret) og `i.invkat` (bokstavene A–G)
-  ga én rad per kategori unntatt den laveste, i `regress` og `logit`, og `i.kjonn##i.invkat` ga
-  hovedeffekter og samspill («kjonn 'Kvinne' ⨯ invkat 'Innvandrere'»). `i.fylke` ga de samme
-  koeffisientene som etter `destring`. Variabler med kodeliste vises bare med navnet («invkat
-  'Innvandrere'», uten koden), og variabler uten kodeliste med verdien («fylke '11'»).
-  - Referansen er den laveste verdien. Fylkesnumrene har ledende null ('03'), så rekkefølgen var den samme
-    som for tall. Tekst uten ledende null ('3', '11') er ikke testet. Som tekst kommer '11' trolig før
-    '3', så se etter hvilken kategori som mangler i tabellen.
-- **Testet med `logit` (versjon 60, november 2026, `kodesnutter/logistisk_regresjon.txt`):** laveste kode er
-  referanse, og kategoriene vises med navn. `cluster()` virker med `or` og `mfx()` (z-verdier ca. 50 mot
-  290 uten). `mfx(dydx)` skriver først koeffisientene, så marginaleffektene under «dydx av syss».
-  `logit-predict` godtar `i.`-ledd.
-- **`c.x#c.x` og `c.x##c.x` (andregradsledd) utelates fra modellen uten melding**, både i `regress` og
-  `logit` (versjon 60, 2026-11-20, TESTLISTE 8.11).
-  - `regress lonn alder c.alder#c.alder mann` ga R² 0,0615 og ingen rad for leddet, altså samme modell
-    som uten. Med `alder2 = alder * alder` ble R² 0,0932. `c.alder##c.alder` ga det samme som `#`.
-  - I `logit` ble log-likelihood −107 337, mot −104 976 med `alder2`. Koeffisienten for alder blir helt
-    annerledes.
-  - **Løsning:** lag andregradsledd som egen variabel: `generate alder2 = alder * alder`.
-  - **Samspill mellom ulike variabler virker:** `c.alder#c.lonn23` (vises som «alder ⨯ lonn23») og
-    `i.mann#c.alder` (vises som «mann '1' ⨯ alder»), i både `regress` og `logit`. R² og log-likelihood
-    var nesten like med en variabel laget med `generate`. Koeffisientene skilte seg med 3–8 %, trolig
-    fordi den genererte produktvariabelen winsoriseres for seg.
-  - Sjekk at alle ledd du skrev, har en rad i tabellen. I `regress` er F-testens frihetsgrader lik antall
-    ledd som faktisk er med. `LR chi2` i `logit` har alltid én frihetsgrad mer enn de synlige leddene, så
-    der sier frihetsgradene ikke om et ledd er med.
-- **Kontroller prediksjoner mot noe som ikke er i modellen.** En logit med `i.gruppe` treffer andelen per
-  gruppe nøyaktig (avvik 0,03 prosentpoeng), så den sammenligningen sier ingenting.
-- `logit`/`probit` krever et utfall som er 0/1. `mfx(dydx)` gir gjennomsnittlige marginaleffekter
-  (`overall`). For en 0/1-variabel er det trolig den deriverte, ikke en diskret endring fra 0 til 1:
-  `mann` ga 0,1805, mens forskjellen i `margins(mann)` var 0,1864 og en derivert ga om lag 0,180 (TESTLISTE
-  8.7, versjon 60). Forskjellen er liten. Trengs den diskrete effekten, bruk forskjellen i `margins()`. `or` gir oddsratio. `margins()` gir predikert verdi ved gjennomsnittet av
-  forklaringsvariablene, ikke gjennomsnittet av predikerte verdier.
-- `mlogit` viser koeffisientene for hver utfallskategori under hverandre uten å si hvilken kategori blokken
-  gjelder (versjon 60). Første kategori er referanse, og blokkene står trolig i stigende rekkefølge. Si fra om
-  det når resultatet tolkes, eller lag utfallet med få, tydelige kategorier.
-- `regress-mml`: gruppevariabelen kan ikke også være forklaringsvariabel. Like variansestimater for to
-  nivåer (f.eks. fylke og landsdel) betyr at nivåene fanger opp det samme. Bruk ett av dem.
-- Spredningsplott finnes ikke. Bruk `hexbin` (celler med under 5 enheter vises ikke). Søyler i `histogram`
-  og `barchart` med under 5 enheter vises heller ikke (tiltak 11).
-
-## Geografi
-
-### Kommune- og fylkesnummer endres med regionreformene
-- Fylke hentes med `substr(BEFOLKNING_KOMMNR_FORMELL, 1, 2)`. Navn og kontrolltall: `kodesnutter/fylke.txt`.
-- Fylkesnumrene fra 2024 gjelder: 31 Østfold, 32 Akershus, 33 Buskerud osv. Kommuner i Viken (30xx)
-  i 2020–2023 må omkodes til nummeret de fikk i 2024 (31xx/32xx/33xx) før du sammenligner over tid.
-  Tilsvarende gjelder Vestfold og Telemark (38xx → 39xx/40xx) og Troms og Finnmark (54xx → 55xx/56xx).
-- Bruk `python verktoy/kommuneomkoding.py` til å lage `recode` fra gamle til nyere inndeling
-  (data: SSB Klass 131 i `metadata/kommuneendringer.json`). Fallgruver:
-  - Delte kommuner (Varteig 0114, Stokke 0720, Snillfjord 1613 og 5012, Tysfjord 1850) kan ikke
-    omkodes på kommunekoden alene. Verktøyet lar dem stå uendret, og de vises som gamle koder i tabellen.
-    Fra 1990 fordeler `--grunnkrets <variabel>` personene etter grunnkretsen på samme dato (`BEFOLKNING_GRUNNKRETS`,
-    Klass 1). Det gjelder også Ålesund/Haram 2020–2023 og kommuner valgt ved navn. Grunnkretser som selv er
-    delt (f.eks. 2 i Stokke 2015, 3 i Indre Østfold 2025) og uoppgitt (`kkkk9999`) står med kommunekoden.
-    Testet (versjon 60, 2026-11-23, TESTLISTE 2.9): mot kommunen året etter delingen havnet 93–98 % i riktig
-    kommune (Haram 2023: 8 940 av 9 252), og resten ser ut som flytting. Men de to delte grunnkretsene i Stokke
-    har 13 % av befolkningen (1 534 i 2016), så Stokke står fortsatt delvis igjen. Si fra om det. Koder som
-    ikke finnes i kodelisten på datoen (1580 Haram i 2023), får navn med en regel til samme verdi, som
-    verktøyet lager (TESTLISTE 2.10).
-  - **Merkelapp på en kode som ikke fantes:** `recode kommune ('1580' = '1580' 'Haram')` gir navnet, både før
-    og etter at noen har verdien (`replace` etterpå får også navnet). Testet med versjon 60, 2026-11-23.
-  - Når Ålesund ble delt i 2024 (Haram ut igjen), kjedes de gamle kodene via navn. Haram 1534 blir 1580,
-    og Ørskog, Skodje og Sandøy blir 1508. Verktøyet lister slike valg som «kontroller».
-  - **Ålesund 1507 (2020–2023) omkodes helt til 1508, også Haram.** 1.1.2023 fikk 1508 67 525 personer,
-    mot 58 511 i Ålesund og 9 358 i Haram 1.1.2024 (versjon 59, november 2026). Koden kan ikke deles uten
-    adresse. Verktøyet lister slike koder under «Koder som selv ble delt». Trenger du Haram for 2020–2023,
-    bruk kommunen personen bodde i 1.1.2019 eller 1.1.2024.
-  - Omkodingen er kontrollert mot SSB tabell 07459: alle kommuner innenfor ±5 (støy) for 1.1.2010 omkodet
-    til 2024 og for 1.1.2024 (versjon 59). Verktøyet gir kommunene det omkoder til navnet i den nye
-    inndelingen, så nye koder (1108 Sandnes, 3101 Halden) får navn også i gamle årganger. Koder som ikke
-    omkodes, beholder navnet fra kodelisten på datoen (1826 Hattfjelldal, ikke Aarborte - Hattfjelldal).
-  - Klass dekker ikke Svalbard-kodene 2111, 2112, 2115, 2121 og 2131 (i kodelisten til
-    `BEFOLKNING_KOMMNR_FORMELL`). Legg dem til for hånd hvis de skal slås sammen til 2100.
-  - Klass har endringer til 2026 (bl.a. Indre Østfold). Standard er `--til 2024`.
-- Regiontabellene i `metadata/regioner/` gjelder kommunenummer i 2024-inndelingen. Gamle kommunenumre
-  står uendret hvis de ikke omkodes først, og blir stående som kommunekode i regionvariabelen.
-  Kontroller med `tabulate`, eller bruk `--ukjent` (se neste punkt).
-  - `recode (* = ...)` må stå som siste regel i samme kommando som de andre reglene. I en egen kommando
-    treffer den alle verdier, også de som allerede er omkodet. Derfor lager `regionomkoding.py` ingen
-    sluttregel som standard. `--ukjent` gir én lang kommando. microdata.no har godtatt 2 789 tegn
-    (versjon 59, november 2026), og sluttregelen virker som forventet (TESTLISTE 1.1 og 1.2).
-  - Regionene er dagens inndeling. Politidistrikt (2016), helseregioner (2007), barnevern (2004) og
-    samiske valgkretser (2009) har eldre versjoner enn 2024, og tabellene viser dagens kobling.
-  - Helseregionene har bare tabell mot Kommuneinndeling 2020 hos Klass. Kommunekodene er oversatt
-    til 2024 med Klass' kommuneendringer (merket i `INDEX.csv`).
-  - Sentralitet er en gruppering etter SSBs indeks, ikke sammenhengende regioner.
-  - Bo- og arbeidsmarkedsregioner (TØI) finnes ikke i Klass og er lastet inn manuelt.
-    Se `metadata/regioner/manuelt/README.md`.
-
-### Grunnkrets (`BEFOLKNING_GRUNNKRETS`, fra versjon 60)
-Kartlagt fra metadataene og SSB Klass (november 2026), og testet i microdata.no med versjon 60 (TESTLISTE
-del 11, 2026-11-19).
-- **De fire første sifrene er bostedskommunen** på samme dato (lik `BEFOLKNING_KOMMNR_FORMELL` for alle
-  1.1.2026, 11.2).
-- **Koden skifter med kommunenummeret.** Grunnkrets `15040101` (Ålesund 2019) er `15070101` i 2020–2023 og
-  `15080101` fra 2024. Over 10 000 koder ble byttet i 2020 og 6 000 i 2024. Koble aldri grunnkretser fra
-  ulike år direkte. Bruk `verktoy/grunnkrets.py --aar <år>`, som følger kodene gjennom Klass-endringene.
-- **Små enheter:** mange grunnkretser har under 10 beboere. Tabeller på grunnkrets (og delområde) får mange
-  celler med 1–4, som vises som 0. Kod rett til delområde, levekårssone, bydel eller egne områder.
-  Verktøyet tar med alle grunnkretsene i hver målenhet i samme regel, også de uendrede. Det gir kortere
-  skript enn å gå via gjeldende grunnkrets. (Grunnkrets kan ikke brukes med `configure confidentiality v1`,
-  testet i 11.7, så 10-enhetsregelen fra versjon 1 gjelder ikke her.)
-- **Delte grunnkretser:** noen grunnkretser er senere delt mellom flere delområder eller soner (334 fra
-  1990, 59 fra 2019, 3 fra 2025 på grunnkretsnivå, langt færre på sone- og delområdenivå). De kan ikke
-  fordeles uten adresse og står uendret (8 tegn) med `--splitt behold`. For 2015 til delområde gjaldt det
-  14 grunnkretser og 2 657 personer (11.8). Si fra om dem, eller bruk `--splitt forste`.
-- **Uoppgitt grunnkrets** har koden `kkkk9999` i hver kommune (360 koder i 2026) og står uendret. 0,17 %
-  av bosatte 1.1.2026 og 0,37 % 1.1.2015 (11.8).
-- **Kodelisten har også delområdene** (6 sifre, med navn). Dataene har bare 8-sifrede koder (11.1).
-- **Delområde** er de seks første sifrene i *gjeldende* kode. For eldre år gir `substr(gk, 1, 6)` det gamle
-  delområdet med gammelt kommunenummer. `grunnkrets.py --til delomrade` omkoder bare delområdene som har
-  endrede koder, og tar resten med `substr`.
-- **Levekårssoner** finnes i Klass for 66 kommuner (2026-inndelingen, ikke Oslo). Bydeler finnes for Oslo,
-  Bergen, Trondheim og Stavanger, delbydeler for Oslo. Alle bygger på 2026-grunnkretsene.
-- **`BEFOLKNING_BYDEL` gir de samme bydelene som `grunnkrets.py --til bydel`** (1.1.2025: 99,8 % samme kode,
-  alle bydeler innen ±15). Uoppgitt er `kkkk99` i `BEFOLKNING_BYDEL` og `kkkk9999` fra grunnkrets, og 193
-  personer hadde grunnkrets, men manglende `BEFOLKNING_BYDEL` (TESTLISTE 11.9).
-- **Grunnkrets kan brukes med alle personvariabler og med FHI-data** under versjon 2 (lønn etter delområde,
-  krefttilfeller koblet til bosatte med grunnkrets, 11.10–11.11). Delområder laget med `substr` har ikke navn.
-- **Lange skript går.** Hele landet fra 2015 til delområde (160 kB, over 300 `recode`-linjer) ble godtatt
-  (11.6), og alle 2015-kodene i dataene ble omkodet til delområder som finnes i 2026 (11.8). Begrens med
-  `--kommune` når analysen bare gjelder noen kommuner, så blir skriptet lettere å lese.
-
-## Klass
-
-- **Velg riktig versjon med `--dato`.** `klass.py` bruker kodene som gjelder på datoen (standard i dag). SN2007-variabler
-  må ha en dato før 2025-01-01, ellers får du SN2025 (Klass 6 har fire versjoner: SN 1994, SN 2002, SN 2007 og SN 2025).
-  For NUS, STYRK og landkoder er det samme prinsipp: bruk en dato fra perioden dataene dekker.
-- **Variablene har koder som ikke finnes i Klass.** Med `--variabel` listes slike koder i en kommentar og står uendret:
-  - Landkoder: utgåtte land (Sovjetunionen 135, DDR 151), «uspesifisert»/«Resten av …» (194, 394, 594 osv.) og 989
-    (uoppgitt utenlandsk statsborgerskap). Omkod dem for hånd, f.eks. til «Uoppgitt».
-  - STYRK: `XXXX` (uoppgitt/ukjent).
-  - SN2007: sammenfattede koder som `01.000` og `43.220`, og koder som ikke finnes i SN2007 i Klass på datoen. `grupper` plasserer
-    dem via nærmeste overordnede kode (43.220 → 43.22 → F) og lister dem i en kommentar. Bare `00.000` (uoppgitt) står uendret.
-    Det samme gjelder andre prefiksbaserte klassifikasjoner (STYRK, NUS), men ikke landkoder.
-- **Resultatet er en kopi av kodene i Klass akkurat nå.** Klassifikasjoner endres. Oppgi hentedato i skriptet (verktøyet
-  skriver den i en kommentar).
-- **Koblinger med koder som har flere mål blander kodeverk.** SN2002 → SN2007 lot 42 % av sysselsatte
-  (november 2006) stå med SN2002-kode. Gruppering på de første sifrene blir da feil (f.eks. «85» er helse
-  i SN2002 og undervisning i SN2007).
-- **Næring for personer finnes bare til november 2019** (versjon 60, fra variabelbeskrivelsene):
-  | Variabel | Standard | Dekning |
-  |---|---|---|
-  | `REGSYS_NARING_SN94` | SN94 | 2000–2001 |
-  | `REGSYS_NARING_SN2002` | SN2002 | 2002–2007 |
-  | `REGSYS_NARING_SN2007` | SN2007 | november 2008 – november 2014 |
-  | `REGSYS_VIRK_NACE1_SN07` | SN2007 | november 2015 – november 2019 |
-  - Begge SN2007-variablene er næringen til virksomheten der personen har hovedarbeidsforholdet (høyest avtalt
-    arbeidstid) i november, for sysselsatte bosatte 15–74 år. De andre har manglende verdi.
-  - `REGSYS_VIRK_NACE1_SN07` erstatter `REGSYS_NARING_SN2007` fra 2015, samtidig med overgangen til
-    a-ordningen. Regn med et brudd i tidsserien mellom 2014 og 2015, og si det når næring sammenlignes over
-    bruddet.
-  - SSB oppdaterer ikke `REGSYS_VIRK_NACE1_SN07` lenger, fordi den kan avsløre konfidensiell informasjon om
-    foretak. Spør brukeren om næring etter 2019, si at den ikke finnes, og tilby 2019 med en tydelig merknad.
-- **Bruk `kobling --nivaa 1` (eller 2) for næring over tid.** Målene løftes til seksjon (A–U) eller
-  divisjon, så koder med flere detaljerte mål blir entydige: 91 % omkodet på nivå 1 og 83 % på nivå 2
-  (november 2007), mot 57 % på femsifret nivå. Omkodede og uendrede koder kan skilles på lengden (1 eller
-  2 tegn mot `xx.xxx`).
-- **Koblingstabeller kan være mange-til-mange.** `kobling` utelater koder som går til flere mål, og koder uten
-  motpart (Klass har rader uten mål, f.eks. `46.890` i SN2025–SN2007), og lister dem i en kommentar.
-- **Samme kode som kilde i én regel og mål i en annen** (vanlig mellom versjoner, f.eks. `25.300 -> 25.400` og
-  `25.400 -> 25.500`): står reglene i ulike `recode`-kommandoer, omkodes verdien to ganger. Verktøyene samler
-  slike regler i første kommando. Ikke del den linjen, og ikke flytt regler mellom linjene.
-- **`recode` på strenger.** Koder som `'01.110'` og `'0110'` må skrives som strenger. Landkodene i `BEFOLKNING_LANDBAK3GEN` er
-  strenger. Snutten `landbakgrunn_region.txt` bruker `destring` og tallintervaller. Det går også, men verktøyets
-  utskrift er strenger og skal ikke kombineres med `destring`.
-- **Statsløs og uoppgitt er små.** `grupper 545` gir egne målkoder for statsløs og uoppgitt (`V9`, eller `V91` og
-  `V92` på nivå 2). De har under 10 bosatte og stoppet `recode` med versjon 1 av tiltakene (da: `--utelat V9`
-  eller `--utelat V91,V92`). Med versjon 2 godtas omkodingen (TESTLISTE 1.13), og de vises som 0 i tabeller.
-  Klass 545 er autoritet for verdensdel (Kypros i Europa, Bermuda og Saint-Pierre-et-Miquelon i Nord-Amerika).
-  `landbakgrunn_region.txt` følger Klass og skiller i tillegg EU/EØS fra resten av Europa, som Klass ikke gjør.
-- **Dataene kan ha nyere koder enn kodelisten.** `NUDB_BU` 1.7.2024 hadde NUS-koder (f.eks. 754144 Master, kunstig
-  intelligens) som verken står i kodelisten i microdata.no eller i Klass 2024-01, bare i nyere Klass-versjoner. Bruk
-  standarddatoen (i dag) for NUS. `grupper --variabel` tar med alle detaljkoder fra Klass på datoen.
-- **Koblinger gir målnavnene fra Klass.** Er flere navn like (ISCED 2011: fem «Not further defined»), får de navnene
-  over seg i hierarkiet («Bachelor’s or equivalent level – Academic – Not further defined»).
-- **Landkodene i microdata er SSB-3 (Klass 91).** Verdensinndeling (545) bruker samme landkoder som blader. Gruppering
-  av land (546) skiller EU/EFTA fram til 2004 fra nye EU-land etter 2004. Det er ikke dagens EU/EØS-medlemskap.
-
-## FHI-data (Kreftregisteret og Norsk pasientregister)
-
-Fra 2026-11 har microdata.no to datalagre fra FHI: `no.fhi.kreftregisteret` (versjon 1) og `no.fhi.npr` (versjon 1).
-Kolonnen `datalager` i `metadata/variabler.csv` sier hvor variabelen ligger. Punktene er lest ut av metadataene
-og ELVIS, og de viktigste er testet i microdata.no (TESTLISTE del 10, se «Testet» nederst).
-
-- **Enheten er ikke person.** Kreftregisteret har krefttilfelle (`KRG_TILFELLEID`), NPR har episode (`NPR_EPISODEID`)
-  og prosedyre (`NPR_PROSEDYREID`). En person kan ha flere tilfeller og mange episoder. Personen står som en vanlig
-  variabel: `P_PERSONIDMICRODATA` (Kreftregisteret), `SOM_EP_PERSONID` og `SOM_PROS_PERSONID` (NPR).
-  Personopplysninger kobles inn i tilfellene med `merge kjonn into kreft on personid` (fra persondatasettet).
-  Motsatt vei må tilfellene aggregeres med `collapse ..., by(personid)` først. Nøkkelen er samme pseudonym som hos
-  SSB, og det aggregerte datasettet kan kobles inn i et persondatasett (testet, 10.4 og 10.5).
-- **Hvert datalager har sin egen `require` og versjon.** `require no.fhi.kreftregisteret:1 as krg` og
-  `import krg/S_TOPOGRAFIICD10 as topo`. Versjonene står i `metadata/datalagre.json`. Variablene er `FIXED` og
-  importeres uten dato.
-- **ICD-10-kodene er uten punktum**, med tre eller fire tegn (`C18`, `C187`). Kreftform: bruk
-  `verktoy/kreftregisteret.py grupper` (nivå 1: 14 hovedgrupper, nivå 2: tresifret kode). Grupperingen er
-  Kreftregisterets egen (ELVIS), ikke Klass. C77–C79 (spredning) og C97 er ikke kreftform og står uendret.
-  `S_LOKICD7` er Kreftregisterets egen ICD-7 og passer ikke til grupperingen.
-- **Kreftformene i Cancer in Norway er en annen gruppering enn ELVIS.** Bruk `kreftregisteret.py grupper --nivaa cin`
-  når tallene skal sammenlignes med rapporten eller statistikkbanken (https://sb.kreftregisteret.no/). Den har 48
-  kreftformer (tabell 2.3 i Cancer in Norway 2025). Noen avgjøres av fire tegn (C00.3–5 og C05.1–2), og noen D-koder er
-  med (in situ i urinveier, godartede svulster i sentralnervesystemet og endokrine kjertler, D45–D47).
-  - **Leppekreft er kodet som hud på leppe (C44.0, noen C43.0) i `S_TOPOGRAFIICD10`.** Ingen tilfeller har C00
-    (2023). Leppen står i ICD-O-3-topografien `S_TOPOGRAFIICDO3`: 000–002 lepperødt, 006 munnvik. Rapporten regner
-    dem som leppe. Bruk `--topografi`, ellers havner om lag 90 leppekrefter i året i C44 Hud.
-  - **`S_TOPOGRAFIICDO3` er uten C** (`000`, `440`), ulikt ICD-10-variabelen (`C440`). Et utvalg med `'C00'` blir
-    tomt, og `tabulate` på et tomt utvalg stopper skriptet («Tomt datasett»).
-  - C48.2 (bukhinnen) er eggstokk m.m. for kvinner og bløtvev for menn. Kjønn må hentes fra SSB (`--kjonn`).
-  - Basalcellekarsinom (morfologi 809x) er ikke med i rapporten, og datalageret har ingen (2023). `--morfologi`
-    skiller dem ut som `basal` om de kommer med senere.
-  - Pagets sykdom i bryst og papillomer i urinveier er heller ikke med i rapporten, men skilles ikke ut.
-  - **Testet (versjon 1, 2026-11-23, TESTLISTE 10.11):** alle tilfeller i 2023 er 38 887, mot 38 889 i Cancer in Norway
-    2025 (tabell 4.5–4.6), og alle kreftformer stemmer innenfor støyen (tykktarm 3 422 mot 3 421, lunge 3 355 mot
-    3 354, leukemi 1 495 mot 1 493), unntatt leppe før `--topografi` (91 tilfeller i ICD-O-3 mot 89). Rapporten for
-    2023 (CiN 2023) har lavere tall for flere kreftformer: registeret er oppdatert siden.
-- **TNM-verdiene gjelder ulike kreftformer.** `4c`, `4d` og `is(DCIS)` i `S_PT` brukes bare for bryst (C50), `1a1` bare
-  for livmor (C55). Tabeller over TNM på tvers av kreftformer blander verdisett. Se
-  `kreftregisteret.py verdier --variabel S_PT --kreftform C50`.
-- **Kodelistene i microdata.no er et utvalg av ELVIS.** Alle kodene i microdata.no finnes i ELVIS, men ELVIS har flere.
-  `S_STRALEBEH` har bare `1` (mottatt strålebehandling) i microdata.no, mens ELVIS også har `0` (ikke behandlet) og
-  `9` (ukjent). Manglende verdi betyr «ikke registrert», ikke «ukjent» (testet, 10.3). Det samme gjelder trolig
-  `S_HORMONBEH` (4 av 8 verdier, ikke testet).
-- **Velg avgrensning etter hva du vil telle.** `S_TUMORATFERD` skiller benign (0), usikker (1), in situ (2) og
-  ondartet (3). Bruk atferd 3 når spørsmålet gjelder ondartede svulster. For sammenligning med «All kreft» i
-  *Cancer in Norway*, bruk rapportens diagnoseavgrensning med `kreftregisteret.py grupper --nivaa cin` (se over),
-  ikke atferd 3. Den omfatter også utvalgte godartede svulster og in situ-tilfeller, og utelater
-  basalcellekarsinomer. [FHIs definisjon](https://www.fhi.no/is/ncd/dodelighet-sykelighet/kreft/)
-- **Beskrivelser og verdier står i ELVIS.** Lenken til detaljsiden står i kolonnen `ekstern_metadata` i `variabler.csv`.
-  Verdiene er hentet til `metadata/fhi/kreftregisteret/verdier.csv` med `kreftregisteret.py hent`.
-- **Testet (versjon 60 / FHI 1, november 2026, TESTLISTE del 10):**
-  - Tre `require` i samme skript virker. 38 889 krefttilfeller med diagnoseår 2023, 37 118 ondartede (atferd 3).
-  - Personnøkkelen er samme pseudonym som hos SSB: alle tilfeller fikk kjønn med `merge ... on personid`, og
-    kjønnsorganer ble 100 % ett kjønn (brystkreft 0,9 % menn). NPR (`SOM_EP_PERSONID`) kobler også: 25 % av
-    kreftepisodene i 2024 gjaldt personer med krefttilfelle i 2023, mot 2 % av andre episoder.
-  - `collapse ... by(personid)` på krefttilfeller gir et persondatasett som kan kobles inn i SSB-personer
-    (37 872 personer, 97 % med ett tilfelle i 2023).
-  - `S_STRALEBEH` har bare `1` (8 567) og manglende (30 322). Manglende betyr ikke registrert med stråling.
-  - `values("2024")` på `SOM_EP_AAR` virker: 9,1 millioner episoder, 0,3 % uten hoveddiagnose.
-  - Instant-datoene (`S_DIAGNOSEDATO`, `SOM_EP_INNDATO`) er dager siden 1970 og kan regnes med `date()`.
-    Dødsdato fra SSB (ÅÅÅÅMMDD, regnet om) minus diagnosedato ga 0–971 dager. Andel døde innen 2025 av
-    tilfellene i 2023: lunge m.m. 58 %, fordøyelse 42 %, bryst 8 %.
-  - `recode kreftform ('C50' = 'C50' 'Bryst')` setter merkelappen (regel til samme verdi, TESTLISTE 10.8).
-  - **Dataene har koder som ikke står i kodelisten.** `S_TOPOGRAFIICD10` hadde D45 (102) og D46 (200) blant de
-    ondartede, men kodelisten har bare D47. `kreftregisteret.py grupper` tar nå med alle kreftformene i ELVIS.
 
 ## Alder
 

@@ -12,7 +12,8 @@ feilmeldinger eller resultater, og du justerer.
 ## Lokale kilder (bruk dem før nettet)
 
 Alle stier er relative til denne skill-mappen. I `metadata/` søker du (grep, rg eller agentens søkeverktøy) i stedet for å
-lese hele filene. `referanser/fallgruver.md` leser du i sin helhet før du leverer et skript.
+lese hele filene. `referanser/fallgruver.md` leser du i sin helhet før du leverer et skript, og hver temafil
+(`referanser/fallgruver_*.md`) når skriptet bruker temaet.
 
 | Fil | Innhold |
 |---|---|
@@ -20,12 +21,16 @@ lese hele filene. `referanser/fallgruver.md` leser du i sin helhet før du lever
 | `metadata/kodelister.csv` | Gjeldende kodeliste for alle variabler: `navn;kode;kategori` |
 | `metadata/variabler/<NAVN>.json` | Full metadata: kodelistehistorikk, måletidspunkter (`temporalStatusDates`, dager siden 1970-01-01) og beskrivelser per periode |
 | `metadata/datalager.json` | Versjonshistorikk for `no.ssb.fdb`, med hvilke variabler som er endret i hver versjon |
-| `metadata/datalagre.json` | Alle datalagrene med navn og versjon: `no.ssb.fdb` (SSB) og fra 2026-11 `no.fhi.kreftregisteret` og `no.fhi.npr` (FHI). Kolonnen `datalager` i `variabler.csv` sier hvor variabelen ligger. FHI-dataene er testet i microdata.no (TESTLISTE del 10, se «FHI-data» i `fallgruver.md`) |
+| `metadata/datalagre.json` | Alle datalagrene med navn og versjon: `no.ssb.fdb` (SSB) og fra 2026-11 `no.fhi.kreftregisteret` og `no.fhi.npr` (FHI). Kolonnen `datalager` i `variabler.csv` sier hvor variabelen ligger. FHI-dataene er testet i microdata.no (TESTLISTE del 10, se `referanser/fallgruver_fhi.md`) |
 | `metadata/kommuneendringer.json` | Kommuneendringer fra SSB Klass 131 siden 1989 (gammel kode, ny kode, dato, navn). Brukes av `verktoy/kommuneomkoding.py` |
 | `metadata/grunnkrets/` | Grunnkrets (SSB Klass 1): `endringer.csv` (alle kodeendringer siden 1990) og `inndelinger.csv` (grunnkrets → levekårssone, bydel og delbydel i Oslo, gjeldende inndeling). Brukes av `verktoy/grunnkrets.py` |
 | `metadata/regioner/*.csv` | Koblingstabeller fra kommune (2024) til regioninndelinger: politidistrikt, valgdistrikt, økonomiske regioner, helseregioner, familievern, barnevern, reiseliv, samiske valgkretser, sentralitet, landsdeler og bo- og arbeidsmarkedsregioner. Kolonner `kommunenr;regionkode;regionnavn`. Oversikt i `INDEX.csv`, manuelt lastede filer i `manuelt/` |
 | `metadata/manual/**/*.md` | Hele manualen som Markdown. Kommandoreferansen ligger i `kommandoer_og_funksjoner/kommandoer.md` og funksjonene i `.../funksjoner.md`. |
-| `referanser/fallgruver.md` | Feil som ikke står (tydelig) i manualen, med feilmelding og løsning. **Les hele før du leverer et skript.** |
+| `referanser/fallgruver.md` | Feil som ikke står (tydelig) i manualen, med feilmelding og løsning. Gjelder alle skript. **Les hele før du leverer et skript.** |
+| `referanser/fallgruver_analyse.md` | Fallgruver i regresjon, `correlate`, overlevelsesanalyse og paneldata. **Les når skriptet har en statistisk analyse.** |
+| `referanser/fallgruver_geografi.md` | Kommune, fylke, region, bydel og grunnkrets. **Les når skriptet bruker geografi.** |
+| `referanser/fallgruver_klass.md` | Koder og koblinger fra Klass, og næring (finnes bare til 2019). **Les når skriptet bruker `klass.py` eller næring.** |
+| `referanser/fallgruver_fhi.md` | Kreftregisteret og NPR. **Les når skriptet bruker `no.fhi.*`.** |
 | `referanser/vega.md` | Endre figurer fra microdata.no i Vega-editoren: brukeren limer inn Vega-Lite-spesifikasjonen (med tallene), du endrer etiketter, rekkefølge, farger, titler og tallformat. Les den når brukeren vil ha en penere eller tilpasset figur |
 | `kodesnutter/` | Frittstående og kommenterte snutter med teststatus: analysemal, fylke med navn, alder, innvandringskategori, landbakgrunn, utdanning, arbeidsstyrkestatus, NEET, samliv, husholdning, bolig, lavinntekt, verdi ved hendelse, mor–barn, forløp, overlevelsesanalyse, logistisk regresjon og paneldata. Oversikt i `kodesnutter/README.md`. **Ta utgangspunkt i disse før du skriver noe selv.** |
 
@@ -39,7 +44,7 @@ Kommuneendringene oppdateres med `python verktoy/hent_kommuneendringer.py`. Grun
 
 Fra 17. november 2026 (versjon 60) gjelder **versjon 2 av anonymiseringstiltakene**: celler med 1–4 vises som
 0, tabeller stoppes ikke, `replace`/`recode` på 1–9 enheter er tillatt, minste datasett er 100 personer,
-regresjoner winsoriseres og nedsamples, og støyen endres når skriptet endres. Mye i `fallgruver.md` og
+regresjoner winsoriseres og nedsamples, og støyen endres når skriptet endres. Noe i fallgruvene og
 `TESTLISTE.md` ble avklart med versjon 1, og er merket slik. `configure confidentiality v1` gir de gamle
 tiltakene (til 30. april 2027, ikke med FHI-data eller grunnkrets).
 
@@ -54,7 +59,7 @@ og lim `recode`-linjene inn i skriptet. Velg et målår som er likt eller senere
 navnet fra Klass, med samisk og kvensk navn der kommunen har det (Hábmer - Hamarøy). `--norske-navn` gir
 bare det norske navnet. Verktøyet lister kommuner som er delt i flere (f.eks. Tysfjord)
 og lar dem stå uendret. Si fra til brukeren om disse, og om «koder som selv ble delt» (Ålesund 1507 i
-2020–2023 omkodes til 1508, også Haram). Se også «Geografi» i `referanser/fallgruver.md`.
+2020–2023 omkodes til 1508, også Haram). Se også `referanser/fallgruver_geografi.md`.
 
 Fra 1990 kan personene i delte kommuner fordeles etter grunnkrets: importer `BEFOLKNING_GRUNNKRETS` på
 samme dato som kommunen og legg til `--grunnkrets <variabel>`. Verktøyet lager da i tillegg regler for
@@ -76,7 +81,7 @@ variabler som kan brukes.
 
 **Bydeler:** bruk først den ferdige `BEFOLKNING_BYDEL` (Oslo, Bergen, Trondheim, Stavanger, fra 1990, eldre år
 omkodet til gjeldende bydeler, Klass 103). `grunnkrets.py --til bydel` trengs når bydelene skal følge
-gjeldende grunnkretser eksakt. Avvikene mellom de to er nesten bare uoppgitt, som har ulik kode (se «Grunnkrets» i `referanser/fallgruver.md`).
+gjeldende grunnkretser eksakt. Avvikene mellom de to er nesten bare uoppgitt, som har ulik kode (se «Grunnkrets» i `referanser/fallgruver_geografi.md`).
 
 Koden er kommune (4) + delområde (2) + grunnkrets (2) og skifter når kommunen skifter nummer. Bruk
 `python verktoy/grunnkrets.py --til <inndeling> --aar <år> --var <variabel> [--kommune 4601,5001]`:
@@ -92,7 +97,7 @@ Koden er kommune (4) + delområde (2) + grunnkrets (2) og skifter når kommunen 
 `--aar` er året dataene er hentet for. Verktøyet følger gamle koder gjennom endringene til gjeldende
 inndeling og koder rett til målet. Ikke omkod til enkeltgrunnkretser først (lange skript, og tabeller på
 grunnkrets får mange celler under 5). Si fra til brukeren om grunnkretser som er delt mellom enheter (står i
-kommentaren), og at verdier med 8 tegn ikke er omkodet. Se «Grunnkrets» i `referanser/fallgruver.md`.
+kommentaren), og at verdier med 8 tegn ikke er omkodet. Se «Grunnkrets» i `referanser/fallgruver_geografi.md`.
 
 ## Klass: slå opp i stedet for å skrive reglene for hånd
 
@@ -106,7 +111,7 @@ Verktøyet krever nettilgang. Er den ikke der, si fra til brukeren og bruk det s
 | Utdanning (NUS), `NUDB_BU`, `NUDB_KURS_NUS` | 36 | `grupper 36 --nivaa 1 --variabel NUDB_BU --navn nus` |
 | Landkode til verdensdel, `BEFOLKNING_LANDBAK3GEN`, `*_FODELAND` | 545 (verdensinndeling) | `grupper 545 --nivaa 2 --variabel BEFOLKNING_LANDBAK3GEN --navn landbak`. Statsløs og uoppgitt er under 10 personer og vises som 0. Med `configure confidentiality v1`: legg til `--utelat V91,V92` (nivå 1: `--utelat V9`) |
 | Land til EU/EFTA, Norden osv. | 546 (gruppering av land) | `grupper 546 --nivaa 2 --variabel ...` |
-| Næring (SN2007), `REGSYS_NARING_SN2007` (2008–2014), `REGSYS_VIRK_NACE1_SN07` (2015–2019) | 6 | `grupper 6 --nivaa 1 --dato 2019-11-16 --variabel REGSYS_VIRK_NACE1_SN07 --navn naring`. Ingen næringsvariabel dekker tiden etter november 2019 (SSB oppdaterer den ikke lenger): si det til brukeren. Brudd mellom 2014 og 2015 (ny variabel og a-ordningen). Se «Klass» i `fallgruver.md` |
+| Næring (SN2007), `REGSYS_NARING_SN2007` (2008–2014), `REGSYS_VIRK_NACE1_SN07` (2015–2019) | 6 | `grupper 6 --nivaa 1 --dato 2019-11-16 --variabel REGSYS_VIRK_NACE1_SN07 --navn naring`. Ingen næringsvariabel dekker tiden etter november 2019 (SSB oppdaterer den ikke lenger): si det til brukeren. Brudd mellom 2014 og 2015 (ny variabel og a-ordningen). Se `referanser/fallgruver_klass.md` |
 | Koblingstabeller (NUS til ISCED osv.) | 36, 6, 91 | `kobling 36` lister tabellene, `kobling 36 --tabell "ISCED 2011 Attainment" --navn nus` lager recode |
 | Næring over tid (SN2002 til SN2007) | 6 | `kobling 6 --dato 2005-01-01 --tabell "SN 2007" --nivaa 1 --navn naring` (seksjon, 91 % omkodet). Uten `--nivaa` står 42 % uendret |
 | Finne en annen klassifikasjon | | `sok yrke` |
@@ -116,14 +121,14 @@ fagfelt, 5 er 6-sifret kode. SN 1 er seksjon (A–U), 2 er divisjon (`01`), 5 er
 Verdensinndeling 1 er verdensdel, 2 er region (f.eks. Norden, Subsaharisk Afrika), 3 er gruppe (`V111`),
 4 er landkoden. `koder <id> --nivaa N` viser kodene på et nivå, så du kan velge riktig nivå først.
 
-Fallgruver står i «Klass» i `referanser/fallgruver.md`. Les dem før du leverer skriptet. Resultatene er
+Fallgruver står i `referanser/fallgruver_klass.md`. Les dem før du leverer skriptet. Resultatene er
 ikke kjørt i microdata.no før brukeren har kjørt dem.
 
 ## FHI-data: Kreftregisteret og Norsk pasientregister
 
 Microdata.no har fra 2026-11 også `no.fhi.kreftregisteret` og `no.fhi.npr` (versjon 1, se `metadata/datalagre.json`).
 Hvert datalager trenger sin egen `require`. Enhetene er krefttilfelle, episode og prosedyre, ikke person. Les
-«FHI-data» i `referanser/fallgruver.md` før du skriver skriptet. Import av krefttilfeller og NPR-episoder og
+`referanser/fallgruver_fhi.md` før du skriver skriptet. Import av krefttilfeller og NPR-episoder og
 kobling på personnøkkel er testet i microdata.no med versjon 1. Se TESTLISTE del 10 for hvilke operasjoner som er kjørt.
 
 | Behov | Kommando |
@@ -164,7 +169,8 @@ Eksemplene bruker gamle datalagerversjoner (23–45), så sjekk variabelnavnene.
 | Er variabelen normalfordelt? | `normaltest` | Skjevhet, kurtose, Jarque-Bera, Shapiro-Wilk |
 | Overganger mellom kategorier over tid | `transitions-panel` | På paneldata. Overganger til og fra missing er utelatt |
 
-Les «Analyse» i `referanser/fallgruver.md` før du leverer en analyse. Der står konfidensialitetstiltakene som
+Les `referanser/fallgruver_analyse.md`, og «Sjeldne 0/1-variabler» i `referanser/fallgruver.md`, før du leverer en
+analyse. Der står konfidensialitetstiltakene som
 påvirker analyser (winsorisering også i regresjoner, kategorier med under 5 observasjoner som fjernes, minst to
 koeffisienter, og **0/1-variabler der under 1 % har verdien 1: de blir 0 i gjennomsnitt, forsvinner fra
 regresjoner (bruk `i.x`), og som utfall gir de meningsløse modeller uten feilmelding i `regress` og `logit`,
@@ -177,7 +183,7 @@ og si fra om forutsetningene (f.eks. parallelle trender i diff-in-diff, instrume
 1. Avklar tema, populasjon, år og geografi med brukeren.
 2. Finn kandidatvariabler i `metadata/variabler.csv`. Sjekk dekningen (`fra`/`til`), koder i
    `metadata/kodelister.csv` og eksakt syntaks i `metadata/manual/`.
-3. Les hele `referanser/fallgruver.md` og skriv skriptet. Kommenter koden og oppgi kilde-URL ved hver variabel med
+3. Les hele `referanser/fallgruver.md` og temafilene skriptet trenger, og skriv skriptet. Kommenter koden og oppgi kilde-URL ved hver variabel med
    `https://microdata.no/discovery/variable/<datalager>/<versjon>/<NAVN>`. Bruk kolonnen `datalager` i
    `metadata/variabler.csv` og hovedversjonen fra `require` for det datalageret.
    Kommentarblokken øverst i hvert skript du skriver, skal ha denne linjen ordrett:
@@ -190,9 +196,9 @@ og si fra om forutsetningene (f.eks. parallelle trender i diff-in-diff, instrume
 5. Kjør `python verktoy/sjekk_skript.py <fil>` før du leverer (`-` leser skriptet fra stdin). Den finner
    variabler som ikke finnes, datoer utenfor dekningen, pseudonymer i uttrykk, `median`/`sd`, `c.x#c.x`,
    funksjonsnavn som navn og manglende ansvarslinje eller `citation`. Rett alle feil. Advarslene er ting du
-   må vurdere og eventuelt si fra om. Sjekken erstatter ikke `referanser/fallgruver.md`.
+   må vurdere og eventuelt si fra om. Sjekken erstatter ikke fallgruvefilene.
 6. Brukeren kjører skriptet og melder tilbake. Rett feilen, og finnes den ikke allerede i
-   `fallgruver.md`, foreslå at brukeren bidrar med den (se CONTRIBUTING.md i repoet).
+   fallgruvefilene, foreslå at brukeren bidrar med den (se CONTRIBUTING.md i repoet).
 
 ## Datalagerversjon
 
@@ -235,7 +241,8 @@ gamle versjoner, og da må du sjekke at variabelnavnene fortsatt finnes i `varia
 | `vce(cluster id)` | `cluster(id)` med en numerisk variabel som ikke er i modellen. Kan ikke kombineres med `robust` | «Standardfeil, faktorvariabler og prediksjon» |
 | Datoer som dager | Mange datovariabler er tall som `20240315`. `date(år, mnd, dag)` gir dager siden 1970 | «Datoer er tall i formatet ÅÅÅÅMMDD» |
 
-Avsnittene står i `referanser/fallgruver.md`.
+Avsnittene står i `referanser/fallgruver.md`, unntatt «Standardfeil, faktorvariabler og prediksjon», som står i
+`referanser/fallgruver_analyse.md`.
 
 ## Nettkilder (hvis lokale filer ikke strekker til)
 

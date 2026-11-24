@@ -43,7 +43,7 @@
 //   - Bruk alder og bosted fra ARBSTATUS-variablene, ikke fødselsår og BEFOLKNING_KOMMNR_FORMELL, så
 //     aldersgruppene og fylkene blir de samme som i SSBs tabeller.
 //   - Andeler: bruk tabeller med rowpct, ikke summarize(x) mean. Ledige og AAP/uføre er under 1 % i flere
-//     grupper (15–19 år: 0,4 %), og sjeldne 0/1-variabler blir 0 i gjennomsnitt (se fallgruver.md, «Analyse»).
+//     grupper (15–19 år: 0,4 %), og sjeldne 0/1-variabler blir 0 i gjennomsnitt (se fallgruver.md, «Sjeldne 0/1-variabler»).
 //   - ARBSTATUS_PERS_UTENFOR er samme definisjon for alle 15 år og eldre, og regner også AFP og alderspensjon
 //     som «utenfor».
 //   - Registerdata gir en større NEET-gruppe enn Arbeidskraftundersøkelsen (AKU). Internasjonale

@@ -1,6 +1,6 @@
 // =====================================================================
 // Testskript: TESTLISTE 8.11 (blir c.x#c.x og andre samspillsledd med i modellen?)
-// Laget:      2026-11-19, kjørt 2026-11-20 (resultat i TESTLISTE 8.11 og fallgruver.md)
+// Laget:      2026-11-19, kjørt 2026-11-20 (resultat i TESTLISTE 8.11 og fallgruver_analyse.md)
 // Versjon:    no.ssb.fdb:60, anonymiseringstiltak versjon 2. Spør om analysemiljøet har den samme.
 // Populasjon: utvalg på 200 000 bosatte 25–66 år 1.1.2025 med lønn i 2023 og 2024
 // Variabler:  https://microdata.no/discovery/variable/no.ssb.fdb/60/INNTEKT_WLONN

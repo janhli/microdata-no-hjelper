@@ -61,7 +61,7 @@ def issue_tekst(n):
 Kategorier: {', '.join(n['kategorier']) or '–'}
 
 Vurder (kryss av og lukk issuen):
-- [ ] Ny eller endret fallgruve i `referanser/fallgruver.md`
+- [ ] Ny eller endret fallgruve i `referanser/fallgruver*.md`
 - [ ] Ny kodesnutt, eller endring i en eksisterende
 - [ ] Endring i `SKILL.md` (nye kommandoer, nye datakilder, versjonsråd)
 - [ ] Bør testes i microdata.no først (legg i `TESTLISTE.md`)

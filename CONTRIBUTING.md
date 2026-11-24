@@ -10,7 +10,9 @@ står tydelig i manualen. Én fallgruve kan spare neste person (og neste AI-assi
 **Direkte:** Lag en pull request mot
 [`skills/microdata-no/referanser/fallgruver.md`](skills/microdata-no/referanser/fallgruver.md):
 
-1. Legg den under riktig overskrift, eller lag en ny.
+1. Legg den under riktig overskrift, eller lag en ny. Gjelder den bare analyse, geografi, Klass eller FHI-data,
+   legges den i temafilen (`fallgruver_analyse.md`, `fallgruver_geografi.md`, `fallgruver_klass.md` eller
+   `fallgruver_fhi.md`), så hovedfilen holdes kort.
 2. Bruk formatet **Symptom** (gjerne med eksakt feilmelding), **Årsak** og **Løsning**.
 3. Oppgi datalagerversjon/dato hvis fallgruven kan bli utdatert (f.eks. data som mangler for siste år).
 4. Hold den kort og generell. Skriv om hva som gjelder alle, ikke ditt spesifikke prosjekt.

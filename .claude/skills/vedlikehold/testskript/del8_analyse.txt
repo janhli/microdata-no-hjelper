@@ -1,6 +1,6 @@
 // =====================================================================
 // Testskript: TESTLISTE del 8 (analyse), punkt 8.1, 8.2, 8.3, 8.7, 8.8, 8.5, 8.4 og 8.9
-// Laget:      2026-11, kjørt 2026-11-18 (versjon 60). Resultatene står i TESTLISTE og fallgruver.md
+// Laget:      2026-11, kjørt 2026-11-18 (versjon 60). Resultatene står i TESTLISTE og fallgruver_analyse.md
 // Versjon:    no.ssb.fdb:60, anonymiseringstiltak versjon 2 (fra 2026-11-17). Spør om analysemiljøet
 //             er på samme versjon før kjøring.
 // Populasjon: bosatte 30–60 år (alder ved utgangen av 2023) per 1.1.2024
@@ -56,7 +56,7 @@ Hva testes: om `regress` utelater enheter som mangler en av variablene (listevis
 **Forventet hvis antakelsen stemmer:** Antall observasjoner i regresjonen er omtrent lik cellen
 «mangler_utd = 0, mangler_lonn = 0» i tabellen over (±5 for støy, og 1–11 færre fordi regresjonen
 nedsamples, tiltak 16). Er N lik hele populasjonen, er manglende verdier fylt inn eller satt til 0, og det
-må inn i fallgruver.md.
+må inn i fallgruver_analyse.md.
 endblock
 regress lonn mann utd1
 
@@ -184,7 +184,7 @@ textblock
 Hva testes: om `regress` med bare én forklaringsvariabel stoppes. Står sist, fordi den skal stoppe.
 
 **Forventet hvis antakelsen stemmer:** Kjøringen stoppes med en melding om for få koeffisienter. Noter
-den eksakte meldingen til fallgruver.md.
+den eksakte meldingen til fallgruver_analyse.md.
 endblock
 use personer
 regress lonn mann

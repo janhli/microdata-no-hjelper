@@ -211,6 +211,7 @@ Bosatte 25–66 år 1.1.2025 (3 076 000), sysselsatt i 4. kvartal 2024 (78,1 %).
 
 Andregradskurven fanger ikke fallet ved 62 år (pensjon). Marginaleffekter mot grunnskole: videregående +17,
 UH lang +29 prosentpoeng. Innvandrer −10,7 og mann +6,4. Cluster på kommune gir z-verdier rundt 50 mot 290 uten.
+Første versjon traff andelen per utdanning med avvik på 0,03 prosentpoeng, fordi utdanning var i modellen.
 
 ### neet.txt
 
@@ -284,7 +285,8 @@ samboerne var samboere og 81,4 % av dem uten par var fortsatt uten par.
 Husholdningene er de samme, men ca. 98 000 står som selveiere i `BOFORHOLD_EIE_LEIE` og som leiere i
 Statistikkbanken. Årsaken er bekreftet: statistisk koblede husholdninger (`STAT`, 293 143) har eierstatus
 anslått med SSBs gamle metode (51,6 % eiere). SSB har revidert dette til 13–15 % eiere (notat 2026/17), og
-med det går avviket opp. Se [`fallgruver.md`](../referanser/fallgruver.md).
+med det går avviket opp: 716 000–721 000 leiere mot 707 784. Direkte koblede husholdninger (`DIR`) har 20,4 %
+leiere. SSB-tabellen ligger på 27–28 % leiere for hele 2015–2025. Se [`fallgruver.md`](../referanser/fallgruver.md).
 
 ### sektor_lonnstakere.txt (arkivert)
 
@@ -299,6 +301,8 @@ med det går avviket opp. Se [`fallgruver.md`](../referanser/fallgruver.md).
 | Offentlig foretak | 117 323 | 120 096 |
 | Arbeidssted Bergen | 182 609 | 182 619 |
 | Bergen, stat | 30 734 | 30 769 |
+
+Etter bosted ga Bergen 154 082 i 2025K4.
 
 Avvik med kjent årsak: SSB fordeler ukjent sektor (ca. 0,3 %) på privat og offentlig foretak, mens snutten
 gir dem kode 8. Offentlig foretak avviker også fordi SSB grupperer etter eierskap. Logikken er kjørt.

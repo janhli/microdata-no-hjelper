@@ -14,7 +14,7 @@
 //   - Gjelder bare datoer fra 1.1.2024. For 2020–2023 gir de to første sifrene 30 Viken, 38 Vestfold og
 //     Telemark og 54 Troms og Finnmark, og før 2020 de 19 gamle fylkene. Kod om kommunen til
 //     2024-inndelingen først med python verktoy/kommuneomkoding.py --fra <år> --til 2024, og lim
-//     recode-linjene inn før substr (se fallgruver.md, «Kommune- og fylkesnummer endres»).
+//     recode-linjene inn før substr (se fallgruver_geografi.md, «Kommune- og fylkesnummer endres»).
 //   - Fylket er bostedet per datoen. Bruk samme dato som populasjonen.
 //   - Labels endrer ikke sorteringen: tabellene sorteres etter nummeret (03 Oslo først), ikke i
 //     SSBs standardrekkefølge (31 Østfold først).

@@ -56,7 +56,7 @@ Avslutt med et konkret forslag til hva vi starter med, og spør. Ikke start arbe
 ## 4. Testskript for microdata.no
 
 Brukeren kjører, du tolker. Lag ett skript som dekker flere punkter i testlisten:
-- Følg `skills/microdata-no/SKILL.md` og les `fallgruver.md` først.
+- Følg `skills/microdata-no/SKILL.md` og les `fallgruver.md` og aktuelle temafiler (`fallgruver_*.md`) først.
 - Én `textblock` per test med punktnummer (f.eks. «Test 1.9»), hva som testes, og hva resultatet
   **skal** vise hvis antakelsen stemmer.
 - Unngå små grupper (celler med 1–4 vises som 0, versjon 2 av anonymiseringstiltakene). Ett feilende punkt skal helst ikke stoppe
@@ -69,8 +69,9 @@ Brukeren kjører, du tolker. Lag ett skript som dekker flere punkter i testliste
 
 ## 5. Etter arbeidet
 
-- **Testlisten:** Kryss av med versjon og dato. Når en test avklarer noe, flytt konklusjonen til
-  `fallgruver.md` (symptom, årsak, løsning, versjon/dato) og fjern eller forkort punktet.
+- **Testlisten:** Kryss av med versjon og dato. Når en test avklarer noe, skriv regelen inn i
+  `fallgruver.md` eller riktig temafil (symptom, årsak, løsning, versjon/dato, TESTLISTE-nummer). Tallene fra
+  kjøringen blir stående i TESTLISTE, ikke i fallgruvene. `fallgruver.md` skal være kort (tests/test_fallgruver.py).
 - **Snutter:** Oppdater statuslinjen (`testet (no.ssb.fdb:<v>, <år-mnd>)`) bare når snutten faktisk er kjørt.
 - **Issues:** Lukk med en kommentar om hva som ble gjort (`gh issue close <nr> --comment "..."`).
   Nyhetsinnlegg skal vurderes og omformes, ikke kopieres inn i skillen.

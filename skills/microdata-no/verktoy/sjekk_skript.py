@@ -18,7 +18,7 @@ Advarsler (endrer ikke avslutningskoden):
   - gruppering som starter med en fast verdi og endres med replace ... if x < / > ..., uten sysmiss()
   - citation er ikke siste kommando
 
-Sjekken finner bare feil som kan sees i teksten. Les referanser/fallgruver.md likevel. --snutt slår av
+Sjekken finner bare feil som kan sees i teksten. Les referanser/fallgruver.md og aktuelle temafiler likevel. --snutt slår av
 kravene til levering (ansvarslinje og citation), slik testene bruker den på kodesnuttene.
 """
 
@@ -278,7 +278,7 @@ def main():
     if antall_feil:
         print(f"\n{antall_feil} feil og {antall_adv} advarsler. Rett feilene før skriptet leveres.")
     else:
-        print(f"Ingen feil funnet ({antall_adv} advarsler). Sjekken finner ikke alt: les referanser/fallgruver.md.")
+        print(f"Ingen feil funnet ({antall_adv} advarsler). Sjekken finner ikke alt: les referanser/fallgruver.md og aktuelle temafiler.")
     sys.exit(1 if antall_feil else 0)
 
 
