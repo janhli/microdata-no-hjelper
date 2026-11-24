@@ -21,7 +21,7 @@ lese hele filene. `referanser/fallgruver.md` leser du i sin helhet før du lever
 | `metadata/kodelister.csv` | Gjeldende kodeliste for alle variabler: `navn;kode;kategori` |
 | `metadata/variabler/<NAVN>.json` | Full metadata: kodelistehistorikk, måletidspunkter (`temporalStatusDates`, dager siden 1970-01-01) og beskrivelser per periode |
 | `metadata/datalager.json` | Versjonshistorikk for `no.ssb.fdb`, med hvilke variabler som er endret i hver versjon |
-| `metadata/datalagre.json` | Alle datalagrene med navn og versjon: `no.ssb.fdb` (SSB) og fra 2026-11 `no.fhi.kreftregisteret` og `no.fhi.npr` (FHI). Kolonnen `datalager` i `variabler.csv` sier hvor variabelen ligger. FHI-dataene er testet i microdata.no (TESTLISTE del 10, se `referanser/fallgruver_fhi.md`) |
+| `metadata/datalagre.json` | Alle datalagrene med navn og versjon: `no.ssb.fdb` (SSB) og fra 2026-11 `no.fhi.kreftregisteret` og `no.fhi.npr` (FHI). Kolonnen `datalager` i `variabler.csv` sier hvor variabelen ligger. |
 | `metadata/kommuneendringer.json` | Kommuneendringer fra SSB Klass 131 siden 1989 (gammel kode, ny kode, dato, navn). Brukes av `verktoy/kommuneomkoding.py` |
 | `metadata/grunnkrets/` | Grunnkrets (SSB Klass 1): `endringer.csv` (alle kodeendringer siden 1990) og `inndelinger.csv` (grunnkrets → levekårssone, bydel og delbydel i Oslo, gjeldende inndeling). Brukes av `verktoy/grunnkrets.py` |
 | `metadata/regioner/*.csv` | Koblingstabeller fra kommune (2024) til regioninndelinger: politidistrikt, valgdistrikt, økonomiske regioner, helseregioner, familievern, barnevern, reiseliv, samiske valgkretser, sentralitet, landsdeler og bo- og arbeidsmarkedsregioner. Kolonner `kommunenr;regionkode;regionnavn`. Oversikt i `INDEX.csv`, manuelt lastede filer i `manuelt/` |
@@ -43,13 +43,9 @@ Kommuneendringene oppdateres med `python verktoy/hent_kommuneendringer.py`. Grun
 ## Konfidensialitet
 
 Fra 17. november 2026 (versjon 60) gjelder **versjon 2 av anonymiseringstiltakene**: celler med 1–4 vises som
-0, tabeller stoppes ikke, `replace`/`recode` på 1–9 enheter er tillatt, minste datasett er 100 personer,
-regresjoner winsoriseres og nedsamples, og støyen endres når skriptet endres. Noe i fallgruvene og
-`TESTLISTE.md` ble avklart med versjon 1, og er merket slik. `configure confidentiality v1` gir de gamle
-tiltakene (til 30. april 2027, ikke med FHI-data eller grunnkrets).
-
-Unngå svært finfordelte tabeller og små populasjoner. Resultatene kan avvike litt fra SSBs offisielle
-statistikk. Se «Avsløringskontroll» i `referanser/fallgruver.md`.
+0, minste datasett er 100 personer, tellinger har støy, og gjennomsnitt og regresjoner er winsorisert. Unngå svært
+finfordelte tabeller og små populasjoner. Resultatene kan avvike litt fra SSBs offisielle statistikk. Hva tiltakene gjør med skript og analyser,
+og når `configure confidentiality v1` kan brukes, står i «Avsløringskontroll» i `referanser/fallgruver.md`.
 
 ## Kommunenumre over tid
 
@@ -58,14 +54,9 @@ Ikke skriv reglene for hånd. Kjør `python verktoy/kommuneomkoding.py --fra <å
 og lim `recode`-linjene inn i skriptet. Velg et målår som er likt eller senere enn kildeåret. Kommunene får
 navnet fra Klass, med samisk og kvensk navn der kommunen har det (Hábmer - Hamarøy). `--norske-navn` gir
 bare det norske navnet. Verktøyet lister kommuner som er delt i flere (f.eks. Tysfjord)
-og lar dem stå uendret. Si fra til brukeren om disse, og om «koder som selv ble delt» (Ålesund 1507 i
-2020–2023 omkodes til 1508, også Haram). Se også `referanser/fallgruver_geografi.md`.
-
-Fra 1990 kan personene i delte kommuner fordeles etter grunnkrets: importer `BEFOLKNING_GRUNNKRETS` på
-samme dato som kommunen og legg til `--grunnkrets <variabel>`. Verktøyet lager da i tillegg regler for
-grunnkretsene i de delte kommunene og en `replace`. Grunnkretsene skifter kode med kommunenummeret, så
-`--fra` må være året dataene er fra, og hvert år trenger sin egen kjøring. Grunnkretser som selv er delt,
-og uoppgitt grunnkrets, beholder kommunekoden og står listet i utskriften.
+og lar dem stå uendret. Si fra til brukeren om disse, og om «koder som selv ble delt». Fra 1990 kan personene i
+delte kommuner fordeles etter grunnkrets: importer `BEFOLKNING_GRUNNKRETS` på samme dato som kommunen og legg
+til `--grunnkrets <variabel>`. Se `referanser/fallgruver_geografi.md`.
 
 For å gruppere kommuner i regioner (helseregion, politidistrikt, økonomisk region osv.): kjør
 `python verktoy/regionomkoding.py <inndeling> --fra <kommunevariabel> --til <ny variabel>`
@@ -75,13 +66,12 @@ kommunenumre først. Oppdater tabellene med `python verktoy/hent_regioninndeling
 ## Grunnkrets, delområde, levekårssone og bydel
 
 `BEFOLKNING_GRUNNKRETS` (fra versjon 60, november 2026) er grunnkretsen personen bor i per 1.1. fra 1990.
-Den er en vanlig personvariabel, så alt som finnes på person (inntekt, utdanning, sysselsetting, trygd)
-kan tabuleres og brukes i modeller etter grunnkrets og områdene under. Grensen er små celler, ikke hvilke
-variabler som kan brukes.
+Alt som finnes på person, kan tabuleres og brukes i modeller etter grunnkrets og områdene under. Grensen er små
+celler, ikke hvilke variabler som kan brukes.
 
 **Bydeler:** bruk først den ferdige `BEFOLKNING_BYDEL` (Oslo, Bergen, Trondheim, Stavanger, fra 1990, eldre år
 omkodet til gjeldende bydeler, Klass 103). `grunnkrets.py --til bydel` trengs når bydelene skal følge
-gjeldende grunnkretser eksakt. Avvikene mellom de to er nesten bare uoppgitt, som har ulik kode (se «Grunnkrets» i `referanser/fallgruver_geografi.md`).
+gjeldende grunnkretser eksakt.
 
 Koden er kommune (4) + delområde (2) + grunnkrets (2) og skifter når kommunen skifter nummer. Bruk
 `python verktoy/grunnkrets.py --til <inndeling> --aar <år> --var <variabel> [--kommune 4601,5001]`:
@@ -94,10 +84,9 @@ Koden er kommune (4) + delområde (2) + grunnkrets (2) og skifter når kommunen 
 | `delbydel` | Delbydeler i Oslo (4 sifre) |
 | `FIL.csv` | Egne områder, kolonnene `grunnkrets;kode;navn` med gjeldende grunnkretskoder |
 
-`--aar` er året dataene er hentet for. Verktøyet følger gamle koder gjennom endringene til gjeldende
-inndeling og koder rett til målet. Ikke omkod til enkeltgrunnkretser først (lange skript, og tabeller på
-grunnkrets får mange celler under 5). Si fra til brukeren om grunnkretser som er delt mellom enheter (står i
-kommentaren), og at verdier med 8 tegn ikke er omkodet. Se «Grunnkrets» i `referanser/fallgruver_geografi.md`.
+`--aar` er året dataene er hentet for. Kod rett til målet, ikke via enkeltgrunnkretser. Si fra til brukeren om
+grunnkretser som er delt mellom enheter (står i kommentaren), og at verdier med 8 tegn ikke er omkodet. Se
+«Grunnkrets» i `referanser/fallgruver_geografi.md`.
 
 ## Klass: slå opp i stedet for å skrive reglene for hånd
 
@@ -109,11 +98,11 @@ Verktøyet krever nettilgang. Er den ikke der, si fra til brukeren og bruk det s
 |---|---|---|
 | Yrke (STYRK-08), `*_YRKE_STYRK08` | 7 | `grupper 7 --nivaa 1 --variabel REGSYS_ARB_YRKE_STYRK08 --navn yrke` |
 | Utdanning (NUS), `NUDB_BU`, `NUDB_KURS_NUS` | 36 | `grupper 36 --nivaa 1 --variabel NUDB_BU --navn nus` |
-| Landkode til verdensdel, `BEFOLKNING_LANDBAK3GEN`, `*_FODELAND` | 545 (verdensinndeling) | `grupper 545 --nivaa 2 --variabel BEFOLKNING_LANDBAK3GEN --navn landbak`. Statsløs og uoppgitt er under 10 personer og vises som 0. Med `configure confidentiality v1`: legg til `--utelat V91,V92` (nivå 1: `--utelat V9`) |
+| Landkode til verdensdel, `BEFOLKNING_LANDBAK3GEN`, `*_FODELAND` | 545 (verdensinndeling) | `grupper 545 --nivaa 2 --variabel BEFOLKNING_LANDBAK3GEN --navn landbak` |
 | Land til EU/EFTA, Norden osv. | 546 (gruppering av land) | `grupper 546 --nivaa 2 --variabel ...` |
-| Næring (SN2007), `REGSYS_NARING_SN2007` (2008–2014), `REGSYS_VIRK_NACE1_SN07` (2015–2019) | 6 | `grupper 6 --nivaa 1 --dato 2019-11-16 --variabel REGSYS_VIRK_NACE1_SN07 --navn naring`. Ingen næringsvariabel dekker tiden etter november 2019 (SSB oppdaterer den ikke lenger): si det til brukeren. Brudd mellom 2014 og 2015 (ny variabel og a-ordningen). Se `referanser/fallgruver_klass.md` |
+| Næring (SN2007), `REGSYS_NARING_SN2007` (2008–2014), `REGSYS_VIRK_NACE1_SN07` (2015–2019) | 6 | `grupper 6 --nivaa 1 --dato 2019-11-16 --variabel REGSYS_VIRK_NACE1_SN07 --navn naring`. Finnes ikke etter november 2019: si det til brukeren |
 | Koblingstabeller (NUS til ISCED osv.) | 36, 6, 91 | `kobling 36` lister tabellene, `kobling 36 --tabell "ISCED 2011 Attainment" --navn nus` lager recode |
-| Næring over tid (SN2002 til SN2007) | 6 | `kobling 6 --dato 2005-01-01 --tabell "SN 2007" --nivaa 1 --navn naring` (seksjon, 91 % omkodet). Uten `--nivaa` står 42 % uendret |
+| Næring over tid (SN2002 til SN2007) | 6 | `kobling 6 --dato 2005-01-01 --tabell "SN 2007" --nivaa 1 --navn naring` (seksjon). Bruk alltid `--nivaa` |
 | Finne en annen klassifikasjon | | `sok yrke` |
 
 Nivåene i hierarkiene: STYRK 1–4 er ett til fire siffer. NUS 1 er utdanningsnivå (0–9), 2 er nivå og
@@ -127,9 +116,7 @@ ikke kjørt i microdata.no før brukeren har kjørt dem.
 ## FHI-data: Kreftregisteret og Norsk pasientregister
 
 Microdata.no har fra 2026-11 også `no.fhi.kreftregisteret` og `no.fhi.npr` (versjon 1, se `metadata/datalagre.json`).
-Hvert datalager trenger sin egen `require`. Enhetene er krefttilfelle, episode og prosedyre, ikke person. Les
-`referanser/fallgruver_fhi.md` før du skriver skriptet. Import av krefttilfeller og NPR-episoder og
-kobling på personnøkkel er testet i microdata.no med versjon 1. Se TESTLISTE del 10 for hvilke operasjoner som er kjørt.
+Enhetene er krefttilfelle, episode og prosedyre, ikke person. Les `referanser/fallgruver_fhi.md` før du skriver skriptet.
 
 | Behov | Kommando |
 |---|---|
@@ -170,12 +157,8 @@ Eksemplene bruker gamle datalagerversjoner (23–45), så sjekk variabelnavnene.
 | Overganger mellom kategorier over tid | `transitions-panel` | På paneldata. Overganger til og fra missing er utelatt |
 
 Les `referanser/fallgruver_analyse.md`, og «Sjeldne 0/1-variabler» i `referanser/fallgruver.md`, før du leverer en
-analyse. Der står konfidensialitetstiltakene som
-påvirker analyser (winsorisering også i regresjoner, kategorier med under 5 observasjoner som fjernes, minst to
-koeffisienter, og **0/1-variabler der under 1 % har verdien 1: de blir 0 i gjennomsnitt, forsvinner fra
-regresjoner (bruk `i.x`), og som utfall gir de meningsløse modeller uten feilmelding i `regress` og `logit`,
-men ikke i `cox`**) og feil i
-manualens eksempler (overlevelsesanalyse, diff-in-diff, `ivregress`). Velg modell etter utfallet og designet,
+analyse. **0/1-variabler der under 1 % har verdien 1, gir feil resultat uten feilmelding**, og flere av manualens
+eksempler har feil (overlevelsesanalyse, diff-in-diff, `ivregress`). Velg modell etter utfallet og designet,
 og si fra om forutsetningene (f.eks. parallelle trender i diff-in-diff, instrumentets gyldighet).
 
 ## Arbeidsflyt
@@ -220,11 +203,8 @@ gamle versjoner, og da må du sjekke at variabelnavnene fortsatt finnes i `varia
 - `collapse`, `aggregate`, `merge ... into ... on ...`
 - `tabulate`, `summarize`, `regress`, `logit`, `barchart`, `histogram` (figurene kan endres i Vega-editoren, se `referanser/vega.md`)
 - `let` og `for ... end` for løkker
-- `citation` nederst i skriptet gir én linje: «Analysen er gjennomført i microdata.no med datagrunnlag fra:
-  SSB (registerdata). Data analysert: <dato>». Uten datalagerversjon og variabler, så oppgi
-  `require`-versjonen selv. Med flere datalagre listes alle som står i `require`, også dem som ikke er brukt i
-  `import` («FHI (Kreftregisteret), FHI (Norsk pasientregister) og SSB (registerdata)»). Ta bare med
-  `require` for lagrene du bruker. Resultater skal ha microdata.no som kilde ved publisering
+- `citation` nederst i skriptet gir én linje med datalager og dato, men uten versjon og variabler, så oppgi
+  `require`-versjonen selv. Alle datalagre i `require` listes, også ubrukte: ta bare med dem du bruker. Resultater skal ha microdata.no som kilde ved publisering
   (https://www.microdata.no/dokumentasjon/kildehenvisning/)
 
 ### Vaner fra Stata som ikke virker

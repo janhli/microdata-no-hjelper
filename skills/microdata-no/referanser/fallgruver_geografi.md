@@ -10,7 +10,9 @@
   - Delte kommuner (Varteig 0114, Stokke 0720, Snillfjord 1613 og 5012, Tysfjord 1850) kan ikke
     omkodes på kommunekoden alene. Verktøyet lar dem stå uendret, og de vises som gamle koder i tabellen.
     Fra 1990 fordeler `--grunnkrets <variabel>` personene etter grunnkretsen på samme dato (`BEFOLKNING_GRUNNKRETS`,
-    Klass 1). Det gjelder også Ålesund/Haram 2020–2023 og kommuner valgt ved navn. Grunnkretser som selv er
+    Klass 1). Verktøyet lager da i tillegg regler for grunnkretsene i de delte kommunene og en `replace`.
+    Grunnkretsene skifter kode med kommunenummeret, så `--fra` må være året dataene er fra, og hvert år trenger
+    sin egen kjøring. Det gjelder også Ålesund/Haram 2020–2023 og kommuner valgt ved navn. Grunnkretser som selv er
     delt (f.eks. 2 i Stokke 2015, 3 i Indre Østfold 2025) og uoppgitt (`kkkk9999`) står med kommunekoden.
     Testet (versjon 60, 2026-11-23, TESTLISTE 2.9): 88–98 % havnet i kommunen de bodde i året etter delingen, og
     resten ser ut som flytting. Men de to delte grunnkretsene i Stokke har 13 % av befolkningen, så Stokke står
