@@ -118,9 +118,5 @@
  "temporalEnd": {
   "description": "Variabelen oppdateres ikke. SSB gikk over til fulltelling etter valget 2019."
  },
- "globalTemporalCoverage": {
-  "start": -1096,
-  "stop": 20778
- },
  "updatedAt": 1633937990
 }

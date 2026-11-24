@@ -133,9 +133,5 @@
    "REGSYS_VIRK_ID_SSB"
   ]
  },
- "globalTemporalCoverage": {
-  "start": -1096,
-  "stop": 20778
- },
  "updatedAt": 1603982268
 }

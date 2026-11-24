@@ -222,9 +222,5 @@
  "temporalEnd": {
   "description": "Variabelen oppdateres ikke."
  },
- "globalTemporalCoverage": {
-  "start": -1096,
-  "stop": 20778
- },
  "updatedAt": 1603982268
 }
