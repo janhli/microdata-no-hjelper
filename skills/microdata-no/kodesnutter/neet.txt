@@ -17,9 +17,9 @@
 // Lager:     neet      – '1' NEET, '0' i arbeid, utdanning eller tiltak (SSBs egen variabel)
 //            neetstat  – for NEET: '1' registrert ledig, '2' AAP/uføretrygd, '3' ukjent status, '4' andre
 //                        ytelser. '0' for dem som ikke er NEET
-//            aldgr     – '1' 15–19, '2' 20–24, '3' 25–29 år
-//            fylke     – bostedsfylke (2024-inndelingen) med navn
-//            innv      – '1' innvandrer, '2' resten (som SSB tabell 12423)
+//            aldgr     – '1' 15–19, '2' 20–24, '3' 25–29 år, '9' ukjent
+//            fylke     – bostedsfylke (2024-inndelingen) med navn, '99' uoppgitt
+//            innv      – '1' innvandrer, '2' resten (som SSB tabell 12423), '9' ukjent
 // Tillegg:   utdniv    – registrert utdanningsnivå fra NUDB_BU: '1' grunnskole, '2' videregående (inkl.
 //                        fagskole), '3' universitet/høgskole, '9' uoppgitt/ingen
 // Definisjon (SSB): NEET er bosatte 15–29 år som ikke er sysselsatt, under ordinær utdanning eller på
@@ -32,6 +32,7 @@
 //            102 977 NEET av 1 044 100 (SSB 102 976 av 1 044 101). Ledige 11 659 (11 656), AAP/uføre 27 131
 //            (27 134), ukjent og andre 64 185 (64 186). Alder, kjønn, alle 15 fylker og innvandrere/resten
 //            innen 0,1 prosentpoeng. Ukjent status er 54 420 (53 % av NEET). Utdanning avviker, se under.
+//            Kategorien ukjent ('9' i aldgr og innv, '99' i fylke) er lagt til etter kontrollkjøringen.
 // Fallgruver:
 //   - Variabelen dekker bare til 2024-11-16 (versjon 60). Det finnes ikke NEET for 2025 i microdata.no,
 //     selv om SSB har publisert foreløpige tall.
@@ -80,18 +81,21 @@ assign-labels neetstat neetstattxt
 generate aldgr = '1'
 replace aldgr = '2' if alder >= 20
 replace aldgr = '3' if alder >= 25
-define-labels aldgrtxt '1' '15–19 år' '2' '20–24 år' '3' '25–29 år'
+replace aldgr = '9' if sysmiss(alder)
+define-labels aldgrtxt '1' '15–19 år' '2' '20–24 år' '3' '25–29 år' '9' 'Ukjent'
 assign-labels aldgr aldgrtxt
 
 // --- Fylke (2024-inndelingen, som fylke.txt) ---
 generate fylke = substr(kommune, 1, 2)
+replace fylke = '99' if sysmiss(kommune)
 define-labels fylketxt '03' 'Oslo' '11' 'Rogaland' '15' 'Møre og Romsdal' '18' 'Nordland' '31' 'Østfold' '32' 'Akershus' '33' 'Buskerud' '34' 'Innlandet' '39' 'Vestfold' '40' 'Telemark' '42' 'Agder' '46' 'Vestland' '50' 'Trøndelag' '55' 'Troms' '56' 'Finnmark' '21' 'Svalbard' '99' 'Uoppgitt'
 assign-labels fylke fylketxt
 
 // --- Innvandrere og resten (som SSB 12423) ---
 generate innv = '2'
 replace innv = '1' if invkat == 'B'
-define-labels innvtxt '1' 'Innvandrere' '2' 'Befolkningen utenom innvandrere'
+replace innv = '9' if sysmiss(invkat)
+define-labels innvtxt '1' 'Innvandrere' '2' 'Befolkningen utenom innvandrere' '9' 'Ukjent'
 assign-labels innv innvtxt
 
 // --- Tilleggsanalyse: registrert utdanningsnivå (fagskole gruppert med videregående) ---

@@ -241,8 +241,8 @@ avklart med versjon 1, hvis ikke annet står. Endringene som påvirker skript:
   Bare for brukere akkreditert før 17. november 2026, og ikke med FHI-data eller `BEFOLKNING_GRUNNKRETS`.
   Bruk det bare for å gjenskape gamle resultater. Skriptet kjører fram til importen av grunnkrets, som
   stoppes med «Ulovlig import med valgt konfidensialitetsprofil. Kan ikke bruke variabler innenfor
-  *_GRUNNKRETS» (versjon 60, TESTLISTE 11.7). FHI-testene i TESTLISTE del 10 ble kjørt med
-  konfidensialitetsprofil v2.
+  *_GRUNNKRETS» (versjon 60, TESTLISTE 11.7). FHI-data er ikke testet med v1, men stoppes trolig på samme
+  måte. FHI-testene i TESTLISTE del 10 ble kjørt med v2.
 
 ### Sjeldne 0/1-variabler blir 0 i gjennomsnitt og forsvinner fra regresjoner (versjon 2)
 - **Symptom:** `tabulate gruppe, summarize(x) mean` eller `summarize x` gir gjennomsnitt 0 (og standardavvik 0)
@@ -312,8 +312,8 @@ avklart med versjon 1, hvis ikke annet står. Endringene som påvirker skript:
 ## Analyse
 
 Kartlagt fra manualen (`metadata/manual/konfidensialitet.md`, `kommandoer_og_funksjoner/kommandoer.md` og
-`eksempel/Regresjonsanalyser/`, versjon 60 med anonymiseringstiltak versjon 2, november 2026). Punktene er
-**ikke kjørt** i microdata.no før det står. Det som må testes, står i TESTLISTE del 8.
+`eksempel/Regresjonsanalyser/`, versjon 60 med anonymiseringstiltak versjon 2, november 2026). Punkter med
+«testet» og et TESTLISTE-nummer er kjørt i microdata.no (del 8). De andre bygger bare på manualen.
 
 ### Regresjoner winsoriseres og nedsamples
 - **Versjon 2:** Alle kontinuerlige variabler i en regresjon winsoriseres før estimeringen (1 % i hver ende),
@@ -667,8 +667,9 @@ og ELVIS, og de viktigste er testet i microdata.no (TESTLISTE del 10, se «Teste
   `S_HORMONBEH` (4 av 8 verdier, ikke testet).
 - **Velg avgrensning etter hva du vil telle.** `S_TUMORATFERD` skiller benign (0), usikker (1), in situ (2) og
   ondartet (3). Bruk atferd 3 når spørsmålet gjelder ondartede svulster. For sammenligning med «All kreft» i
-  *Cancer in Norway*, bruk rapportens diagnoseavgrensning. Den omfatter også utvalgte godartede svulster og
-  in situ-tilfeller, og utelater basalcellekarsinomer. [FHIs definisjon](https://www.fhi.no/is/ncd/dodelighet-sykelighet/kreft/)
+  *Cancer in Norway*, bruk rapportens diagnoseavgrensning med `kreftregisteret.py grupper --nivaa cin` (se over),
+  ikke atferd 3. Den omfatter også utvalgte godartede svulster og in situ-tilfeller, og utelater
+  basalcellekarsinomer. [FHIs definisjon](https://www.fhi.no/is/ncd/dodelighet-sykelighet/kreft/)
 - **Beskrivelser og verdier står i ELVIS.** Lenken til detaljsiden står i kolonnen `ekstern_metadata` i `variabler.csv`.
   Verdiene er hentet til `metadata/fhi/kreftregisteret/verdier.csv` med `kreftregisteret.py hent`.
 - **Testet (versjon 60 / FHI 1, november 2026, TESTLISTE del 10):**

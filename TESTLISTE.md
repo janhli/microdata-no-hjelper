@@ -83,6 +83,7 @@ minst 10 enheter (tiltak 6), som er fjernet i versjon 2 (17. november 2026). Bek
 | 5.5 | ~~Kjør `landbakgrunn_region.txt` etter endringen av EU/EØS-listen~~ **Avklart (versjon 59, 2026-11):** hver gruppe ligger innenfor sin Klass-region (Grønland og Færøyene, 4 367, er Norden i Klass og Europa utenom EU/EØS i snutten). EU/EØS 710 473 | ✓ |
 | 5.7 | ~~Vedvarende lavinntekt, kommunal median: storbyene over FHI 403~~ **Avklart (versjon 60, 2026-11-23):** grensen i snutten er riktig: for alle aldre treffer den FHI innen 0,2 prosentpoeng (Oslo 14,5 mot 14,4, landet 9,6 mot 9,6), også 18–24 år. Median over husholdninger, studenthusholdninger i medianen, privathusholdning alle tre år og bosted 1.1.2024 bommer eller endrer ingenting. Avviket for barn i storbyene (opptil 0,5) ligger i tellingen av barn. 75+ ligger 0,5–1,4 over (trolig institusjonsbeboere, ikke undersøkt). Fasit hentet fra FHIs åpne API (nokkel/Table/403). Se `kodesnutter/TESTRESULTATER.md`. Skript: `del5_7_…`, `del5_7b_…`, `del5_7c_lavinntekt_aldre.txt` | | | ✓ |
 | 5.8 | ~~Kjør `neet.txt` (ny snutt)~~ **Avklart (versjon 60, 2026-11-23):** 102 977 NEET mot SSB 102 976. Ledige, AAP/uføre og «andre» innen ±3, alder, kjønn, alle fylker og innvandrere/resten innen 0,1 prosentpoeng. Dagpenger og sykepenger er NEET, tiltakspenger og introduksjonsprogram ikke. Tilleggsanalysen med registrert utdanning gir 104 911 med uoppgitt eller ingen utdanning, mot 7 417 i tabell 12423. Se metodeforskjellene i [testresultatene](skills/microdata-no/kodesnutter/TESTRESULTATER.md#neettxt). | ✓ |
+| 5.9 | Kjør `neet.txt` på nytt etter at kategorien ukjent ble lagt til (`'9'` i `aldgr` og `innv`, `'99'` i `fylke`). Forventet: kategorien er tom eller nesten tom, og tallene er som i 5.8. Prøv også SSBs regel om grunnskole for 15–16-åringer: sett `utdniv = '1'` for 15–16-åringer uten registrert utdanning, og sammenlign med tabell 12423. Gjenstår da bare imputeringen for innvandrere som forskjell, kan regelen legges inn i snutten | P3 |
 
 ## 6. Henting og vedlikehold
 
@@ -128,7 +129,7 @@ tekstvariabler virker (8.15). Detaljer: [`evals/resultater/runde1.md`](evals/res
 | 7.17 | Sjelden gruppe som forklaringsvariabel (Eritrea) | Ser at gruppen er under 1 %, bruker `i.x` |
 | 7.18 | Bydel | Bruker `BEFOLKNING_BYDEL`, ikke omkoding fra grunnkrets |
 
-## 8. Analyse (fra manualen, ikke kjørt)
+## 8. Analyse (fra manualen, kjørt i versjon 60)
 
 Antakelser i «Analyse» i [`fallgruver.md`](skills/microdata-no/referanser/fallgruver.md). Kan samles i ett skript
 på en populasjon over 100 000 (f.eks. bosatte 30–60 år). Skriptet for 8.1–8.5 og 8.7–8.9 ligger i
